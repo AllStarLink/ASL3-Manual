@@ -1,3 +1,10 @@
 site_name: ASL Manuals
 site_url: https://allstarlink.github.io/
-
+nav:
+  - Home: index.md
+  - "User Guide":
+    - "What's New": whatsnew.md
+    - "Installation": install.md
+    - "Configuration": config.md
+  - "Developer Guide":
+    - "Package Builds" : developers/package-builds.md
