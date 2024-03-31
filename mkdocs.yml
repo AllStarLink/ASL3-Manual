@@ -1,10 +1,12 @@
 site_name: ASL3 Manual
 site_url: https://allstarlink.github.io/
+site_description: ASL3 documentation project.
+site_author: AllStarLink Team
 nav:
   - Home: index.md
-  - "User Guide":
-    - "What's New": whatsnew.md
-    - "Installation": install.md
-    - "Configuration": config.md
-  - "Developer Guide":
-    - "Package Builds" : developers/package-builds.md
+  - User Guide:
+    - User's Guide: user-guide/index.md
+    - Installation: user-guide/install.md
+    - Configuration: user-guide/config.md
+  - Developer Guide:
+    - Package Builds : developers/package-builds.md
