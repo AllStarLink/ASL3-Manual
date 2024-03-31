@@ -1,6 +1,6 @@
-# What's New
+# User's Guide
 
-You're reading this document so you've noticed it's new. Did you notice the next and previous menu items? We hope you find those a orderly way to learn about ASL3.
+This is the ASL3 User's Guide. You're reading this so you've noticed it's new. Did you notice the next and previous menu items? We hope you find those a orderly way to learn about ASL3.
 
 No doubt you want to get on with installation. First, here are a few important details.
 
@@ -13,24 +13,14 @@ No doubt you want to get on with installation. First, here are a few important d
  - USBradio and simpleUSB tune settings have been moved into there respective conf file. No longer septate per node tune setting files.
 
 
-# Version Taxonomy
-ASL3 has adopted a new version format for individual packages related to
-Asterisk and the app_rpt-associated code. That format is:
-
-```
-{ASTERISK_VERSION}+asl3-{APP_RPT_VERSION}-{PKG_RELEASE}
-```
-
-The string `ASTERISK_VERSION` is the base version of Asterisk (e.g. 20.7.0).
-The string `APP_RPT_VERSION` is the version of apt_rpt and associated code, starting
-from 1 at the epoch of beginning packaging building.
-The string `PKG_RELEASE` is a Debian package-related package version. This will appear
-in the output of the `asterisk -rv` command and otherwise as necessary.
-
 
 # ASL3 Menu
 
 The new ASL3 menu will walk you through setting up a basic USB or hub node quickly. Switching between menu and config edits is non-destructive.
+
+# ASL3 Commands
+
+New ASL3 go here
 
 # Editing configs
 
