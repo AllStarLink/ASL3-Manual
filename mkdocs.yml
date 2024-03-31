@@ -1,4 +1,4 @@
-site_name: ASL Manuals
+site_name: ASL3 Manual
 site_url: https://allstarlink.github.io/
 nav:
   - Home: index.md

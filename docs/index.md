@@ -1,4 +1,4 @@
-# AllStarLink Manuals
+# ASL3 Manual
 
 AllStarLink’s app\_rpt version 3 (ASL3) is the next generation of repeater and hotspot software.  This version of app\_rpt has been redesigned to run on the latest operating systems and the current LTS version of Asterisk® 20. ASL3 runs on Raspberry Pi 3, 4, and 5 as well as amd64 and x86.
 
