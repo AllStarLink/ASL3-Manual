@@ -1,12 +1,17 @@
 # Install AllStarLink
 
-These instructions are for installing ASL on various computer systems. ASL3 has many changes so there's a bit of a learning curve. You'll want to read the whats new page so you know what you're getting to. You probably don't want to install on your production system right away. You’re going to be installing a new Debian OS on your computer, VM or microSD card.
+These instructions are for installing ASL on various computer systems.
+
+You’re going to start off by installing a new Debian OS on your Raspberry Pi, PC computer, or virtual machine.  You probably don't want to install a production system right away.  Give yourself some time to test that everything works as you'd expect.
+
+Note: if you have installed an earlier version of ASL you need to know that ASL3 has many changes and that there's a bit of a learning curve.  You will want to read the what's new page so you know what you're getting to. 
+
 
 ## Raspberry Pi
 
 <hr>
 
-ASL can be installed on a Raspberry Pi 3, 4, or 5. You will install an image on a MicroSD and go. This is the simplest install. For most nodes the menu will walk you through the setup.
+ASL can be installed on a Raspberry Pi 3, 4, or 5. You will install an image on a microSD card and go. This is the simplest install. For most nodes the menus will walk you through the setup.
 
 ## Linux
 
@@ -18,9 +23,11 @@ ASL can be installed on most Linux systems capable of running Debian 12.
 
 <hr>
 
-Source install is for developers.
+Installing ASL from source code is primarily for developers.  Doing so will require you to download, compile, and install multiple projects.  You will also need to be very comfortable using various development tools and the Linux CLI.
 
- - Source install does not include any helpers, Allmon3, asl3-menu, etc.
+The following instructions are for building ONLY Asterisk with ASL's app_rpt.
+
+ - Source install does not include any helpers, Allmon3, asl3-menu, asl3-nodelist, etc.
  - Installs and runs Asterisk as root
 
 #### Install phreaknet.sh script
@@ -46,7 +53,7 @@ Use -t or -b for developer mode. Both are optional.
 phreaknet install -d -b -v 20
 ```
 
-Asterisk should be running at this point but not app_rpt. Check install with `asterisk -r`.
+Asterisk should be running at this point but not app_rpt. Check the install with `asterisk -r`.
 
 #### Clone ASL3 repo
 
@@ -65,6 +72,7 @@ cd app_rpt
 ```
 
 #### Install ASL3 configs
+
 This adds ASL3 configs to the full set of Asterisk configuration files. ASL3 modules.conf limits what actually runs.
 
 ```bash
