@@ -33,3 +33,6 @@ The first thing to know about editing conf files is that for the most part you d
 
  Most of this new stuff is explained with more detail in the ASL3 Configuration page.
 
+# Where to Get Help and Report Bugs
+
+The AllStarLink Community is the primary support for all versions of ASL including ASL3. Please do not use the help desk for ASL technical help. To report bugs use the ASL3 GitHub repo. 
