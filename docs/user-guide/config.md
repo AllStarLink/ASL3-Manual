@@ -7,7 +7,7 @@ These configuration details are for experts and the curious who want to dig into
 
 <hr>
 
-The "rpt.conf" file remains basically the same as it was in ASL2.  But, the organization has changed to make it easier to maintain, particularly for multi-node systems.  As you will see, adding a new node requires the addition of just a few lines.  For example adding nodes to your system may need nothing more than:
+The "rpt.conf" file remains basically the same as it was in ASL2.  But, the organization has changed to make it easier to maintain, particularly for multi-node systems.  As you will see, adding a new node requires the addition of just a few lines.  For example adding three nodes to your system may need nothing more than:
 
 <pre>
 [1999](node-main)
