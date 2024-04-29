@@ -1,5 +1,15 @@
 # ASL3 New Commands
 
+## New rpt
+ - `rpt show channels <node>`
+ - `rpt show variables <node>`
+ - `rpt show registrations`
+ - `rpt show version`
+
+## New susb
+ - `susb show settings`
+
+
 What do we want here?
 New and different ASL3 commands go here. No OS commands.
 
