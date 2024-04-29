@@ -1,55 +1,22 @@
 # ASL3 New Commands
 
-## New rpt
+New and different ASL3 commands are mentioned here. Older ASL commands are still documented on the  [AllStarLink Wiki](https://wiki.allstarlink.org)
+
+
+## app_rpt
  - `rpt show channels <node>`
- - `rpt show variables <node>`
  - `rpt show registrations`
+ - `rpt show variables <node>`
  - `rpt show version`
 
-## New susb
+## susb
  - `susb show settings`
 
+## Simple and Radio Tune Menus
 
-What do we want here?
-New and different ASL3 commands go here. No OS commands.
 
-Do we want things like :
+## Helper scripts
+ - The `asl-find-sound` script makes it easy to identify the device strings for attached USB sound interfaces.
 
-```bash
-asterisk -rx "rpt localnodes"
-```
 
-or :
 
-```bash
-astup.sh
-astdn.sh
-astres.sh
-```
-
-or do we want to include some Linux commands like :
-
-```bash
-hostnamectl
-sudo hostnamectl set-hostname ASL-WA3WCO
-```
-
-```bash
-timedatectl
-timedatectl list-timezones
-sudo timedatectl set-timezone America/New_York
-```
-
-```bash
-networkctl status
-```
-
-```bash
-systemctl status dahdi
-systemctl status asterisk
-systemctl status asl3-update-nodelist
-apachectl status
-```
-
-Are there any web links we should include ?
-Only a mention: Other ASL commands and settings are on documented on wiki.allstarlink.org

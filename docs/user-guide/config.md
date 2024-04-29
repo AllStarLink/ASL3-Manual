@@ -37,6 +37,7 @@ Setting up USB audio interfaces is much easier with ASL3.
 
  - The USB audio interface "tune" settings have been moved into their respective configuration files; "simpleusb.conf" and "usbradio.conf". The separate tune files (e.g. "simple-tune-usb1999.conf") no longer exist.
  - The device string is automatically found when the USB setting `devstr =` is empty.
+ - rxchannel=SimpleUSB/USB1999 has been changed to rxchannel=SimpleUSB/1999. Same for rxchannel=Radio/1999 for consistency with other rxchannel= settings.
  - A new `asl-find-sound` script can be used to help identify the device strings for attached interfaces.
 
 The ASL3 menu and Asterisk CLI USB config commands handle these changes.

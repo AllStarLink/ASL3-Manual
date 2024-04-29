@@ -16,6 +16,7 @@ As part of this update, app\_rpt has been refactored to make the code base easie
  - Improved uptime
  - USB improvements
  - ASL menu improvements
+ - tune-menu improvements
  - EchoLink improvements
  - Per node access lists
  - rpt.conf improvements
