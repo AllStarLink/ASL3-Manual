@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <meta name="author" content="AllStarLink Team">
-        <link rel="canonical" href="https://allstarlink.github.io/developers/package-builds/">
+        <link rel="canonical" href="https://allstarlink.github.io/user-guide/pi-detailed/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Package Builds - ASL3 Manual</title>
+        <title>Pi Step-by-Step - ASL3 Manual</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -33,41 +33,41 @@
                             <li class="navitem">
                                 <a href="../.." class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../user-guide/" class="dropdown-item">User's Guide</a>
+    <a href="../" class="dropdown-item">User's Guide</a>
 </li>
                                     
 <li>
-    <a href="../../user-guide/install/" class="dropdown-item">Installation</a>
+    <a href="../install/" class="dropdown-item">Installation</a>
 </li>
                                     
 <li>
-    <a href="../../user-guide/pi-detailed/" class="dropdown-item">Pi Step-by-Step</a>
+    <a href="./" class="dropdown-item active">Pi Step-by-Step</a>
 </li>
                                     
 <li>
-    <a href="../../user-guide/menu/" class="dropdown-item">ASL Menu</a>
+    <a href="../menu/" class="dropdown-item">ASL Menu</a>
 </li>
                                     
 <li>
-    <a href="../../user-guide/commands/" class="dropdown-item">ASL Commands</a>
+    <a href="../commands/" class="dropdown-item">ASL Commands</a>
 </li>
                                     
 <li>
-    <a href="../../user-guide/config/" class="dropdown-item">Configuration</a>
+    <a href="../config/" class="dropdown-item">Configuration</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Developer Guide <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">Package Builds</a>
+    <a href="../../developers/package-builds/" class="dropdown-item">Package Builds</a>
 </li>
                                 </ul>
                             </li>
@@ -80,12 +80,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../user-guide/config/" class="nav-link">
+                                <a rel="prev" href="../install/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../menu/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -107,12 +107,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#test" class="nav-link">test</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#version-taxonomy" class="nav-link">Version Taxonomy</a>
+            <li class="nav-item" data-level="1"><a href="#step-by-step-pi-appliance-setup" class="nav-link">Step-by-Step Pi Appliance Setup</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -121,22 +116,92 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="test">test</h1>
-<p>Because Asterisk runs a non-root consider:</p>
-<ul>
-<li>RTCM configs: We are recommending the use of port 1667 to avoid OS hacks for ports below 1024.</li>
-<li>USB configs require a udev rule: <code>cat /etc/udev/rules.d.90-asl3.rules</code> SUBSYSTEM=="usb", ATTRS{idVendor}=="0d8c", GROUP="plugdev", TAG+="uaccess"</li>
-</ul>
-<h1 id="version-taxonomy">Version Taxonomy</h1>
-<p>ASL3 has adopted a new version format for individual packages related to
-Asterisk and the app_rpt-associated code. That format is:</p>
-<pre><code>{ASTERISK_VERSION}+asl3-{APP_RPT_VERSION}-{PKG_RELEASE}
-</code></pre>
-<p>The string <code>ASTERISK_VERSION</code> is the base version of Asterisk (e.g. 20.7.0).
-The string <code>APP_RPT_VERSION</code> is the version of apt_rpt and associated code, starting
-from 1 at the epoch of beginning packaging building.
-The string <code>PKG_RELEASE</code> is a Debian package-related package version. This will appear
-in the output of the <code>asterisk -rv</code> command and otherwise as necessary.</p></div>
+<h1 id="step-by-step-pi-appliance-setup">Step-by-Step Pi Appliance Setup</h1>
+<ol>
+<li>
+<p>If you do not already have it installed, install the
+<a href="https://www.raspberrypi.com/software/">Raspberry Pi Imager</a>.</p>
+</li>
+<li>
+<p>FIX FIXIMG Download the <a href="https://github.com/jxmx/firefly-logger/releases">latest release image</a>. This will
+be named <code>firefly-logger-X.Y-aarch64.img.xz</code> where "X.Y" is the version. Save it to the local
+<code>Downloads</code> directory.</p>
+</li>
+<li>
+<p>Launch <strong>Raspberry Pi Imager</strong> from the start menu.
+<img alt="Step 3" src="../img/step-3.png" /></p>
+</li>
+<li>
+<p>Click on <strong>CHOOSE DEVICE</strong> and choose the type of
+Pi hardware on which Firefly Logger is being installed.
+<img alt="Step 4" src="../img/step-4.png" /></p>
+</li>
+<li>
+<p>Click on <strong>CHOOSE OS</strong>. Scroll to the bottom of the
+list that appears and select <strong>Use custom</strong>. 
+<img alt="Step 5" src="../img/step-5.png" /></p>
+</li>
+<li>
+<p>FIX FIXIMG A <strong>Select image</strong> dialog box will appear. Navigate to the
+<code>Downloads</code> folder and select the image downloaded in step 2.
+It will be named something like firefly-logger-5.1-aarch64.img.xz.
+Then click <strong>Open</strong>.
+<img alt="Step 6" src="../img/step-6.png" /></p>
+</li>
+<li>
+<p>Connect the SD card or the SD card in a USB adapter to
+the computer. Then click on <strong>CHOOSE STORAGE</strong>. An option
+will be presented named something such as "Mass Storage Device USB
+Device - 16.0 GB". Click on that entry.
+<img alt="Step 7" src="../img/step-7.png" /></p>
+</li>
+<li>
+<p>Click <strong>NEXT</strong></p>
+</li>
+<li>
+<p>A box labelled "Use OS customisation?" will appear. Click on
+<strong>EDIT SETTINGS</strong>
+<img alt="Step 9" src="../img/step-9.png" /></p>
+</li>
+<li>
+<p>FIX FIXIMG Check the box next to <strong>Configure wireless LAN</strong> and then enter
+the name of the wireless network in <strong>SSID</strong> and the password for
+that network in <strong>Password</strong>. Change the "Wireless LAN country" to <strong>US</strong>
+or other country as appropriate. This is not necessary if the Pi will
+use a network cable rather than wireless.
+<img alt="Step 10" src="../img/step-10.png" /></p>
+</li>
+<li>
+<p>(Optional) Check the box next to <strong>Set locale settings</strong> and change the "Time zone"
+to the desired region.</p>
+</li>
+<li>
+<p>Click <strong>SAVE</strong> in "OS Customsation".</p>
+</li>
+<li>
+<p>Click <strong>YES</strong> for "Use OS customisation?"</p>
+</li>
+<li>
+<p>FIXIMG Click <strong>YES</strong> to continue to write the image to the SD card.
+<img alt="Step 14" src="../img/step-14.png" /></p>
+</li>
+<li>
+<p>Depending on the speed of the computer and the type of SD card
+one will have time for a beverage of their choice. When the write is complete,
+remove the card from computer and insert it into the Pi. If using a USB adapter
+for the SD card, remove the SD card from the adapter and insert the card into
+the Pi. The Pi <strong>will not</strong> us the SD card in the USB adapter.</p>
+</li>
+<li>
+<p>Power on the Pi. Wait approximately 2 minutes for the Pi to boot
+and perform the various firstboot tasks.</p>
+</li>
+<li>
+<p>FIX FIXIMG (Optional) Network connectivity may be tested using the command
+<code>ping -4 firefly.local</code> from a command prompt or PowerShell window.
+<img alt="Step 17" src="img/step-17.png" /></p>
+</li>
+</ol></div>
             </div>
         </div>
 

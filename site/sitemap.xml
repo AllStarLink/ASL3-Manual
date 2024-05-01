@@ -2,12 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://allstarlink.github.io/</loc>
-         <lastmod>2024-03-30</lastmod>
+         <lastmod>2024-05-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://allstarlink.github.io/developers/package-builds/</loc>
-         <lastmod>2024-03-30</lastmod>
+         <lastmod>2024-05-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://allstarlink.github.io/user-guide/</loc>
+         <lastmod>2024-05-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://allstarlink.github.io/user-guide/commands/</loc>
+         <lastmod>2024-05-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://allstarlink.github.io/user-guide/config/</loc>
+         <lastmod>2024-05-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://allstarlink.github.io/user-guide/install/</loc>
+         <lastmod>2024-05-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://allstarlink.github.io/user-guide/menu/</loc>
+         <lastmod>2024-05-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://allstarlink.github.io/user-guide/pi-detailed/</loc>
+         <lastmod>2024-05-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

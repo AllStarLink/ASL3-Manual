@@ -1,9 +1,8 @@
-# User's Guide
+# ASL3 User's Guide
 
 This is the ASL3 User's Guide. No doubt you're you've noticed the new format. Did you see the "Next" and "Previous" menu items? We think you'll find those provide an orderly way to learn about ASL3.
 
-## What's New in ASL3?
-<hr>
+## What's New?
 
 Ready to get on with installation? We thought so, but first consider that ASL3 is very new. You'll probably want to install on removable media or on a non-production system. For those who have used ASL2 (or other/earlier versions of ASL) you to be aware of a few important details:
 
@@ -18,8 +17,7 @@ Ready to get on with installation? We thought so, but first consider that ASL3 i
 	- EchoLink now honors the app\_rpt timeout timer.  A text message is sent to the client when they time out.
 	- EchoLink longer allows clients to double.  A text message is sent to the client when they are doubling.
 
-## ASL3 Menu Changes
-<hr>
+## Menu Changes
 
 The ASL3 menu has been updated.
 Our goal is to provide an easy way for you to configure your node and to minimize the need to edit any configuration files.
@@ -31,22 +29,17 @@ Fortunately, there is a lot of information available online for your system.
 
 Please let us know about any changes you have made to your configuration that would benefit others.
 
-## ASL3 Configuration File Changes
-<hr>
+## Configuration File Changes
 
 The first thing to know about editing configuration files is that the menus can be used to make common changes.  But, if you need to edit the configurations or use the Asterisk CLI you should consider:
 
 - A template is now used in `rpt.conf`.  Editing is much easier but it's different than ASL2. Node settings are much simpler with only a few lines needed to be added/updated for each node. The ASL3 menu handles the new templated configuration.
-
 - ASL registration is now set in `rpt_http_registration.conf`, not in `iax.conf`. IAX registration still works but is discouraged. Please do not configure your node for both HTTP and IAX registration. The new Asterisk CLI command is `rpt show registrations`.
-
 - The USB configuration files now contain the tune settings. There is no tune file for each node as in ASL2. The tune menus and Asterisk CLI write to the new tune setting locations.
-
 - There no need to edit or use a script to update the per node access lists, formerly known as the blacklist and whitelist.
 
-Most of this new stuff is explained with more detail in the ASL3 Configuration page.
+## Help and Report Bugs
 
-## Where to Get Help and Report Bugs
-<hr>
+The [AllStarLink Community](https://community.allstarlink.org/) is the primary support for all versions of ASL including ASL3. Please do not use the help desk for ASL technical help.
 
-The AllStarLink Community is the primary support for all versions of ASL including ASL3. Please do not use the help desk for ASL technical help. To report bugs use the ASL3 GitHub repo.
+Report bugs to [AllStarLink GitHub](https://github.com/AllStarLink). There are numerous ASL3 repos. If you're not sure which repo to use, use Community.

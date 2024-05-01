@@ -6,12 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <meta name="author" content="AllStarLink Team">
-        <link rel="canonical" href="https://allstarlink.github.io/developers/package-builds/">
-        <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Package Builds - ASL3 Manual</title>
-        <link href="../../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="canonical" href="https://allstarlink.github.io/user-guide/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>User's Guide - ASL3 Manual</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script>hljs.highlightAll();</script> 
@@ -20,7 +20,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="../..">ASL3 Manual</a>
+                <a class="navbar-brand" href="..">ASL3 Manual</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -31,43 +31,43 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="../.." class="nav-link">Home</a>
+                                <a href=".." class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../user-guide/" class="dropdown-item">User's Guide</a>
+    <a href="./" class="dropdown-item active">User's Guide</a>
 </li>
                                     
 <li>
-    <a href="../../user-guide/install/" class="dropdown-item">Installation</a>
+    <a href="install/" class="dropdown-item">Installation</a>
 </li>
                                     
 <li>
-    <a href="../../user-guide/pi-detailed/" class="dropdown-item">Pi Step-by-Step</a>
+    <a href="pi-detailed/" class="dropdown-item">Pi Step-by-Step</a>
 </li>
                                     
 <li>
-    <a href="../../user-guide/menu/" class="dropdown-item">ASL Menu</a>
+    <a href="menu/" class="dropdown-item">ASL Menu</a>
 </li>
                                     
 <li>
-    <a href="../../user-guide/commands/" class="dropdown-item">ASL Commands</a>
+    <a href="commands/" class="dropdown-item">ASL Commands</a>
 </li>
                                     
 <li>
-    <a href="../../user-guide/config/" class="dropdown-item">Configuration</a>
+    <a href="config/" class="dropdown-item">Configuration</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Developer Guide <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">Package Builds</a>
+    <a href="../developers/package-builds/" class="dropdown-item">Package Builds</a>
 </li>
                                 </ul>
                             </li>
@@ -80,12 +80,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../user-guide/config/" class="nav-link">
+                                <a rel="prev" href=".." class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="install/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -107,13 +107,24 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#test" class="nav-link">test</a>
+            <li class="nav-item" data-level="1"><a href="#users-guide" class="nav-link">User's Guide</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#whats-new-in-asl3" class="nav-link">What's New in ASL3?</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#version-taxonomy" class="nav-link">Version Taxonomy</a>
+            <li class="nav-item" data-level="2"><a href="#asl3-menu-changes" class="nav-link">ASL3 Menu Changes</a>
               <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#asl3-configuration-file-changes" class="nav-link">ASL3 Configuration File Changes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#where-to-get-help-and-report-bugs" class="nav-link">Where to Get Help and Report Bugs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -121,22 +132,61 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="test">test</h1>
-<p>Because Asterisk runs a non-root consider:</p>
+<h1 id="users-guide">User's Guide</h1>
+<p>This is the ASL3 User's Guide. No doubt you're you've noticed the new format. Did you see the "Next" and "Previous" menu items? We think you'll find those provide an orderly way to learn about ASL3.</p>
+<h2 id="whats-new-in-asl3">What's New in ASL3?</h2>
+<hr>
+
+<p>Ready to get on with installation? We thought so, but first consider that ASL3 is very new. You'll probably want to install on removable media or on a non-production system. For those who have used ASL2 (or other/earlier versions of ASL) you to be aware of a few important details:</p>
 <ul>
-<li>RTCM configs: We are recommending the use of port 1667 to avoid OS hacks for ports below 1024.</li>
-<li>USB configs require a udev rule: <code>cat /etc/udev/rules.d.90-asl3.rules</code> SUBSYSTEM=="usb", ATTRS{idVendor}=="0d8c", GROUP="plugdev", TAG+="uaccess"</li>
+<li>At the risk of repeating ourselves, ASL3 now runs on Asterisk 20!  We are no longer stuck in the past.  We're so proud!!!</li>
+<li>There is no update or migration path from ASL2 to ASL3</li>
+<li>Many of the ASL3 configuration files are different<ul>
+<li>The configuration files now support templates</li>
+<li>We now favor node registration using HTTP</li>
+<li>The SimpleUSB and USBRadio tune settings have been moved into their respective (.conf) configuration files.  We no longer have separate per-node tune setting files.</li>
 </ul>
-<h1 id="version-taxonomy">Version Taxonomy</h1>
-<p>ASL3 has adopted a new version format for individual packages related to
-Asterisk and the app_rpt-associated code. That format is:</p>
-<pre><code>{ASTERISK_VERSION}+asl3-{APP_RPT_VERSION}-{PKG_RELEASE}
-</code></pre>
-<p>The string <code>ASTERISK_VERSION</code> is the base version of Asterisk (e.g. 20.7.0).
-The string <code>APP_RPT_VERSION</code> is the version of apt_rpt and associated code, starting
-from 1 at the epoch of beginning packaging building.
-The string <code>PKG_RELEASE</code> is a Debian package-related package version. This will appear
-in the output of the <code>asterisk -rv</code> command and otherwise as necessary.</p></div>
+</li>
+<li>EchoLink changes<ul>
+<li>EchoLink chat has been enabled</li>
+<li>EchoLink now honors the app_rpt timeout timer.  A text message is sent to the client when they time out.</li>
+<li>EchoLink longer allows clients to double.  A text message is sent to the client when they are doubling.</li>
+</ul>
+</li>
+</ul>
+<h2 id="asl3-menu-changes">ASL3 Menu Changes</h2>
+<hr>
+
+<p>The ASL3 menu has been updated.
+Our goal is to provide an easy way for you to configure your node and to minimize the need to edit any configuration files.</p>
+<p>At the same time, we have removed most of the "OS" configuration options found in earlier implementations.
+Historically, ASL has been installed on many OS variants and the commands that work on one version do not always work on others.
+For our supported OS's, we will try to provide documentation for some of the commonly requested actions (e.g. changing the hostname, timezone) but we know we won't cover all topics.
+Fortunately, there is a lot of information available online for your system.</p>
+<p>Please let us know about any changes you have made to your configuration that would benefit others.</p>
+<h2 id="asl3-configuration-file-changes">ASL3 Configuration File Changes</h2>
+<hr>
+
+<p>The first thing to know about editing configuration files is that the menus can be used to make common changes.  But, if you need to edit the configurations or use the Asterisk CLI you should consider:</p>
+<ul>
+<li>
+<p>A template is now used in <code>rpt.conf</code>.  Editing is much easier but it's different than ASL2. Node settings are much simpler with only a few lines needed to be added/updated for each node. The ASL3 menu handles the new templated configuration.</p>
+</li>
+<li>
+<p>ASL registration is now set in <code>rpt_http_registration.conf</code>, not in <code>iax.conf</code>. IAX registration still works but is discouraged. Please do not configure your node for both HTTP and IAX registration. The new Asterisk CLI command is <code>rpt show registrations</code>.</p>
+</li>
+<li>
+<p>The USB configuration files now contain the tune settings. There is no tune file for each node as in ASL2. The tune menus and Asterisk CLI write to the new tune setting locations.</p>
+</li>
+<li>
+<p>There no need to edit or use a script to update the per node access lists, formerly known as the blacklist and whitelist.</p>
+</li>
+</ul>
+<p>Most of this new stuff is explained with more detail in the ASL3 Configuration page.</p>
+<h2 id="where-to-get-help-and-report-bugs">Where to Get Help and Report Bugs</h2>
+<hr>
+
+<p>The AllStarLink Community is the primary support for all versions of ASL including ASL3. Please do not use the help desk for ASL technical help. To report bugs use the ASL3 GitHub repo.</p></div>
             </div>
         </div>
 
@@ -144,14 +194,14 @@ in the output of the <code>asterisk -rv</code> command and otherwise as necessar
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
-        <script src="../../js/jquery-3.6.0.min.js"></script>
-        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
         <script>
-            var base_url = "../..",
+            var base_url = "..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../../js/base.js"></script>
-        <script src="../../search/main.js"></script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

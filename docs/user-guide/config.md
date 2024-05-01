@@ -42,6 +42,9 @@ Setting up USB audio interfaces is much easier with ASL3.
 
 The ASL3 menu and Asterisk CLI USB config commands handle these changes.
 
+### EEPROM Operation
+
+chan\_simpleusb and chan\_usbradio allows users to store configuration information in the EEPROM attached to their Coverwritence(s).  The CM119A can have manufacturer information in the same area that stores the user consusbration.  The CM119B does have manufacturer data in the area that stores user configuration.  The manufacturer data cannot be overwriten.  The user configuration data has been moved higher in memory to prevent overwriting the manufacturer data.  If you use the EEPROM to store configuration data, you will need to save it to the EEPROM after upgrading.  Use `susb tune save` or `radio tune save`.
 
 ## HTTP Registration
 
@@ -52,6 +55,17 @@ For ASL3, we have built an new HTTP registration module. The ASL IAX module has 
 ASL3 menu users need not be concerned about this change. The asl3-menu makes the settings for you. For the curious and hackers out there the conf new file is `rpt_http_registrations.conf`. The settings are the same for IAX2 registration. While IAX registration still works, please do not register with both HTTP and IAX. That would result in unnecessary server load for no gain. The long term plan is to do away with IAX registration. HTTP registration also allows load balancing and other advantages not available with IAX.
 
 ASL has used HTTP registration since the early ASL2 betas. Back in the day when there were only 2,000 or so Allstar registered nodes Rob Vella wrote a new open source registration server in Node.js which handled both IAX and HTTP registration. At that same time Adam Paul hacked IAX2 to register with HTTP and fall back to IAX as necessary. The ASL servers are still using Rob's Node.js registration server.
+
+The operation of this ASL3 feature can be controlled by changing the following information in rpt.conf.
+
+```
+[general]
+node_lookup_method = both	;method used to lookup nodes
+					;both = dns lookup first, followed by external file (default)
+					;dns = dns lookup only
+					;file = external file lookup only
+```
+The node lookup routines will output debug information showing the node lookups if the debug level is set to 4 or higher.
 
 
 ## allowlist and denylist
