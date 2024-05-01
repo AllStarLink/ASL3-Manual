@@ -5,11 +5,11 @@ site_author: AllStarLink Team
 nav:
   - Home: index.md
   - User Guide:
-    - User's Guide: user-guide/index.md
-    - Installation: user-guide/install.md
-    - Pi Step-by-Step: user-guide/pi-detailed.md
-    - ASL Menu: user-guide/menu.md
-    - ASL Commands: user-guide/commands.md
-    - Configuration: user-guide/config.md
+    - user-guide/index.md
+    - user-guide/install.md
+    - user-guide/pi-detailed.md
+    - user-guide/menu.md
+    - user-guide/commands.md
+    - user-guide/config.md
   - Developer Guide:
-    - Package Builds : developers/package-builds.md
+    - developers/package-builds.md
