@@ -23,25 +23,25 @@ at [Pi Step-by-Step](../pi-detailed).
 
 AllStarLink v3 is supported on Debian 12 Bookworm systems, and those based
 on Bookworm (e.g. Raspberry Pi OS). Both the x86_64/amd64 and arm64/aarch64
-platforms are supported through apt/deb installation packages. Not that currently
+platforms are supported through apt/deb installation packages. Note that currently
 the project does not support armv7l/armhf platforms because all known
 use of AllStarLink is on hardware which supports the Bookworm arm64 distribution
-such as Rasperry Pi 3, 4, and 5. If you have aa platform must use armv7l/armhf 
+such as Rasperry Pi 3, 4, and 5. If you have a platform that must use armv7l/armhf 
 32-bit packages only please file an issue at [ASL3 on GitHub](https://github.com/AllStarLink/ASL3/issues).
 
 To install the package repositories:
 
 ```bash
 wget -O/tmp/asl-apt-repos_1.0-1._all.deb https://github.com/AllStarLink/asl-apt-repos/releases/download/1.0/asl-apt-repos_1.0-1._all.deb
-dpkg -i/tmp/asl-apt-repos_1.0-1._all.deb
-apt update
+sudo dpkg -i /tmp/asl-apt-repos_1.0-1._all.deb
+sudo apt update
 ```
 
 Then the packages may be installed and updated directly from the AllStarLink package
 repository:
 
 ```bash
-apt install asl3 asl3-menu
+sudo apt install asl3 asl3-menu
 ```
 
 This will install the complete AllStarLink v3 system including 
