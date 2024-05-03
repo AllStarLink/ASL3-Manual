@@ -18,3 +18,4 @@ nav:
     - developers/index.md
     - developers/package-builds.md
     - developers/source-install.md
+    - developers/aptly.md
