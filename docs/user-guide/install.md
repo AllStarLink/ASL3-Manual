@@ -32,8 +32,8 @@ such as Rasperry Pi 3, 4, and 5. If you have a platform that must use armv7l/arm
 To install the package repositories:
 
 ```bash
-wget -O/tmp/asl-apt-repos_1.0-1._all.deb https://github.com/AllStarLink/asl-apt-repos/releases/download/1.0/asl-apt-repos_1.0-1._all.deb
-sudo dpkg -i /tmp/asl-apt-repos_1.0-1._all.deb
+wget -O/tmp/asl-apt-repos_1.0-1._all.deb https://repo.allstarlink.org/public/asl-apt-repos.deb12_all.deb
+sudo dpkg -i /tmp/asl-apt-repos.deb12_all.deb
 sudo apt update
 ```
 
