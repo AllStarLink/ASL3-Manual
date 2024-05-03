@@ -1,6 +1,6 @@
 # ASL3 User's Guide
 
-This is the ASL3 User's Guide. No doubt you're you've noticed the new format. Did you see the "Next" and "Previous" menu items? We think you'll find those provide an orderly way to learn about ASL3.
+This is the AllStarLink version 3 User's Guide. No doubt you're you've noticed this is not a Wiki. The [ASL Wiki](https://wiki.allstarlink.org) still exists while this manual covers ASL3 specifics. Did you see the "Next" and "Previous" menu items? Those will page to the next section of this document. We think you'll find those provide an orderly way to learn about ASL3.
 
 ## What's New?
 
@@ -19,27 +19,24 @@ Ready to get on with installation? We thought so, but first consider that ASL3 i
 
 ## Menu Changes
 
-The ASL3 menu has been updated.
-Our goal is to provide an easy way for you to configure your node and to minimize the need to edit any configuration files.
+The ASL3 menu has been updated. Our goal is to provide an easy way for you to configure your node and to minimize the need to edit any configuration files.
 
-At the same time, we have removed most of the "OS" configuration options found in earlier implementations.
-Historically, ASL has been installed on many OS variants and the commands that work on one version do not always work on others.
-For our supported OS's, we will try to provide documentation for some of the commonly requested actions (e.g. changing the hostname, timezone) but we know we won't cover all topics.
-Fortunately, there is a lot of information available online for your system.
+At the same time, we have removed most of the "OS" configuration options found in earlier implementations. Historically, ASL has been installed on many OS variants and the OS commands that work on one version do not always work on others. For that reason there are no OS related commands in the ASL3 menu.
 
-Please let us know about any changes you have made to your configuration that would benefit others.
+See [Menu](/user-guide/menu) for details.
 
-## Configuration File Changes
+## Configuration Changes
 
-The first thing to know about editing configuration files is that the menus can be used to make common changes.  But, if you need to edit the configurations or use the Asterisk CLI you should consider:
+The first thing to know about ASL3 configuration is that the menu can be used to make and view common changes. Here are the highlights. See [configuration](/user-guide/config/) and [commands](/user-guide/commands/) for details.
 
 - A template is now used in `rpt.conf`.  Editing is much easier but it's different than ASL2. Node settings are much simpler with only a few lines needed to be added/updated for each node. The ASL3 menu handles the new templated configuration.
 - ASL registration is now set in `rpt_http_registration.conf`, not in `iax.conf`. IAX registration still works but is discouraged. Please do not configure your node for both HTTP and IAX registration. The new Asterisk CLI command is `rpt show registrations`.
 - The USB configuration files now contain the tune settings. There is no tune file for each node as in ASL2. The tune menus and Asterisk CLI write to the new tune setting locations.
 - There no need to edit or use a script to update the per node access lists, formerly known as the blacklist and whitelist.
+- You may edit the conf files without concern of switching between editing and editing. The tune menus do remove leading white space from comments.
 
 ## Help and Report Bugs
 
 The [AllStarLink Community](https://community.allstarlink.org/) is the primary support for all versions of ASL including ASL3. Please do not use the help desk for ASL technical help.
 
-Report bugs to [AllStarLink GitHub](https://github.com/AllStarLink). There are numerous ASL3 repos. If you're not sure which repo to use, use Community.
+Report bugs to [AllStarLink GitHub](https://github.com/AllStarLink). There are numerous ASL3 repos. If you're not sure which repo for reporting bugs, feel free to use Community.
