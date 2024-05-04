@@ -41,16 +41,14 @@ Then the packages may be installed and updated directly from the AllStarLink pac
 repository:
 
 ```bash
-sudo apt install asl3 asl3-menu
+sudo apt install asl3
 ```
 
 This will install the complete AllStarLink v3 system including 
 all of the Asterisk app_rpt-enabled packages 
-(asl3-asterisk, asl3-asterisk-config, asl3-asterisk-dev, asl3-asterisk-doc, asl3-asterisk-modules),
-the Dahdi kernel module (dahdi-dkms, dahdi-linux, dahdi-source) and the needed
-development tools to keep the kernel module updated. If the guided, menu-based
-configuration is not required, then do not include the `asl3-menu`
-package.
+(asl3-asterisk, asl3-asterisk-config, asl3-asterisk-doc, asl3-asterisk-modules),
+the Dahdi kernel module (dahdi-dkms, dahdi-linux, dahdi-source), the needed
+development tools to keep the kernel module updated, and the asl3-menu.
 
 It's important to note that the new packaging format will allow for easy,
 automated updates of kernels through the standard `apt upgrade` process.
