@@ -15,7 +15,7 @@ ASL can be installed on a Raspberry Pi 3, 4, or 5. You will install an image on 
 loading a Rapsberry Pi image, the image may be obtained from the [ASL3 Pi Release Page](#).
 
 Detailed step-by-step directions for imaging and getting started can be followed
-at [Pi Step-by-Step](../pi-detailed).
+at [Pi Step-by-Step](pi-detailed.md).
 
 ## Debian Linux 12
 

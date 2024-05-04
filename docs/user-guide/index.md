@@ -23,11 +23,11 @@ The ASL3 menu has been updated. Our goal is to provide an easy way for you to co
 
 At the same time, we have removed most of the "OS" configuration options found in earlier implementations. Historically, ASL has been installed on many OS variants and the OS commands that work on one version do not always work on others. For that reason there are no OS related commands in the ASL3 menu.
 
-See [Menu](/user-guide/menu) for details.
+See [Menu](menu.md) for details.
 
 ## Configuration Changes
 
-The first thing to know about ASL3 configuration is that the menu can be used to make and view common changes. Here are the highlights. See [configuration](/user-guide/config/) and [commands](/user-guide/commands/) for details.
+The first thing to know about ASL3 configuration is that the menu can be used to make and view common changes. Here are the highlights. See [configuration](config.md) and [commands](commands.md) for details.
 
 - A template is now used in `rpt.conf`.  Editing is much easier but it's different than ASL2. Node settings are much simpler with only a few lines needed to be added/updated for each node. The ASL3 menu handles the new templated configuration.
 - ASL registration is now set in `rpt_http_registration.conf`, not in `iax.conf`. IAX registration still works but is discouraged. Please do not configure your node for both HTTP and IAX registration. The new Asterisk CLI command is `rpt show registrations`.
