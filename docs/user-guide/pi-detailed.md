@@ -109,3 +109,5 @@ be logged in and presented with the default screen:
 The node may now be configured. New users or those wanting a
 quickstart experience should [use the asl-menu utility](menu.md).
 
+One should also apply any latest updates and reboot the device
+as described in [Updating AllStarLink3](updates.md).

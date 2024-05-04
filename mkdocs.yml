@@ -14,6 +14,7 @@ nav:
     - user-guide/incompatibles.md
     - user-guide/sip-phone.md
     - user-guide/broadcastify.md
+    - user-guide/updates.md
   - Developer Guide:
     - developers/index.md
     - developers/package-builds.md
