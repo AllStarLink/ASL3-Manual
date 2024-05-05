@@ -4,7 +4,7 @@ These instructions are for installing ASL on various computer systems.
 
 You’re going to start off by installing a new Debian OS on your PC computer, or virtual machine.  For the Raspberry Pi there is an image with the OS, Allmon3 and Cockpit.  You probably don't want to install a production system right away.  Give yourself some time to test that everything works as you'd expect.
 
-Note: if you have installed an earlier version of ASL you need to know that ASL3 has many changes and that there's a bit of a learning curve.  If you've not already read the [Users Guide](/user-guide/) now would be a good time so you know what you're getting to.
+Note: if you have installed an earlier version of ASL you need to know that ASL3 has many changes and that there's a bit of a learning curve.  If you've not already read the [Users Guide](index.md) now would be a good time so you know what you're getting to.
 
 
 ## Raspberry Pi
