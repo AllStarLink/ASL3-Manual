@@ -29,11 +29,11 @@ See [Menu](menu.md) for details.
 
 The first thing to know about ASL3 configuration is that the menu can be used to make and view common changes. Here are the highlights. See [configuration](config.md) and [commands](commands.md) for details.
 
-- A template is now used in `rpt.conf`.  Editing is much easier but it's different than ASL2. Node settings are much simpler with only a few lines needed to be added/updated for each node. The ASL3 menu handles the new templated configuration.
-- ASL registration is now set in `rpt_http_registration.conf`, not in `iax.conf`. IAX registration still works but is discouraged. Please do not configure your node for both HTTP and IAX registration. The new Asterisk CLI command is `rpt show registrations`.
-- The USB configuration files now contain the tune settings. There is no tune file for each node as in ASL2. The tune menus and Asterisk CLI write to the new tune setting locations.
-- There no need to edit or use a script to update the per node access lists, formerly known as the blacklist and whitelist.
-- You may edit the conf files without concern of switching between editing and editing. The tune menus do remove leading white space from comments.
+- You may edit the conf files without concern of switching between editing and using the menu. The tune menus do remove leading white space from comments.
+- An Asterisk template is now used within `rpt.conf`.  Editing is much easier but it's different than with other versions of AllStar. Node settings are much simpler with only a few lines needed to be added/updated for each node. The ASL3 menu handles the new templated configuration.
+- AllStar registration is now set in `rpt_http_registration.conf`, not in `iax.conf`. IAX registration still works but is discouraged. Please do not configure your node for both HTTP and IAX registration. The new Asterisk CLI command is `rpt show registrations` and cam be performed from the ASL3 menu.
+- The USB configuration files now contain the tune settings. There is no tune file for each node as in ASL2. The tune menus and the Asterisk CLI write to the new tune setting locations.
+- There is no need to edit or use a script to update the access list, formerly known as the blacklist and whitelist. The settings are different because the access list is now per node rather than for all nodes as in other AllStar versions. It's also much easier to use the ASL3 menu to build the access lists.
 
 ## Help and Report Bugs
 
