@@ -4,7 +4,7 @@ This is the AllStarLink version 3 User's Guide. No doubt you're you've noticed t
 
 ## What's New?
 
-Ready to get on with installation? We thought so, but first consider that ASL3 is very new. You'll probably want to install on removable media or on a non-production system. For those who have used ASL2 (or other/earlier versions of ASL) you to be aware of a few important details:
+Ready to get on with installation? We thought so, but first consider that ASL3 is very new. You'll probably want to install on removable media or on a non-production system. For those who have used ASL2 or other versions of AllStar you should be aware of a few important details:
 
 - At the risk of repeating ourselves, ASL3 now runs on Asterisk 20!  We are no longer stuck in the past.  We're so proud!!!
 - There is no update or migration path from ASL2 to ASL3
