@@ -16,3 +16,11 @@ echo net.ipv4.ip_unprivileged_port_start=667 > /etc/sysctl.d/alsport667.conf
 sysctl -p
 systemctl restart asterisk
 ```
+
+## USB udev
+A udev rule is needed to allow Asterisk running as non-root access to the USB system. ASL3 systems installed from debs, apt install or images will already have this rule in place.
+
+```text
+/etc/udev/rules.d/90-asl3.rules
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0d8c", GROUP="plugdev", TAG+="uaccess"
+```
