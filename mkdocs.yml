@@ -6,8 +6,9 @@ nav:
   - Home: index.md
   - User Guide:
     - user-guide/index.md
-    - user-guide/install.md
+    - user-guide/whats-new.md
     - user-guide/pi-detailed.md
+    - user-guide/install.md
     - user-guide/menu.md
     - user-guide/commands.md
     - user-guide/config.md

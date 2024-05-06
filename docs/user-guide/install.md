@@ -1,35 +1,19 @@
-# Install AllStarLink
+# Debian 12 Install
 
-These instructions are for installing ASL on various computer systems.
+These instructions are for installing ASL3 on various x86 systems. AllStarLink v3 is supported on Debian 12 Bookworm systems, and those based on Bookworm (e.g. Raspberry Pi OS). Both the x86_64/amd64 and arm64/aarch64 platforms are supported through apt/deb installation packages.
 
-You’re going to start off by installing a new Debian OS on your PC computer, or virtual machine.  For the Raspberry Pi there is an image with the OS, Allmon3 and Cockpit.  You probably don't want to install a production system right away.  Give yourself some time to test that everything works as you'd expect.
+Note that currently the project does not support armv7l/armhf platforms because all known use of AllStarLink is on hardware which supports the Bookworm arm64 distribution such as Raspberry Pi 3, 4, and 5. If you have a platform that must use armv7l/armhf 32-bit packages only please file an issue at [ASL3 on GitHub](https://github.com/AllStarLink/ASL3/issues).
 
-Note: if you have installed an earlier version of ASL you need to know that ASL3 has many changes and that there's a bit of a learning curve.  If you've not already read the [Users Guide](index.md) now would be a good time so you know what you're getting to.
+## OS Install
+You’re going to start off by installing a new Debian 12 OS on your PC computer, or virtual machine. There are instructions all over the interweb how to install Debian 12. Briefly you:
 
+ - Download and boot the Debian 12 net install iso
+ - Take most of the defaults
+ - Do install ssh server
+ - Do not install a Desktop
 
-## Raspberry Pi
-
-<hr>
-
-ASL can be installed on a Raspberry Pi 3, 4, or 5. You will install an image on a microSD card and go. This is the simplest install. For most nodes the menus will walk you through the setup. For the well-initiated with
-loading a Rapsberry Pi image, the image may be obtained from the [ASL3 Pi Release Page](#).
-
-Detailed step-by-step directions for imaging and getting started can be followed
-at [Pi Step-by-Step](pi-detailed.md).
-
-## Debian Linux 12
-
-<hr>
-
-AllStarLink v3 is supported on Debian 12 Bookworm systems, and those based
-on Bookworm (e.g. Raspberry Pi OS). Both the x86_64/amd64 and arm64/aarch64
-platforms are supported through apt/deb installation packages. Note that currently
-the project does not support armv7l/armhf platforms because all known
-use of AllStarLink is on hardware which supports the Bookworm arm64 distribution
-such as Raspberry Pi 3, 4, and 5. If you have a platform that must use armv7l/armhf
-32-bit packages only please file an issue at [ASL3 on GitHub](https://github.com/AllStarLink/ASL3/issues).
-
-To install the package repositories:
+## AllStarLink Package Repo Install
+Once your Debian system is up and running, install the package repositories:
 
 ```bash
 wget -O/tmp/asl-apt-repos.deb12_all.deb https://repo.allstarlink.org/public/asl-apt-repos.deb12_all.deb
@@ -37,7 +21,9 @@ sudo dpkg -i /tmp/asl-apt-repos.deb12_all.deb
 sudo apt update
 ```
 
-Then the packages may be installed and updated directly from the AllStarLink package
+## ASL3 Packages Install
+
+Now the packages may be installed and updated directly from the AllStarLink package
 repository:
 
 ```bash
