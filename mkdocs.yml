@@ -16,6 +16,11 @@ nav:
     - user-guide/sip-phone.md
     - user-guide/broadcastify.md
     - user-guide/updates.md
+  - Advanced Topics:
+    - adv-topics/index.md
+    - adv-topics/conftmpl.md
+    - adv-topics/httpreg.md
+    - adv-topics/blackwhitelists.md
   - Developer Guide:
     - developers/index.md
     - developers/package-builds.md
