@@ -5,13 +5,12 @@ These instructions are for installing ASL3 on various x86 systems. AllStarLink v
 Note that currently the project does not support armv7l/armhf platforms because all known use of AllStarLink is on hardware which supports the Bookworm arm64 distribution such as Raspberry Pi 3, 4, and 5. If you have a platform that must use armv7l/armhf 32-bit packages only please file an issue at [ASL3 on GitHub](https://github.com/AllStarLink/ASL3/issues).
 
 ## OS Install
-You’re going to start off by installing a new Debian 12 OS on your PC computer, or virtual machine. There are instructions all over the interweb how to install Debian 12.
+You’re going to start off by installing a new Debian 12 OS on your PC computer, or virtual machine. There are instructions all over the interweb how to install Debian 12. Briefly you:
 
-Briefly you
-- Download and boot the Debian 12 net install iso
-- Take most of the defaults
-- Do install ssh server
-- Do not install a Desktop
+ - Download and boot the Debian 12 net install iso
+ - Take most of the defaults
+ - Do install ssh server
+ - Do not install a Desktop
 
 ## AllStarLink Package Repo Install
 Once your Debian system is up and running, install the package repositories:
