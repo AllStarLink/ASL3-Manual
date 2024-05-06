@@ -1,4 +1,9 @@
-# Step-by-Step Pi Appliance Setup
+# Raspberry Pi Install
+
+ASL3 can be installed on a Raspberry Pi 3, 4, or 5. The Raspberry Pi image includes the OS, Allmon3 and Cockpit.  You will install an image on a microSD card and go. This is the simplest install. For most nodes the menus will walk you through the setup. For the well-initiated with loading a Rapsberry Pi image, the image may be obtained from the [ASL3 Pi Release Page](#).
+
+## Step-by-Step Pi Appliance Setup
+
 These directions are specific for Windows by example , but in general,
 should work the same for the same tool set on MacOS and Linux.
 
@@ -17,7 +22,7 @@ Pi hardware on which Firefly Logger is being installed.
 ![Step 4](img/step-4.png)
 
 5. Click on **CHOOSE OS**. Scroll to the bottom of the
-list that appears and select **Use custom**. 
+list that appears and select **Use custom**.
 ![Step 5](img/step-5.png)
 
 6. A **Select image** dialog box will appear. Navigate to the
@@ -55,7 +60,7 @@ proper settings.**
 box "Configure wireless LAN" and then enter
 the name of the wireless network in **SSID** and the password for
 that network in **Password**. Change the "Wireless LAN country" to **US**
-or another country as appropriate. Setting this is not necessary 
+or another country as appropriate. Setting this is not necessary
 if the Pi will use a network cable rather than wireless.
 
 13. Check the box next to **Set locale settings** and change the "Time zone"
