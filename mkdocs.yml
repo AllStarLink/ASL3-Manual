@@ -10,12 +10,12 @@ nav:
     - user-guide/pi-detailed.md
     - user-guide/install.md
     - user-guide/menu.md
+    - user-guide/updates.md
     - user-guide/commands.md
     - user-guide/config.md
     - user-guide/incompatibles.md
     - user-guide/sip-phone.md
     - user-guide/broadcastify.md
-    - user-guide/updates.md
   - Developer Guide:
     - developers/index.md
     - developers/package-builds.md
