@@ -26,6 +26,7 @@ nav:
     - pi/cockpit-network.md
     - pi/cockpit-updates.md
     - pi/cockpit-services.md
+    - pi/cockpit-firewall.md
   - Advanced Topics:
     - adv-topics/index.md
     - adv-topics/conftmpl.md
