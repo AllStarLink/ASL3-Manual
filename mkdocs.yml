@@ -22,7 +22,7 @@ nav:
     - pi/cockpit-console.md
     - pi/cockpit-network.md
     - pi/cockpit-updates.md
-    - pi/cockpit-services.ms
+    - pi/cockpit-services.md
   - Advanced Topics:
     - adv-topics/index.md
     - adv-topics/conftmpl.md
