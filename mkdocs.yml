@@ -25,13 +25,13 @@ nav:
   - Advanced Topics:
     - adv-topics/index.md
     - adv-topics/commands.md
+    - adv-topics/config.md
     - adv-topics/conftmpl.md
     - adv-topics/httpreg.md
     - adv-topics/allowdenylists.md
     - adv-topics/sip-phone.md
     - adv-topics/incompatibles.md
     - adv-topics/broadcastify.md
-    - adv-topics/config.md
   - Developer Guide:
     - developers/index.md
     - developers/package-builds.md
