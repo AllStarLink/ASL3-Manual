@@ -30,7 +30,7 @@ repository:
 sudo apt install asl3
 ```
 
-This will install the complete AllStarLink v3 system including
+This will install the complete ASL3 system including
 all of the Asterisk app_rpt-enabled packages
 (asl3-asterisk, asl3-asterisk-config, asl3-asterisk-doc, asl3-asterisk-modules),
 the Dahdi kernel module (dahdi-dkms, dahdi-linux, dahdi-source), the needed
@@ -41,8 +41,7 @@ automated updates of kernels through the standard `apt upgrade` process.
 There is no longer any reason to hold back kernel upgrades with the ASL3
 packaging.
 
-The following packages are also recommended, but not required for
-installation of AllStarLink v3:
+The following packages are also installed with ASL3:
 
 `allmon3` - The updated web interface to AllStarLink which includes strong
 support for mobile devices and screens of all sizes and shapes.

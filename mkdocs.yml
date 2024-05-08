@@ -10,11 +10,6 @@ nav:
     - user-guide/pi-detailed.md
     - user-guide/install.md
     - user-guide/menu.md
-    - user-guide/commands.md
-    - user-guide/config.md
-    - user-guide/incompatibles.md
-    - user-guide/sip-phone.md
-    - user-guide/broadcastify.md
     - user-guide/updates.md
   - Pi Appliance:
     - pi/index.md
@@ -25,9 +20,14 @@ nav:
     - pi/cockpit-services.md
   - Advanced Topics:
     - adv-topics/index.md
+    - adv-topics/commands.md
     - adv-topics/conftmpl.md
     - adv-topics/httpreg.md
-    - adv-topics/blackwhitelists.md
+    - adv-topics/allowdenylists.md
+    - adv-topics/sip-phone.md
+    - adv-topics/incompatibles.md
+    - adv-topics/broadcastify.md
+    - adv-topics/config.md
   - Developer Guide:
     - developers/index.md
     - developers/package-builds.md

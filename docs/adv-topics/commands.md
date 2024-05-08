@@ -1,4 +1,4 @@
-# ASL3 New Commands
+# New Commands
 New and different ASL3 commands are mentioned here. Older ASL commands are still documented on the  [AllStarLink Wiki](https://wiki.allstarlink.org)
 
 ## app_rpt
@@ -6,7 +6,7 @@ New and different ASL3 commands are mentioned here. Older ASL commands are still
  - `rpt show variables <node>` replaces `rpt showvars`
  - `rpt show version`
 
- ## New Registration System
+## New Registration System
  - `rpt show registrations` is the new http registration. `iax2 show registration` still exists but http registration should be used in its place.
  - `rpt lookup <node>` is a lookup of the IP address of <node>
 

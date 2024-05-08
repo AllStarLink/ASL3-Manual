@@ -1,4 +1,4 @@
-# Configuration
+# New Configuration
 
 These configuration details are for experts and the curious who want to dig into the guts of ASL3. For others, the ASL3 Menu is most likely all you will need to set up a fully functional Allstar node.
 
