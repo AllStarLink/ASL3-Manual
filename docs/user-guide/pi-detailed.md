@@ -83,36 +83,56 @@ for the SD card, remove the SD card from the adapter and insert the card into
 the Pi. The Pi __will not__ use the SD card in the USB adapter.
 
 18. Power on the Pi. Wait approximately 2 minutes for the Pi to boot
-and perform the various firstboot tasks.
+and perform the various firstboot tasks. If there is a screen connected
+to the Pi, it will be noted that Pi will reboot several times.
+This is normal and expected.
 
 19. (Optional) Network connectivity may be tested using the command
 to ping the hostname set in step 10. For example, if the hostname
-set was "node12345" then do `ping -4 node12345.local` from a
+set was "node460181" then do `ping -4 node460181.local` from a
 command prompt or PowerShell window. When you get a response,
 the host is connected to the network. In this example, the node
-hostname was set to `n8ei-testasl3.local`:
+hostname was set to `node460181.local`:
 ![Step 19](img/step-19.png)
 
-20. If not already installed, install an SSH client such as
-[PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html).
+20. Open a web browser and navigate to `https://nodeNNNNNN.local`. For
+example, if the name was `node460181` then one would enter
+`https://node460181.local`. Depending on your network and
+browser, one may have to  enter the name several times until the
+page displayed. The first connection will report a message that
+"Your connection isn't private". For the Pi appliance, this is
+acceptable. Click on **Advanced** and then
+**Continue to node460181.local (unsafe)**.
+![Step 20](img/step-20.png)
 
-21. Open PuTTY or an SSH client of choice and connect to the node
-with the hostname chosen in step 10 (e.g. node12345.local) and
-then click on **Open**.
+21. The administration window will appear. This system is named Cockpit
+and is an open source application for managing devices of all sorts. 
+Enter the username and password set in step #11 and click **Log in**
 ![Step 21](img/step-21.png)
 
-22. Depending on your client and configuration, you may be presented
-with a "Security Alert" or "Security Warning". This is just telling
-you that a new host has appeared and may be different from one using
-that IP address previously. It is OK to accept the warning.
+22. The Overview tab is displayed. Using Cockpit with AllStarLink 
+is [covered in the manual](../pi/index.md). Click on
+**Terminal** at the bottom of the left scrollable menu and the
+admin console will appear:
 ![Step 22](img/step-22.png)
 
-23. Enter the username and password set in step 11. You should
-be logged in and presented with the default screen:
-![Step 23](img/step-23.png)
+The Terminal window is a complete interface to AllStarLilnk,
+Asterisk, and more. No SSH client is required although use
+of SSH directly is fully supported.
 
+## Quick Config va ASL-Menu
 The node may now be configured. New users or those wanting a
-quickstart experience should [use the asl-menu utility](menu.md).
+quickstart experience should [use the asl-menu utility](menu.md)
+with `sudo asl-menu`.
 
+## Asterisk Console
+To start the asterisk console from the Terminal window
+enter `sudo asterisk -rv`.
+
+## Software Updates
 One should also apply any latest updates and reboot the device
-as described in [Updating AllStarLink3](updates.md).
+as described in [Cockpit Updates](../pi/cockpit-updates.md).
+
+## Logging Out
+When finished with the admin system, click on **Session**
+in the upper right and then choose **Logout**.
