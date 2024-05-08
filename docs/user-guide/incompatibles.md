@@ -12,7 +12,7 @@ If the Voter/RTCM port cannot be easily changed, then the following
 configuration can be made to the underlying operating system:
 
 ```bash
-echo net.ipv4.ip_unprivileged_port_start=667 > /etc/sysctl.d/alsport667.conf
+echo net.ipv4.ip_unprivileged_port_start=667 > /etc/sysctl.d/aslport667.conf
 sysctl -p
 systemctl restart asterisk
 ```
