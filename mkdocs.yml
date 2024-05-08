@@ -2,6 +2,9 @@ site_name: ASL3
 site_url: https://allstarlink.github.io/
 site_description: ASL3 documentation project.
 site_author: AllStarLink Team
+plugins:
+  - search
+#  - print-site
 nav:
   - Home: index.md
   - User Guide:

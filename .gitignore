@@ -2,3 +2,8 @@
 .vscode/
 .venv/
 site/
+bin/
+include/
+lib/
+pyvenv.cfg
+lib64
