@@ -1,5 +1,5 @@
-# Setting up a SIP Phone 
-This document describes the steps necessary to set up a SIP phone in AllStarLink version 3.  The setup procedure has changed due to the depreciation of chan_sip.  Users are now required to use chan_pjsip.  chan_pjsip brings new features to the sip stack and is the supported sip channel for the future.
+# Setting up a SIP Phone
+This document describes the steps necessary to set up a SIP phone in ASL3.  The setup procedure has changed due to the depreciation of chan_sip.  Users are now required to use chan_pjsip.  chan_pjsip brings new features to the sip stack and is the supported sip channel for the future.
 
 ## Update modules.conf
 chan_pjsip requires a number of modules to be loaded.  You should start by editing /etc/asterisk/modules.conf and add the following at the bottom of the file:
@@ -215,7 +215,7 @@ As noted above you can have more sip phones.  Here is an example of a simple dia
 ```
 
 
-This example includes voicemail.  To use voice mail, you will need to change `noload = app_voicemail.so `to `load = app_voicemail.so.` 
+This example includes voicemail.  To use voice mail, you will need to change `noload = app_voicemail.so `to `load = app_voicemail.so.`
 
 ## Troubleshooting
 
@@ -223,4 +223,4 @@ If you have trouble connecting your sip phone, start the asterisk command line w
 
 ## Security
 
-If you will be exposing your system to the outside world.  You should consider using fail2ban to protect the system.  
+If you will be exposing your system to the outside world.  You should consider using fail2ban to protect the system.
