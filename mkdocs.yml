@@ -25,7 +25,7 @@ nav:
   - Advanced Topics:
     - adv-topics/index.md
     - adv-topics/commands.md
-    - adv-topics/config.md
+    - adv-topics/usbinterfaces.md
     - adv-topics/conftmpl.md
     - adv-topics/httpreg.md
     - adv-topics/allowdenylists.md

@@ -1,6 +1,6 @@
 # Allow and Deny Lists
 
-These changes can easily be made from the ASL3 menu. Here's change and view the lists at the Asterisk CLI should you choose to do so. These lists were previously referred to as whitelist and blacklist.
+These changes can easily be made from the ASL3 menu. Here's how to change and view the lists at the Asterisk CLI should you choose to do so. These lists were previously referred to as whitelist and blacklist.
 
 ASL3 provides a way to establish either an "allowlist" or a "denylist" to limit access to your node(s).  New to ASL3 is the capability for nodes on the same server to have different lists.  Unlike ASL2, no modifications or scripts are required to the configuration files and there is no need to restart or reload the server.  All changes are made to the Asterisk database.  As soon as you make a change it takes effect.
 

@@ -1,7 +1,7 @@
 # Advanced Topics
 
 - [New Commands](commands.md)
-- [New Configuration](config.md)
+- [USB Interfaces](usbinterfaces.md)
 - [Asterisk Templates](conftmpl.md)
 - [HTTP Registration](httpreg.md)
 - [Allow and Deny Lists](allowdenylists.md)
