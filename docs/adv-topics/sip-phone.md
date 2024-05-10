@@ -1,5 +1,5 @@
-# Setting up a SIP Phone 
-This document describes the steps necessary to set up a SIP phone in AllStarLink version 3.  The setup procedure has changed due to the depreciation of chan_sip.  Users are now required to use chan_pjsip.  chan_pjsip brings new features to the sip stack and is the supported sip channel for the future.
+# Setting up a SIP Phone
+This document describes the steps necessary to set up a SIP phone in ASL3.  The setup procedure has changed due to the depreciation of chan_sip.  Users are now required to use chan_pjsip.  chan_pjsip brings new features to the sip stack and is the supported sip channel for the future.
 
 ## Update modules.conf
 chan_pjsip requires a number of modules to be loaded.  You should start by editing /etc/asterisk/modules.conf and add the following at the bottom of the file:
@@ -118,7 +118,7 @@ Scroll down to the Basic UDP transport section.  It should look like the followi
     [transport-udp]
     type=transport
     protocol=udp    ;udp,tcp,tls,ws,wss,flow
-    bind=0.0.0.0
+    bind=0.0.0.0:5060
 ```
 
 
@@ -136,7 +136,7 @@ Scroll down to the section titled Endpoint Configured For Use With A Sip Phone. 
     allow=gsm
     auth=1001
     aors=1001
-    callerid="WD6AWP"
+    callerid="My CallerID"
     ;
     ; A few more transports to pick from, and some related options below them.
     ;
@@ -195,10 +195,10 @@ As noted above you can have more sip phones.  Here is an example of a simple dia
 
 ```
     [sip-phones]
-    ; Extension 210 - Tim's line 1
-    ; Extension 211 - Tim's line 2
-    ; Extension 212 - Garage phone
-    ; Extension 213 - Cordless Phones ATA
+    ; Extension 210 - Line 1
+    ; Extension 211 - Line 2
+    ; Extension 212 - Garage
+    ; Extension 213 - Cordless ATA
     ; Extension 1000 - Voice Mail
 
     exten => 210,1,Dial(PJSIP/210,60,rT)
@@ -209,13 +209,12 @@ As noted above you can have more sip phones.  Here is an example of a simple dia
     exten => 1000,2,Hangup
 
     ; Allow SIP calls to local nodes
-    exten => 25330,1,rpt(25330|P)
-    exten => 25331,1,rpt(25331|P)
-    exten => 2522,1,rpt(2522|P)
+    exten => 1998,1,rpt(1998|P)
+    exten => 1999,1,rpt(1999|P)
 ```
 
 
-This example includes voicemail.  To use voice mail, you will need to change `noload = app_voicemail.so `to `load = app_voicemail.so.` 
+This example includes voicemail.  To use voice mail, you will need to change `noload = app_voicemail.so `to `load = app_voicemail.so.`
 
 ## Troubleshooting
 
@@ -223,4 +222,4 @@ If you have trouble connecting your sip phone, start the asterisk command line w
 
 ## Security
 
-If you will be exposing your system to the outside world.  You should consider using fail2ban to protect the system.  
+If you will be exposing your system to the outside world.  You should consider using fail2ban to protect the system.
