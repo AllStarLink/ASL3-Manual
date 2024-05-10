@@ -17,6 +17,10 @@ sysctl -p
 systemctl restart asterisk
 ```
 
+If running the AllStarLink Pi Appliance (or another system with a firewall),
+inbound to port 667/UDP must be permitted. For directions on how to do this
+with the Pi Appliance see [Managing the Firewall](../pi/cockpit-firewall.md).
+
 ## USB udev
 A udev rule is needed to allow Asterisk running as non-root access to the USB system. ASL3 systems installed from debs, apt install or images will already have this rule in place.
 
@@ -24,3 +28,14 @@ A udev rule is needed to allow Asterisk running as non-root access to the USB sy
 /etc/udev/rules.d/90-asl3.rules
 SUBSYSTEM=="usb", ATTRS{idVendor}=="0d8c", GROUP="plugdev", TAG+="uaccess"
 ```
+
+The UDev subsystem must be reloaded and then the USB device re-inserted
+into the port. UDev is reloaded with the command
+
+```
+udevadm control --reload
+```
+
+Alternatively, reboot the system.
+
+
