@@ -32,7 +32,7 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="0d8c", GROUP="plugdev", TAG+="uaccess"
 The UDev subsystem must be reloaded and then the USB device re-inserted
 into the port. UDev is reloaded with the command
 
-```
+```bash
 udevadm control --reload
 ```
 
