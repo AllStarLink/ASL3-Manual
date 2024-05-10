@@ -136,7 +136,7 @@ Scroll down to the section titled Endpoint Configured For Use With A Sip Phone. 
     allow=gsm
     auth=1001
     aors=1001
-    callerid="WD6AWP"
+    callerid="My CallerID"
     ;
     ; A few more transports to pick from, and some related options below them.
     ;
@@ -195,10 +195,10 @@ As noted above you can have more sip phones.  Here is an example of a simple dia
 
 ```
     [sip-phones]
-    ; Extension 210 - Tim's line 1
-    ; Extension 211 - Tim's line 2
-    ; Extension 212 - Garage phone
-    ; Extension 213 - Cordless Phones ATA
+    ; Extension 210 - Line 1
+    ; Extension 211 - Line 2
+    ; Extension 212 - Garage
+    ; Extension 213 - Cordless ATA
     ; Extension 1000 - Voice Mail
 
     exten => 210,1,Dial(PJSIP/210,60,rT)
@@ -209,9 +209,8 @@ As noted above you can have more sip phones.  Here is an example of a simple dia
     exten => 1000,2,Hangup
 
     ; Allow SIP calls to local nodes
-    exten => 25330,1,rpt(25330|P)
-    exten => 25331,1,rpt(25331|P)
-    exten => 2522,1,rpt(2522|P)
+    exten => 1998,1,rpt(1998|P)
+    exten => 1999,1,rpt(1999|P)
 ```
 
 
