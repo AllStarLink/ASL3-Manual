@@ -118,7 +118,7 @@ Scroll down to the Basic UDP transport section.  It should look like the followi
     [transport-udp]
     type=transport
     protocol=udp    ;udp,tcp,tls,ws,wss,flow
-    bind=0.0.0.0
+    bind=0.0.0.0:5060
 ```
 
 
