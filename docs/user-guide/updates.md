@@ -21,6 +21,26 @@ release any update that is a "breaking change" through
 the apt system that doesn't have either an automated upgrade
 process or a well-documented manual step-by-step process.
 
+Sometimes an update may ask what to do with a configuration
+file. It is generally say to answer such questions with
+`N` meaning "keep your currently-installed version. Such a question
+will look like:
+```bash
+Configuration file '/etc/asterisk/rpt.conf'
+ ==> Modified (by you or by a script) since installation.
+ ==> Package distributor has shipped an updated version.
+   What would you like to do about it ?  Your options are:
+    Y or I  : install the package maintainer's version
+    N or O  : keep your currently-installed version
+      D     : show the differences between the versions
+      Z     : start a shell to examine the situation
+ The default action is to keep your current version.
+*** rpt.conf (Y/I/N/O/D/Z) [default=N] ? N
+```
+
+AllStarLink will clearly announce when there is a change that may break
+existing configurations.
+
 ## Note on DAHDI
 In the past, managing the DAHDI kernel module necessary
 for app_rpt has been problematic during kernel upgrades.
