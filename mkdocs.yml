@@ -14,6 +14,7 @@ nav:
     - user-guide/install.md
     - user-guide/menu.md
     - user-guide/updates.md
+    - user-guide/known-issues.md
   - Pi Appliance:
     - pi/index.md
     - pi/cockpit-basics.md
