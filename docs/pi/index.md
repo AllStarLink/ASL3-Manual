@@ -7,11 +7,13 @@ community worldwide.
 ## Cockpit
 The AllStarLink Pi Appliance includes the user-friendly
 Cockpit system for ease of administration. Cockpit
-is access on port 9090 of the appliance. For example, if 
+is access on port 9090 of the appliance. For example, if
 the appliance's hostname is `node460181` then pointing a
-browser to `https://node460181.local` will bring up the
-Cockpit interface. Login is using the username and password
-that was setup during the Pi imgaging process.
+browser to `https://node460181.local:9090/` will bring up
+the Cockpit interface. Note: The hostname only works
+when your node and your PC are on the same LAN. Otherwise
+use the IP or dns name you assign. Login is the username
+and password that was setup during the Pi imgaging process.
 
 Cockpit is fairly intuitive to use, but here's are a few
 pointers to help get started:
