@@ -2,7 +2,7 @@
 The following issues are currently known to exist in AllStarLink 3 and,
 where possible, what work-arounds are.
 
-# HTTP Registration
+## HTTP Registration
 
 The new `rpt show registrations` command will show the status as registered if the password is wrong.
 
@@ -12,7 +12,7 @@ Workarounds are:
 - Or *CLI>`core set debug 10 res_rpt_http_registrations` to show registration status.
 - Do *CLI>`core set debug 0 res_rpt_http_registrations` to disable debug.
 
-# Pi Hat-based Radio Modules
+## Pi Hat-based Radio Modules
 For the ASL3 pi appliance image, the current image (v3.0.6) does not make
 `/dev/ttyS0` available as a UART port for programming a hat-connected
 radio board. This is a common need for hat-based modules based on the
