@@ -15,10 +15,11 @@ As part of this update, app\_rpt has been refactored to make the code base easie
  - All modules reload or refresh
  - Improved uptime
  - USB improvements
+ - New Raspberry Pi Appliance
  - ASL menu improvements
  - tune-menu improvements
  - EchoLink improvements
  - Per node access lists
- - rpt.conf improvements
+ - Configuration templates
  - Asterisk runs as non-root
  - Compile directives for more architectures
