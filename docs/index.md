@@ -4,22 +4,23 @@ AllStarLink’s ASL version 3 is the next generation of AllStar repeater and hot
 
 The update from Asterisk version 1.4 to version 20 implements over 15 years of Asterisk bug fixes, security improvements and enhancements. This update required app\_rpt (the Asterisk application that is AllStar) to be heavily modified to run on the latest version of Asterisk.  It brings with it the latest Asterisk applications, channel drivers and other functionality.
 
-As part of this update, app\_rpt has been refactored to make the code base easier to maintain and enhance.  This process has been going on for over two years and will continue.  The app\_rpt code base will meet all current Asterisk® coding guidelines.
+As part of this update, app\_rpt has been refactored to make the code base easier to maintain and enhance.  The goal being to make app_rpt accessible to more developers. The app\_rpt code base will meet all current Asterisk® coding guidelines.  This process has been going on for over two years and will continue.
 
-# New Features
+## New Features
 
- - ASL3 runs on Asterisk 20 and Debian 12.
- - HTTP AllStarLink registration
+In addition to the app_rpt code update, we've added many new features to make ASL3 the best AllStar release yet.
+
+ - Runs on Asterisk 20 as non-root
+ - Runs on Debian 12 and some older operating systems
+ - HTTP AllStarLink Registration
  - DNS IP address resolution with fallback to file
  - Memory leaks addressed
- - All modules reload or refresh
+ - Improved module reload or refresh
  - Improved uptime
- - USB improvements
- - New Raspberry Pi Appliance
+ - USB improvements including live logic view and auto device string discovery
+ - New Raspberry Pi image with system management appliance and services advertisement
+ - Apt install for x86 with image install in the works
  - ASL menu improvements
- - tune-menu improvements
- - EchoLink improvements
- - Per node access lists
- - Configuration templates
- - Asterisk runs as non-root
- - Compile directives for more architectures
+ - EchoLink code has been extensively reworked to improve stability. Other improvements including chats and doubling prevention.
+ - Modified per node access lists
+ - Configuration templates to simplify edits and menu updates
