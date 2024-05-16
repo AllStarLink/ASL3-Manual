@@ -12,6 +12,8 @@ Workarounds are:
 - Or *CLI>`core set debug 10 res_rpt_http_registrations` to show registration status.
 - Do *CLI>`core set debug 0 res_rpt_http_registrations` to disable debug.
 
+https://github.com/AllStarLink/app_rpt/issues/325
+
 ## Pi Hat-based Radio Modules
 For the ASL3 pi appliance image, the current image (v3.0.6) does not make
 `/dev/ttyS0` available as a UART port for programming a hat-connected
@@ -37,3 +39,9 @@ Note: With Debian 12, the onboard UART is no longer `/dev/ttyAMA0`
 but is now `/dev/serial0`. Much older Pi documentation will still
 (incorrectly) refer to `/dev/ttyAMA0` for the UART TTL port on the
 Pi header.
+
+## Simple Tune Menu
+
+Simple-tune-menu item `B) Toggle RX Boost` updates the display but `W) Write (Save) Current Parameter Values` is not saving to the config file. Obvious workaround is to use the asl-menu, `5 Expert Configuration Menu`,  `9  Edit simplusb.conf file`, and set `rxboost = true`.
+
+https://github.com/AllStarLink/app_rpt/issues/331
