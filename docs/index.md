@@ -16,7 +16,7 @@ In addition to the app_rpt code update, we've added many new features to make AS
  - HTTP AllStarLink Registration.
  - DNS IP address resolution with fallback to file.
  - USB improvements including live logic view and auto device string discovery.
- - New Raspberry Pi image with system management appliance and services advertisement.
+ - New Raspberry Pi image with system management appliance, services advertisement and /tmp use for frequent writes.
  - Apt install for x86 with image install in the works.
  - ASL menu improvements including compatibility with user config file edits.
  - EchoLink code has been extensively reworked to improve stability. Other improvements including chats and doubling prevention.
