@@ -9,8 +9,13 @@ The new `rpt show registrations` command will show the status as registered if t
 Workarounds are:
 
 - Use the [AllStar Nodelist](https://allstarlink.org/nodelist) to validate registration.
-- Or *CLI>`core set debug 10 res_rpt_http_registrations` to show registration status.
-- Do *CLI>`core set debug 0 res_rpt_http_registrations` to disable debug.
+
+Or a techie way:
+
+- Insure `/etc/asterisk/logger.conf` has debug enabled: `console => notice,warning,error,dtmf,debug`
+- At the *CLI>`core set debug 10 res_rpt_http_registrations` to show registration status.
+- and *CLI>`module refresh res_rpt_http_registrations.so`
+- To disable debug do *CLI>`core set debug 0 res_rpt_http_registrations` to disable debug.
 
 https://github.com/AllStarLink/app_rpt/issues/325
 
