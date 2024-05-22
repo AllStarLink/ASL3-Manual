@@ -18,7 +18,7 @@ be something like 3.0.1. Save it to the local `Downloads` directory.
 ![Step 3](img/step-3.png)
 
 4. Click on **CHOOSE DEVICE** and choose the type of
-Pi hardware on which Firefly Logger is being installed.
+Pi hardware on which AllStarLink 3 Appliance is being installed.
 ![Step 4](img/step-4.png)
 
 5. Click on **CHOOSE OS**. Scroll to the bottom of the
