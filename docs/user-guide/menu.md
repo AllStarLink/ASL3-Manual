@@ -44,7 +44,7 @@ Note: you can also use the `node-setup` command to access this menu.
 The Asterisk CLI provides direct access to the heart of what makes an AllStar node.
 You might use the CLI for testing, troubleshooting, or for controlling your node.
 You should know that many of the commands require a more in-depth knowledge of Asterisk.
-The good news is that many of the commonly used commands can be executed from the "Diagnostics Menu" or with one of the web management/monitoring applications (e.g. Allmon, Supermon).
+The good news is that many of the commonly used commands can be executed from the "Diagnostics Menu" or with one of the web management/monitoring applications (e.g. Allmon3).
 
 ## Backup and Restore
 

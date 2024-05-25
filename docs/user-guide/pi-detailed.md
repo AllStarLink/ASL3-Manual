@@ -1,6 +1,6 @@
 # Raspberry Pi Install
 
-ASL3 can be installed on a Raspberry Pi 3, 4, or 5. The Raspberry Pi image includes the OS, Allmon3 and Cockpit.  You will install an image on a microSD card and go. This is the simplest install. For most nodes the menus will walk you through the setup. For the well-initiated with loading a Rapsberry Pi image, the image may be obtained from the [ASL3 Pi Release Page](#).
+ASL3 can be installed on a Raspberry Pi 3, 4, or 5. The Raspberry Pi image includes the OS, Allmon3 and Cockpit.  You will install an image on a microSD card and go. This is the simplest install. For most nodes the menus will walk you through the setup. For the well-initiated with loading a Raspberry Pi image, the image may be obtained from the [ASL3 Pi Release Page](#).
 
 ## Step-by-Step Pi Appliance Setup
 
@@ -11,8 +11,8 @@ should work the same for the same tool set on MacOS and Linux.
 [Raspberry Pi Imager](https://www.raspberrypi.com/software/).
 
 2. Download the [latest release image](https://repo.allstarlink.org/images/pi/). This will
-be named `aslstar3-arm64-X.Y.Z.img.xz` where "X.Y.Z" is the version. The version will
-be something like 3.0.1. Save it to the local `Downloads` directory.
+be named `allstar3-arm64-X.Y.Z.img.xz` where "X.Y.Z" is the version. The version will
+be something like 3.0.1. Save it to your local `Downloads` directory.
 
 3. Launch **Raspberry Pi Imager** from the start menu.
 ![Step 3](img/step-3.png)
@@ -69,7 +69,7 @@ announcements and schedule jobs. After completing steps 10-13, the customization
 should look something like:
 ![Step 13](img/step-13.png)
 
-14. Click **SAVE** in "OS Customsation".
+14. Click **SAVE** in "OS Customisation".
 
 15. Click **YES** for "Use OS customisation?"
 
@@ -83,7 +83,7 @@ for the SD card, remove the SD card from the adapter and insert the card into
 the Pi. The Pi __will not__ use the SD card in the USB adapter.
 
 18. Power on the Pi. Wait approximately 2 minutes for the Pi to boot
-and perform the various firstboot tasks. If there is a screen connected
+and perform the various first boot tasks. If there is a screen connected
 to the Pi, it will be noted that Pi will reboot several times.
 This is normal and expected.
 
@@ -116,13 +116,13 @@ is [covered in the manual](../pi/index.md). Click on
 admin console will appear:
 ![Step 22](img/step-22.png)
 
-The Terminal window is a complete interface to AllStarLilnk,
+The Terminal window is a complete interface to AllStarLink,
 Asterisk, and more. No SSH client is required although use
 of SSH directly is fully supported.
 
 ## Quick Config va ASL-Menu
 The node may now be configured. New users or those wanting a
-quickstart experience should [use the asl-menu utility](menu.md)
+quick start experience should [use the asl-menu utility](menu.md)
 with `sudo asl-menu`.
 
 ## Asterisk Console
