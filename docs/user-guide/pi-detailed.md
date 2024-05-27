@@ -1,11 +1,25 @@
 # Raspberry Pi Install
 
-ASL3 can be installed on a Raspberry Pi 3, 4, or 5. The Raspberry Pi image includes the OS, Allmon3 and Cockpit.  You will install an image on a microSD card and go. This is the simplest install. For most nodes the menus will walk you through the setup. For the well-initiated with loading a Raspberry Pi image, the image may be obtained from the [ASL3 Pi Release Page](#).
+ASL3 can be installed on a Raspberry Pi 3, 4, or 5. The Raspberry Pi image includes
+the following to make a complete AllStarLink system:
+
+* Asterisk 20 LTS + app_rpt
+* asl-* commands
+* ASL3 Menu (asl-menu)
+* Allmon3
+* Web-based administration
+
+You will install an image on a microSD card and go. This is the simplest install. For
+most nodes, the menus will walk you through the setup.
 
 ## Step-by-Step Pi Appliance Setup
 
 These directions are specific for Windows by example , but in general,
 should work the same for the same tool set on MacOS and Linux.
+
+Note: For this example and all documentation, the hostname used shall be
+`node63001` and the node number is `63001`. Replace "63001" with your
+node number as you proceed through these directions.
 
 1. If you do not already have it installed, install the
 [Raspberry Pi Imager](https://www.raspberrypi.com/software/).
@@ -44,9 +58,9 @@ Device - 16.0 GB". Click on that entry.
 ![Step 9](img/step-9.png)
 
 10. Check the box next to **Set hostname** and enter a hostname
-for the device to appear as on the network. It is recommended
-to choose a functional name such as "asl3-node50185" (using your
-node number) or "CALLSIGN-hotspot" (e.g. "w1aw-hotspot").
+for the device to appear as on the network. In this example,
+`node63001` is used. Unless you have another naming convention
+for AllStarLink nodes, use the nodeNNNNN format.
 
 11. Check the box next to **Set username and password**
 and enter a username and password. It is recommended to set the
@@ -78,43 +92,61 @@ should look something like:
 
 17. Depending on the speed of the computer and the type of SD card
 one will have time for a beverage of their choice. When the write is complete,
-remove the card from computer and insert it into the Pi. If using a USB adapter
-for the SD card, remove the SD card from the adapter and insert the card into
-the Pi. The Pi __will not__ use the SD card in the USB adapter.
+eject the card, remove the card from computer and insert it into the Pi.
+If using a USB adapter for the SD card, remove the SD card from the adapter
+and insert the card into the Pi. The Pi __will not__ use the SD card in the
+USB adapter.
 
-18. Power on the Pi. Wait approximately 2 minutes for the Pi to boot
-and perform the various first boot tasks. If there is a screen connected
+18. Power on the Pi. Wait approximately 2 to 5 minutes for the Pi to boot
+and perform the various first boot tasks. Depending on the type of a Pi
+board used, this process could be lengthy. If there is a screen connected
 to the Pi, it will be noted that Pi will reboot several times.
 This is normal and expected.
 
 19. (Optional) Network connectivity may be tested using the command
 to ping the hostname set in step 10. For example, if the hostname
-set was "node460181" then do `ping -4 node460181.local` from a
+set was "node63001" then do `ping -4 node63001.local` from a
 command prompt or PowerShell window. When you get a response,
-the host is connected to the network. In this example, the node
-hostname was set to `node460181.local`:
+the host is connected to the network. 
 ![Step 19](img/step-19.png)
 
-20. Open a web browser and navigate to `https://nodeNNNNNN.local`. For
-example, if the name was `node460181` then one would enter
-`https://node460181.local`. Depending on your network and
-browser, one may have to  enter the name several times until the
+20. Open a web browser and navigate to `https://nodeNNNNN.local`. In this
+example the name was `node63001` then one would enter
+`https://node63001.local`. Depending on your network and
+browser, one may have to enter the name several times until the
 page displayed. The first connection will report a message that
 "Your connection isn't private". For the Pi appliance, this is
 acceptable. Click on **Advanced** and then
-**Continue to node460181.local (unsafe)**.
+**Continue to node63001.local (unsafe)**. This only must be done
+the first time.
 ![Step 20](img/step-20.png)
 
-21. The administration window will appear. This system is named Cockpit
-and is an open source application for managing devices of all sorts. 
-Enter the username and password set in step #11 and click **Log in**
+21. The AllStarLink Launchpad will appear. Clicking on
+**Web Admin Portal** will take one to the web-based administration
+portal that includes a web-based SSH client for using asl-menu
+and other commands. Clicking on **Node Links** will take one
+to the Allmon3 interface. Clicking on **ASL Manual** will take one
+to the top of this manual.
 ![Step 21](img/step-21.png)
 
-22. The Overview tab is displayed. Using Cockpit with AllStarLink 
-is [covered in the manual](../pi/index.md). Click on
-**Terminal** at the bottom of the left scrollable menu and the
-admin console will appear:
+22. To setup the new node, click on **Web Admin Portal**. Similar
+to step 20, click **Advanced** and **Continue to node63001.local (unsafe)**
+to see the logon box.This only must be donethe first time. Enter
+the username and password configured during the imaging process
+above. Click **Log in**
 ![Step 22](img/step-22.png)
+
+23. The Overview tab is displayed. Using the Web Admin Portal (Cockpit)
+ with AllStarLink is [covered in the manual](../pi/index.md). At the top,
+ click on **Turn on administrative access*
+    ![Step 23](img/step-23.png)
+ 
+    Enter the password again when prompted and click **Authenticate**
+    ![Step 23B](img/step-23-b.png)
+
+24. The web-based SSH console appears as **Terminal** at the bottom
+of the left scrollable menu. Click it and SSH console will appear:
+![Step 24](img/step-24.png)
 
 The Terminal window is a complete interface to AllStarLink,
 Asterisk, and more. No SSH client is required although use
@@ -124,10 +156,15 @@ of SSH directly is fully supported.
 The node may now be configured. New users or those wanting a
 quick start experience should [use the asl-menu utility](menu.md)
 with `sudo asl-menu`.
+![Web ASL Menu 1](img/term-asl-menu-1.png)
+
+The menu will appear:
+![Web ASL Menu 2](img/term-asl-menu-2.png)
 
 ## Asterisk Console
 To start the asterisk console from the Terminal window
 enter `sudo asterisk -rv`.
+![Web Ast Console](img/term-ast-console.png)
 
 ## Software Updates
 One should also apply any latest updates and reboot the device
