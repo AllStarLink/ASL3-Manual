@@ -152,7 +152,7 @@ The Terminal window is a complete interface to AllStarLink,
 Asterisk, and more. No SSH client is required although use
 of SSH directly is fully supported.
 
-## Quick Config va ASL-Menu
+## Quick Config via ASL-Menu
 The node may now be configured. New users or those wanting a
 quick start experience should [use the asl-menu utility](menu.md)
 with `sudo asl-menu`.
