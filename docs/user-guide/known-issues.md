@@ -21,9 +21,10 @@ https://github.com/AllStarLink/app_rpt/issues/325
 
 ## Pi Hat-based Radio Modules
 For the ASL3 pi appliance image, the current image (v3.0.6) does not make
-`/dev/ttyS0` available as a UART port for programming a hat-connected
-radio board. This is a common need for hat-based modules based on the
-SA818/DRA818 chip such as the W6IPA PIRIM and other similar board.
+`/dev/serial0` (formerly `/dev/ttyAMA0`) available as a UART port
+for programming a hat-connected radio board. This is a common need for
+hat-based modules based on the SA818/DRA818 chip such as the W6IPA
+PIRIM and other similar board.
 
 1. Run `sudo raspi-config` from the Web Console Terminal
 
@@ -46,7 +47,10 @@ but is now `/dev/serial0`. Much older Pi documentation will still
 Pi header.
 
 ## Simple Tune Menu
-
-Simple-tune-menu item `B) Toggle RX Boost` updates the display but `W) Write (Save) Current Parameter Values` is not saving to the config file. Obvious workaround is to use the asl-menu, `5 Expert Configuration Menu`,  `9  Edit simplusb.conf file`, and set `rxboost = true`.
+Simple-tune-menu item `B) Toggle RX Boost` updates the display
+but `W) Write (Save) Current Parameter Values` is not saving to
+the config file. Obvious workaround is to use the asl-menu,
+`5 Expert Configuration Menu`,  `9  Edit simplusb.conf file`,
+and set `rxboost = true`.
 
 https://github.com/AllStarLink/app_rpt/issues/331
