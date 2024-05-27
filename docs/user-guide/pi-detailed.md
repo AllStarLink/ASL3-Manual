@@ -131,7 +131,7 @@ to the top of this manual.
 
 22. To setup the new node, click on **Web Admin Portal**. Similar
 to step 20, click **Advanced** and **Continue to node63001.local (unsafe)**
-to see the logon box.This only must be donethe first time. Enter
+to see the logon box.This only must be done the first time. Enter
 the username and password configured during the imaging process
 above. Click **Log in**
 ![Step 22](img/step-22.png)
