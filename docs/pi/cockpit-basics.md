@@ -31,20 +31,20 @@ an SSH connection interchangeably at your desire.
 You can monitor the logs of application. In addition, you can change the
 settings directly in the web console or through the terminal. 
 
-Throughout this documentation a host named `node460181.local` is used as
+Throughout this documentation a host named `node63001.local` is used as
 the example host. Substitute that name with your own node's name as it 
 was set during the imaging process.
 
 # Logging In to the Web Console
 1. In your web browser, enter the following address to access the web console:
-    https://node460181.local:9090
+    https://node63001.local:9090
 
 2. The browser may display a warning. Accept the security exception to
 proceed with the login.
 ![Login](../user-guide/img/step-20.png)
 
 3. Enter the username and password set during the imaging process.
-![Login](../user-guide/img/step-21.png)
+![Login](../user-guide/img/step-22.png)
 
 3. Click **Log In**. 
 
@@ -56,11 +56,14 @@ Do do that:
 
 1. Click on the bar marked **Limited Access** to enable admin-level
 access.
-![Limited Access](img/limited_access.png)
+![Limited Access](img/limited_access-1.png)
+
+    You may be prompted to tnter the password again. Do 
+    so and then click **Authenticate**
+    ![Step 23B](img/limited_access-2.png)
 
 2. Click **Close** on the box reporting administrative
 access has been granted.
-![Admin Access Granted](img/admin_access_granted.png)
 
 # Shutting Down the Appliance
 You can use the web console to shut down the system.
@@ -69,11 +72,10 @@ You can use the web console to shut down the system.
 
 2. (optional) Click on the bar marked **Limited Access** to enable admin-level
 access.
-![Limited Access](img/limited_access.png)
+![Limited Access](img/limited_access-1.png)
 
 3. (optional) Click **Close** on the box reporting administrative
 access has been granted.
-![Admin Access Granted](img/admin_access_granted.png)
 
 4. Click on the downward arrow next to Reboot and then
 select **Shutdown**
@@ -90,11 +92,10 @@ is about 15-30 seconds, after which power may be removed.
 
 2. (optional) Click on the bar marked **Limited Access** to enable admin-level
 access.
-![Limited Access](img/limited_access.png)
+![Limited Access](img/limited_access-1.png)
 
 3. (optional) Click **Close** on the box reporting administrative
 access has been granted.
-![Admin Access Granted](img/admin_access_granted.png)
 
 4. Click on Reboot
 ![Shutdown](img/cockpit_reboot.png)
@@ -115,11 +116,10 @@ to change the Timezone. To change the time:
 
 2. (optional) Click on the bar marked **Limited Access** to enable admin-level
 access.
-![Limited Access](img/limited_access.png)
+![Limited Access](img/limited_access-1.png)
 
 3. (optional) Click **Close** on the box reporting administrative
 access has been granted.
-![Admin Access Granted](img/admin_access_granted.png)
 
 4. Click on Overview and scroll down to **Configuration**
 

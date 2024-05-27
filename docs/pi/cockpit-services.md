@@ -22,7 +22,7 @@ You can tell which services are active or inactive by checking the State column.
 ![Service Enable](img/cockpit_service_start.png)
 
 4. To deactivate an active service, click the Stop button
-![Service Enable](img/cockpit_service_start.png)
+![Service Enable](img/cockpit_service_stop.png)
 
 5. To restart a service, click the Restart button
 ![Service Enable](img/cockpit_service_restart.png)
