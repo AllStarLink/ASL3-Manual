@@ -26,7 +26,7 @@ the first time.
 
 Enter the username and password configured during the imaging process
 above. Click **Log in**
-![Cockpit Login](/user-guide/img/step-22.png)
+![Cockpit Login](../user-guide/img/step-22.png)
 
 
 Cockpit is fairly intuitive to use, but here's are a few
