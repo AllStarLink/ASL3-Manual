@@ -10,15 +10,13 @@ As part of this update, app\_rpt has been refactored to make the code base easie
 
 In addition to the app_rpt code update, we've added many new features to make ASL3 the best AllStar release yet.
 
- - Runs on Asterisk 20 as non-root.
- - Runs on Debian 12 and some older operating systems.
- - Apt update including the kernel.
- - HTTP AllStarLink Registration.
- - DNS IP address resolution with fallback to file.
+ - Asterisk 20 runs as non-root for increased security.
+ - Debian 12 Raspberry Pi image install. Apt install and updates for x86.
+ - Raspberry Pi image with attractive landing page, system management, services advertisement and less MicroSD wear.
+ - EchoLink code has been extensively reworked to improve stability. Added chats and doubling prevention.
+ - Worry free apt updates and upgrades. Linux Kernel updates won't break your node.
+ - HTTP AllStarLink Registration and DNS IP address resolution with fallback to file.
  - USB improvements including live logic view and auto device string discovery.
- - New Raspberry Pi image with system management appliance, services advertisement and /tmp use for frequent writes.
- - Apt install for x86 with image install in the works.
- - ASL menu improvements including compatibility with user config file edits.
- - EchoLink code has been extensively reworked to improve stability. Other improvements including chats and doubling prevention.
+ - Improved menu includes compatibility with user config file edits.
  - Access lists modified to individual per node lists with CLI or menu management.
  - Configuration templates to simplify edits and menu updates.
