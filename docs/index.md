@@ -6,7 +6,7 @@ The update from Asterisk version 1.4 to version 20 implements over 15 years of A
 
 As part of this update, app\_rpt has been refactored to make the code base easier to maintain and enhance.  The goal being to make app_rpt accessible to more developers. The app\_rpt code base will meet all current Asterisk® coding guidelines.  This process has been going on for over two years and will continue.
 
-## New Features
+# New Features
 
 In addition to the app_rpt code update, we've added many new features to make ASL3 the best AllStar release yet.
 
