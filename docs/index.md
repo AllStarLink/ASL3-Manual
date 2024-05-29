@@ -12,7 +12,7 @@ In addition to the app_rpt code update, we've added many new features to make AS
 
  - Asterisk 20 runs as non-root for increased security.
  - Debian 12 Raspberry Pi image install. Apt install and updates for x86.
- - Raspberry Pi image with attractive landing page, system management, improved service discovery and less microSD wear.
+ - Raspberry Pi image with attractive landing page, system management, service discovery and reduced microSD wear.
  - Worry free apt updates and upgrades. Linux Kernel updates won't break your node.
  - HTTP AllStarLink Registration and DNS IP address resolution with fallback to file.
  - USB improvements including live logic view and auto device string discovery.
