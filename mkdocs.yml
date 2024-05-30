@@ -5,7 +5,7 @@ site_author: AllStarLink Team
 plugins:
   - search
 #  - print-site
-copyright: Copyright &copy; 2024 AllStarLink, Inc
+copyright: Copyright &copy; 2024 AllStarLink Inc.
 nav:
   - Home: index.md
   - User Guide:
