@@ -13,7 +13,7 @@ All packages created by this repo have the following version
 format based on `deb-version(7)` manpage explanation.
 
 <pre>
- ${EPOCH}:${ASTERISK_VERSION}+asl3-${RPT_VER}-${PKG_RELEASE}
+ ${EPOCH}:${ASTERISK_VERSION}+asl3-${RPT_VERSION}-${PACKAGE_VERSION}
 
 |----+---|--------+--------------------------X-----+--------X
      |            |                                |
@@ -26,17 +26,17 @@ The values are defined as follows:
 
 * `EPOCH` - By Debian Asterisk convention this is hardcoded as "2"
 
-* `ASTERISK_VERSION` - The Asterisk LTS version upon which the version is based - e.g. 20.7.0
+* `ASTERISK_VERSION` - The Asterisk LTS version to use for these packages - e.g. 20.7.0
 
-* `RPT_VER` - The version of the "app\_rpt" repo released for this build - e.g. 1.2
+* `RPT_VERSION` - The "app\_rpt" version to use for these packages - e.g. 1.2
 
-* `PKG_RELEASE` - The ASL3 project release version of the package build. Usually 1 unless there
+* `PACKAGE_VERSION` - The ASL3 project release version of the package build. Usually 1 unless there
 was a problem specifically with package building that caused a new .deb publication needed. In
-general, this is only incremented if `ASTERISK_VERSION` and `RPT_VER` aren't changing, but
+general, this is only incremented if `ASTERISK_VERSION` and `RPT_VERSION` aren't changing but
 something needed to be changed in the `debian/` build directory.
 
 A file generated from this repo using the versioning format above will be named,
-for example `asl3-asterisk-20.7.0+asl3-1.0-1`. Note that the *epoch* does not appear
+for example `asl3-asterisk-20.7.0+asl3-1.2-1`. Note that the *epoch* does not appear
 in the filename by debian convention.
 
 ## Determining Asterisk Version
@@ -67,14 +67,21 @@ as described in `man 7 deb-version`. For example:
 1.0 < 1.1 < 1.1.1 < 1.2 < 2.0
 ```
 
-## Determining the Release Version
+To add a tag to the repository you will checkout the appropriate sources and use commands like :
+
+```bash
+git tag -a "1.2" -m "Tag for release 20.7.0_asl3-1.2-1"
+git push --tags
+```
+
+## Determining the Package Version
 This should be a monotonically increasing integer starting with 1
 reflecting a change in Asterisk Version + app\_rpt. For example,
 if building Asterisk 20.7.0 with app\_rpt v1.1, then
 the first build of a package should be 1, the second 2, and so on.
 
 However, if from the above example, app\_rpt is now v1.2
-then the release should reset back to 1 and start over. The same
+then the package version should reset back to 1 and start over. The same
 if the version of Asterisk changes but not app\_rpt. Or also
 obviously if both change.
 
@@ -84,13 +91,13 @@ to store the .deb files in. The name of the release should follow the
 format:
 
 ```
-ASTERISK_VERSION_asl3-RPT_VERSION-RELEASE_VER
+ASTERISK_VERSION_asl3-RPT_VERSION-PACKAGE_VERSION
 ```
 
-For the above example of Asterisk 20.7.0, app\_rpt 1.1, and 
-release 2. the release tag and name would be:
+For the above example of Asterisk "20.7.0", app\_rpt "1.2", and 
+package version "1" the release tag and name would be:
 ```
-20.7.0_asl3-1.1-2
+20.7.0_asl3-1.2-1
 ```
 Note: GitHub acts oddly about + signs in the tags and release
 names so it's converted to an underscore.
@@ -99,9 +106,9 @@ names so it's converted to an underscore.
 ## Executing the GitHub Action to Build Packages
 The following steps build the Debian packages:
 
-* Navigate to the [repository Actions tab](https://github.com/AllStarLink/asl3-asterisk/actions)
+* Navigate to the [GitHub repository Actions tab](https://github.com/AllStarLink/asl3-asterisk/actions)
 
-* Under *All workflows* -> *Workflows* click on `make_and_publish_pkgs`
+* Under *All workflows* -> *Workflows* click on `Make and Publish Pkgs`
 
 * To the right of the label *This workflow has a workflow_dispatch event trigger*
 click on **Run workflow**
@@ -112,7 +119,7 @@ click on **Run workflow**
 
     * *app\_rpt Version Tag* - This is the app\_rpt version determined above
 
-    * *Package Revision* - This is the Release Version determined above
+    * *Package Revision* - This is the Package Version determined above
 
     * *Platform Architecture* - Choose `amd64` or `arm64` as appropriate
 
@@ -131,3 +138,5 @@ click on **Run workflow**
 circling swoosh). This can be monitored for process. If the process succeeds with
 a green checkbox, the .deb files should appear in the Release. If not,
 there are problems that need to be diagnosed and resolved.
+
+Note: as noted above, you will choose the platform architecture when starting a workflow.  All workflows will create the architecture specific packages.  The "amd64" workflow also creates the architecture independent ("all") packages.  What does this mean?  If you only want "amd64" packages then you would only need to run the single workflow.  But, if you want packages for an alternate architecture (e.g. "arm64") then will need to run a workflow for that architecture AND one for the "amd64" architecture.
