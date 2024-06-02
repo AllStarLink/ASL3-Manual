@@ -1,19 +1,63 @@
-# README.md
+# ASL Manual
+This is the manual found at (https://allstarlink.github.io). All
+contributions are welcome!
 
-## Usage
-To view and edit the manual is simple:
- - Install mkdocs on your local system: `apt install mkdocs` or see https://www.mkdocs.org/getting-started/ but don't start a new mkdocs project.
- - `clone https://github.com/AllStarLink/ASL3-Manual`
- - `cd ASL-Manual`
- - `mkdocs build` may be necessary the first run or after changes to the yaml file. 
- - `mkdocs serve`
- - browse http://127.0.0.1:8000
- - The branch you are in will display locally when you do mkdocs serve.
+## Contributing to the Manual
+To view and edit the manual is simple. Simply clone the ASL-Manual
+project, install mkdocs (see below per platform), and begin editing.
+
+```bash
+git clone https://github.com/AllStarLink/ASL-Manual
+cd ASL-Manual
+# install mkdocs here if not already installed
+mkdocs serve
+```
+Then browse http://127.0.0.1:8000 and the documentation.
+As you edit files in the `docs/` directory, the web browser
+window will be updated in real time by the running
+`mkdocs serve` command. Watch that terminal window for any
+error and correct them before committing code to the repository.
+
+## Setup MkDocs
+ASL-Manual is generated with [MkDocs](https://www.mkdocs.org/). While it is possible
+to contribute to the manual without installing MkDocs, it would be difficult.
+Fortunately MkDocs is available on all normal user platforms with Python pip.
+
+### Windows 10/11
+- Install Python3 with the Windows installer
+- Checkout the project as described below in **Contributing to the Manual**
+- Install mkdocs from PowerShell
+```bash
+pip install -r requirements.txt
+```
+
+### MacOS
+- Install Python3 with the Mac installer as needed
+- Checkout the project as described below in **Contributing to the Manual**
+- Install mkdocs from a Terminal
+```bash
+pip install -r requirements.txt
+```
+
+### Debian Linux
+- Checkout the project as described below in **Contributing to the Manual**
+- Create a virtual python environment and install the necessary packages
+```bash
+python3 -m venv .mkdocs
+. .mkdocs/bin/activate
+pip install -r requirements.txt
+```
+
+Every new shell, enter the python venv with `. .mkdocs/bin/activate` before
+beginning to use any `mkdocs` commands.
+
+## Site Generation
+Use `mkdocs build` to compile the site into HTML. However, never
+check the directory `site` into the ASL-Manual repository.
 
 ## Publishing to GitHub.io
-
-You need working copies of two repositories on your local system. The directory structure should look like this:
-
+You need working copies of two repositories on your local system. The
+directory structure should look like this:
 ```text
 ASL-Manual/
     mkdocs.yml
@@ -24,7 +68,7 @@ After making and verifying your updates locally you need to change
 directories to the `allstarlink.github.io` repository and call the
 `mkdocs gh-deploy` command from there:
 
-```sh
+```bash
 cd ../allstarlink.github.io/
 mkdocs gh-deploy --config-file ../ASL-Manual/mkdocs.yml --remote-branch main
 ```

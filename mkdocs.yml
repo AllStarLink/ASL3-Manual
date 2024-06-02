@@ -1,16 +1,51 @@
-site_name: ASL3
+site_name: AllStarLink Manual
 site_url: https://allstarlink.github.io/
 site_description: ASL3 documentation project.
 site_author: AllStarLink Team
 plugins:
   - search
-#  - print-site
+  - print-site
 copyright: Copyright &copy; 2024 AllStarLink Inc.
+theme:
+  name: material
+  features:
+    - content.code.copy
+    - navigation.footer
+    - navigation.indexes
+    - navigation.sections
+    - navigation.tabs
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+  logo: assets/allstar-logo-small.png
+  favicon: assets/allstarlink.png
+  palette:
+    scheme: allstarlink
+extra_css:
+  - stylesheets/extra.css
+extra:
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+  social:
+    - icon: fontawesome/solid/link
+      link: https://www.allstarlink.org/
+      name: AllStarLink Home
+    - icon: fontawesome/brands/github
+      link: https://github.com/AllStarLink
+      name: AllStarLink on GitHub
 nav:
   - Home: index.md
   - User Guide:
     - user-guide/index.md
-    - user-guide/whats-new.md
+    - "What's New?": user-guide/whats-new.md
     - user-guide/pi-detailed.md
     - user-guide/install.md
     - user-guide/menu.md

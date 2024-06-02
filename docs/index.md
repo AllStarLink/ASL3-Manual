@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+  - toc
+---
 # Welcome to ASL3
 
 AllStarLink’s ASL version 3 is the next generation of AllStar repeater and hotspot software.  This version of AllStar has been redesigned to run on Asterisk LTS (Long Term Support), the latest operating systems, and modern hardware. As of this writing, AllStar now runs on Asterisk 20, Debian 12, Raspberry Pi's, amd64, x86, and virtual hosts.
