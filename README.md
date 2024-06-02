@@ -7,8 +7,8 @@ To view and edit the manual is simple. Simply clone the ASL-Manual
 project, install mkdocs (see below per platform), and begin editing.
 
 ```bash
-git clone https://github.com/AllStarLink/ASL-Manual
-cd ASL-Manual
+git clone https://github.com/AllStarLink/ASL3-Manual
+cd ASL3Manual
 # install mkdocs here if not already installed
 mkdocs serve
 ```
@@ -43,12 +43,12 @@ pip install -r requirements.txt
 - Checkout the project as described below in **Contributing to the Manual**
 - Create a virtual python environment and install the necessary packages
 ```bash
-python3 -m venv .mkdocs
-. .mkdocs/bin/activate
+python3 -m venv ~/.mkdocs
+. ~/.mkdocs/bin/activate
 pip install -r requirements.txt
 ```
 
-Every new shell, enter the python venv with `. .mkdocs/bin/activate` before
+Every new shell, enter the python venv with `. ~/.mkdocs/bin/activate` before
 beginning to use any `mkdocs` commands.
 
 ## Site Generation
@@ -70,7 +70,7 @@ directories to the `allstarlink.github.io` repository and call the
 
 ```bash
 cd ../allstarlink.github.io/
-mkdocs gh-deploy --config-file ../ASL-Manual/mkdocs.yml --remote-branch main
+mkdocs gh-deploy --config-file ../ASL3-Manual/mkdocs.yml --remote-branch main
 ```
 
 Note that you need to explicitly point to the `mkdocs.yml` configuration file as
@@ -80,4 +80,4 @@ with the [remote_branch] configuration setting. If you forget to change
 directories before running the deploy script, it will commit to the `master`
 branch of your project, which you probably don't want.
 
-The live site will be at https://allstarlink.github.io
+The live site will be at (https://allstarlink.github.io)
