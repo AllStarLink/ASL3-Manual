@@ -3,19 +3,19 @@ New and different ASL3 commands are mentioned here. Older ASL commands are still
 
 ## app_rpt commands
  - `rpt show channels <node>`
- 
+
  - `rpt show variables <node>` (replaces `rpt showvars`)
- 
+
  - `rpt show version`
 
  - `rpt show registrations` is the new command to show HTTP registrations.
 
 	ASL3 uses a new HTTP registration system. The old IAX registration system and `iax2 show registry` command still exist but HTTP registration should be used in its place.
- 
+
  - `rpt lookup <node>` can be used to lookup the IP address of a node.
 
 	In addition to the new registration system, ASL3 now implements a DNS lookup of node information.	By default, ASL3 will first query the AllStarLink DNS servers to resolve node information. It will fall back to the external rpt_extnodes file if the node cannot
-be resolved by DNS. 
+be resolved by DNS.
 
 	You can use the Asterisk CLI command `rpt lookup <node>` command to show the IP address of a node.  For example, `rpt lookup 2000` will show the IP of node 2000. If you have the "bind9-host" package installed on your system, the equivalent Linux CLI command to query the IP would be `host 2000.nodes.allstarlink.org`.
 
@@ -53,6 +53,7 @@ It shows the number of in-bound and out-bound connections.  It also shows the cu
 
 ## Helper scripts
  - `asl-find-sound` script makes it easy to identify the device strings for attached USB sound interfaces.
+ - `asl-repo-switch` allows developers and testers switch between main, beta, and devel apt repos.
 
 ## Debugging
 Previously app\_rpt and associated channels supported setting the debug level with an associated app / channel command.  These app / channel commands have been removed and replaced with the asterisk command:
