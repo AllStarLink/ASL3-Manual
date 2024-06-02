@@ -4,7 +4,11 @@ site_description: ASL3 documentation project.
 site_author: AllStarLink Team
 plugins:
   - search
+  - glightbox
   - print-site
+markdown_extensions:
+  - attr_list
+  - md_in_html
 copyright: Copyright &copy; 2024 AllStarLink Inc.
 theme:
   name: material
