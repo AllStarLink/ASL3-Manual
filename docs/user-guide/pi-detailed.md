@@ -12,6 +12,8 @@ the following to make a complete AllStarLink system:
 You will install an image on a microSD card and go. This is the simplest install. For
 most nodes, the menus will walk you through the setup.
 
+For each screenshot below, click on the image for a larger version.
+
 ## Step-by-Step Pi Appliance Setup
 
 These directions are specific for Windows by example , but in general,
@@ -29,33 +31,39 @@ be named `allstar3-arm64-X.Y.Z.img.xz` where "X.Y.Z" is the version. The version
 be something like 3.0.1. Save it to your local `Downloads` directory.
 
 3. Launch **Raspberry Pi Imager** from the start menu.
-![Step 3](img/step-3.png)
+
+    ![Step 3](img/step-3.png){width="400"}
 
 4. Click on **CHOOSE DEVICE** and choose the type of
 Pi hardware on which AllStarLink 3 Appliance is being installed.
-![Step 4](img/step-4.png)
+
+    ![Step 4](img/step-4.png){width="400"}
 
 5. Click on **CHOOSE OS**. Scroll to the bottom of the
 list that appears and select **Use custom**.
-![Step 5](img/step-5.png)
+
+    ![Step 5](img/step-5.png){width="400"}
 
 6. A **Select image** dialog box will appear. Navigate to the
 `Downloads` folder and select the image downloaded in step 2.
 It will be named something like allstar3-arm64-3.0.1.img.xz.
 Then click **Open**.
-![Step 6](img/step-6.png)
+
+    ![Step 6](img/step-6.png){width="400"}
 
 7. Connect the SD card or the SD card in a USB adapter to
 the computer. Then click on **CHOOSE STORAGE**. An option
 will be presented named something such as "Mass Storage Device USB
 Device - 16.0 GB". Click on that entry.
-![Step 7](img/step-7.png)
+
+    ![Step 7](img/step-7.png){width="400"}
 
 8. Click **NEXT**
 
 9. A box labelled "Use OS customisation?" will appear. Click on
 **EDIT SETTINGS**
-![Step 9](img/step-9.png)
+
+    ![Step 9](img/step-9.png){width="400"}
 
 10. Check the box next to **Set hostname** and enter a hostname
 for the device to appear as on the network. In this example,
@@ -81,14 +89,15 @@ if the Pi will use a network cable rather than wireless.
 to the desired region. The timezone settings will control any time-based
 announcements and schedule jobs. After completing steps 10-13, the customization
 should look something like:
-![Step 13](img/step-13.png)
+    ![Step 13](img/step-13.png){width="400"}
 
 14. Click **SAVE** in "OS Customisation".
 
 15. Click **YES** for "Use OS customisation?"
 
 16. Click **YES** to continue to write the image to the SD card.
-![Step 16](img/step-16.png)
+
+    ![Step 16](img/step-16.png){width="400"}
 
 17. Depending on the speed of the computer and the type of SD card
 one will have time for a beverage of their choice. When the write is complete,
@@ -108,7 +117,8 @@ to ping the hostname set in step 10. For example, if the hostname
 set was "node63001" then do `ping -4 node63001.local` from a
 command prompt or PowerShell window. When you get a response,
 the host is connected to the network. 
-![Step 19](img/step-19.png)
+
+    ![Step 19](img/step-19.png){width="400"}
 
 20. Open a web browser and navigate to `https://nodeNNNNN.local`. In this
 example the name was `node63001` then one would enter
@@ -119,7 +129,8 @@ page displayed. The first connection will report a message that
 acceptable. Click on **Advanced** and then
 **Continue to node63001.local (unsafe)**. This only must be done
 the first time.
-![Step 20](img/step-20.png)
+
+    ![Step 20](img/step-20.png){width="400"}
 
 21. The AllStarLink Launchpad will appear. Clicking on
 **Web Admin Portal** will take one to the web-based administration
@@ -127,26 +138,31 @@ portal that includes a web-based SSH client for using asl-menu
 and other commands. Clicking on **Node Links** will take one
 to the Allmon3 interface. Clicking on **ASL Manual** will take one
 to the top of this manual.
-![Step 21](img/step-21.png)
+
+    ![Step 21](img/step-21.png)
 
 22. To setup the new node, click on **Web Admin Portal**. Similar
 to step 20, click **Advanced** and **Continue to node63001.local (unsafe)**
 to see the logon box.This only must be done the first time. Enter
 the username and password configured during the imaging process
 above. Click **Log in**
-![Step 22](img/step-22.png)
+
+    ![Step 22](img/step-22.png)
 
 23. The Overview tab is displayed. Using the Web Admin Portal (Cockpit)
  with AllStarLink is [covered in the manual](../pi/index.md). At the top,
  click on **Turn on administrative access*
+ 
     ![Step 23](img/step-23.png)
  
     Enter the password again when prompted and click **Authenticate**
+
     ![Step 23B](img/step-23-b.png)
 
 24. The web-based SSH console appears as **Terminal** at the bottom
 of the left scrollable menu. Click it and SSH console will appear:
-![Step 24](img/step-24.png)
+
+    ![Step 24](img/step-24.png)
 
 The Terminal window is a complete interface to AllStarLink,
 Asterisk, and more. No SSH client is required although use
@@ -156,14 +172,17 @@ of SSH directly is fully supported.
 The node may now be configured. New users or those wanting a
 quick start experience should [use the asl-menu utility](menu.md)
 with `sudo asl-menu`.
+
 ![Web ASL Menu 1](img/term-asl-menu-1.png)
 
 The menu will appear:
+
 ![Web ASL Menu 2](img/term-asl-menu-2.png)
 
 ## Asterisk Console
 To start the asterisk console from the Terminal window
 enter `sudo asterisk -rv`.
+
 ![Web Ast Console](img/term-ast-console.png)
 
 ## Software Updates
