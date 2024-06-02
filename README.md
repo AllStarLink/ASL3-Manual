@@ -8,7 +8,7 @@ project, install mkdocs (see below per platform), and begin editing.
 
 ```bash
 git clone https://github.com/AllStarLink/ASL3-Manual
-cd ASL3Manual
+cd ASL3-Manual
 # install mkdocs here if not already installed
 mkdocs serve
 ```
