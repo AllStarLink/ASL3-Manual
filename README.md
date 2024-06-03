@@ -32,12 +32,19 @@ pip install -r requirements.txt
 ```
 
 ### MacOS
-- Install Python3 with the Mac installer as needed
+- Install Python3 with the Mac installer as needed `brew install python3`
 - Checkout the project as described below in **Contributing to the Manual**
-- Install mkdocs from a Terminal
+- Create a virtual python environment and install the necessary packages
 ```bash
+python3 -m venv ~/.mkdocs
+. ~/.mkdocs/bin/activate
 pip install -r requirements.txt
 ```
+
+Every new shell, enter the python venv with `. ~/.mkdocs/bin/activate` before
+beginning to use any `mkdocs` commands.
+
+My zsh prompt now leads with `(.mkdocs)`. 
 
 ### Debian Linux
 - Checkout the project as described below in **Contributing to the Manual**
