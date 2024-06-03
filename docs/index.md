@@ -7,17 +7,22 @@ hide:
 AllStarLink’s version 3 is the next generation of AllStar repeater and
 hotspot software.  This version of AllStar has been redesigned to run
 on Asterisk LTS (Long Term Support), the latest Debian Linux operating
-system, and modern hardware or virtual machines. At the release
-of AllStarLink 3, the system now runs on:
+system, and modern hardware or virtual machines.
 
-![AllStarLink Landing Page](img/pi-appl-landing.png/){ width="400" align=right}
-- **Operating System**: Debian 12
-- **Asterisk**: Asterisk 20 LTS
-- **Hardware**:
-    - Any x86_64/amd64 hardware device
-    - Any emulated x86_64/amd64 virtual machine
-    - Any arm64-based device such as Raspberry Pi
-    - Any emulated arm64 virtual machine
+![AllStarLink Landing Page](assets/AllstarLink-StarBlack.png){ width="400" align=right}
+At the release of AllStarLink 3, the system now runs on:
+
+
+**Operating System**: Debian 12
+
+**Asterisk**: Asterisk 20 LTS
+
+**Hardware**:
+
+* Any x86_64/amd64 hardware device
+* Any emulated x86_64/amd64 virtual machine
+* Any arm64-based device such as Raspberry Pi
+* Any emulated arm64 virtual machine
 
 
 The update from Asterisk version 1.4 to version 20 implements over 15 years
@@ -35,6 +40,7 @@ coding guidelines.  This process has been going on for over two years and
 will continue with continue open source contributions and improvements.
 
 # New Features
+![AllStarLink Landing Page](img/pi-appl-landing.png){ width="400" align=right}
 In addition to the app_rpt code update, we've added many new features to
 make ASL3 the best AllStar release yet.
 
