@@ -24,4 +24,14 @@
 
     /* Link Colors */
     --md-typeset-a-color:var(--md-accent-fg-color);
+
+    /* General Typography */
+    .md-typeset {
+        line-height: 1.2em;
+    }
+
+    .md-typeset h1 {
+        line-height: 1.4em;
+        margin: 0 0 0.5em 0;
+    }
 }
