@@ -27,16 +27,16 @@
 
     /* General Typography */
     .md-typeset {
-        line-height: 1.4em;
+        line-height: 1.5em;
     }
 
     .md-typeset h1 {
-        line-height: 1.2em;
+        line-height: 1.3em;
         margin: 0 0 0.5em 0;
     }
 
     .md-typeset li {
-        line-height: 1.4em;
+        line-height: 1.3em;
         margin: 0 0 0.3em 0;
     }
 }
