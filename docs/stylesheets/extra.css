@@ -1,6 +1,6 @@
 [data-md-color-scheme="allstarlink"] {
     /* Primary color shades */
-    
+
     --md-primary-fg-color:               hsl(86.28, 71.6%, 33.14%);
     --md-primary-fg-color--light:        hsl(86.28, 71.6%, 33.14%);
     --md-primary-fg-color--dark:         hsl(86.28, 71.6%, 33.14%);
@@ -8,13 +8,13 @@
     --md-primary-bg-color:               hsla(0, 0%, 100%, 1);
     --md-primary-bg-color--light:        hsla(0, 0%, 100%, 0.7);
     **/
-  
+
     /* Accent color shades */
     --md-accent-fg-color:                hsl(86.28, 71.6%, 33.14%);
     --md-accent-fg-color--transparent:   hsl(86.28, 71.6%, 33.14%);
     /**
     --md-accent-bg-color:                hsla(0, 0%, 100%, 1);
-    --md-accent-bg-color--light:         hsla(0, 0%, 100%, 0.7); 
+    --md-accent-bg-color--light:         hsla(0, 0%, 100%, 0.7);
     **/
 
     /* The navbar header */
@@ -27,11 +27,16 @@
 
     /* General Typography */
     .md-typeset {
-        line-height: 1.2em;
+        line-height: 1.4em;
     }
 
     .md-typeset h1 {
-        line-height: 1.4em;
+        line-height: 1.2em;
         margin: 0 0 0.5em 0;
+    }
+
+    .md-typeset li {
+        line-height: 1.4em;
+        margin: 0 0 0.3em 0;
     }
 }
