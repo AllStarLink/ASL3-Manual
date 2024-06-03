@@ -24,6 +24,7 @@ theme:
     - search.share
     - search.suggest
     - toc.follow
+    - toc.integrate
   logo: assets/allstar-logo-small.png
   favicon: assets/allstarlink.png
   palette:
