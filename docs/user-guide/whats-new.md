@@ -15,6 +15,8 @@ Note: if you have installed an earlier version of ASL you need to know that ASL3
 	- EchoLink now honors the app\_rpt timeout timer.  A text message is sent to the client when they time out.
 	- EchoLink longer allows clients to double.  A text message is sent to the client when they are doubling.
 
+The two node numbers per user policy remains in effect. Node numbers are a limited resource. Please make a best effort to use new media, a new server, or NNX to build a node for testing. We do make exceptions on a case by case basis but we'd really appreciate it if you could use a resource you already have.
+
 ## Menu Changes
 
 The ASL3 menu has been updated. Our goal is to provide an easy way for you to configure your node and to minimize the need to edit any configuration files.
@@ -45,7 +47,5 @@ SA818/DRA181-based radio hat, use `/dev/serial0` in place of the
 ## Help and Report Bugs
 
 The [AllStarLink Community](https://community.allstarlink.org/) is the primary support for all versions of ASL including ASL3. Please do not use the help desk for ASL technical help.
-
-The two node numbers per user policy remains in effect. Node numbers are a limited resource. Please make a best effort to use new media, a new server, or NNX to build a node for testing. We do make exceptions on a case by case basis but we'd really appreciate it if you could use a resource you already have.
 
 Report bugs to [AllStarLink GitHub](https://github.com/AllStarLink). There are numerous ASL3 repos. If you're not sure which repo for reporting bugs, feel free to use Community.
