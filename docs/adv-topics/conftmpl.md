@@ -1,6 +1,6 @@
 # Asterisk Templates
 
-Asterisk now has a template configuration option. This can make editing Asterisk conf flies less tedious. So far ALS3 implements templates in rpt.conf only.
+Asterisk now has a template configuration option. This can make editing Asterisk conf flies less tedious. So far, ASL3 is using templated configurations in the "rpt.conf", "simpleusb.conf", and "usbradio.conf" files.
 
 ## /etc/asterisk/rpt.conf
 
@@ -24,5 +24,11 @@ morse = morse_1998
 [1997](node-main)
 ;This might be a hub node if "rxchannel = dahdi/pseudo" is in the template
 ```
+
+## /etc/asterisk/simpleusb.conf, /etc/asterisk/usbradio.conf
+
+The "/etc/asterisk/simpleusb.conf" and "/etc/asterisk/usbradio.conf" files have also adopted a templated configuration.  Again, the template for a node is named "[node-main]".  Every node tagged with "(node-main)" inherits all the template settings.  Template settings are overwritten by nodes with "(main-node)" attached.
+
+## ASL menu support
 
 The new ASL3 menu is fully aware of the templated configuration and handles adding, updating, and removing nodes.
