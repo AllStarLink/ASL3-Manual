@@ -46,4 +46,6 @@ SA818/DRA181-based radio hat, use `/dev/serial0` in place of the
 
 The [AllStarLink Community](https://community.allstarlink.org/) is the primary support for all versions of ASL including ASL3. Please do not use the help desk for ASL technical help.
 
+The two node numbers per user policy remains in effect. Node numbers are a limited resource. Please make a best effort to use new media, a new server, or NNX to build a node for testing. We do make exceptions on a case by case basis but we'd really appreciate it if you could use a resource you already have.
+
 Report bugs to [AllStarLink GitHub](https://github.com/AllStarLink). There are numerous ASL3 repos. If you're not sure which repo for reporting bugs, feel free to use Community.
