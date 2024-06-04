@@ -31,12 +31,12 @@
     }
 
     .md-typeset h1 {
-        line-height: 1.3em;
+        line-height: 1.5em;
         margin: 0 0 0.5em 0;
     }
 
     .md-typeset li {
-        line-height: 1.3em;
+        line-height: 1.5em;
         margin: 0 0 0.3em 0;
     }
 }
