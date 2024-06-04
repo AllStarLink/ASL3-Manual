@@ -1,6 +1,6 @@
 # Raspberry Pi Install
 
-ASL3 can be installed on a Raspberry Pi 3, 4, or 5. The Raspberry Pi image includes
+ The Raspberry Pi image includes
 the following to make a complete AllStarLink system:
 
 * Asterisk 20 LTS + app_rpt
@@ -10,14 +10,25 @@ the following to make a complete AllStarLink system:
 * Web-based administration
 
 You will install an image on a microSD card and go. This is the simplest install. For
-most nodes, the menus will walk you through the setup.
+most nodes, the menus will walk you through the setup. **Note: a minimum SD card size
+of 4G is required and it is recommended to use at least an 8G SD card.**
 
-For each screenshot below, click on the image for a larger version.
+## Pi Appliance Requirements
+The following are the system requirements for the Pi Appliance
+
+| | Required | Recommended 
+|------|-----------|-------------|
+| **Hardware** | Arm v8 64-bit CPU <br> Raspberry Pi 2, 3, 4, 5, Zero 2 W, 400 | Rapberry Pi 4B or 5B |
+| **Memory** | Minimum 512M | 4G |
+| **Storage** | Minimum 4G or larger | 8GB Class 10 |s
+
+The ASL3 Appliance been tested on Raspberry Pi 3, 4, 5, and Zero 2W.
 
 ## Step-by-Step Pi Appliance Setup
 
 These directions are specific for Windows by example , but in general,
-should work the same for the same tool set on MacOS and Linux.
+should work the same for the same tool set on MacOS and Linux. For each screenshot
+below, click on the image for a larger version.
 
 Note: For this example and all documentation, the hostname used shall be
 `node63001` and the node number is `63001`. Replace "63001" with your
