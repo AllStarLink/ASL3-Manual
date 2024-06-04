@@ -33,6 +33,15 @@ The first thing to know about ASL3 configuration is that the menu can be used to
 - The USB configuration files now contain the tune settings. There is no tune file for each node as in ASL2. The tune menus and the Asterisk CLI write to the new tune setting locations.
 - There is no need to edit or use a script to update the access list, formerly known as the blacklist and whitelist. The settings are different because the access list is now per node rather than for all nodes as in other AllStar versions. It's also much easier to use the ASL3 menu to build the access lists.
 
+## /dev Entry Changes
+
+As ASL3 is based on Debian 12, users with Raspberry Pi devices must
+note that the serial port on the Pi header is now `/dev/serial0`
+rather than the historical `/dev/ttyAMA0`. If you are following
+directions for Pi serial port operations, such as programming an
+SA818/DRA181-based radio hat, use `/dev/serial0` in place of the
+`/dev/ttyAMA0` reference.
+
 ## Help and Report Bugs
 
 The [AllStarLink Community](https://community.allstarlink.org/) is the primary support for all versions of ASL including ASL3. Please do not use the help desk for ASL technical help.
