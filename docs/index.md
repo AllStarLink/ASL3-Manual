@@ -4,17 +4,18 @@ hide:
   - toc
 ---
 # Welcome to AllStarLink 3
+
 AllStarLink’s version 3 is the next generation of AllStar repeater and
 hotspot software.  This version of AllStar has been redesigned to run
-on Asterisk LTS (Long Term Support), the latest Debian Linux operating
-system, and modern hardware or virtual machines.
+on Asterisk 20 LTS (Long Term Support), the latest Debian Linux operating
+system, and modern hardware or virtual machines. The update from Asterisk
+1.4 to Asterisk 20 implements over 15 years of Asterisk bug fixes, security
+improvements and enhancements.  It brings with it the latest Asterisk
+applications, channel drivers and additional functionality.
 
-![AllStarLink Landing Page](img/pi-appl-landing.png){ width="400" align=right}
+![AllStarLink Landing Page](img/pi-appl-landing.png){ width=40% align=right }
 
-The update from Asterisk 1.4 to Asterisk 20 implements over 15 years
-of Asterisk bug fixes, security improvements and enhancements.  It brings
-with it the latest Asterisk applications, channel drivers and other
-functionality. This update required app\_rpt (the Asterisk application
+This update required app\_rpt (the Asterisk application
 that is AllStar) to be heavily modified. Many memory leaks have been addressed,
 modules load or refresh more reliably and many bugs have been squashed. This
 all adds up to improved stability and uptime.
