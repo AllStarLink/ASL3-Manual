@@ -21,8 +21,8 @@ leaks have been addressed, modules load or refresh more reliably and many bugs
 have been squashed. This all adds up to improved stability and uptime.
 
 In addition to the many app_rpt improvements and fixes, the code base is easier
-to maintain and enhance. The goal being to make app_rpt code accessable to more
-AllStar developers. Also the app_rpt code base has been modified to meet Asterisk®
+to maintain and enhance. The goal being to make app_rpt code accessible to more
+AllStar developers. Also, the app_rpt code base has been modified to meet Asterisk®
 coding guidelines.
 
 **Supported Hardware & Software**
@@ -35,7 +35,7 @@ coding guidelines.
 
 # New Features
 
-In addition to the app_rpt code update, we've added many new features to
+In addition to the app_rpt code update, we have added many new features to
 make ASL3 the best AllStar release yet.
 
 - Asterisk runs as non-root for increased security.
