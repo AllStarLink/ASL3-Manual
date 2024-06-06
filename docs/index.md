@@ -15,16 +15,15 @@ applications, channel drivers and additional functionality.
 
 ![AllStarLink Landing Page](img/pi-appl-landing.png){ width=40% align=right }
 
-This update required app\_rpt (the Asterisk application
-that is AllStar) to be heavily modified. Many memory leaks have been addressed,
-modules load or refresh more reliably and many bugs have been squashed. This
-all adds up to improved stability and uptime.
+This update required app_rpt (the Asterisk application
+that is AllStar) and it's various modules to be heavily modified. Many memory
+leaks have been addressed, modules load or refresh more reliably and many bugs
+have been squashed. This all adds up to improved stability and uptime.
 
-As part of this update to Asterisk 20, app\_rpt has been refactored to make the code base
-easier to maintain and enhance.  The goal being to make app_rpt accessible to
-more developers. The app\_rpt code base will meet all current Asterisk®
-coding guidelines.  This process has been going on for over two years and
-will continue with continue open source contributions and improvements.
+In addition to the many app_rpt improvements and fixes, the code base is easier
+to maintain and enhance. The goal being to make app_rpt code accessable to more
+AllStar developers. Also the app_rpt code base has been modified to meet Asterisk®
+coding guidelines.
 
 **Supported Hardware & Software**
 
