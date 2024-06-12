@@ -46,7 +46,7 @@ SA818/DRA181-based radio hat, use `/dev/serial0` in place of the
 
 ## A&P Measurement
 
-Adoption and Performance measurements are to help developers understand growth and technical aspects of ASL3. No sensitive or private information is collected. The code is on [GitHub/AllStarLink/ASL3-Usage](https://github.com/AllStarLink/ASL3-Usage). Reports are on [repo.allstarlink.org](https://repo.allstarlink.org/usage/reports/).
+Adoption and Performance measurements are to help ASL understand growth and technical aspects of ASL3. No sensitive or private information is collected. For details see [GitHub/AllStarLink/ASL3-Usage](https://github.com/AllStarLink/ASL3-Usage). Reports are available at [repo.allstarlink.org/usage/reports/](https://repo.allstarlink.org/usage/reports/).
 
 ## Help and Report Bugs
 
