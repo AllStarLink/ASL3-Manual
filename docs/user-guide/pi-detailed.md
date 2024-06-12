@@ -8,6 +8,10 @@ the following to make a complete AllStarLink system:
 * ASL3 Menu (asl-menu)
 * Allmon3
 * Web-based administration
+* A nice landing page
+
+**You must use the Raspberry Pi Imager** even if you prefer another imager and carefully follow the instructions below.
+Failure to do so will result in a system that won't boot or that you will not be able to login to.
 
 You will install an image on a microSD card and go. This is the simplest install. For
 most nodes, the menus will walk you through the setup. **Note: a minimum SD card size
@@ -16,7 +20,7 @@ of 4G is required and it is recommended to use at least an 8G SD card.**
 ## Pi Appliance Requirements
 The following are the system requirements for the Pi Appliance
 
-| | Required | Recommended 
+| | Required | Recommended
 |------|-----------|-------------|
 | **Hardware** | Arm v8 64-bit CPU <br> Raspberry Pi 2, 3, 4, 5, Zero 2 W, 400 | Raspberry Pi 4B or 5B |
 | **Memory** | Minimum 512M | 4G |
@@ -127,7 +131,7 @@ This is normal and expected.
 to ping the hostname set in step 10. For example, if the hostname
 set was "node63001" then do `ping -4 node63001.local` from a
 command prompt or PowerShell window. When you get a response,
-the host is connected to the network. 
+the host is connected to the network.
 
     ![Step 19](img/step-19.png){width="400"}
 
@@ -163,9 +167,9 @@ above. Click **Log in**
 23. The Overview tab is displayed. Using the Web Admin Portal (Cockpit)
  with AllStarLink is [covered in the manual](../pi/index.md). At the top,
  click on **Turn on administrative access*
- 
+
     ![Step 23](img/step-23.png)
- 
+
     Enter the password again when prompted and click **Authenticate**
 
     ![Step 23B](img/step-23-b.png)
