@@ -44,6 +44,10 @@ directions for Pi serial port operations, such as programming an
 SA818/DRA181-based radio hat, use `/dev/serial0` in place of the
 `/dev/ttyAMA0` reference.
 
+## A&P Measurement
+
+Adoption and Performance measurements are to help developers understand growth and technical aspects of ASL3. No sensitive or private information is collected. The code is on [GitHub/AllStarLink/ASL3-Usage](https://github.com/AllStarLink/ASL3-Usage). Reports are on [repo.allstarlink.org](https://repo.allstarlink.org/usage/reports/).
+
 ## Help and Report Bugs
 
 The [AllStarLink Community](https://community.allstarlink.org/) is the primary support for all versions of ASL including ASL3. Please do not use the help desk for ASL technical help.
