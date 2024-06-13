@@ -15,6 +15,8 @@ Note: if you have installed an earlier version of ASL you need to know that ASL3
 	- EchoLink now honors the app\_rpt timeout timer.  A text message is sent to the client when they time out.
 	- EchoLink longer allows clients to double.  A text message is sent to the client when they are doubling.
 
+The two node numbers per user policy remains in effect. Node numbers are a limited resource. Please make a best effort to use new media, a new server, or NNX to build a node for testing. We do make exceptions on a case by case basis but we'd really appreciate it if you could use a resource you already have.
+
 ## Menu Changes
 
 The ASL3 menu has been updated. Our goal is to provide an easy way for you to configure your node and to minimize the need to edit any configuration files.
@@ -41,6 +43,10 @@ rather than the historical `/dev/ttyAMA0`. If you are following
 directions for Pi serial port operations, such as programming an
 SA818/DRA181-based radio hat, use `/dev/serial0` in place of the
 `/dev/ttyAMA0` reference.
+
+## A&P Measurement
+
+Adoption and Performance measurements are to help ASL understand growth and technical aspects of ASL3. No sensitive or private information is collected. For details see [GitHub/AllStarLink/ASL3-Usage](https://github.com/AllStarLink/ASL3-Usage). Reports are available at [repo.allstarlink.org/usage/reports/](https://repo.allstarlink.org/usage/reports/).
 
 ## Help and Report Bugs
 
