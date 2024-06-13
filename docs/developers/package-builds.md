@@ -26,9 +26,11 @@ The values are defined as follows:
 
 * `EPOCH` - By Debian Asterisk convention this is hardcoded as "2"
 
-* `ASTERISK_VERSION` - The Asterisk LTS version to use for these packages - e.g. 20.7.0
+* `ASTERISK_VERSION` - The Asterisk LTS version to use for these packages - e.g. 20.8.1
 
-* `RPT_VERSION` - The "app\_rpt" version to use for these packages - e.g. 1.2
+* `RPT_VERSION` - The "app\_rpt" version to use for these packages. This should be based
+on the tag of the release of app_rpt applied to that repository that is driven 
+by the major, minor, and patch versions listed in `app_rpt.h`.
 
 * `PACKAGE_VERSION` - The ASL3 project release version of the package build. Usually 1 unless there
 was a problem specifically with package building that caused a new .deb publication needed. In
@@ -36,7 +38,7 @@ general, this is only incremented if `ASTERISK_VERSION` and `RPT_VERSION` aren't
 something needed to be changed in the `debian/` build directory.
 
 A file generated from this repo using the versioning format above will be named,
-for example `asl3-asterisk-20.7.0+asl3-1.2-1`. Note that the *epoch* does not appear
+for example `asl3-asterisk-20.8.1+asl3-3.0.0-1`. Note that the *epoch* does not appear
 in the filename by debian convention.
 
 ## Determining Asterisk Version
@@ -48,42 +50,19 @@ entered in the Actions launcher will cause the proper version of Asterisk 20 LTS
 to be downloaded and folded into the builder.
 
 ## Locking In and Determining the app\_rpt Version
-When a build of `.deb` files is initiated, the app\_rpt repo should be
-tagged with a regular tag (not a lightweight tag) and the tag commit
-comment should be it is for a debian build run.
-
-The version of the tag should follow the reasonable progression of ASL3
-development. For example the pre-Dahdi-removal and early beta testing
-will definitely fall into the 1.x series. After Dahdi is removed,
-the version will be incremented to 2.x. The value for "x" is simply
-monotonically increasing from 0. It would also be possible to create
-a major.minor.tertiary version structure in an 1.x.y format. What is
-important for the building of the packages is a) the app\_rpt
-repository is tagged with the release number to tie the repository and
-the packages together and b) the new number supersedes the last version
-as described in `man 7 deb-version`. For example:
-
-```
-1.0 < 1.1 < 1.1.1 < 1.2 < 2.0
-```
-
-To add a tag to the repository you will checkout the appropriate sources and use commands like :
-
-```bash
-git tag -a "1.2" -m "Tag for release 20.7.0_asl3-1.2-1"
-git push --tags
-```
+When a build of `.deb` files is initiated, the app\_rpt repo should must 
+be tagged prior to initiating the build process. The tag version should
+be in the format `MAJOR.MINOR.PATCH` as found in `app_rpt.h`.
 
 ## Determining the Package Version
 This should be a monotonically increasing integer starting with 1
 reflecting a change in Asterisk Version + app\_rpt. For example,
-if building Asterisk 20.7.0 with app\_rpt v1.1, then
+if building Asterisk 20.8.1 with app\_rpt v2.0.0, then
 the first build of a package should be 1, the second 2, and so on.
 
-However, if from the above example, app\_rpt is now v1.2
-then the package version should reset back to 1 and start over. The same
-if the version of Asterisk changes but not app\_rpt. Or also
-obviously if both change.
+However, if from the above example, app\_rpt is now v3.1.0 or
+Asterisk becomes 20.9.0 then the package version should reset back to
+1 and start over.
 
 ## Create a GitHub Release
 Create a [Release](https://github.com/AllStarLink/asl3-asterisk/releases)
