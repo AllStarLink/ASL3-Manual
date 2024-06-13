@@ -57,7 +57,7 @@ be in the format `MAJOR.MINOR.PATCH` as found in `app_rpt.h`.
 ## Determining the Package Version
 This should be a monotonically increasing integer starting with 1
 reflecting a change in Asterisk Version + app\_rpt. For example,
-if building Asterisk 20.8.1 with app\_rpt v2.0.0, then
+if building Asterisk 20.8.1 with app\_rpt v3.0.0, then
 the first build of a package should be 1, the second 2, and so on.
 
 However, if from the above example, app\_rpt is now v3.1.0 or
