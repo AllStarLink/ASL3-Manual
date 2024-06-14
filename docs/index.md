@@ -40,7 +40,7 @@ make ASL3 the best AllStar release yet.
 
 - Asterisk runs as non-root for increased security.
 - Raspberry Pi image with attractive landing page, system management, service discovery and reduced microSD wear.
-- Packages for Debian 12 Bookwork for any platform running x86_64/amd64 and arm64
+- Packages for Debian 12 Bookworm for any platform running x86_64/amd64 and arm64
 - Worry free apt updates and upgrades. Linux Kernel updates won't break your node!
 - HTTP AllStarLink Registration and DNS IP address resolution with fallback to file.
 - USB improvements including live logic view and auto device string discovery.
