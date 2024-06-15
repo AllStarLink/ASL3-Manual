@@ -207,9 +207,9 @@ One should also apply any latest updates and reboot the device
 as described in [Cockpit Updates](../pi/cockpit-updates.md).
 
 ## Allmon3 Settings
-Allmon3 will automatically show node(s) that have been setup with the asl-menu.
-Other settings such as a login must be set using the instructions
-on the [Allmon3 README](https://github.com/AllStarLink/Allmon3/blob/develop/README.md).
+Allmon3 will automatically show the first node that was setup with the asl-menu.
+The default-configured username and password combination is `allmon3 / password`.  **You *must* change this**.
+Details on updating the configuration including the login(s) and adding additional nodes can be found in the [Allmon3 README](https://github.com/AllStarLink/Allmon3/blob/develop/README.md).
 
 ## Logging Out
 When finished with the admin system, click on **Session**
