@@ -206,6 +206,11 @@ enter `sudo asterisk -rv`.
 One should also apply any latest updates and reboot the device
 as described in [Cockpit Updates](../pi/cockpit-updates.md).
 
+## Allmon3 Settings
+Allmon3 will automatically show node(s) that have been setup with the asl-menu.
+Other settings such as a login must be set using the instructions
+on the [Allmon3 README](https://github.com/AllStarLink/Allmon3/blob/develop/README.md).
+
 ## Logging Out
 When finished with the admin system, click on **Session**
 in the upper right and then choose **Logout**.
