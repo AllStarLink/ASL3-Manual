@@ -3,6 +3,7 @@
  The Raspberry Pi image includes
 the following to make a complete AllStarLink system:
 
+* Debian 12 operating system
 * Asterisk 20 LTS + app_rpt
 * asl-* commands
 * ASL3 Menu (asl-menu)
@@ -135,10 +136,11 @@ the host is connected to the network.
 
     ![Step 19](img/step-19.png){width="400"}
 
-20. Open a web browser and navigate to `https://nodeNNNNN.local`. In this
-example the name was `node63001` then one would enter
-`https://node63001.local`. Depending on your network and
-browser, one may have to enter the name several times until the
+20. Open the browser on your computer and navigate to `https://nodeNNNNN.local`. In this
+example the name was `node63001` then one would enter `https://node63001.local`.
+Your Pi and your computer must be on the same LAN for this to work.
+Use the IP address rather than the hostname if the Pi is on a remote network or the hostname is unreachable.
+Depending on your network and browser, one may have to enter the name several times until the
 page displayed. The first connection will report a message that
 "Your connection isn't private". For the Pi appliance, this is
 acceptable. Click on **Advanced** and then
