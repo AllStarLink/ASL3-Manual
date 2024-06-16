@@ -206,10 +206,19 @@ enter `sudo asterisk -rv`.
 One should also apply any latest updates and reboot the device
 as described in [Cockpit Updates](../pi/cockpit-updates.md).
 
-## Allmon3 Settings
-Allmon3 will automatically show the first node that was setup with the asl-menu.
-The default-configured username and password combination is `allmon3 / password`.  **You *must* change this**.
-Details on updating the configuration including the login(s) and adding additional nodes can be found in the [Allmon3 README](https://github.com/AllStarLink/Allmon3/blob/develop/README.md).
+## Allmon3 Default Login
+The default-configured username and password combination is `allmon3 / password`.
+
+**You *must* delete this and add a new one**.
+
+- Launch Web Admin Portal (aka Cockpit)
+- Open terminal
+- Type `sudo allmon3-passwd --delete allmon3` to remove the default login
+- Type `sudo allmon3-passwd <new user login>` to set the new user login. Type the new password when prompted.
+- Type `sudo systemctl restart allmon3` to load the new login.
+
+Details on updating the login(s) and other Allmon3 settings can be found in the
+[Allmon3 README](https://github.com/AllStarLink/Allmon3).
 
 ## Logging Out
 When finished with the admin system, click on **Session**
