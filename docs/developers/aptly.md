@@ -94,7 +94,7 @@ all components is:
 ```bash
 aptly publish update bookworm
 ```
-Whe other distributions are supported, replace "bookworm"
+When other distributions are supported, replace "bookworm"
 with the appropriate distribution. Upon execution, a prompt
 will appear for the GPG signing key for the repository. Provide it.
 
@@ -112,7 +112,7 @@ Publish for local repo ./bookworm [all, amd64, arm64, armhf] publishes {beta: [a
 ```
 
 ## Searching for Packages
-Listingn and searching for packages inside of a local repo is done
+Listing and searching for packages inside of a local repo is done
 with the `aptly repo search` command and uses the
 (Aptly Package Query Language)[https://www.aptly.info/doc/feature/query/]
 to filter/select packages.
@@ -146,7 +146,7 @@ asl3-asterisk-tests_2:20.7.0+asl3-1.0-5.deb12_amd64
 asl3-asterisk-tests-dbgsym_2:20.7.0+asl3-1.0-5.deb12_amd64
 ```
 
-###### Search by name glob + version range
+##### Search by name glob + version range
 ```bash
 $ aptly repo search asl3-prod 'Name (~ asl3-asterisk*), Version (>= 1.0)'
 asl3-asterisk_2:20.7.0+asl3-1.0-5.deb12_amd64
