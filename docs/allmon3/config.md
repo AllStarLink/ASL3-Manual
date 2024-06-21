@@ -19,7 +19,7 @@ options:
 | **user** | Req'd | - | username of the Asterisk monitor, most commonly 'admin' |
 | **pass** | Req'd | - | password of the monitor user |
 | **multinodes** | Opt | - | this node is a server hosting multiple nodes and this is the "primary" record for the host. |
-| **voters** | n[,n,...] | = | List voters on this server, comma separate. No value disabled voters|
+| **voters** | Opt | n[,n,...] | List voters on this server, comma separate. No value disabled voters|
 | **pollinterval** | Opt | 1 | polling interval to asterisk in default is 1. this value can be expressed as a decimal fraction of a second - e.g., .5 is 500ms, .375 is 375ms, etc. |
 | **vpollinterval** | Opt | 1 | Broadcast interval of voter data in seconds default is 1. this value can be expressed as a decimal fraction of a second - e.g., .5 is 500ms, .375 is 375ms, etc. |
 | **retryinterval** | Opt | 15 | Seconds between retries if initial connection to asterisk is lost (optional, default 15)
