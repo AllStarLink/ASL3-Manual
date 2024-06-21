@@ -223,3 +223,5 @@ Details on updating the login(s) and other Allmon3 settings can be found in the
 ## Logging Out
 When finished with the admin system, click on **Session**
 in the upper right and then choose **Logout**.
+
+This completes the Raspberry Pi instalation instructions.
