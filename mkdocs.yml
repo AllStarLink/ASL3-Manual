@@ -77,6 +77,11 @@ nav:
     - adv-topics/sip-phone.md
     - adv-topics/incompatibles.md
     - adv-topics/broadcastify.md
+  - Allmon3:
+    - allmon3/index.md
+    - allmon3/install.md
+    - allmon3/config.md
+    - allmon3/usermgmt.md
   - Developer Guide:
     - developers/index.md
     - developers/package-builds.md
