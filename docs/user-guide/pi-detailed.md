@@ -224,4 +224,7 @@ Details on updating the login(s) and other Allmon3 settings can be found in the
 When finished with the admin system, click on **Session**
 in the upper right and then choose **Logout**.
 
-This completes the Raspberry Pi instalation instructions.
+## YouTube
+Freddie Mac has a nice ASL3 installation video. See [https://youtu.be/aeuj-yI8qrU](https://youtu.be/aeuj-yI8qrU)
+
+This completes the Raspberry Pi installation instructions.
