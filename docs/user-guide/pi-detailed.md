@@ -218,13 +218,13 @@ The default-configured username and password combination is `allmon3 / password`
 - Type `sudo systemctl restart allmon3` to load the new login.
 
 Details on updating the login(s) and other Allmon3 settings can be found in the
-[Allmon3 README](https://github.com/AllStarLink/Allmon3).
+[Allmon3 section of the manual.](../allmon3/index.md).
 
 ## Logging Out
 When finished with the admin system, click on **Session**
 in the upper right and then choose **Logout**.
 
+This completes the Raspberry Pi installation instructions.
+
 ## YouTube
 Freddie Mac has a nice ASL3 installation video. See [https://youtu.be/aeuj-yI8qrU](https://youtu.be/aeuj-yI8qrU)
-
-This completes the Raspberry Pi installation instructions.
