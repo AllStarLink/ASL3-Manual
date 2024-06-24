@@ -20,10 +20,10 @@ As ASL3 is based on Debian 12, users with Raspberry Pi devices must
 note that the serial port on the Pi header is now `/dev/serial0`
 rather than the historical `/dev/ttyAMA0`. If you are following
 directions for Pi serial port operations, such as programming an
-SA818/DRA181-based radio hat or a Shari node, use 
+SA818/DRA818-based radio hat or a Shari node, use 
 `/dev/serial0` in place of the `/dev/ttyAMA0` reference.
 
-# Voter/RTCM Default Port
+### Voter/RTCM Default Port
 Modern installations of Asterisk runs as the unprivileged `asterisk` user rather than
 as `root`. Standard Linux convention prohibits non-root users to listen on a TCP
 port below 1024. The default port for Voters/RTCMs has been changed to `1667` when
