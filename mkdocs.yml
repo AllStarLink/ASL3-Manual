@@ -59,6 +59,7 @@ nav:
     - user-guide/menu.md
     - user-guide/updates.md
     - "Differences & Issues": user-guide/known-issues-diffs.md
+    - user-guide/support.md
   - Pi Appliance:
     - pi/index.md
     - pi/cockpit-basics.md

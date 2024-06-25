@@ -38,9 +38,3 @@ The first thing to know about ASL3 configuration is that the menu can be used to
 ## A&P Measurement
 
 Adoption and Performance measurements are to help ASL understand growth and technical aspects of ASL3. No sensitive or private information is collected. For details see [GitHub/AllStarLink/ASL3-Usage](https://github.com/AllStarLink/ASL3-Usage). Reports are available at [repo.allstarlink.org/reports/](https://repo.allstarlink.org/reports/).
-
-## Help and Report Bugs
-
-The [AllStarLink Community](https://community.allstarlink.org/) is the primary support for all versions of ASL including ASL3. Please do not use the help desk for ASL technical help.
-
-Report bugs to [AllStarLink GitHub](https://github.com/AllStarLink). There are numerous ASL3 repos. If you're not sure which repo for reporting bugs, feel free to use Community.
