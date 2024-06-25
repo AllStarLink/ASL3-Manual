@@ -1,7 +1,8 @@
 # Advanced Topics
 
 - [New Commands](commands.md)
-- [USB Interfaces](usbinterfaces.md)
+- [USB Audio Interfaces](usbinterfaces.md)
+- [SA818 RF Modules](sa818modules.md)
 - [Asterisk Templates](conftmpl.md)
 - [HTTP Registration](httpreg.md)
 - [Allow and Deny Lists](allowdenylists.md)

@@ -71,6 +71,7 @@ nav:
     - adv-topics/index.md
     - adv-topics/commands.md
     - adv-topics/usbinterfaces.md
+    - adv-topics/sa818modules.md
     - adv-topics/conftmpl.md
     - adv-topics/httpreg.md
     - adv-topics/allowdenylists.md
