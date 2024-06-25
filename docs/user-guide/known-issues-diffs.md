@@ -35,7 +35,20 @@ for other potential workarounds.
 The following issues are currently known to exist in AllStarLink 3 and,
 where possible what the workarounds are.
 
-There are no known major issues with the various components of
-AllStarLink 3. As they arise, and if they cannot be quickly
-resolved, the issues and potential workarounds will be
-listed here.
+### resize2fs_once "Error"
+There are intermittent cases of errors on the screen or in 
+the system logs about a failure of a service named 
+`resize2fs_once.service` after the final first boot upon
+installation. The error may report that it
+"Failed to start" or "timed out". If the `/` partition has
+been properly resized - which has been the case in every known 
+occurrence of the error - then there is no action to take
+and the issue will not appear on subsequent reboots.
+
+A properly resized `/` should be a bit smaller than the full
+size of the SD card or USB drive use with the device.
+In Cockpit, look at the Storage tab:
+
+![Known issue resize2fs](img/known_issue_resize2fs.png){width="600"}
+
+In this example, `/` is a 31G partition on a 32G SD card.
