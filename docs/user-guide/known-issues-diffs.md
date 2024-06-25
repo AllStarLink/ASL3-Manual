@@ -46,7 +46,7 @@ occurrence of the error - then there is no action to take
 and the issue will not appear on subsequent reboots.
 
 A properly resized `/` should be a bit smaller than the full
-size of the SD card or USB drive use with the device.
+size of the SD card or USB drive used with the device.
 In Cockpit, look at the Storage tab:
 
 ![Known issue resize2fs](img/known_issue_resize2fs.png){width="600"}
