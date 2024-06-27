@@ -54,5 +54,8 @@ preferred method of node lookup is DNS, some installations with
 slow Internet or DNS servers that have very long cache timers may benefit
 from this method of node lookup instead.
 
+## Node Configuration
+Next step is to configure the node settings. YouTuber Freddie Mac has a nice ASL3 RPi installation and configuration video. See the part where the asl-menu is shown [https://youtu.be/aeuj-yI8qrU](https://youtu.be/aeuj-yI8qrU).
+
 ## Docker
 Docker support will be coming in the near future.
