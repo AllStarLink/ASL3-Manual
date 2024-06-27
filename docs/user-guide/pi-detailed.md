@@ -225,4 +225,4 @@ When finished with the admin system, click on **Session**
 in the upper right and then choose **Logout**.
 
 ## Node Configuration
-Next step is to configure the node settings. YouTuber Freddie Mac has a nice ASL3 installation and configuration video. See [https://youtu.be/aeuj-yI8qrU](https://youtu.be/aeuj-yI8qrU)
+Next step is to configure the node settings. YouTuber Freddie Mac has a nice ASL3 installation and configuration video. See [https://youtu.be/aeuj-yI8qrU](https://youtu.be/aeuj-yI8qrU).  Also see [ASL3 Menu](../menu) for details.
