@@ -49,8 +49,11 @@ specify the `DEBIAN_FRONTEND=noninteractive` variable:
 ```bash
 DEBIAN_FRONTEND=noninteractive sudo apt update
 DEBIAN_FRONTEND=noninteractive sudo apt upgrade -y
-sudo reboot
 ```
+
+Using this command will automatically choose "N" to any 
+question about configuration - i.e. it will always keep
+your installed version.
 
 ## Note on DAHDI
 In the past, managing the DAHDI kernel module needed
