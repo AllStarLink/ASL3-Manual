@@ -1,6 +1,6 @@
 site_name: AllStarLink Manual
 site_url: https://allstarlink.github.io/
-site_description: ASL3 documentation project.
+site_description: AllStarLink Manual
 site_author: AllStarLink Team
 plugins:
   - search
