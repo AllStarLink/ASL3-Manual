@@ -66,7 +66,7 @@ check the directory `site` into the ASL-Manual repository.
 You need working copies of two repositories on your local system. The
 directory structure should look like this:
 ```text
-ASL-Manual/
+ASL3-Manual/
     mkdocs.yml
     docs/
 allstarlink.github.io/
@@ -77,7 +77,7 @@ directories to the `allstarlink.github.io` repository and call the
 
 ```bash
 cd ../allstarlink.github.io/
-mkdocs gh-deploy --config-file ../ASL-Manual/mkdocs.yml --remote-branch main
+mkdocs gh-deploy --config-file ../ASL3-Manual/mkdocs.yml --remote-branch main
 ```
 
 Note that you need to explicitly point to the `mkdocs.yml` configuration file as
