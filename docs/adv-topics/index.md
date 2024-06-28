@@ -9,3 +9,4 @@
 - [SIP Phone Setup](sip-phone.md)
 - [Incompatibilities](incompatibles.md)
 - [Broadcastify](broadcastify.md)
+- [Miscellaneous](misc.md)
