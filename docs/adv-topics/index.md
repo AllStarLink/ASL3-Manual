@@ -6,6 +6,7 @@
 - [Asterisk Templates](conftmpl.md)
 - [HTTP Registration](httpreg.md)
 - [Allow and Deny Lists](allowdenylists.md)
+- [Other Software Products](other-software.md)
 - [SIP Phone Setup](sip-phone.md)
 - [Incompatibilities](incompatibles.md)
 - [Broadcastify](broadcastify.md)
