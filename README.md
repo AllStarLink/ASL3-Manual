@@ -77,6 +77,7 @@ directories to the `allstarlink.github.io` repository and call the
 
 ```bash
 cd ../allstarlink.github.io/
+git pull origin main
 mkdocs gh-deploy --config-file ../ASL3-Manual/mkdocs.yml --remote-branch main
 ```
 
