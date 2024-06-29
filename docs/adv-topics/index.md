@@ -11,3 +11,4 @@
 - [Incompatibilities](incompatibles.md)
 - [Broadcastify](broadcastify.md)
 - [Miscellaneous](misc.md)
+- [Hot Spot Unkey Delay](hotspot_hd.md)

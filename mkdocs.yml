@@ -34,7 +34,7 @@ extra_css:
 extra:
   consent:
     title: Cookie consent
-    description: >- 
+    description: >-
       We use cookies to recognize your repeated visits and preferences, as well
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to
@@ -81,6 +81,7 @@ nav:
     - adv-topics/incompatibles.md
     - adv-topics/broadcastify.md
     - adv-topics/misc.md
+    - adv-topics/hotspot_hd.md
   - Allmon3:
     - allmon3/index.md
     - allmon3/install.md
