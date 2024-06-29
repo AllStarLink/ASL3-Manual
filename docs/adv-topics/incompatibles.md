@@ -1,4 +1,4 @@
-# Incompatible Changes in ASL3
+# Incompatibilities with Legacy Versions & Configs
 AllStarLink v3 has certain incompatible changes with older
 versions of the AllStarLink system.
 

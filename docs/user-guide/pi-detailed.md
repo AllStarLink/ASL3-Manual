@@ -44,7 +44,7 @@ node number as you proceed through these directions.
 
 2. Download the [latest release image](https://repo.allstarlink.org/images/pi/). This will
 be named `allstar3-arm64-X.Y.Z.img.xz` where "X.Y.Z" is the version. The version will
-be something like 3.0.1. Save it to your local `Downloads` directory.
+be something like 3.0.10. Save it to your local `Downloads` directory.
 
 3. Launch **Raspberry Pi Imager** from the start menu.
 
