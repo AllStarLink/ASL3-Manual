@@ -14,7 +14,10 @@ To program your SA818 with the menu executing the following command from the Lin
 sa818-menu
 ```
 
-Here, you will be able to view the last saved (or default) settings.  The settings include :
+Here, you will be able to view the last saved (or default) settings.
+Please note that the "last saved" settings are those saved by the `sa818-menu` command on your system.  We have no way to "read" settings from the SA818 RF module.
+
+The settings include :
 
 
 | Setting | Description |
