@@ -11,10 +11,19 @@ The following instructions are for building ONLY Asterisk with ASL's app_rpt.
  - Installs and runs Asterisk as root (this is, in general, bad)
 
 ## Install phreaknet.sh script
-The phreaknet script compiles and patches Asterisk and DAHDI.
+The phreaknet script compiles and patches Asterisk and DAHDI.  You should install the script with the following commands :
 
 ```bash
-cd /usr/src && wget https://docs.phreaknet.org/script/phreaknet.sh && chmod +x phreaknet.sh && ./phreaknet.sh make
+cd /usr/src
+wget https://docs.phreaknet.org/script/phreaknet.sh
+chmod +x phreaknet.sh
+./phreaknet.sh make
+```
+
+Once installed, you can keep the script updated with :
+
+```bash
+phreaknet update
 ```
 
 ## Install Asterisk 20 LTS
@@ -58,9 +67,7 @@ This adds ASL3 configs to the full set of Asterisk configuration files. ASL3 mod
 cp /usr/src/app_rpt/configs/rpt/* /etc/asterisk
 ```
 
-> reboot the system
-
-You should now have a complete ASL3 install.
+After restarting Asterisk (or rebooting the system) you should now have a complete ASL3 install.  You can use the following command as a quick check :
 
 ```bash
 asterisk -rx "rpt localnodes"
