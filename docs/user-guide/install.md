@@ -43,16 +43,16 @@ automated updates of kernels through the standard `apt upgrade` process.
 There is no longer any reason to hold back kernel upgrades with the ASL3
 packaging.
 
-The following packages are also installed with ASL3:
+The following packages are also available and can be installed with ASL3:
 
 `allmon3` - The updated web interface to AllStarLink which includes strong
 support for mobile devices and screens of all sizes and shapes.
 
-`asl3-update-nodelist` - And updated node service to maintain a local
-database copy of the AllStarLink node database. While, in general, the
+`asl3-update-nodelist` - An updated node service to maintain a local copy of the AllStarLink node database (rpt_extnodes). While, in general, the
 preferred method of node lookup is DNS, some installations with
 slow Internet or DNS servers that have very long cache timers may benefit
 from this method of node lookup instead.
+This package also include a service to maintain a local copy of the AllStarLink node information database (astdb.txt).
 
 ## Node Configuration
 Next step is to configure the node settings. YouTuber Freddie Mac has a nice ASL3 RPi installation and configuration video. See the part where the asl-menu is shown [https://youtu.be/aeuj-yI8qrU](https://youtu.be/aeuj-yI8qrU). Also see [ASL3 Menu](menu.md) for details.
