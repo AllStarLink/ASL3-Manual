@@ -52,3 +52,19 @@ In Cockpit, look at the Storage tab:
 ![Known issue resize2fs](img/known_issue_resize2fs.png){width="600"}
 
 In this example, `/` is a 31G partition on a 32G SD card.
+
+### Shutdown/Restart Issues with EZStream/Broadcastify Enabled
+With the configuration for [Broadcastify](../adv-topics/broadcastify.md) enabled,
+shutting down or restarting Asterisk is not quick or always reliable. When
+issuing `systemctl stop` or `systemctl restart` for the `asterisk.service` unit
+it will take upwards of 90 seconds to properly terminate and exit/respawn.
+Make sure any `lame` and `ezstream` processed are killed and not orphaned.
+
+```bash
+# ps auxww | grep asterisk
+asterisk 1443572  0.0  0.0   2416  1024 ?        S    10:13   0:00 /bin/sh -c /usr/bin/lame --preset cbr 16 -r -m m -s 8 --bitwidth 16 - - | /usr/bin/ezstream -qvc /etc/ezstream.xml
+asterisk 1443573  0.1  0.1  11920  5120 ?        S    10:13   0:00 /usr/bin/lame --preset cbr 16 -r -m m -s 8 --bitwidth 16 - -
+asterisk 1443574  0.0  0.2  55232 10240 ?        S    10:13   0:00 /usr/bin/ezstream -qvc /etc/ezstream.xml
+```
+
+If Asterisk is shutdown, the processes above must be stopped with a `kill -9 PID` command.

@@ -68,7 +68,7 @@ broadcastify. The stanza is `[NNNNN](node-main)`. For example, if
 your node is 63001 then look for `[63001](node-main)`. Within that configuration
 stanza, add the following line:
 ```
-outstreamcmd = /bin/sh,-c,/usr/bin/lame --preset cbr 16 -r -m m -s 8 --bitwidth 16 - - | /usr/bin/ezstream -qvc /etc/ezstream.xml 2>/var/log/ezstream.log
+outstreamcmd = /bin/sh,-c,/usr/bin/lame --preset cbr 16 -r -m m -s 8 --bitwidth 16 - - | /usr/bin/ezstream -qvc /etc/ezstream.xml
 ```
 
 The above parameters have these meanings:
