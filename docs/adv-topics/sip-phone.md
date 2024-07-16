@@ -101,7 +101,7 @@ The ${NODE} variable is defined at the top of extensions.conf and should be your
 ```
 
 
-The entry in blue is the extension number for your sip phone.  If you want to use a different extension number, change this entry to match your extension.
+The entry **1001** in extensions.conf is the extension number for your sip phone.  If you want to use a different extension number, change **1001** to your desired extension number.
 
 _Note:  If you attempt to copy extensions.conf from a previous release of AllStarLink, it will fail.  AllStarLink version 3 requires comma delimiters instead of pipe symbols for standard asterisk functions.  The rpt function continues to use a pipe delimiter.  This is subject to change in a future release._
 
@@ -176,9 +176,9 @@ Scroll down to the section titled Endpoint Configured For Use With A Sip Phone. 
 ```
 
 
-If you want to use a different extension number, you will need to update the items in yellow with your desired number.  The item in orange should also be updated for your preferred caller identifier.
+If you want to use a different extension number, you will need to change **[1001]** with your desired number.  The item **callerid="My CallerID"** should also be updated for your preferred caller identifier.
 
-The items marked in blue should be updated to match the username and password you want for your extension number.  You should use a complex password.  Do not use the extension number.  You can use the password generator located [here ](https://www.lastpass.com/features/password-generator#generatorTool)to generate a complex password.
+The items **password=1001** and **username=1001** should be updated to match the username and password you want for your extension number.  You should use a complex password.  Do not use the extension number.  You can use the password generator located [here ](https://www.lastpass.com/features/password-generator#generatorTool)to generate a complex password.
 
 These three sections can be replicated for each extension that you want to add to the system.
 
