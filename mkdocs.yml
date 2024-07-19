@@ -61,6 +61,7 @@ nav:
     - user-guide/updates.md
     - "Differences & Issues": user-guide/known-issues-diffs.md
     - user-guide/support.md
+    - user-guide/betatest.md
   - Pi Appliance:
     - pi/index.md
     - pi/cockpit-basics.md
@@ -80,7 +81,6 @@ nav:
     - adv-topics/allowdenylists.md
     - adv-topics/other-software.md
     - adv-topics/sip-phone.md
-
     - adv-topics/broadcastify.md
     - adv-topics/misc.md
     - adv-topics/hotspot_hd.md
