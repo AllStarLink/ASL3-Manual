@@ -9,6 +9,7 @@ plugins:
 markdown_extensions:
   - attr_list
   - md_in_html
+  - pymdownx.superfences
 copyright: Copyright &copy; 2024 AllStarLink Inc.
 theme:
   name: material
