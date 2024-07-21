@@ -6,17 +6,50 @@ contributions are welcome!
 To view and edit the manual is simple. Simply clone the ASL-Manual
 project, install mkdocs (see below per platform), and begin editing.
 
+Installing [MkDocs](https://www.mkdocs.org/) is required to view/test
+the documentation. See the setup directions below for the appropriate
+platform you're running. Pages are composed in the [Markdown](https://daringfireball.net/projects/markdown/)
+format.
+
+Edits should be done in a git branch and push the branch back to
+GitHub for developers to consider inclusion. A branch is simply a 
+named copy of the repository that contains your changes. A branch
+name should be a short label of what the change is for - for
+example "add_foopage". A branch name cannot contain whitespace.
+Each branch should contain a specific set of changes that are 
+thematically related. 
+
+The general workflow, using a terminal or PowerShell session is:
 ```bash
 git clone https://github.com/AllStarLink/ASL3-Manual
 cd ASL3-Manual
-# install mkdocs here if not already installed
+git branch some_label_here
+git checkout some_label_here
 mkdocs serve
 ```
-Then browse http://127.0.0.1:8000 and the documentation.
-As you edit files in the `docs/` directory, the web browser
-window will be updated in real time by the running
-`mkdocs serve` command. Watch that terminal window for any
-error and correct them before committing code to the repository.
+
+Now the files may be edited. If you aren't sure what editor to use
+then consider using VSCode. It supports very nice syntax highlighting
+for Markdown. It also has plugins to help with managing a Git respository
+if you are unfamiliar with that.
+
+Browse http://127.0.0.1:8000 to see the existing documentation set.
+As you edit files in the `docs/` directory, the web browser window will be
+updated in real time by the running `mkdocs serve` command. Watch that
+terminal window for any error and correct them before committing
+code to the repository.
+
+After all the edits have been made. Commit the changes and push the branch
+back to GitHub:
+
+```bash
+git commit .
+git push origin some_label_here
+```
+
+After that, go to the [GitHub repository](https://github.com/AllStarLink/ASL3-Manual)
+and open a Pull Request for the changes. Describe the nature of the changes.
+One of the core developers much approve and accept the changed.
 
 ## Setup MkDocs
 ASL-Manual is generated with [MkDocs](https://www.mkdocs.org/). While it is possible
