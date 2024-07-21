@@ -73,7 +73,7 @@ nav:
   - Advanced Topics:
     - adv-topics/index.md
     - adv-topics/commands.md
-    - adv-topics/incompatibles.md    
+    - adv-topics/incompatibles.md
     - adv-topics/usbinterfaces.md
     - adv-topics/sa818modules.md
     - adv-topics/conftmpl.md
@@ -82,7 +82,6 @@ nav:
     - adv-topics/other-software.md
     - adv-topics/sip-phone.md
     - adv-topics/broadcastify.md
-    - adv-topics/misc.md
     - adv-topics/hotspot_hd.md
   - Allmon3:
     - allmon3/index.md
