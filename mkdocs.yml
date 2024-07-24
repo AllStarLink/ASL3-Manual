@@ -83,6 +83,7 @@ nav:
     - adv-topics/sip-phone.md
     - adv-topics/broadcastify.md
     - adv-topics/hotspot_hd.md
+    - adv-topics/autopatch.md
   - Allmon3:
     - allmon3/index.md
     - allmon3/install.md
