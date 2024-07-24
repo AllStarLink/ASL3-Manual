@@ -10,7 +10,6 @@
 - [Other Software Products](other-software.md)
 - [SIP Phone Setup](sip-phone.md)
 - [Broadcastify](broadcastify.md)
-- [Miscellaneous](misc.md)
 - [Hot Spot Unkey Delay](hotspot_hd.md)
 - [Autopatch](autopatch.md)
 
