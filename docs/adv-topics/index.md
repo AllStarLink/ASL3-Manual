@@ -12,4 +12,5 @@
 - [Broadcastify](broadcastify.md)
 - [Hot Spot Unkey Delay](hotspot_hd.md)
 - [Autopatch](autopatch.md)
+- [Permissions](permissions.md)
 

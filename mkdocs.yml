@@ -60,6 +60,7 @@ nav:
     - user-guide/menu.md
     - user-guide/updates.md
     - "Differences & Issues": user-guide/known-issues-diffs.md
+    - user-guide/passwords.md
     - user-guide/support.md
     - user-guide/betatest.md
   - Pi Appliance:
@@ -84,6 +85,7 @@ nav:
     - adv-topics/broadcastify.md
     - adv-topics/hotspot_hd.md
     - adv-topics/autopatch.md
+    - adv-topics/permissions.md
   - Allmon3:
     - allmon3/index.md
     - allmon3/install.md
