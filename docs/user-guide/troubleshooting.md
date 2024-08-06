@@ -23,11 +23,11 @@ I get __this particular__ error.
 * After I configured my node, I am trying to do __this particular thing__
 and it doesn't work because of __this particular error__.
 
-* I am trying to configure __this particular feature__ in `rpt.conf` amd
+* I am trying to configure __this particular feature__ in `rpt.conf` and
 when I do, __this particular thing__ happens.
 
 * I used to be able to do __this thing__ and after I change __this other thing__
-the __this thing__ stopped working.
+then __this thing__ stopped working.
 
 Basically, before submitting your question to Community, make sure your post
 contains the basics of "What am I trying to do", "what do I think should be
