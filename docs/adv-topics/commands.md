@@ -61,8 +61,9 @@ Previously app\_rpt and associated channels supported setting the debug level wi
 `core set debug x module` Where x is the debug level and module is the name of the app or module.
 
 Examples:
-`core set debug 5 app_rpt.so`
-`core set debug 3 chan_echolink.so`
+
+- `core set debug 5 app_rpt.so`
+- `core set debug 3 chan_echolink.so`
 
 ### USB EEPROM Operation
 chan\_simpleusb and chan\_usbradio allow users to store configuration information in the
