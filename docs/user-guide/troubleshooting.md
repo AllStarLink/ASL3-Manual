@@ -10,7 +10,7 @@ have no understanding of your personal setup, situation, skills, etc. In order
 to get good help, you need to ask a good question. Make sure when asking for
 help that you hit the following points:
 
-#### Explain **Precisely** is not Working Properly
+#### Explain **Precisely** What is not Working Properly
 Requests for help such as "ASL doesn't work" or "my pi crashes" or
 "I can't do X" without any further details or information is unable to be
 diagnosed and assisted.
