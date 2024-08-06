@@ -63,6 +63,7 @@ nav:
     - user-guide/passwords.md
     - user-guide/support.md
     - user-guide/betatest.md
+    - "Basic Troubleshooting Tips": user-guide/troubleshooting.md 
   - Pi Appliance:
     - pi/index.md
     - pi/cockpit-basics.md
