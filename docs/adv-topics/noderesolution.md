@@ -1,16 +1,29 @@
 # Node Resolution
 
-app_rpt has three ways to resolve a node number to an IP address. 
- 
-* An external node directory file.
-* Domain Name Service (DNS).
+app_rpt has three ways to resolve a node number to an IP address.
+
 * Statically entered in rpt.conf
+* Domain Name Service (DNS).
+* An external node directory file.
 
 The above mechanisms are used to translate a node number into its respective public IP address.  Connections are made directly between nodes using their public IP addresses.
 
-app_rpt first looks to see if the node is statically configured.  If it is not found, the setting for **node_lookup_method** in the **[general]** stanza of rpt.conf determines the next step. The default setting is to perform a DNS lookup and if not found, attempt a lookup using the external file.  For more information see [HTTP Registration](https://allstarlink.github.io/adv-topics/httpreg/)
+app_rpt first looks to see if the node is statically configured.  If it is not found, the setting for **node_lookup_method** in the **[general]** stanza of rpt.conf determines the next step. The default setting is to perform a DNS lookup and if not found, attempt a lookup using the external file.
 
-*Note:  The AllStarLink network maintains security by requiring node owners to register with AllStarLink. Before a node is published to our directory it must successfully authenticate and register with our server.* 
+The operation of this ASL3 feature is controlled by the following information in `/etc/asterisk/rpt.conf`.
+
+```text
+[general]
+node_lookup_method = both	;method used to lookup nodes
+					;both = dns lookup first, followed by external file (default)
+					;dns = dns lookup only
+					;file = external file lookup only
+```
+The node lookup routines will output debug information showing the node lookups if the debug level is set to 4 or higher.
+
+
+*Note:  The AllStarLink network maintains security by requiring node owners to register with AllStarLink. Before a node is published to our directory it must successfully authenticate and register with our server.* Related see [HTTP Registration](https://allstarlink.github.io/adv-topics/httpreg/)
+
 
 ## External Node Directory File
 

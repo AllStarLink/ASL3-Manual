@@ -13,14 +13,3 @@ register => 1999:password@register.allstarlink.org    ; This must be changed to 
 ```
 
 While IAX registration still works, please do not register with both HTTP and IAX. That would result in unnecessary server load for no gain. The long term plan is to do away with IAX registration. HTTP registration also allows load balancing and other advantages not available with IAX. The ASL3 IAX module has been replaced with the Asterisk LTS IAX2 module for upstream compatibility.
-
-The operation of this ASL3 feature is controlled by the following information in `/etc/asterisk/rpt.conf`.
-
-```text
-[general]
-node_lookup_method = both	;method used to lookup nodes
-					;both = dns lookup first, followed by external file (default)
-					;dns = dns lookup only
-					;file = external file lookup only
-```
-The node lookup routines will output debug information showing the node lookups if the debug level is set to 4 or higher.
