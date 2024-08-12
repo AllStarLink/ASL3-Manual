@@ -87,6 +87,7 @@ nav:
     - adv-topics/hotspot_hd.md
     - adv-topics/autopatch.md
     - adv-topics/permissions.md
+    - adv-topics/noderesolution.md
   - Allmon3:
     - allmon3/index.md
     - allmon3/install.md
