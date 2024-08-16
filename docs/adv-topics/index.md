@@ -14,3 +14,4 @@
 - [Autopatch](autopatch.md)
 - [Permissions](permissions.md)
 - [Node Resolution](noderesolution.md)
+- [UEFI & SecureBoot](uefi-secureboot.md)

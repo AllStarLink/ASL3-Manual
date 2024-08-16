@@ -1,9 +1,46 @@
 # Debian 12 Install
 
-These instructions are for installing ASL3 on various x86 systems. AllStarLink v3 is supported on Debian 12 Bookworm systems, and those based on Bookworm (e.g. Raspberry Pi OS). Both the x86_64/amd64 and arm64/aarch64 platforms are supported through apt/deb installation packages.
+These instructions are for installing ASL3 on general purpose operating systems manually. For
+installation in Raspberry Pis, consider using the [AllStarLink 3 Pi Appliance](pi-detailed.md)
 
-Note that currently the project does not support armv7l/armhf platforms because all known use of AllStarLink is on hardware which supports the Bookworm arm64 distribution such as Raspberry Pi 3, 4, 5, and Zero 2 W. If you have a platform that must use armv7l/armhf 32-bit packages only please file an issue at [ASL3 on GitHub](https://github.com/AllStarLink/ASL3/issues).
+!!! note "Architecture Support"
+    Currently the project does not support armv7l/armhf platforms because all known use of AllStarLink is on hardware which supports the Bookworm arm64 distribution such as Raspberry Pi 3, 4, 5, and Zero 2 W. If you have a platform that must use armv7l/armhf 32-bit packages only please file an issue at [ASL3 on GitHub](https://github.com/AllStarLink/ASL3/issues).
 
+!!! warning "Asterisk/app_rpt on VMs/Cloud"
+    Asterisk/app_rpt works fine on virtual machines in a cloud environment (often terms "VPS"). However
+    Asterisk/app_rpt requires certain kernel modules to function properly and these are provided
+    by ASL3 in the dkms-dahdi package. There are, however, two situations where Asterisk/app_rpt
+    will not work:
+
+    1. When the VPS provider is using a customized Debian using the "cloud" kernel. If the
+    output of `uname -r` refers to the kernel as something similar to 
+    "6.1.0-12-cloud-x86_64" then you **cannot** use that OS for ASL because it lacks the
+    capabiliites build the needed kernel modules. You must install a standard Debian 12
+    image which is probably a "custom install" for your provider. Ask your VPS provider
+    for support.
+
+    2. When the virtual machine is using an emulated Linux kernel. Microsoft Windows 
+    Subsystem for Linux (WSL2) is a good example of this situation. The kernel is
+    custom and not related to the operating system distribution. Asterisk/app_rpt
+    cannot work in this type of setup.
+
+## System Requirements
+The following are the system requirements for an ASL3 system:
+
+| | Minimum Required | Recommended
+|------|-----------|-------------|
+| **CPU/Platform** | 1 CPU, 64-bit, x86_64 (amd64) or ArmV8 (arm64) | 2 - 4 CPUs depending on the number of hardware devices connected to the system |
+| **Memory** | 512M | 2 G |
+| **Storage** | 8G (for OS + software) | - |
+
+!!! note "UEFI / SecureBoot"
+    For x86_64/amd64 platforms, it is recommended to disable UEFI and SecureBoot
+    if you do not need those features and your platform supports a "legacy BIOS" mode.
+    While they are a good security feature, given that
+    AllStarLink v3 requires building a kernel module, it adds likely-undesired complexity
+    for most ASL users. If you need or want to use UEFI/SecureBoot see
+    [the advanced topic document](../adv-topics/uefi-secureboot.md).
+  
 ## OS Install
 You’re going to start off by installing a new Debian 12 OS on your PC computer or virtual machine. There are instructions all over the internet that detail how to install Debian 12. Briefly you:
 
@@ -57,7 +94,11 @@ from this method of node lookup instead.
 Install with `sudo apt install asl3-update-nodelist`.
 
 ## Node Configuration
-Next step is to configure the node settings. YouTuber Freddie Mac has a nice ASL3 RPi installation and configuration video. See the part where the asl-menu is shown [https://youtu.be/aeuj-yI8qrU](https://youtu.be/aeuj-yI8qrU). Also see [ASL3 Menu](menu.md) for details.
+Next step is to configure the node settings. It is recommended to use the
+`asl-menu` command to set configuration for common use cases. See
+[ASL3 Menu](menu.md) for details. YouTuber Freddie Mac has a nice
+[ASL3 RPi installation and configuration video](https://youtu.be/aeuj-yI8qrU). See
+the part where the asl-menu is shown. 
 
 ## Docker
 Docker support will be coming in the near future.
