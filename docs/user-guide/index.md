@@ -6,7 +6,7 @@ Did you see the "Next" and "Previous" menu items? Those will page to the next se
 
 - [What's New?](whats-new.md)
 - [Raspberry Pi Image Install](pi-detailed.md)
-- [Debian 12 x86 Install](install.md)
+- [Debian 12 Install](install.md)
 - [ASL3 Menu](menu.md)
 - [Updating ASL3](updates.md)
 - [Known Issues](known-issues-diffs.md)

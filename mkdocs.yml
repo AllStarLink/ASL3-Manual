@@ -7,8 +7,10 @@ plugins:
   - glightbox
   - print-site
 markdown_extensions:
+  - admonition
   - attr_list
   - md_in_html
+  - pymdownx.details
   - pymdownx.superfences
 copyright: Copyright &copy; 2024 AllStarLink Inc.
 theme:
@@ -88,6 +90,7 @@ nav:
     - adv-topics/autopatch.md
     - adv-topics/permissions.md
     - adv-topics/noderesolution.md
+    - adv-topics/uefi-secureboot.md
   - Allmon3:
     - allmon3/index.md
     - allmon3/install.md
