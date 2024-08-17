@@ -76,6 +76,7 @@ console is connected. Then, reboot the system.
         is wiped and Step #1 will have to be run again.
 
 3. Complete the steps to review, unlock, and load the MOK
+    
     !!! tip "The next step varies by vendor"
         The next step uses screenshots from a Linux/QEMU virtual
         environment. Every device manufacturer or cloud provider will

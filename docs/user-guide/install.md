@@ -1,10 +1,10 @@
 # Debian 12 Install
 
 These instructions are for installing ASL3 on general purpose operating systems manually. For
-installation in Raspberry Pis, consider using the [AllStarLink 3 Pi Appliance](pi-detailed.md)
+installation on Raspberry Pis, consider using the [AllStarLink 3 Pi Appliance](pi-detailed.md)
 
 !!! note "Architecture Support"
-    Currently the project does not support armv7l/armhf platforms because all known use of AllStarLink is on hardware which supports the Bookworm arm64 distribution such as Raspberry Pi 3, 4, 5, and Zero 2 W. If you have a platform that must use armv7l/armhf 32-bit packages only please file an issue at [ASL3 on GitHub](https://github.com/AllStarLink/ASL3/issues).
+    Currently, the project does not support armv7l/armhf platforms because all known uses of AllStarLink is on hardware which supports the Bookworm arm64 distribution such as Raspberry Pi 3, 4, 5, and Zero 2 W. If you have a platform that can use armv7l/armhf 32-bit packages only please file an issue at [ASL3 on GitHub](https://github.com/AllStarLink/ASL3/issues).
 
 !!! warning "Asterisk/app_rpt on VMs/Cloud"
     Asterisk/app_rpt works fine on virtual machines in a cloud environment (often terms "VPS"). However
@@ -15,7 +15,7 @@ installation in Raspberry Pis, consider using the [AllStarLink 3 Pi Appliance](p
     1. When the VPS provider is using a customized Debian using the "cloud" kernel. If the
     output of `uname -r` refers to the kernel as something similar to 
     "6.1.0-12-cloud-x86_64" then you **cannot** use that OS for ASL because it lacks the
-    capabiliites build the needed kernel modules. You must install a standard Debian 12
+    capabilities build the needed kernel modules. You must install a standard Debian 12
     image which is probably a "custom install" for your provider. Ask your VPS provider
     for support.
 
@@ -95,7 +95,7 @@ Install with `sudo apt install asl3-update-nodelist`.
 
 ## Node Configuration
 Next step is to configure the node settings. It is recommended to use the
-`asl-menu` command to set configuration for common use cases. See
+`asl-menu` command to manage the configuration for common use cases. See
 [ASL3 Menu](menu.md) for details. YouTuber Freddie Mac has a nice
 [ASL3 RPi installation and configuration video](https://youtu.be/aeuj-yI8qrU). See
 the part where the asl-menu is shown. 
