@@ -50,6 +50,8 @@ You’re going to start off by installing a new Debian 12 OS on your PC computer
  - Do install `web server` (if you plan to use Allmon3 or other web management packages)
  - Do install `SSH server`
 
+Note: When setting up users and passwords you may be prompted to set the password for the 'root' account.  If you do not provide a password then the root account will be disabled and the system's initial user account (that will requested on the next screen) will be given the power to become root using the "sudo" command.  If you do provide a password then the "sudo" command will not be installed on your system.  Our recommendation is to NOT set the 'root' password and rely on using the "sudo" command only when needed.
+
 ## AllStarLink Package Repo Install
 Once your Debian system is up and running, install the ASL package repositories:
 
