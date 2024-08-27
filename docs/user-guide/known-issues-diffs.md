@@ -35,6 +35,49 @@ for other potential workarounds.
 The following issues are currently known to exist in AllStarLink 3 and,
 where possible what the workarounds are.
 
+### DTMF Linking + DNS Lookup Timeouts
+There are intermittent cases of linking problems in the following situation:
+
+1. When a linking command (e.g. `*3`) is sent in DTMF; AND
+2. Certain network configurations or situations do not resolve DNS "fast enough"
+
+This issue is fully described in [app_rpt GitHub issue #392](https://github.com/AllStarLink/app_rpt/issues/392). In summary, if the DTMF finaly entry, decoding, and DNS resolution
+for a link command collectively takes longer than 3 seconds, linking can
+fail in silent and indeterminate ways.
+
+If this problem is occurring **consistently**, changing the node lookup
+method to "file" works around the issue until updated code to resolve this problem
+can be developed and tested:
+
+1. If you are not running the ASL3 Pi Appliance, install the asl3-update-nodelist
+application:
+
+    ```bash
+    sudo apt install -y asl3-update-nodelist
+    ```
+
+2. Edit `/etc/asterisk/rpt.conf`. Somewhere at or around line 10 (depending on
+file customizations) and change the `node_lookup_method` to `file`
+instead of `both`. An example looks like:
+
+    ```bash
+    [general]
+    node_lookup_method = file       ;method used to lookup nodes
+                                    ;both = dns lookup first, followed by external file (default)
+                                    ;dns = dns lookup only
+                                    ;file = external file lookup only
+
+    ```
+
+    This file is editable using `asl-menu`.
+
+3. Restart Asterisk using `asl-menu` or `systemctl restsart asterisk`.
+
+Once the fix is completed and made available, it will be announced on the
+[ASL Community](https://community.allstarlink.org) and you should change
+`node_lookup_method` to `both`. Eventually the "file" method will be
+retired.
+
 ### resize2fs_once "Error"
 There are intermittent cases of errors on the screen or in 
 the system logs about a failure of a service named 
