@@ -56,7 +56,7 @@ application:
     sudo apt install -y asl3-update-nodelist
     ```
 
-2. Edit `/etc/asterisk/rpt.conf`. Somewhere at or around line 10 (depending on
+2. For everyone, edit `/etc/asterisk/rpt.conf`. Somewhere at or around line 10 (depending on
 file customizations) and change the `node_lookup_method` to `file`
 instead of `both`. An example looks like:
 
