@@ -18,6 +18,14 @@ The command itself and any file it references must be readable by the "asterisk"
 Any files that the command needs to modify must be writable by the "asterisk" user.
 Lastly, the parent directory of any file being created must also be writable.
 
+!!! warning "Asterisk User and Sudo"
+    Do not give general access to `sudo` to the `asterisk` user. This is very
+    **dangerous** and poor practice. While people will state "I've always
+    done it this way" it is, in fact, a serious security risk. As AllStarLink
+    is run on the public internet for many repeater sites, the development
+    team prioritizes security of the system. For common uses of this, namely
+    restarting services and shutting down a node, see [Managing Services and OS Shutdowns/Reboots](#managing-services-and-os-shutdownsreboots).
+
 ## Filesystem Permissions
 
 The following is a very brief overview of Linux filesystem permissions.
@@ -77,3 +85,41 @@ A process with "write" permission to a directory can add/remove/rename files in 
 If a command/script is writable then it can be changed to "do something different" when it is next executed.
 When updating filesystem permissions, please remember that doing so can potentially expose the contents of files (and directories) to others.
 Be cautious!
+
+### Managing Services and OS Shutdowns/Reboots
+Beginning with **asl3-3.4.0**, AllStarLink v3 comes with a PolicyKit ruleset
+to permit the asterisk user to execute a limited number of actions
+without the need for sudo or prompting for a password. Those are:
+
+* `systemctl stop asterisk`
+* `systemctl restart asterisk`
+* `systemctl stop allmon3`
+* `systemctl restart asterisk`
+* `/usr/sbin/poweroff`
+* `/usr/sbin/reboot`
+
+Using a combination of wrapper scripts and appropriate function
+configuration, Asterisk can restart itself, Allmon3, shutdown the system,
+or reboot the system. Use of the wrapper scripts for `systemctl`
+commands is essential for a clean execution of the scripts under the
+polkit rules. The provided wrappers are:
+
+* `/etc/asterisk/scripts/allmon3-restart`
+* `/etc/asterisk/scripts/allmon3-stop`
+* `/etc/asterisk/scripts/asterisk-restart`
+* `/etc/asterisk/scripts/asterisk-stop`
+
+These privileges can be used inside `/etc/asterisk/rpt.conf`
+within the `[functions]` stanza as follows:
+
+```
+9001 = cmd,/etc/asterisk/scripts/asterisk-restart
+9002 = cmd,/etc/asterisk/scripts/asterisk-stop
+9003 = cmd,/etc/asterisk/scripts/allmon3-restart
+9004 = cmd,/etc/asterisk/scripts/allmon3-stop
+9005 = cmd,/usr/sbin/shutdown
+9006 = cmd,/usr/sbin/reboot
+```
+
+The command `*9001` would restart asterisk, `*9006` would reboot the
+system, etc.
