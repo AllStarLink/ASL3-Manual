@@ -60,6 +60,7 @@ nav:
     - user-guide/pi-detailed.md
     - user-guide/install.md
     - user-guide/menu.md
+    - user-guide/asl-cmds-tools.md
     - user-guide/updates.md
     - "Differences & Issues": user-guide/known-issues-diffs.md
     - user-guide/passwords.md
@@ -91,11 +92,18 @@ nav:
     - adv-topics/permissions.md
     - adv-topics/noderesolution.md
     - adv-topics/uefi-secureboot.md
+    - adv-topics/tts.md
   - Allmon3:
     - allmon3/index.md
     - allmon3/install.md
     - allmon3/config.md
     - allmon3/usermgmt.md
+  - Manpages:
+    - mans/asl-find-sound.md
+    - mans/asl-node-lookup.md
+    - mans/asl-play-arn.md
+    - mans/asl-say.md
+    - mans/asl-setup-dkms-mok.md
   - Developer Guide:
     - developers/index.md
     - developers/package-builds.md

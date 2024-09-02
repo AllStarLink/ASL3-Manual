@@ -15,3 +15,4 @@
 - [Permissions](permissions.md)
 - [Node Resolution](noderesolution.md)
 - [UEFI & SecureBoot](uefi-secureboot.md)
+- [Text to Speech](tts.md)
