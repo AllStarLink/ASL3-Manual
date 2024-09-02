@@ -93,8 +93,10 @@ without the need for sudo or prompting for a password. Those are:
 
 * `systemctl stop asterisk`
 * `systemctl restart asterisk`
+* `systemctl start asterisk`
 * `systemctl stop allmon3`
-* `systemctl restart asterisk`
+* `systemctl restart allmon3`
+* `systemctl start allmon3`
 * `/usr/sbin/poweroff`
 * `/usr/sbin/reboot`
 
@@ -105,8 +107,10 @@ commands is essential for a clean execution of the scripts under the
 polkit rules. The provided wrappers are:
 
 * `/etc/asterisk/scripts/allmon3-restart`
+* `/etc/asterisk/scripts/allmon3-start`
 * `/etc/asterisk/scripts/allmon3-stop`
 * `/etc/asterisk/scripts/asterisk-restart`
+* `/etc/asterisk/scripts/asterisk-start`
 * `/etc/asterisk/scripts/asterisk-stop`
 
 These privileges can be used inside `/etc/asterisk/rpt.conf`
