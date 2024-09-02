@@ -8,6 +8,7 @@ Did you see the "Next" and "Previous" menu items? Those will page to the next se
 - [Raspberry Pi Image Install](pi-detailed.md)
 - [Debian 12 Install](install.md)
 - [ASL3 Menu](menu.md)
+- [ASL Commands and Tools](asl-cmds-tools.md)
 - [Updating ASL3](updates.md)
 - [Known Issues](known-issues-diffs.md)
 - [Logins and Passwords](passwords.md)
