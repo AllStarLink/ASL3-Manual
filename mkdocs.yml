@@ -78,6 +78,7 @@ nav:
   - Advanced Topics:
     - adv-topics/index.md
     - adv-topics/commands.md
+    - adv-topics/iaxreg.md
     - adv-topics/incompatibles.md
     - adv-topics/usbinterfaces.md
     - adv-topics/sa818modules.md

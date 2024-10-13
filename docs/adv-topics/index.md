@@ -16,3 +16,4 @@
 - [Node Resolution](noderesolution.md)
 - [UEFI & SecureBoot](uefi-secureboot.md)
 - [Text to Speech](tts.md)
+- [Using IAX Registration](iaxreg.md)
