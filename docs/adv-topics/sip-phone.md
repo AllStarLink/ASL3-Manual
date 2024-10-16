@@ -81,7 +81,7 @@ The next step is to update extension.conf.  This creates a dial plan that contro
     exten => ${NODE},n,Set(NODENUM=${CALLERID(number)})
     exten => ${NODE},n,Playback(extension)
     exten => ${NODE},n,SayDigits(${NODENUM})
-    exten => ${NODE},n,Playback(connected)
+    exten => ${NODE},n,Playback(rpt/connected)
     exten => ${NODE},n,Playback(rpt/node)
     exten => ${NODE},n,SayDigits(${EXTEN})
     exten => ${NODE},n,rpt(${EXTEN}|P)
@@ -89,7 +89,7 @@ The next step is to update extension.conf.  This creates a dial plan that contro
 ```
 
 
-The above dial plan will allow your sip phone to dial your node number.  This dial plan announces the extension number and the connecting node number.  The orange highlighted lines can be removed if you do not want the announcement.
+The above dial plan will allow your SIP phone to dial your node number.  In this example one should use *99 to enable PTT and # to disable PTT from the SIP phone.  VOX is also an option for phone connections.  When using VOX, one may want to mute the mic on the phone when not transmitting and unmute to transmit.  VOX is enable by adding a 'v' to the rpt app line like this: "exten => ${NODE},n,rpt(${EXTEN}|Pv)"  This dial plan announces the extension number and the connecting node number.  The lines with SayDigits and Playback can be removed if you do not want the announcement.
 
 The ${NODE} variable is defined at the top of extensions.conf and should be your assigned node number.  See the following.
 
