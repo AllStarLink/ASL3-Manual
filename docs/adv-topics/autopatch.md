@@ -37,10 +37,24 @@ or iax.conf respectively.
 
 ## Configuration Files
 
-Three configuration files will be used to setup the autopatch: **rpt.conf**, **extensions.conf** and 
-**iax.conf** or **sip.conf**. The VOIP provider should provide a stanza for you to insert in 
-**iax.conf** or **sip.conf**. The configuration below shows how each of these files are 
+Four configuration files will be used to setup the autopatch: **rpt.conf**, 
+**extensions.conf**, **modules.conf**, and **iax.conf** or **sip.conf**. 
+The VOIP provider should provide a stanza for you to insert in **iax.conf** 
+or **sip.conf**. The configuration below shows how each of these files are 
 used when an outgoing autopatch call is made.
+
+In the **modules.conf** file, add these modules at the bottom of the file, but 
+above the [global] stanza:
+
+```
+load => bridge_builtin_features.so
+load => bridge_builtin_interval_features.so
+load => bridge_holding.so
+load => bridge_native_rtp.so
+load => bridge_simple.so
+load => bridge_softmix.so
+load => chan_bridge_media.so
+```
 
 In the **rpt.conf** configuration file, a context in extensions.conf is defined 
 in a node stanza using the context key:
@@ -78,10 +92,11 @@ exten => _1NXXNXXXXXX,1,Dial,SIP/peername/${EXTEN}
 exten => _1NXXNXXXXXX,2,Congestion 
 ```
 
-The peer stanza you insert in **iax.conf** or **sip.conf** should preferably be 
-provided by your VOIP provider. You'll want to use the stanza they identify for 
-performing outgoing connections. A nonoperational example of an iax2 peer stanza 
-looks like this:
+The peer stanza you insert in **iax.conf** or **sip.conf** should 
+preferably be provided by your VOIP provider. You'll want to use the stanza 
+they identify for performing outgoing connections.  The SIP module has been 
+removed from ASL3 and one must now use PJSIP. A nonoperational example 
+of an iax2 peer stanza looks like this:
 ```
 [peername]
 type=peer 
