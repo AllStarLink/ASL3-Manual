@@ -2,7 +2,7 @@
 This document describes the steps necessary to set up a SIP phone in ASL3.  The setup procedure has changed due to the depreciation of chan_sip.  Users are now required to use chan_pjsip.  chan_pjsip brings new features to the sip stack and is the supported sip channel for the future.
 
 ## Update modules.conf
-chan_pjsip requires a number of modules to be loaded.  You should start by editing /etc/asterisk/modules.conf and add the following at the bottom of the file:
+chan_pjsip requires a number of modules to be loaded.  You should start by editing /etc/asterisk/modules.conf and add the following close to the bottom of the file, but above the [global] stanza:
 
 
 ```
@@ -64,6 +64,9 @@ chan_pjsip requires a number of modules to be loaded.  You should start by editi
     load = res_sorcery_config.so
     load = res_sorcery_memory.so
     load = res_sorcery_realtime.so
+
+[global]
+
 ```
 
 
