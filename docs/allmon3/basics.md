@@ -1,4 +1,4 @@
-# Allmon3
+# Basics
 
 Allmon is the standard web-based monitoring and management for the AllStarLink v3.
 Allmon3 is the next generation of web dashboards for AllStarLink,
@@ -16,4 +16,4 @@ Allmon3 features and functionality shall be governed by the following guidelines
 All code of Allmon3 not otherwise licensed (e.g., Bootstrap, etc.) is licensed
 under the [GNU Affero General Public License v3](https://www.gnu.org/licenses/why-affero-gpl.html).
 The choice of the AGPLv3 promotes giving back to the amateur radio and
-ASL communities.
+ASL communities. 

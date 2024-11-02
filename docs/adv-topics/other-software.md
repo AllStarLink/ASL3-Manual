@@ -4,7 +4,7 @@ The following information relates to software components related to AllStarLink.
 
 ## Web Dashboards
 
-The primary web dashboard supported by AllStarLink is [Allmon3](../allmon3/index.md).
+The primary web dashboard supported by AllStarLink is [Allmon3](../allmon3/basics.md).
 
 But, we know there are other dashboards available and everyone has their own personal favorite.
 We also know that some of the other dashboards make use of database ("astdb.txt").
