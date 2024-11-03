@@ -6,6 +6,11 @@ contributions are welcome!
 To view and edit the manual is simple. Simply clone the ASL-Manual
 project, install mkdocs (see below per platform), and begin editing.
 
+Before cloning the project, contact N8EI and provide your GitHub account ID
+so you can be added to the Contributors group for this repository. This makes
+editing the documentation much easier than trying to fork/pull from your
+own copy of the repository.
+
 Installing [MkDocs](https://www.mkdocs.org/) is required to view/test
 the documentation. See the setup directions below for the appropriate
 platform you're running. Pages are composed in the [Markdown](https://daringfireball.net/projects/markdown/)
@@ -57,45 +62,66 @@ to contribute to the manual without installing MkDocs, it would be difficult.
 Fortunately MkDocs is available on all normal user platforms with Python pip.
 
 ### Windows 10/11
-- Install Python3 with the Windows installer
+- Download and install the lastest stable version of Python3 (currently Python 3.13) with the Windows installer - [Downloads](https://www.python.org/downloads/)
+- Download and install the latest version of Git with the Windows standalone installer - [Downloads](https://git-scm.com/downloads/win)
+- If you are not familiar with working with SSH keys, install the GitHub cli tool:
+    ```psexec
+    winget install --id GitHub.cli
+    ```
+- If you don't already have a preferred text/code editor, install VSCode from the Windows Store - [Store Link](https://apps.microsoft.com/store/detail/XP9KHM4BK9FZ7Q?ocid=pdpshare)
 - Checkout the project as described below in **Contributing to the Manual**
 - Install mkdocs from PowerShell
-```bash
-pip install -r requirements.txt
-```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 ### MacOS
 - Install Python3 with the Mac installer as needed `brew install python3`
 - Checkout the project as described below in **Contributing to the Manual**
 - Create a virtual python environment and install the necessary packages
-```bash
-python3 -m venv ~/.mkdocs
-. ~/.mkdocs/bin/activate
-pip install -r requirements.txt
-```
+    ```bash
+    python3 -m venv ~/.mkdocs
+    . ~/.mkdocs/bin/activate
+    pip install -r requirements.txt
+    ```
 
 Every new shell, enter the python venv with `. ~/.mkdocs/bin/activate` before
 beginning to use any `mkdocs` commands.
-
-My zsh prompt now leads with `(.mkdocs)`. 
 
 ### Debian Linux
+- Install git and Python Pip
+    ```bash
+    apt install git python3-pip
+    ```
 - Checkout the project as described below in **Contributing to the Manual**
 - Create a virtual python environment and install the necessary packages
-```bash
-python3 -m venv ~/.mkdocs
-. ~/.mkdocs/bin/activate
-pip install -r requirements.txt
-```
-
+    ```bash
+    python3 -m venv ~/.mkdocs
+    . ~/.mkdocs/bin/activate
+    pip install -r requirements.txt
+    ```
 Every new shell, enter the python venv with `. ~/.mkdocs/bin/activate` before
 beginning to use any `mkdocs` commands.
 
-## Site Generation
-Use `mkdocs build` to compile the site into HTML. However, never
-check the directory `site` into the ASL-Manual repository.
+## Guides to Help Get Started
+#### GitHub
+- [Creating a GitHub account](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github)
+- [Verify your email with GitHub](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/verifying-your-email-address)
+- [Authenticating to GitHub with gh](https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git#github-cli)
+- [Add an SSH key to GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
+#### Basics of Git
+- [Get started with Git](https://docs.github.com/en/get-started/getting-started-with-git/set-up-git)
+- [Basic Git](https://docs.github.com/en/get-started/using-git/about-git)
+  
+#### Basics of Markdown
+- [Markdown Syntax](https://www.markdownguide.org/basic-syntax/)
+- [Markdown Tutorial](https://www.markdownguide.org/getting-started/)
+- [MKDocs Material Markdown Add-Ons](https://squidfunk.github.io/mkdocs-material/reference/)
+  
 ## Publishing to GitHub.io
+This is for repo admins only.
+
 You need working copies of two repositories on your local system. The
 directory structure should look like this:
 ```text
