@@ -2,70 +2,69 @@
 This document describes the steps necessary to set up a SIP phone in ASL3.  The setup procedure has changed due to the deprecation of chan\_sip.  Users are now required to use chan\_pjsip.  chan\_pjsip brings new features to the SIP stack and is the supported SIP channel for the future.
 
 ## Update modules.conf
-chan\_pjsip requires a number of modules to be loaded.  You should start by editing `/etc/asterisk/modules.conf` and add the following close to the bottom of the file, but above the [global] stanza:
+chan_pjsip requires a number of modules to be loaded.  You should start by editing /etc/asterisk/modules.conf and add the following close to the bottom of the file, but above the [global] stanza:
 
 ```
-;
-;modules for pjsip
-;
-noload = app_voicemail.so
-load = bridge_builtin_features.so
-load = bridge_builtin_interval_features.so
-load = bridge_holding.so
-load = bridge_native_rtp.so
-load = bridge_simple.so
-load = bridge_softmix.so
-load = chan_bridge_media.so
-load = chan_pjsip.so
-load = func_pjsip_endpoint.so
-load = func_sorcery.so
-load = func_devstate.so
-load = res_pjproject.so
-load = res_pjsip_acl.so
-load = res_pjsip_authenticator_digest.so
-load = res_pjsip_caller_id.so
-load = res_pjsip_dialog_info_body_generator.so
-load = res_pjsip_diversion.so
-load = res_pjsip_dtmf_info.so
-load = res_pjsip_endpoint_identifier_anonymous.so
-load = res_pjsip_endpoint_identifier_ip.so
-load = res_pjsip_endpoint_identifier_user.so
-load = res_pjsip_exten_state.so
-load = res_pjsip_header_funcs.so
-load = res_pjsip_logger.so
-load = res_pjsip_messaging.so
-load = res_pjsip_mwi_body_generator.so
-load = res_pjsip_mwi.so
-load = res_pjsip_nat.so
-load = res_pjsip_notify.so
-load = res_pjsip_one_touch_record_info.so
-load = res_pjsip_outbound_authenticator_digest.so
-load = res_pjsip_outbound_publish.so
-load = res_pjsip_outbound_registration.so
-load = res_pjsip_path.so
-load = res_pjsip_pidf_body_generator.so
-load = res_pjsip_pidf_digium_body_supplement.so
-load = res_pjsip_pidf_eyebeam_body_supplement.so
-load = res_pjsip_publish_asterisk.so
-load = res_pjsip_pubsub.so
-load = res_pjsip_refer.so
-load = res_pjsip_registrar.so
-load = res_pjsip_rfc3326.so
-load = res_pjsip_sdp_rtp.so
-load = res_pjsip_send_to_voicemail.so
-load = res_pjsip_session.so
-load = res_pjsip.so
-noload = res_pjsip_t38.so
-noload = res_pjsip_transport_websocket.so
-load = res_pjsip_xpidf_body_generator.so
-load = res_rtp_asterisk.so
-load = res_sorcery_astdb.so
-load = res_sorcery_config.so
-load = res_sorcery_memory.so
-load = res_sorcery_realtime.so
+    ;
+    ;modules for pjsip
+    ;
+    noload = app_voicemail.so
+    load = bridge_builtin_features.so
+    load = bridge_builtin_interval_features.so
+    load = bridge_holding.so
+    load = bridge_native_rtp.so
+    load = bridge_simple.so
+    load = bridge_softmix.so
+    load = chan_bridge_media.so
+    load = chan_pjsip.so
+    load = func_pjsip_endpoint.so
+    load = func_sorcery.so
+    load = func_devstate.so
+    load = res_pjproject.so
+    load = res_pjsip_acl.so
+    load = res_pjsip_authenticator_digest.so
+    load = res_pjsip_caller_id.so
+    load = res_pjsip_dialog_info_body_generator.so
+    load = res_pjsip_diversion.so
+    load = res_pjsip_dtmf_info.so
+    load = res_pjsip_endpoint_identifier_anonymous.so
+    load = res_pjsip_endpoint_identifier_ip.so
+    load = res_pjsip_endpoint_identifier_user.so
+    load = res_pjsip_exten_state.so
+    load = res_pjsip_header_funcs.so
+    load = res_pjsip_logger.so
+    load = res_pjsip_messaging.so
+    load = res_pjsip_mwi_body_generator.so
+    load = res_pjsip_mwi.so
+    load = res_pjsip_nat.so
+    load = res_pjsip_notify.so
+    load = res_pjsip_one_touch_record_info.so
+    load = res_pjsip_outbound_authenticator_digest.so
+    load = res_pjsip_outbound_publish.so
+    load = res_pjsip_outbound_registration.so
+    load = res_pjsip_path.so
+    load = res_pjsip_pidf_body_generator.so
+    load = res_pjsip_pidf_digium_body_supplement.so
+    load = res_pjsip_pidf_eyebeam_body_supplement.so
+    load = res_pjsip_publish_asterisk.so
+    load = res_pjsip_pubsub.so
+    load = res_pjsip_refer.so
+    load = res_pjsip_registrar.so
+    load = res_pjsip_rfc3326.so
+    load = res_pjsip_sdp_rtp.so
+    load = res_pjsip_send_to_voicemail.so
+    load = res_pjsip_session.so
+    load = res_pjsip.so
+    noload = res_pjsip_t38.so
+    noload = res_pjsip_transport_websocket.so
+    load = res_pjsip_xpidf_body_generator.so
+    load = res_rtp_asterisk.so
+    load = res_sorcery_astdb.so
+    load = res_sorcery_config.so
+    load = res_sorcery_memory.so
+    load = res_sorcery_realtime.so
 
 [global]
-
 ```
 
 
