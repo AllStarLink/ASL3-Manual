@@ -41,7 +41,7 @@ There are intermittent cases of linking problems in the following situation:
 1. When a linking command (e.g. `*3`) is sent in DTMF; AND
 2. Certain network configurations or situations do not resolve DNS "fast enough"
 
-This issue is fully described in [app_rpt GitHub issue #392](https://github.com/AllStarLink/app_rpt/issues/392). In summary, if the DTMF finaly entry, decoding, and DNS resolution
+This issue is fully described in [app_rpt GitHub issue #392](https://github.com/AllStarLink/app_rpt/issues/392). In summary, if the DTMF entry, decoding, and DNS resolution
 for a link command collectively takes longer than 3 seconds, linking can
 fail in silent and indeterminate ways.
 
@@ -49,16 +49,15 @@ If this problem is occurring **consistently**, changing the node lookup
 method to "file" works around the issue until updated code to resolve this problem
 can be developed and tested:
 
-1. If you are not running the ASL3 Pi Appliance, install the asl3-update-nodelist
-application:
+1. Install the asl3-update-nodelist package (not needed for those running the ASL3 Pi Appliance):
 
     ```bash
     sudo apt install -y asl3-update-nodelist
     ```
 
-2. For everyone, edit `/etc/asterisk/rpt.conf`. Somewhere at or around line 10 (depending on
-file customizations) and change the `node_lookup_method` to `file`
-instead of `both`. An example looks like:
+2. Edit `/etc/asterisk/rpt.conf`. Somewhere at or around line 10 (depending on
+file customizations) you will need to change the `node_lookup_method` to `file`
+instead of `both`. After your change the file shoud look like:
 
     ```bash
     [general]
@@ -69,9 +68,9 @@ instead of `both`. An example looks like:
 
     ```
 
-    This file is editable using `asl-menu`.
+    This file can be updated using `asl-menu` "Expert Configuration Menu" / "Edit rpt.conf file" or your favorite editor.
 
-3. Restart Asterisk using `asl-menu` or `systemctl restsart asterisk`.
+3. Restart Asterisk using `asl-menu` "Node Settings" / "Restart Asterisk" or `systemctl restart asterisk`.
 
 Once the fix is completed and made available, it will be announced on the
 [ASL Community](https://community.allstarlink.org) and you should change
