@@ -54,29 +54,41 @@ extra:
       name: AllStarLink on GitHub
 nav:
   - Home: index.md
-  - User Guide:
+  - Installation:
     - user-guide/index.md
-    - "What's New?": user-guide/whats-new.md
-    - user-guide/pi-detailed.md
-    - user-guide/install.md
+    - ASL3 Installation:
+      - "What's New?": user-guide/whats-new.md
+      - user-guide/pi-detailed.md
+      - user-guide/install.md
+      - user-guide/updates.md
+      - "Differences & Issues": user-guide/known-issues-diffs.md
+    - Allmon3:
+      - allmon3/basics.md
+      - allmon3/install.md
+      - allmon3/config.md
+      - allmon3/usermgmt.md
+  - Basic Operation:
     - user-guide/menu.md
     - user-guide/asl-cmds-tools.md
-    - user-guide/updates.md
-    - "Differences & Issues": user-guide/known-issues-diffs.md
     - user-guide/passwords.md
     - user-guide/support.md
     - user-guide/betatest.md
-    - "Basic Troubleshooting Tips": user-guide/troubleshooting.md 
-  - Pi Appliance:
-    - pi/index.md
-    - pi/cockpit-basics.md
-    - pi/cockpit-console.md
-    - pi/cockpit-network.md
-    - pi/cockpit-updates.md
-    - pi/cockpit-services.md
-    - pi/cockpit-firewall.md
+    - "Basic Troubleshooting Tips": user-guide/troubleshooting.md
+    - Pi Appliance:
+      - "Getting Started": pi/cockpit-get-started.md
+      - pi/cockpit-basics.md
+      - pi/cockpit-console.md
+      - pi/cockpit-network.md
+      - pi/cockpit-updates.md
+      - pi/cockpit-services.md
+      - pi/cockpit-firewall.md
+    - Manpages:
+      - mans/asl-find-sound.md
+      - mans/asl-node-lookup.md
+      - mans/asl-play-arn.md
+      - mans/asl-say.md
+      - mans/asl-setup-dkms-mok.md
   - Advanced Topics:
-    - adv-topics/index.md
     - adv-topics/commands.md
     - adv-topics/iaxreg.md
     - adv-topics/incompatibles.md
@@ -94,19 +106,7 @@ nav:
     - adv-topics/noderesolution.md
     - adv-topics/uefi-secureboot.md
     - adv-topics/tts.md
-  - Allmon3:
-    - allmon3/index.md
-    - allmon3/install.md
-    - allmon3/config.md
-    - allmon3/usermgmt.md
-  - Manpages:
-    - mans/asl-find-sound.md
-    - mans/asl-node-lookup.md
-    - mans/asl-play-arn.md
-    - mans/asl-say.md
-    - mans/asl-setup-dkms-mok.md
   - Developer Guide:
-    - developers/index.md
     - developers/package-builds.md
     - developers/source-install.md
     - developers/aptly.md

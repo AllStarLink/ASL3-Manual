@@ -167,7 +167,7 @@ above. Click **Log in**
     ![Step 22](img/step-22.png)
 
 23. The Overview tab is displayed. Using the Web Admin Portal (Cockpit)
- with AllStarLink is [covered in the manual](../pi/index.md). At the top,
+ with AllStarLink is [covered in the manual](../pi/cockpit-get-started.md). At the top,
  click on **Turn on administrative access*
 
     ![Step 23](img/step-23.png)
@@ -218,7 +218,7 @@ The default-configured username and password combination is `allmon3 / password`
 - Type `sudo systemctl restart allmon3` to load the new login.
 
 Details on updating the login(s) and other Allmon3 settings can be found in the
-[Allmon3 section of the manual.](../allmon3/index.md).
+[Allmon3 section of the manual.](../allmon3/basics.md).
 
 ## Logging Out
 When finished with the admin system, click on **Session**

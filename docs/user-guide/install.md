@@ -86,7 +86,7 @@ The following packages are also available and may be installed separately:
 
 **Allmon3** - The updated web interface to AllStarLink which includes strong
 support for mobile devices and screens of all sizes and shapes.
-See the [Allmon3 page](../allmon3/index.md) for details.
+See the [Allmon3 page](../allmon3/basics.md) for details.
 
 **ASL3 Nodelist Updater** - An updated node service to maintain a local copy of
 the AllStarLink node database (rpt_extnodes). While, in general, the
