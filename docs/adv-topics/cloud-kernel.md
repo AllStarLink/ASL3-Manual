@@ -8,6 +8,24 @@ While this kernel is usually beneficial due to its smaller footprint
 than the full kernel through the removal of hardware elements, the
 Asterisk app_rpt module requires the support of these elements.
 
+## Diagnosing a DAHDI Kernel Issue
+Problems with Asterisk/app_rpt related to the DAHDI module being unavailable
+can be see by the following log messages at boot:
+
+```
+[2024-12-10 15:09:19.780] ERROR[930155] loader.c: res_timing_dahdi declined to load.
+[2024-12-10 15:09:19.818] NOTICE[930201] app_rpt.c: Normal Repeater Init  63001
+[2024-12-10 15:09:19.818] WARNING[930220][C-00000001] chan_dahdi.c: Unable to open '/dev/dahdi/pseudo': No such file or directory
+[2024-12-10 15:09:19.818] ERROR[930220][C-00000001] chan_dahdi.c: Unable to dup channel: No such file or directory
+[2024-12-10 15:09:19.818] ERROR[930220] app_rpt/rpt_bridging.c: Failed to request dahdi/pseudo
+[2024-12-10 15:09:19.818] WARNING[930220] app_rpt.c: Disabled broken repeater 63001
+```
+
+This appears in `/var/log/asterisk/messages.log` not long after Asterisk 
+begins to start.
+
+## Converting from Cloud to Normal Kernel
+
 After installing a Debian Linux 12 image that is using a cloud
 kernel, the following procedure can be used to change the OS to use
 the normal kernel that will allow the building of the DAHDI module
