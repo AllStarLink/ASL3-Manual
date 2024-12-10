@@ -27,7 +27,7 @@ See [Menu](menu.md) for details.
 
 ## Configuration Changes
 
-The first thing to know about ASL3 configuration is that the menu can be used to make and view common changes. Here are the highlights. You may want to read about [Advanced Topics](../adv-topics/) and [New Commands](../adv-topics/commands.md) details later.
+The first thing to know about ASL3 configuration is that the menu can be used to make and view common changes. Here are the highlights. You may want to read about [Advanced Topics](../adv-topics/commands.md) and [New Commands](../adv-topics/commands.md) details later.
 
 - You may edit the conf files without concern of switching between editing and using the menu. The tune menus are removing leading white space from comments (we're hoping to fix this).
 - An Asterisk template is now used within `rpt.conf`, `simpleusb.conf`, and `usbradio.conf`.  Editing is much easier but it's different than with other versions of AllStar. Node settings are much simpler with only a few lines needed to be added/updated for each node. The ASL3 menu handles the new templated configuration.
