@@ -14,10 +14,8 @@ installation on Raspberry Pis, consider using the [AllStarLink 3 Pi Appliance](p
 
     1. When the VPS provider is using a customized Debian using the "cloud" kernel. If the
     output of `uname -r` refers to the kernel as something similar to 
-    "6.1.0-12-cloud-x86_64" then you **cannot** use that OS for ASL because it lacks the
-    capabilities build the needed kernel modules. You must install a standard Debian 12
-    image which is probably a "custom install" for your provider. Ask your VPS provider
-    for support.
+    "6.1.0-12-cloud-x86_64" then you must [follow this procedure](/basic/cloud-kernel)
+    prior to installing ASLv3.
 
     2. When the virtual machine is using an emulated Linux kernel. Microsoft Windows 
     Subsystem for Linux (WSL2) is a good example of this situation. The kernel is

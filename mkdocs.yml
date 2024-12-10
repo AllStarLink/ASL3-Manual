@@ -73,6 +73,7 @@ nav:
     - user-guide/passwords.md
     - user-guide/support.md
     - user-guide/betatest.md
+    - basic/cloud-kernel.md
     - "Basic Troubleshooting Tips": user-guide/troubleshooting.md
     - Pi Appliance:
       - "Getting Started": pi/cockpit-get-started.md
