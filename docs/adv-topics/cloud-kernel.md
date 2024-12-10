@@ -2,7 +2,7 @@
 
 Many virtual hosts or VPS providers leverage the Debian "cloud kernel"
 version of the Debian Linux OS. These providers include Amazon AWS,
-Microsoft Azure, Linode, Vultr, and DigitalOcean. Using their stock
+Microsoft Azure, Linode, Vultr, DreamHost, and DigitalOcean. Using their stock
 Debian 12 installation image comes with the "cloud kernel" installed.
 While this kernel is usually beneficial due to its smaller footprint
 than the full kernel through the removal of hardware elements, the
