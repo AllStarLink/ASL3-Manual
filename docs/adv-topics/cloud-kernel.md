@@ -114,7 +114,7 @@ Test the boot type as follows:
 	modprobe dahdi
 	```
 	
-* Check that the module is loaded with `1smod | grep dahdi`:
+* Check that the module is loaded with `lsmod | grep dahdi`:
 
     ```
     # lsmod | grep dahdi
