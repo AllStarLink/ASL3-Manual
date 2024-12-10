@@ -14,7 +14,7 @@ installation on Raspberry Pis, consider using the [AllStarLink 3 Pi Appliance](p
 
     1. When the VPS provider is using a customized Debian using the "cloud" kernel. If the
     output of `uname -r` refers to the kernel as something similar to 
-    "6.1.0-12-cloud-x86_64" then you must [follow this procedure](/adv-topics/cloud-kernel)
+    "6.1.0-12-cloud-x86_64" then you must [follow this procedure](../adv-topics/cloud-kernel)
     prior to installing ASLv3.
 
     2. When the virtual machine is using an emulated Linux kernel. Microsoft Windows 

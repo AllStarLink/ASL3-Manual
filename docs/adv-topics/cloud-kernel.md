@@ -72,7 +72,7 @@ reduced-footprint "cloud" version using `uname -a`:
 	````
 	
 * Note: depending on your platform type you may need to create a MOK for
-kernel modules as documented at [UEFI SecureBoot](/adv-topics/uefi-secureboot).
+kernel modules as documented at [UEFI SecureBoot](uefi-secureboot.md).
 Test the boot type as follows:
 
     ````
