@@ -54,7 +54,12 @@ non-standard port:
 2. The AllStarLink Portal for that node's server
 
 ### Changing iax.conf
-As root (i.e. sudo -s), edit the file `/etc/asterisk/iax.conf`. Find the line:
+The best way to edit the IAX port is to use `asl-menu`. Run `sudo asl-menu`.
+Choose **1 Node Settings** and then **4 Update Asterisk IAX port**. Set
+the new UDP port in the box and hit **OK**. Then choose **2 Restart Asterisk**.
+Then close `asl-menu`.
+
+Alternatively, edit the file directly. As root (i.e. sudo -s), edit the file `/etc/asterisk/iax.conf`. Find the line:
 
 ```ini
 bindport = 4569
@@ -69,9 +74,14 @@ changed to port 4570. Edit the file to state:
 bindport = 4570
 ```
 
-and save and close the file. Restart asterist with `systemctl restart asterisk`.
+and save and close the file. Restart asterisk with `systemctl restart asterisk`.
 
 ### Changing the Portal
+!!! note "Server-Node Relationship"
+    Following the operating model, the base Asterisk/app_rpt installation is the "Server"
+    and a "Server" hosts one or more "Nodes". Make sure that each node is assigned to a
+    different server if the nodes are configured on different installations.
+
 Do the following to change a node's server's IAX port.
 
 1. Logon to https://www.allstarlink.org using your AllStarLink username
@@ -119,7 +129,7 @@ Note the inclusion of the port as `:4570`. This pattern can be repeated for mult
 on the same network. Save the file and restart asterisk with `systemctl restart asterisk`.
 
 ### Configuring Node 630011
-The other note repeates the same process but in the opposite direction. 
+The other node repeats same process but in the opposite direction. 
 As root (i.e. sudo -s) edit the file `/etc/asterisk/rpt.conf`. Locate
 the line with the node's own definition. For example:
 
