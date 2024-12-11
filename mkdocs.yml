@@ -107,7 +107,8 @@ nav:
     - adv-topics/permissions.md
     - adv-topics/noderesolution.md
     - adv-topics/uefi-secureboot.md
-    - adv-topics/tts.md    
+    - adv-topics/tts.md  
+    - adv-topics/multinodesnetwork.md  
   - Developer Guide:
     - developers/package-builds.md
     - developers/source-install.md
