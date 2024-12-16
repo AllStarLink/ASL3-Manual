@@ -63,7 +63,9 @@ reduced-footprint "cloud" version using `uname -a`:
   
 * Reboot the system
 
-* After reboot, check the running kernel with the command `uname -a`. It should now be running the
+* After reboot, login and become root by doing `sudo -s`.
+
+* check the running kernel with the command `uname -a`. It should now be running the
 "non cloud" version of the kernel:
 
     ````
