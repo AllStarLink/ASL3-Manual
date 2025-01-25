@@ -1,0 +1,30 @@
+{
+  "name": "allStarLink Manual",
+  "image": "mcr.microsoft.com/devcontainers/python:0-3.11-bullseye",
+  "postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && pip install -r requirements.txt",
+  "postStartCommand": "nohup bash -c 'python3 -m mkdocs serve &'",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.vscode-pull-request-github",
+        "ms-vscode.makefile-tools"
+      ],
+      "settings": {
+        "editor.formatOnPaste": false,
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.defaultFormatter": "vscode.markdown-language-features",
+        "files.trimTrailingWhitespace": true,
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/usr/bin/zsh"
+          }
+        },
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      }
+    }
+  }
+}
