@@ -27,7 +27,6 @@ To enable app_gps, edit `/etc/asterisk/modules.conf` and change
 `noload => app_gps.so` to `load => app_gps.so`
 
 #### Edit gps.conf
-!!! note "Asterisk Templates"
 The `gps.conf` file now uses Asterisk templates.  See [Templates](conftmpl.md)
 for more information.
 
