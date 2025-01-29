@@ -1,5 +1,5 @@
 # APRS
-app_rpt can post position reports to the APRS :tm: network.
+app_rpt can post position reports to the APRS&trade network.
 APRS is an acronym for Automatic Packet Reporting System. APRS is the
 registered trademark of Bob Bruninga, WB4APR (SK).
 app_gps supports standard position reports and APRStt (touchtone).
