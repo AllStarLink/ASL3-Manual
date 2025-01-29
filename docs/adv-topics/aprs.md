@@ -1,7 +1,7 @@
 # APRS
 app_rpt can post position reports to the APRS :tm: network.
 APRS is an acronym for Automatic Packet Reporting System. APRS is the
-registered trademark of Bob Bruning, WB4APR (SK).
+registered trademark of Bob Bruninga, WB4APR (SK).
 app_gps supports standard position reports and APRStt (touchtone).
 
 For fixed position nodes, like repeaters, reporting your node's position allows visiting operators to easily
@@ -9,8 +9,8 @@ see the nodes/repeaters in the area. Some radios allow operators to
 use the position reports to automatically tune their radios
 to the node's frequency.
 
-You can see a map of APRS unit locations at https://aprs.to or
-https://aprs.fi.
+You can see a map of APRS unit locations at [https://aprs.to](https://aprs.to) or
+[https://aprs.fi](https://aprs.fi).
 
 An external GPS device can be configured to receive GPS position
 information. This is needed for mobile nodes to post their
@@ -28,7 +28,7 @@ To enable app_gps, edit `/etc/asterisk/modules.conf` and change
 
 #### Edit gps.conf
 !!! note "Asterisk Templates"
-The `gps.conf` file now uses Asterisk templates.  See [Templates](conftmpl.md.md)
+The `gps.conf` file now uses Asterisk templates.  See [Templates](conftmpl.md)
 for more information.
 
 Edit `/etc/asterisk/gps.conf` with your favorite editor.  The 
@@ -41,11 +41,11 @@ should not have a value.
 
 Update `call` with the node's callsign and SSID.  For example:
 `WB6NIL-1`. Additional information on the callsign/SSID format 
-can be found at https://www.aprs-is.net/Connecting.aspx
+can be found at [https://www.aprs-is.net/Connecting.aspx](https://www.aprs-is.net/Connecting.aspx).
 
 Update `password` with your APRS-IS password. This password is 
 a computed number based on the callsign. 
-You can generate the password on-line at https://n5dux.com/ham/aprs-passcode
+You can generate the password on-line at [https://n5dux.com/ham/aprs-passcode](https://n5dux.com/ham/aprs-passcode).
 
 *Note: This password must be correct for app_gps to log into
 the APRS-IS server.*
@@ -54,13 +54,13 @@ The `gps.conf` contains a number of settings that configure
 how your node is displayed on APRS maps. The comments in the
 configuration file will help you configure your node.
 
-The `comment`field can be used to describe your node and/or 
+The `comment` field can be used to describe your node and/or 
 provide information about your local radio club. See the 
 configuration file for more information.
 
 You can configure the map symbol used for your node by changing
 the `icontable` and `icon` values. To display an "R" inside a diamond, set
-`icontable = R` and `icon = &`. See http://www.aprs.org/symbols.html
+`icontable = R` and `icon = &`. See [http://www.aprs.org/symbols.html](http://www.aprs.org/symbols.html)
 for more information.
 
 *Note:  app_gps supports multiple nodes.  To add additional nodes,
@@ -111,7 +111,7 @@ To send WB4APR using APRStt, you would send the DTMF sequence,
 send it to app_gps for processing.
 
 For more information on the APRStt DTMF format and how to construct
-DTMF sequences, see http://www.aprs.org/aprstt/aprstt-user.txt
+DTMF sequences, see [http://www.aprs.org/aprstt/aprstt-user.txt](http://www.aprs.org/aprstt/aprstt-user.txt).
 
 *Note: Some radios natively support APRStt.*
 
