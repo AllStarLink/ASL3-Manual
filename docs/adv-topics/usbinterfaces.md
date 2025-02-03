@@ -6,6 +6,7 @@ Setting up USB audio interfaces is much easier with ASL3.
  - The device string is automatically found when the USB setting `devstr =` is empty.
  - rxchannel=SimpleUSB/USB1999 has been changed to rxchannel=SimpleUSB/1999. Same for rxchannel=Radio/1999 for consistency with other rxchannel= settings.
  - A new `asl-find-sound` script can be used to help identify the device strings for attached interfaces.
+ - Ability to specifify vendor and product identifiers for non-natively supported chips.
 
 The ASL3 menu and Asterisk CLI USB config commands handle these changes.
 
@@ -20,6 +21,55 @@ Nearly all USB Interface products that are used with ASL nodes use C-Media CM108
  - Support for an attached EEPROM IC to store user configuration and manufacturer information.
 
 The CM119 provides an additional 4 GPIO lines (GPIOs 5-8) vs. the CM108. The original CM108 and CM119 ICs were replaced in the early 2010's with the CM108AH and CM119A. These ICs are still used in many USB Radio Interfaces (URIs). Newer versions of the CM1xx ICs &ndash; the CM108B and CM119B are now available and have some minor differences in gain settings and other specifications but are fully compatible with the earlier IC versions and with ASL.
+
+### Supported C-Media Chips
+
+ASL3 natively supports C-Media chips with the vendor identifer **(VID)** `0x0d8c` with the following list of product identifiers **(PID)** .
+
+| Chip     | Product Identifier |
+| ----     | ------------------ |
+| CM-108   | 0x000c |
+| CM-108B  | 0x0012 |
+| CM-108AH | 0x013c |
+| CM-119   | 0x0008 |
+| CM-119A  | 0x013a |
+| CM-119B  | 0x0013 |
+| N1KDO    | 0x6a00 |
+
+There are more variants of the C-Media chips that can be used with ASL3.  If your sound card is
+not natively supported, you can configure ASL3 to recognize your card's vendor id **(VID)** and product id **(PID)** .
+To determine the vendor id and product id of your sound card, issue the command `lsusb` at the command prompt.
+
+You will see something similar to the following:
+
+```
+Bus 001 Device 003: ID 0d8c:013b C-Media Electronics, Inc. USB PnP Sound Device
+```
+
+The vendor identifier **(VID)** is `0d8c` with a product identifier **(PID)** of `013b`.  This chip does not appear in the list of 
+natively supported chips. You can enter this non-natively supported chip in res_usbradio.conf.  
+
+*Note: You can enter multiple VID:PID pairs by separating the pairs with a comma.*
+
+Edit `/etc/asterisk/res_usbradio.conf` with your favorate editor.  You will see the following:
+
+```
+;usb_devices = 1209:7388    ;comma delimited list of usb
+                            ;descriptors to allow.
+                            ;format vvvv:pppp in hexadecimal
+                            ;vvvv=vendor id, pppp=product id
+                            ;
+                            ;1209:7388 = AIOC (all in one cable)
+```
+
+*Note:  The All-In-One-Cable AIOC emulates the C-Media CM-108 chip.  The sample above shows the 
+VID:PID for the AIOC.  If you will be using the AIOC, just remove the `;` before `usb_devices`.*
+
+Replace `;usb_devices = 1209:7388` with `usb_devices = vvvv:dddd` for your specific C-Media chip.
+Save your changes and restart Asterisk. The added VID:PID will now be available to chan_simpleusb and chan_usbradio.
+
+*Note: The `asl-find-sound` utility will include the VID:PID pairs entered in `res_usbradio.conf`*
+
 
 ### Setting Audio Levels
 
