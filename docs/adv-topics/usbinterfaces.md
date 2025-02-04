@@ -6,7 +6,7 @@ Setting up USB audio interfaces is much easier with ASL3.
  - The device string is automatically found when the USB setting `devstr =` is empty.
  - rxchannel=SimpleUSB/USB1999 has been changed to rxchannel=SimpleUSB/1999. Same for rxchannel=Radio/1999 for consistency with other rxchannel= settings.
  - A new `asl-find-sound` script can be used to help identify the device strings for attached interfaces.
- - Ability to specifify vendor and product identifiers for non-natively supported chips.
+ - The ability to specify vendor and product identifiers for non-natively supported chips.
 
 The ASL3 menu and Asterisk CLI USB config commands handle these changes.
 
@@ -28,7 +28,7 @@ ASL3 natively supports C-Media chips with the vendor identifer **(VID)** `0x0d8c
 
 | Chip     | Product Identifier |
 | ----     | ------------------ |
-| CM-108   | 0x000c |
+| CM-108   | 0x000c, 0x000d, 0x000e, 0x000f |
 | CM-108B  | 0x0012 |
 | CM-108AH | 0x013c |
 | CM-119   | 0x0008 |
@@ -38,7 +38,7 @@ ASL3 natively supports C-Media chips with the vendor identifer **(VID)** `0x0d8c
 
 There are more variants of the C-Media chips that can be used with ASL3.  If your sound card is
 not natively supported, you can configure ASL3 to recognize your card's vendor id **(VID)** and product id **(PID)** .
-To determine the vendor id and product id of your sound card, issue the command `lsusb` at the command prompt.
+To determine the vendor id and product id of your sound card, use the `lsusb` command at the Linux CLI prompt.
 
 You will see something similar to the following:
 
@@ -51,7 +51,7 @@ natively supported chips. You can enter this non-natively supported chip in res_
 
 *Note: You can enter multiple VID:PID pairs by separating the pairs with a comma.*
 
-Edit `/etc/asterisk/res_usbradio.conf` with your favorate editor.  You will see the following:
+Edit `/etc/asterisk/res_usbradio.conf` with your favorite editor.  You will see the following:
 
 ```
 ;usb_devices = 1209:7388    ;comma delimited list of usb
@@ -66,7 +66,7 @@ Edit `/etc/asterisk/res_usbradio.conf` with your favorate editor.  You will see 
 VID:PID for the AIOC.  If you will be using the AIOC, just remove the `;` before `usb_devices`.*
 
 Replace `;usb_devices = 1209:7388` with `usb_devices = vvvv:dddd` for your specific C-Media chip.
-Save your changes and restart Asterisk. The added VID:PID will now be available to chan_simpleusb and chan_usbradio.
+Save your changes and restart Asterisk. The added VID:PID will now be available to the SimpleUSB and USBRadio channel drivers.
 
 *Note: The `asl-find-sound` utility will include the VID:PID pairs entered in `res_usbradio.conf`*
 
