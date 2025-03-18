@@ -6,21 +6,9 @@ installation on Raspberry Pis, consider using the [AllStarLink 3 Pi Appliance](p
 !!! note "Architecture Support"
     Currently, the project does not support armv7l/armhf platforms because all known uses of AllStarLink is on hardware which supports the Bookworm arm64 distribution such as Raspberry Pi 3, 4, 5, and Zero 2 W. If you have a platform that can use armv7l/armhf 32-bit packages only please file an issue at [ASL3 on GitHub](https://github.com/AllStarLink/ASL3/issues).
 
-!!! warning "Asterisk/app_rpt on VMs/Cloud"
-    Asterisk/app_rpt works fine on virtual machines in a cloud environment (often terms "VPS"). However
-    Asterisk/app_rpt requires certain kernel modules to function properly and these are provided
-    by ASL3 in the dkms-dahdi package. There are, however, two situations where Asterisk/app_rpt
-    will not work:
-
-    1. When the VPS provider is using a customized Debian using the "cloud" kernel. If the
-    output of `uname -r` refers to the kernel as something similar to 
-    "6.1.0-12-cloud-x86_64" then you must [follow this procedure](../adv-topics/cloud-kernel.md)
-    prior to installing ASLv3.
-
-    2. When the virtual machine is using an emulated Linux kernel. Microsoft Windows 
-    Subsystem for Linux (WSL2) is a good example of this situation. The kernel is
-    custom and not related to the operating system distribution. Asterisk/app_rpt
-    cannot work in this type of setup.
+!!! note "Previous Issues with Cloud Kernels"
+    As of DAHDI Linux 3.4.0-5, as released from AllStarLink, no longer
+    has conflicts with the Debian "cloud" kernels and is fully supported.
 
 ## System Requirements
 The following are the system requirements for an ASL3 system:
@@ -32,9 +20,8 @@ The following are the system requirements for an ASL3 system:
 | **Storage** | 8G (for OS + software) | - |
 
 !!! note "UEFI / SecureBoot"
-    For x86_64/amd64 platforms, it is recommended to disable UEFI and SecureBoot
-    if you do not need those features and your platform supports a "legacy BIOS" mode.
-    While they are a good security feature, given that
+    For x86_64/amd64 platforms, it is recommended to disable SecureBoot
+    if you do not need that feature. While it is a good security feature, given that
     AllStarLink v3 requires building a kernel module, it adds likely-undesired complexity
     for most ASL users. If you need or want to use UEFI/SecureBoot see
     [the advanced topic document](../adv-topics/uefi-secureboot.md).
