@@ -51,6 +51,12 @@ In addition to the updating settings, you can now view the live status of the CO
 `echolink show stats`  is used to view the channel statistics for echolink.
 It shows the number of in-bound and out-bound connections.  It also shows the cumulative system statistics, along with the statistics for each connected nodes.
 
+## app_gps
+### app_gps commands
+`gps show status` is used to view the status of the GPS device.
+It will show if the GPS is locked on the satellites and the current
+position.  It also shows the default location configured.
+
 ## Helper scripts
  - `asl-find-sound` script makes it easy to identify the device strings for attached USB sound interfaces.
  - `asl-repo-switch` allows developers and testers switch between main, beta, and devel apt repos.
