@@ -61,6 +61,109 @@ ASL-Manual is generated with [MkDocs](https://www.mkdocs.org/). While it is poss
 to contribute to the manual without installing MkDocs, it would be difficult.
 Fortunately MkDocs is available on all normal user platforms with Python pip.
 
+### Windows 10/11 and WSL2
+
+This procedure will configure a WSL2 environment on your local machine to run Linux under (for those more familiar with operating Git in CLI under Linux), and integrate that with using VS Code in the host Windows environment for editing the manual.
+
+#### Configure a WSL2 Distribution
+
+- Open an elevated Command Prompt window
+- Install Ubuntu under WSL2:
+    ```
+    wsl --install -d Ubuntu-24.04
+    ```
+- Create a user
+- Run `sudo apt update && apt upgrade` to update the distro
+- Install the required packages:
+    ```
+    sudo apt install git python3-pip python3.12-venv
+    ```
+
+#### Setup Git Environment for SSH Authentication
+
+- SSH somewhere (anyehere), so that ~/.ssh gets created automatically, it doesn't exist by default.
+- Create a default public/private keypair:
+    ```
+    ssh-keygen -t rsa -b 4096 -C "youremailaddress"
+    ```
+- Accept the default filename, `id_rsa` as we're just using this environment for manual updates, and it means we don't have to manually add more keys to ssh-agent.
+- Add a passphrase (if desired), or just hit enter.
+- Once the key is generated, view the public key, and copy it to your clipboard:
+    ```
+    cat ~/.ssh/id_rsa.pub
+    ```
+- Login to [Github](https://github.com) and go to your `Settings` and the `SSH and GPG Keys`.
+- Add a new SSH key by clicking the button, give it a name, note that this is an `Authentication` key, and then paste your clipboard into the box and add the key.
+- Repeat the above step to add the same key again, but this time, instead of an `Authentication` key, choose `Signing` key.
+- Back in your WSL2 console, test with `ssh -T git@github.com`. Accept their public key, then you should receive confirmation with your username returned that your authentication was successful.
+- See [Connecting to Github with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) for additional help.
+- Now, we need to set up some defaults for pushing back to the repo, namely your Github ID and Name (the email address associated with your Github account):
+    ```
+    git config --global user.email "youremail@somewhere.com"
+    git config --global user.name "Your Name"
+    ```
+
+#### Install VS Code in Windows
+
+- [Download and install VS Code](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user).
+- Review [Developing in WSL](https://code.visualstudio.com/docs/remote/wsl).
+- Your WSL distro should still be running in the background
+- Launch VS Code, it should detect WSL running and ask you if you want to install the WSL Extension, select yes.
+- Once you are in VS Code, you should be able to connect to your WSL environment to edit/preview the manual.
+
+#### Setup the ASL3 Manual Repo
+
+- In your WSL console, clone the repo. We will do it via SSH, since we've already pre-configured Git to work with SSH authentication.
+    ```
+    git clone git@github.com:AllStarLink/ASL3-Manual.git
+    cd ASL3-Manual
+    python3 -m venv ~/.mkdocs
+    . ~/.mkdocs/bin/activate
+    ```
+- The first time you clone the repo, you will need to install some additional prerequisites via `pip`:
+    ```
+    pip install -r ./requirements.txt
+    ```
+- You should now have a functioning environment for editing the ASL3 Manual.
+
+#### Working with the ASL3 Manual Repo
+
+- The basic workflow will be:
+    - Create a new branch for the thematic edit/add you want to make
+    - Switch to (checkout) your new branch
+    - Edit the pages in VS Code
+    - Commit your changes
+    - Push your changes back to the origin repo
+    - Open a Pull Request for review
+    - Switch back to (checkout) the main branch
+    - Create another branch for additional thematic changes
+- Create a new branch and switch to it:
+    ```
+    git branch creating_sample_man_page
+    git checkout creating_sample_man_page
+    ```
+- Now over in your Windows host, in VS Code, you should be able to connect to your WSL instance, browse to the manual folder in the explorer, and see all the files.
+- You can confirm which branch you are on by using the `Source Control ` button on the left menu. 
+- You can preview your edits in realtime by using the `Open Preview to the Side` button in the top right of the window.
+- Once you've made all your changes for this branch, be sure to save your changes!
+- Back in your WSL console, confirm Git sees the files you've modified using `git status`.
+- When you are ready to push your changes:
+    ```
+    git commit .
+    git push origin <branch_name>
+    ```
+- If your push is successful, you should receive confirmation, along with a reminder to open a Pull Request (it even provides you the URL).
+- Switch back to the main branch with `git checkout main`. You can confirm you're on the main branch with `git status`.
+- Now, you can create a new branch for another update, and follow the same process.
+- To get out of the Python `venv`, use the `deactivate` command.
+- Each time you start up a new WSL session to work on the manual, you'll need to run these commands:
+    ```
+    cd ASL3-Manual
+    python3 -m venv ~/.mkdocs
+    . ~/.mkdocs/bin/activate
+    ```
+- You will also want to make sure your local repo is updated and in synch with Github using `git pull origin main`.
+
 ### Windows 10/11
 - Download and install the lastest stable version of Python3 (currently Python 3.13) with the Windows installer - [Downloads](https://www.python.org/downloads/)
 - Download and install the latest version of Git with the Windows standalone installer - [Downloads](https://git-scm.com/downloads/win)
