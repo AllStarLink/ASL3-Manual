@@ -58,9 +58,10 @@ pass=password
 host=192.2.0.145
 user=admin
 pass=password
-voter=y
-votertitle=Megavoter
+voters=48496
 ```
+
+NOTE: Adding a `voters` option does not automatically make the VOTER status show up in Allmon3. You will need to manually configure the voter instance in `menu.ini`, see below.
 
 ## Server Customization
 Allmon3 has multiple configuration files to consider:
@@ -139,6 +140,12 @@ This functions identically to `[node-overrides]`. For any
 voter not named here, voters will have an auto-generated
 name of "Voter NODE".
 
+```
+[voter-titles]
+    ;1999 = My special private node
+    48496 = VHF VOTER System
+```
+
 ### menu.ini
 If this file is present in the api/ subdirectory of Allmon3's web interface
 and named `menu.ini`, this file will override the default behavior of the
@@ -190,9 +197,29 @@ N8XPK = 42993
 43118 = 43118
 47987 = 47987
 
+[ VHF VOTER ]
+type = single
+VOTER = voter.html#48496
+
 [ Test ]
 type = single
 AllStarLink = https://www.allstarlink.org
+```
+
+VOTER instances are not automatically displayed. You will need to manually add them to `menu.ini` in order to create a navigation button to access them.
+
+NOTE: Adding a VOTER instance will require creating a `menu.ini`. As noted previously, the presence of this file will mean that the default behaviour of Allmon3 to automatically display all configured nodes will be changed. As a result, in additon to configuring your VOTER instance, you will also need to manually configure all the rest of your nodes, so that they will be displayed.
+
+The format is the same as other buttons, the critical part is the target (right side of the link). That must point to `voter.html#NODE`, where `NODE` is the node number you defined in `allmon3.ini`. The target can also be a FQDN, if you are pointing to a remote system (properly configured).
+
+```
+[ LOCAL VOTER ]       ; ignored for single menu items
+type = single
+BUTTON_NAME = voter.html#NODE
+
+[ REMOTE VOTER ]
+type = single
+Remote_VOTER = http://somesite.org/allmon3/voter.html#1999
 ```
 
 ## Using Nginx instead of Apache
