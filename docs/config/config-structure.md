@@ -28,7 +28,7 @@ idtime = 540000
 ```
 
 ## Settings to name other Stanzas
-Some key=value pairs point to other stanzas. This allows nodes on the same server to have the same settings (without duplicate entries) or different settings in some cases. For example the phone patch command may be \*6 on one node, yet \*61 on another.
+Within the [`[node]`](../config/rpt_conf.md#node-number-stanza) stanza in `rpt.conf`, some `key=value` pairs point to other stanzas. This allows nodes on the same `Asterisk/app_rpt` server to have the same settings (without duplicate entries) or different settings in some cases. For example the phone patch command may be \*6 on one node, yet \*61 on another.
 
 For example:
 
@@ -54,12 +54,19 @@ functions=functionsUHF
 ```
 
 ## Named Stanzas in rpt.conf
+The `key=value` pairs that redirect to other named stanzas in `rpt.conf` are:
+
 * controlstates=
+* events=
 * functions=
 * link_functions=
 * macro=
+* morse=
+* nodes=
 * phone_functions=
+* scheduler=
 * telemetry=
+* tonemacro=
 * wait_times=
 
 **Note:** A stanza is also called a context in Asterisk PBX terminology, particularly related to the dialplan.
