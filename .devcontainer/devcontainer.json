@@ -1,0 +1,30 @@
+{
+    "name": "allStarLink Dev",
+    "build": { "dockerfile": "Dockerfile" },
+    "remoteUser": "root",
+    "postStartCommand": "pip install -r requirements.txt && nohup bash -c 'mkdocs serve &' ",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "redhat.vscode-yaml",
+          "esbenp.prettier-vscode",
+          "GitHub.vscode-pull-request-github",
+          "GitHub.copilot",
+          "GitHub.copilot-chat",
+          "github.vscode-github-actions"
+        ],
+        "settings": {
+          "editor.formatOnPaste": false,
+          "editor.formatOnSave": true,
+          "editor.formatOnType": true,
+          "files.trimTrailingWhitespace": true,
+          "terminal.integrated.profiles.linux": {
+            "zsh": {
+              "path": "/usr/bin/zsh"
+            }
+          },
+          "terminal.integrated.defaultProfile.linux": "zsh"
+        }
+      }
+    }
+  }
