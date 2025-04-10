@@ -1,37 +1,36 @@
 # Remote Base Nodes
-The primary purpose of a remote base node is to make outgoing RF connections using a frequency Agile radio to allow access to frequency which are not part of your Internet connected radio system.
+The primary purpose of a remote base node is to make outgoing RF connections using a frequency agile radio to allow access to frequencies which are not part of your Internet connected radio system.
 
 Remote base nodes are configured differently than a standard node. A completely different set of internal functions in `Asterisk/app_rpt` is used when operating a node as a remote base. Usually, the only reason to set up a node as a remote base is when you wish to change the operating parameters of the the attached radio remotely, or if you only want the radio to be used by a single user at a time.
 
-If you want a *public* node number for a remote base, it must specifically be requested in the [AllStarLink Portal](https://allstarlink.org/portal). You must be sure to check the `Rmt Base` and optionally the `Agile` options. You can, however, configure a private note however you like.
+If you want a *public* node number for a remote base, it must specifically be requested in the [AllStarLink Portal](https://allstarlink.org/portal). You must be sure to answer yes to `Is node a remote base station?`, and then optionally `If remote base, is it frequency agile?` questions. You can, however, configure a private node however you like.
 
 ## Security Issues
-Unfettered access to remote bases can be a **security issue**. If the remote base has no login protection, it could be used by unscrupulous individuals to violate amateur radio rules and regulations. We **strongly** advise that all remote bases be protected by requiring a login code (see [Remote Base Authentication](#remote-base-authentication) below). 
+Unfettered access to remote bases can be a **security issue**. If the remote base has no login protection it could be used by unscrupulous individuals to violate amateur radio rules and regulations. We **strongly** advise that all remote bases be protected by requiring a login code (see [Remote Base Authentication](#remote-base-authentication) below). 
 
 ## Behavior of Standard Nodes Versus Remote Base Nodes
-<table>
-<tr><td>Behavior</td><td>Standard Node</td><td>Remote Base Node</td></tr>
-<tr><td>Command Decoding</td><td>Remote or Local. DTMF can be optionally decoded on the receive audio input.</td><td>Remote only. No DTMF will be decoded on the receive audio input.</td></tr>
-<tr><td>Duplexing</td><td>Configurable: duplex or half-duplex.</td><td>Half-duplex only.</td></tr>
-<tr><td>Frequency and Mode Agility</td><td>Fixed frequency operation, and channelized operation only using arguments passed in to app_rpt from extensions.conf.</td><td>Frequency and Mode agile. Support for several radio types using asynchronous serial, CAT, and synchronous serial.</td></tr>
-<tr><td>Multiple connections</td><td>Multiple nodes can connect. Operates as a conference bridge.</td><td>Only one node can connect at a time.</td></tr>
-<tr><td>Login Protection</td><td>No</td><td>Optional</td></tr>
-</table>
+Behavior|Standard Node|Remote Base Node
+--------|-------------|----------------
+Command Decoding|Remote or Local. DTMF can be optionally decoded on the receive audio input.|Remote only. No DTMF will be decoded on the receive audio input.
+Duplexing|Configurable: duplex or half-duplex.|Half-duplex only.
+|Frequency and Mode Agility|Fixed frequency operation, and channelized operation only using arguments passed in to app_rpt from extensions.conf.|Frequency and Mode agile. Support for several radio types using asynchronous serial, CAT, and synchronous serial.
+Multiple connections|Multiple nodes can connect. Operates as a conference bridge.|Only one node can connect at a time.
+Login Protection|No|Optional
 
 ## What's Required
-In order to configure a remote base, you'll need the following:
+In order to configure a remote base you will need the following:
 
 ### Node Number
-Either request a public node number, or choose a private node number.
+Either request a public node number or choose a private node number.
 
 ### Radio Interface (Audio)
-A free port on a radio interface such as the Quad Radio PCI card, or the URI adapter must be made available for use by the remote base. This is needed for the audio transport and keying.
+A free port on a radio interface such an URI adapter must be made available for use by the remote base. This is needed for the audio transport and keying.
 
 ### Radio Interface Cable (Control)
 A radio interface cable must be constructed or purchased to interface the radio to the node for control. Depending on the radio, this could be a USB to serial cable for CAT commands, or similar. 
 
 ### Supported Radios
-See the [`remote=`](#remote) setting below for some supported (or partially supported) radios, and how to set the requisite option.
+See the [`remote=`](#remote) setting below for a list of supported or partially supported radios.
 
 ## Remote Base Operation
 In order to use a remote base, once it is configured, the procedure would be something along the lines of (assuming our remote base node is a private node, with a node number of 1999):
@@ -44,6 +43,7 @@ In order to use a remote base, once it is configured, the procedure would be som
 A remote base needs to be defined as such in the `[nodes]` context. Specifically, the node definition would need to have the last option changed from "NONE" to "Y".
 
 Sample:
+
 ```
 1998 = radio@127.0.0.1/1999,Y                  ; Remote base node on this server
 ```
@@ -67,6 +67,7 @@ The `authlevel=` option is used to enable or disable login requirements for a re
 * authlevel = 2 Enables access control, and prompts for the access code at the time of connection
 
 Sample:
+
 ```
 autllevel = 0   ; allow everyone 
 ```
@@ -77,6 +78,7 @@ See [Remote Base Authentication](#remote-base-authentication) and [Remote Base T
 The `civaddr=` is used with ICOM radios to set the CIV address. The value is a 2 digit hexadecimal number. If this option is not specified, then the CIV address will be set to the default of 88. 
 
 Sample:
+
 ```
 civaddr = 98  ; set CIV to 98
 ```
@@ -90,6 +92,7 @@ Specifically, it may be required for the Syntor-X (using `remote=xcat`).
 The `functions=` option is a pointer to a remote base function stanza. It operates the same as the normal [`functions=`](../config/rpt_conf.md#functions) option. You will likely want to define a functions stanza that is unique for your remote base, so that you can tailor what functions are available to use. 
 
 Sample:
+
 ```
 functions = functions-remote   ; name the functions stanza 'functions-remote'
 
@@ -147,6 +150,7 @@ See [Remote Base Commands](#remote-base-commands) for functions that are specifi
 The `ioaddr=` option sets a parallel port control I/O address. It is specified as a hexadecimal number with a 0x prefix. The parallel port is used when the Doug Hall RBI-1 interface is employed.
 
 Sample:
+
 ```
 ioaddr = 0x378   ; set RBI-1 /Parallel Port I/O address on LPT1
 ```
@@ -155,10 +159,13 @@ ioaddr = 0x378   ; set RBI-1 /Parallel Port I/O address on LPT1
 The `ioport=` option sets the serial port for the control interface to the remote base radio. On Linux Systems, these are typically path names to special files in the `/dev` directory.
 
 Sample:
+
 ```
 ioport = /dev/ttyS1   ; Linux com1
 ```
+
 or
+
 ```
 ioport = /dev/ttyUSB0 ; USB to serial adapter
 ```
@@ -167,6 +174,7 @@ ioport = /dev/ttyUSB0 ; USB to serial adapter
 The `iospeed=` option sets the serial port baud rate for the control interface to the remote base radio.
 
 Sample:
+
 ```
 iospeed = 4800         ; Use 4800 baud
 ```
@@ -177,7 +185,9 @@ This is an undocumented setting. It appears to maybe set a GPIO or Parallel Port
 ```
 lconn = PP3=1 ; assert parallel port pin 3 upon connect?
 ```
+
 or
+
 ```
 GPIO1=1 ; assert GPIO1
 ```
@@ -190,7 +200,9 @@ This is an undocumented setting. It appears to maybe set a GPIO or Parallel Port
 ```
 ldisc = PP3=0 ; de-assert parallel port pin 3 upon disconnect?
 ```
+
 or
+
 ```
 GPI1=0 ; de-assert GPIO1
 ```
@@ -201,6 +213,7 @@ There is probably additional configuration required, see [Manipulating GPIO](htt
 The `phone_functions=` is a pointer to a remote base phone function stanza. It operates the same as the normal [`phone_functions=`](../config/rpt_conf.md#phone_functions) option. You will likely want to define a phone functions stanza that is unique for your remote base, so that you can tailor what functions are available to use. 
 
 Sample:
+
 ```
 phone_functions = functions-remote
 
@@ -212,20 +225,20 @@ phone_functions = functions-remote
 The `remote=` option sets the type of radio. It **must** be defined, as it ensures that the node will be defined as a remote base node and not a standard node, and determines the protocol for communicating with the radio over the `ioport`.
 
 Sample:
+
 ```
 remote = xcat   ; set xcat interface
 ```
 
-<table>
-<tr><td>Radio</td><td>Value</td><td>Comments</td></tr>
-<tr><td>Dumb</td><td>y</td><td>Use for any single channel remote base radios, with no remote tuning capability</td></tr>
-<tr><td>FT-897</td><td>ft897</td><td>Must specify serial port using ioport=</td></tr>
-<tr><td>TMG-707</td><td>kenwood</td><td>Must specify serial port using ioport=</td></tr>
-<tr><td>IC-706</td><td>ic706</td><td>**IC-706MkIIG only**. Must specify serial port using ioport=. Must specify civaddr using civaddr=</td></tr>
-<tr><td>TM-271</td><td>tm271</td><td>Must specify serial port using ioport=</td></tr>
-<tr><td>Syntor Xcat</td><td>xcat</td><td>Must specify serial port using ioport=. Must specify civaddr using civaddr=</td></tr>
-<tr><td>Doug Hall</td><td>rbi</td><td>Requires Parallel Port Address https://wiki.allstarlink.org/wiki/Remote_Base:_Doug_Hall_RBI-1</td></tr>
-</table>
+Radio|Value|Comments
+-----|-----|--------
+Dumb|y|Use for any single channel remote base radios, with no remote tuning capability
+FT-897|ft897|Must specify serial port using ioport=
+TMG-707|kenwood|Must specify serial port using ioport=
+IC-706|ic706|**IC-706MkIIG only**. Must specify serial port using ioport=. Must specify civaddr using civaddr=
+TM-271|tm271|Must specify serial port using ioport=
+Syntor Xcat|xcat|Must specify serial port using ioport=. Must specify civaddr using civaddr=
+Doug Hall|rbi|Requires Parallel Port Address https://wiki.allstarlink.org/wiki/Remote_Base:_Doug_Hall_RBI-1
 
 This is a list of currently supported agile remote base rigs, extracted from the source code:
 
@@ -247,6 +260,7 @@ This is a list of currently supported agile remote base rigs, extracted from the
 This option specifies the amount of time without keying from the link, before the link is determined to be inactive. Set to `0` to disable timeout.
 
 Sample:
+
 ```
 remote_inact_timeout = 0   ; do not time out
 ```
@@ -255,6 +269,7 @@ remote_inact_timeout = 0   ; do not time out
 This option specifies the session time out for the remote base. Set to `0` to disable. This option does not appear to be implemented in code.
 
 Sample:
+
 ```
 remote_timeout = 0   ; do not timeout
 ```
@@ -262,13 +277,11 @@ remote_timeout = 0   ; do not timeout
 Default is 3600 (seconds?).
 
 ### remote_timeout_warning=
-
 This option does not appear to be implemented in code.
 
 Default is 180 (seconds?).
 
 ### remote_timeout_warning_freq=
-
 This option does not appear to be implemented in code.
 
 Default is 30 (seconds?).
@@ -277,6 +290,7 @@ Default is 30 (seconds?).
 This option contains the type of channel driver which is being used for the audio and control (COR/PTT) interface to the remote base.
 
 Sample:
+
 ```
 rxchannel = SimpleUSB/1999
 ```
@@ -292,38 +306,37 @@ This option defines the offset in kHz to use to 70cm [memory channels](#remote-b
 ## Remote Base Commands
 Remote base commands (`functionclass` of `remote`) provide DTMF functions for remote base control. The `remote` commands are only applicable to remote base node configurations.
 
-<table>
-<tr><td>remote</td><td>Description</td><td>Parameter(s) Accepted</td></tr>
-<tr><td>1</td><td>Retrieve Memory</td><td>00 to 99</td></tr>
-<tr><td>2</td><td>Set VFO frequency</td><td>MMM*kkk*o# where MMM is frequency in MHz, kkk is kHz portion of the frequency, o is offset (1=minus, 2=simplex, 3=positive)</td></tr>
-<tr><td>3</td><td>Set TX PL tone</td><td>XXX*X ie 067*0 to set 67.0Hz</td></tr>
-<tr><td>4</td><td>Set RX PL tone</td><td>XXX*X ie 067*0 to set 67.0Hz</td></tr>
-<tr><td>5</td><td>Long status query</td><td></td></tr>
-<tr><td>99</td><td>Remote Base login</td><td>CALLSIGN,LICENSETAG</td></tr>
-<tr><td>100</td><td>Rx PL off</td><td></td></tr>
-<tr><td>101</td><td>Rx PL on</td><td></td></tr>
-<tr><td>102</td><td>Tx PL off</td><td></td></tr>
-<tr><td>103</td><td>Tx PL on</td><td></td></tr>
-<tr><td>104</td><td>Low Power</td><td></td></tr>
-<tr><td>105</td><td>Medium Power</td><td></td></tr>
-<tr><td>106</td><td>High Power</td><td></td></tr>
-<tr><td>107</td><td>Bump -20</td><td></td></tr>
-<tr><td>108</td><td>Bump -100</td><td></td></tr>
-<tr><td>109</td><td>Bump -500</td><td></td></tr>
-<tr><td>110</td><td>Bump +20</td><td></td></tr>
-<tr><td>111</td><td>Bump +100</td><td></td></tr>
-<tr><td>112</td><td>Bump +500</td><td></td></tr>
-<tr><td>113</td><td>Scan - slow</td><td></td></tr>
-<tr><td>114</td><td>Scan - quick</td><td></td></tr>
-<tr><td>115</td><td>Scan - fast</td><td></td></tr>
-<tr><td>116</td><td>Scan + slow</td><td></td></tr>
-<tr><td>117</td><td>Scan + quick</td><td></td></tr>
-<tr><td>118</td><td>Scan + fast</td><td></td></tr>
-<tr><td>119</td><td>Tune (brief AM transmission for automatic tuners)</td><td></td></tr>
-<tr><td>140</td><td>Short status query</td><td></td></tr>
-<tr><td>210</td><td>Send a *</td><td></td></tr>
-<tr><td>211</td><td>Send a #</td><td></td></tr>
-</table>
+remote|Description|Parameter(s) Accepted
+------|-----------|---------------------
+1|Retrieve Memory|00 to 99
+2|Set VFO frequency|MMM\*kkk\*o# where MMM is frequency in MHz, kkk is kHz portion of the frequency, o is offset (1=minus, 2=simplex, 3=positive)
+3|Set TX PL tone|XXX\*X ie 067\*0 to set 67.0Hz
+4|Set RX PL tone|XXX\*X ie 067\*0 to set 67.0Hz
+5|Long status query|
+99|Remote Base login|CALLSIGN,LICENSETAG
+100|Rx PL off|
+101|Rx PL on|
+102|Tx PL off|
+103|Tx PL on|
+104|Low Power|
+105|Medium Power|
+106|High Power|
+107|Bump -20|
+108|Bump -100|
+109|Bump -500|
+110|Bump +20||
+111|Bump +100|
+112|Bump +500|
+113|Scan - slow|
+114|Scan - quick|
+115|Scan - fast|
+116|Scan + slow|
+117|Scan + quick|
+118|Scan + fast|
+119|Tune (brief AM transmission for automatic tuners)|
+140|Short status query|
+210|Send a *|
+211|Send a #|
 
 Not all commands above are supported by all radios. For example, radios which don't support SSB, would not be able to be placed in LSB or USB mode.
 
@@ -339,6 +352,7 @@ The format of the function is: `DTMF_Password = remote,99,CALLSIGN,LICENSETAG`.
 The `LICENSETAG` is the corresponding entry in the [`[txlmiits]`](#remote-base-txlimits-stanza) stanza. The `LICENSETAG` is used for enforce TX frequency limits.
 
 Sample:
+
 ```
 [1999]           ; node number for the remote base
 authlevel = 2    ; Remote base authentication level
@@ -351,6 +365,7 @@ authlevel = 2    ; Remote base authentication level
 ```
 
 Sample:
+
 ```
 9139583 = remote,99,WB6NIL,G   ; grant access to Jim (general)
 9148351 = remote,99,WA6ZFT,E   ; grant access to Steve (extra)
@@ -385,6 +400,7 @@ Attributes are specified as a *non-delimited* string. The available Attributes a
 To use a non-standard offset on the memory channel, it can be defined (in kHz), be sure to also specify either `-` or `+`, as necessary.
 
 Sample:
+
 ```
 [memory]
 init = 146.520,000.0,fm ; set to this channel on start
