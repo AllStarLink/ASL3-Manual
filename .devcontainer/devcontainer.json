@@ -3,6 +3,7 @@
     "build": { "dockerfile": "Dockerfile" },
     "remoteUser": "root",
     "postStartCommand": "pip install -r requirements.txt && nohup bash -c 'mkdocs serve &' ",
+    "appPort": [ 8000 ],
     "customizations": {
       "vscode": {
         "extensions": [
