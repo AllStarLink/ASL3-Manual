@@ -109,6 +109,7 @@ nav:
     - adv-topics/tts.md  
     - adv-topics/multinodesnetwork.md  
     - adv-topics/aprs.md
+    - adv-topics/daq.md
   - Developer Guide:
     - developers/package-builds.md
     - developers/source-install.md
