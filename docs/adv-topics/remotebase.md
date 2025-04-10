@@ -3,7 +3,7 @@ The primary purpose of a remote base node is to make outgoing RF connections usi
 
 Remote base nodes are configured differently than a standard node. A completely different set of internal functions in `Asterisk/app_rpt` is used when operating a node as a remote base. Usually, the only reason to set up a node as a remote base is when you wish to change the operating parameters of the the attached radio remotely, or if you only want the radio to be used by a single user at a time.
 
-If you want a *public* node number for a remote base, it must specifically be requested in the [AllStarLink Portal](https://allstarlink.org/portal). You must be sure to answer yes to `Is node a remote base station?`, and then optionally `If remote base, is it frequency agile?` questions. You can, however, configure a private node however you like.
+If you want a *public* node number for a remote base, it must specifically be requested in the [AllStarLink Portal](https://allstarlink.org/portal). You must be sure to answer yes to `Is node a remote base station?`, and then optionally `If remote base, is it frequency agile?` questions. You can, alternatively`, configure a private node.
 
 ## Security Issues
 Unfettered access to remote bases can be a **security issue**. If the remote base has no login protection it could be used by unscrupulous individuals to violate amateur radio rules and regulations. We **strongly** advise that all remote bases be protected by requiring a login code (see [Remote Base Authentication](#remote-base-authentication) below). 
@@ -24,7 +24,7 @@ In order to configure a remote base you will need the following:
 Either request a public node number or choose a private node number.
 
 ### Radio Interface (Audio)
-A free port on a radio interface such an URI adapter must be made available for use by the remote base. This is needed for the audio transport and keying.
+A free port on a radio interface such a URI adapter must be made available for use by the remote base. This is needed for the audio transport and keying.
 
 ### Radio Interface Cable (Control)
 A radio interface cable must be constructed or purchased to interface the radio to the node for control. Depending on the radio, this could be a USB to serial cable for CAT commands, or similar. 
