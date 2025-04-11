@@ -597,6 +597,33 @@ Sample:
 linkunkeyct = ct8  ; use courtesy tone 8
 ```
 
+### litzchar=
+This option sets the DTMF character used to initiate the Long Tone Zero (LiTZ) feature. LiTZ is an optional feature that users can initiate to indicate they require immediate assistance. When the LiTZ DTMF character is sent for longer than the LiTZ time, the LiTZ command will be triggered. This could dial 911 on the autopatch, play a message, connect to another node, etc.
+
+Sample:
+
+```
+litzchar = 0       ; 0 is the default DTMF access character for the LiTZ feature
+```
+
+### litzcmd=
+This option defines the command to run when the LiTZ feature is initiated. Leave blank to disable LiTZ (default).
+
+Sample:
+
+```
+litzcmd = *6911     ; dial 911 on the autopatch when LiTZ is activated
+```
+
+### litztime=
+This option defines how long `litzchar` needs to be sent for, to be considered valid. If `litzchar` is received for this minimum period, `litzcmd` will be executed when the user unkeys. The default is 3000mS (3 seconds).
+
+Sample:
+
+```
+litztime = 3000     ; default 3000mS (3 seconds)
+```
+
 ### macro=
 This option allows you to override the stanza name used for the `[macro]` stanza in `rpt.conf`. The macro stanza directs the node to use a particular stanza for macros dialed by users accessing the node. Macros are DTMF shortcuts, and are a special type of function. 
 
