@@ -23,7 +23,7 @@ Where:
 * `parameters` are one or more optional comma separated parameters that further define a command.
 
 ### Status Commands
-The `functionclass` of `status` commands provide general information about the node. 
+Commands using the `status` function class are used to provide general information about the local node.
 
 Sample:
 
@@ -56,25 +56,25 @@ See the table below for the available link commands, and whether they take a nod
 
 ilink|Description|Node Number Required
 -----|-----------|--------------------
-1|Disconnect specified link|Y
-2|Connect specified link -- monitor only|Y
-3|Connect specified link -- tranceive|Y
-4|Enter command mode on specified link|Y
-5|System status|N
-6|Disconnect all links|N
-7|Last Node to Key Up|N
-8|Connect specified link -- local monitor only|Y
-9|Send Text Message (9,&lt;destnodeno or 0 (for all)\>,Message Text, etc.)|N
-10|Disconnect all RANGER links (except permalinks)|N
-11|Disconnect a previously permanently connected link|Y
-12|Permanently connect specified link -- monitor only|Y
-13|Permanently connect specified link -- tranceive|Y
-15|Full system status (all nodes)|N
-16|Reconnect links disconnected with "disconnect all links"|N
-17|MDC test (for diag purposes)|N
-18|Permanently Connect specified link -- local monitor only|Y
+1|Disconnect specified link|Yes
+2|Connect specified link -- monitor only|Yes
+3|Connect specified link -- tranceive|Yes
+4|Enter command mode on specified link|Yes
+5|System status|No
+6|Disconnect all links|No
+7|Last Node to Key Up|No
+8|Connect specified link -- local monitor only|Yes
+9|Send Text Message (9,&lt;destnodeno or 0 (for all)\>,Message Text, etc.)|No
+10|Disconnect all RANGER links (except permalinks)|No
+11|Disconnect a previously permanently connected link|Yes
+12|Permanently connect specified link -- monitor only|Yes
+13|Permanently connect specified link -- tranceive|Yes
+15|Full system status (all nodes)|No
+16|Reconnect links disconnected with "disconnect all links"|No
+17|MDC test (for diag purposes)|No
+18|Permanently Connect specified link -- local monitor only|Yes
 
-**Permanent** links are links that `app_rpt` will try and keep connected (automatic redial) if there are network disruptions. Use `ilink,13` for situations like maintaining a connection from a node to a hub.
+The commands to permanently connect a link will have `app_rpt` try to maintain those connections across network disruptions.
 
 ### COP Commands
 The `functionclass` of `cop` (Control OPerator) commands are privileged commands. Node admins may provide some of these to their user community based on personal preference. 
@@ -210,7 +210,7 @@ aprstt = general             ;  Point to the [general] context in gps.conf
 See the comments in `gps.conf` for more details on configuring.
 
 ### archivedir=
-This option is used to enable a simple log and audio recorder of the activity on a node. When enabled, a series of recordings, one for each active COR on the node, is generated. The file(s) will be named with the date and time down to the 1/100th of a second. This logging can be useful in debugging, policing, or other creative things.
+This option is used to enable a simple log and audio recorder of the activity on a node. When enabled, a series of recordings, one for each active COR on the node, is generated. The file(s) will be named with the date and time down to the second (this may change to provide more granularity in the future). This logging can be useful in debugging, policing, or other creative things.
 
 Sample:
 
@@ -314,8 +314,8 @@ duplex = 0     ; 0 = Half duplex with no telemetry tones or hang time.
 This option sets the Echolink node announcement type, when a node connects:
 
 * 1 = Say only node number (default)
-* 2 = Say phonetic call sign only on echolink connects
-* 3 = Say phonetic call sign and node number on echolink connects
+* 2 = Say phonetic call sign only on Echolink connects
+* 3 = Say phonetic call sign and node number on Echolink connects
 
 ### echolinkdefault=
 This option sets the Echolink telemetry option:
@@ -328,8 +328,8 @@ This option sets the Echolink telemetry option:
 ### echolinkdynamic=
 This option enables/disables the Echolink telemetry COP command.
 
-* 0 = disallow users to change current echolink telemetry setting with a COP command
-* 1 = Allow users to change the setting with a COP command
+* 0 = disallow users to change current Echolink telemetry setting with a COP command
+* 1 = allow users to change the setting with a COP command
 
 ### endchar=
 This setting allows the end character used by some control functions to be changed. By default this is a `#`. The `endchar` value must not be the same as the [`funcchar`](#funcchar) default (`*`) or its overridden value.
@@ -357,9 +357,7 @@ etxgain = 3
 See the Echolink How-to for more information.
 
 ### events=
-This option allows you to override the stanza name used for the `[events]` stanza in `rpt.conf`. As of app_rpt version 0.259, 10/9/2010, there exists a method by which a user can specify actions to be taken when certain events occur, such as transitions in receive and transmit keying, presence and modes of links, and external inputs, such as GPIO pins on the URI (or similar USB devices).
-
-Bear in mind, this now also includes the ability to set the condition of external devices, such as output pins on a URI (or similar USB devices), or a Parallel Printer Port.
+This option allows you to override the name used for the `[events]` stanza in `rpt.conf`. You can create events to specify that actions be taken when certain events occur such as transitions in receive and transmit keying, the presence and modes of links, and external inputs such as GPIO pins on the URI (or similar USB devices).
 
 To use events, define an entry in your node stanzas to point to a dedicated events stanza like this:
 
@@ -376,8 +374,6 @@ The default is to have `events=` point to a stanza called `events`. However, you
 See [Event Management](https://wiki.allstarlink.org/wiki/Event_Management) for a more detailed look on how to configure events.
 
 ### extnodefile=
-**This option is deprecated in ASL3 and has been replaced by** `node_lookup_method=`. See [Node Resolutuion](../adv-topics/noderesolution.md) for information on how to configure node lookups. 
-
 This option allows you to set the name of the external node lookup file. The default value is `/var/lib/asterisk/rpt_extnodes`. This file is used to look up node information when linking to other nodes.  It is also used to validate nodes that are connecting to your node.
 
 Sample:
@@ -386,7 +382,7 @@ Sample:
 extnodefile=/var/lib/asterisk/rpt_extnodes
 ```
 
-The default file is automatically updated using the node update script or the `asl-node-diff` script.
+The default file is automatically updated using the node update script or the `asl3-update-nodelist` service.
 
 The `extnodefile=` option supports multiple file names. In some cases, you may want the default file, along with a static locally maintained node file.  Multiple file names can be entered by separating them with a comma. A maximum of 100 external files can be specified.
 
@@ -397,6 +393,8 @@ extnodefile=/var/lib/asterisk/rpt_extnodes,/var/lib/asterisk/myrpt_extnodes
 ```
 
 If a custom `extnodefile=` is used, it must have the section header `[extnodes]` or a custom header as described in [extnodes](#extnodes).
+
+Also see [Node Resolutuion](../adv-topics/noderesolution.md) for information on how to configure node lookups. 
 
 **This option does not appear in the default `rpt.conf`.**
 
@@ -456,7 +454,7 @@ The identifier message is stored in the node stanza using the `idrecording=` set
 Sample:
 
 ```
-idrecording = |iwa6zft/r   ; Morse Code ID
+idrecording = |iWB6NIL   ; Morse Code ID
 ```
 
 or
@@ -639,8 +637,6 @@ macro=macro   ; use stanza named macro
 The default is to have `macro=` point to a stanza called `macro`, and have a common set of commands for all nodes. However, you can have it point to another named stanza, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
 
 See the [Macro Stanza](#macro-stanza) for more detail on defining macros.
-
-**This option does not appear in the default `rpt.conf`.**
 
 ### morse=
 This option allows you to override the stanza name used for the `morse` stanza in `rpt.conf`. The morse stanza directs the node to use a particular stanza for morse code parameters for the node. Morse code parameters can be defined on a per-node basis.  
@@ -929,10 +925,7 @@ Value|Description
 dahdi/pseudo|No radio, used for hubs 
 SimpleUSB/1999|SimpleUSB Channel Driver (limited DSP), specify associated node number found in simpleusb.conf  
 Radio/1999|Usbradio Channel Driver (full DSP), specify associated node number found in usbradio.conf  
-voter/1990|VOTER (RTCM) Channel Driver, specify associated node number found in voter.conf  
-Pi/1|Raspberry Pi PiTA  
-Dahdi/1|PCI Quad card, specify channel number  
-Beagle/1|BeagleBoard   
+voter/1990|VOTER (RTCM) Channel Driver, specify associated node number found in voter.conf    
 USRP/127.0.0.1:34001:32001|GNU Radio interface USRP 
 
 Sample:
