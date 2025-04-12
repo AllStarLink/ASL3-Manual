@@ -1,5 +1,5 @@
 # Rpt.conf
-Rpt.conf (`/etc/asterisk/rpt.conf`) is where the majority of user-facing features, such as the node's CW and voice ID, DTMF commands and timers are set. There is a lot of capability here which can be difficult to grasp. Fortunately the default [https://github.com/AllStarLink/app_rpt/blob/master/configs/rpt/rpt.conf](https://github.com/AllStarLink/app_rpt/blob/master/configs/rpt/rpt.conf) is well commented and will work fine for most node admins.
+Rpt.conf (`/etc/asterisk/rpt.conf`) is where the majority of user-facing features, such as the node's CW and voice ID, DTMF commands and timers are set. There is a lot of capability here which can be difficult to grasp. Fortunately the default `rpt.conf` is well commented and will work fine for most node admins.
 
 See also [config file templating](../adv-topics/conftmpl.md/#asterisk-templates).
 
@@ -7,9 +7,9 @@ See also [config file templating](../adv-topics/conftmpl.md/#asterisk-templates)
 DTMF commands are placed in any one of **three** *named stanzas*. These stanzas control access to DTMF commands that a user can issue from various 
 control points.
 
-* The [Fuctions Stanza](#functions-stanza) - to decode DTMF from the node's local receiver.
-* The [Link Functions Stanza](#link-functions-stanza) - to decode DTMF from linked nodes.
-* The [Phone Functions Stanza](#phone-functions-stanza) - to decode DTMF from telephone connects.
+* The [Fuctions](#functions-stanza) Stanza - to decode DTMF from the node's local receiver.
+* The [Link Functions](#link-functions-stanza) Stanza - to decode DTMF from linked nodes.
+* The [Phone Functions](#phone-functions-stanza) Stanza - to decode DTMF from telephone connects.
  
 A DTMF `key=value` pair has the following format:
 
@@ -18,9 +18,9 @@ A DTMF `key=value` pair has the following format:
 Where:
 
 * `dtmfcommand` is a DTMF digit sequence **minus** the [start character](#funcchar) (usually \*, so a `dtmfcommand` of 81 would actually be *81 when entered via radio)
-* `functionclass` is a string which defines what class of command; `link`, `status`, or `COP`
+* `functionclass` is a string which defines the class of command; `link`, `status`, or `COP`
 * `functionmethod` defines the optional method number to use in the function class
-* `parameters` are one or more optional comma separated parameters which further define a command.
+* `parameters` are one or more optional comma separated parameters that further define a command.
 
 ### Status Commands
 The `functionclass` of `status` commands provide general information about the node. 
@@ -50,7 +50,7 @@ Sample:
 3 = ilink,3   ; Connect specified link -- transceive
 ```
 
-**NOTE:** The above example creates the following DTMF command: *3\<nodenumber\>, which will use `ilink,3` to connect in transceive mode to the specified node number entered as part of the DTMF command.
+**NOTE:** The above example creates the following DTMF command: *3&lt;nodenumber\>, which will use `ilink,3` to connect in transceive mode to the specified node number entered as part of the DTMF command.
 
 See the table below for the available link commands, and whether they take a node number as a (required) parameter when being entered:
 
@@ -64,7 +64,7 @@ ilink|Description|Node Number Required
 6|Disconnect all links|N
 7|Last Node to Key Up|N
 8|Connect specified link -- local monitor only|Y
-9|Send Text Message (9,\<destnodeno or 0 (for all)\>,Message Text, etc.)|N
+9|Send Text Message (9,&lt;destnodeno or 0 (for all)\>,Message Text, etc.)|N
 10|Disconnect all RANGER links (except permalinks)|N
 11|Disconnect a previously permanently connected link|Y
 12|Permanently connect specified link -- monitor only|Y
@@ -250,7 +250,7 @@ callerid="Repeater" <0000000000>
 **Note**: The value in quotes is the name of the autopatch caller, and the numbers in angle brackets are the originating telephone number to use.
 
 ### connpgm= and discpgm=
-These options run user defined scripts. Example from [https://www.qsl.net/k0kn/swissarmy_debian](https://www.qsl.net/k0kn/swissarmy_debian)
+These options run user defined scripts.
 
 `connpgm` executes a program you specify on connect. It passes 2 command line arguments to your program:
 
@@ -266,8 +266,8 @@ Sample:
 
 ```
 # Place these lines in rpt.conf for each node:
-#     connpgm=/home/kyle/swissarmy 1
-#     discpgm=/home/kyle/swissarmy 0
+#     connpgm=/etc/asterisk/custom/myscript 1
+#     discpgm=/etc/asterisk/custom/myscript 0
 ```
 
 ### context=
@@ -941,7 +941,7 @@ Sample:
 rxchannel = dahdi/pseudo     ; No radio (hub)
 ```
 
-**NOTE:** This is selecting what is known as (in Asterisk terminology) the *channel driver*.
+**NOTE:** This is selecting what is known (in Asterisk terminology) the *channel driver*.
 
 **NOTE:** Be sure that any channel driver you use also has it's corresponding module being loaded in `/etc/asterisk/modules.conf`.
 
@@ -1231,11 +1231,16 @@ Most of the above command classes require a [`function method`](#function-method
 ### Function Methods
 Function methods are numbers which identify a specific function to execute within a `function class`. Function methods may be optional and in some cases should be omitted (such as with the autopatchup method). A complete and up-to-date description of all `function methods` can be found in the [`app_rpt.c`](https://github.com/AllStarLink/app_rpt/blob/master/apps/app_rpt.c)  source file. Some `function methods` are shown below as an example below:
 
-* 1  - Force ID (global)
-* 2  - Give Time of Day (global)
-* 3  - Give software Version (global)
-* 11 - Force ID (local only)
-* 12 - Give Time of Day (local only)
+
+Method|Description
+------|-----------
+1|Force ID (global)
+2|Give Time of Day (global)
+3|Give software Version (global)
+4|Give GPS location info
+5|Speak the last (dtmf) user 
+11|Force ID (local only)
+12|Give Time of Day (local only)
 
 ### Function Options
 Some `function methods` can take `function options`. These are specified after the `function method`, separated with commas. Not all commands require or take `function options`. An example of a method which can accept `function options` is the `autopatchup` method.
@@ -1406,9 +1411,9 @@ ct5=|t(660,0,150,2048)
 ct6=|t(880,0,150,2048)
 ct7=|t(660,440,150,2048)
 ct8=|t(700,1100,150,2048)
-ct9=/path/to/sound/filewithoutextion;
+ct9=filename-without-extension
 
-;remotetx=|t(1633,0,50,3000)(0,0,80,0)(1209,0,50,3000);
+;remotetx=|t(1633,0,50,3000)(0,0,80,0)(1209,0,50,3000)
 remotetx=|t(880,0,150,2048) 
 remotemon=|t(1209,0,50,2048) 
 cmdmode=|t(900,903,200,2048)
