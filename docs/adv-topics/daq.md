@@ -15,7 +15,7 @@ A function call to this system would appear to use the following syntax:
 dtmfcommand=meter,device,channel,meter-face,[filter]
 ```
 
-This is similar to the way you would invoke a [`cop`](./rpt_conf.md/#cop-commands) or [`ilink`](./rpt_conf.md/#link-commands) command.
+This is similar to the way you would invoke a [`cop`](../config/rpt_conf.md/#cop-commands) or [`ilink`](../config/rpt_conf.md/#link-commands) command.
 
 Sample:
 
