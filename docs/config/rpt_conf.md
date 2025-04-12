@@ -42,7 +42,7 @@ Status|Description
 12|Give Time of Day (local only)
 
 ### Link Commands
-The `functionclass` of `link` commands affect connecting to, disconnecting from, monitoring (RX only) other nodes, and providing linking status. 
+Commands using the `link` function class affect connecting to, disconnecting from, monitoring (RX only) other nodes, and providing linking status. 
 
 Sample:
 
@@ -77,7 +77,7 @@ ilink|Description|Node Number Required
 The commands to permanently connect a link will have `app_rpt` try to maintain those connections across network disruptions.
 
 ### COP Commands
-The `functionclass` of `cop` (Control OPerator) commands are privileged commands. Node admins may provide some of these to their user community based on personal preference. 
+Commands using the `cop` (Control OPerator) function class are privileged commands. Node admins may provide some of these to their user community based on personal preference. 
 
 Sample:
 
@@ -85,9 +85,13 @@ Sample:
 99 = cop,7   ; enable timeout timer
 ```
 
-Some COP commands can take multiple parameters. For example this COP 48 would send #3#607 on command.
+Some COP commands can take multiple parameters. For example this COP 48 would send #3#607 on command:
 
-`900 = cop,48,#,3,#,6,0,7` 
+Sample:
+
+```
+900 = cop,48,#,3,#,6,0,7 
+```
 
 COP|Description
 ---|-----------
@@ -167,7 +171,7 @@ node_lookup_method = both           ;method used to lookup nodes
                                     ;file = external file lookup only
 ```
 
-See [New Commands](../adv-topics/commands.md#app_rpt-commands) for how this new node lookup method is handled.
+See [New Commands](../adv-topics/noderesolution.md) for how this new node lookup method is handled.
 
 ## Node Number Stanza
 The node number stanza is a critical stanza in `rpt.conf`. 
