@@ -109,6 +109,7 @@ nav:
     - adv-topics/tts.md  
     - adv-topics/multinodesnetwork.md  
     - adv-topics/aprs.md
+    - adv-topics/daq.md
     - adv-topics/rxtoneburst.md
   - Developer Guide:
     - developers/package-builds.md
@@ -116,3 +117,4 @@ nav:
     - developers/aptly.md
   - Config Files:
     - config/config-structure.md
+    - config/rpt_conf.md

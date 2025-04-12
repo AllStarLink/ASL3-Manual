@@ -4,25 +4,30 @@ contributions are welcome!
 
 ## Contributing to the Manual
 To view and edit the manual is simple. Simply clone the ASL-Manual
-project, install mkdocs (see below per platform), and begin editing.
+project, open a Codespace container, and begin editing.
+Alternately, install mkdocs (see below per platform),
 
-Before cloning the project, contact N8EI and provide your GitHub account ID
-so you can be added to the Contributors group for this repository. This makes
-editing the documentation much easier than trying to fork/pull from your
-own copy of the repository.
+## Github Codespace
+The simplest way to get editing is using Github Codespace.  After cloning
+the repository, click on the green **"<>Code"** button, choose **"Codespaces"**, and
+select **"+"** to create a new codespace.  Github will create
+a container with everything configured and ready to edit.  Review the
+[Codespace quickstart](https://docs.github.com/en/codespaces/quickstart) for
+more details.
 
+## Installing locally
 Installing [MkDocs](https://www.mkdocs.org/) is required to view/test
 the documentation. See the setup directions below for the appropriate
 platform you're running. Pages are composed in the [Markdown](https://daringfireball.net/projects/markdown/)
 format.
 
 Edits should be done in a git branch and push the branch back to
-GitHub for developers to consider inclusion. A branch is simply a 
+GitHub for developers to consider inclusion. A branch is simply a
 named copy of the repository that contains your changes. A branch
 name should be a short label of what the change is for - for
 example "add_foopage". A branch name cannot contain whitespace.
-Each branch should contain a specific set of changes that are 
-thematically related. 
+Each branch should contain a specific set of changes that are
+thematically related.
 
 The general workflow, using a terminal or PowerShell session is:
 ```bash
@@ -143,7 +148,7 @@ This procedure will configure a WSL2 environment on your local machine to run Li
     git checkout creating_sample_man_page
     ```
 - Now over in your Windows host, in VS Code, you should be able to connect to your WSL instance, browse to the manual folder in the explorer, and see all the files.
-- You can confirm which branch you are on by using the `Source Control ` button on the left menu. 
+- You can confirm which branch you are on by using the `Source Control ` button on the left menu.
 - You can preview your edits in realtime by using the `Open Preview to the Side` button in the top right of the window.
 - Once you've made all your changes for this branch, be sure to save your changes!
 - Back in your WSL console, confirm Git sees the files you've modified using `git status`.
@@ -216,12 +221,12 @@ beginning to use any `mkdocs` commands.
 #### Basics of Git
 - [Get started with Git](https://docs.github.com/en/get-started/getting-started-with-git/set-up-git)
 - [Basic Git](https://docs.github.com/en/get-started/using-git/about-git)
-  
+
 #### Basics of Markdown
 - [Markdown Syntax](https://www.markdownguide.org/basic-syntax/)
 - [Markdown Tutorial](https://www.markdownguide.org/getting-started/)
 - [MKDocs Material Markdown Add-Ons](https://squidfunk.github.io/mkdocs-material/reference/)
-  
+
 ## Publishing to GitHub.io
 This is for repo admins only.
 
