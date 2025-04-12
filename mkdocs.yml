@@ -116,3 +116,4 @@ nav:
     - developers/aptly.md
   - Config Files:
     - config/config-structure.md
+    - config/rpt_conf.md
