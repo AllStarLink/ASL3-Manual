@@ -110,6 +110,7 @@ nav:
     - adv-topics/multinodesnetwork.md  
     - adv-topics/aprs.md
     - adv-topics/daq.md
+    - adv-topics/rxtoneburst.md
   - Developer Guide:
     - developers/package-builds.md
     - developers/source-install.md
