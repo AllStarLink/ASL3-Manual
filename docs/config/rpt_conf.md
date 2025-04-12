@@ -171,7 +171,7 @@ node_lookup_method = both           ;method used to lookup nodes
                                     ;file = external file lookup only
 ```
 
-See [New Commands](../adv-topics/noderesolution.md) for how this new node lookup method is handled.
+See [Node Resolution](../adv-topics/noderesolution.md) for how this new node lookup method is handled.
 
 ## Node Number Stanza
 The node number stanza is a critical stanza in `rpt.conf`. 
