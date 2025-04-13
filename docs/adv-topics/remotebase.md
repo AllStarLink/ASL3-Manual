@@ -220,6 +220,24 @@ GPI1=0 ; de-assert GPIO1
 
 There is probably additional configuration required, see [Manipulating GPIO](https://wiki.allstarlink.org/wiki/Manipulating_GPIO).
 
+### mars=
+The `mars=` option is only used with the IC-706mkIIg remote. When set to `1`, it enables access to additional bands via remote, as shown below.
+
+Sample:
+
+```
+mars = 0        ; set to 1 to enable MARS bands
+```
+
+MARS bands available:
+Band|Frequency Range|Allowed Mode
+----|---------------|------------
+LMR UHF|450-470MHz|FM
+LMR VHF|148-174MHz|FM
+VHF-AM|108-144MHz|AM
+AM BCB|550-1750kHz|AM
+HF SWL|1750kHz-30MHz|AM
+
 ### phone_functions=
 The `phone_functions=` is a pointer to a remote base phone function stanza. It operates the same as the normal [`phone_functions=`](../config/rpt_conf.md#phone_functions) option. You will likely want to define a phone functions stanza that is unique for your remote base, so that you can tailor what functions are available to use. 
 
@@ -246,7 +264,7 @@ Vendor|Model|remote= Value|Notes
 N/A|Dumb|y|Use for any single channel remote base radios, with no remote tuning capability
 N/A|Parallel Port|pp16|Parallel port programmable 16 channels? Perhaps parallel port BCD bit-banging, such for Motorola radios that can be driven from their accessory port? Interface information not available
 Doug Hall|Remote Base Interface|rbi|Requires Parallel Port Address https://wiki.allstarlink.org/wiki/Remote_Base:_Doug_Hall_RBI-1
-ICOM|IC-706MkIIg|ic706|**IC-706MkIIg only**. Must specify serial port using `ioport=`. Must specify CIV address using `civaddr=`. Earlier versiions return data format is different and will lock up the software
+ICOM|IC-706MkIIg|ic706|**IC-706MkIIg only**. Must specify serial port using `ioport=`. Must specify CIV address using `civaddr=`. Also note `mars=` option. Earlier versions return data format is different and will lock up the software
 Kenwood|Various|kenwood|Should work for many/most Kenwood radios, unless otherwise specified
 Kenwood|TM-D700|tmd700|
 Kenwood|TS-440|kenwood|Some functions may not work
