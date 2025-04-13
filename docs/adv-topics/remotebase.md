@@ -181,6 +181,15 @@ Sample:
 iospeed = 4800         ; Use 4800 baud
 ```
 
+Valid `iospeed` values are:
+
+* 2400
+* 4800
+* 9600 (default if `iospeed` is not specified)
+* 19200
+* 38400
+* 57600
+
 ### lconn=
 This is an undocumented setting. It appears to maybe set a GPIO or Parallel Port pin when connected?
 
@@ -232,31 +241,31 @@ Sample:
 remote = xcat   ; set xcat interface
 ```
 
-Radio|Value|Comments
------|-----|--------
-Dumb|y|Use for any single channel remote base radios, with no remote tuning capability
-FT-897|ft897|Must specify serial port using ioport=
-TMG-707|kenwood|Must specify serial port using ioport=
-IC-706|ic706|**IC-706MkIIG only**. Must specify serial port using ioport=. Must specify civaddr using civaddr=
-TM-271|tm271|Must specify serial port using ioport=
-Syntor Xcat|xcat|Must specify serial port using ioport=. Must specify civaddr using civaddr=
-Doug Hall|rbi|Requires Parallel Port Address https://wiki.allstarlink.org/wiki/Remote_Base:_Doug_Hall_RBI-1
+Vendor|Model|remote= Value|Notes
+------|-----|-------------|-----
+N/A|Dumb|y|Use for any single channel remote base radios, with no remote tuning capability
+N/A|Parallel Port|pp16|Parallel port programmable 16 channels? Perhaps parallel port BCD bit-banging, such for Motorola radios that can be driven from their accessory port? Interface information not available
+Doug Hall|Remote Base Interface|rbi|Requires Parallel Port Address https://wiki.allstarlink.org/wiki/Remote_Base:_Doug_Hall_RBI-1
+ICOM|IC-706MkIIg|ic706|**IC-706MkIIg only**. Must specify serial port using `ioport=`. Must specify CIV address using `civaddr=`. Earlier versiions return data format is different and will lock up the software
+Kenwood|Various|kenwood|Should work for many/most Kenwood radios, unless otherwise specified
+Kenwood|TM-D700|tmd700|
+Kenwood|TS-440|kenwood|Some functions may not work
+Kenwood|TS-450|kenwood|Some functions may not work
+Kenwood|TS-950|kenwood|Some functions may not work
+Kenwood|TM-271|tm271|Must specify serial port using `ioport=`
+Kenwood|TMG-707|kenwood|Must specify serial port using `ioport=`
+Motorola|Syntor Xcat|xcat|Must specify serial port using `ioport=`. Must specify CIV address using `civaddr=`
+Ritron Patriot|RTX-150|rtx150|Interface information not available
+Ritron Partiot|RTX-450|rtx450|
+Yaesu|FT-100|ft100|Must specify serial port using `ioport=`. Default `iospeed=` is set to 4800
+Yaesu|FT-897GXII|ft100|See FT-100. Some commands may not work.
+Yaesu|FT-857|ft897|Must specify serial port using `ioport=`. Default `iospeed=` is set to 4800
+Yaesu|FT-897|ft897|Must specify serial port using `ioport=`. Default `iospeed=` is set to 4800
+Yaesu|FT-890|ft100|See FT-100. Some commands may not work
+Yaesu|FT-900|ft100|See FT-100. Some commands may not work
+Yaesu|FT-950|ft950|Must specify serial port using `ioport=`. Default `iospeed=` is set to 38400
 
-This is a list of currently supported agile remote base rigs, extracted from the source code:
-
-* ft950 
-* ft897 - works with an FT-857 too
-* ft100 - works with an FT-890/FT-900/FT-757GXII too, but some commands (obviously) don't work
-* Many Yaesu models should work for the most part with one of the above, back to 747/757 vintage for freq and mode anyway. FT-817 has completely different commands, so it won't work.
-* rbi (Doug Hall RBI-1)
-* kenwood - Assuming this is for all Kenwood radios as it has changed little over the years), ie TS-440, 450, 950 and surely newer for basic functions.
-* tm271
-* tmd700
-* ic706 - only works with IC-706mkIIg, earlier version's return data format are different and will lock up the software
-* xcat (Syntor-X)
-* rtx150
-* rtx450
-* ppp16 - parallel port programmable 16 channels? Perhaps parallel port BCD bit-banging, such for Motorola radios that can be driven from their accessory port? 
+Many Yaesu models should work for the most part with one of the above, back to 747/757 vintage for frequency and mode anyway. The FT-817 has completely different commands, so it won't work.
 
 ### remote_inact_timeout=
 This option specifies the amount of time without keying from the link, before the link is determined to be inactive. Set to `0` to disable timeout.
