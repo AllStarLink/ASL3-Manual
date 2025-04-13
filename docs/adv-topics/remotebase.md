@@ -11,10 +11,10 @@ Unfettered access to remote bases can be a **security issue**. If the remote bas
 ## Behavior of Standard Nodes Versus Remote Base Nodes
 Behavior|Standard Node|Remote Base Node
 --------|-------------|----------------
-Command Decoding|Remote or Local. DTMF can be optionally decoded on the receive audio input.|Remote only. No DTMF will be decoded on the receive audio input.
-Duplexing|Configurable: duplex or half-duplex.|Half-duplex only.
-|Frequency and Mode Agility|Fixed frequency operation, and channelized operation only using arguments passed in to app_rpt from extensions.conf.|Frequency and Mode agile. Support for several radio types using asynchronous serial, CAT, and synchronous serial.
-Multiple connections|Multiple nodes can connect. Operates as a conference bridge.|Only one node can connect at a time.
+Command Decoding|Remote or Local. DTMF can be optionally decoded on the receive audio input|Remote only. No DTMF will be decoded on the receive audio input
+Duplexing|Configurable: duplex or half-duplex|Half-duplex only
+|Frequency and Mode Agility|Fixed frequency operation, and channelized operation only using arguments passed in to app_rpt from extensions.conf|Frequency and Mode agile. Support for several radio types using asynchronous serial, CAT, and synchronous serial
+Multiple connections|Multiple nodes can connect. Operates as a conference bridge|Only one node can connect at a time
 Login Protection|No|Optional
 
 ## What's Required
@@ -33,11 +33,13 @@ A radio interface cable must be constructed or purchased to interface the radio 
 See the [`remote=`](#remote) setting below for a list of supported or partially supported radios.
 
 ## Remote Base Operation
-In order to use a remote base, once it is configured, the procedure would be something along the lines of (assuming our remote base node is a private node, with a node number of 1999):
+The following is an example of how you would use a remote base:
 
-* Connect to the remote base node, ie \*31999#
-* Send commands, as defined in [`[functions_remote]`](#functions-remote-base), ie \*41999\*000# to set the remote base to memory channel 00, or \*41999\*1146\*940\*1# to set the VFO to 146.940-
-* Disconnect from the remote base node, ie \*11999.
+* Send node \*3&lt;node> to connect to the remote base node
+* Use [`[functions_remote]`](#functions-remote-base) commands to operate the remote base
+* * Send \*4&lt;node>\*000# to set the remote base to memory channel 00
+* * Send \*4&lt;node>\*1146\*940\*1# to set the VFO to 146.940-
+* Send \*1&lt;node> to disconnect from the remote base node
 
 ## Remote Base Node Definition
 A remote base needs to be defined as such in the `[nodes]` context. Specifically, the node definition would need to have the last option changed from "NONE" to "Y".
@@ -45,7 +47,7 @@ A remote base needs to be defined as such in the `[nodes]` context. Specifically
 Sample:
 
 ```
-1998 = radio@127.0.0.1/1999,Y                  ; Remote base node on this server
+1998 = radio@127.0.0.1/1998,Y                  ; Remote base node on this server
 ```
 
 ## Remote Base Node Number Stanza
@@ -69,7 +71,7 @@ The `authlevel=` option is used to enable or disable login requirements for a re
 Sample:
 
 ```
-autllevel = 0   ; allow everyone 
+authlevel = 0   ; allow everyone 
 ```
 
 See [Remote Base Authentication](#remote-base-authentication) and [Remote Base TX Limits](#remote-base-txlimits-stanza) for additional details.
@@ -80,7 +82,7 @@ The `civaddr=` is used with ICOM radios to set the CIV address. The value is a 2
 Sample:
 
 ```
-civaddr = 98  ; set CIV to 98
+civaddr = 88  ; set CIV to 88
 ```
 
 ### dusbabek=
