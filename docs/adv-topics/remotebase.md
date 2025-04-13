@@ -36,7 +36,7 @@ See the [`remote=`](#remote) setting below for a list of supported or partially 
 The following is an example of how you would use a remote base:
 
 * Send node \*3&lt;node> to connect to the remote base node
-* Use [`[functions_remote]`](#functions-remote-base) commands to operate the remote base
+* Use [`[functions_remote]`](#functions) commands to operate the remote base
 * * Send \*4&lt;node>\*000# to set the remote base to memory channel 00
 * * Send \*4&lt;node>\*1146\*940\*1# to set the VFO to 146.940-
 * Send \*1&lt;node> to disconnect from the remote base node
@@ -90,7 +90,7 @@ This option is a "Jim Special", and documentation around it is sparse. It accept
 
 Specifically, it may be required for the Syntor-X (using `remote=xcat`).
 
-### functions= (Remote Base)
+### functions=
 The `functions=` option is a pointer to a remote base function stanza. It operates the same as the normal [`functions=`](../config/rpt_conf.md#functions) option. You will likely want to define a functions stanza that is unique for your remote base, so that you can tailor what functions are available to use. 
 
 Sample:
@@ -211,7 +211,7 @@ GPI1=0 ; de-assert GPIO1
 
 There is probably additional configuration required, see [Manipulating GPIO](https://wiki.allstarlink.org/wiki/Manipulating_GPIO).
 
-### phone_functions= (Remote Base)
+### phone_functions=
 The `phone_functions=` is a pointer to a remote base phone function stanza. It operates the same as the normal [`phone_functions=`](../config/rpt_conf.md#phone_functions) option. You will likely want to define a phone functions stanza that is unique for your remote base, so that you can tailor what functions are available to use. 
 
 Sample:
@@ -288,7 +288,7 @@ This option does not appear to be implemented in code.
 
 Default is 30 (seconds?).
 
-### rxchannel= (Remote Base)
+### rxchannel=
 This option contains the type of channel driver which is being used for the audio and control (COR/PTT) interface to the remote base.
 
 Sample:
@@ -342,7 +342,7 @@ remote|Description|Parameter(s) Accepted
 
 Not all commands above are supported by all radios. For example, radios which don't support SSB, would not be able to be placed in LSB or USB mode.
 
-See the [Remote Base Functions](#functions-remote-base) on how to define the DTMF commands for remote base functions.
+See the [Remote Base Functions](#functions) on how to define the DTMF commands for remote base functions.
 
 ## Remote Base Authentication
 When [`authlevel=`](#authlevel) is greater than zero, the [`remote,99`](#remote-base-commands) command is used to define a different DTMF sequence (password) for each user authorized to use the remote base. The remote base will announce the callsign as access is granted.
