@@ -54,10 +54,10 @@ Sample:
 The node number stanza is a critical stanza in `rpt.conf`. It is the same concept as for a "normal node". 
 
 ```
-[1999]    ; Replace with your assigned or private node number
+[1998]    ; Replace with your assigned or private node number
 ```
 
-The node number stanza is set to the **assigned node number** *or* a **private node number** (if a private node is being configured). It will NOT normally be configured by [asl-menu](../user-guide/menu.md).
+The node number stanza is set to the **assigned node number** *or* a **private node number** (if a private node is being configured). The [asl-menu/node-setup](../user-guide/menu.md) should normally be used to create node stanzas for both public and private nodes.
 
 The node number stanza contains all the configurable options for that specific node using a `key=value` pair syntax. The following configurable options are available to use:
 
@@ -77,7 +77,7 @@ authlevel = 0   ; allow everyone
 See [Remote Base Authentication](#remote-base-authentication) and [Remote Base TX Limits](#remote-base-txlimits-stanza) for additional details.
 
 ### civaddr=
-The `civaddr=` is used with ICOM radios to set the CIV address. The value is a 2 digit hexadecimal number. If this option is not specified, then the CIV address will be set to the default of 88. 
+ICOM radios use the ICOM Communications Interface V (CI-V) for remote control. The `civaddr=` is used to set the CI-V address. The value is a 2 digit hexadecimal number. If this option is not specified, then the CI-V address will be set to the default of 88.
 
 Sample:
 
@@ -99,47 +99,47 @@ Sample:
 functions = functions-remote   ; name the functions stanza 'functions-remote'
 
 [functions-remote]
-0=remote,1                             ; Retrieve Memory
-1=remote,2                             ; Set freq.
-2=remote,3                             ; Set tx PL tone
-3=remote,4                             ; Set rx PL tone
-40=remote,100                          ; Rx PL off
-41=remote,101                          ; Rx PL on
-42=remote,102                          ; Tx PL off
-43=remote,103                          ; Tx PL on
-44=remote,104                          ; Low Power
-45=remote,105                          ; Medium Power
-46=remote,106                          ; High Power
-711=remote,107                         ; Bump down ­20Hz
-714=remote,108                         ; Bump ­down 100Hz
-717=remote,109                         ; Bump ­down 500Hz
-713=remote,110                         ; Bump up 20Hz
-716=remote,111                         ; Bump up 100Hz
-719=remote,112                         ; Bump up 500Hz
-721=remote,113                         ; Scan -­ slow
-724=remote,114                         ; Scan ­- quick
-727=remote,115                         ; Scan ­- fast
-723=remote,116                         ; Scan + slow
-726=remote,117                         ; Scan + quick
-729=remote,118                         ; Scan + fast
-79=remote,119                          ; Tune 
-51=remote,5                            ; Long status query
-52=remote,140                          ; Short status query
-67=remote,210                          ; Send a *
-69=remote,211                          ; Send a #
-91=remote,99,CALLSIGN,[LICENSETAG]     ; Remote base login.
-; Define a different dtmf sequence for each user which is 
-; authorized to use the remote base to control access to it.
-; For example: 
-9139583=remote,99,WB6NIL,G             ; would grant access 
-; to the remote base and announce WB6NIL as being logged in.
-; For example:
-9148351=remote,99,WA6ZFT,E             ; would grant access 
-; to the remote base and announce WA6ZFT as being logged in.
-; When the remote base is disconnected from the originating 
-; node, the user will be logged out. The LICENSETAG parameter 
-; can be optionally specified to enforce TX band limits.
-98=cop,6                               ; Remote base telephone key
+0=remote,1                              ; Retrieve Memory
+1=remote,2                              ; Set freq.
+2=remote,3                              ; Set tx PL tone
+3=remote,4                              ; Set rx PL tone
+40=remote,100                           ; Rx PL off
+41=remote,101                           ; Rx PL on
+42=remote,102                           ; Tx PL off
+43=remote,103                           ; Tx PL on
+44=remote,104                           ; Low Power
+45=remote,105                           ; Medium Power
+46=remote,106                           ; High Power
+711=remote,107                          ; Bump down ­20Hz
+714=remote,108                          ; Bump ­down 100Hz
+717=remote,109                          ; Bump ­down 500Hz
+713=remote,110                          ; Bump up 20Hz
+716=remote,111                          ; Bump up 100Hz
+719=remote,112                          ; Bump up 500Hz
+721=remote,113                          ; Scan -­ slow
+724=remote,114                          ; Scan ­- quick
+727=remote,115                          ; Scan ­- fast
+723=remote,116                          ; Scan + slow
+726=remote,117                          ; Scan + quick
+729=remote,118                          ; Scan + fast
+79=remote,119                           ; Tune 
+51=remote,5                             ; Long status query
+52=remote,140                           ; Short status query
+67=remote,210                           ; Send a *
+69=remote,211                           ; Send a #
+91=remote,99,CALLSIGN,[LICENSETAG]      ; Remote base login.
+                                        ; Define a different dtmf sequence for each user which is 
+                                        ; authorized to use the remote base to control access to it.
+                                        ; For example: 
+9139583=remote,99,WB6NIL,G              ; would grant access 
+                                        ; to the remote base and announce WB6NIL as being logged in.
+                                        ; For example:
+9148351=remote,99,WA6ZFT,E              ; would grant access 
+                                        ; to the remote base and announce WA6ZFT as being logged in.
+                                        ; When the remote base is disconnected from the originating 
+                                        ; node, the user will be logged out. The LICENSETAG parameter 
+                                        ; can be optionally specified to enforce TX band limits.
+98=cop,6                                ; Remote base telephone key
 ```
 
 In the above example the digits to the left of the = are the DTMF code to dial (don't forget to prefix with [`[funchar]`](../config/rpt_conf.md#funcchar), usually *).
@@ -190,38 +190,8 @@ Valid `iospeed` values are:
 * 38400
 * 57600
 
-### lconn=
-This is an undocumented setting. It appears to maybe set a GPIO or Parallel Port pin when connected?
-
-```
-lconn = PP3=1 ; assert parallel port pin 3 upon connect?
-```
-
-or
-
-```
-GPIO1=1 ; assert GPIO1
-```
-
-There is probably additional configuration required, see [Manipulating GPIO](https://wiki.allstarlink.org/wiki/Manipulating_GPIO).
-
-### ldisc=
-This is an undocumented setting. It appears to maybe set a GPIO or Parallel Port pin when disconnected?
-
-```
-ldisc = PP3=0 ; de-assert parallel port pin 3 upon disconnect?
-```
-
-or
-
-```
-GPI1=0 ; de-assert GPIO1
-```
-
-There is probably additional configuration required, see [Manipulating GPIO](https://wiki.allstarlink.org/wiki/Manipulating_GPIO).
-
 ### mars=
-The `mars=` option is only used with the IC-706mkIIg remote. When set to `1`, it enables access to additional bands via remote, as shown below.
+The `mars=` option is only used with the IC-706MKIIG remote. When set to `1`, it enables access to additional bands via remote, as shown below.
 
 Sample:
 
@@ -230,6 +200,7 @@ mars = 0        ; set to 1 to enable MARS bands
 ```
 
 MARS bands available:
+
 Band|Frequency Range|Allowed Mode
 ----|---------------|------------
 LMR UHF|450-470MHz|FM
@@ -264,7 +235,7 @@ Vendor|Model|remote= Value|Notes
 N/A|Dumb|y|Use for any single channel remote base radios, with no remote tuning capability
 N/A|Parallel Port|pp16|Parallel port programmable 16 channels? Perhaps parallel port BCD bit-banging, such for Motorola radios that can be driven from their accessory port? Interface information not available
 Doug Hall|Remote Base Interface|rbi|Requires Parallel Port Address https://wiki.allstarlink.org/wiki/Remote_Base:_Doug_Hall_RBI-1
-ICOM|IC-706MkIIg|ic706|**IC-706MkIIg only**. Must specify serial port using `ioport=`. Must specify CIV address using `civaddr=`. Also note `mars=` option. Earlier versions return data format is different and will lock up the software
+ICOM|IC-706MKIIG|ic706|**IC-706MkIIg only**. Must specify serial port using `ioport=`. Must specify CIV address using `civaddr=`. Also note `mars=` option. Earlier versions return data format is different and will lock up the software
 Kenwood|Various|kenwood|Should work for many/most Kenwood radios, unless otherwise specified
 Kenwood|TM-D700|tmd700|
 Kenwood|TS-440|kenwood|Some functions may not work
@@ -285,7 +256,7 @@ Yaesu|FT-950|ft950|Must specify serial port using `ioport=`. Default `iospeed=` 
 
 Many Yaesu models should work for the most part with one of the above, back to 747/757 vintage for frequency and mode anyway. The FT-817 has completely different commands, so it won't work.
 
-### remote_inact_timeout=
+### remote\_inact\_timeout=
 This option specifies the amount of time without keying from the link, before the link is determined to be inactive. Set to `0` to disable timeout.
 
 Sample:
@@ -305,12 +276,12 @@ remote_timeout = 0   ; do not timeout
 
 Default is 3600 (seconds?).
 
-### remote_timeout_warning=
+### remote\_timeout\_warning=
 This option does not appear to be implemented in code.
 
 Default is 180 (seconds?).
 
-### remote_timeout_warning_freq=
+### remote\_timeout\_warning\_freq=
 This option does not appear to be implemented in code.
 
 Default is 30 (seconds?).
@@ -383,11 +354,10 @@ The `LICENSETAG` is the corresponding entry in the [`[txlmiits]`](#remote-base-t
 Sample:
 
 ```
-[1999]           ; node number for the remote base
-authlevel = 2    ; Remote base authentication level
+[1998]           ; node number for the remote base
 ; authlevel = 0  ; Anyone can use it
 ; authlevel = 1  ; Requires log in, Waits for Tx key to ask for it
-; authlevel = 2  ; Requires log in, asks for it automously
+authlevel = 2  ; Requires log in, asks for it automously
 
 [remote-functions]
 8xx=remote,99,OK,E ; where xx is the password
@@ -466,7 +436,7 @@ E = 7.125-7.300,14.150-14.300,18.110-18.168,21.200-21.450,24.930-24.990,28.300-2
 
 ## Sample Remote Configuration
 ```
-[1234]
+[1998]
 ; Rx audio/signaling channel                                                                                   
 rxchannel = Radio/usb
 
@@ -507,38 +477,38 @@ No buffering is required. Attach directly to the RBI-1's DB9 interface on the co
 In `rpt.conf` you will need to set lines in the node's stanza:
 
 ```
-[29285]                            ; replace 28295 with your node number 
-iobase=0x378                       ; (for lpt1)
-remote=rbi                         ; Doug Hall RBI-1
-functions=funtions-remote29285     ; Function list from link (a list of agile working commands) - use your node number
-memory=memory29285                 ; 'system stored' radio presets, not required - use your node number
+[1998]                              ; your node number 
+iobase=0x378                        ; (for lpt1)
+remote=rbi                          ; Doug Hall RBI-1
+functions=funtions-remote1998       ; Function list from link (a list of agile working commands) - use your node number
+memory=memory1998                   ; 'system stored' radio presets, not required - use your node number
 
-[funtions-remote29285] ;for RBI-1   use your node number
+[funtions-remote1998]               ;for RBI-1   use your node number
 
-0=remote,1             ; Retrieve Radio Stored Memory Channel
-1=remote,2             ; Set freq. VFO MMMMM*KKK*O   (Mhz digits, Khz digits, Offset)
-2=remote,3             ; Set tx PL tone PL Tone HHH*D*
-3=remote,4             ; Set rx PL tone         HHH*D*
+0=remote,1                          ; Retrieve Radio Stored Memory Channel
+1=remote,2                          ; Set freq. VFO MMMMM*KKK*O   (Mhz digits, Khz digits, Offset)
+2=remote,3                          ; Set tx PL tone PL Tone HHH*D*
+3=remote,4                          ; Set rx PL tone         HHH*D*
 
-40=remote,100          ; Rx PL off
-41=remote,101          ; Rx PL on
-42=remote,102          ; Tx PL off
-43=remote,103          ; Tx PL on
-44=remote,104          ; Low Power
-45=remote,105          ; Medium Power
-46=remote,106          ; High Power
+40=remote,100                       ; Rx PL off
+41=remote,101                       ; Rx PL on
+42=remote,102                       ; Tx PL off
+43=remote,103                       ; Tx PL on
+44=remote,104                       ; Low Power
+45=remote,105                       ; Medium Power
+46=remote,106                       ; High Power
 
-51=remote,5          ; Long status query
-52=remote,140        ; Short status query
-67=remote,210        ; Send a *
-69=remote,211        ; Send a #
+51=remote,5                         ; Long status query
+52=remote,140                       ; Short status query
+67=remote,210                       ; Send a *
+69=remote,211                       ; Send a #
 
 
-;Not Required but noted:
+; Not Required but noted:
 
-[memory29285]          ;Stored presets for radio, 
-                       ;Format: (recall# xx) = (Freq 6 digits and decimal) (TX PL Tone )  ( CTCSS Tone )  (ofset + - S ) ( power l m h )
-init=224.660,100.0,-l  ;initial freq/mode on start-up/boot - choose something safe in case of error. Not required. Can be remarked out.
+[memory1998]                        ;Stored presets for radio, 
+                                    ;Format: (recall# xx) = (Freq 6 digits and decimal) (TX PL Tone )  ( CTCSS Tone )  (ofset + - S ) ( power l m h )
+init=224.660,100.0,-l               ;initial freq/mode on start-up/boot - choose something safe in case of error. Not required. Can be remarked out.
 00=224.560,100.0,-l
 01=224.460,114.8,-l
 02=224.580,131.8,-l
@@ -549,4 +519,3 @@ init=224.660,100.0,-l  ;initial freq/mode on start-up/boot - choose something sa
 12=444.150,100.0,+l
 ;13=446.500,100.0,sl
 ```
-
