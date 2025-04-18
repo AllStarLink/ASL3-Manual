@@ -1,77 +1,49 @@
 # Autopatch
-The autopatch feature in app_rpt allows users on the radio to interconnect with the public switched telephone network.  This means a HAM operator can dial a phone number from the radio and be connected to a phone.  The reverse is also possible with someone being able to dial a phone number and be connected to the node.  This is achieved using an account with a VOIP service provider and connecting the Allstar node.
+The autopatch feature in `app_rpt` allows users on the radio to interconnect with the public switched telephone network (PSTN). This means an amateur radio operator can dial a phone number from the radio and be connected to a phone. The reverse is also possible with someone being able to dial a phone number and be connected to the node. This is achieved using an account with a VOIP service provider and connecting the AllStar node.
 
-## Regulatory Issues
+!!! note "Regulatory Issues"
+    Some countries do not allow third-party traffic through autopatching or telephone interconnection on amateur radio frequencies. In addition, if a system is linked between one country which allows autopatching and one which doesn't, just the passing of the traffic itself across the link could be considered a violation of the rules in the prohibiting country. In countries which permit autopatching, users need be made aware of this and should take the node off-link before using the autopatch.
 
-
-*Some countries do not allow third-party traffic through autopatching or 
-telephone interconnection on amateur radio frequencies. In addition, if a system 
-is linked between one country which allows autopatching and one which doesn't, 
-just the passing of the traffic itself across the link could be considered a 
-violation of the rules in the prohibiting country. In countries which permit 
-autopatching, users need be made aware of this and should take the node off-link 
-before using the autopatch.*
-
-## Security Issues
-
-*The examples provided here do not secure the autopatch against toll fraud. A lot 
-can be done to prevent or reduce toll fraud but the prevention measures vary by 
-where you are located geographically. Most of the prevention measures will be in 
-extensions.conf. You can write contexts to reject certain number sequences. 
-The [asterisk book](http://www.asteriskdocs.org/) should be consulted to see how to do 
-this and you be done before placing any autopatch in service. Please make sure you have secured your system so that toll fraud does not become an issue.*
+!!! warning "Security Issues"
+    The examples provided here do not secure the autopatch against toll fraud. A lot can be done to prevent or reduce toll fraud but the prevention measures vary by where you are located geographically. Most of the prevention measures will be in `extensions.conf`. You can write contexts (dial plans) to reject certain number sequences. The [Asterisk Book](http://www.asteriskdocs.org/) should be consulted to see how to do this and should be done before placing any autopatch in service. Please make sure you have secured your system so that toll fraud does not become an issue.
 
 ## Duplex and VOX
-
-Nodes with duplex set to 0 or 1 will use VOX automatically.  Nodes with duplex set to 2 or higher can use phone mode. In phone mode, one can key up the radio by dialing *99 and unkey by dialing #.  One can configure simplex autopatch to not use VOX, but simplex reverse autopatch must use VOX, so it is preferable to use VOX both ways for simplex nodes.  Nodes configured for VOX autopatch should advise callers to mute their phone and unmute only when talking.  Additional info can be found in the [Simplex Autopatch](#simplex-autopatch) section.
+Nodes with duplex set to `0` or `1` will use VOX automatically. Nodes with duplex set to `2` or higher can use phone mode. In phone mode, one can key up the radio by dialing `*99` and un-key by dialing `#`. One can configure simplex autopatch to not use VOX, but simplex reverse autopatch must use VOX, so it is preferable to use VOX both ways for simplex nodes. Nodes configured for VOX autopatch should advise callers to mute their phone and un-mute only when talking. Additional info can be found in the [Simplex Autopatch](#simplex-autopatch) section.
 
 ## Selecting a VOIP Provider
+Call termination into the public switched telephone network is a service offered by a Voice Over IP provider (VOIP). This is a highly competitive business, and there are lots of VOIP providers offering termination for Asterisk users. Termination is usually provided using the SIP protocol, while IAX is offered by a few providers.
 
-Call termination into the public switched telephone network is a service offered by
-a Voice Over IP provider (VOIP). This is a highly competitive business, 
-and there are lots of VOIP providers offering termination for Asterisk users. 
-Termination is usually provided using the SIP protocol, while IAX is offered 
-by a few providers.
+When selecting an VOIP provider, make sure they provide setup instructions with example configurations including usernames, and passwords. Quite a few VOIP providers will 
+automatically generate a custom SIP or IAX stanza for insertion into `pjsip.conf`, or `iax.conf` respectively. Not all providers will supply configuration examples. This guide includes example configuration files that may need adjustments to get working with specific providers and ASL versions.
 
-When selecting an VOIP provider, make sure they provide setup instructions with 
-example configurations including usernames, and passwords. Quite a few VOIPs will 
-automatically generate a custom SIP or IAX stanza for insertion into sip.conf, 
-or iax.conf respectively. Not all providers will supply configuration examples. 
-This guide includes example configuration files that may need adjustments to get 
-working with specific providers and ASL versions.
-
-This guide will document the general process for setting up IAX2 and SIP providers with examples for voip.ms IAX and flowroute.com SIP.  Any provider should be setup in a similar fashion.
+This guide will document the general process for setting up IAX2 and SIP providers with examples for [voip.ms](https://voip.ms) IAX and [flowroute.com](https://flowroute.com) SIP. Any provider should be setup in a similar fashion.
 
 ## VOIP Provider Setup
-Whatever provider one chooses, the same things must be setup.  Different providers will have different names for each item but the setup will be similar.
+Whatever provider one chooses, the same things must be setup. Different providers will have different names for each item, but the setup will be similar.
 
-- A phone number or DID must be purchased.
-- E911 service should be setup.
-- CallerID must be setup for the DID.
-- Inbound routing will need to be setup so calls are routed to the node via IAX2 or SIP.
-- Authentication for outbound calls must be configured.
+* A phone number or DID must be purchased
+* E911 service should be setup
+* CallerID must be setup for the DID
+* Inbound routing will need to be setup so calls are routed to the node via IAX2 or SIP
+* Authentication for outbound calls must be configured
 
 ## Firewall Setup
-- If using IAX, the firewall will already be configured properly. If using SIP, you will need to update the firewall rules to allow SIP traffic with:
+If using IAX, the firewall will already be configured properly. If using SIP, you will need to update the firewall rules to allow SIP traffic with:
 
-```bash
+```
 root@localhost:/# firewall-cmd --add-service=SIP --permanent
 ```
 
-- On the router/firewall, forward/open ports as required:
-	- For traffic from IAX/SIP provider you need to allow TCP and UDP port 5060 to the node.
-	- For traffic from WAN needs to allow the UDP port range 10000-20000 to the node.
+On your internet router/firewall, forward/open ports as required:
+
+* For traffic from the Internet (from the SIP provider) you need to allow TCP and UDP port `5060` to the node
+* You will also need to allow the UDP port range `10000-20000` to the node
 
 ## Configuration Files
+Four configuration files will be used to setup the autopatch: `rpt.conf`, `extensions.conf`, `modules.conf`, and either `iax.conf` or `pjsip.conf`. The VOIP provider should provide a stanza for you to insert in `iax.conf` or `pjsip.conf`. The configuration below shows how each of these files are used when an outgoing autopatch or reverse autopatch call is made.
 
-Four configuration files will be used to setup the autopatch: **rpt.conf**, 
-**extensions.conf**, **modules.conf**, and either **iax.conf** or **pjsip.conf**. 
-The VOIP provider should provide a stanza for you to insert in **iax.conf** 
-or **pjsip.conf**. The configuration below shows how each of these files are 
-used when an outgoing autopatch or reverse autopatch call is made.
-
-### modules.conf
-In the **/etc/asterisk/modules.conf** file, add the following lines at the bottom of the file, but above the [global] stanza:
+### `modules.conf`
+In the `/etc/asterisk/modules.conf` file, add the following lines at the bottom of the file, but above the `[global]` stanza:
 
 ```
 load => bridge_builtin_features.so
@@ -85,8 +57,7 @@ load => app_verbose.so
 load => app_read.so
 ```
 
-If using a SIP trunking provider, add these additional lines at the bottom of 
-modules.conf, above the [global] stanza:
+If using a SIP trunking provider, add these additional lines at the bottom of `modules.conf`, above the `[global]` stanza:
 
 ```
 ;
@@ -149,8 +120,8 @@ load = res_sorcery_memory.so
 load = res_sorcery_realtime.so
 ```
 
-### rpt.conf
-In the **/etc/asterisk/rpt.conf** configuration file, the stanza for the node needs to specify the context for the autopatch.  The name of the context should match the name added to extensions.conf:
+### `rpt.conf`
+In the `/etc/asterisk/rpt.conf` configuration file, the stanza for the node needs to specify the context for the autopatch. The name of the context should match the name added to `extensions.conf`:
 
 ```
 [1234]
@@ -158,7 +129,7 @@ context = autopatch                ; dialing context for phone
 callerid = "Repeater" <0000000000> ; callerid for phone calls
 accountcode = RADIO                ; account code (optional)
 ```
-You should also add entries to the function stanza so that users can bring up or take down the autopatch:
+You should also add entries to the `[functions]` stanza so that users can bring up or take down the autopatch:
 
 ```
 [functions]
@@ -168,23 +139,23 @@ You should also add entries to the function stanza so that users can bring up or
 
 #### Autopatch Options
 
-There are several options that can be passed to the autopatchup command class.  This table summarizes what they do:
+There are several options that can be passed to the autopatchup command class. This table summarizes what they do:
 
 | Option | Description |
 |------------------|-------------|
-| context | Override the context specified for the autopatch in rpt.conf |
+| context | Override the context specified for the autopatch in `rpt.conf` |
 | dialtime | The maximum time to wait between DTMF digits when a telephone number is being dialed. The patch will automatically disconnect if this time is exceeded. The value is specified in milliseconds. |
 | farenddisconnect | When set to 1, the patch will automatically disconnect when the called party hangs up. The default is to send a circuit busy tone until the radio user brings the patch down. |
-| noct | When set to 1, the courtesy tone during an autopatch call will be disabled. The default is to send the courtesy tone whenever the radio user unkeys. |
+| noct | When set to 1, the courtesy tone during an autopatch call will be disabled. The default is to send the courtesy tone whenever the radio user un-keys. |
 | quiet | When set to 1, do not send dial tone or voice responses, just try to connect the call. |
 | voxalways | When set to 1, enables VOX mode. |
 | exten | Overrides the default autopatch extension. |
 | nostar | Disables the repeater function prefix |
 
 #### Create a Script to Handle Terminating Calls
-Create the following script to handle terminating calls. Without this script you will be unable to forcefully terminate **incoming** calls:
+Create the following script to handle terminating calls. Without this script, you will be unable to forcefully terminate **incoming** calls:
 
-```bash
+```
 nano /var/lib/asterisk/hangupPhones
 ```
 
@@ -213,15 +184,14 @@ done <<< "$CHANNELS"
 
 Save the file and make it executable:
 
-```bash
-chmod +x /var/lib/asterisk/hangupPhones
+```
+sudo chmod +x /var/lib/asterisk/hangupPhones
 ```
 
-### extensions.conf
+### `extensions.conf`
+In the `/etc/asterisk/extensions.conf` file, a stanza for the autopatch context is added which refers to the peer stanza in `iax.conf` or `pjsip.conf`. These examples will likely need to be adjusted to work with a specific provider: 
 
-In the **/etc/asterisk/extensions.conf** file, a stanza for the autopatch context is added which refers to the peer stanza in iax.conf or pjsip.conf.  These examples will likely need to be adjusted to work with a specific provider: 
-
-For outbound IAX connections, add an [autopatch] stanza with:
+For outbound IAX connections, add an `[autopatch]` stanza with:
 
 ```
 [autopatch] 
@@ -232,7 +202,7 @@ exten => _NXXNXXXXXX,1,Dial(IAX2/voipms/${EXTEN})
 exten => _NXXNXXXXXX,n,Hangup()
 ```
 
-For outbound SIP connections (using IP auth), add and [autopatch] stanza with:
+For outbound SIP connections (using IP auth), add an `[autopatch]` stanza with:
 
 ```
 [autopatch]
@@ -243,7 +213,7 @@ exten => _NXXNXXXXXX,1,Dial(PJSIP/flowroute-endpoint/sip:[tech-prefix]*+1${EXTEN
 exten => _NXXNXXXXXX,n,Hangup()
 ```
 
-To setup the 911 extension, add the following lines to the [autopatch] stanza:
+To setup the 911 extension, add the following lines to the `[autopatch]` stanza:
 
 ```
 ; Match 911
@@ -263,7 +233,7 @@ exten => 911,n,Hangup()
 ; exten => 911,n,Hangup()
 ```
 
-You will also want to add a [reverse-autopatch] stanza with the following lines:
+You will also want to add a `[reverse-autopatch]` stanza with the following lines:
 
 ```
 ; REVERSE-AUTOPATCH - REPEATER RECEIVES INCOMING CALLS
@@ -354,10 +324,10 @@ exten => ${VOIPDID},n,rpt(${NODE}|Pv)
 exten => ${VOIPDID},n,Hangup()
 ```
 
-### iax.conf
-If using an IAX provider, you will need to update the **/etc/asterisk/iax.conf** file.  Items in between brackets should be replaced with specific account info, except the stanza names themselves:
+### `iax.conf`
+If using an IAX provider, you will need to update the `/etc/asterisk/iax.conf` file. Items in between brackets should be replaced with specific account info, except the stanza names themselves:
 
-First, add the following lines to the [general] stanza :
+First, add the following lines to the `[general]` stanza:
 
 ```
 ; ENTER YOUR VOIP.MS CREDENTIALS AND SERVER HERE
@@ -365,7 +335,7 @@ register => [VOIPMS_ID]:[VOIPMS_PASSWORD]@[VOIPMS_HOST]
 ; Example: register => 123456:supersecretpassword@dallas1.voip.ms
 ```
 
-Then, add this new stanza :
+Then, add this new stanza:
 
 ```
 [voipms]
@@ -383,8 +353,8 @@ insecure=port,invite
 requirecalltoken=yes
 ```
 
-### pjsip.conf
-If using a SIP provider, replace (or create) the **/etc/asterisk/pjsip.conf** file.  The file (below) is based on a node behind NAT and should be updated for specific providers and accounts:
+### `pjsip.conf`
+If using a SIP provider, replace (or create) the `/etc/asterisk/pjsip.conf` file. The file (below) is based on a node behind NAT and should be updated for specific providers and accounts:
 
 ```
 ;===============TRANSPORT
@@ -439,27 +409,19 @@ match=us-east-va.sip.flowroute.com
 ```
 
 ## Simplex Autopatch
-For nodes with duplex set to 0 or 1, Simplex Autopatch operation is supported.
-This is accomplished by using a VOX on the audio coming from the telephone call, 
-because of the half-duplex nature of the node. To avoid having audio from the 
-telephone call keep the transmitter engaged for extended periods of time (if there 
+For nodes with duplex set to `0` or `1`, simplex autopatch operation is supported. This is accomplished by using a VOX on the audio coming from the telephone call, 
+because of the half-duplex nature of the node. To avoid having audio from the telephone call keep the transmitter engaged for extended periods of time (if there 
 is some source of continuous audio), there are two time-out values. 
 
-Vox timeout, which is the maximum amount of time that the VOX can hold the transmitter 
-engaged, which by default is 10 seconds. The other one is the VOX recovery time, which
-is the amount of time that the VOX is disabled during times of continuous audio, after
-the VOX timeout, which is 2 seconds. During continuous audio, it transmits for 
-10 seconds, then stops for 2 seconds (so that you can transmit to it and perhaps 
-disconnect the call), then transmits for another 10 seconds, then stops for 2 seconds.
+VOX timeout, which is the maximum amount of time that the VOX can hold the transmitter engaged, which by default is 10 seconds. The other one is the VOX recovery time, which
+is the amount of time that the VOX is disabled during times of continuous audio, after the VOX timeout, which is 2 seconds. During continuous audio, it transmits for 
+10 seconds, then stops for 2 seconds (so that you can transmit to it and perhaps disconnect the call), then transmits for another 10 seconds, then stops for 2 seconds.
 This repeats until the call is disconnected.
 
-Additionally, to prevent 'chop-off' of the first syllable or two of the audio from the 
-telephone call, the audio is delayed to allow for the transmitter to start transmitting 
-and any CTCSS tones to be decoded. This delay is typically 500ms, but can be adjusted
-using the 'simplexpatchdelay' parameter. It is specified in units of 20 milliseconds.
+Additionally, to prevent "chop-off" of the first syllable or two of the audio from the telephone call, the audio is delayed to allow for the transmitter to start transmitting 
+and any CTCSS tones to be decoded. This delay is typically 500ms, but can be adjusted using the `simplexpatchdelay` parameter. It is specified in units of 20 milliseconds.
 
-These time-out values may be overridden by using the following configuration parameters
-located in the [node-number] section of rpt.conf:
+These time-out values may be overridden by using the following configuration parameters located in the [nodenumber] section of `rpt.conf`:
 
 ```
 [1999]

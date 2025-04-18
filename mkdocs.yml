@@ -12,7 +12,7 @@ markdown_extensions:
   - md_in_html
   - pymdownx.details
   - pymdownx.superfences
-copyright: Copyright &copy; 2024 AllStarLink Inc.
+copyright: Copyright &copy; 2025 AllStarLink Inc.
 theme:
   name: material
   features:
@@ -56,12 +56,12 @@ nav:
   - Home: index.md
   - Installation:
     - user-guide/index.md
+    - "Important Considerations": user-guide/whats-new.md
     - ASL3 Installation:
-      - "What's New?": user-guide/whats-new.md
       - user-guide/pi-detailed.md
       - user-guide/install.md
       - user-guide/updates.md
-      - "Differences & Issues": user-guide/known-issues-diffs.md
+      - "Differences & Known Issues": user-guide/known-issues-diffs.md
     - Allmon3:
       - allmon3/basics.md
       - allmon3/install.md
@@ -72,39 +72,32 @@ nav:
     - user-guide/asl-cmds-tools.md
     - user-guide/passwords.md
     - user-guide/support.md
+    - user-guide/troubleshooting.md
     - user-guide/betatest.md
-    - "Basic Troubleshooting Tips": user-guide/troubleshooting.md
-    - Pi Appliance:
-      - "Getting Started": pi/cockpit-get-started.md
+    - Pi Appliance Specifics:
+      - "Getting Started With Cockpit": pi/cockpit-get-started.md
       - pi/cockpit-basics.md
       - pi/cockpit-console.md
       - pi/cockpit-network.md
       - pi/cockpit-updates.md
       - pi/cockpit-services.md
       - pi/cockpit-firewall.md
-    - Manpages:
-      - mans/asl-find-sound.md
-      - mans/asl-node-lookup.md
-      - mans/asl-play-arn.md
-      - mans/asl-say.md
-      - mans/asl-setup-dkms-mok.md
   - Advanced Topics:
     - adv-topics/commands.md
     - adv-topics/incompatibles.md
+    - adv-topics/noderesolution.md
+    - adv-topics/httpreg.md
     - adv-topics/iaxreg.md
     - adv-topics/usbinterfaces.md
+    - adv-topics/audio-level.md
     - adv-topics/sa818modules.md
     - adv-topics/conftmpl.md
-    - adv-topics/httpreg.md
     - adv-topics/allowdenylists.md
-    - adv-topics/other-software.md
-    - adv-topics/audio-level.md
     - adv-topics/sip-phone.md
     - adv-topics/broadcastify.md
     - adv-topics/hotspot_hd.md
     - adv-topics/autopatch.md
     - adv-topics/permissions.md
-    - adv-topics/noderesolution.md
     - adv-topics/uefi-secureboot.md
     - adv-topics/tts.md  
     - adv-topics/multinodesnetwork.md  
@@ -112,10 +105,17 @@ nav:
     - adv-topics/daq.md
     - adv-topics/litz.md
     - adv-topics/rxtoneburst.md
+    - adv-topics/other-software.md
   - Developer Guide:
     - developers/package-builds.md
     - developers/source-install.md
     - developers/aptly.md
+  - Manpages:
+      - mans/asl-find-sound.md
+      - mans/asl-node-lookup.md
+      - mans/asl-play-arn.md
+      - mans/asl-say.md
+      - mans/asl-setup-dkms-mok.md
   - Config Files:
     - config/config-structure.md
     - config/rpt_conf.md
