@@ -57,7 +57,7 @@ nav:
   - Installation:
     - user-guide/index.md
     - "Important Considerations": user-guide/whats-new.md
-    - ASL3 Pi Appliance:
+    - ASL3 Appliance:
       - user-guide/pi-detailed.md
     - ASL3 on Debian 12:
       - user-guide/install.md
