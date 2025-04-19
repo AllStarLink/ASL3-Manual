@@ -110,7 +110,7 @@ nav:
     - developers/package-builds.md
     - developers/source-install.md
     - developers/aptly.md
-  - Manpages:
+  - Man Pages:
       - mans/asl-find-sound.md
       - mans/asl-node-lookup.md
       - mans/asl-play-arn.md

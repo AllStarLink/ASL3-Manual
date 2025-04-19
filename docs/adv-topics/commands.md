@@ -1,21 +1,9 @@
 # New Commands
-ASL3 is overall very similar to older versions (ASL2). However, due to the upgrade to Asterisk 20, there things that have changed. In addition, there are also some new commands that are now available.
+ASL3 is overall very similar to older versions (ASL2). However, due to the upgrade to Asterisk 20 (and newer), there are things that have changed. In addition, some new commands are now available.
 
 New and different commands to interact with ASL3 are documented here. Older ASL2 commands are still documented on the [AllStarLink Wiki](https://wiki.allstarlink.org), and may still be applicable (with some modifications) to ASL3. The wiki documentation will remain as a reference, until all the documentation can be updated for ASL3, and added to this manual. 
 
-All these commands are available when using the Asterisk Manager Interface (AMI), also known as the Asterisk Console. This can be accessed through the [`Cockpit`](../pi/cockpit-get-started.md) Terminal, from [`asl-menu`](../user-guide/menu.md), or directly from the Linux terminal with `asterisk -rvvv` or `sudo asterisk -rvvv`, depending on your system configuration. 
-
-## Verbosity and Debug Levels
-Previously, `app_rpt` and associated applications and channel drivers supported setting the debug level with a unique command for those modules. These unique commands have been removed in ASL3, and replaced with the stock Asterisk debug function.
-
-See how to set [verbosity and debug levels](../user-guide/menu.md#asterisl-cli-verbosity-and-debug) in the CLI for more information.
-
-Examples:
-
-```
-core set debug 5 app_rpt
-core set debug 3 chan_simpleusb
-```
+All these commands are available when using the Asterisk Command Line Interface (CLI), also known as the Asterisk Console. This can be accessed through the [`Cockpit`](../pi/cockpit-get-started.md) Terminal, from [`asl-menu`](../user-guide/menu.md), or directly from the Linux terminal with `asterisk -rvvv` or `sudo asterisk -rvvv`, depending on your system configuration. 
 
 ## `app_rpt` commands
 These commands interact with the `app_rpt` application itself:
@@ -69,15 +57,20 @@ The `app_gps` module must be loaded for this command to work. This command inter
 
 The `app_gps` module is used with APRStt and for reporting the position of (mobile) nodes to APRS-IS, in conjunction with an attached GPS.
 
-## Helper Scripts
-There are some new helper utilities that have been introduced with ASL3.
+## Verbosity and Debug Levels
+Previously, `app_rpt`, associated applications, and channel drivers supported setting the debug level with a unique command for those modules. These unique commands have been removed in ASL3, and replaced with the stock Asterisk `debug` commands.
 
-* [`asl-find-sound`](../mans/asl-find-sound.md) makes it easy to identify the device strings for attached USB sound interfaces that are compatible with `app_rpt`.
-* [`asl-node-lookup`](../mans/asl-node-lookup.md) displays AllStarLink node information about a node.
-* [`asl-play-arn`](../mans/asl-play-arn.md) plays the Amateur Radio Newsline.
-* [`asl-say`](../mans/asl-say.md) will cause Asterisk to speak some certain parameters.
-* [`asl-setup-dkms-mok`](../mans/asl-setup-dkms-mok.md) is a utility used by advanced users and developers to set the Machine Owner Key for signing kernel packages.
-* [`asl-repo-switch`](../user-guide/betatest.md) allows developers and testers switch between main, beta, and devel `apt` package repositories.
+See how to set [verbosity and debug levels](../user-guide/menu.md#asterisl-cli-verbosity-and-debug) in the CLI for more information.
+
+Examples:
+
+```
+core set debug 5 app_rpt
+core set debug 3 chan_simpleusb
+```
+
+## Helper Scripts
+There are some new helper utilities that have been introduced with ASL3. See the [ASL Commands and Tools](../user-guide/asl-cmds-tools.md) page for further details.
 
 ## USB EEPROM Operation
 Both `chan_simpleusb` and `chan_usbradio` allow users to store configuration information in the EEPROM attached to their interface (if equipped). 

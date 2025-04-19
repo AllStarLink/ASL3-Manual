@@ -9,7 +9,7 @@ Proper audio level calibration is crucial for ensuring good audio quality, and c
 * Tweaking tools if your radio or interface board has physical adjustment pots, or the appropriate service software for your radio.
 
 ## Assumptions
-* The system you are calibrating uses 5kHz deviation (standard NBFM) as the maximum peak deviation. For narrow band systems everything is half. So the step below which say to use 3kHz should use 1.5kHz.
+* The system you are calibrating uses 5kHz deviation (standard NBFM) as the maximum peak deviation. For narrow band systems everything is half. So the steps below which say to use 3kHz should use 1.5kHz.
 * You must know the node number and the channel number of the radio port you wish to test. This can be looked up in `rpt.conf`.
 
 ## Procedure
@@ -30,7 +30,7 @@ If you intend to drive the transmitter at the microphone input, or at another au
 2. Enable the test tone generator COP command in `rpt.conf` and restart Asterisk
 3. Connect the radio interface to the transmitter
 4. Bring up the Asterisk CLI.
-5. From the Asterisk CLI, type `rpt fun yournodenumber *989` where `yournodenumber` is the node number assigned to you.
+5. From the Asterisk CLI, type `rpt fun yournodenumber *904` where `yournodenumber` is the node number assigned to you.
 6. The transmitter should key and you may hear a tone. Adjust the TX level until the service monitor indicates 3kHz of peak deviation.
 7. From the Asterisk CLI, type `rpt fun yournodenumber #`. This will kill the test tone and un-key the transmitter.
 8. If encoding CTCSS, re-enable the CTCSS encoder in the transmitter, then repeat the previous three steps. You should see no more than 3.6kHz of deviation with the CTCSS tone generator enabled. If it is higher than this, adjust the CTCSS level per your transmitter's service documentation until a 3.6kHz of deviation is seen on the service monitor.

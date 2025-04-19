@@ -17,6 +17,6 @@ register => 1999:password@register.allstarlink.org    ; This must be changed to 
 
 While [IAX registration](./iaxreg.md) still works, please *do not* register with both HTTP and IAX. That would result in unnecessary server load for no gain. 
 
-The long term plan is to do away with IAX registration. HTTP registration allows load balancing and other advantages not available with IAX. The ASL3 IAX module has been replaced with the Asterisk LTS IAX2 module for upstream compatibility.
+The long term plan is to do away with IAX registration. HTTP registration allows load balancing and other advantages not available with IAX. The ASL2 IAX module has been replaced with the Asterisk LTS IAX2 module for upstream compatibility.
 
 If you feel you absolutely need to use IAX registration, see the [IAX-Based Registration](./iaxreg.md) page in this section for more information.

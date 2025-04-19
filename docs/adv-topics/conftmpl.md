@@ -49,7 +49,7 @@ Node 1999 would use all the settings in the `[node-main]` template, but it would
 
 ## `/etc/asterisk/simpleusb.conf` and `/etc/asterisk/usbradio.conf`
 
-The `/etc/asterisk/simpleusb.conf` and `/etc/asterisk/usbradio.conf` files have also adopted a templated configuration. Again, the template for a node is named `[node-main]`.Every node tagged with `(node-main)` inherits all the template settings. Settings changed in the node-specific stanza will override the same settings in the `[node-main]` template.
+The `/etc/asterisk/simpleusb.conf` and `/etc/asterisk/usbradio.conf` files have also adopted a templated configuration. Again, the template for a node is named `[node-main]`. Every node tagged with `(node-main)` inherits all the template settings. Settings changed in the node-specific stanza will override the same settings in the `[node-main]` template.
 
 ## `/etc/asterisk/gps.conf`
 The `/etc/asterisk/gps.conf` file has also adopted a templated configuration. The template for a node is named `[general]`. Every node tagged with `(general)` inherits all the template settings. Template settings are overwritten by nodes with `(general)` attached.
