@@ -57,14 +57,14 @@ nav:
   - Installation:
     - user-guide/index.md
     - "Important Considerations": user-guide/whats-new.md
-    - ASL3 Appliance:
+    - <span style="color:hsl(86.28, 71.6%, 33.14%)">ASL3 Appliance</span>:
       - user-guide/pi-detailed.md
-    - ASL3 on Debian 12:
+    - <span style="color:hsl(86.28, 71.6%, 33.14%)">ASL3 on Debian 12</span>:
       - user-guide/install.md
-    - Post Installation:
+    - <span style="color:hsl(86.28, 71.6%, 33.14%)">Post Installation</span>:
       - user-guide/updates.md
       - "Differences & Known Issues": user-guide/known-issues-diffs.md
-    - Allmon3 Install and Config:
+    - <span style="color:hsl(86.28, 71.6%, 33.14%)">Allmon3 Install and Config</span>:
       - allmon3/basics.md
       - allmon3/install.md
       - allmon3/config.md
