@@ -1,33 +1,21 @@
 # Updating ASL3
-All of the software components that make up AllStarLink v3 are
-provided by software packages (Debian .deb files) from an
-centralized Apt repository. This makes upgrades quick and
-painless for users.
+All of the software components that make up ASL3 are provided by software packages (Debian `.deb` files) from an centralized Apt repository. This makes upgrades quick and painless for users.
 
 ## Standard Debian Upgrades
-Whether AllStarLink v3 is installed on a standard Debian 12
-installation or you are using the Pi appliance image,
-updates follow the standard Debian format:
+Whether ASL3 is installed on a standard Debian 12 installation or you are using the Pi Appliance image, updates follow the standard Debian format:
 
-```bash
+```
 sudo apt update
 sudo apt upgrade -y
 ```
 
-This will update all AllStarLink v3 software as well as
-the underlying operating system. AllStarLink will never
-release any update that is a "breaking change" through
-the apt system that doesn't have either an automated upgrade
-process or a well-documented manual step-by-step process.
+This will update all ASL3 software as well as the underlying operating system. AllStarLink will never release any update that is a "breaking change" through the `apt` system that doesn't have either an automated upgrade process or a well-documented manual step-by-step process.
 
 A reboot is only needed when a new Linux kernel has been installed.
 
-Sometimes an update may ask what to do with a configuration
-file. It is generally best to answer such questions with
-`N` meaning "keep your currently-installed version. Such a question
-will look like:
+Sometimes an update may ask what to do with a configuration file. It is generally best to answer such questions with `N` meaning, "keep your currently-installed version". Such a question will look like:
 
-```bash
+```
 Configuration file '/etc/asterisk/rpt.conf'
  ==> Modified (by you or by a script) since installation.
  ==> Package distributor has shipped an updated version.
@@ -40,29 +28,25 @@ Configuration file '/etc/asterisk/rpt.conf'
 *** rpt.conf (Y/I/N/O/D/Z) [default=N] ? N
 ```
 
-AllStarLink will clearly announce when there is a change that may break
-existing configurations.
+AllStarLink will clearly announce when there is a change that may break existing configurations.
 
-If you want updates to install without any questions being asked
-specify the `DEBIAN_FRONTEND=noninteractive` variable:
+If you want updates to install without any questions being asked specify the `DEBIAN_FRONTEND=noninteractive` variable:
 
-```bash
+```
 DEBIAN_FRONTEND=noninteractive sudo apt update
 DEBIAN_FRONTEND=noninteractive sudo apt upgrade -y
 ```
 
-Using this command will automatically choose "N" to any 
-question about configuration - i.e. it will always keep
-your installed version.
+Using this command will automatically choose `N` to any question about configuration - i.e. it will always keep your installed version.
 
 ## Note on DAHDI
-In the past, managing the DAHDI kernel module needed
-by app_rpt had been problematic during kernel upgrades.
-Previously, the recommendation had been to never upgrade
-the kernel. **This advice is no longer valid and should not
-be followed for security and practicality reasons.**
+In the past, managing the DAHDI kernel module needed by `app_rpt` had been problematic during kernel upgrades. Previously, the recommendation had been to never upgrade
+the kernel. **This advice is no longer valid and should not be followed for security and practicality reasons.**
 
-AllStarLink v3 automatically manages and rebuilds the
-DAHDI kernel modules during software updates using
-the DKMS system. After an upgrade, rebooting into a new version
-of the Linux kernel will "Just Work".
+ASL3 automatically manages and rebuilds the DAHDI kernel modules during software updates using the DKMS system. After an upgrade, rebooting into a new version of the Linux kernel will "just work".
+
+If, for some strange reason, you need to manually rebuild and install the DAHDI kernel modules, try the following:
+
+```
+sudo apt install -y --reinstall dahdi-linux dahdi-dkms
+```
