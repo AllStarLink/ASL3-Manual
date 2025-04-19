@@ -76,7 +76,7 @@ nav:
     - user-guide/support.md
     - user-guide/troubleshooting.md
     - user-guide/betatest.md
-    - Pi Appliance Specifics:
+    - <span style="color:hsl(86.28, 71.6%, 33.14%)">Pi Appliance Specifics</span>:
       - "Getting Started With Cockpit": pi/cockpit-get-started.md
       - pi/cockpit-basics.md
       - pi/cockpit-console.md
