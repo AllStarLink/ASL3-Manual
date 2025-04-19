@@ -1,4 +1,4 @@
-# Allmon3 Configuration
+# Configuration
 All configuration resides in `/etc/allmon3`. The stock configuration files are always available at `/usr/share/doc/allmon3/` for recovery and documentation.
 
 After changing any configuration file, the service `allmon3` must be restarted using `sudo systemctl restart allmon3`.

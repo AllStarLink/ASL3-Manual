@@ -1,4 +1,4 @@
-# Allmon3 Basics
+# About Allmon3
 Allmon is the standard web-based monitoring and management for ASL3.
 
 Allmon3 is the next generation of web dashboards for AllStarLink, rewritten for performance, scalability, and responsiveness.

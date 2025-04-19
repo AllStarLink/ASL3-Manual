@@ -1,4 +1,4 @@
-# Allmon3 Installation
+# Installation
 
 ## Supported Platforms
 Allmon3 is only supported on:

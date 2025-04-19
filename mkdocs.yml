@@ -57,12 +57,14 @@ nav:
   - Installation:
     - user-guide/index.md
     - "Important Considerations": user-guide/whats-new.md
-    - ASL3 Installation:
+    - ASL3 Pi Appliance:
       - user-guide/pi-detailed.md
+    - ASL3 on Debian 12:
       - user-guide/install.md
+    - Post Installation:
       - user-guide/updates.md
       - "Differences & Known Issues": user-guide/known-issues-diffs.md
-    - Allmon3:
+    - Allmon3 Install and Config:
       - allmon3/basics.md
       - allmon3/install.md
       - allmon3/config.md

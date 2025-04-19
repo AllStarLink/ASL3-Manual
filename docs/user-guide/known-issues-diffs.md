@@ -1,5 +1,5 @@
 # Known Issues and Differences With Legacy Versions
-As discussed in [What's New?](whats-new.md), AllStarLink v3 is a gigantic leap forward in platform and software ecosystem. 
+As discussed in [Important Considerations](whats-new.md), AllStarLink v3 is a gigantic leap forward in platform and software ecosystem. 
 
 Many things are different in modern versions of Linux, Asterisk, and more. 
 

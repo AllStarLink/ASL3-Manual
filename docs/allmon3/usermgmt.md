@@ -1,4 +1,4 @@
-# Allmon3 User Management
+# User Management
 Allmon3 supports a robust multi-user configuration that  permits per-node granular access as desired and that abstracts Allmon3 from the Asterisk AMI Manager configuration.
 
 Usernames and passwords are stored in `/etc/allmon3/users`.
