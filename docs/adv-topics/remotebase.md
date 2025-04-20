@@ -144,7 +144,7 @@ functions = functions-remote   ; name the functions stanza 'functions-remote'
 
 In the above example the digits to the left of the = are the DTMF code to dial (don't forget to prefix with [`[funchar]`](../config/rpt_conf.md#funcchar), usually *).
 
-**NOTE:** When sending DTMF commands to a remote base, you need to send them in "command mode", usually \*4 (ilink,4). So, if your remote base was defined as node 1999, to set the remote base to high power, you would send \*41999\*46 (after you connected to that node with something like \*31999).
+**NOTE:** When sending DTMF commands to a remote base, you need to send them in "command mode", usually \*4 (ilink,4). So, if your remote base was defined as node 1998, to set the remote base to high power, you would send \*41998\*46 (after you connected to that node with something like \*31998).
 
 See [Remote Base Commands](#remote-base-commands) for functions that are specifically available for remote base nodes.
 
@@ -235,7 +235,7 @@ Vendor|Model|remote= Value|Notes
 N/A|Dumb|y|Use for any single channel remote base radios, with no remote tuning capability
 N/A|Parallel Port|pp16|Parallel port programmable 16 channels? Perhaps parallel port BCD bit-banging, such for Motorola radios that can be driven from their accessory port? Interface information not available
 Doug Hall|Remote Base Interface|rbi|Requires Parallel Port Address https://wiki.allstarlink.org/wiki/Remote_Base:_Doug_Hall_RBI-1
-ICOM|IC-706MKIIG|ic706|**IC-706MkIIg only**. Must specify serial port using `ioport=`. Must specify CIV address using `civaddr=`. Also note `mars=` option. Earlier versions return data format is different and will lock up the software
+ICOM|IC-706MKIIG|ic706|**IC-706MKIIG only**. Must specify serial port using `ioport=`. Must specify CIV address using `civaddr=`. Also note `mars=` option. Earlier versions return data format is different and will lock up the software
 Kenwood|Various|kenwood|Should work for many/most Kenwood radios, unless otherwise specified
 Kenwood|TM-D700|tmd700|
 Kenwood|TS-440|kenwood|Some functions may not work
@@ -292,7 +292,7 @@ This option contains the type of channel driver which is being used for the audi
 Sample:
 
 ```
-rxchannel = SimpleUSB/1999
+rxchannel = SimpleUSB/1998
 ```
 
 See the [`rxchannel=`](../config/rpt_conf.md#rxchannel) option for available channel drivers.
