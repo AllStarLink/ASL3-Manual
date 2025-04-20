@@ -1,4 +1,4 @@
-# Rpt.conf
+# rpt.conf
 Rpt.conf (`/etc/asterisk/rpt.conf`) is where the majority of user-facing features, such as the node's CW and voice ID, DTMF commands and timers are set. There is a lot of capability here which can be difficult to grasp. Fortunately the default `rpt.conf` is well commented and will work fine for most node admins.
 
 See also [config file templating](../adv-topics/conftmpl.md/#asterisk-templates).
