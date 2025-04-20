@@ -85,30 +85,31 @@ nav:
       - pi/cockpit-services.md
       - pi/cockpit-firewall.md
   - Advanced Topics:
+    - adv-topics/index.md
     - adv-topics/commands.md
     - adv-topics/incompatibles.md
-    - adv-topics/noderesolution.md
+    - adv-topics/allowdenylists.md
+    - adv-topics/aprs.md
+    - adv-topics/tts.md 
+    - adv-topics/conftmpl.md
+    - adv-topics/autopatch.md
+    - adv-topics/audio-level.md
+    - adv-topics/daq.md
+    - adv-topics/hotspot_hd.md
     - adv-topics/httpreg.md
     - adv-topics/iaxreg.md
-    - adv-topics/usbinterfaces.md
-    - adv-topics/audio-level.md
+    - adv-topics/litz.md
+    - adv-topics/multinodesnetwork.md 
+    - adv-topics/noderesolution.md
+    - adv-topics/other-software.md
+    - adv-topics/permissions.md
     - adv-topics/sa818modules.md
-    - adv-topics/conftmpl.md
-    - adv-topics/allowdenylists.md
     - adv-topics/sip-phone.md
     - adv-topics/broadcastify.md
-    - adv-topics/hotspot_hd.md
-    - adv-topics/autopatch.md
-    - adv-topics/permissions.md
-    - adv-topics/uefi-secureboot.md
-    - adv-topics/tts.md  
-    - adv-topics/multinodesnetwork.md  
-    - adv-topics/aprs.md
-    - adv-topics/daq.md
-    - adv-topics/litz.md
     - adv-topics/remotebase.md
     - adv-topics/rxtoneburst.md
-    - adv-topics/other-software.md
+    - adv-topics/uefi-secureboot.md
+    - adv-topics/usbinterfaces.md
   - Developer Guide:
     - developers/package-builds.md
     - developers/source-install.md
