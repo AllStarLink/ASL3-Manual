@@ -57,7 +57,7 @@ The node number stanza is a critical stanza in `rpt.conf`. It is the same concep
 [1998]    ; Replace with your assigned or private node number
 ```
 
-The node number stanza is set to the **assigned node number** *or* a **private node number** (if a private node is being configured). The [asl-menu/node-setup](../user-guide/menu.md) should normally be used to create node stanzas for both public and private nodes.
+The node number stanza is set to the **assigned node number** *or* a **private node number** (if a private node is being configured). The [asl-menu](../user-guide/menu.md) utility, via the **Node Setup** menu, should normally be used to create node stanzas for both public and private nodes.
 
 The node number stanza contains all the configurable options for that specific node using a `key=value` pair syntax. The following configurable options are available to use:
 
