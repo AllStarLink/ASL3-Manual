@@ -1,24 +1,22 @@
 # SA818 RF Modules
+SA818 RF modules are inexpensive RF transceiver modules, often used to build a personal RF "hot spot" AllStarLink node.
 
 Setting up an SA818 RF module is much easier on ASL3.
 
-Two new commands were added to ASL3 Pi Appliance systems to program the module.
-We believe that most will prefer using `sa818-menu`, a visual interface to the RF module settings.
-But, for those who prefer a command line interface we have also included `sa818`.
+Two new commands were added to ASL3 Pi Appliance systems to program the module. We believe that most will prefer using `sa818-menu`, a visual interface to the RF module settings. For those who prefer a command line interface, we have also included `sa818`.
 
 ## sa818-menu
-
-To program your SA818 with the menu executing the following command from the Linux shell :
+To program your SA818 with the menu utility, use the following command from the Linux CLI:
 
 ```
-sa818-menu
+sudo sa818-menu
 ```
 
 Here, you will be able to view the last saved (or default) settings.
-Please note that the "last saved" settings are those saved by the `sa818-menu` command on your system.  We have no way to "read" settings from the SA818 RF module.
+
+**NOTE:** The "last saved" settings are those saved by the `sa818-menu` command on your system. There is no way to "read" settings from the SA818 RF module.
 
 The settings include :
-
 
 | Setting | Description |
 |---------|-------------|
@@ -35,13 +33,13 @@ The settings include :
 | Serial Port | Default = **/dev/serial0** or **/dev/ttyUSB0** |
 | Connection Speed | Default = **9600** |
 
-If you change the sub-audible tone setting to CTCSS or DCS you will be presented with a list of possible tone frequencies.  When using CTCSS tones, you will also have a setting for the CTCSS Reverse Burst (Tail Tone).
+If you change the sub-audible tone setting to CTCSS or DCS you will be presented with a list of possible tone frequencies. When using CTCSS tones, you will also have a setting for the CTCSS Reverse Burst (tail tone).
 
 The RF module will be programmed when you exit the menu.
 
-Note: if you make changes that you do not wish to have stored then use the ESC key to exit the menu.
+**NOTE:** If you make changes that you do not wish to have stored, then use the ESC key to exit the menu.
 
 ## sa818
 
-To program your SA818 using the command line you can execute the `sa818` command.  For command usage information, use `sa818 --help`.
+To program your SA818 using the command line you can execute the `sa818` command. For command usage information, use `sa818 --help`.
 

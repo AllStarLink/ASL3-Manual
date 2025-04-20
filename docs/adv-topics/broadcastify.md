@@ -1,23 +1,19 @@
 # Streaming Node Audio to Broadcastify 
-To broadcast your node's audio on [Broadcastify](https://www.broadcastify.com/),
-you will need a Broadcastify account. You can then apply for a feed.
-This [link](https://support.broadcastify.com/hc/en-us/articles/204740055-Becoming-a-Feed-Provider)
-provides information on applying for a feed.
+To broadcast your node's audio on [Broadcastify](https://www.broadcastify.com/), you will need a Broadcastify account. You can then apply for a feed. This [link](https://support.broadcastify.com/hc/en-us/articles/204740055-Becoming-a-Feed-Provider) provides information on applying for a feed.
 
-After you have your account and feed credentials, you a ready to setup AllStar.
+After you have your account and feed credentials, you a ready to setup AllStarLink.
 
 ## Setup a Feed
+* Log into your node either using `Cockpit` or SSH and type the following commands:
 
-* Log into your node either using Cockpit or SSH and type the following commands:
-```bash
+```
 sudo apt update
 sudo apt install libshout-dev libtagc0-dev lame ezstream
 ```
 
-* Edit `/etc/ezstream.xml` with your favorite editor - for example
-`sudo nano -w /etc/ezstream.xml`.  You will be
-creating a new file. Copy, paste, and edit the following contents
+* Edit `/etc/ezstream.xml` with your favorite editor, for example `sudo nano -w /etc/ezstream.xml`. You will be creating a new file. Copy, paste, and edit the following contents
 into the file:
+
 ```xml
 <ezstream>
 	<servers>
@@ -53,25 +49,25 @@ into the file:
 </ezstream>
 ```
 
-* Save the file.
+* Save the file
 
-* Ensure the file is owned and readable only by the asterisk user:
-```bash
+* Ensure the file is owned and readable only by the Asterisk user:
+
+```
 sudo chown asterisk:asterisk /etc/ezstream.xml
 sudo chmod 660 /etc/ezstream.xml
 ```
 
-* Edit `/etc/asterisk/rpt.conf` with your favorite editor - e.g. `sudo nano -w /etc/asterisk/rpt.conf`
+* Edit `/etc/asterisk/rpt.conf` with your favorite editor, i.e. `sudo nano -w /etc/asterisk/rpt.conf`
 
-* Locate the node stanza for the node from which to stream to
-broadcastify. The stanza is `[NNNNN](node-main)`. For example, if
-your node is 63001 then look for `[63001](node-main)`. Within that configuration
-stanza, add the following line:
+* Locate the node stanza for the node from which to stream to Broadcastify. The stanza is `[NNNNN](node-main)`. For example, if your node is 63001 then look for `[63001](node-main)`. Within that configuration stanza, add the following line:
+
 ```
 outstreamcmd = /bin/sh,-c,/usr/bin/lame --preset cbr 16 -r -m m -s 8 --bitwidth 16 - - | /usr/bin/ezstream -qvc /etc/ezstream.xml
 ```
 
 The above parameters have these meanings:
+
 ```
 -- preset cbr 16` = use constant bit rate 16
 -r = Assume the input file is raw pcm
@@ -80,16 +76,17 @@ The above parameters have these meanings:
 --bitwidth 16 = bit width is 16 (default)	
 ```	
 
-* After these changes have been made, you will need to restart asterisk:
-```bash
+* After these changes have been made, you will need to restart Asterisk:
+
+```
 sudo systemctl restart asterisk
 ```
 
-If you experience any problems, look at /var/log/ezstream.log for error messages.
+If you experience any problems, look at `/var/log/ezstream.log` for error messages
 
-## Migrating an existing feed
+## Migrating an Existing Feed
+If you have an existing feed, you will need to upgrade your existing `xml` configuration file to the new format. You can use the following commands:
 
-If you have an existing feed, you will need to upgrade your existing xml file to the new format.  You can use the following commands.
 ```
 cd /etc
 ezstream-cfgmigrate -0 ezstream.xml > ezstream.xml.new

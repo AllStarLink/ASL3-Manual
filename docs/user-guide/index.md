@@ -1,17 +1,10 @@
-# ASL3 User Guide
+# ASL3 Installation
 
-This is the AllStarLink version 3 User's Guide. No doubt you're you've noticed this is not a Wiki. The [ASL Wiki](https://wiki.allstarlink.org) still exists, largely to document ASL1 and ASL3, while this manual covers ASL3 specifics and is the future home for all ASL documentation.
+Welcome to the Installation section of the manual! We know you are excited to get on with trying out the new ASL3. 
 
-Did you see the "Next" and "Previous" menu items? Those will page to the next section of this document in the order of the bullets below. We think you'll find this an orderly way to learn about ASL3.  Lets get started.
+In this section of the manual, you will find instructions on how to either install the Raspberry Pi Image to create an ASL3 Pi Appliance, or install ASL3 on Debian 12. 
 
-- [What's New?](whats-new.md)
-- [Raspberry Pi Image Install](pi-detailed.md)
-- [Debian 12 Install](install.md)
-- [ASL3 Menu](menu.md)
-- [ASL Commands and Tools](asl-cmds-tools.md)
-- [Updating ASL3](updates.md)
-- [Known Issues](known-issues-diffs.md)
-- [Logins and Passwords](passwords.md)
-- [ASL3 Support](support.md)
-- [Beta Testing](betatest.md)
-- [Basic Troubleshooting Tips](troubleshooting.md)
+Use the Table of Contents on the left to jump to the type of installation you are wishing to perform, but be sure to check out the rest of the topics in this section for other important information. 
+
+Once you've got your new ASL3 installed, be sure to check out the [Basic Operation](menu.md) section (see the link at the top of the page).
+

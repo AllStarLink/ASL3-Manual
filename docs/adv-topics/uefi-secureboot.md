@@ -1,35 +1,19 @@
 # UEFI and SecureBoot
+UEFI (Unified Extensible Firmware Interface) is a modern firmware interface that replaces the older BIOS system, providing a more flexible and powerful environment for booting and managing hardware. It supports larger hard drives, faster boot times, and a more user-friendly interface.
 
-UEFI (Unified Extensible Firmware Interface) is a modern firmware
-interface that replaces the older BIOS system, providing a more
-flexible and powerful environment for booting and managing hardware. It
-supports larger hard drives, faster boot times, and a more user-friendly
-interface.
+Secure Boot is a feature of UEFI that ensures only trusted software is loaded during the boot process, protecting the system from malware and unauthorized software. It works by verifying the digital signatures of boot loaders and operating system files against a database of trusted certificates.
 
-Secure Boot is a feature of UEFI that ensures only trusted software is
-loaded during the boot process, protecting the system from malware and
-unauthorized software. It works by verifying the digital signatures of
-boot loaders and operating system files against a database of trusted
-certificates.
+Together, UEFI and Secure Boot enhance the security and efficiency of modern computing systems.
 
-Together, UEFI and Secure Boot enhance the security and efficiency of
-modern computing systems.
-
-Given a quirk of how Asterisk + app\_rpt needs a kernel module (driver)
-not already contained in the core system provided by Debian, installing
-AllStarLink on a system requiring UEFI/SecureBoot requires additional
-steps to create what's called a Machine Owner Key.
+Given a quirk of how Asterisk and `app_rpt` needs a kernel module (driver) not already contained in the core system provided by Debian, installing AllStarLink on a system requiring UEFI/SecureBoot requires additional steps to create what's called a Machine Owner Key (MOK).
 
 !!! note
     Raspberry Pi does not use or support UEFI or SecureBoot
 
 ## Generating a Machine Owner Key
-Generation of a Machine Owner Key (MOK) is can be done with the
-`asl-setup-dkms-mok` utility. This tool appeared in the package
-asl3-3.3.0-1.
+Generation of a Machine Owner Key (MOK) is done with the [`asl-setup-dkms-mok`](../mans/asl-setup-dkms-mok.md) utility. This tool appeared in the package asl3-3.3.0-1.
 
-1. Run the command `sudo asl-setup-dkms-mok`. This will prompt for 
-several items of information. An example run will look like:
+1. Run the command `sudo asl-setup-dkms-mok`. This will prompt for several items of information. An example run will look like:
 
     ```
     $ sudo asl-setup-dkms-mok
@@ -66,9 +50,7 @@ several items of information. An example run will look like:
     This will appear on your directly-connected monitor or your cloud console
     ```
 
-2. Prepare to Reboot the System. Make sure a monitor is attached to the system or, if using
-a cloud virtual machine / VPS, make sure that a remote virtual
-console is connected. Then, reboot the system.
+2. Prepare to reboot the system. Make sure a monitor is attached to the system or, if using a cloud virtual machine / VPS, make sure that a remote virtual console is connected. Then, reboot the system.
 
     !!! warning "MOK Load Staging is One-Time Only"
         Note that the MOK is only staged for load one time. If the MOK load prompt
@@ -99,9 +81,7 @@ console is connected. Then, reboot the system.
 
 4. Reboot the system back into Linux and log in.
 
-5. Check that the MOK created is now loaded by looking for the "name"
-you provided the certificate in step 1. In this example, the MOK was
-named "N8EI".
+5. Check that the MOK created is now loaded by looking for the "name" you provided the certificate in Step 1. In this example, the MOK was named "N8EI".
 
     ```
     sudo dmesg | grep -i N8EI
@@ -113,8 +93,7 @@ named "N8EI".
     [    0.674788] integrity: Loaded X.509 cert 'N8EI: 92ed492eeb11594eb25af5cc70ff0587115f2577'
     ```
 
-6. Rebuild the **dahdi-dkms** package so that the modules are signed by the MOK
-so that the kernel will load then.
+6. Rebuild the `dahdi-dkms` package so that the modules are signed by the MOK so that the kernel will load them.
 
     ```
     apt install --reinstall -y dahdi-dkms

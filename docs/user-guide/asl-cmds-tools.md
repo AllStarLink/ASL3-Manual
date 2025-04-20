@@ -1,7 +1,5 @@
 # ASL Commands and Tools
-The following commands and tools are the primary AllStarLink ecosystem.
-Each entry contains a description of the command, link to the
-documentation, and what package provides the command or tool.
+The following commands and tools are the primary AllStarLink ecosystem. Each entry contains a description of the command, link to the documentation, and what package provides the command or tool.
 
 | Command | Description | Documentation | Package |
 |-|-|-|-|
