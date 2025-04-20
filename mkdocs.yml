@@ -116,11 +116,12 @@ nav:
     - developers/source-install.md
     - developers/aptly.md
   - Man Pages:
-      - mans/asl-find-sound.md
-      - mans/asl-node-lookup.md
-      - mans/asl-play-arn.md
-      - mans/asl-say.md
-      - mans/asl-setup-dkms-mok.md
+    - mans/index.md
+    - mans/asl-find-sound.md
+    - mans/asl-node-lookup.md
+    - mans/asl-play-arn.md
+    - mans/asl-say.md
+    - mans/asl-setup-dkms-mok.md
   - Config Files:
     - config/config-structure.md
     - config/rpt_conf.md
