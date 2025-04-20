@@ -106,6 +106,7 @@ nav:
     - adv-topics/aprs.md
     - adv-topics/daq.md
     - adv-topics/litz.md
+    - adv-topics/remotebase.md
     - adv-topics/rxtoneburst.md
     - adv-topics/other-software.md
   - Developer Guide:
