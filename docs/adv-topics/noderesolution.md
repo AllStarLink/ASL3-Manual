@@ -51,7 +51,7 @@ AllStarLink now provides a DNS service for performing node resolution. DNS is an
 
 When using DNS `app_rpt` must know the length of the longest node number. The current maximum is 6 digits. This number can be overridden in `rpt.conf` by adding the `max_dns_node_length=` key and value to the `[general]` stanza.
 
-For more information on DNS see [AllStarLink DNS Servers](https://wiki.allstarlink.org/wiki/DNS_Servers).
+For more information on DNS see [AllStarLink DNS Servers](./dns-servers.md).
 
 
 ## Statically Configured Node
