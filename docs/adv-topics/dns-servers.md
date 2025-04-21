@@ -15,11 +15,11 @@ DNSSEC is enabled on all domains, and trust is expanded to all sub servers.
 
 ##  DNS Node Lookup
 
-`nodes.allstarlink.org` is delegated to a DNS running in AWS. The users_Nodes table has a trigger which is run and creates or edits entries on the records table in the `allstar` database. This populates a `SRV`, `TXT` and `A`record for every node in the system when it's updated. The trigger has been optimized, and has little to no performance impact on the registration process.  
+The `nodes.allstarlink.org` domain name is currently hosted by AWS Route 53 DNS servers with the AllStarLink node registration system providing updates to the DNS records. Specifically, we populate `SRV`, `TXT` and `A` records for every active node in the system.
 
-**NOTE:** Servers not in nodes list can appear in DNS, there is no ageing out of entries in DNS. It's up to the server to know it's registered. 
+**NOTE:** The DNS records for a node will remain available for a period of time after a node is no longer active. 
 
-# SRV Record
+### SRV Record
  
  The `SRV` records will return the IAX port of the server.
 
@@ -43,7 +43,7 @@ A remote base will be returned like:
  _iax._udp.50000.nodes.allstarlink.org. 30 IN SRV 10 10 4569 50000.remotebase.nodes.allstarlink.org.
 ```
 
-## A Record
+### A Record
 
 The `A` records will return the IP address of the IAX server or the proxy IP, if defined.
 
@@ -63,7 +63,7 @@ will return:
  2000.nodes.allstarlink.org. 60	IN	A	162.248.93.134
 ```
 
-## TXT Record
+### TXT Record
 
 The `TXT` record is used for debugging purposes with a query below:
 
@@ -86,3 +86,7 @@ Where:
 * PIP is the proxy IP of the node if set
 * PT is the IAX port
 * RH is the registration server the node last registered to.
+
+## `asl-node-lookup`
+
+On ASL3 systems, the [`asl-node-lookup`](../mans/asl-node-lookup.md) utility can also be used to query the DNS servers for information about a node. 
