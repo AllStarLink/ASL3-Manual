@@ -9,9 +9,7 @@ These DNS servers support the following:
 
 ## Authoritative DNS Servers   
 
-The authoritative DNS servers run on `register-west.allstarlink.org` and `register-east.allstarlink.org`. 
-
-DNSSEC is enabled on all domains, and trust is expanded to all sub servers.
+AllStarLink's DNS-based node lookup utilizes Amazon Route 53 with a synchronization system for clients to retrieve node information, such as IAX ports, or IP address.
 
 ##  DNS Node Lookup
 
