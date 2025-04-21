@@ -9,7 +9,7 @@ These DNS servers support the following:
 
 ## Authoritative DNS Servers   
 
-AllStarLink's DNS-based node lookup utilizes Amazon Route 53 with a synchronization system for clients to retrieve node information, such as IAX ports, or IP address.
+AllStarLink's DNS-based node lookup utilizes Amazon Route 53 with a synchronization system for clients to retrieve node information, such as its IP address and IAX port.
 
 ##  DNS Node Lookup
 
