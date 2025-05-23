@@ -3,7 +3,7 @@ The primary purpose of a remote base node is to make outgoing RF connections usi
 
 Remote base nodes are configured differently than a standard node. A completely different set of internal functions in `Asterisk/app_rpt` is used when operating a node as a remote base. Usually, the only reason to set up a node as a remote base is when you wish to change the operating parameters of the the attached radio remotely, or if you only want the radio to be used by a single user at a time.
 
-If you want a *public* node number for a remote base, it must specifically be requested in the [AllStarLink Portal](https://allstarlink.org/portal). You must be sure to answer yes to `Is node a remote base station?`, and then optionally `If remote base, is it frequency agile?` questions. You can, alternatively`, configure a private node.
+If you want a *public* node number for a remote base, it must specifically be requested in the [AllStarLink Portal](https://allstarlink.org/portal). You must be sure to answer yes to `Is node a remote base station?`, and then optionally `If remote base, is it frequency agile?` questions. Alternatively, you can configure a private node.
 
 ## Security Issues
 Unfettered access to remote bases can be a **security issue**. If the remote base has no login protection it could be used by unscrupulous individuals to violate amateur radio rules and regulations. We **strongly** advise that all remote bases be protected by requiring a login code (see [Remote Base Authentication](#remote-base-authentication) below). 
@@ -142,7 +142,7 @@ functions = functions-remote   ; name the functions stanza 'functions-remote'
 98=cop,6                                ; Remote base telephone key
 ```
 
-In the above example the digits to the left of the = are the DTMF code to dial (don't forget to prefix with [`[funchar]`](../config/rpt_conf.md#funcchar), usually *).
+In the above example the digits to the left of the = are the DTMF code to dial (don't forget to prefix with [`[funcchar]`](../config/rpt_conf.md#funcchar), usually *).
 
 **NOTE:** When sending DTMF commands to a remote base, you need to send them in "command mode", usually \*4 (ilink,4). So, if your remote base was defined as node 1998, to set the remote base to high power, you would send \*41998\*46 (after you connected to that node with something like \*31998).
 

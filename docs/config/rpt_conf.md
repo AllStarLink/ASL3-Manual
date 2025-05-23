@@ -502,7 +502,7 @@ The input translate option allows complete remapping of the [`funcchar`](#funcch
 
 `inxlat` acts on the digits received by the radio receiver on the node.
 
-Format: `inxlat = funchars,endchars,passchars[,dialtone]`
+Format: `inxlat = funcchars,endchars,passchars[,dialtone]`
 
 where:
 
@@ -517,7 +517,7 @@ Sample:
 inxlat = #456,#457,0123456789ABCD ; string xlat from radio port to sys
 ```
 
-In the above example, on inbound DTMF, translate #456 as `funchar` (normally `*`), #457 as `endchar` (normally `#`), and pass all other digits listed in `passchars` normally.
+In the above example, on inbound DTMF, translate #456 as `funcchar` (normally `*`), #457 as `endchar` (normally `#`), and pass all other digits listed in `passchars` normally.
 
 ### link_functions=
 This option allows you to override the stanza name used for the `link_functions` stanza in `rpt.conf`. The `link_functions=` setting directs the node to use a particular function stanza for functions dialed by users accessing the node **via a link from another node**. 
@@ -731,7 +731,7 @@ The output translate option allows complete remapping of the [`funcchar`](#funcc
 
 `outxlat` acts on the digits sent by the node to a link.
 
-Format: `outxlat = funchars,endchars,passchars`
+Format: `outxlat = funcchars,endchars,passchars`
 
 where:
 
@@ -745,7 +745,7 @@ Sample:
 outxlat = *7,*0,0123456789ABCD ; string xlat from sys to radio port
 ```
 
-In the above example, on outbound DTMF, *7 generates a `funchar` (normally `*`), *0 generates an `endchar` (normally `#`), and pass all other digits listed in `passchars` normally.
+In the above example, on outbound DTMF, *7 generates a `funcchar` (normally `*`), *0 generates an `endchar` (normally `#`), and pass all other digits listed in `passchars` normally.
 
 **NOTE:** This option is not well documented in the code, your mileage may vary.
 
@@ -1255,7 +1255,7 @@ The above example contains DTMF functions with all of the parameters discussed o
 
 In the above example:
 
-* *1 followed by a node number disconnects a specific link, recall that * is the default [`funchar`](#funcchar). The `function class` is `ilink` and the `function method` is `1`
+* *1 followed by a node number disconnects a specific link, recall that * is the default [`funcchar`](#funcchar). The `function class` is `ilink` and the `function method` is `1`
 * *6 followed by a phone number brings up the autopatch with the `function options` specified. Note that there is no `function method` defined, but there are `function options` present.
 
 ## Link Functions Stanza
