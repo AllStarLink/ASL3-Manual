@@ -244,6 +244,8 @@ Sample:
 beaconing=1   ;Set to 1 to beacon. Defaults to 0
 ```
 
+See [European Repeater Operation](../adv-topics/eurorptr.md) for more information on the application of this option.
+
 ### callerid=
 This option allows the autopatch on the node to be identified with a specific caller ID. The default setting is as follows
 
