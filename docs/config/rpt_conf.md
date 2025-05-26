@@ -931,6 +931,7 @@ SimpleUSB/1999|SimpleUSB Channel Driver (limited DSP), specify associated node n
 Radio/1999|Usbradio Channel Driver (full DSP), specify associated node number found in usbradio.conf  
 voter/1990|VOTER (RTCM) Channel Driver, specify associated node number found in voter.conf    
 USRP/127.0.0.1:34001:32001|GNU Radio interface USRP 
+tlb/tlb0|TheLinkBox Channel Driver, pointing to the specified (tlb0) channel context in tlb.conf
 
 Sample:
 
