@@ -29,8 +29,7 @@ If you would like a permanent connection automatically when your node boots you 
 For example, under your [Node Number Stanza](../config/rpt_conf.md#node-number-stanza) add:
 
 ```
-startup_macro = *8131999            ; Permanently connect (transceive) to node 1999 when Asterisk starts
-startup_macto_delay = 10            ; Wait 10 seconds after starting before running the startup_macro              
+startup_macro = *8131999            ; Permanently connect (transceive) to node 1999 when Asterisk starts            
 ```
 
-Reload/restart your system and it will auto connect to the node you specified above (after the `startup_macro_delay`).
+Reload/restart your system and it will auto connect to the node you specified above.
