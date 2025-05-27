@@ -1,12 +1,12 @@
 # Private Nodes
-Private nodes are nodes you create that do not connect to the AllstarLink (ASL) Network by default, and are not connectable from the ASL Network by default.
+Private nodes are nodes you create that do not directly connect to the AllStarLink (ASL) Network. In addition, you cannot directly connect to a private node from the ASL Network.
 
 They can co-exist on an existing server along with a public node, or they can run on independent hardware exclusively.
 
 ## Private Node Numbering
 The numbering system for private nodes is limited to node numbers under 2000 (ie 0000-1999). However, in practice it would be best advised to use 4 digit number to not confuse other parts of the dial plan in present or future expansion (thus using 1000-1999).
 
-If a private node is going to be connected to an ASL Public Network node, you may want to consider using a node number outside of the normal node numbers used by examples in most how-to's such as 1998 and 1999. This is due to "loopback protection" in the `app_rpt` code that prevents connection of the same node (detected as a loop) when you connect to other networks.
+If a private node is going to be connected to an ASL Public Network node, you may want to consider using a node number outside of the normal node numbers used by examples in most how-to's, such as 1998 and 1999. This is due to "loopback protection" in the `app_rpt` code that prevents connection of the same node (detected as a loop) when you connect to other networks.
 
 For example, if you have a private node 1999 connected to your public node 29999, and you proceed to connect 29999 with some other system like 2135 that also has someone connected that has a private node 1999 connected, it will be refused. ***This has been the source of many hairs being pulled out when folks do not realize why they can not connect.***
 
@@ -19,7 +19,7 @@ And of course, you could later change that to a public node just by un-commentin
 ## Node Setup
 The easiest way to create a private node is to use the [ASL3 Menu](../user-guide/menu.md) and use `Node Settings` to create a new node.
 
-This will create a new [template](./conftmpl.md) in [`rpt.conf`](../config/rpt_conf.md) for you to customize the settings for your new node. In previous versions, the `[radio-secure]` context in `extensions.conf` needed to be modified when a private node was added, this should no longer be necessary with ASL3 (the context has been rewritten for dynamic node number validation).
+This will create a new [template](./conftmpl.md) in [`rpt.conf`](../config/rpt_conf.md) for you to customize the settings for your new node.
 
 ## Advanced Configuration
 When a new node is created, a [template](./conftmpl.md) for the node settings will be created in [`rpt.conf`](../config/rpt_conf.md), such as:
@@ -67,6 +67,8 @@ Sample `rpt.conf` entries:
 ```
 
 As you can see, all three servers have entries in their `[nodes]` context that identify the node number, the IP address (or domain name), and port (if not default) of the each other's private nodes. This will allow all of them to be able to connect to each other.
+
+See the section on [Multiple Nodes on the Same Network](./multinodesnetwork.md) for other considerations and tips on testing.
 
 Remember, a private node can do practically anything you can do with a public node. So, for example, one of those private nodes in the example above could be configured as an Echolink node, but only the nodes you have control of can access it (instead of any public node). Likewise, one of those private nodes could be connected to a UHF link to some other analog system, and this would let you "link in" to that system from your ASL node, but the public can't.
 
