@@ -1,12 +1,13 @@
 # Parrot Mode
-Parrot Mode is a mode which sends back your transmitted audio when you have un-keyed for a selectable amount of time (`parrottime`). There are 4 parrot modes:
+Parrot Mode is a mode which sends back your transmitted audio when you have un-keyed for a selectable amount of time (`parrottime`). There are three parrot modes:
 
-* Parrot Off
-* Parrot On
-* Parrot Always
-* Parrot Once by Command
+parrotmode|Description
+----------|-----------
+0|Parrot Disabled
+1|Parrot Enabled (via COP commands)
+2|Parrot Always
 
-When a user keys up after parroting is enabled, the receive audio will be recorded, and then played back a selectable amount of time later (`parrottime`) after the user un-keys.
+When a user keys up after parroting is enabled, the receive audio will be recorded and then played back a selectable amount of time later (`parrottime`) after the user un-keys.
 
 ## Associated COP Methods
 The associated [Control OPerator](../config/rpt_conf.md#cop-commands) commands/methods associated with Parrot Mode are:
@@ -24,9 +25,9 @@ In order for some of the Parrot Mode COP commands to function, [`parrotmode`](..
 ### Parrot Disabled
 Parroting is disabled by default (`parrotmode = 0`), unless it is specifically enabled. As such, by default the parrot enable and parrot disable COP commands will have no effect. 
 
-However, even if Parrot Mode is disabled, the [Parrot Once By Command](#parrot-once-by-command) mode is still available.
+However, even if Parrot Mode is disabled the [Parrot Once By Command](#parrot-once-by-command) mode is still available.
 
-### Parrot On Command
+### Parrot Enabled
 This mode allows two COP commands (`cop,21`, `cop,22`) to be used to enable and disable Parrot Mode, respectively. Once Parrot Mode is enabled, then all received signals will be echoed back until Parrot Mode is disabled. To select this mode, the value for `parrotmode` should be set to `1` in the [`Node Number Stanza`](../config/rpt_conf.md#node-number-stanza):
 
 ```
