@@ -10,11 +10,7 @@ If a private node is going to be connected to an ASL Public Network node, you ma
 
 For example, if you have a private node 1999 connected to your public node 29999, and you proceed to connect 29999 with some other system like 2135 that also has someone connected that has a private node 1999 connected, it will be refused. ***This has been the source of many hairs being pulled out when folks do not realize why they can not connect.***
 
-Of course, there is a more modern solution to fix this issue, using an Node Number Extensions with an assigned Node Number. NNX will create a extra digit on your existing node number, thereby making it 10 'potential' nodes, each unique and network connectable, or not. So, your assigned node 2000 would then expand to 20000-20009, giving you ten node numbers in your account to assign to your node devices. It would be wise to consider enabling NNX when you register, to allow for this flexibility "down the road" when you suddenly want to add a whole bunch more nodes after you realize the power and flexibility of ASL.
-
-By using NNX, you can have a unique node number that can be set-up and not registered to the ASL network, thereby making it a private node (just comment out the appropriate registration line in `rpt_http_registrations.conf`).
-
-And of course, you could later change that to a public node just by un-commenting the registration line and reviewing your settings to be sure they are public friendly.
+Of course, there is a more modern solution to fix this issue, using a Node Number Extension with an assigned public Node Number. In this case, you would have a unique node number that can be set-up and just not registered to the ASL network (just comment out the appropriate registration line in `rpt_http_registrations.conf`). You could later change that to a public node just by un-commenting the registration line and reviewing your settings to be sure they are public friendly.
 
 ## Node Setup
 The easiest way to create a private node is to use the [ASL3 Menu](../user-guide/menu.md) and use `Node Settings` to create a new node.
