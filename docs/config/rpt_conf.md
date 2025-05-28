@@ -635,7 +635,7 @@ Sample:
 macro=macro   ; use stanza named macro
 
 [macro]
-1 = *32000*32001     ; connect to nodes 2000 and 2001
+1 = *32000 *32001#                  ; connect to nodes 2000 and 2001
 ```
 
 The default is to have `macro=` point to a stanza called `macro`, and have a common set of commands for all nodes. However, you can have it point to another named stanza, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
@@ -1300,7 +1300,7 @@ macro=macro   ; use stanza named macros
 1 = *32000*32001     ; connect to nodes 2000 and 2001
 ```
 
-See [Full Macro Use And Format](https://wiki.allstarlink.org/index.php?title=Macro_use_and_format) for more information on macros.
+See the [Macro](../adv-topics/macros.md) page for more information on macros.
 
 ## Morse Stanza
 The `[morse]` stanza is a named stanza pointed to by the [`morse=](#morse) option.
