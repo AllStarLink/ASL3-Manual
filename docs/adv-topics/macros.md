@@ -38,27 +38,17 @@ wait_times=wait_times
 telemetry=telemetry
 ```
 
-If you have more than one node on a given server and you want all nodes to have the same macros then the above `macro=macro` (or nothing defined) is fine. 
+If you have more than one node on a given server and you want all nodes to have the same macros, then the above `macro=macro` (or nothing defined) is fine. If you want to assign different macros to different nodes on the server, see the [Structure of Config Files](../config/config-structure.md#settings-to-name-other-stanzas) page which outlines how to redirect names to call other stanzas.
 
-However, you may want your nodes to have separate set of macros. In that case you need a separation for a specific node. In the settings for each node on the server, you can override the stanza name for that specific node. 
-
-Eaxmple:
+Then, later in `rpt.conf` you need an actual `[macro]` stanza:
 
 ```
-macro=macro12345                    ; Point to a [macro12345] stanza for this node
-```
-
-Then, later in `rpt.conf`:
-
-```
-[macro12345]
+[macro]
 1=*81#                              ; Say time
 2=*81 P *31999 P *934#              ; Say time, pause, connect node 1999, pause, and turn off telemetry for net
 3=*31999 *934 *512#                 ; Here we connect node 1999, turn off telemetry, then call macro (12). 
 12=*949#                            ; Disable incoming connections
 ```
-
-See [Settings to Name Other Stanzas](../config/config-structure.md#settings-to-name-other-stanzas) for more information.
 
 ## Macro Definitions
 Finally, define each desired macro in the appropriate `[macro]` stanza.
@@ -69,9 +59,15 @@ A `P` can be used to cause a pause of 500mS, or a series of them for more. This 
 
 Looking at the above example, you can see how multiple DTMF commands can be chained together into a single macro, so that you wouldn't have to execute the commands individually.
 
-And note that use of our macro 2 (executed as `*52`) might also require us to create a new one to 'undo' any of our changes. Which in this case, might be manually called at the end of the net.
+And note that use of our macro 2 (executed as `*52`) might also require us to create a new one to 'undo' any of our changes. Which, in this case, might be manually called at the end of the net.
+
+Example:
+
+```
+4=*11999 P *933#                    ; End of net macro, unlink from node 1999 and turn telemetry back on
+```
 
 # Scheduler Execution
-With the example configuration shown, macros are called with a `*5` prefix, and followed with the number assigned in the [macro] stanza.
+With the example configuration shown, macros are called with a `*5` prefix and followed with the number assigned in the [macro] stanza.
 
 You can also call them from the system schedular by number. Calling a macro number is the only method the scheduler supports. So if you wish to schedule with the system scheduler, you need a macro to execute it.
