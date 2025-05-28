@@ -763,7 +763,9 @@ Parrot mode can operate in a number of different methods:
 * 0 = Parrot Off (default = 0)
 * 1 = Parrot On Command (see [`cop,21 and cop,22`](#cop-commands))
 * 2 = Parrot Always
-* 3 = Parrot Once by Command ([`cop,21`](#cop-commands) enables it for one shot before automatically turning off)
+* 3 = Parrot Once by Command ([`cop,55`](#cop-commands) enables it for one shot before automatically turning off)
+
+See [Parrot Mode](../adv-topics/parrotmode.md) for more information on what this mode does, and how it works.
 
 ### parrottime=
 This option sets the amount of time in mS to delay before playing back the audio buffer.
@@ -773,6 +775,8 @@ Sample:
 ```
 parrottime = 1000                   ; Wait 1s (1000mS) before playback
 ```
+
+This timer is related to [Parrot Mode](../adv-topics/parrotmode.md).
 
 ### phone_functions=
 This option allows you to override the stanza name used for the `phone_functions` stanza in `rpt.conf`. Phone functions are a specific group of commands that are available when the node is accessed via phone.
