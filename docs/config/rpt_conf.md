@@ -979,6 +979,8 @@ Sample:
 sleeptime = 300   ; go to sleep after 5 mins of no activity
 ```
 
+See [Sleep Mode](../adv-topics/sleepmode.md) for more information on what this timer does, and how it works.
+
 ### startup_macro=
 The `startup_macro` is executed once on system startup. Each node can have **one** startup macro defined in its node stanza.
 
