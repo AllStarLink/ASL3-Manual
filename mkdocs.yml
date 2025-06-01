@@ -108,6 +108,8 @@ nav:
     - adv-topics/permanentnode.md
     - adv-topics/permissions.md
     - adv-topics/privatenodes.md
+    - adv-topics/remotebase.md
+    - adv-topics/rxtoneburst.md
     - adv-topics/sa818modules.md
     - adv-topics/sip-phone.md
     - adv-topics/sleepmode.md
