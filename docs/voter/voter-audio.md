@@ -25,7 +25,7 @@ The other firmware change changes how the squelch responds (it looks at the nois
 Since the original squelch code was buggy, it has been removed (and "Chuck Squelch" is now used in its place).
 
 ## DSP/BEW Firmware Version
-If you look in the [firmware repository](https://github.com/AllStarLink/Voter/tree/master/VOTER_RTCM-firmware/firmware-images), you will see there are *BEW* versions of the firmware.
+If you look in the [AllStarLink GitHub Repository](https://github.com/AllStarLink/Voter/tree/master/VOTER_RTCM-firmware/firmware-images), you will see there are *BEW* versions of the firmware.
 
 DSP BEW Firmware is mutually exclusive with the diagnostic menu. There is not enough space for both, if you load the DSP/BEW firmware, you will **NOT** have a diag menu.
 

@@ -51,7 +51,7 @@ If you are upgrading a through-hole VOTER, **do not** use the `smt` files.
 
 Save the `.cry` file in the folder with the `.exe` and `.ini` files.
 
-Download the firmware from [here](https://github.com/AllStarLink/Voter/tree/master/VOTER_RTCM-firmware) that is appropriate for your application. 
+Download the firmware from the [AllStarLink GitHub Repository](https://github.com/AllStarLink/Voter/tree/master/VOTER_RTCM-firmware) that is appropriate for your application. 
 
 Run the EBLEX Programmer:
 

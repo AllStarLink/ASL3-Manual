@@ -8,7 +8,7 @@ Each node has a number of potential "clients" associated with it. In [`voter.con
 
 Each client entry within that stanza (instance) then consists of an arbitrary (relatively meaningless, just included for easy identification purposes within this channel driver, and has nothing to do with its operation) client identifier name equated to a unique password. This password is programmed into the client. **All clients must have unique passwords, as that is what is used by this channel driver to identify them.**
 
-Each channel instance (as opened by `app_rpt` as a main radio channel in [`rpt.conf`](../config/rpt_conf.md), e.g. `rxchannel=Voter/1999` in [`rpt.conf`](../config/rpt_conf.md)) and is directly associated with the node that opened it.
+Each channel instance (as opened by `app_rpt` has a main radio channel in [`rpt.conf`](../config/rpt_conf.md), e.g. `rxchannel=Voter/1999` in [`rpt.conf`](../config/rpt_conf.md)) and is directly associated with the node that opened it.
 
 Each client has a pair of circular buffers, one for mu-law (mulaw/ulaw) audio data, and one for RSSI value. The allocated buffer length in all clients is determined by the `buflen` parameter, which is specified in the `[global]` stanza in [`voter.conf`](../config/voter_conf.md) in milliseconds, and represented in the channel driver as a number of samples (actual buffer length, which is 8 \* milliseconds). 
 
@@ -27,31 +27,20 @@ These are the CLI commands that Asterisk and `chan_voter` supports:
 
 ```
 *CLI> help voter
-        voter debug level  Enable voter debugging
             voter display  Display voter (instance) clients
                voter ping  Ping (check connectivity) to client
                voter prio  Specify/Query voter client priority value
              voter record  Enables/Specifies (or disables) voter recording file
-             voter reload  Reloads chan_voter parameters
                voter test  Specify/Query voter instance test mode
                voter tone  Sets/Queries Tx CTCSS level for specified chan_voter instance
           voter txlockout  Set Tx Lockout status for voter (instance) clients
 ```
 
-### `voter debug level`
+!!! note "Module Reload"
+    Note that the former `voter reload` command to reload the `chan_voter` parameters has been replaced with `module reload chan_voter`.
 
-Usage: 
-
-```
-voter debug level {0-7}
-```
-
-Prints debug information from the channel driver at increasing verbosity. 
-
-!!! warning "Warning"
-    **Beware,** text will be rapidly scrolling by at higher debug levels.
-
-Turn off with `voter debug level 0`.
+!!! note "VOTER Debugging"
+    Note that the former `voter debug level` command has been removed. Use the built-in [Asterisk Debug Levels](../user-guide/menu.md#debug-level) to enable debug messages.
 
 ### `voter display`
 
@@ -88,7 +77,7 @@ Press **enter** to stop.
 Usage: 
 
 ```
-voter ping [client] <# pings, 0 to abort>
+voter ping <client> [# pings]
 ```
 
 Used to checking network latency to clients. Use the `client_name` from [`voter.conf`](../config/voter_conf.md).
@@ -211,16 +200,6 @@ Enables/specifies (or disables) recording file for `chan_voter`. See Voter Recor
 The `instance` is usually the node number associated with the channel driver in [`rpt.conf`](../config/rpt_conf.md) (`rxchannel=Voter/1999`), which is also defined as a stanza in [`voter.conf`](../config/voter_conf.md) as well (`[1999]`).
 
 Specify a filename to record the voter data to. Specify `voter record` with no file name, or with a new filename to stop recording a file already opened. 
-
-### `voter reload`
-
-Usage: 
-
-```
-voter reload
-```
-
-Reload all the variables in [`voter.conf`](../config/voter_conf.md). Useful if you are making changes on-the-fly, such as setting the `txctcsslevel`.
 
 ### `voter test`
 
@@ -400,7 +379,7 @@ The `chan_voter` channel driver has the ability to record VOTER streams by the c
 
 #### How to Setup Playback
 
-* Download the files from [Github](https://github.com/AllStarLink/Voter/tree/master/archive/voterpal) 
+* Download the files from the [AllStarLink GitHub Repository](https://github.com/AllStarLink/Voter/tree/master/archive/voterpal) 
 * Run `VoterPal.jar`. You may come across issues with running Java such as security permissions. These can be allowed 
 * Once running, you will see the applications GUI. File --&gt; Open to select your voter data files. 
 

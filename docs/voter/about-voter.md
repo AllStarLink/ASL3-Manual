@@ -1,5 +1,5 @@
 # What is the VOTER?
-The VOTER (**V**oice **O**bserving **T**ime **E**xtension for **R**adio) system was originally created by Jim Dixon, W6BIL (SK).
+The VOTER (**V**oice **O**bserving **T**ime **E**xtension for **R**adio) system was originally created by Jim Dixon, WB6NIL (SK).
 
 In many two-way radio applications, both for repeater systems and simplex base-stations, it is often difficult to have reliable reception when there is signal impairment due to terrain or other obstacles.
 
@@ -22,7 +22,7 @@ By: Jim Dixon, WB6NIL (SK)
 
 The [Original Documentation Package](https://github.com/AllStarLink/Voter/blob/master/docs/votersystem.pdf) (NO LONGER CURRENT) for the original VOTER system is still available. For current documentation, see the rest of the sections in this part of the manual, or the documentation of the commercially-available [RTCM](./assets/rtcm_manual.pdf) product.
 
-For a number years, I have been asked about, and have been considering the possibility of the implementation of a multiple site remote receiver voting system that runs with VOIP on `Asterisk/app_rpt`. The more I looked into it, the more I realized that it was a **FAR** from a trivial task.
+For a number of years, I have been asked about, and have been considering the possibility of the implementation of a multiple site remote receiver voting system that runs with VOIP on `Asterisk/app_rpt`. The more I looked into it, the more I realized that it was a **FAR** from a trivial task.
 
 The main problem to overcome is that when you have multiple streams of audio information from multiple receivers, you need a concise and accurate way of synchronizing all of the audio, so that if switching of streams occurs, there will be no inconsistencies in the audio. This is far more easily done on conventional, RF-linked voting systems, being that the delay between the receiver and the transmitter site is very minimal (basically the speed of light) and is painfully consistent. Not so on the Internet. The packet delays can be extremely long and varied, and it makes the task of synchronization far more difficult.
 
@@ -96,7 +96,7 @@ The dedicated hardware device (the VOTER) was initially implemented as an approx
 
 It uses a dsPIC33FJ128GP802 processor and a few other integrated circuits, including some operational amplifiers (which implement filters, amps, etc). 
 
-The schematics, board design, artwork, and PIC firmware are available on a completely free open-source basis, the original project information is available in the [AllStarLink Github Repository](https://github.com/AllStarLink/Voter/tree/master/VOTER-pcb).
+The schematics, board design, artwork, and PIC firmware are available on a completely free open-source basis, the original project information is available in the [AllStarLink GitHub Repository](https://github.com/AllStarLink/Voter/tree/master/VOTER-pcb).
 
 <div class="grid" markdown>
 
@@ -108,7 +108,7 @@ The schematics, board design, artwork, and PIC firmware are available on a compl
 
 In addition, the schematics of the original VOTER have been redrawn in KiCAD, and are [available here](https://github.com/AllStarLink/Voter/tree/master/VOTER-pcb/KiCAD-schematic). 
 
-Firmware on [Github](https://github.com/AllStarLink/Voter/tree/master/VOTER_RTCM-firmware Github) is produced to support both the VOTER and RTCM devices.
+Firmware in the [AllStarLink GitHub Repository](https://github.com/AllStarLink/Voter/tree/master/VOTER_RTCM-firmware) is produced to support both the VOTER and RTCM devices.
 
 Documentation to support the VOTER is available on the [VOTER Hardware](./voter-hardware.md) page.
 
@@ -127,7 +127,7 @@ The VOTER was then implemented commercially by [Micro-Node International](http:/
 
 </div>
 
-Firmware on [Github](https://github.com/AllStarLink/Voter/tree/master/VOTER_RTCM-firmware Github) is produced to support both the VOTER and RTCM devices.
+Firmware in the [AllStarLink GitHub Repository](https://github.com/AllStarLink/Voter/tree/master/VOTER_RTCM-firmware) is produced to support both the VOTER and RTCM devices.
 
 As it runs the same (similar) firmware as the VOTER, for specific information about the console menus and options available, see the [VOTER Menus](./voter-menus.md) page.
 

@@ -59,7 +59,7 @@ You will also likely want to install a newer version with the ["Chuck" squelch](
 
 The RTCM needs the "smt" version files, the VOTER uses the non-smt version files.
 
-Firmware is available on [Github](https://github.com/AllStarLink/voter/tree/master/board-firmware). Instructions and the other utilities needed are all listed on the [VOTER Firmware](./voter-firmware.md) page.
+Firmware is available on the [AllStarLink GitHub Repository](https://github.com/AllStarLink/voter/tree/master/board-firmware). Instructions and the other utilities needed are all listed on the [VOTER Firmware](./voter-firmware.md) page.
 
 
 ### Wiring/Connections
