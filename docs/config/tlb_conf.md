@@ -1,5 +1,5 @@
 # tlb.conf
-Tlb.conf (`/etc/asterisk/tlb.conf`) is used to configure TheLinkBox channel driver, `chan_tlb`, for use with interfacing to [TheLinkBox](https://github.com/skiphansen/thelinkbox) stations.
+`tlb.conf` (`/etc/asterisk/tlb.conf`) is used to configure TheLinkBox channel driver, `chan_tlb`, for use with interfacing to [TheLinkBox](https://github.com/skiphansen/thelinkbox) stations.
 
 The format of the file is:
 
@@ -7,15 +7,15 @@ The format of the file is:
 [tlb0]
 call = WB6NIL-R                     ; Callsign of the app_rpt station
 port = 44966                        ; Start of UDP port range (this port, port + 1)
-ipaddr = 44.128.1.1                 ; Optional IP address to bind to
-astnode = 2008                      ; app_rpt node associated with this instance (for incoming connections)
+ipaddr = 44.128.252.1               ; Optional IP address to bind to
+astnode = 63001                     ; app_rpt node associated with this instance (for incoming connections)
 context = radio-secure              ; Asterisk context for incoming connections
 codec = ULAW                        ; Default CODEC to be used
 
 
 [nodes]
-1001 = W6ABC,12.34.56.78,44966      ; This one is for W6ABC at ip 12.34.56.78:44966 default CODEC
-1002 = W1XYZ,11.22.33.44,1234,G726  ; This one is for W1XYZ at ip 11.22.33.44:1234 with G726 CODEC
+1001 = W6ABC,44.128.252.3,44966     ; This one is for W6ABC at ip 44.128.252.3:44966 default CODEC
+1002 = W1XYZ,44.128.252.4,1234,G726 ; This one is for W1XYZ at ip 44.128.252.4:1234 with G726 CODEC
 ```
 
 
@@ -65,7 +65,7 @@ This optionally sets the local IP address to bind to. If not specified, it defau
 Example:
 
 ```
-ipaddr = 44.128.1.1                 ; Bind to the interface with the IP Address 44.128.1.1
+ipaddr = 44.128.252.1               ; Bind to the interface with the IP Address 44.128.252.1
 ```
 
 ### astnode=
@@ -118,9 +118,9 @@ Example:
 
 ```
 [nodes]
-1001 = W6ABC,12.34.56.78,44966      ; This one is for W6ABC at ip 12.34.56.78:44966 default codec
-1002 = W1XYZ,11.22.33.44,1234,G726  ; This one is for W1XYZ at ip 11.22.33.44:1234 with G726 codec
+1001 = W6ABC,44.128.252.3,44966     ; This one is for W6ABC at ip 44.128.252.3:44966 default CODEC
+1002 = W1XYZ,44.128.252.4,1234,G726 ; This one is for W1XYZ at ip 44.128.252.4:1234 with G726 CODEC
 ```
 
-In the above example, private node `1001` is defined to connect to TheLinkBox station with the callsign W6ABC, which is at IP 12.34.56.78:44966, using the default codec. Node `1002` would connect to W1XYZ, at 11.22.33.44 on UDP port 1234, and use the G726 codec.
+In the above example, private node `1001` is defined to connect to TheLinkBox station with the callsign W6ABC, which is at IP 44.128.252.3:44966, using the default codec. Node `1002` would connect to W1XYZ, at 44.128.252.4 on UDP port 1234, and use the G726 codec.
 
