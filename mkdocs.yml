@@ -56,6 +56,7 @@ nav:
   - Home: index.md
   - Installation:
     - user-guide/index.md
+    - user-guide/gettingstarted.md
     - "Important Considerations": user-guide/whats-new.md
     - <span style="color:hsl(86.28, 71.6%, 33.14%)">ASL3 Appliance</span>:
       - user-guide/pi-detailed.md
