@@ -11,7 +11,7 @@ AllStarLink is typically used in these ways:
 
 * Via a FM repeater that is AllStarLink enabled. Controlled through [DTMF Commands](https://wiki.allstarlink.org/wiki/AllStar_Link_Standard_Commands), via the internet, or an autopatch
 * Via a local "hotspot" node that is purchased by an amateur radio operator to join the AllStarLink network directly
-* Via a mobile app such as [DVSwitch Mobile (Android)](https://play.google.com/store/apps/details?id=org.dvswitch&hl=en_US&gl=US) or RepeaterPhone (IOS) to connect directly to a node
+* Via a mobile app such as [DVSwitch Mobile (Android)](https://play.google.com/store/apps/details?id=org.dvswitch&hl=en_US&gl=US) or [RepeaterPhone (iOS)](https://apps.apple.com/us/app/repeaterphone/id1637247024) to connect directly to a node
 * Via IAXRpt (PC)/Transceive (MacOS) software that allows you to connect directly to a node over the internet. The computer microphone/speaker are used for audio
 * Via a reverse-autopatch
 
