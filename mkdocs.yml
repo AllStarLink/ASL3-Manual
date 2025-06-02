@@ -117,6 +117,21 @@ nav:
     - adv-topics/broadcastify.md
     - adv-topics/uefi-secureboot.md
     - adv-topics/usbinterfaces.md
+  - VOTER/RTCM:
+    - voter/index.md
+    - voter/about-voter.md
+    - voter/voter-protocol.md
+    - voter/voter-chan_voter.md
+    - voter/rtcm-hardware.md
+    - voter/voter-hardware.md
+    - voter/voter-firmware.md
+    - voter/voter-gps.md
+    - voter/voter-menus.md
+    - voter/voter-audio.md
+    - voter/voter-buffers.md
+    - voter/voter-simulcasting.md
+    - voter/voter-audioanalysis.md
+    - voter/voter-quantar.md
   - Developer Guide:
     - developers/index.md
     - developers/package-builds.md
@@ -134,3 +149,4 @@ nav:
     - config/index.md
     - config/config-structure.md
     - config/rpt_conf.md
+    - config/voter_conf.md

@@ -41,7 +41,7 @@ You might use the CLI for testing, troubleshooting, or for controlling your node
 
 The Asterisk CLI can be accessed directly via `asl-menu`, from the [`Cockpit` terminal](../pi/cockpit-console.md), or directly off the Linux command line using `asterisk -rvvv` or `sudo asterisk -rvvv`, depending on your configuration.
 
-### Asterisl CLI Verbosity and Debug
+### Asterisk CLI Verbosity and Debug
 
 #### Verbosity Level
 "Verbosity" refers to how "chatty" the Asterisk CLI is. The larger the verbosity level, the more detailed the messages on the console will be. A good verbosity level is typically `3`. It provides a reasonable level of detail as Asterisk is operating.
