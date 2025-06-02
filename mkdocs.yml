@@ -56,6 +56,7 @@ nav:
   - Home: index.md
   - Installation:
     - user-guide/index.md
+    - user-guide/gettingstarted.md
     - "Important Considerations": user-guide/whats-new.md
     - <span style="color:hsl(86.28, 71.6%, 33.14%)">ASL3 Appliance</span>:
       - user-guide/pi-detailed.md
@@ -119,6 +120,21 @@ nav:
     - adv-topics/tlb.md
     - adv-topics/uefi-secureboot.md
     - adv-topics/usbinterfaces.md
+  - VOTER/RTCM:
+    - voter/index.md
+    - voter/about-voter.md
+    - voter/voter-protocol.md
+    - voter/voter-chan_voter.md
+    - voter/rtcm-hardware.md
+    - voter/voter-hardware.md
+    - voter/voter-firmware.md
+    - voter/voter-gps.md
+    - voter/voter-menus.md
+    - voter/voter-audio.md
+    - voter/voter-buffers.md
+    - voter/voter-simulcasting.md
+    - voter/voter-audioanalysis.md
+    - voter/voter-quantar.md
   - Developer Guide:
     - developers/index.md
     - developers/package-builds.md
@@ -137,3 +153,4 @@ nav:
     - config/config-structure.md
     - config/rpt_conf.md
     - config/tlb_conf.md
+    - config/voter_conf.md
