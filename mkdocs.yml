@@ -115,6 +115,9 @@ nav:
     - adv-topics/sip-phone.md
     - adv-topics/sleepmode.md
     - adv-topics/broadcastify.md
+    - adv-topics/remotebase.md
+    - adv-topics/rxtoneburst.md
+    - adv-topics/tlb.md
     - adv-topics/uefi-secureboot.md
     - adv-topics/usbinterfaces.md
   - VOTER/RTCM:
@@ -149,4 +152,5 @@ nav:
     - config/index.md
     - config/config-structure.md
     - config/rpt_conf.md
+    - config/tlb_conf.md
     - config/voter_conf.md
