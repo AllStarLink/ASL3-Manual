@@ -10,26 +10,26 @@ If you have a local FM repeater that is AllStarLink enabled, you may already be 
 AllStarLink is typically used in these ways:
 
 * Via a FM repeater that is AllStarLink enabled. Controlled through [DTMF Commands](https://wiki.allstarlink.org/wiki/AllStar_Link_Standard_Commands), via the internet, or an autopatch
-* Via a local micro-node that is purchased by an amateur radio operator to join the AllStarLink network directly
-* Via PC/Mac software that allows you to connect directly to a node over the internet. The computer microphone/speaker are used for audio
-* Via a mobile app such as [DVSwitch Mobile](https://play.google.com/store/apps/details?id=org.dvswitch&hl=en_US&gl=US) to connect directly to a node
+* Via a local "hotspot" node that is purchased by an amateur radio operator to join the AllStarLink network directly
+* Via a mobile app such as [DVSwitch Mobile (Android)](https://play.google.com/store/apps/details?id=org.dvswitch&hl=en_US&gl=US) or RepeaterPhone (IOS) to connect directly to a node
+* Via IAXRpt (PC)/Transceive (MacOS) software that allows you to connect directly to a node over the internet. The computer microphone/speaker are used for audio
 * Via a reverse-autopatch
 
 ## Getting on AllStarLink
-* If you wish to create your own node, follow the directions below to create an account. After your account is active, you will need a suitable PC or Raspberry Pi computer to install ASL3 onto
+* If you wish to create your own node, follow the directions below to create an account. After your account is active, you will need a suitable PC or Raspberry Pi computer to install and run ASL3
 * If you wish to use a local FM repeater that is AllStarLink enabled, you do not need an AllStarLink account. Check out our [Active Nodes List](https://stats.allstarlink.org/) to find a repeater near you. If you type your city name in the search box, you will be given a list of active nodes. However, before controlling any node via RF or DTMF, be sure to talk to the operator(s) of that node and receive permission first 
     * For a list of possible commands, visit the [AllStarLink Standard Commands](https://wiki.allstarlink.org/wiki/AllStar_Link_Standard_Commands) page
     * Some nodes may be local/non-public nodes, so look for information that the node is in fact public
 * If you wish to purchase a pre-made or complete node, check out our [Radio Connections](https://wiki.allstarlink.org/wiki/Radio_Connections) page for a list of vendors
 
 ## Creating Your Own Node
-If you want to create your own node to connect to the AllStarLink network, the rest of this manual is for you! Before you get to installing software and connecting up radios, you'll need to get a node number assigned to you. 
+If you need to create your own node to connect to the AllStarLink network, the rest of this manual is for you! Before you get to installing software and connecting up radios, you'll need to get a node number assigned to you. 
 
 !!! note "Private Nodes"
     In order to connect to other public AllStarLink nodes via the internet, you need a public node number assigned. If you just want take things for a "test drive" to get comfortable first, you can opt to build and deploy a [Private Node](../adv-topics/privatenodes.md) first.  
 
 ### Create an Account
-The first step in getting an AllStarLink node number assigned is to create an account at [https://allstarlink.org](https://allstarlink.org). Head over there, and click the **"Login/Sign Up"** link at the top of the page. In the box that opens, click **"Sign Up"** at the bottom of the box.
+The first step in getting an AllStarLink node number assigned is to create an account at [www.allstarlink.org](https://www.allstarlink.org). Head over there, and click the **"Login/Sign Up"** link at the top of the page. In the box that opens, click **"Sign Up"** at the bottom of the box.
 
 ![Step 1 Sign Up](img/1_sign_up.png){width="400"}
 
@@ -97,4 +97,4 @@ That's it! On the page that opens, you will see your newly assigned node number.
     Take note that on this screen, you will find the *password* for your node (hover your mouse over the password field). You can double-click the password, and then type ctrl-c to copy it to your clip board. **You will need this later when setting up the ASL3 software to register with the AllStarLink servers.**
 
 ## Node Number Extension (NXX)
-Node numbers are a limited resource. If you are just starting out, you would be strongly encouraged to click the **Continue** button, and complete the Node Number Extension (NNX) process. This will add a *zero* to the end of your primary node number (ie 65459 becomes 654590), and open up an additonal nine node numbers (ie 65451-65459) for your use.
+Node numbers are a limited resource. If you are just starting out, you would be strongly encouraged to click the **Continue** button, and complete the Node Number Extension (NNX) process. This will add a *zero* to the end of your primary node number (ie 63001 becomes 630010), and open up an additional nine node numbers (ie 630011-630019) for your use.
