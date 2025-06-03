@@ -91,10 +91,10 @@ That's it! On the page that opens, you will see your newly assigned node number.
 ![Step 11 Done](img/11_new_node.png){width="400"}
 
 !!! note "Additional Node Numbers"
-    Your first node number is automatically approved. If you need additional nodes, you should consider doing the NXX extension (to create up to ten nodes, based off your initial node number). If you need a completely different additional node number, additional node requests are subject to admin appoval.
+    Your first node number is automatically approved. If you need additional nodes, you should consider doing the NXX extension (to create up to ten nodes, based off your initial node number). If you need a completely different additional node number, additional node requests are subject to admin approval.
 
 !!! note "Node Password"
     Take note that on this screen, you will find the *password* for your node (hover your mouse over the password field). You can double-click the password, and then type ctrl-c to copy it to your clip board. **You will need this later when setting up the ASL3 software to register with the AllStarLink servers.**
 
 ## Node Number Extension (NXX)
-Node numbers are a limited resource. If you are just starting out, you would be strongly encouraged to click the **Continue** button, and complete the Node Number Extension (NNX) process. This will add a *zero* to the end of your primary node number (ie 63001 becomes 630010), and open up an additional nine node numbers (ie 630011-630019) for your use.
+Node numbers are a limited resource. If you are just starting out, you would be strongly encouraged to click the **Continue** button, and complete the [Node Number Extension (NNX)](../adv-topics/nnx.md) process. This will add a *zero* to the end of your primary node number (ie 63001 becomes 630010), and open up an additional nine node numbers (ie 630011-630019) for your use.
