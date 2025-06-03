@@ -20,19 +20,12 @@ Once the node user has reconfigured their node computer (if previously registere
 ## Requirements
 Use of NNX node numbers is totally optional, but strongly recommended. The prior node request process still exists. Existing and new users may continue to request new node numbers per current policy.
 
-Users who opt to expand an existing node number will need to make configuration changes to their existing node (if configured). That is (using the example numbers above) all references to node 63001 will need to change to 630010. These files include rpt.conf, extensions.conf, rpt_http_registartions.conf, and allmon3.ini (if using [Allmon3](../allmon3/config.md)). Reconfiguring all occurrences of the existing node number is critical. Such an oversight may confuse users and put an extra support load on system admins, at least initially. The menus that are built into ASL3 installs simplify this task greatly.
+Users who opt to expand an existing node number will need to make configuration changes to their existing node (if configured). That is (using the example numbers above) all references to node 63001 will need to change to 630010. Fortunately, the [`asl-menu`](../user-guide/menu.md) "Node Settings" menu allows you to change a node number, updating rpt.conf, rpt_http_registrations.conf, simpleusb.conf, usbradio.conf, voter.conf, extensions.conf, and allmon3.ini (if using [Allmon3](../allmon3/config.md)). Reconfiguring all occurrences of the existing node number is critical. Such an oversight may confuse users and put an extra support load on system admins, at least initially.
 
 !!! note "New Node Setup"
     If you are registering for a node number for the first time, it would be wise to extend your node number before you configure your new node for the first time. That way, you can have your xxxxx0 number ready to deploy, without having to reconfigure it after the fact. It also sets you up to easily deploy additional nodes, as your extended node numbers will already be available.
 
 Adding NNX nodes xxxxx1 thru xxxxx9 is the same process as adding any additional node.  
-
-## Considerations
-* NNX nodes can be assigned to any of the user’s servers, assigned a password and otherwise modified as desired
-* No changes to the AllStarLink registration system, the Stats Server or Allmon3 systems are required
-* Any existing node number (aka Issued Node Number or INN) can be converted to an NNX. INN and NNX node numbers can run on the same server. NNX Nodes can be split across different servers
-* Users who desire more than ten sequential node numbers and have not already been assigned sequential node numbers, may opt to request new node numbers in sequential order.  Two subsequent INNs may expand to 20 NNX numbers, or three to 30 NNX nodes, etc. All with little impact on node number resource. It’s conceivable that some users may opt to relinquish their non-sequential INN node numbers after converting, further easing any pressure on node number space
-* A provision for releasing no longer used INN numbers has been included on the new portal page as has a provision to revert NNX nodes back to the original INN number
 
 ## NNX on the AllStarLink Portal
 Node Number Extension implementation on the AllStarLink Portal is shown below.
@@ -134,49 +127,7 @@ To delete your node, ensure you are on the **Remove** tab (it will be bold), cho
 
 Next, you will need to confirm that this is indeed what you want to do.
 
-![Step 3 Confirm Delete](img/17_Delete_Pimary.png){width="400"}
+![Step 3 Confirm Delete](img/17_Delete_Primary.png){width="400"}
 
 At this point, you need to ensure that you wipe the configuration from any server that had this node number configured, as it will continue trying to register with AllStarLink, providing unnecessary strain on our resources.
-
-## Editing Node Parameters
-Each node number you create has individual parameters associated with it. From your **Node Settings** page, click on the node number to edit its parameters.
-
-![Node Parameters](img/16_Edit_Node.png){width="400"}
-
-On this page, you will find a number of important settings to modify.
-
-### Password
-By default, a random password is assigned for the node. You can leave this as-is, or change it to something else. Be sure it follows the guidelines shown.
-
-### Callsign
-This is the callsign that will show up in Allmon3 as well as on the various [Links & Stats](https://www.allstarlink.org) pages (including the Bubble Charts). It is *normally* the repeater callsign, however, it *could* be something else (such as the name of a hub system).
-
-### Frequency
-This will show up as the frequency in Allmon3 as well as on the various [Links & Stats](https://www.allstarlink.org) pages (including the Bubble Charts). For a conventional repeater, it *normally* would be of the format `MMM.kkk(s)` where `(s)` would be the optional "split" (`+` or `-` for duplex repeaters). It *could* be a description of hub node, or an indication that this is a "Radioless Node" or something similar.
-
-### CTCSS Tone
-If your repeater requires a CTCSS tone, this should be set. It will show up beside the frequency in Allmon3 as well as on the various [Links & Stats](https://www.allstarlink.org) pages (including the Bubble Charts).
-
-### Server Selection
-From the drop down menu, you can select which of your pre-configured servers this node should be assigned to.
-
-### Web Transceiver (WT) Access
-Selecting `yes` here will allow applications such as [RepeaterPhone for iOS](https://apps.apple.com/us/app/repeaterphone/id1637247024), Transceive for Mac OS, and [DVSwitch Mobile for Android](https://play.google.com/store/apps/details?id=org.dvswitch&hl=en_US&gl=US) (in "Node Mode") to connect to this node.
-
-There was originally a "Web Transceiver" Java application that this was used with, but that has since been deprecated.
-
-### Show Function List 
-The default setting of `no` here is fine. There was originally a "Web Transceiver" Java application that this was used with, but that has since been deprecated.
-
-### Allow Reverse Autopatch Access?
-If you want to allow users to call into your node from a landline (reverse of the normal "autopatch"), you would need to set this to `yes` to allow incoming calls to be processed.
-
-### Allow Telephone Portal Access?
-In most cases, you likely want to set this to `no`. A telephone portal is available to call in to nodes, if users have an AllStarLink account and use the PIN found in their Portal Account Settings.
-
-### Is Node a Remote Base?
-If this node is specifically configured as a [Remote Base](./remotebase.md), set this to `yes`, otherwise, leave it set to `no`.
-
-### Is the Remote Base Frequency Agile?
-If this node is specifically configured as a [Remote Base](./remotebase.md), AND it is frequency agile, set this to `yes`. Otherwise, leave it set to `no`.
 
