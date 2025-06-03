@@ -20,7 +20,7 @@ These commands interact with the `app_rpt` application itself:
 
 For example, `rpt lookup 2000` will show the IP of node 2000. If you have the `bind9-host` package installed on your system, the equivalent Linux CLI command to query the IP would be `host 2000.nodes.allstarlink.org`.
 
-The node lookup routines will output debug information showing the node lookups, if the [`debug`](../user-guide/menu.md#asterisl-cli-verbosity-and-debug) level is set to `4` or higher.
+The node lookup routines will output debug information showing the node lookups, if the [`debug`](../user-guide/menu.md#asterisk-cli-verbosity-and-debug) level is set to `4` or higher.
 
 The operation of this ASL3 feature can be controlled by changing the following information in `rpt.conf`:
 
@@ -60,7 +60,7 @@ The `app_gps` module is used with APRStt and for reporting the position of (mobi
 ## Verbosity and Debug Levels
 Previously, `app_rpt`, associated applications, and channel drivers supported setting the debug level with a unique command for those modules. These unique commands have been removed in ASL3, and replaced with the stock Asterisk `debug` commands.
 
-See how to set [verbosity and debug levels](../user-guide/menu.md#asterisl-cli-verbosity-and-debug) in the CLI for more information.
+See how to set [verbosity and debug levels](../user-guide/menu.md#asterisk-cli-verbosity-and-debug) in the CLI for more information.
 
 Examples:
 
