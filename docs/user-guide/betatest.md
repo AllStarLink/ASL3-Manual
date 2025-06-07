@@ -76,4 +76,5 @@ For DAHDI Kernel packages after doing the above, as necessary:
 sudo apt install -y --reinstall dahdi-linux dahdi-dkms
 ```
 
-**NOTE:** You may need to merge or fix configurations when rolling back from beta software to production. This is unusual but possible.
+!!! note "Issues Rolling Back"
+    You may need to merge or fix configurations when rolling back from beta software to production. This is unusual but possible.

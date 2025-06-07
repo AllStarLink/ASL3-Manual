@@ -1,10 +1,10 @@
 # Logins and Passwords
 Yes, there are many "different" logins and passwords associated with AllStarLink, the ASL3 software, and the related applications. A typical ASL3 server/node will directly or indirectly use the following login/password pairs:
 
-* AllStarLink website login (for "node" information)
+* [AllStarLink Portal](../basics/portal.md) website login (for "node" information)
 * Linux login
 * Asterisk Manager Interface (AMI) user/secret
-* Web application (Allmon3) login
+* Web application ([Allmon3](../allmon3/index.md)) login
 
 ## AllStarLink Website ([www.allstarlink.org](https://www.allstarlink.org))
 The AllStarLink website is where you register for an AllStarLink account, add ASL servers, and request ASL nodes.
@@ -17,6 +17,8 @@ The AllStarLink website is where you register for an AllStarLink account, add AS
 	* Add/configure "nodes" that will be running on a server. Each ASL "node" will have an associated password. You will use the node number and password pair when configuring your ASL node.
 
 * Some desktop and mobile applications use "Web Transceiver" to connect to AllStarLink nodes. Many of these applications use your AllStarLink website login and password for authentication.
+
+See the [AllStarLink Portal](../basics/portal.md) page for more details.
 
 ## Linux Login
 Your desktop, laptop, Raspberry Pi, or Virtual Machine will be running the Linux operating system (e.g. Debian). To access the operating system on your OS you will need a login `user` and `password`.
@@ -48,9 +50,9 @@ secret = my-AMI-password
 ...
 ```
 
-This `user` (admin) and `secret` (my-AMI-password) would need to be specified in the configuration file for any applications (such as [Allmon3](../allmon3/basics.md)) that use the AMI to interact with Asterisk.
+This `user` (admin) and `secret` (my-AMI-password) would need to be specified in the configuration file for any applications (such as [Allmon3](../allmon3/index.md)) that use the AMI to interact with Asterisk.
 
-## Web Applications (e.g. [Allmon3](../allmon3/basics.md))
+## Web Applications (e.g. [Allmon3](../allmon3/index.md))
 Many users will install one (or more) web applications that monitor/control their ASL nodes. These applications can provide access to many users on the web, and those users may have no relation to those who setup/administer/use your systems. As such, these applications typically maintain their own list of users and associated passwords.
 
 Please refer to the web application's instructions for information on how to manage who is allowed access to the web pages.

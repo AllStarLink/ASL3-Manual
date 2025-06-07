@@ -10,11 +10,19 @@ See [Basic Troubleshooting Tips](./troubleshooting.md) in this section for furth
 ## Bug Reporting
 Bug reports for ASL3 and surrounding issues are best handled through GitHub "Issues" to the source code projects at [AllStarLink GitHub](https://github.com/AllStarLink).
 
+Check the following locations to see if your issue has already been reported:
+
+* [ASL3 Issues](https://github.com/AllStarLink/ASL3/issues)
+* [Asterisk/app_rpt Issues](https://github.com/AllStarLink/app_rpt/issues)
+* [asl3-menu Issues](https://github.com/AllStarLink/asl3-menu/issues)
+* [Allmon3 Issues](https://github.com/AllStarLink/Allmon3/issues)
+
 There are numerous ASL3 repositories. If you're not sure which repository to use for reporting a given issue then start at [ASL3](https://github.com/AllStarLink/ASL3). You can also ask for guidance in the [AllStarLink Community](https://community.allstarlink.org/).
 
 When reporting an issue we ask that you be comfortable enough with Linux to edit files, restart services, and perhaps copy a potentially fixed file onto your system.
 
-**NOTE:** To raise issues about ASL3 problems and interact with the developers you must create (or use an existing) GitHub account.
+!!! note "GitHub Account Required"
+    To raise issues about ASL3 problems and interact with the developers you must create (or use an existing) GitHub account.
 
 ## Enhancement Requests
 Obviously, we cannot promise anything but we do want to hear your ideas. Please file a GitHub "Issue" :-)

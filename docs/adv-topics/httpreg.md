@@ -3,7 +3,7 @@ AllStarLink is moving from IAX2 to HTTP registration. ASL3 has a new module for 
 
 The associated config file is `/etc/asterisk/rpt_http_registrations.conf`. The setting values are the same as they were in IAX2 registration.
 
-When you configure your node with [`asl-menu`](../user-guide/menu.md), no action is required. The `asl-menu` utility will populate the config file accordingly to enable HTTP registration.
+When you configure your node with [`asl-menu`](../user-guide/index.md), no action is required. The `asl-menu` utility will populate the config file accordingly to enable HTTP registration.
 
 The contents of the `rpt_http_registrations.conf` file would typically look something like:
 

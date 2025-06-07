@@ -143,7 +143,7 @@ Typically, `bindaddr` is not specified (it defaults to "INADDR_ANY"). It is supp
 ### port
 The `port` directive specifies the listening UDP port that `chan_voter` is listening on for incoming connections from clients. When clients power on, they attempt to contact the `VOTER Server Address` at the `VOTER Server Port`, defined in their on-board configuration settings. See the Menu Structure and Definitions page for further explanation of those configuration settings. This is the **incoming** port you may need to let through your firewall.
 
-**NOTE:** In ASL2, the default port used was `667/UDP`, and is now `1667/UDP`. See [VOTER/RTCM Default Port](../adv-topics/incompatibles.md#voterrtcm-default-port) for more details on this change.
+**NOTE:** In ASL2, the default port used was `667/UDP`, and is now `1667/UDP`. See [VOTER/RTCM Default Port](../basics/incompatibles.md#voterrtcm-default-port) for more details on this change.
 
 If running the AllStarLink Pi Appliance (or another system with a firewall), inbound to port `1667/UDP` must be permitted. For directions on how to do this with the Pi Appliance see [Managing the Firewall](../pi/cockpit-firewall.md). **Don't forget to also allow this port through any firewall that may part of your internet connection.**
 

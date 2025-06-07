@@ -1,4 +1,4 @@
-# What's New?
+# Important Considerations
 Ready to get on with installation? We thought so, but first consider that ASL3 is very new. You'll probably want to install on removable media or on a non-production system. You probably don't want to install a production system right away. Give yourself some time to test that everything works as you'd expect.
 
 **NOTE:** If you have installed an earlier version of ASL, you need to know that ASL3 has many changes and that there's a bit of a learning curve. For those who have used ASL2 or other versions of AllStar you should be aware of a few important details:
@@ -17,14 +17,14 @@ Ready to get on with installation? We thought so, but first consider that ASL3 i
 The AllStar two node numbers per user policy remains in effect. Node numbers are a limited resource. Please make a best effort to use new media, a new server, or NNX to build a node for testing. We do make exceptions on a case by case basis but we'd really appreciate it if you could use a resource you already have.
 
 ## Menu Changes
-The ASL3 menu utility ([`asl-menu`](./menu.md)) has been updated. Our goal is to provide an easy way for you to configure your node and to minimize the need to edit any configuration files.
+The ASL3 menu utility ([`asl-menu`](../user-guide/index.md)) has been updated. Our goal is to provide an easy way for you to configure your node and to minimize the need to edit any configuration files.
 
 At the same time, we have removed most of the "OS" configuration options found in earlier implementations. Historically, ASL has been installed on many OS variants and the OS commands that work on one version do not always work on others. For that reason there are no OS related commands in the ASL3 menu.
 
-See [Menu](menu.md) for details.
+See [Menu](../user-guide/index.md) for details.
 
 ## Configuration Changes
-The first thing to know about ASL3 configuration is that [`asl-menu`](./menu.md) can be used to make and view common changes. Here are the highlights. You may want to read about [Advanced Topics](../adv-topics/commands.md) and [New Commands](../adv-topics/commands.md) details later.
+The first thing to know about ASL3 configuration is that [`asl-menu`](../user-guide/index.md) can be used to make and view common changes. Here are the highlights. You may want to read about [Advanced Topics](../adv-topics/index.md) and [New Commands](../basics/commands.md) details later.
 
 * You may edit the `.conf` files without concern of switching between editing and using the menu. The tune menus are removing leading white space from comments (we're hoping to fix this).
 * An Asterisk [template](../adv-topics/conftmpl.md) is now used within `rpt.conf`, `simpleusb.conf`, and `usbradio.conf`. Editing is much easier, but it's different than with other versions of AllStar. Node settings are much simpler with only a few lines needed to be added/updated for each node. The ASL3 menu handles the new templated configuration.

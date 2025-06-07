@@ -44,10 +44,18 @@ udevadm control --reload
 Alternatively, reboot the system.
 
 ### SimpleUSB and USBRadio Config Files
-The way USB audio interfaces are handled, including their config files has changed. See the [USB Audio Interfaces](./usbinterfaces.md) page in this section for detailed information.
+The way USB audio interfaces are handled, including their config files has changed. See the [USB Audio Interfaces](../adv-topics/usbinterfaces.md) page in this section for detailed information.
 
 ## Known Issues
 The following issues are currently known to exist in ASL3 and, where possible, what the workarounds are.
+
+### GitHub Issues Trackers
+Check the following locations to see if your issue has already been reported:
+
+* [ASL3 Issues](https://github.com/AllStarLink/ASL3/issues)
+* [Asterisk/app_rpt Issues](https://github.com/AllStarLink/app_rpt/issues)
+* [asl3-menu Issues](https://github.com/AllStarLink/asl3-menu/issues)
+* [Allmon3 Issues](https://github.com/AllStarLink/Allmon3/issues)
 
 ### resize2fs_once "Error"
 There are intermittent cases of errors on the screen or in  the system logs about a failure of a service named `resize2fs_once.service` after the final first boot upon installation. The error may report that it "Failed to start" or "timed out". If the `/` partition has been properly resized, which has been the case in every known 

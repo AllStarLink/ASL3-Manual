@@ -12,15 +12,15 @@ NNX Conversion:                     63001 --> 630010
 NNX Node Pool:                      630010 to 630019
 ```
 
-Once the node user has reconfigured their node computer (if previously registered as xxxxx), both node numbers register, show on the AllStar nodes list, show on stats page, appear in [Allmon3](../allmon3/basics.md) and of course can connect or be connected to.   
+Once the node user has reconfigured their node computer (if previously registered as xxxxx), both node numbers register, show on the AllStar nodes list, show on stats page, appear in [Allmon3](../allmon3/index.md) and of course can connect or be connected to.   
 
 !!! note "First Time Registration"
-    New users that have not yet been issued a node number would **Request** their initial node number first. Then you can **Extend** the issued node number to allow up to ten nodes to be created. See the [Getting Started](../user-guide/gettingstarted.md) section of the manual for information on requesting your initial node number.
+    New users that have not yet been issued a node number would **Request** their initial node number first. Then you can **Extend** the issued node number to allow up to ten nodes to be created. See the [Getting Started](../basics/gettingstarted.md) section of the manual for information on requesting your initial node number.
 
 ## Requirements
 Use of NNX node numbers is totally optional, but strongly recommended. The prior node request process still exists. Existing and new users may continue to request new node numbers per current policy.
 
-Users who opt to expand an existing node number will need to make configuration changes to their existing node (if configured). That is (using the example numbers above) all references to node 63001 will need to change to 630010. Fortunately, the [`asl-menu`](../user-guide/menu.md) "Node Settings" menu allows you to change a node number, updating rpt.conf, rpt_http_registrations.conf, simpleusb.conf, usbradio.conf, voter.conf, extensions.conf, and allmon3.ini (if using [Allmon3](../allmon3/config.md)). Reconfiguring all occurrences of the existing node number is critical. Such an oversight may confuse users and put an extra support load on system admins, at least initially.
+Users who opt to expand an existing node number will need to make configuration changes to their existing node (if configured). That is (using the example numbers above) all references to node 63001 will need to change to 630010. Fortunately, the [`asl-menu`](../user-guide/index.md) "Node Settings" menu allows you to change a node number, updating rpt.conf, rpt_http_registrations.conf, simpleusb.conf, usbradio.conf, voter.conf, extensions.conf, and allmon3.ini (if using [Allmon3](../allmon3/config.md)). Reconfiguring all occurrences of the existing node number is critical. Such an oversight may confuse users and put an extra support load on system admins, at least initially.
 
 !!! note "New Node Setup"
     If you are registering for a node number for the first time, it would be wise to extend your node number before you configure your new node for the first time. That way, you can have your xxxxx0 number ready to deploy, without having to reconfigure it after the fact. It also sets you up to easily deploy additional nodes, as your extended node numbers will already be available.
@@ -31,7 +31,7 @@ Adding NNX nodes xxxxx1 thru xxxxx9 is the same process as adding any additional
 Node Number Extension implementation on the AllStarLink Portal is shown below.
   
 ### Request Initial Node Number
-Before you can complete Node Number Extension, you need an Initial Node Number. See the [Getting Started](../user-guide/gettingstarted.md) page for instructions on how to request your Initial Node Number.
+Before you can complete Node Number Extension, you need an Initial Node Number. See the [Getting Started](../basics/gettingstarted.md) page for instructions on how to request your Initial Node Number.
 
 ### Extend a Node Number
 Log in to the [AllStarLink Portal](https://www.allstarlink.org/portal) with your user credentials. From the **Portal** menu, choose **Node Settings**.
@@ -58,7 +58,7 @@ You will be returned to your Nodes page, showing your available node numbers. Yo
 
 ![Step 6 New NNX](img/6_NNX_New_Nodes.png){width="400"}
 
-At this point, you can modify each node as desired. You can re-assign them to different servers, as well as modify their individual node parameters by clicking on the node number. You can now proceed with configuring your node on your actual server, using the [ASL3 Menu](../user-guide/menu.md) to complete your `Node Setup`. 
+At this point, you can modify each node as desired. You can re-assign them to different servers, as well as modify their individual node parameters by clicking on the node number. You can now proceed with configuring your node on your actual server, using the [ASL3 Menu](../user-guide/index.md) to complete your `Node Setup`. 
 
 If you wish to create additional nodes, see the next section.
 
@@ -83,7 +83,7 @@ You will be returned to your Nodes page, your new NNX node number will now appea
 
 ![Step 5 New NNX Nodes List](img/10_NNX_New_Nodes.png){width="400"}
 
-At this point, you can modify each node as desired. You can re-assign them to different servers, as well as modify their individual node parameters by clicking on the node number. You can now proceed with configuring your node on your actual server, using the [ASL3 Menu](../user-guide/menu.md) to complete your `Node Setup`.
+At this point, you can modify each node as desired. You can re-assign them to different servers, as well as modify their individual node parameters by clicking on the node number. You can now proceed with configuring your node on your actual server, using the [ASL3 Menu](../user-guide/index.md) to complete your `Node Setup`.
 
 ### Revert a NNX Back to an INN
 Should you decide that you no longer want to use extended node numbers, you can revert back from NNX to a base node number (Initial Node Number).

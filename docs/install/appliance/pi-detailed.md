@@ -1,29 +1,12 @@
-# Raspberry Pi Install
-The Raspberry Pi image includes the following to make a complete AllStarLink system:
+# ASL3 Appliance Installation
 
-* Debian 12 operating system
-* Asterisk 20 LTS + `app_rpt`
-* `asl-*` commands
-* ASL3 Menu (`asl-menu`)
-* Allmon3
-* Web-based administration
-* A nice landing page
+!!! danger "Raspberry Pi Imager"
+    **You must use the Raspberry Pi Imager,** even if you prefer another imager, and carefully follow the instructions below. Failure to do so will result in a system that won't boot or that you will not be able to login to.
 
-**You must use the Raspberry Pi Imager** even if you prefer another imager and carefully follow the instructions below. Failure to do so will result in a system that won't boot or that you will not be able to login to.
+You will install an image on a microSD card and go. This is the simplest install. For most nodes, the menus will walk you through the setup. 
 
-You will install an image on a microSD card and go. This is the simplest install. For most nodes, the menus will walk you through the setup. **Note: a minimum SD card size
-of 4G is required and it is recommended to use at least an 8G SD card.**
-
-## Pi Appliance Requirements
-The following are the system requirements for the Pi Appliance
-
-| | Required | Recommended
-|------|-----------|-------------|
-| **Hardware** | Arm v8 64-bit CPU <br> Raspberry Pi 3, 4, 5, Zero 2 W, 400 | Raspberry Pi 4B or 5B |
-| **Memory** | Minimum 512M | 4G |
-| **Storage** | Minimum 4G or larger | 8GB Class 10 |s
-
-The ASL3 Appliance been tested on Raspberry Pi 3, 4, 5, and Zero 2W.
+!!! note "SD Card Size"
+    A minimum SD card size of 4G is required and it is recommended to use at least an 8G SD card.
 
 ## Step-by-Step Pi Appliance Setup
 These directions are specific for Windows, but in general should work the same for the same tool set on MacOS and Linux. For each screenshot below, click on the image for a larger version.
@@ -93,7 +76,7 @@ that network in **Password**. Change the "Wireless LAN country" to **US** or ano
 
     ![Step 20](img/step-20.png){width="400"}
 
-21. The AllStarLink Launchpad will appear. Clicking on **Web Admin Portal** will take one to the web-based administration portal that includes a web-based SSH client for using `asl-menu` and other commands. Clicking on **Node Links** will take one to the Allmon3 interface. Clicking on **ASL Manual** will take one
+21. The AllStarLink Launchpad will appear. Clicking on **Web Admin Portal** will take one to the web-based administration portal that includes a web-based SSH client for using [`asl-menu`](../../user-guide/index.md) and other commands. Clicking on **Node Links** will take one to the Allmon3 interface. Clicking on **ASL Manual** will take one
 to the top of this manual
 
     ![Step 21](img/step-21.png)
@@ -102,7 +85,7 @@ to the top of this manual
 
     ![Step 22](img/step-22.png)
 
-23. The Overview tab is displayed. Using the Web Admin Portal (`Cockpit`) with AllStarLink is [covered in the manual](../pi/cockpit-get-started.md). At the top,
+23. The Overview tab is displayed. Using the Web Admin Portal (`Cockpit`) with AllStarLink is [covered in the manual](../../pi/cockpit-get-started.md). At the top,
  click on **Turn on administrative access**
 
     ![Step 23](img/step-23.png)
@@ -118,7 +101,7 @@ to the top of this manual
 The Terminal window is a complete interface to AllStarLink, Asterisk, and more. No SSH client is required although use of SSH directly is fully supported.
 
 ## Quick Config via ASL-Menu
-The node may now be configured. New users or those wanting a quick start experience should use the [`asl-menu`](menu.md) utility with `sudo asl-menu`.
+The node may now be configured. New users or those wanting a quick start experience should use the [`asl-menu`](../../user-guide/index.md) utility with `sudo asl-menu`.
 
 ![Web ASL Menu 1](img/term-asl-menu-1.png)
 
@@ -134,7 +117,7 @@ To start the asterisk console from the Terminal window enter `sudo asterisk -rv`
 ![Web Ast Console](img/term-ast-console.png)
 
 ## Software Updates
-One should also apply any latest updates and reboot the device as described in [Cockpit Updates](../pi/cockpit-updates.md).
+One should also apply any latest updates and reboot the device as described in [Cockpit Updates](../../pi/cockpit-updates.md).
 
 ## Allmon3 Default Login
 The default-configured username and password combination is `allmon3 / password`.
@@ -147,10 +130,10 @@ The default-configured username and password combination is `allmon3 / password`
 * Type `sudo allmon3-passwd <new user login>` to set the new user login. Type the new password when prompted.
 * Type `sudo systemctl restart allmon3` to load the new login.
 
-Details on updating the login(s) and other Allmon3 settings can be found in the [Allmon3](../allmon3/basics.md) section of the manual.
+Details on updating the login(s) and other Allmon3 settings can be found in the [Allmon3](../../allmon3/index.md) section of the manual.
 
 ## Logging Out
 When finished with the admin system, click on **Session** in the upper right and then choose **Logout**.
 
 ## Node Configuration
-If you haven't already, the next step is to configure your node settings. YouTuber Freddie Mac has a nice ASL3 installation and configuration video. See [https://youtu.be/aeuj-yI8qrU](https://youtu.be/aeuj-yI8qrU). Also see [ASL3 Menu](menu.md) for details.
+If you haven't already, the next step is to configure your node settings. YouTuber Freddie Mac has a nice ASL3 installation and configuration video. See [https://youtu.be/aeuj-yI8qrU](https://youtu.be/aeuj-yI8qrU). Also see [ASL3 Menu](../../user-guide/index.md) for details.
