@@ -4,7 +4,7 @@ A firewall is a way to protect nodes from any unwanted traffic. It enables users
 In the AllStarLink Pi Appliance, the `firewalld` service with the `nftables` backend functions as the firewall. Through the web console, you can configure `firewalld`. 
 
 # Adding an Inbound Port
-The firewall is enabled by default with a reasonable set of default rules. The most common reasons to edit the port list would be to change the IAX2 port to be outside the range of `4560-4580` (default is `4569`) or to change the VOTER port (default `1667` in ASL3, you might need `667` for [legacy reasons](../adv-topics/incompatibles.md#voterrtcm-default-port)).
+The firewall is enabled by default with a reasonable set of default rules. The most common reasons to edit the port list would be to change the IAX2 port to be outside the range of `4560-4580` (default is `4569`) or to change the VOTER port (default `1667` in ASL3, you might need `667` for [legacy reasons](../basics/incompatibles.md#voterrtcm-default-port)).
 
 1. Log in to the web console with administrator privileges. For details, see [Cockpit Basics](cockpit-basics.md)
 

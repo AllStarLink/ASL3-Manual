@@ -1,10 +1,6 @@
-# ASL3 Installation
+# Basic Operation Using ASL3 Menu
+Once you have installed ASL3 on your system you will want to configure your node.
 
-Welcome to the Installation section of the manual! We know you are excited to get on with trying out the new ASL3. 
+The ASL3 menu will help you get started with many common configurations including nodes with USB audio interfaces and ["hub"](../basics/gettingstarted.md#what-is-a-hub) nodes.
 
-In this section of the manual, you will find instructions on how to either install the Raspberry Pi Image to create an ASL3 Pi Appliance, or install ASL3 on Debian 12. 
-
-Use the Table of Contents on the left to jump to the type of installation you are wishing to perform, but be sure to check out the rest of the topics in this section for other important information. 
-
-Once you've got your new ASL3 installed, be sure to check out the [Basic Operation](menu.md) section (see the link at the top of the page).
-
+The ASL3 menu will also help you maintain your system.
