@@ -1,19 +1,20 @@
 # Docker Installation
 These instructions are for installing ASL3 within a Docker container. The
 utility of this is low because of the host-container kernel dependencies.
-It's recommended to use a [normal installation](install.md).
+Use of a [normal installation](install.md) is recommended.
 
 !!! warning "Host / Container Kernel Compatibility"
     As app_rpt.so requires the DAHDI kernel modules, the container must be
     hosted on a Debian 12 system. The container must be able to compile the
     kernel module (using DKMS) for the exact kernel version provided to
-    the container from the Host OS.
+    the container from the Host OS. Currently, the container must be
+    recomposed after a reboot into a new kernel.
 
 !!! note "Advanced Concept"
     Use of Asterisk/app_rpt within a Docker container is not a trivial
     undertaking. The Docker structure is provided due to requests from the 
     community but it is not the recommended way to install and use
-    AllStarLink as is requires more configuration, not less, than
+    AllStarLink as it requires more configuration, not less, than
     a traditional installation.
 
 !!! note "Limited Support"
@@ -26,8 +27,9 @@ It's recommended to use a [normal installation](install.md).
 Create the directory `/docker` (or use whatever is preferred), `cd` to it,
 and check out the Git repository containing the Docker configuration.
 All commands on the rest of this page assume they are being run from
-the directory containing the root of the Git repository. In the example 
-above, this will be `/docker/asl3-docker`.
+the directory containing the root of the Git repository. 
+
+For this manual page, the path used is `/docker/asl3-docker`.
 
 If the repository has already been checked out, but simply needs the latest
 information, do `git pull origin` from the `/docker/asl3-docker` directory.
