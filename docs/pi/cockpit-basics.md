@@ -1,22 +1,4 @@
 # Cockpit Basics
-
-## What is the Cockpit Web Console?
-The `Cockpit` web console is a web-based interface designed for managing and monitoring your AllStarLink Pi Appliance.
-
-The `Cockpit` web console enables you to perform a wide range of administration tasks, including:
-
-* Managing AllStarLink, Asterisk, and its related applications
-* Managing services
-* Managing user accounts
-* Managing and monitoring system services
-* Configuring network interfaces
-* Reviewing system logs
-* Updating software  
-
-The `Cockpit` web console uses the same system concepts as you would use in a terminal, and actions performed in a terminal are immediately reflected in the `Cockpit` web console. That is to say, you can use `Cockpit` and an SSH connection interchangeably as you desire.
-
-You can monitor the logs of application. In addition, you can change the settings directly in the web console or through the terminal. 
-
 Throughout this documentation a host named `node63001.local` is used as the example host. Substitute that name with your own node's name as it was set during the imaging process.
 
 ## Logging In to the Web Console
@@ -24,11 +6,11 @@ Throughout this documentation a host named `node63001.local` is used as the exam
 
 2. The browser may display a warning. Accept the security exception to proceed with the login
 
-    ![Login](../user-guide/img/step-20.png)
+    ![Login](../install/pi-appliance/img/step-20.png)
 
 3. Enter the username and password set during the imaging process
 
-    ![Login](../user-guide/img/step-22.png)
+    ![Login](../install/pi-appliance/img/step-22.png)
 
 4. Click **Log In**
 

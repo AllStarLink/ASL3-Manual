@@ -51,7 +51,7 @@ The release of AllStarLink v3 uses modern Asterisk 20 LTS. Legacy installs use A
 Additionally, Asterisk no longer runs as the root user on Linux which means that its ability to do things to the system such as make OS changes is purposefully restricted. ASL3 and Asterisk are very security conscious as many of our users run ASL3 systems on the open Internet.
 
 #### Give Questioners the Benefit of the Doubt
-In general, if people are asking questions about the details of your problem, they are likely trying to help and not nitpick. In general, if many people are having the problem, it is already known and [likely documented](known-issues-diffs.md).
+In general, if people are asking questions about the details of your problem, they are likely trying to help and not nitpick. In general, if many people are having the problem, it is already known and [likely documented](../basics/incompatibles.md#known-issues).
 
 If it's not, then likely your issue is unique to your setup and providing the requested troubleshooting is needed to help you further.
 

@@ -37,7 +37,7 @@ There are two places where the IAX port must be changed when using a non-standar
 2. The [AllStarLink Portal](https://allstarlink.org/portal/) for that node's server
 
 ### Changing `iax.conf`
-The best way to edit the IAX port is to use [`asl-menu`](../user-guide/menu.md). Run `sudo asl-menu`. Choose **1 Node Settings** and then **4 Update Asterisk IAX port**. Set the new UDP port in the box and hit **OK**. Then choose **2 Restart Asterisk**. Then close `asl-menu`.
+The best way to edit the IAX port is to use [`asl-menu`](../user-guide/index.md). Run `sudo asl-menu`. Choose **1 Node Settings** and then **4 Update Asterisk IAX port**. Set the new UDP port in the box and hit **OK**. Then choose **2 Restart Asterisk**. Then close `asl-menu`.
 
 Alternatively, edit the file directly. As root (i.e. `sudo -s`), edit the file `/etc/asterisk/iax.conf`. Find the line:
 

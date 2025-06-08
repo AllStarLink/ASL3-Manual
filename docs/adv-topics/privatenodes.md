@@ -13,7 +13,7 @@ For example, if you have a private node 1999 connected to your public node 29999
 Of course, there is a more modern solution to fix this issue, using a Node Number Extension with an assigned public Node Number. In this case, you would have a unique node number that can be set-up and just not registered to the ASL network (just comment out the appropriate registration line in `rpt_http_registrations.conf`). You could later change that to a public node just by un-commenting the registration line and reviewing your settings to be sure they are public friendly.
 
 ## Node Setup
-The easiest way to create a private node is to use the [ASL3 Menu](../user-guide/menu.md) and use `Node Settings` to create a new node.
+The easiest way to create a private node is to use the [ASL3 Menu](../user-guide/index.md) and use `Node Settings` to create a new node.
 
 This will create a new [template](./conftmpl.md) in [`rpt.conf`](../config/rpt_conf.md) for you to customize the settings for your new node.
 

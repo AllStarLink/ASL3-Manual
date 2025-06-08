@@ -44,7 +44,7 @@ At the top of the page, you will find the Navigation Bar, to let you jump to a p
 
 Once you are in a section of the manual, a Table of Contents is provided on the left side of the screen, to let you quickly find the topic you are looking for.
 
-Click the Next button on the bottom of the page to get right into Installation!
+Click the Next button on the bottom of the page to Get Started!
 
 <!--
 ![AllStarLink Landing Page](assets/AllstarLink-StarBlack.png){ width="100"}

@@ -54,31 +54,41 @@ extra:
       name: AllStarLink on GitHub
 nav:
   - Home: index.md
+  - Getting Started:
+    - basics/index.md
+    - basics/gettingstarted.md
+    - basics/portal.md
+    - basics/standardcommands.md
+    - basics/commands.md
+    - basics/incompatibles.md
   - Installation:
-    - user-guide/index.md
-    - user-guide/gettingstarted.md
-    - "Important Considerations": user-guide/whats-new.md
-    - <span style="color:hsl(86.28, 71.6%, 33.14%)">ASL3 Appliance</span>:
-      - user-guide/pi-detailed.md
-    - <span style="color:hsl(86.28, 71.6%, 33.14%)">ASL3 on Debian 12</span>:
-      - user-guide/install.md
-    - <span style="color:hsl(86.28, 71.6%, 33.14%)">Post Installation</span>:
-      - user-guide/updates.md
-      - "Differences & Known Issues": user-guide/known-issues-diffs.md
-    - <span style="color:hsl(86.28, 71.6%, 33.14%)">Allmon3 Install and Config</span>:
-      - allmon3/basics.md
+    - install/index.md
+    - install/whats-new.md
+    - <span style="color:hsl(86.28, 71.6%, 33.14%)">ASL3 Appliance (Raspberry Pi)</span>:
+      - install/pi-appliance/index.md
+      - install/pi-appliance/pi-detailed.md
+    - <span style="color:hsl(86.28, 71.6%, 33.14%)">ASL3 on Debian</span>:
+      - install/debian/index.md
+      - install/debian/install.md
+      - install/debian/deb-appliance.md
+      - install/debian/docker.md  
+    - <span style="color:hsl(86.28, 71.6%, 33.14%)">Allmon3</span>:
+      - allmon3/index.md
       - allmon3/install.md
       - allmon3/config.md
       - allmon3/usermgmt.md
   - Basic Operation:
+    - user-guide/index.md
     - user-guide/menu.md
     - user-guide/asl-cmds-tools.md
     - user-guide/passwords.md
+    - user-guide/updates.md
     - user-guide/support.md
     - user-guide/troubleshooting.md
     - user-guide/betatest.md
-    - <span style="color:hsl(86.28, 71.6%, 33.14%)">Pi Appliance Specifics</span>:
-      - "Getting Started With Cockpit": pi/cockpit-get-started.md
+    - <span style="color:hsl(86.28, 71.6%, 33.14%)">Pi Appliance Specifics (Cockpit)</span>:
+      - pi/index.md
+      - pi/cockpit-get-started.md
       - pi/cockpit-basics.md
       - pi/cockpit-console.md
       - pi/cockpit-network.md
@@ -87,8 +97,6 @@ nav:
       - pi/cockpit-firewall.md
   - Advanced Topics:
     - adv-topics/index.md
-    - adv-topics/commands.md
-    - adv-topics/incompatibles.md
     - adv-topics/allowdenylists.md
     - adv-topics/aprs.md
     - adv-topics/tts.md 

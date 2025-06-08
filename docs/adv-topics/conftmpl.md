@@ -55,4 +55,4 @@ The `/etc/asterisk/simpleusb.conf` and `/etc/asterisk/usbradio.conf` files have 
 The `/etc/asterisk/gps.conf` file has also adopted a templated configuration. The template for a node is named `[general]`. Every node tagged with `(general)` inherits all the template settings. Template settings are overwritten by nodes with `(general)` attached.
 
 ## ASL Menu Support
-The new [`asl-menu`](../user-guide/menu.md) is fully aware of the templated configuration and handles adding, updating, and removing nodes.
+The new [`asl-menu`](../user-guide/index.md) is fully aware of the templated configuration and handles adding, updating, and removing nodes.
