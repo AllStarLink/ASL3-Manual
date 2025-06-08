@@ -1,7 +1,7 @@
 # ASL3 Appliance (Raspberry Pi)
 The ASL3 "Appliance" is based around the Raspberry Pi platform. It is envisioned as a compact standalone platform that can be used to quickly deploy a node.
 
-The Pi would be the [Server](../../basics/gettingstarted.md#what-is-a-server) on which you would deploy a [Node(s)](../../basics/gettingstarted.md#what-is-a-node).
+The Pi would be the [Server](../../basics/gettingstarted.md#what-is-a-server) on which you would deploy your [Node(s)](../../basics/gettingstarted.md#what-is-a-node).
 
 The ASL3 Appliance (Raspberry Pi) image includes the following to make a complete AllStarLink system:
 
