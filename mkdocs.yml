@@ -65,8 +65,8 @@ nav:
     - install/index.md
     - install/whats-new.md
     - <span style="color:hsl(86.28, 71.6%, 33.14%)">ASL3 Appliance (Raspberry Pi)</span>:
-      - install/appliance/index.md
-      - install/appliance/pi-detailed.md
+      - install/pi-appliance/index.md
+      - install/pi-appliance/pi-detailed.md
     - <span style="color:hsl(86.28, 71.6%, 33.14%)">ASL3 on Debian</span>:
       - install/debian/index.md
       - install/debian/install.md

@@ -1,2 +1,2 @@
 # Docker
-Docker support will be coming in the near future.
+Docker support is being discussed.

@@ -6,11 +6,11 @@ Throughout this documentation a host named `node63001.local` is used as the exam
 
 2. The browser may display a warning. Accept the security exception to proceed with the login
 
-    ![Login](../install/appliance/img/step-20.png)
+    ![Login](../install/pi-appliance/img/step-20.png)
 
 3. Enter the username and password set during the imaging process
 
-    ![Login](../install/appliance/img/step-22.png)
+    ![Login](../install/pi-appliance/img/step-22.png)
 
 4. Click **Log In**
 

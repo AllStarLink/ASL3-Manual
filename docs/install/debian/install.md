@@ -1,5 +1,5 @@
 # Debian 12 Install
-These instructions are for installing ASL3 on general purpose operating systems manually. For installation on Raspberry Pis, consider using the [ASL3 Appliance](../appliance/index.md).
+These instructions are for installing ASL3 on general purpose operating systems manually. For installation on Raspberry Pis, consider using the [ASL3 Appliance](../pi-appliance/index.md).
 
 !!! note "Architecture Support"
     Currently, the project does not support armv7l/armhf platforms because all known uses of AllStarLink is on hardware which supports the Bookworm arm64 distribution such as Raspberry Pi 3, 4, 5, and Zero 2 W. If you have a platform that can use armv7l/armhf 32-bit packages only please file an issue at [ASL3 on GitHub](https://github.com/AllStarLink/ASL3/issues).

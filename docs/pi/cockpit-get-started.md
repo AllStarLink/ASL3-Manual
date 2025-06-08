@@ -6,10 +6,10 @@ The AllStarLink Pi Appliance includes the user-friendly `Cockpit` system for eas
 The first connection will report a message that "Your connection isn't private". For the Pi appliance, this is acceptable. Click on **Advanced** and then
 **Continue to node63001.local (unsafe)**. This only must be done the first time.
 
-![Browser Warning](../install/appliance/img/step-20.png)
+![Browser Warning](../install/pi-appliance/img/step-20.png)
 
 Enter the `username` and `password` configured during the imaging process above. Click **Log in**
 
-![Cockpit Login](../install/appliance/img/step-22.png)
+![Cockpit Login](../install/pi-appliance/img/step-22.png)
 
 `Cockpit` is fairly intuitive to use, the rest of this section will cover different features of the `Cockpit` console in further detail.

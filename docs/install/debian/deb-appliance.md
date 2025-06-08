@@ -13,7 +13,7 @@ You will still need to do certain things like configure [Allmon3](../../allmon3/
 
 If you want to turn your configuration you described into the full appliance, you can try installing `asl3-pi-appliance` which will “take over” your system. 
 
-This hasn't been rigorously tested against a non-Pi installation, but it should *mostly* work (if not completely work) - but YMMV. A non-PI “image” is in the works, but it’s not ready yet.
+This hasn't been rigorously tested against a non-Pi installation, but it should *mostly* work (if not completely work) - but YMMV. 
 
 If you don’t want to take the risk of that, but still want all the web experience, you can install:
 
