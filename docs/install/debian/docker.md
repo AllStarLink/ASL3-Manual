@@ -65,10 +65,10 @@ docker exec -it allstarlink3 asl-menu
     app_rpt but that is not always reliable.
 
 ## Interacting with Asterisk
-Interacting with asterisk in the container is done using `asterisk-cli`:
+Interacting with asterisk in the container is done using `asterisk-cli.sh`:
 
 ```bash
-docker exec -it allstarlink3 /asl3/asterisk-cli
+docker exec -it allstarlink3 /asl3/asterisk-cli.sh
 ```
 
 ## Viewing Asterisk Logs
