@@ -29,10 +29,25 @@ and check out the Git repository containing the Docker configuration.
 All commands on the rest of this page assume they are being run from
 the directory containing the root of the Git repository. 
 
-For this manual page, the path used is `/docker/asl3-docker`.
+For this manual page, the path used is `/docker/ASL3-Docker`.
+
+The Git repository is located at [https://github.com/AllstarLink/asl3-docker](https://github.com/AllstarLink/asl3-docker). The general workflow can be used:
+
+```bash
+mkdir /docker
+cd /docker
+git clone https://github.com/AllStarLink/ASL3-Docker.git
+
+```
 
 If the repository has already been checked out, but simply needs the latest
-information, do `git pull origin` from the `/docker/asl3-docker` directory.
+information, do `git pull origin` from the `/docker/ASL3-Docker` directory.
+For example:
+
+```bash
+cd /docker/ASL3-Docker
+git pull origin main
+```
 
 ## System Requirements
 The AllStarLink3 container will require about 2G of space available
