@@ -31,17 +31,17 @@ the directory containing the root of the Git repository.
 
 For this manual page, the path used is `/docker/ASL3-Docker`.
 
-The Git repository is located at [https://github.com/AllstarLink/asl3-docker](https://github.com/AllstarLink/asl3-docker). The general workflow can be used:
+The Git repository is located at [https://github.com/AllstarLink/asl3-docker](https://github.com/AllstarLink/asl3-docker). The following general steps can be used:
 
 ```bash
 mkdir /docker
 cd /docker
 git clone https://github.com/AllStarLink/ASL3-Docker.git
-
+cd ASL3-Docker
 ```
 
 If the repository has already been checked out, but simply needs the latest
-information, do `git pull origin` from the `/docker/ASL3-Docker` directory.
+information, do `git pull origin main` from the `/docker/ASL3-Docker` directory.
 For example:
 
 ```bash
