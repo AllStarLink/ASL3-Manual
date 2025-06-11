@@ -41,14 +41,14 @@ Recording will commence as soon as the command is decoded, so the DTMF command t
 This mode **permanently** places the node in Parrot Mode. This is useful when you want to make a simplex repeater, or a dedicated node for audio testing that echos everything it hears. The parrot enable and parrot disable COP commands will have **no effect** when operating in this mode. To select this mode, the value for `parrot` should be set to `1` in the [`Node Number Stanza`](../config/rpt_conf.md#node-number-stanza):
 
 ```
-parrot = 1                      ; Enable Parrot Mode on command via cop,21 and cop,22
+parrot = 1                          ; Parrot all audio, all the time
 ```
 
 ### `parrottime`
 The other setting associated with the above `parrot` modes is `parrottime`. `parrottime` set the time, in mS, that the system waits after the user un-keys, before playing back the recorded audio buffer.
 
 ```
-parrottime = 1000                   ; Wait 1s (1000mS) before playback
+parrottime = 1000                   ; Wait 1s (1000ms) before playback
 ```
 
 ## Functions
