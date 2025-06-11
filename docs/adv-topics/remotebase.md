@@ -57,7 +57,7 @@ The node number stanza is a critical stanza in `rpt.conf`. It is the same concep
 [1998]    ; Replace with your assigned or private node number
 ```
 
-The node number stanza is set to the **assigned node number** *or* a **private node number** (if a private node is being configured). The [asl-menu](../user-guide/menu.md) utility, via the **Node Setup** menu, should normally be used to create node stanzas for both public and private nodes.
+The node number stanza is set to the **assigned node number** *or* a **private node number** (if a private node is being configured). The [asl-menu](../user-guide/index.md) utility, via the **Node Setup** menu, should normally be used to create node stanzas for both public and private nodes.
 
 The node number stanza contains all the configurable options for that specific node using a `key=value` pair syntax. The following configurable options are available to use:
 
@@ -110,6 +110,14 @@ functions = functions-remote   ; name the functions stanza 'functions-remote'
 44=remote,104                           ; Low Power
 45=remote,105                           ; Medium Power
 46=remote,106                           ; High Power
+51=remote,5                             ; Long status query
+52=remote,140                           ; Short status query
+61=remote,61                            ; Set mode to FM
+62=remote,62                            ; Set mode to USB
+63=remote,63                            ; Set mode to LSB
+64=remote,64                            ; Set mode to AM
+67=remote,210                           ; Send a *
+69=remote,211                           ; Send a #
 711=remote,107                          ; Bump down ­20Hz
 714=remote,108                          ; Bump ­down 100Hz
 717=remote,109                          ; Bump ­down 500Hz
@@ -123,10 +131,6 @@ functions = functions-remote   ; name the functions stanza 'functions-remote'
 726=remote,117                          ; Scan + quick
 729=remote,118                          ; Scan + fast
 79=remote,119                           ; Tune 
-51=remote,5                             ; Long status query
-52=remote,140                           ; Short status query
-67=remote,210                           ; Send a *
-69=remote,211                           ; Send a #
 91=remote,99,CALLSIGN,[LICENSETAG]      ; Remote base login.
                                         ; Define a different dtmf sequence for each user which is 
                                         ; authorized to use the remote base to control access to it.
@@ -144,7 +148,8 @@ functions = functions-remote   ; name the functions stanza 'functions-remote'
 
 In the above example the digits to the left of the = are the DTMF code to dial (don't forget to prefix with [`[funcchar]`](../config/rpt_conf.md#funcchar), usually *).
 
-**NOTE:** When sending DTMF commands to a remote base, you need to send them in "command mode", usually \*4 (ilink,4). So, if your remote base was defined as node 1998, to set the remote base to high power, you would send \*41998\*46 (after you connected to that node with something like \*31998).
+!!! note "Command Mode"
+    When sending DTMF commands to a remote base, you need to send them in "command mode", usually \*4 (ilink,4). So, if your remote base was defined as node 1998 and you are already connected to the node, you would set the remote base to high power by sending \*41998\*46.
 
 See [Remote Base Commands](#remote-base-commands) for functions that are specifically available for remote base nodes.
 
@@ -309,32 +314,33 @@ Remote base commands (`functionclass` of `remote`) provide DTMF functions for re
 remote|Description|Parameter(s) Accepted
 ------|-----------|---------------------
 1|Retrieve Memory|00 to 99
-2|Set VFO frequency|MMM\*kkk\*o# where MMM is frequency in MHz, kkk is kHz portion of the frequency, o is offset (1=minus, 2=simplex, 3=positive)
-3|Set TX PL tone|XXX\*X ie 067\*0 to set 67.0Hz
-4|Set RX PL tone|XXX\*X ie 067\*0 to set 67.0Hz
-5|Long status query|
+2|Set VFO Frequency|MMM\*kkk\*o# where MMM is frequency in MHz, kkk is kHz portion of the frequency, o is offset (1=minus, 2=simplex, 3=positive)
+3|Set TX PL Tone|XXX\*X ie 067\*0 to set 67.0Hz
+4|Set RX PL Tone|XXX\*X ie 067\*0 to set 67.0Hz
+5|Link Status Query (long)|
+6|Set Operating Mode|m, where m is 1 (FM), 2 (USB), 3, (LSB), or 4 (AM)
 99|Remote Base login|CALLSIGN,LICENSETAG
-100|Rx PL off|
-101|Rx PL on|
-102|Tx PL off|
-103|Tx PL on|
+100|RX PL Off|Default
+101|RX PL On|
+102|TX PL Off|Default
+103|TX PL On|
 104|Low Power|
 105|Medium Power|
 106|High Power|
-107|Bump -20|
-108|Bump -100|
-109|Bump -500|
-110|Bump +20||
-111|Bump +100|
-112|Bump +500|
-113|Scan - slow|
-114|Scan - quick|
-115|Scan - fast|
-116|Scan + slow|
-117|Scan + quick|
-118|Scan + fast|
+107|Bump -20Hz|
+108|Bump -100Hz|
+109|Bump -500Hz|
+110|Bump +20Hz|
+111|Bump +100Hz|
+112|Bump +500Hz|
+113|Scan - Slow|
+114|Scan - Quick|
+115|Scan - Fast|
+116|Scan + Slow|
+117|Scan + Quick|
+118|Scan + Fast|
 119|Tune (brief AM transmission for automatic tuners)|
-140|Short status query|
+140|Link Status Query (brief)|
 210|Send a *|
 211|Send a #|
 

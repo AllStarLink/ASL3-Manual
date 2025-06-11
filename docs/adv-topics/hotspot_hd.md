@@ -1,5 +1,5 @@
 # Hot Spot Un-key Delay
-When setting up a hot spot, select the `Duplex 1` option in [`asl-menu`](../user-guide/menu.md) to allow the hot spot to function. However, the un-key delay of the radio transmitter will likely be too long.
+When setting up a hot spot, select the `Duplex 1` option in [`asl-menu`](../user-guide/index.md) to allow the hot spot to function. However, the un-key delay of the radio transmitter will likely be too long.
 
 These steps will shorten the un-key delay and will greatly improve hot spot responsiveness:
 

@@ -1,19 +1,16 @@
-# ASL3 Menu
-Once you have installed ASL3 on your system you will want to configure your node.
-
-The ASL3 menu will help you get started with many common configurations including nodes with USB audio interfaces and "hub" nodes. The ASL3 menu will also help you maintain your system.
-
+# Accessing ASL3 Menu
 Your system may have been setup to automatically start the ASL3 menu as soon as you have logged in. If not, you can access the ASL3 menu by executing the following command from the Linux shell :
 
 ```
 asl-menu
 ```
 
-**NOTE:** If you are not logged in as the "root" user you will need to use:
+!!! note "May Require sudo"
+    If you are not logged in as the "root" user you will need to use:
 
-```
-sudo asl-menu
-```
+    ```
+    sudo asl-menu
+    ```
 
 When the ASL3 menu is running you will be presented with options to configure a node, access the Asterisk CLI, backup (or restore) your ASL settings, access the Linux CLI, perform some basic diagnostics, and perform some common system actions.
 
@@ -32,16 +29,17 @@ The `Node Settings` menu allows you update key node settings including :
 
 The `Node Settings` menu also allows you to add (or remove) additional nodes.
 
-**NOTE:** You can also use the `node-setup` command to access this menu directly from the Linux CLI.
+!!! note "Direct CLI Access"
+    You can also use the `node-setup` command to access this menu directly from the Linux CLI.
 
 ## Asterisk CLI
 The Asterisk Command Line Interface (CLI) provides direct access to the heart of what makes an AllStar node.
 
-You might use the CLI for testing, troubleshooting, or for controlling your node. You should know that many of the commands require a more in-depth knowledge of Asterisk. The good news is that many of the commonly used commands can be executed from the `Diagnostics Menu`, or with one of the web management/monitoring applications (e.g. [Allmon3](../allmon3/basics.md)).
+You might use the CLI for testing, troubleshooting, or for controlling your node. You should know that many of the commands require a more in-depth knowledge of Asterisk. The good news is that many of the commonly used commands can be executed from the `Diagnostics Menu`, or with one of the web management/monitoring applications (e.g. [Allmon3](../allmon3/index.md)).
 
 The Asterisk CLI can be accessed directly via `asl-menu`, from the [`Cockpit` terminal](../pi/cockpit-console.md), or directly off the Linux command line using `asterisk -rvvv` or `sudo asterisk -rvvv`, depending on your configuration.
 
-### Asterisl CLI Verbosity and Debug
+### Asterisk CLI Verbosity and Debug
 
 #### Verbosity Level
 "Verbosity" refers to how "chatty" the Asterisk CLI is. The larger the verbosity level, the more detailed the messages on the console will be. A good verbosity level is typically `3`. It provides a reasonable level of detail as Asterisk is operating.

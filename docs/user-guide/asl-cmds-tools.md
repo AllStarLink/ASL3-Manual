@@ -1,10 +1,10 @@
-# ASL Commands and Tools
+# ASL3 Commands and Tools
 The following commands and tools are the primary AllStarLink ecosystem. Each entry contains a description of the command, link to the documentation, and what package provides the command or tool.
 
 | Command | Description | Documentation | Package |
 |-|-|-|-|
 | asterisk | The main console for Asterisk and app_rpt | Normally invoked with `asterisk -r` | asl3-asterisk |
-| `asl-menu` | The main text-based menu for configuring ASL | [Menu Use](menu.md) | asl3 |
+| `asl-menu` | The main text-based menu for configuring ASL | [Menu Use](index.md) | asl3 |
 | `asl3-update-nodelist` | Primary engine to update the `/var/lib/asterisk/rpt_extnodes` database like for the node dictionary. | [Node Resolution](../adv-topics/noderesolution.md) | asl3-update-nodelist |
 | `asl3-update-astdb` | Universal engine to provide `astdb.txt` to various applications that require the old node name database. Use this rather than a special version for every third-party app (e.g. Supermon, Node Remote, etc.) | [Node Resolution](../adv-topics/noderesolution.md) | asl3-update-nodelist |
 | `allmon3-passwd` | Manage the user database and passwords for Allmon3 | [Allmon3 User Management](../allmon3/usermgmt.md) | allmon3 |

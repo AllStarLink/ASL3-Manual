@@ -180,7 +180,7 @@ The node number stanza is a critical stanza in `rpt.conf`.
 [1999]    ; Replace with your assigned or private node number
 ```
 
-The node number stanza is set to the **assigned node number** *or* a **private node number** (if a private node is being configured). It will normally be configured by [asl-menu](../user-guide/menu.md).
+The node number stanza is set to the **assigned node number** *or* a **private node number** (if a private node is being configured). It will normally be configured by [`asl-menu`](../user-guide/index.md).
 
 The node number stanza contains all the configurable options for that specific node using a `key=value` pair syntax. The following configurable options are available to use:
 
@@ -243,6 +243,8 @@ Sample:
 ```
 beaconing=1   ;Set to 1 to beacon. Defaults to 0
 ```
+
+See [European Repeater Operation](../adv-topics/eurorptr.md) for more information on the application of this option.
 
 ### callerid=
 This option allows the autopatch on the node to be identified with a specific caller ID. The default setting is as follows
@@ -635,7 +637,7 @@ Sample:
 macro=macro   ; use stanza named macro
 
 [macro]
-1 = *32000*32001     ; connect to nodes 2000 and 2001
+1 = *32000 *32001#                  ; connect to nodes 2000 and 2001
 ```
 
 The default is to have `macro=` point to a stanza called `macro`, and have a common set of commands for all nodes. However, you can have it point to another named stanza, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
@@ -933,6 +935,7 @@ SimpleUSB/1999|SimpleUSB Channel Driver (limited DSP), specify associated node n
 Radio/1999|Usbradio Channel Driver (full DSP), specify associated node number found in usbradio.conf  
 voter/1990|VOTER (RTCM) Channel Driver, specify associated node number found in voter.conf    
 USRP/127.0.0.1:34001:32001|GNU Radio interface USRP 
+tlb/tlb0|TheLinkBox Channel Driver, pointing to the specified (tlb0) channel context in tlb.conf
 
 Sample:
 
@@ -979,6 +982,8 @@ Sample:
 ```
 sleeptime = 300   ; go to sleep after 5 mins of no activity
 ```
+
+See [Sleep Mode](../adv-topics/sleepmode.md) for more information on what this timer does, and how it works.
 
 ### startup_macro=
 The `startup_macro` is executed once on system startup. Each node can have **one** startup macro defined in its node stanza.
@@ -1302,7 +1307,7 @@ macro=macro   ; use stanza named macros
 1 = *32000*32001     ; connect to nodes 2000 and 2001
 ```
 
-See [Full Macro Use And Format](https://wiki.allstarlink.org/index.php?title=Macro_use_and_format) for more information on macros.
+See the [Macro](../adv-topics/macros.md) page for more information on macros.
 
 ## Morse Stanza
 The `[morse]` stanza is a named stanza pointed to by the [`morse=](#morse) option.

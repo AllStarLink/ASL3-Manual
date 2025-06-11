@@ -3,7 +3,7 @@ ASL3 is overall very similar to older versions (ASL2). However, due to the upgra
 
 New and different commands to interact with ASL3 are documented here. Older ASL2 commands are still documented on the [AllStarLink Wiki](https://wiki.allstarlink.org), and may still be applicable (with some modifications) to ASL3. The Wiki documentation will remain as a reference, until all the documentation can be updated for ASL3, and added to this manual. 
 
-All these commands are available when using the Asterisk Command Line Interface (CLI), also known as the Asterisk Console. This can be accessed through the [`Cockpit`](../pi/cockpit-get-started.md) Terminal, from [`asl-menu`](../user-guide/menu.md), or directly from the Linux terminal with `asterisk -rvvv` or `sudo asterisk -rvvv`, depending on your system configuration. 
+All these commands are available when using the Asterisk Command Line Interface (CLI), also known as the Asterisk Console. This can be accessed through the [`Cockpit`](../pi/cockpit-get-started.md) Terminal, from [`asl-menu`](../user-guide/index.md), or directly from the Linux terminal with `asterisk -rvvv` or `sudo asterisk -rvvv`, depending on your system configuration. 
 
 ## `app_rpt` commands
 These commands interact with the `app_rpt` application itself:
@@ -20,7 +20,7 @@ These commands interact with the `app_rpt` application itself:
 
 For example, `rpt lookup 2000` will show the IP of node 2000. If you have the `bind9-host` package installed on your system, the equivalent Linux CLI command to query the IP would be `host 2000.nodes.allstarlink.org`.
 
-The node lookup routines will output debug information showing the node lookups, if the [`debug`](../user-guide/menu.md#asterisl-cli-verbosity-and-debug) level is set to `4` or higher.
+The node lookup routines will output debug information showing the node lookups, if the [`debug`](../user-guide/menu.md#asterisk-cli-verbosity-and-debug) level is set to `4` or higher.
 
 The operation of this ASL3 feature can be controlled by changing the following information in `rpt.conf`:
 
@@ -60,7 +60,7 @@ The `app_gps` module is used with APRStt and for reporting the position of (mobi
 ## Verbosity and Debug Levels
 Previously, `app_rpt`, associated applications, and channel drivers supported setting the debug level with a unique command for those modules. These unique commands have been removed in ASL3, and replaced with the stock Asterisk `debug` commands.
 
-See how to set [verbosity and debug levels](../user-guide/menu.md#asterisl-cli-verbosity-and-debug) in the CLI for more information.
+See how to set [verbosity and debug levels](../user-guide/menu.md#asterisk-cli-verbosity-and-debug) in the CLI for more information.
 
 Examples:
 
