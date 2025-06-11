@@ -749,21 +749,19 @@ In the above example, on outbound DTMF, *7 generates a `funcchar` (normally `*`)
 
 **NOTE:** This option is not well documented in the code, your mileage may vary.
 
-### parrotmode=
+### parrot=
 The "parrot" repeats everything it hears. Use this option to create an "echo reflector node", where everything you transmit to the node will be played back when you unkey.
 
 Sample:
 
 ```
-parrotmode = 0                      ; 0 = Parrot Off (default = 0)
+parrot = 0                          ; 0 = Parrot mode off or enabled with COP commands (default = 0)
 ```
 
-Parrot mode can operate in a number of different methods:
+The available options are:
 
-* 0 = Parrot Off (default = 0)
-* 1 = Parrot On Command (see [`cop,21 and cop,22`](#cop-commands))
-* 2 = Parrot Always
-* 3 = Parrot Once by Command ([`cop,55`](#cop-commands) enables it for one shot before automatically turning off)
+* 0 = Parrot mode off or enabled with COP commands (default = 0)
+* 1 = Parrot mode always on
 
 See [Parrot Mode](../adv-topics/parrotmode.md) for more information on what this mode does, and how it works.
 
