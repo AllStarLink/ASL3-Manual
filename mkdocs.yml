@@ -147,6 +147,7 @@ nav:
   - Developer Guide:
     - developers/index.md
     - developers/package-builds.md
+    - developers/source-code.md
     - developers/source-install.md
     - developers/aptly.md
   - Man Pages:
