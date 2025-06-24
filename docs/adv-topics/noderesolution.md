@@ -13,10 +13,22 @@ The operation of this ASL3 feature is controlled by the following information in
 
 ```
 [general]
-node_lookup_method = both	;method used to lookup nodes
-					;both = dns lookup first, followed by external file (default)
-					;dns = dns lookup only
-					;file = external file lookup only
+node_lookup_method = both           ; method used to lookup nodes
+                                    ; both = dns lookup first, followed by external file (default)
+                                    ; dns = dns lookup only
+                                    ; file = external file lookup only
+
+; The domain name used for DNS lookups when the node lookup method is "dns" or
+; "both".  The default domain is "nodes.allstarlink.org" and does not need to
+; be defined here.  Only set "dns_node_domain" if a) You really know what you're
+; doing and b) you need to use an alternate DNS domain for node resolution.
+;dns_node_domain = nodes.allstarlink.org
+
+; When using DNS, "app_rpt" must know the length of the longest node number.
+; The current maximum is 6 digits and does not need to be defined here. The
+; "max_dns_node_length" variable can be used to limit queries to shorter (or
+; longer) node numbers.
+;max_dns_node_length = 6
 ```
 
 The node lookup routines will output debug information showing the node lookups if the [debug level](../user-guide/menu.md#debug-level) is set to `4` or higher.
@@ -46,10 +58,12 @@ Here is an example of the external file format:
 2001=radio@162.248.93.134:4569/2001,162.248.93.134
 ```
 
-## Domain Name Service DNS
+## Domain Name Service (DNS)
 AllStarLink now provides a DNS service for performing node resolution. DNS is an Internet standard and is more efficient than using a file base solution.
 
-When using DNS `app_rpt` must know the length of the longest node number. The current maximum is 6 digits. This number can be overridden in `rpt.conf` by adding the `max_dns_node_length=` key and value to the `[general]` stanza.
+When using DNS, `app_rpt` will query for node information from DNS records in the `nodes.allstarlink.org` domain.  The domain name can be overridden by adding a `node_dns_domain=` key and value (the query domain) to the `[general] stanza of the `rpt.conf` configuration file.
+
+When using DNS, `app_rpt` must know the length of the longest node number. The current maximum is 6 digits. This number can be overridden by adding the `max_dns_node_length=` key and value to the `[general]` stanza of the `rpt.conf` configuration file.
 
 For more information on DNS see [AllStarLink DNS Servers](./dns-servers.md).
 

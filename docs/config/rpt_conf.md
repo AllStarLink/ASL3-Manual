@@ -161,14 +161,26 @@ COP|Description
 ## General Stanza
 ASL3 introduces a new stanza in `rpt.conf`, the `[general]` stanza.
 
-Presently, this stanza just contains a `key=value` for how node lookups are handled:
+Presently, this stanza just contains `key=value` pairs that specify how node lookups are handled:
 
 ```
 [general]
-node_lookup_method = both           ;method used to lookup nodes
-                                    ;both = dns lookup first, followed by external file (default)
-                                    ;dns = dns lookup only
-                                    ;file = external file lookup only
+node_lookup_method = both           ; method used to lookup nodes
+                                    ; both = dns lookup first, followed by external file (default)
+                                    ; dns = dns lookup only
+                                    ; file = external file lookup only
+
+; The domain name used for DNS lookups when the node lookup method is "dns" or
+; "both".  The default domain is "nodes.allstarlink.org" and does not need to
+; be defined here.  Only set "dns_node_domain" if a) You really know what you're
+; doing and b) you need to use an alternate DNS domain for node resolution.
+;dns_node_domain = nodes.allstarlink.org
+
+; When using DNS, "app_rpt" must know the length of the longest node number.
+; The current maximum is 6 digits and does not need to be defined here. The
+; "max_dns_node_length" variable can be used to limit queries to shorter (or
+; longer) node numbers.
+;max_dns_node_length = 6
 ```
 
 See [Node Resolution](../adv-topics/noderesolution.md) for how this new node lookup method is handled.
@@ -233,6 +245,24 @@ Sample:
 
 ```
 archiveformat = wav49                    ; audio format (default = wav49)
+```
+
+### archivedatefmt=
+This option specifies the filename format used for the audio recordings in [`archivedir=`](#archivedir).  By default, the files will use a "%Y%m%d%H%M%S" date format that maps to YYYYMMDDHHMMSS.  If desired, you can specify any date format supported by the C function strftime(3) API.  For more precision, you can also include the '%[n]q' format to add fractions of a second, with leading zeros.
+
+Sample:
+
+```
+archivedatefmt = %Y%m%d%H%M%S%2q         ; date/time (time to 1/100th secs)
+```
+
+### archiveaudio=
+This option specifies whether the both the simple activity log AND audio recordings are included in [`archivedir=`](#archivedir).  If set to "no" then only the activity log will be created (the audio recordings will not be saved).
+
+Sample:
+
+```
+archiveaudio = yes                       ; enable/disable audio recordings (default = yes)
 ```
 
 ### beaconing=
@@ -1180,9 +1210,9 @@ The default is to have `wait-times=` point to a stanza called `wait-times`, and 
 See [Wait Times Stanza](#wait-times-stanza) for more information on the timers that can be configured.
 
 ## Control States Stanza
-There are several predefined nmemonics (keywords) used in the `[controlstates]` stanza to enable and disable the various features of the controller. These nmemonics correspond to the control operator command (COP) to be executed and most of these are the same groups of letters announced on air when a single control operator command is executed on the controller.
+There are several predefined mnemonics (keywords) used in the `[controlstates]` stanza to enable and disable the various features of the controller. These mnemonics correspond to the control operator command (COP) to be executed and most of these are the same groups of letters announced on air when a single control operator command is executed on the controller.
 
-Nmemonic|Description|COP Method
+Mnemonic|Description|COP Method
 --------|-----------|----------
 rptena|Repeater Enable|2
 rptdis|Repeater Disable|3
