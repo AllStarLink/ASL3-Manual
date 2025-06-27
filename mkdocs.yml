@@ -85,6 +85,7 @@ nav:
     - user-guide/updates.md
     - user-guide/support.md
     - user-guide/troubleshooting.md
+    - user-guide/phoneportal.md
     - user-guide/betatest.md
     - <span style="color:hsl(86.28, 71.6%, 33.14%)">Pi Appliance Specifics (Cockpit)</span>:
       - pi/index.md
