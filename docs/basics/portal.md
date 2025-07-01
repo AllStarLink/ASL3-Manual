@@ -97,9 +97,11 @@ If your repeater requires a CTCSS tone, this should be set. It will show up besi
 From the drop down menu, you can select which of your pre-configured servers this node should be assigned to.
 
 ### Web Transceiver (WT) Access
-Selecting `yes` here will allow applications such as [RepeaterPhone for iOS](https://apps.apple.com/us/app/repeaterphone/id1637247024), Transceive for Mac OS, and [DVSwitch Mobile for Android](https://play.google.com/store/apps/details?id=org.dvswitch&hl=en_US&gl=US) (in "Node Mode") to connect to this node.
+Selecting `yes` here will allow applications such as [RepeaterPhone](https://apps.apple.com/us/app/repeaterphone/id1637247024) for iOS, [Transceive](https://transceive.app/) for macOS, and [DVSwitch Mobile](https://play.google.com/store/apps/details?id=org.dvswitch&hl=en_US&gl=US) for Android (in "Node Mode") to connect to this node.
 
 There was originally a "Web Transceiver" Java application that this was used with, but that has since been deprecated.
+
+See the [External Applications](../user-guide/externalapps.md) page for further details on how this operates.
 
 ### Show Function List 
 The default setting of `no` here is fine. There was originally a "Web Transceiver" Java application that this was used with, but that has since been deprecated.
