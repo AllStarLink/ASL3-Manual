@@ -1,7 +1,7 @@
 # extensions.conf
-`extensions.conf` (`/etc/asterisk/extensions.conf`) contains the “dial plan” of Asterisk. It is your master plan of control or execution flow for all of its operations. It controls how incoming connections get routed to `app_rpt` and is used for outgoing autopatch connections via various channels and VoIP termination providers.
+`extensions.conf` (`/etc/asterisk/extensions.conf`) contains the “dialplan” of Asterisk. It is your master plan of control or execution flow for all of its operations. It controls how incoming connections get routed to `app_rpt` and is used for outgoing autopatch connections via various channels and VoIP termination providers.
 
-Since ALS3 runs Asterisk on the backend, if you want to make changes to this file, you should familiarize yourself with how Asterisk dial plans work, their syntax, and their function. There is plenty of documentation available on the Internet about Asterisk dial plans.
+Since ALS3 runs Asterisk on the backend, if you want to make changes to this file, you should familiarize yourself with how Asterisk dialplans work, their syntax, and their function. There is plenty of documentation available on the Internet about Asterisk dialplans.
 
 We will cover the basics here in how the information in the default ASL3 `extensions.conf` relates to node operations.
 
@@ -11,25 +11,25 @@ The `[general]` stanza is used to set global options that apply to all extension
 You should see the following in your ASL3 default `extensions.conf`:
 
 ```
-static = yes       ; These two lines prevent the command-line interface
-writeprotect = yes ; from overwriting the config file. Leave them here.
+static = yes       					; These two lines prevent the command-line interface
+writeprotect = yes 					; from overwriting the config file. Leave them here.
 ```
 
 These two directives mean that extensions cannot be altered or deleted via the Asterisk Management Interface (AMI) or the Command Line Interface (CLI). The only way to change them is by editing the relevant stanzas in `extensions.conf`.
 
 ## `[globals]` Stanza
-The `[globals]` stanza sets global variables that can be used by multiple extensions within the file to dynamically set values or parameters in dial plan logic.
+The `[globals]` stanza sets global variables that can be used by multiple extensions within the file to dynamically set values or parameters in dialplan logic.
 
 You should see the following in your ASL3 default `extensions.conf`:
 
 ```
 [globals]
-HOMENPA = 999 ; change this to your Area Code
-NODE = 1999   ; change this to your node number
+HOMENPA = 999 						; change this to your Area Code
+NODE = 1999   						; change this to your node number
 ```
 
 ## `[default]` Stanza
-The `[default]` stanza is a special Asterisk dial plan extension. It acts as a fallback or catch-all when a specific stanza is not defined or is not reachable. It's the stanza Asterisk uses when a more specific stanza is not available or if a dial plan error occurs.
+The `[default]` stanza is a special Asterisk dialplan extension. It acts as a fallback or catch-all when a specific stanza is not defined or is not reachable. It's the stanza Asterisk uses when a more specific stanza is not available or if a dialplan error occurs.
 
 You should see the following in your ASL3 default `extensions.conf`:
 
@@ -41,7 +41,7 @@ exten => i,1,Hangup
 In ASL3, the default behavior is to hang up (terminate) the call/connection.
 
 ## `[radio-secure]` Stanza
-The `[radio-secure]` stanza is called from the `[radio]` stanza in `iax.conf`. It is used to handle IAX2 connections between nodes, and determines if and how to route the connection to the `app_rpt` channel driver that does all the "repeater" functions.
+The `[radio-secure]` stanza is called from the `[radio]` stanza in `iax.conf`. It is used to handle IAX2 connections between nodes, and determines if and how to route the connection to the `app_rpt` application that does all the "repeater" functions.
 
 You should see the following in your ASL3 default `extensions.conf`:
 
@@ -75,7 +75,7 @@ exten => _XXXX!,1,Set(NODENUM=${CALLERID(num)})
 	same => n,Hangup
 ```
 
-The `[radio-secure]` stanza above checks to see if the incoming connection is a node defined on this server (localhost, which is allowed to connect), and then whether the calling node is on the `allowlist` or `denylist`. As their names indicate, nodes on the `allowlist` (or not not on the `denylist`) are allowed to connect, while nodes on the `denylist` have the connection terminated. Successful connections are then passed to `app_rpt`.
+The `[radio-secure]` stanza above checks to see if the incoming connection is a node defined on this server (localhost, which is allowed to connect), and then whether the calling node is on the [`allowlist`](../adv-topics/allowdenylists.md) or [`denylist`](../adv-topics/allowdenylists.md). As their names indicate, nodes on the [`allowlist`](../adv-topics/allowdenylists.md) (or not on the [`denylist`](../adv-topics/allowdenylists.md)) are allowed to connect, while nodes on the [`denylist`](../adv-topics/allowdenylists.md) have the connection terminated. Successful connections are then passed to `app_rpt`.
 
 ## `[iaxrpt]` Stanza
 The `[iaxrpt]` stanza is called from the `[iaxrpt]` stanza in `iax.conf`. It is typically used to process connections from the [IAXRpt](../user-guide/externalapps.md#iaxrpt-pc-client) software client (or other [External Apps](../user-guide/externalapps.md)).
@@ -95,7 +95,7 @@ exten => ${NODE},1,rpt(${EXTEN},X)       ; NODE is the Name field in iaxrpt
 As shown, this stanza doesn't do a whole lot, other than connect the client to our node via `app_rpt`. Note that since authentication was handled in `iax.conf`, `app_rpt` is called with the `X` option which translates to a normal endpoint but bypassing further authentication checks.
 
 ## `[iax-client]` Stanza
-The `[iax-client]` stanza is called from the `[iaxclient]` stanza in `iax.conf`. It was/is typically used for connections from the [Zoiper Softphone Client](https://www.zoiper.com/).
+The `[iax-client]` stanza is called from the `[iaxclient]` stanza in `iax.conf`. It was/is typically used for connections from the [Zoiper](https://www.zoiper.com/) softphone client.
 
 Zoiper is more cumbersome to configure and use than the other [External Apps](../user-guide/externalapps.md) that are now available that specifically support AllStarLink.
 
@@ -119,7 +119,7 @@ exten => ${NODE},1,Ringing()
 	same => n,Hangup
 ```
 
-This stanza is a little more involved than the [`[iaxrpt]`](#iaxrpt-stanza) stanza. It starts off sending some ringing tone to the client, checks to see if the client is sending a CallerID name (Callsign), and hangs up the call if there is no Callsign sent. Otherwise, it plays "Connected to Node", followed by the node number before passing the call to `app_rpt`. `app_rpt` is called with the `P` option, which means "Phone Control Mode". This allows a regular phone user to have full control and audio access to the radio system. For the	user to have DTMF control, the `phone_functions` parameter must be specified for the node in `rpt.conf`. An additional function (`cop,6`) must be listed so that PTT control is available.
+This stanza is a little more involved than the [`[iaxrpt]`](#iaxrpt-stanza) stanza. It starts off sending some ringing tone to the client, checks to see if the client is sending a CallerID name (Callsign), and hangs up the call if there is no Callsign sent. Otherwise, it plays "Connected to Node", followed by the node number before passing the call to `app_rpt`. `app_rpt` is called with the `P` option, which means "Phone Control Mode". This allows a regular phone user to have full control and audio access to the radio system. For the	user to have DTMF control, the [`phone_functions`](./rpt_conf.md#phone-functions-stanza) parameter must be specified for the node in `rpt.conf`. An additional function ([`cop,6`](./rpt_conf.md#cop-commands)) must be listed so that PTT control is available.
 
 ## Autopatch Stanzas
 There are a bunch of stanzas that relate to operation of the autopatch (if configured). This is for **outbound** calls, typically to the Public Switched Telephone Network (PSTN).
@@ -183,7 +183,7 @@ exten => s,1,Wait(1)
 	same => n,Hangup
 ```
 
-All of these stanzas work together. First and foremost, the main stanza for the autopatch is `[radio]`. This is defined in [`rpt.conf`](../config/rpt_conf.md#context) using the `context` directive. Note that the [`autopatchup`](../adv-topics/autopatch.md#autopatch-options) function allows this context to be overwritten using an option. 
+All of these stanzas work together. First and foremost, the main stanza for the autopatch is `[radio]`. This is defined in [`rpt.conf`](../config/rpt_conf.md#context) using the [`context`](./rpt_conf.md#context) directive. Note that the [`autopatchup`](../adv-topics/autopatch.md#autopatch-options) function allows this context to be overwritten using an option. 
 
 The `[radio]` stanza does a few different things:
 
@@ -197,7 +197,7 @@ The `[radio]` stanza does a few different things:
 
 * If a special number of 00 is dialed, say the node's IP address over the radio (using the `[my-ip]` stanza)
 
-The `[check_route]` stanza is the core of the autopatch dial plan. It is used to filter out numbers you do not want to allow to be dialed. This includes things like toll-free numbers, X11 numbers, 976/809/900 (toll) numbers, and the invalid 555 prefix. All of the filtered numbers get sent to the `[invalidnum]` stanza, which plays a mesage and hangs up.
+The `[check_route]` stanza is the core of the autopatch dialplan. It is used to filter out numbers you do not want to allow to be dialed. This includes things like toll-free numbers, X11 numbers, 976/809/900 (toll) numbers, and the invalid 555 prefix. All of the filtered numbers get sent to the `[invalidnum]` stanza, which plays a mesage and hangs up.
 
 If the call passes `[check_route]`, it gets sent to the `[pstn-out]` stanza. You will note that there are two options for `[pstn-out]`. The default is to play a message and hang up. By swapping which one is active (moving the comments around), you can send the call to the `[allstar-autopatch]` stanza in `iax.conf`. You can also configure your own VoIP provider, and send the call there (preferred).
 
@@ -288,5 +288,5 @@ exten => s,1,Ringing
 	same => n,Hangup
 ```
 
-When a client connects to the node using the Web Transceiver method, it sends its token from the AllStarLink system (if the client user has a valid [AllStarLink Portal](https://allstarlink.org/portal) account) as the CallerID Name. The first step is to authenticate if that is a valid token, which is done by a query to the API. If the token is valid, the associated **callsign** to that token checked against the `allowlist` and `denylist` (you can add callsigns to the `allowlist` and `denylist`, in additon to node numbers). If that passes validation, it is sent to the connect part of the dial plan. The connect section of the dial plan plays the message, "Connected to node" followed by the node number, and passes the connection to `app_rpt` with the `X` option which translates to a normal endpoint but bypassing further authentication checks.
+When a client connects to the node using the Web Transceiver method, it sends its token from the AllStarLink system (if the client user has a valid [AllStarLink Portal](https://allstarlink.org/portal) account) as the CallerID Name. The first step is to authenticate if that is a valid token, which is done by a query to the API. If the token is valid, the associated **callsign** to that token checked against the [`allowlist`](../adv-topics/allowdenylists.md) and [`denylist`](../adv-topics/allowdenylists.md) (you can add callsigns to the [`allowlist`](../adv-topics/allowdenylists.md) and [`denylist`](../adv-topics/allowdenylists.md), in additon to node numbers). If that passes validation, it is sent to the connect part of the dialplan. The connect section of the dialplan plays the message, "Connected to node" followed by the node number, and passes the connection to `app_rpt` with the `X` option which translates to a normal endpoint but bypassing further authentication checks.
 
