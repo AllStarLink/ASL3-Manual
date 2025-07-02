@@ -230,3 +230,27 @@ Observe how we define the codecs that are allowed for incoming connections of th
 Also note that while there is a `secret = allstar` directive that would imply that we use that for authentication, in fact, further authentication of the connection is done later down the chain using a token validation system to ensure that the client has a valid account on the [AllStarLink Web Portal](https://www.allstarlink.org/portal).
 
 Connections processed by this stanza are forwarded to the `[allstar-public]` stanza in `extensions.conf`, per the `context = allstar-public` directive.
+
+## `[allstar-autopatch]` Stanza
+The `[allstar-autopatch]` stanza is used for **outbound** IAX2 autopatch calls to the AllStarLink Autopatch Service. This *should* would, but you are probably better off using your own VoIP provider, such as [voip.ms](https://voip.ms) to have better control over your PSTN endpoint. The `[allstar-autopatch]` stanza is called from the `[pstn-out]` stanza in `extensions.conf` when a successful autopatch call is set to be routed to the PSTN.
+
+You should see the following in your ASL3 default `iax.conf`:
+
+```
+; The following should be un-commented to support Allstar Autopatch service
+; [allstar-autopatch]
+; type = peer
+; host = register.allstarlink.org
+; username = <One of the Node numbers on this server>
+; secret = <The node password for the above node>
+; auth = md5
+; disallow = all
+; allow = ulaw
+; transfer = no
+```
+
+As noted in the comments above, you will need to put your node number in the `username` field, and your node password in the `secret` field (this is from the Node Settings page in the [AllStarLink Portal](https://www.allstarlink.org/portal)).
+
+You would need to un-comment this stanza and restart Asterisk for it to be loaded.
+
+The `type = peer` designates the client (peer) as a server that accepts incoming calls from our server. It cannot initiate calls itself.
