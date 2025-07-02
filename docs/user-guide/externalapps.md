@@ -6,7 +6,7 @@ This section will explain some of the common utilities available, and how to do 
 ## Authenticating Connections to AllStarLink
 There are generally three ways to authenticate when connecting to an AllStarLink node:
 
-1. DNS based authentication. When nodes come online, they register themselves with the ASL DNS system. When one node A requests to connect to node B, node B will query DNS for the details about node A. If the details match, node A is considered authenticated and trusted to connect. This uses the `[radio-secure]` context in `extensions.conf` to process the connection.
+1. Registration based authentication. When nodes come online, they attempt to register themselves with the ASL Registration system. The registration request uses either HTTP or IAX, and the registration server validates the node credentials and saves the current IP address of the node. Other nodes query the registration database using DNS queries or look at the node information from a downloaded copy of the nodes database to find the IP address and port to connect to the desired target node. When a connection is initiated to a target node, the target node uses the `[radio-secure]` context in `extensions.conf` to process the incoming connection.
 
 2. IAX local authentication. In this scheme, an IAX client presents a username and password that must match credentials that are configured *on the remote node* in the ASL config files (`iax.conf` or `custom/iax.conf`). If the credentials match, the client is authenticated and may connect. This often uses `[iaxrpt]` and/or `[iax-client]` in `extensions.conf` to process the connection. See the [Node Configuration](#node-configuration) section below for how to configure a node.
 
@@ -17,7 +17,7 @@ Many of the utilities below can be configured to use methods 2 or 3 to authentic
 ## Web Transceiver
 Before getting into the details of each application, we should discuss some of the workings "under the hood". Specifically, looking at, "how do phone apps like “RepeaterPhone” actually work?".
 
-Here is a post from the AllStarLink Community that sums up a lot of the common questions about Web Transceiver access:
+Here is a post from the [AllStarLink Community](https://community.allstarlink.org) that sums up a lot of the common questions about Web Transceiver access:
 
     I have some friends with iPhones that are connecting in with an app called “RepeaterPhone”. 
     They just plug in their allstarlink.org main admin account credentials and it “just works”. 
@@ -38,6 +38,8 @@ Here is a post from the AllStarLink Community that sums up a lot of the common q
     I would expect any app like this would normally need to register as a “normal node” 
     and follow those rules, but this appears to be something different, and users are not 
     setting these up as a normal node… They are simply plugging in their main allstarlink.org credentials.
+
+The following information should (hopefully) answer many of the questions above.
 
 [RepeaterPhone](https://repeaterphone.com/) for iOS, [Transceive](https://transceive.app/) for macOS, [DVSwitch Mobile](https://play.google.com/store/apps/details?id=org.dvswitch&hl=en_CA&pli=1) for Android (using "WT Mode"), and the [SharkRF M1KE](https://www.sharkrf.com/products/m1ke/) (using "AllStarLink" mode) use the "Web Transceiver" functionality of the AllStarLink Network. This is still IAX2, but a different context.
 
