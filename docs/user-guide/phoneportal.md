@@ -1,7 +1,7 @@
 # ASL Telephone Portal Access
 It is possible to "dial in" to a node via telephone (from the PSTN). Node operators can configure whether this feature is available/enabled (see below).
 
-When you call from a regular telephone, you will need some method of indicating you want to transmit on the connected note. Two methods are provided, voice-operated (VOX) and function operated (`*99/#`).
+When you call from a regular telephone, you will need some method of indicating you want to transmit on the connected node. Two methods are provided, voice-operated (VOX) and function operated (`*99/#`).
 
 Telephone portal access requires that you have a registered and validated account on the [AllStarLink Portal](https://www.allstarlink.org/portal), as you will need your assigned PIN to be able to connect.
 

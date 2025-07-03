@@ -86,6 +86,7 @@ nav:
     - user-guide/support.md
     - user-guide/troubleshooting.md
     - user-guide/phoneportal.md
+    - user-guide/externalapps.md
     - user-guide/betatest.md
     - <span style="color:hsl(86.28, 71.6%, 33.14%)">Pi Appliance Specifics (Cockpit)</span>:
       - pi/index.md
@@ -165,6 +166,7 @@ nav:
     - config/index.md
     - config/config-structure.md
     - config/extensions_conf.md
+    - config/iax_conf.md
     - config/rpt_conf.md
     - config/tlb_conf.md
     - config/voter_conf.md
