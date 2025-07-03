@@ -165,6 +165,7 @@ nav:
   - Config Files:
     - config/index.md
     - config/config-structure.md
+    - config/extensions_conf.md
     - config/iax_conf.md
     - config/rpt_conf.md
     - config/tlb_conf.md
