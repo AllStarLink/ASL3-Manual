@@ -1,7 +1,7 @@
 # extensions.conf
 `extensions.conf` (`/etc/asterisk/extensions.conf`) contains the “dialplan” of Asterisk. It is your master plan of control or execution flow for all of its operations. It controls how incoming connections get routed to `app_rpt` and is used for outgoing autopatch connections via various channels and VoIP termination providers.
 
-Since ALS3 runs Asterisk on the backend, if you want to make changes to this file, you should familiarize yourself with how Asterisk dialplans work, their syntax, and their function. There is plenty of documentation available on the Internet about Asterisk dialplans.
+Since ASL3 is built on top of the Asterisk PBX software, if you want to make changes to this file, you should familiarize yourself with how Asterisk dialplans work, their syntax, and their function. There is plenty of documentation available on the Internet about Asterisk dialplans, a good place to start is the [Asterisk Project Documentation](https://docs.asterisk.org).
 
 We will cover the basics here in how the information in the default ASL3 `extensions.conf` relates to node operations.
 
@@ -75,7 +75,7 @@ exten => _XXXX!,1,Set(NODENUM=${CALLERID(num)})
 	same => n,Hangup
 ```
 
-The `[radio-secure]` stanza above checks to see if the incoming connection is a node defined on this server (localhost, which is allowed to connect), and then whether the calling node is on the [`allowlist`](../adv-topics/allowdenylists.md) or [`denylist`](../adv-topics/allowdenylists.md). As their names indicate, nodes on the [`allowlist`](../adv-topics/allowdenylists.md) (or not on the [`denylist`](../adv-topics/allowdenylists.md)) are allowed to connect, while nodes on the [`denylist`](../adv-topics/allowdenylists.md) have the connection terminated. Successful connections are then passed to `app_rpt`.
+The `[radio-secure]` stanza above checks to see if the incoming connection is an IAX2 connection, whether it is a node defined on this server (localhost, which is allowed to connect), and then whether the calling node number is on the [Allow and Deny Lists](../adv-topics/allowdenylists.md). Successful connections are then passed to `app_rpt`.
 
 ## `[iaxrpt]` Stanza
 The `[iaxrpt]` stanza is called from the `[iaxrpt]` stanza in `iax.conf`. It is typically used to process connections from the [IAXRpt](../user-guide/externalapps.md#iaxrpt-pc-client) software client (or other [External Apps](../user-guide/externalapps.md)).
@@ -288,5 +288,5 @@ exten => s,1,Ringing
 	same => n,Hangup
 ```
 
-When a client connects to the node using the Web Transceiver method, it sends its token from the AllStarLink system (if the client user has a valid [AllStarLink Portal](https://allstarlink.org/portal) account) as the CallerID Name. The first step is to authenticate if that is a valid token, which is done by a query to the API. If the token is valid, the associated **callsign** to that token checked against the [`allowlist`](../adv-topics/allowdenylists.md) and [`denylist`](../adv-topics/allowdenylists.md) (you can add callsigns to the [`allowlist`](../adv-topics/allowdenylists.md) and [`denylist`](../adv-topics/allowdenylists.md), in additon to node numbers). If that passes validation, it is sent to the connect part of the dialplan. The connect section of the dialplan plays the message, "Connected to node" followed by the node number, and passes the connection to `app_rpt` with the `X` option which translates to a normal endpoint but bypassing further authentication checks.
+When a client connects to the node using the Web Transceiver method, it sends its token from the AllStarLink system (if the client user has a valid [AllStarLink Portal](https://allstarlink.org/portal) account) as the CallerID Name. The first step is to authenticate if that is a valid token, which is done by a query to the API. If the token is valid, the associated **callsign** to that token checked against the [`allowlist`](../adv-topics/allowdenylists.md) and [`denylist`](../adv-topics/allowdenylists.md) (you can add callsigns to the [`allowlist`](../adv-topics/allowdenylists.md) and [`denylist`](../adv-topics/allowdenylists.md), in addition to node numbers). If that passes validation, it is sent to the connect part of the dialplan. The connect section of the dialplan plays the message, "Connected to node" followed by the node number, and passes the connection to `app_rpt` with the `X` option which translates to a normal endpoint but bypassing further authentication checks.
 
