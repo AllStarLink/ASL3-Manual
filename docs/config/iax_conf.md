@@ -1,7 +1,7 @@
 # iax.conf
 iax.conf (`/etc/asterisk/iax.conf`) is where the primary authentication of connections to a node (Asterisk) takes place.
 
-When IAX2 protocol connection requests are made to Asterisk, it figures out what context applies based on the incoming request, then forwards the processing to the relative context in `extensions.conf` if the call/connection is allowed to proceed for further processing.
+When IAX2 protocol connection requests are made, Asterisk figures out what context applies based on the incoming request. Asterisk then forwards the processing to the relative context in `extensions.conf` if the call/connection is allowed to proceed for further processing.
 
 See also [config file templating](../adv-topics/conftmpl.md/#asterisk-templates).
 
@@ -23,10 +23,10 @@ As such, you will currently see the following in your ASL3 default `iax.conf`:
 
 While node registration will still work (for now) using this method, please don't use it. It is not required. Your registration should be processed by an entry in `rpt_http_registrations.conf`, which in most cases the [`asl-menu`](../user-guide/index.md) utility will take care of configuring for you.
 
-### `bindport =` and `bindaddr =`
+### `bindport=` and `bindaddr=`
 The `bindport` and `bindaddr` directives determine where Asterisk is listening for incoming IAX2 connections.
 
-The default port ASL3 uses (as well as previous versions) is port `4569/UDP`. 
+By default, UDP port `4569` is used. 
 
 You should see the following in your ASL3 default `iax.conf`:
 
@@ -43,12 +43,12 @@ bindport = 4569                 ; bindport and bindaddr may be specified
                                 ; default
 ```
 
-In most cases, the default `bindport = 4569` will work fine. However, if you are running multiple node servers behind a NAT firewall, you WILL need to change this so that they are all unique from each other. In that case, you also need to change the [IAX Port](../basics/portal.md#iax-port) in the [Web Portal](https://www.allstarlink.org/portal) to match.
+In most cases, the default `bindport = 4569` will work fine. However, if you are running multiple node servers behind a NAT firewall, you MAY need to change this so that they are all unique from each other. In that case, you also need to change the [IAX Port](../basics/portal.md#iax-port) in the [Web Portal](https://www.allstarlink.org/portal) to match. See the [Multiple Nodes on the Same Network](../adv-topics/multinodesnetwork.md) page for further details.
 
 !!! warning "Firewall Rules"
     If you are using a firewall on your internet connection (I sure hope so!), don't forget to allow port `4569/UDP`, and/or any other IAX2 port(s) you have configured through your firewall (and point it to the correct internal IP address, if using NAT).
 
-    If you are using the [ASL3 Appliance](../install/pi-appliance/index.md), don't forget to update the firewall rules in the [Cockpit Firewall](../pi/cockpit-firewall.md) as well, if you are using a non-standard port.
+    If you are using the [ASL3 Appliance](../install/pi-appliance/index.md) and you are using a non-standard port, don't forget to update the firewall rules in the [Cockpit Firewall](../pi/cockpit-firewall.md).
 
 Unless you have a specific reason to do so, leave `bindaddr` commented out. It is not required in the majority of use cases. 
 
@@ -58,12 +58,11 @@ Also in the `[general]` stanza is the configuration of **OUTBOUND** codecs to be
 You should see the following in your ASL3 default `iax.conf`:
 
 ```
-disallow = all                  ; The permitted codecs for outgoing connections 
-;Audio Quality   Bandwidth
-;allow = ulaw                   ; best      87 kbps
-;allow = adpcm                  ; good      55 kbps
-;allow = gsm                    ; mediocre  36 kbps
-allow = ulaw
+disallow = all                      ; The permitted codecs for outgoing connections 
+;allow = ulaw                       ; Audio Quality     Bandwidth
+;allow = adpcm                      ; best              87 kbps
+;allow = gsm                        ; good              55 kbps
+allow = ulaw                        ; mediocre          36 kbps
 allow = adpcm
 ;allow = g722
 ;allow = g726aal2
