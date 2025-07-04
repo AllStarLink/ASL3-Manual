@@ -105,6 +105,7 @@ nav:
     - adv-topics/conftmpl.md
     - adv-topics/autopatch.md
     - adv-topics/audio-level.md
+    - adv-topics/condiscpgm.md
     - adv-topics/daq.md
     - adv-topics/dns-servers.md
     - adv-topics/eurorptr.md
