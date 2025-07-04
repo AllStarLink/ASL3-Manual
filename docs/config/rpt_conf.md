@@ -236,7 +236,10 @@ archivedir = /var/spool/asterisk/monitor ; top-level recording directory
 
 The [`archivedir=`](#archivedir) and [`archiveformat=`](#archiveformat) options can be implemented in the `[node-main](!)` stanza to apply to all nodes on the server, or in the per-node stanza for recording individual nodes. See [config file templating](../adv-topics/conftmpl.md/#asterisk-templates) for more information.
 
-**NOTE:** Enabling this function can adversely impact the CPU utilization on the device, and consume large amounts of the available storage. You would be wise to implement a script or look at a utility such as `logrotate` to periodically flush old recordings and logs.
+!!! warning "Disk and CPU Usage"
+  Enabling this function can adversely impact the CPU utilization on the device, and consume large amounts of the available storage. You would be wise to implement a script or look at a utility such as `logrotate` to periodically flush old recordings and logs.
+
+See the [Audio and Activity Logging](../adv-topics/archivedir.md) page for additional details on this function.
 
 ### archiveformat=
 This option specifies the format of the audio recordings in [`archivedir=`](#archivedir). By default, the format will be "wav49" (GSM in a .WAV file). Other options you may consider include "wav" (SLIN in a .wav file) and "gsm" (GSM in straight gsm format).
