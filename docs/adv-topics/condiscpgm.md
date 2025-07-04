@@ -10,10 +10,10 @@ Each node requiring this can have its own in that node's stanza. See [Asterisk T
 
 There is no requirement for using both `connpgm` and `discpgm`. Use the one you need, or both.
 
-Shell scripts need to be owned by `asterisk` and have the execution bit set. See the [Permissions](./permissions.md) page for more information.
+Shell scripts need to be readable and executable by `asterisk`. See the [Permissions](./permissions.md) page for more information.
 
 ## `connpgm`
-`connpgm` executes a program you specify on connect. It passes two command line arguments to your program:
+`connpgm` executes a program or script you specify on connect. It passes two command line arguments to your program/script:
 
 * node number in this stanza (us) as `$1`
 
@@ -34,7 +34,7 @@ connpgm = /etc/asterisk/custom/conlog.sh
 ```
 
 ## `discpgm`
-`discpgm` executes a program you specify on disconnect. It passes two command line arguments to your program:
+`discpgm` executes a program or script you specify on disconnect. It passes two command line arguments to your program/script:
 
 * node number in this stanza (us) as `$1`
 
@@ -53,4 +53,17 @@ Example configuration in `rpt.conf`:
 ```
 discpgm = /etc/asterisk/custom/dislog.sh
 ```
+
+## Execution and Passing Variables
+Asterisk uses `bash -c <connpgm-string> <my-node> <other-node> &` when it runs `connpgm` and `discpgm`. Using the `-c` option means that commands are read from the string (script) specified. If there are arguments after the string (script), they are assigned to the positional parameters, starting with `$0`.
+
+This means you can pass variables/commands to your script(s). 
+
+Sample:
+
+```
+connpgm=/etc/asterisk/custom/myscript 1
+discpgm=/etc/asterisk/custom/myscript 0
+```
+
 

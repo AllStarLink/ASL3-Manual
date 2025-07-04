@@ -288,9 +288,9 @@ callerid="Repeater" <0000000000>
 ### connpgm= and discpgm=
 These options run user defined scripts.
 
-`connpgm` executes a script you specify when a node connects.
+`connpgm` executes a program or script you specify when a node connects.
 
-`discpgm` executes a script you specify when a node disconnects.
+`discpgm` executes a program or script you specify when a node disconnects.
 
 `app_rpt` passes two variables to your script when it is executed:
 
@@ -306,16 +306,7 @@ discpgm = /etc/asterisk/custom/dislog.sh
 
 ```
 
-You can also pass variables/commands to your script(s):
-
-Sample:
-
-```
-connpgm=/etc/asterisk/custom/myscript 1
-discpgm=/etc/asterisk/custom/myscript 0
-```
-
-See the [Connect and Disconnect Scripts](../adv-topics/condiscpgm.md) page for further details.
+See the [Connect and Disconnect Scripts](../adv-topics/condiscpgm.md) page for further details and options.
 
 ### context=
 This setting directs the autopatch for the node to use a specific context in `extensions.conf` for outgoing autopatch calls. The default is to specify a context name of radio.
