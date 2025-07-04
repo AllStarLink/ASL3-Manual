@@ -62,8 +62,8 @@ This means you can pass variables/commands to your script(s).
 Sample:
 
 ```
-connpgm=/etc/asterisk/custom/myscript 1
-discpgm=/etc/asterisk/custom/myscript 0
+connpgm=/etc/asterisk/custom/myscript abc 1234
 ```
 
+The above example would then execute `bash -c /etc/asterisk/custom/myscript abc 1234 <us> <them>` when a node connects. 
 
