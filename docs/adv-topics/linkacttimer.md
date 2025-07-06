@@ -12,9 +12,9 @@ COP|Function Description|Telemetry Response
 46|Link Activity timer disable|LATDIS
 47|Reset "Link Config Changed" Flag|none
 
-`COP 45` and `COP 46` enable and disable the activity timer function.
+`cop,45` and `cop,46` enable and disable the activity timer function.
 
-`COP 47` is used to reset the "Link Config Changed" Flag. This flag is set whenever a user connects or disconnects a link. This is useful for implementing macros where you want to change the link state without arming the activity timer.
+`cop,47` is used to reset the "Link Config Changed" Flag. This flag is set whenever a user connects or disconnects a link. This is useful for implementing macros where you want to change the link state without arming the activity timer.
 
 ## Settings
 All of the key value pairs noted below are placed in the [`rpt.conf`](../config/rpt_conf.md) node stanza. There are four key value pairs related to the link activity timer.
