@@ -575,6 +575,8 @@ lnkactenable = 0                   ; Set to 1 to enable the link activity timer.
 
 The default is `0` (disabled).
 
+See the [Link Activity Timer](../adv-topics/linkacttimer.md) page for more information.
+
 ### lnkacttime=
 Set the optional link activity timer (`lnkactenable` must be enabled for this to have any effect). The value is in seconds.
 
@@ -583,6 +585,8 @@ Sample:
 ```
 lnkacttime = 1800                  ; Link activity timer time in seconds.
 ```
+
+See the [Link Activity Timer](../adv-topics/linkacttimer.md) page for more information.
 
 ### lnkactmacro=
 Play the defined macro when the link activity timer expires.
@@ -593,6 +597,8 @@ Sample:
 lnkactmacro = *52                  ; Function to execute when link activity timer expires.
 ```
 
+See the [Link Activity Timer](../adv-topics/linkacttimer.md) page for more information.
+
 ### lnkacttimerwarn=
 Set this to the voice file to play when the link activity timer has 30 seconds remaining.
 
@@ -601,6 +607,8 @@ Sample:
 ```
 lnkacttimerwarn = 30seconds        ; Message to play when the link activity timer has 30 seconds left.
 ```
+
+See the [Link Activity Timer](../adv-topics/linkacttimer.md) page for more information.
 
 ### linkmongain=
 This option adjusts the audio level of monitored nodes when a signal from another node or the local receiver is received. If `linkmongain` is set to a negative number the monitored audio will decrease by the set amount in dB. If `linkmongain` set to a positive number monitored audio will increase by the set amount in dB. The value of `linkmongain` is in dB. The default value is 0dB.
