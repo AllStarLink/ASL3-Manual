@@ -13,11 +13,7 @@ There is no requirement for using both `connpgm` and `discpgm`. Use the one you 
 Shell scripts need to be readable and executable by `asterisk`. See the [Permissions](./permissions.md) page for more information.
 
 ## `connpgm`
-`connpgm` executes a program or script you specify on connect. It passes two command line arguments to your program/script:
-
-* node number in this stanza (us) as `$1`
-
-* node number being connected to us (them) as `$2`
+`connpgm` executes a program or script you specify on connect. 
 
 An example to log connections to the node (`conlog.sh`):
 
@@ -34,11 +30,7 @@ connpgm = /etc/asterisk/custom/conlog.sh
 ```
 
 ## `discpgm`
-`discpgm` executes a program or script you specify on disconnect. It passes two command line arguments to your program/script:
-
-* node number in this stanza (us) as `$1`
-
-* node number being connected to us (them) as `$2`
+`discpgm` executes a program or script you specify on disconnect.
 
 An example to log disconnects from the node (`dislog.sh`):
 
@@ -55,9 +47,11 @@ discpgm = /etc/asterisk/custom/dislog.sh
 ```
 
 ## Execution and Passing Variables
-Asterisk uses `bash -c <connpgm-string> <my-node> <other-node> &` when it runs `connpgm` and `discpgm`. Using the `-c` option means that commands are read from the string (script) specified. If there are arguments after the string (script), they are assigned to the positional parameters, starting with `$0`.
+Asterisk uses `bash -c <connpgm-string> <us> <them> &` when it runs `connpgm` and `discpgm`. Using the `-c` option means that commands are read from the string (script) specified. If there are arguments after the string (script), they are assigned to the positional parameters, starting with `$0` (search the Internet for "Bash positional arguments").
 
-This means you can pass variables/commands to your script(s). 
+As noted above, `app_rpt` adds two additional variables to the end of the command string being executed, `<node number in this stanza>` (us) and `<node number being connected to us>` (them). You don't NEED to use these variables, but they are provided for your use if your script wants to do something with them. 
+
+This also means you can pass variables/arguments to your script(s), if desired. 
 
 Sample:
 

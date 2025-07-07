@@ -292,11 +292,7 @@ These options run user defined scripts.
 
 `discpgm` executes a program or script you specify when a node disconnects.
 
-`app_rpt` passes two variables to your script when it is executed:
-
-* node number in this stanza (us) as `$1`
-
-* node number being connected to us (them) as `$2`
+`app_rpt` passes two variables to your program or script when it is executed. They are added at the very end of the command string that is executed, `<node number in this stanza>` (us) and `<node number being connected to us>` (them). You do not NEED to use them, but they are available for your use.
 
 Sample:
 
