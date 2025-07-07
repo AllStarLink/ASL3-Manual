@@ -134,6 +134,7 @@ nav:
     - adv-topics/remotebase.md
     - adv-topics/rxtoneburst.md
     - adv-topics/tlb.md
+    - adv-topics/tonesignalling.md
     - adv-topics/uefi-secureboot.md
     - adv-topics/usbinterfaces.md
   - VOTER/RTCM:
