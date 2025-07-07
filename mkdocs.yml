@@ -158,6 +158,7 @@ nav:
     - developers/source-code.md
     - developers/source-install.md
     - developers/aptly.md
+    - developers/versioning.md
   - Man Pages:
     - mans/index.md
     - mans/allmon3-passwd.md
