@@ -9,14 +9,6 @@ Multiple CTCSS tones can each have their own macro execution. Each node may have
 Sample:
 
 ```
-[tonemacro63001]
-100.0=*671
-203.5=*711
-```
-
-Sample:
-
-```
 [tonemacro]
 100.0=*672 *8910
 203.5=*712
