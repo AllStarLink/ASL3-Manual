@@ -55,7 +55,9 @@ If you've created a public AllStarLink node, it needs to be registered with the 
 
 The [ASL3 Menu](../user-guide/index.md) program will help you configure your node, and should take care of configuring [HTTP Registration](../adv-topics/httpreg.md) for you.
 
-Once you have your node up and running, go check the [AllStarLink Nodelist](https://www.allstarlink.org/nodelist) and put your node number in the Filter box in the upper right of the screen. If your node number shows up with a green background, it is successfully registered and should be reachable on the AllStarLink Network.
+Once you have your node up and running, go check the [AllStarLink Nodelist](https://www.allstarlink.org/nodelist) and put your node number in the Filter box in the upper right of the screen. If your node number shows up with a green background, it has successfully registered with the AllStarLink Network.
+
+After your node has successfully registered, you will be able to connect to other nodes on the AllStarLink Network. If you have enabled network access to your server (e.g. port forwarding) then other nodes should be able to connect to your node.
 
 When you first power on your node, it may take up to 30 minutes for your node's status to propagate through the whole network (many nodes still use an older registration update system that does scheduled updates to their local node list).
 
