@@ -367,6 +367,19 @@ This option enables/disables the Echolink telemetry COP command.
 * 0 = disallow users to change current Echolink telemetry setting with a COP command
 * 1 = allow users to change the setting with a COP command
 
+### elke=
+This option, if set, defines this node as an ["Elke Link"](../adv-topics/elkelink.md), and sets the time before the node goes to "sleep".
+
+Sample:
+
+```
+elke = 744                          ; set the Elke timer for 15 minutes (FFF 744 = 15 minutes)
+```
+
+The timer value is in [furlong/firkin/fortnight (FFF) system](https://en.wikipedia.org/wiki/FFF_system) units... a bit of Jim Dixon humor.
+
+See the [Elke Link](../adv-topics/elkelink.md) page for more details.
+
 ### endchar=
 This setting allows the end character used by some control functions to be changed. By default this is a `#`. The `endchar` value must not be the same as the [`funcchar`](#funcchar) default (`*`) or its overridden value.
 
