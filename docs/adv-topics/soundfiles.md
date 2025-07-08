@@ -4,14 +4,42 @@ Your AllStarLink node has a LOT of built-in sound files that can be used for all
 If you can't find the words you need, you can record your own sound files and upload them, use an online Text to Speech (TTS) sound generator to create your own sound files, or use the built-in [`asl-tts`](https://github.com/AllStarLink/asl3-tts) tool.
 
 ## Sound File Locations
-Asterisk searches a default sound file path of `/usr/share/asterisk/sounds/en` (ASL3) or `/var/lib/asterisk/sounds` (previous versions), unless a path name is specified with the name of the sound file.
+Asterisk searches a default sound file path of `/usr/share/asterisk/sounds/en`, unless an absolute path name is specified with the name of the sound file.
 
-`Asterisk/app_rpt` stores its sound files in:
+The above default path is based on the `astdatadir` (typically `/usr/share/asterisk`) and `defaultlanguage` (un-set defaults to `en`) variables from `/etc/asterisk/asterisk.conf`.
 
-* ASL3: `/usr/share/asterisk/sounds/en/rpt`
-* Previous versions: `/var/lib/asterisk/sounds/rpt`
+!!! note "Locale"
+    If you change your locale settings in your OS to something other than US English, your sound file location may not be consistent with what is shown above. 
 
-Custom node name messages are stored in `/var/lib/asterisk/sounds/rpt/nodenames`. Those files are equivalent to whatever you wish to replace Allison's saying the node number.
+`Asterisk/app_rpt` installs its sound files in the `rpt/` folder of the default path, so typically `/usr/share/asterisk/sounds/en/rpt`.
+
+This results in being able to call sound files with the following methods (using the `patchup` telemetry option as an example):
+
+Method|File Location
+------|-------------
+`patchup=activated`|`/usr/share/asterisk/sounds/en/activated.ulaw`
+`patchup=rpt/callproceeding`|`/usr/share/asterisk/sounds/en/rpt/callproceeding.gsm`
+`patchup=/tmp/mysoundfile.pcm`|`/tmp/mysoundfile.pcm`
+
+There are other locations defined in `/usr/share/asterisk/sounds`, as symlinks to other folders, that you should be aware of too:
+
+```
+asl@wb6nil:/usr/share/asterisk/sounds $ ls -al
+total 76
+drwxr-xr-x  3 root root  4096 Jul  3 19:48 .
+drwxr-xr-x 12 root root  4096 Dec  9  2024 ..
+lrwxrwxrwx  1 root root    36 Jul  1 08:31 custom -> ../../../local/share/asterisk/sounds
+drwxr-xr-x  9 root root 65536 Jul  3 19:48 en
+lrwxrwxrwx  1 root root    35 Nov 13  2024 priv-callerintros -> /var/lib/asterisk/priv-callerintros
+lrwxrwxrwx  1 root root    31 Nov 13  2024 recordings -> /var/lib/asterisk/sounds/custom
+
+```
+
+!!! note "Custom Directory"
+    Be advised that `sounds_search_custom_dir = yes` in `/etc/asterisk/asterisk.conf`. This option, when enabled, will cause Asterisk to search for sounds files in
+    `AST_DATA_DIR/sounds/custom` ***before*** searching the normal directories like `AST_DATA_DIR/sounds/<lang>`. As seen above, the `custom` directory ends up being a symlink to `/usr/local/share/asterisk/sounds`.
+
+Custom node name messages by default are expected to be found in `rpt/nodenames`. You will need to create the `nodenames` directory, if you use this feature. Those files are equivalent to whatever you wish to replace Allison's saying the node number with.
 
 If a sound file exists there for the node number (ie. 63001.gsm), it will play. Otherwise, Allison will speak the node number digits when required on connect and disconnect messaging.
 
