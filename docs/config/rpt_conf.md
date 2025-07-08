@@ -1,5 +1,5 @@
 # rpt.conf
-Rpt.conf (`/etc/asterisk/rpt.conf`) is where the majority of user-facing features, such as the node's CW and voice ID, DTMF commands and timers are set. There is a lot of capability here which can be difficult to grasp. Fortunately the default `rpt.conf` is well commented and will work fine for most node admins.
+rpt.conf (`/etc/asterisk/rpt.conf`) is where the majority of user-facing features, such as the node's CW and voice ID, DTMF commands and timers are set. There is a lot of capability here which can be difficult to grasp. Fortunately the default `rpt.conf` is well commented and will work fine for most node admins.
 
 See also [config file templating](../adv-topics/conftmpl.md/#asterisk-templates).
 
@@ -17,7 +17,7 @@ A DTMF `key=value` pair has the following format:
 
 Where:
 
-* `dtmfcommand` is a DTMF digit sequence **minus** the [start character](#funcchar) (usually \*, so a `dtmfcommand` of 81 would actually be *81 when entered via radio)
+* `dtmfcommand` is a DTMF digit sequence **minus** the [start character](#funcchar) (usually `*`, so a `dtmfcommand` of `81` would actually be `*81` when entered via radio)
 * `functionclass` is a string which defines the class of command; `link`, `status`, or `COP`
 * `functionmethod` defines the optional method number to use in the function class
 * `parameters` are one or more optional comma separated parameters that further define a command.
@@ -50,7 +50,7 @@ Sample:
 3 = ilink,3   ; Connect specified link -- transceive
 ```
 
-**NOTE:** The above example creates the following DTMF command: *3&lt;nodenumber\>, which will use `ilink,3` to connect in transceive mode to the specified node number entered as part of the DTMF command.
+The above example creates the following DTMF command: `*3<nodenumber>`, which will use `ilink,3` to connect in transceive mode to the specified node number entered as part of the DTMF command.
 
 See the table below for the available link commands, and whether they take a node number as a (required) parameter when being entered:
 
@@ -85,7 +85,7 @@ Sample:
 99 = cop,7   ; enable timeout timer
 ```
 
-Some COP commands can take multiple parameters. For example this COP 48 would send #3#607 on command:
+Some COP commands can take multiple parameters. For example this COP 48 would send `#3#607` on command:
 
 Sample:
 
@@ -151,7 +151,7 @@ COP|Description
 57|Rx CTCSS Disable
 58|Tx CTCSS On Input only Enable
 59|Tx CTCSS On Input only Disable
-60|Send MDC-1200 Burst (cop,60,type,UnitID[,DestID,SubCode]) Type is 'I' for PttID, 'E' for Emergency, and 'C' for Call (SelCall or Alert), or 'SX' for STS (status), where X is 0-F. DestID and subcode are only specified for  the 'C' type message. UnitID is the local systems UnitID. DestID is the MDC1200 ID of the radio being called, and the subcodes are as follows: Subcode '8205' is Voice Selective Call for Spectra ('Call') Subcode '8015' is Voice Selective Call for Maxtrac ('SC') or Astro-Saber('Call') Subcode '810D' is Call Alert (like Maxtrac 'CA')
+60|Send MDC-1200 Burst See the [MDC-1200](../adv-topics/mdc1200.md) page for more details.
 61|Send Message to USB to control GPIO pins (cop,61,GPIO1=0[,GPIO4=1]...)
 62|Send Message to USB to control GPIO pins, quietly (cop,62,GPIO1=0[,GPIO4=1]...)
 63|Send pre-configred APRSTT notification (cop,63,CALL[,OVERLAYCHR])
@@ -189,7 +189,7 @@ See [Node Resolution](../adv-topics/noderesolution.md) for how this new node loo
 The node number stanza is a critical stanza in `rpt.conf`. 
 
 ```
-[1999]    ; Replace with your assigned or private node number
+[1999]                              ; Replace with your assigned or private node number
 ```
 
 The node number stanza is set to the **assigned node number** *or* a **private node number** (if a private node is being configured). It will normally be configured by [`asl-menu`](../user-guide/index.md).
@@ -202,7 +202,7 @@ This option is optional, it sets the `ACCOUNTCODE` variable to be passed back to
 Sample:
 
 ```
-accountcode=RADIO   ; set the accountcode variable to RADIO
+accountcode=RADIO                   ; set the accountcode variable to RADIO
 ```
 
 ### althangtime=
@@ -211,7 +211,7 @@ This setting controls the length of the repeater hang time when the alternate ha
 Sample:
 
 ```
-althangtime=4000   ; 4 seconds
+althangtime=4000                    ; 4 seconds
 ```
 
 ### aprstt=
@@ -220,7 +220,7 @@ This option enables APRStt. Set the `aprstt=` option to a matching context in `/
 Sample:
 
 ```
-aprstt = general             ;  Point to the [general] context in gps.conf
+aprstt = general                    ;  Point to the [general] context in gps.conf
 ```
 
 See the comments in `gps.conf` for more details on configuring.
@@ -234,12 +234,12 @@ Sample:
 archivedir = /var/spool/asterisk/monitor ; top-level recording directory
 ```
 
-The [`archivedir=`](#archivedir) and [`archiveformat=`](#archiveformat) options can be implemented in the `[node-main](!)` stanza to apply to all nodes on the server, or in the per-node stanza for recording individual nodes. See [config file templating](../adv-topics/conftmpl.md/#asterisk-templates) for more information.
+The [`archivedir=`](#archivedir) and related options can be implemented in the `[node-main](!)` stanza to apply to all nodes on the server, or in the per-node stanza for recording individual nodes. See [config file templating](../adv-topics/conftmpl.md/#asterisk-templates) for more information.
 
 !!! warning "Disk and CPU Usage"
   Enabling this function can adversely impact the CPU utilization on the device, and consume large amounts of the available storage. You would be wise to implement a script or look at a utility such as `logrotate` to periodically flush old recordings and logs.
 
-See the [Audio and Activity Logging](../adv-topics/archivedir.md) page for additional details on this function.
+See the [Audio and Activity Logging](../adv-topics/archivedir.md) page for additional details on this feature.
 
 ### archiveformat=
 This option specifies the format of the audio recordings in [`archivedir=`](#archivedir). By default, the format will be "wav49" (GSM in a .WAV file). Other options you may consider include "wav" (SLIN in a .wav file) and "gsm" (GSM in straight gsm format).
@@ -247,26 +247,32 @@ This option specifies the format of the audio recordings in [`archivedir=`](#arc
 Sample:
 
 ```
-archiveformat = wav49                    ; audio format (default = wav49)
+archiveformat = wav49               ; audio format (default = wav49)
 ```
+
+See the [Audio and Activity Logging](../adv-topics/archivedir.md) page for additional details on this feature.
 
 ### archivedatefmt=
-This option specifies the filename format used for the audio recordings in [`archivedir=`](#archivedir).  By default, the files will use a "%Y%m%d%H%M%S" date format that maps to YYYYMMDDHHMMSS.  If desired, you can specify any date format supported by the C function strftime(3) API.  For more precision, you can also include the '%[n]q' format to add fractions of a second, with leading zeros.
+This option specifies the filename format used for the audio recordings in [`archivedir=`](#archivedir).  By default, the files will use a "%Y%m%d%H%M%S" date format that maps to YYYYMMDDHHMMSS.  If desired, you can specify any date format supported by the C function strftime(3) API.  For more precision, you can also include the `%[n]q` format to add fractions of a second, with leading zeros.
 
 Sample:
 
 ```
-archivedatefmt = %Y%m%d%H%M%S%2q         ; date/time (time to 1/100th secs)
+archivedatefmt = %Y%m%d%H%M%S%2q    ; date/time (time to 1/100th secs)
 ```
+
+See the [Audio and Activity Logging](../adv-topics/archivedir.md) page for additional details on this feature.
 
 ### archiveaudio=
-This option specifies whether the both the simple activity log AND audio recordings are included in [`archivedir=`](#archivedir).  If set to "no" then only the activity log will be created (the audio recordings will not be saved).
+This option specifies whether the both the simple activity log AND audio recordings are included in [`archivedir=`](#archivedir). If set to `no` then only the activity log will be created (the audio recordings will not be saved).
 
 Sample:
 
 ```
-archiveaudio = yes                       ; enable/disable audio recordings (default = yes)
+archiveaudio = yes                  ; enable/disable audio recordings (default = yes)
 ```
+
+See the [Audio and Activity Logging](../adv-topics/archivedir.md) page for additional details on this feature.
 
 ### beaconing=
 This option, when set to `1` will send the repeater ID at the [`idtime`](#idtime) interval, regardless of whether there was repeater activity or not. This feature appears to be required in the UK, but is probably illegal in the US.
@@ -274,7 +280,7 @@ This option, when set to `1` will send the repeater ID at the [`idtime`](#idtime
 Sample:
 
 ```
-beaconing=1   ;Set to 1 to beacon. Defaults to 0
+beaconing=1                         ; set to 1 to beacon. Defaults to 0
 ```
 
 See [European Repeater Operation](../adv-topics/eurorptr.md) for more information on the application of this option.
@@ -286,7 +292,7 @@ This option allows the autopatch on the node to be identified with a specific ca
 callerid="Repeater" <0000000000>
 ```
 
-**Note**: The value in quotes is the name of the autopatch caller, and the numbers in angle brackets are the originating telephone number to use.
+The value in quotes is the CallerID Name of the autopatch caller, and the numbers in angle brackets are the originating telephone number (CallerID Number) to use.
 
 ### connpgm= and discpgm=
 These options run user defined scripts.
@@ -318,7 +324,7 @@ context=radio
 This setting allows you to override the stanza name used for the [`[Control States]`](#control-states-stanza) in `rpt.conf`. Control states are an optional feature which allows groups of control operator commands to be executed all at once. To use control states, define an entry in your node stanzas to point to a dedicated control states stanza like this:
 
 ```
-controlstates = controlstates   ; points to control state stanza
+controlstates = controlstates       ; points to control state stanza
 
 [controlstates]
 0 = rptena,lnkena,apena,totena,ufena,noicd  ; Normal operation                                  
@@ -344,7 +350,7 @@ Duplex|Mode Description
 Sample:
 
 ```
-duplex = 0     ; 0 = Half duplex with no telemetry tones or hang time.
+duplex = 0                          ; 0 = Half duplex with no telemetry tones or hang time.
 ```
 
 ### eannmode= 
@@ -412,7 +418,7 @@ This option allows you to override the name used for the `[events]` stanza in `r
 To use events, define an entry in your node stanzas to point to a dedicated events stanza like this:
 
 ```
-events = events   ; points to the events stanza
+events = events                     ; points to the events stanza
 
 [events]
 ;;;;; Events Management ;;;;;
@@ -432,7 +438,7 @@ Sample:
 extnodefile=/var/lib/asterisk/rpt_extnodes
 ```
 
-The default file is automatically updated using the node update script or the `asl3-update-nodelist` service.
+The default file is automatically updated using the node update script or the [`asl3-update-nodelist`](../adv-topics/noderesolution.md#external-node-directory-file) service.
 
 The `extnodefile=` option supports multiple file names. In some cases, you may want the default file, along with a static locally maintained node file.  Multiple file names can be entered by separating them with a comma. A maximum of 100 external files can be specified.
 
@@ -457,7 +463,7 @@ Sample:
 extnodes=myextnodes
 ```
 
-In this example, you would need to configure the section `[myextnodes]` in your custom `rpt_extnodes` file.  `app_rpt` will no longer look for an `[extnodes]` section header for this node, it will look for `[myextnodes]` instead.
+In this example, you would need to configure the section `[myextnodes]` in your custom `rpt_extnodes` file. `app_rpt` will no longer look for an `[extnodes]` section header for this node, it will look for `[myextnodes]` instead.
 
 See the [extnodefile](#extnodefile) for more information on how the `extnodes` section is used.
 
@@ -472,7 +478,7 @@ The `functions` option allows you to override the stanza name used for the `func
 Sample:
 
 ```
-functions = functions   ; pointer to functions stanza
+functions = functions               ; pointer to functions stanza
 ```
 The default is to have `functions=` point to a stanza called `functions`, and have a common set of commands for all nodes. However, you can have it point to another named stanza, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
 
@@ -484,7 +490,7 @@ This option controls the length of the repeater (squelch tail) hang time. It is 
 Sample:
 
 ```
-hangtime = 1000   ;Set hang time for 1 second
+hangtime = 1000                     ; set hang time for 1 second
 ```
 
 The default is 5000(ms), or 5sec.
@@ -495,42 +501,48 @@ This option forces all telemetry to be held off until a local user on the receiv
 Sample:
 
 ```
-holdofftelem = 0   ;Set to 1 to hold off. Default is 0
+holdofftelem = 0                    ; set to 1 to hold off. Default is 0
 ```
 
 ### idrecording=
-The identifier message is stored in the node stanza using the `idrecording=` setting. It can be changed to a different call sign by changing the value to something different. The value can be either a morse code identification string (when prefixed with `|i`), or the name of a sound file containing a voice identification message. When using a sound file, the default path for the sound file is `/var/lib/asterisk/sounds`. Example usages are as follows:
+The identifier message is stored in the node stanza using the `idrecording=` setting. It can be changed to a different call sign by changing the value to something different. The value can be either a morse code identification string (when prefixed with `|i`), or the name of a sound file containing a voice identification message. When using a sound file, the default path for the sound file is `/usr/share/asterisk/sounds/en`. Example usages are as follows:
 
 Sample:
 
 ```
-idrecording = |iWB6NIL   ; Morse Code ID
+idrecording = |iWB6NIL              ; morse code ID
 ```
 
 or
 
 ```
-idrecording = /var/lib/asterisk/sounds/myid   ; Voice ID
+idrecording = myid                  ; voice ID, plays /usr/local/share/asterisk/sounds/myid.ulaw (or other valid extension)
 ```
 
-**Note:** ID recording files must have extension gsm, ulaw, pcm, or wav. The extension is **left off** when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz. See Recording Audio Files for more information (link pending).
+!!! note "File Extensions"
+    ID recording files must have extension gsm, ulaw, pcm, or wav. The extension is **left off** when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz mono. 
+
+See [Sound Files](../adv-topics/soundfiles.md) for more information.
 
 ### idtalkover=
-The ID talkover message is stored in the node stanza using the `idtalkover=` setting. The purpose of `idtalkover` is to specify an *alternate* ID to use when the ID must be sent **over the top** of a user transmission. This can be a shorter voice ID or an ID in morse code. The value can be either a morse code identification string (when prefixed with `|i`), or the name of a sound file containing a voice identification message. When using a sound file, the default path for the sound file is `/var/lib/asterisk/sounds`. Example usages are as follows:
+The ID talkover message is stored in the node stanza using the `idtalkover=` setting. The purpose of `idtalkover` is to specify an *alternate* ID to use when the ID must be sent **over the top** of a user transmission. This can be a shorter voice ID or an ID in morse code. The value can be either a morse code identification string (when prefixed with `|i`), or the name of a sound file containing a voice identification message. When using a sound file, the default path for the sound file is `/usr/share/asterisk/sounds/en`. Example usages are as follows:
 
 Sample:
 
 ```
-idtalkover = |iwa6zft/r   ; Morse Code ID
+idtalkover = |iwa6zft/r             ; morse code ID
 ```
 
 or
 
 ```
-idtalkover = /var/lib/asterisk/sounds/myid   ; Voice ID
+idrecording = shortid               ; voice ID, plays /usr/local/share/asterisk/sounds/shortid.ulaw (or other valid extension)
 ```
 
-**Note:** ID recording files must have extension gsm,ulaw,pcm, or wav. The extension is left off when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz. See Recording Audio Files for more information (link pending).
+!!! note "File Extensions"
+    ID recording files must have extension gsm, ulaw, pcm, or wav. The extension is **left off** when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz mono.
+
+See [Sound Files](../adv-topics/soundfiles.md) for more information.
 
 ### idtime=
 This option sets the ID interval time, in mS. It is optional.
@@ -560,10 +572,10 @@ where:
 Sample:
 
 ```
-inxlat = #456,#457,0123456789ABCD ; string xlat from radio port to sys
+inxlat = #456,#457,0123456789ABCD   ; string xlat from radio port to sys
 ```
 
-In the above example, on inbound DTMF, translate #456 as `funcchar` (normally `*`), #457 as `endchar` (normally `#`), and pass all other digits listed in `passchars` normally.
+In the above example, on inbound DTMF, translate `#456` as `funcchar` (normally `*`), `#457` as `endchar` (normally `#`), and pass all other digits listed in `passchars` normally.
 
 ### link_functions=
 This option allows you to override the stanza name used for the `link_functions` stanza in `rpt.conf`. The `link_functions=` setting directs the node to use a particular function stanza for functions dialed by users accessing the node **via a link from another node**. 
@@ -571,7 +583,7 @@ This option allows you to override the stanza name used for the `link_functions`
 Sample:
 
 ```
-link_functions = functions ; pointer to the function stanza
+link_functions = functions          ; pointer to the function stanza
 ```
 
 The default is to have `link_functions=` point to a stanza called `functions`, and have a common set of commands for all nodes. However, you can have it point to another named stanza, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
@@ -579,13 +591,15 @@ The default is to have `link_functions=` point to a stanza called `functions`, a
 See the [Functions Stanza](#functions-stanza) for more detail on defining functions.
 
 ### lnkactenable=
-Set this option to enable the link activity timer. This applies to standard nodes only. 
+Set this option to enable the link activity timer. 
 
 
 Sample:
 ```
-lnkactenable = 0                   ; Set to 1 to enable the link activity timer.
+lnkactenable = 0                    ; set to 1 to enable the link activity timer.
 ```
+
+See the [Link Activity Timer](../adv-topics/linkacttimer.md) page for more details.
 
 The default is `0` (disabled).
 
@@ -595,26 +609,30 @@ Set the optional link activity timer (`lnkactenable` must be enabled for this to
 Sample:
 
 ```
-lnkacttime = 1800                  ; Link activity timer time in seconds.
+lnkacttime = 1800                   ; link activity timer time in seconds.
 ```
+
+See the [Link Activity Timer](../adv-topics/linkacttimer.md) page for more details.
 
 ### lnkactmacro=
 Play the defined macro when the link activity timer expires.
-
 Sample:
 
 ```
-lnkactmacro = *52                  ; Function to execute when link activity timer expires.
+lnkactmacro = *52                   ; function to execute when link activity timer expires.
 ```
+
+See the [Link Activity Timer](../adv-topics/linkacttimer.md) page for more details.
 
 ### lnkacttimerwarn=
 Set this to the voice file to play when the link activity timer has 30 seconds remaining.
-
 Sample:
 
 ```
-lnkacttimerwarn = 30seconds        ; Message to play when the link activity timer has 30 seconds left.
+lnkacttimerwarn = rpt/timeout-warning ; message to play when the link activity timer has 30 seconds left.
 ```
+
+See the [Link Activity Timer](../adv-topics/linkacttimer.md) page for more details.
 
 ### linkmongain=
 This option adjusts the audio level of monitored nodes when a signal from another node or the local receiver is received. If `linkmongain` is set to a negative number the monitored audio will decrease by the set amount in dB. If `linkmongain` set to a positive number monitored audio will increase by the set amount in dB. The value of `linkmongain` is in dB. The default value is 0dB.
@@ -622,7 +640,7 @@ This option adjusts the audio level of monitored nodes when a signal from anothe
 Sample:
 
 ```
-linkmongain = -20   ; reduce link volume 20dB
+linkmongain = -20                   ; reduce link volume 20dB
 ```
 
 ### linktolink=
@@ -633,7 +651,7 @@ This is used when a radio interface is connected to a multiport analog repeater 
 Sample:
 
 ```
-linktolink = no   ; set to yes to enable. Default is no.
+linktolink = no                     ; set to yes to enable. Default is no.
 ```
 
 ### linkunkeyct=
@@ -642,8 +660,10 @@ This option selects the courtesy tone to send when a connected remote node unkey
 Sample:
 
 ```
-linkunkeyct = ct8  ; use courtesy tone 8
+linkunkeyct = ct8                   ; use courtesy tone 8
 ```
+
+See the [Courtesy Tones](../adv-topics/courtesytones.md) page for more information on defining telemetry tones.
 
 ### litzchar=
 This option sets the DTMF character used to initiate the Long Tone Zero (LiTZ) feature. LiTZ is an optional feature that users can initiate to indicate they require immediate assistance. When the LiTZ DTMF character is sent for longer than the LiTZ time, the LiTZ command will be triggered. This could dial 911 on the autopatch, play a message, connect to another node, etc.
@@ -651,7 +671,7 @@ This option sets the DTMF character used to initiate the Long Tone Zero (LiTZ) f
 Sample:
 
 ```
-litzchar = 0       ; 0 is the default DTMF access character for the LiTZ feature
+litzchar = 0                        ; 0 is the default DTMF access character for the LiTZ feature
 ```
 
 ### litzcmd=
@@ -660,7 +680,7 @@ This option defines the command to run when the LiTZ feature is initiated. Leave
 Sample:
 
 ```
-litzcmd = *6911     ; dial 911 on the autopatch when LiTZ is activated
+litzcmd = *6911                     ; dial 911 on the autopatch when LiTZ is activated
 ```
 
 ### litztime=
@@ -669,7 +689,7 @@ This option defines how long `litzchar` needs to be sent for, to be considered v
 Sample:
 
 ```
-litztime = 3000     ; default 3000mS (3 seconds)
+litztime = 3000                     ; default 3000mS (3 seconds)
 ```
 
 ### macro=
@@ -678,7 +698,7 @@ This option allows you to override the stanza name used for the `[macro]` stanza
 Sample:
 
 ```
-macro=macro   ; use stanza named macro
+macro=macro                         ; use stanza named macro
 
 [macro]
 1 = *32000 *32001#                  ; connect to nodes 2000 and 2001
@@ -694,7 +714,7 @@ This option allows you to override the stanza name used for the `morse` stanza i
 Sample:
 
 ```
-morse=morse   ; use stanza named morse
+morse=morse                         ; use stanza named morse
 
 [morse]
 speed = 20                          ; Approximate speed in WPM
@@ -712,15 +732,17 @@ See the [Morse Stanza](#morse-stanza) for more detail on defining morse paramete
 ### nodenames=
 This option lets you override the default location to look for custom nodename files to play back when a node connects/disconnects.
 
-The default location is `/var/lib/asterisk/sounds/rpt/nodenames`.
+The default location is a relative path of `rpt/nodenames`. The absolute path will typically then be `/usr/share/asterisk/sounds/en/rpt/nodenames`. 
 
 Sample:
 
 ```
-nodenames = /var/lib/asterisk/sounds/rpt/nodenames.callsign  ; Point to alternate nodename sound directory
+nodenames = /var/lib/asterisk/sounds/custom/nodenames  ; point to alternate nodename sound directory
 ```
 
-When a node connects/disconnects, Asterisk will look in this directory for a filename that matches the calling node number. If it finds such a file, it will play it as the connect/disconnect message.
+When a node connects/disconnects, Asterisk will look in this directory for a filename that matches the calling node number (ie. 63001.gsm). If it finds such a file, it will play it as the connect/disconnect message.
+
+See the [Sound Files](../adv-topics/soundfiles.md) page for more information on sound file locations.
 
 ### nodes=
 This option allows you to override the section name used for the '[nodes]' stanza in `rpt.conf`. The default value is `nodes`. The `[nodes]` stanza operates like a "hosts" file in an OS, and is the first place `app_rpt` looks to resolve how to reach a particular node.
@@ -731,7 +753,7 @@ Sample:
 nodes=mynodes
 ```
 
-In this example, you would need to configure the section `[mynodes]` in `rpt.conf`.  `app_rpt` will no longer look for a `[nodes]` section header for this node, it will look for `[mynodes]` instead.
+In this example, you would need to configure the section `[mynodes]` in `rpt.conf`. `app_rpt` will no longer look for a `[nodes]` section header for this node, it will look for `[mynodes]` instead.
 
 See the [Nodes Stanza](#nodes-stanza) for more information on how the nodes section is used.
 
@@ -743,7 +765,7 @@ Set this option to send `unlinkedct` instead, if another local node is connected
 Sample:
 
 ```
-nolocallinkct = 0     ; default is 0, set to 1 to enable 
+nolocallinkct = 0                   ; default is 0, set to 1 to enable 
 ```
 
 ### nounkeyct=
@@ -752,11 +774,11 @@ This option completely disables the courtesy tone. This is useful for eliminatin
 Sample:
 
 ```
-nounkeyct = no  ; Set to yes to disable :(. Default is no.
+nounkeyct = no                      ; set to yes to disable :(. Default is no.
 ```
 
 ### outstreamcmd=
-This option is used to configure the utilities to run on th system to support streaming the node's audio to a streaming server.
+This option is used to configure the utilities to run on the system to support streaming the node's audio to a streaming server.
 
 Sample:
 
@@ -788,12 +810,13 @@ where:
 Sample:
 
 ```
-outxlat = *7,*0,0123456789ABCD ; string xlat from sys to radio port
+outxlat = *7,*0,0123456789ABCD      ; string xlat from sys to radio port
 ```
 
-In the above example, on outbound DTMF, *7 generates a `funcchar` (normally `*`), *0 generates an `endchar` (normally `#`), and pass all other digits listed in `passchars` normally.
+In the above example, on outbound DTMF, `*7` generates a `funcchar` (normally `*`), `*0` generates an `endchar` (normally `#`), and pass all other digits listed in `passchars` normally.
 
-**NOTE:** This option is not well documented in the code, your mileage may vary.
+!!! warning "Documentation Missing" 
+    This option is not well documented in the code, your mileage may vary.
 
 ### parrot=
 The "parrot" repeats everything it hears. Use this option to create an "echo reflector node", where everything you transmit to the node will be played back when you unkey.
@@ -828,7 +851,7 @@ This option allows you to override the stanza name used for the `phone_functions
 Sample:
 
 ```
-phone_functions = functions   ; name phone_functions to functions
+phone_functions = functions         ; name phone_functions to functions
 ```
 
 The default is to have `phone_functions=` point to a stanza called `functions`, and have a common set of commands for all nodes. However, you can have it point to another named stanza, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
@@ -853,7 +876,7 @@ The available options are:
 * Default is 1
 
 ### phonelinkdynamic=
-This option sets whether telemetry down phone links can be enabled/disabled by users using a COP command.
+This option sets whether telemetry down phone links can be enabled/disabled by users using a [COP](#cop-commands) command.
 
 Sample:
 
@@ -873,7 +896,7 @@ This option specifies the number of milliseconds prior to the end of the ID cycl
 Sample:
 
 ```
-politeid = 30000   ; 30 seconds
+politeid = 30000                    ; 30 seconds
 ```
 
 ### propagate_dtmf=
@@ -886,7 +909,9 @@ Sample:
 ```
 propagate_dtmf = no
 ```
-**Note:** There is a separate setting `propagate_phonedtmf` for use by dial-in (phone and dphone) users.
+
+!!! note "Alternate Setting for Phone Users"
+    There is a separate setting `propagate_phonedtmf` for use by dial-in (phone and dphone) users.
 
 ### remotect=
 This option allows the selection of the remote linked courtesy tone so that the users can tell there is a [Remote Base](../adv-topics/remotebase.md#remote-base-nodes) connected locally.
@@ -894,8 +919,10 @@ This option allows the selection of the remote linked courtesy tone so that the 
 Sample:
 
 ```
-remotect = ct3   ; use courtesy tone 3
+remotect = ct3                      ; use courtesy tone 3
 ```
+
+See the [Courtesy Tones](../adv-topics/courtesytones.md) page for more information on defining telemetry tones.
 
 ### remote_inact_timeout=
 This option specifies the amount of time without keying from the link, before the link is determined to be inactive. Set to `0` to disable timeout.
@@ -903,7 +930,7 @@ This option specifies the amount of time without keying from the link, before th
 Sample:
 
 ```
-remote_inact_timeout = 0   ; do not time out
+remote_inact_timeout = 0            ; do not time out
 ```
 
 This is a [Remote Base](../adv-topics/remotebase.md#remote-base-nodes) option. See that section of the manual for more information.
@@ -914,7 +941,7 @@ This option specifies the session time out for the remote base. Set to `0` to di
 Sample:
 
 ```
-remote_timeout = 0   ; do not timeout
+remote_timeout = 0                  ; do not timeout
 ```
 
 Default is 3600 (seconds?).
@@ -984,12 +1011,14 @@ tlb/tlb0|TheLinkBox Channel Driver, pointing to the specified (tlb0) channel con
 Sample:
 
 ```
-rxchannel = dahdi/pseudo     ; No radio (hub)
+rxchannel = dahdi/pseudo            ; no radio (hub)
 ```
 
-**NOTE:** This is selecting what is known (in Asterisk terminology) the *channel driver*.
+!!! note "Channel Driver"
+    This is selecting what is known (in Asterisk terminology) as the *channel driver*.
 
-**NOTE:** Be sure that any channel driver you use also has it's corresponding module being loaded in `/etc/asterisk/modules.conf`.
+!!! warning "Load Module"
+    Be sure that any channel driver you use also has it's corresponding module being loaded in `/etc/asterisk/modules.conf`.
 
 ### rxnotch=
 In order to use this option, `app_rpt` must have been compiled with the `notch` option. This option will notch a particular center frequency (in Hz) for a specified bandwidth (in Hz).
@@ -997,10 +1026,11 @@ In order to use this option, `app_rpt` must have been compiled with the `notch` 
 Sample:
 
 ```
-rxnotch=1065,40                    ; Notch 1065Hz for +/-20Hz
+rxnotch=1065,40                    ; notch 1065Hz for +/-20Hz
 ```
 
-**NOTE:** IF this option is available, it requires a great deal of CPU to perform and would probably be detrimental to use on the small boards. It isn't recommended for use.
+!!! warning "High CPU Utilization"
+    IF this option is available, it requires a great deal of CPU to perform and would probably be detrimental to use on the small boards. It isn't recommended for use.
 
 ### scheduler=
 This option allows you to override the stanza name used for the `schedule` stanza in `rpt.conf`. The scheduler is used to execute commands at a particular time.
@@ -1008,7 +1038,7 @@ This option allows you to override the stanza name used for the `schedule` stanz
 Sample:
 
 ```
-scheduler = schedule   ; name scheduler to 'schedule'
+scheduler = schedule                ; name scheduler to 'schedule'
 
 [schedule]
 ...
@@ -1035,21 +1065,13 @@ The `startup_macro` is executed once on system startup. Each node can have **one
 Sample:
 
 ```
-startup_macro = *31000 *31001 *31002   ; Connect to nodes 1000, 1001 and 1002 at startup
+startup_macro = *31000 *31001 *31002 ; connect to nodes 1000, 1001 and 1002 at startup
 ```
 
 One string of one or multiple commands, executed in order. 
 
-**NOTE:** This string of commands does NOT terminate with a # like a normal macro. You can call any number of regular macros with it.
-
-### startup_macro_delay=
-This option causes the system to wait a specified number of seconds upon startup, before executing the [`startup_marco`](#startup_macro).
-
-Sample:
-
-```
-startup_macro_delay = 5                    ; wait 5s before running the startup_macro
-```
+!!! note "No Termination Character"
+    This string of commands does NOT terminate with a `#` like a normal macro. You can call any number of regular macros with it.
 
 ### statpost_program=
 This option sets the commands to run on the server to process usage statistics of the node. **This option is generally no longer required, but is included for documentation purposes.**
@@ -1066,23 +1088,26 @@ Uncomment this option to enable status and statistics reporting of your node to 
 Sample:
 
 ```
-;statpost_url = http://stats.allstarlink.org/uhandler ; Status updates
+;statpost_url = http://stats.allstarlink.org/uhandler ; status updates
 ```
 
 The `statspost_url=` option can be implemented in the `[node-main](!)` stanza to apply to all nodes on the server, or in the per-node stanza for limiting statistics posting to an individual nodes. See [config file templating](../adv-topics/conftmpl.md/#asterisk-templates) for more information.
 
 ### tailmessagelist=
-This option allows a comma-separated list of audio files to be specified for the tail message function. The tail messages will rotate from one to the next until the end of the list is reached, at which point the first message in the list will be selected. If no absolute path name is specified, the directory `var/lib/asterisk/sounds` will be searched for the sound file. The file extension should be omitted.
+This option allows a comma-separated list of audio files to be specified for the tail message function. The tail messages will *rotate* from one to the next until the end of the list is reached, at which point the first message in the list will be selected. If no absolute path name is specified, the directory `/usr/share/asterisk/sounds/en` will be searched for the sound file. The file extension should be omitted.
 
 Sample:
 
 ```
-tailmessagelist = welcome,clubmeeting,wx   ; rotate 3 tail messages
+tailmessagelist = welcome,clubmeeting,wx ; rotate 3 tail messages
 ```
 
 Tail messages can be "squashed" if a user keys up over them.
 
-**Note:** ID recording files must have extension gsm,ulaw,pcm, or wav. The extension is left off when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz. See Recording Audio Files for more information.
+!!! note "File Extensions"
+    ID recording files must have extension gsm,ulaw,pcm, or wav. The extension is left off when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz mono.
+
+See the [Sound Files](../adv-topics/soundfiles.md) page for more information.
 
 ### tailmessagetime=
 This option sets the amount of time in milliseconds between tail messages. Tail Messages are played when a user unkeys on the node input at the point where the hang timer expires, and after the courtesy tone is sent.
@@ -1090,10 +1115,10 @@ This option sets the amount of time in milliseconds between tail messages. Tail 
 Sample:
 
 ```
-tailmessagetime = 900000   ; 15 minutes between tail messages
+tailmessagetime = 900000            ; 15 minutes between tail messages
 ```
 
-The maximum value is 200000000mS, 55.5555hours.
+The maximum value is 200000000mS (55.5555 hours).
 
 ### tailsquashedtime=
 If a tail message is "squashed" by a user keying up over the top of it, a separate time value can be loaded to make the tail message be retried at a shorter time interval than the standard `tailmessagetime=` option. The `tailsquashedtime=` option takes a value in milliseconds.
@@ -1101,7 +1126,7 @@ If a tail message is "squashed" by a user keying up over the top of it, a separa
 Sample:
 
 ```
-tailsquashedtime = 300000   ; 5 minutes
+tailsquashedtime = 300000           ; 5 minutes
 ```
 
 ### telemetry=
@@ -1110,7 +1135,7 @@ This option allows you to override the stanza name used for the `telemetry` stan
 Sample:
 
 ```
-telemetry = telemetry   ; name telemetry to 'telemetry'
+telemetry = telemetry               ; name telemetry to 'telemetry'
 
 [telemetry]
 ...
@@ -1146,7 +1171,7 @@ telemduckdb = -15                   ; Reduce telemetry by -15dB
 ```
 
 ### telemdynamic=
-This option sets whether telemetry can be enabled/disabled by users using a COP command.
+This option sets whether telemetry can be enabled/disabled by users using a [COP](#cop-commands) command.
 
 Sample:
 
@@ -1166,24 +1191,26 @@ This option is used to fine tune the telemetry level, relative to standard node 
 Sample:
 
 ```
-telemnomdb = -3                     ; Decrease nominal telemetry by -3dB
+telemnomdb = -3                     ; decrease nominal telemetry by -3dB
 ```
 
 ### tonemacro=
-This option allows you to override the stanza name used for the `tonemacro` stanza in `rpt.conf`. The tone macro stanza directs the node to use a particular stanza for PL tone tiggered macros from users accessing the node. Macros are DTMF shortcuts, and are a special type of function. 
+This option allows you to override the stanza name used for the `tonemacro` stanza in `rpt.conf`. The tone macro stanza directs the node to use a particular stanza for CTCSS tone tiggered macros from users accessing the node. Macros are DTMF shortcuts, and are a special type of function. 
 
 Sample:
 
 ```
-tonemacro = tonemacro   ; use stanza named tonemacro
+tonemacro = tonemacro               ; use stanza named tonemacro
 
 [tonemacro]
-100.0 = *81#     ; play the time if a 100.0Hz PL tone is received
+100.0 = *81#                        ; play the time if a 100.0Hz CTCSS tone is received
 ```
 
 The default is to have `tonemacro=` point to a stanza called `tonemacro`, and have a common set of commands for all nodes. However, you can have it point to another named stanza, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
 
 See the [Tonemacro Stanza](#tonemacro-stanza) for more detail on defining tone macros.
+
+See the [Tone Macros](../adv-topics/tonemacros.md) page on how to utilize tone macros.
 
 **This option does not appear in the default `rpt.conf`.**
 
@@ -1193,11 +1220,12 @@ This option defines the time out timer interval for the node. The value is in mi
 Sample:
 
 ```
-totime = 180000   ; Repeater timeout 3 minutes 
+totime = 180000                     ; repeater timeout 3 minutes 
 ```
 The default value is 180000(mS), or 3 minutes. 
 
-**NOTE:** This setting can cause issues when linked to active hub nodes that may have long transmissions. If the local node transmitter appears to "drop out" when connected to nodes/hubs with long winded operators or broadcasts, review this setting, and increase as necessary.
+!!! warning "Active Hub Advisory" 
+    This setting can cause issues when linked to active hub nodes that may have long transmissions. If the local node transmitter appears to "drop out" when connected to nodes/hubs with long winded operators or broadcasts, review this setting, and increase as necessary.
 
 Related: [COP Commands 7 and 8](#cop-commands) and [`controlstates`](#controlstates), and [Control States Stanza](#control-states-stanza).
 
@@ -1207,8 +1235,10 @@ This option selects the courtesy tone to be used when the system has no remote n
 Sample:
 
 ```
-unlinkedct = ct2   ; use courtesy tone 2
+unlinkedct = ct2                    ; use courtesy tone 2
 ```
+
+See the [Courtesy Tones](../adv-topics/courtesytones.md) page for more information on defining telemetry tones.
 
 ### wait-times=
 This option allows you to override the stanza name used for the `wait-times` stanza in `rpt.conf`. Wait times are a specific group of timers for the node.
@@ -1216,7 +1246,7 @@ This option allows you to override the stanza name used for the `wait-times` sta
 Sample:
 
 ```
-wait-times = wait-times   ; name wait-times to wait-times
+wait-times = wait-times             ; name wait-times to wait-times
 ```
 
 The default is to have `wait-times=` point to a stanza called `wait-times`, and have a common set of commands for all nodes. However, you can have it point to another named stanza, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
@@ -1253,7 +1283,7 @@ The `[functions]` stanza is a named stanza pointed to by the [`functions=`](#fun
 Sample:
 
 ```
-functions = functions   ; name the functions stanza functions
+functions = functions               ; name the functions stanza functions
 
 [functions]
 ...
@@ -1298,16 +1328,16 @@ A small excerpt from the function stanza of `rpt.conf` is shown below.
 
 ```
  [functions]
- 1=ilink,1                                               ; Specific link disconnect
- 6=autopatchup,noct=1,farenddisconnect=1,dialtime=2000   ; Autopatch up
+ 1=ilink,1                                             ; specific link disconnect
+ 6=autopatchup,noct=1,farenddisconnect=1,dialtime=2000 ; autopatch up
 ```
 
 The above example contains DTMF functions with all of the parameters discussed on previously.
 
 In the above example:
 
-* *1 followed by a node number disconnects a specific link, recall that * is the default [`funcchar`](#funcchar). The `function class` is `ilink` and the `function method` is `1`
-* *6 followed by a phone number brings up the autopatch with the `function options` specified. Note that there is no `function method` defined, but there are `function options` present.
+* `*1` followed by a node number disconnects a specific link, recall that `*` is the default [`funcchar`](#funcchar). The `function class` is `ilink` and the `function method` is `1`
+* `*6` followed by a phone number brings up the autopatch with the `function options` specified. Note that there is no `function method` defined, but there are `function options` present.
 
 ## Link Functions Stanza
 The `[my_link_functions]` stanza, if defined (see below), is a named stanza pointed to by the [`link_functions`](#link_functions) option. Functions within this stanza are used decode DTMF commands when accessing the node **via a link from another node**. 
@@ -1317,8 +1347,8 @@ The traditional usage is to point the `link_functions=` option to the same stanz
 Sample:
 
 ```
-functions = functions        ; name the functions stanza functions
-link_functions = functions   ; use the same stanza 
+functions = functions               ; name the functions stanza functions
+link_functions = functions          ; use the same stanza 
 
 [functions]
 ...
@@ -1327,8 +1357,8 @@ link_functions = functions   ; use the same stanza
 If a different set of either limited or more capable functions is desired:
 
 ```
-functions = functions                ; name the functions stanza functions
-link_functions = my_link_functions   ; use a different stanza
+functions = functions               ; name the functions stanza functions
+link_functions = my_link_functions  ; use a different stanza
 
 [functions]
 ...
@@ -1345,10 +1375,10 @@ The `[macro]` stanza is a named stanza pointed to by the [`macro=`](#macro) opti
 Sample:
 
 ```
-macro=macro   ; use stanza named macros
+macro=macro                         ; use stanza named macros
 
 [macro]
-1 = *32000*32001     ; connect to nodes 2000 and 2001
+1 = *32000*32001                    ; connect to nodes 2000 and 2001
 ```
 
 See the [Macro](../adv-topics/macros.md) page for more information on macros.
@@ -1360,32 +1390,32 @@ Sample:
 
 ```
 [morse]
-speed = 20            ; Approximate speed in WPM
-frequency = 900       ; Morse Telemetry Frequency in Hz
-amplitude = 4096      ; Morse Telemetry Amplitude (relative level)
-idfrequency = 746     ; Morse ID Frequency in Hz
-idamplitude = 768     ; Morse ID Amplitude (relative level)
+speed = 20                          ; approximate speed in WPM
+frequency = 900                     ; morse Telemetry Frequency in Hz
+amplitude = 4096                    ; morse Telemetry Amplitude (relative level)
+idfrequency = 746                   ; morse ID Frequency in Hz
+idamplitude = 768                   ; morse ID Amplitude (relative level)
 ```
 Note that `frequency` and `amplitude` would set the parameters for telemetry messages, whereas `idfrequency` and `idamplitude` would set the parameters specifically for identification (and they do not need to be the same).
 
 ## Nodes Stanza
-The `[nodes]` stanza is a list of nodes, their IP addresses, port and "NONE" or "NO" for non-remote base (normal) nodes. The nodes stanza is used to identify which node is mapped to which Internet call and to determine the destination to send the call to. 
+The `[nodes]` stanza is a list of nodes, their IP addresses, port and `NONE` or `NO` for non-remote base (normal) nodes. The nodes stanza is used to identify which node is mapped to which Internet call and to determine the destination to send the call to. 
 
-If you are using automatic update for AllStarLink (public) nodes, no Allstar link nodes should be defined here. Only place a definition for your local nodes (on your local LAN behind the same NAT router), private (off of AllStarLink) nodes, and remote base nodes here.
+If you are using automatic update for AllStarLink (public) nodes, no AllStarLink nodes should be defined here. Only place a definition for your local nodes (on your local LAN behind the same NAT router), private (off of AllStarLink) nodes, and remote base nodes here.
 
 Sample:
 
 ```
 [nodes]
-1000 = radio@127.0.0.1/1000,NONE               ; Private hub on this server 
-1001 = radio@host.domain.com/1001,NONE         ; Private node on another server
-2501 = radio@127.0.0.1/2501,NONE               ; Public node on this server
-2502 = radio@127.0.0.1/2502,NONE               ; Another public node on this server
-2503 = radio@192.168.1.20:4570/2503,NONE       ; Public node behind the same NAT router
-1998 = radio@127.0.0.1/1999,Y                  ; Remote base node on this server
+1000 = radio@127.0.0.1/1000,NONE               ; private hub on this server 
+1001 = radio@host.domain.com/1001,NONE         ; private node on another server
+2501 = radio@127.0.0.1/2501,NONE               ; public node on this server
+2502 = radio@127.0.0.1/2502,NONE               ; another public node on this server
+2503 = radio@192.168.1.20:4570/2503,NONE       ; public node behind the same NAT router
+1998 = radio@127.0.0.1/1999,Y                  ; remote base node on this server
 ```
 
-For remote base nodes, replace the "NONE" with "Y" or "YES". Once designated as a remote base, that node will only allow **one connection** (link) for use, command, and control.
+For remote base nodes, replace the `NONE` with `Y` or `YES`. Once designated as a remote base, that node will only allow **one connection** (link) for use, command, and control.
 
 The `[nodes]` stanza performs a function similar to an OS hosts file. When looking up node information, `app_rpt` looks in the `[nodes]` stanza first then searches (what could be called the Allstar DNS) the `/var/lib/asterisk/rpt_extnodes` file.
 
@@ -1397,8 +1427,8 @@ The traditional usage is to point `phone_functions=` to the same stanza as named
 Sample:
 
 ```
-functions = functions         ; name the functions stanza functions
-phone_functions = functions   ; use the same stanza 
+functions = functions               ; name the functions stanza functions
+phone_functions = functions         ; use the same stanza 
 
 [functions]
 ...
@@ -1407,8 +1437,8 @@ phone_functions = functions   ; use the same stanza
 If a different set of either limited or more capable functions is desired:
 
 ```
-functions = functions                  ; name the functions stanza functions
-phone_functions = my_phone_functions   ; use a different stanza
+functions = functions                ; name the functions stanza functions
+phone_functions = my_phone_functions ; use a different stanza
 
 [functions]
 ...
@@ -1437,14 +1467,14 @@ See [https://wiki.allstarlink.org/wiki/Scheduler_(ASL_System)](https://wiki.alls
 ## Telemetry Stanza
 This stanza is named by the [`telemetry=`] option. Telemetry entries can be shared across all nodes on the `Asterisk/app_rpt` server, or defined for each node. They can be a tone sequence, morse string, or a file as follows:
 
-* |t - Tone escape sequence:
-  * Tone sequences consist of 1 or more 4-tuple entries (freq1, freq2, duration, amplitude). Single frequencies are created by setting freq1 or freq2 to zero.
-* |m - Morse escape sequence:
-  * Sends Morse code at the **telemetry amplitude and telemetry frequency** as defined in the `[morse]` section. Follow with an alphanumeric string.
-* |i - Morse ID escape sequence:
-  * Sends Morse code at the **ID amplitude and ID frequency** as defined in the `[morse]` section. Follow with an alphanumeric string.
+* `|t` - Tone escape sequence:
+    * Tone sequences consist of 1 or more 4-tuple entries (freq1, freq2, duration, amplitude). Single frequencies are created by setting freq1 or freq2 to zero.
+* `|m` - Morse escape sequence:
+    * Sends Morse code at the **telemetry amplitude and telemetry frequency** as defined in the `[morse]` section. Follow with an alphanumeric string.
+* `|i` - Morse ID escape sequence:
+    * Sends Morse code at the **ID amplitude and ID frequency** as defined in the `[morse]` section. Follow with an alphanumeric string.
 * Path to sound file:
-  * Specify the path to a sound file on the server. Do not include file extension.
+    * Specify the path to a sound file on the server. Do not include file extension.
 
 Sample:
 
@@ -1476,23 +1506,26 @@ What the numbers mean,
    |   |-------------------Tone 2
    |-------------------------Tone 1
 ```
+See the [Courtesy Tones](../adv-topics/courtesytones.md) page for more information on defining telemetry tones.
+
+See the [Sound Files](../adv-topics/soundfiles.md) page for more information on sound file locations.
 
 ## Tonemacro Stanza
-The `[tonemacro]` stanza is a named stanza pointed to by the [`tonemacro=`](#tonemacro) option. Tonemacros are macros that are executed upon receipt of a specific PL tone.
+The `[tonemacro]` stanza is a named stanza pointed to by the [`tonemacro=`](#tonemacro) option. Tonemacros are macros that are executed upon receipt of a specific CTCSS tone.
 
 Sample:
 
 ```
-tonemacro = tonemacro;     user stanza named tonemacro
+tonemacro = tonemacro               ; user stanza named tonemacro
 
 [tonemacro]
 
-100.0=*671
+100.0 = *671
 ```
 
-Format: `PL Tone = macro to execute`.
+Format: `CTCSS Tone = macro to execute`.
 
-See [Full Tonemacro Use and Format] (https://wiki.allstarlink.org/wiki/Tonemacro_use_and_format) for more information on tone macros.
+See the [Tone Macros](../adv-topics/tonemacros.md) page on how to utilize tone macros.
 
 ## Wait Times Stanza
 This stanza is named by the [`wait-times=`](#wait-times) option. The wait time stanza is used to set delay time between various node actions and their response. Values are in milliseconds.
@@ -1500,11 +1533,11 @@ This stanza is named by the [`wait-times=`](#wait-times) option. The wait time s
 Sample:
 
 ```
-wait-times = wait-times   ; name the stanza wait-times
+wait-times = wait-times             ; name the stanza wait-times
 
 [wait-times]                                                                                                 
-telemwait = 600                    ; Time to wait before sending most
-idwait = 600                       ; Time to wait before starting ID
-unkeywait = 800                    ; Time to wait after unkey before sending CT's and link telemetry
-calltermwait = 2000                ; Time to wait before announcing "call terminated"
+telemwait = 600                     ; time to wait before sending most
+idwait = 600                        ; time to wait before starting ID
+unkeywait = 800                     ; time to wait after unkey before sending CT's and link telemetry
+calltermwait = 2000                 ; time to wait before announcing "call terminated"
 ```
