@@ -2,35 +2,31 @@
 When asking for help on [AllStarLink Community](https://community.allstarlink.org) or in a [GitHub](https://github.com/AllStarLink) Issue here are some tips on how to ask for help and how to get common troubleshooting information that is often needed to understand your specific issues.
 
 ## Connectivity Troubleshooting
-Here is how to do some basic troubleshooting to see if your node is registered and reporting to the AllStarLink Network:
+The following troubleshooting steps can be used to check if your node has successfully registered to the AllStarLink network:
 
 * Go to [https://www.allstarlink.org/nodelist](https://www.allstarlink.org/nodelist), put your node number in the Filter box and see if the system knows about your node. If it is registered, the background behind your node number should be green.
 
-* If you have the [`rpt_extnodes`](../adv-topics/noderesolution.md#external-node-directory-file) file enabled, check to see if the timestamp on the file is current:
+* From the [Linux CLI](./passwords.md#linux-login) on your node, run `asl-node-lookup <node#>` with your node number, and see if the system returns an "A" record showing your public IP address, and a "TXT" record, showing a valid and current registration record.
+
+* If your node has been setup to use the [External Node Directory File](../adv-topics/noderesolution.md#external-node-directory-file), then you can check that the file has been recently updated:
 
 ```
 asl@wb6nil:~ $ tail /var/lib/asterisk/rpt_extnodes
-657890=radio@75.183.136.24:4569/657890,75.183.136.24
-658030=radio@49.199.83.84:4569/658030,49.199.83.84
-658451=radio@38.92.58.92:4569/658451,38.92.58.92
-658500=radio@99.48.37.185:4560/658500,99.48.37.185
 
-
+...
 ;Generated 10904 records in 0.198 seconds.
 ;Generated at 2025-07-06 21:43:59 UTC by f0537a4b8c66
 ;SHA1=c91286ce0
 
 ```
 
-* Make sure there no other devices on your LAN using the IAX port (typically configured for `4569`)
-
-* If you are behind a NAT firewall/router, make sure you have opened port `4569/UDP`, and directed it to the correct LAN IP address of your AllStarLink node
+* If your system/node is behind a firewall/router, make sure you have opened port `4569/UDP`, and directed it to the correct LAN IP address of your AllStarLink node
 
 * Make sure that the IAX port configured in your Server Settings of your [AllStarLink Portal](https://www.allstarlink.org/portal) account matches the port opened in your firewall 
 
 * Make sure that `bindport=4569` is set in [`iax.conf`](../config/iax_conf.md#bindport-and-bindaddr), it should be unless you've changed it (perhaps if you are running [Multiple Node on the Same Network](../adv-topics/multinodesnetwork.md))
 
-* If you are running [Multiple Node on the Same Network](../adv-topics/multinodesnetwork.md), pay particular attention to:
+* If you are running [Multiple Nodes on the Same Network](../adv-topics/multinodesnetwork.md), pay particular attention to:
     * Your firewall/NAT rules in the router on your LAN
     * Your firewall rules in [Cockpit](../pi/cockpit-firewall.md), if applicable
     * Your Server Settings (IAX Port) in the AllStarLink Portal
@@ -46,11 +42,6 @@ asl@wb6nil:~ $ tail /var/lib/asterisk/rpt_extnodes
 wb6nil*CLI> rpt lookup 2001
 Node: 63001     Data: radio@3.147.238.208:4569/2001,3.147.238.208
 ```
-
-## AllStarLink Registration Fails When Behind a NAT Router
-Some NAT routers do not honor source port preservation. Registration (by default) requires that the source port be preserved. The URL [https://register.allstarlink.org](https://register.allstarlink.org) expects the source port to be 4569 by default. With some NAT routers, source port preservation is not guaranteed. For example, the D-Link DI series is one such router which does not preserve source port numbers and there is a 100% chance that when the registration packet exits your router, it will use a different (high 60,000 range) port number.
-
-Solution: try a different NAT router
 
 ## Breaking the Keying Loop Between Two Simplex Nodes
 Back and forth keying (aka "Ping Ponging" or "Relay Racing") can occur when two simplex nodes are linked together. This is caused by COR or squelch noise glitches from certain types of radios. To fix,the COR must be ignored for a small amount of time after a simplex node releases PTT. To accommodate this, edit `usbradio.conf` and add the following statement in the `[usb]` stanza, or other port-specific stanza:
@@ -73,7 +64,7 @@ Connectivity issues?|Check the [Connectivity Troubleshooting](#connectivity-trou
 
 Hint|Thing(s) to Try
 ----|---------------
-Do you have the correct port forwarding settings configured in your firewall?|AllStarLink requires that UDP traffic on port `4569` be forwarded from the public (WAN) IP address to the private (LAN) IP address running your AllStarLink server. Please check the settings in your router using its instruction manual to make sure port `4569/UDP` is set up to be forwarded to the correct internal (private) IP address. If the port forwarding settings are correct in your router, please send a message to the [helpdesk@allstarlink.org](mailto:helpdesk@allstarlink.org) with your node number and router make and model, requesting help. A **small** number of NAT routers require that we force the port setting to port `4569` on the registration server. This is a manual process and requires intervention from one of the system administrators.
+Do you have the correct port forwarding settings configured in your firewall?|AllStarLink requires that UDP traffic on port `4569` be forwarded from the public (WAN) IP address to the private (LAN) IP address running your AllStarLink server. Please check the settings in your router using its instruction manual to make sure port `4569/UDP` is set up to be forwarded to the correct internal (private) IP address. 
 
 ## VOTER/RTCM Choppy Audio
 The VOTER protocol is UDP which of course means packets can be dropped causing holes in the audio. Here are a couple of things to look for if the audio is choppy.
