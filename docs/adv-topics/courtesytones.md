@@ -25,14 +25,23 @@ linkunkeyct = ct8                   ; sent when a transmission received over the
 ```
 
 ## `[telemetry]` Stanza Settings
-The `[telemetry]` stanza is used to **define** a telemetry sequence. A telemetry sequence can be a sound file, a tone sequence, or a morse code message.
+The `[telemetry]` stanza is used to **define** a telemetry sequence. A telemetry sequence can be a morse code ID, morse code message, a tone sequence, or a sound file.
+
+For clarity, the different types of telemetry methods supported are:
+
+Telemetry Method|Telemetry Description
+----------------|---------------------
+`|i`|Morse ID 
+`|m`|Morse message
+`|t`|Tone sequence
+`<none>`|If the telemetry string does not start with a `|`, then the string is a path to a sound file
 
 Since we are discussing courtesy tones, we will skip over the morse and voice options.
 
 To define a telemetry sequence, you must first choose a telemetry key, then set the value for that key as follows:
 
 ```
-mykey=!t(tone group)[(tone group)][...]
+mykey=|t(tone group)[(tone group)][...]
 ```
 
 Where:
@@ -78,6 +87,6 @@ Example `[telemetry]` Stanza
  remotemon=|t(1209,0,50,2048)
  cmdmode=|t(900,903,200,2048)
  functcomplete=|t(1000,0,100,2048)(0,0,100,0)(1000,0,100,2048)
- patchup=rpt/callproceeding
- patchdown=rpt/callterminated
+ patchup=rpt/callproceeding         ; play the rpt/callproceeding sound file, instead of a tone sequence
+ patchdown=rpt/callterminated       ; play the rpt/callerminated sound file, instead of a tone sequence
 ```
