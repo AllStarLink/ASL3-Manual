@@ -6,7 +6,7 @@ The following troubleshooting steps can be used to check if your node has succes
 
 * Go to [https://www.allstarlink.org/nodelist](https://www.allstarlink.org/nodelist), put your node number in the Filter box and see if the system knows about your node. If it is registered, the background behind your node number should be green.
 
-* From the [Linux CLI](./passwords.md#linux-login) on your node, run `asl-node-lookup <node#>` with your node number, and see if the system returns an "A" record showing your public IP address, and a "TXT" record, showing a valid and current registration record.
+* From the [Linux CLI](./passwords.md#linux-login) on your node, run `asl-node-lookup <node#>` with your node number, and see if the system returns a "SRV" record with a hostname for your node, an "A" record showing your public IP address, and a "TXT" record, showing a valid and current registration record.
 
 * If your node has been setup to use the [External Node Directory File](../adv-topics/noderesolution.md#external-node-directory-file), then you can check that the file has been recently updated:
 
