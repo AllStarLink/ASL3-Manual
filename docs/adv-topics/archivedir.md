@@ -1,5 +1,5 @@
 # Audio and Activity Logging
-ASL3 supports a simple log and audio recorder of the activity on a node. When enabled, a series of recordings, one for each active COR on the node, is generated. The file(s) will be named with the date and time down to the second (this may change to provide more granularity in the future). This logging can be useful in debugging, policing, or other creative things.
+ASL3 supports a simple log and audio recorder of the activity on a node. When enabled, a series of recordings, one for each active COR on the node, is generated. The file(s) will be named with the date and time down to the second. Finer granularity is available using the `archivedatefmt=` variable. This logging can be useful in debugging, policing, or other creative things.
 
 The archiving function is enabled by setting the [`archivedir=`](../config/rpt_conf.md#archivedir) to a non-null value.
 
@@ -17,18 +17,18 @@ In `rpt.conf` under your node stanza place:
 
 ```
 [1999]
-archivedir = /var/log/asterisk/ 
+archivedir = /var/spool/asterisk/monitor
 ```
 
-The `archivedir=` and `archiveformat=` options can be implemented in the `[node-main](!)` stanza to apply to all nodes on the server, or in the per-node stanza for recording individual nodes. See [config file templating](../adv-topics/conftmpl.md#asterisk-templates) for more information.
+The `archivedir=` and related options can be implemented in the `[node-main](!)` stanza to apply to all nodes on the server, or in the per-node stanza for recording individual nodes. See [config file templating](../adv-topics/conftmpl.md#asterisk-templates) for more information.
 
 The directory can be of your choosing. It must exist and must have proper [permissions](../adv-topics/permissions.md) for Asterisk. ASL3 will create the node number subdirectory for you. You want to end up with a subdirectory for each node number so each node has its own archive of audio recordings.
 
-The above `archivedir = /var/log/asterisk/` could result in something like:
+The above `archivedir = /var/spool/asterisk/monitor/` could result in something like:
 
 ```
-/var/log/asterisk/63001
-/var/log/asterisk/1999
+/var/spool/asterisk/monitor/63001
+/var/spool/asterisk/monitor/1999
 ```
 
 ## Usage
