@@ -103,17 +103,23 @@ nav:
     - adv-topics/aprs.md
     - adv-topics/tts.md 
     - adv-topics/conftmpl.md
+    - adv-topics/archivedir.md
     - adv-topics/autopatch.md
     - adv-topics/audio-level.md
     - adv-topics/courtesytones.md
+    - adv-topics/condiscpgm.md
     - adv-topics/daq.md
     - adv-topics/dns-servers.md
+    - adv-topics/dtmffunctions.md
+    - adv-topics/elkelink.md
     - adv-topics/eurorptr.md
     - adv-topics/hotspot_hd.md
     - adv-topics/httpreg.md
     - adv-topics/iaxreg.md
+    - adv-topics/linkacttimer.md
     - adv-topics/litz.md
     - adv-topics/macros.md
+    - adv-topics/mdc1200.md
     - adv-topics/multinodesnetwork.md
     - adv-topics/nnx.md 
     - adv-topics/noderesolution.md
@@ -132,6 +138,8 @@ nav:
     - adv-topics/remotebase.md
     - adv-topics/rxtoneburst.md
     - adv-topics/tlb.md
+    - adv-topics/tonemacros.md
+    - adv-topics/tonesignalling.md
     - adv-topics/uefi-secureboot.md
     - adv-topics/usbinterfaces.md
   - VOTER/RTCM:
@@ -155,6 +163,7 @@ nav:
     - developers/source-code.md
     - developers/source-install.md
     - developers/aptly.md
+    - developers/versioning.md
   - Man Pages:
     - mans/index.md
     - mans/allmon3-passwd.md

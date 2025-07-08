@@ -236,7 +236,10 @@ archivedir = /var/spool/asterisk/monitor ; top-level recording directory
 
 The [`archivedir=`](#archivedir) and [`archiveformat=`](#archiveformat) options can be implemented in the `[node-main](!)` stanza to apply to all nodes on the server, or in the per-node stanza for recording individual nodes. See [config file templating](../adv-topics/conftmpl.md/#asterisk-templates) for more information.
 
-**NOTE:** Enabling this function can adversely impact the CPU utilization on the device, and consume large amounts of the available storage. You would be wise to implement a script or look at a utility such as `logrotate` to periodically flush old recordings and logs.
+!!! warning "Disk and CPU Usage"
+  Enabling this function can adversely impact the CPU utilization on the device, and consume large amounts of the available storage. You would be wise to implement a script or look at a utility such as `logrotate` to periodically flush old recordings and logs.
+
+See the [Audio and Activity Logging](../adv-topics/archivedir.md) page for additional details on this function.
 
 ### archiveformat=
 This option specifies the format of the audio recordings in [`archivedir=`](#archivedir). By default, the format will be "wav49" (GSM in a .WAV file). Other options you may consider include "wav" (SLIN in a .wav file) and "gsm" (GSM in straight gsm format).
@@ -288,23 +291,21 @@ callerid="Repeater" <0000000000>
 ### connpgm= and discpgm=
 These options run user defined scripts.
 
-`connpgm` executes a program you specify on connect. It passes 2 command line arguments to your program:
+`connpgm` executes a program or script you specify when a node connects.
 
-1. node number in this stanza (us)
-2. node number being connected to us (them)
+`discpgm` executes a program or script you specify when a node disconnects.
 
-`discpgm` executes a program you specify on disconnect. It passes 2 command line arguments to your program:
-
-1. node number in this stanza (us)
-2. node number being connected to us (them)                         
+`app_rpt` passes two variables to your program or script when it is executed. They are added at the very end of the command string that is executed, `<node number in this stanza>` (us) and `<node number being connected to us>` (them). You do not NEED to use them, but they are available for your use.
 
 Sample:
 
 ```
-# Place these lines in rpt.conf for each node:
-#     connpgm=/etc/asterisk/custom/myscript 1
-#     discpgm=/etc/asterisk/custom/myscript 0
+connpgm = /etc/asterisk/custom/conlog.sh
+discpgm = /etc/asterisk/custom/dislog.sh
+
 ```
+
+See the [Connect and Disconnect Scripts](../adv-topics/condiscpgm.md) page for further details and options.
 
 ### context=
 This setting directs the autopatch for the node to use a specific context in `extensions.conf` for outgoing autopatch calls. The default is to specify a context name of radio.
@@ -366,6 +367,19 @@ This option enables/disables the Echolink telemetry COP command.
 
 * 0 = disallow users to change current Echolink telemetry setting with a COP command
 * 1 = allow users to change the setting with a COP command
+
+### elke=
+This option, if set, defines this node as an ["Elke Link"](../adv-topics/elkelink.md), and sets the time before the node goes to "sleep".
+
+Sample:
+
+```
+elke = 744                          ; set the Elke timer for 15 minutes (FFF 744 = 15 minutes)
+```
+
+The timer value is in [furlong/firkin/fortnight (FFF) system](https://en.wikipedia.org/wiki/FFF_system) units... a bit of Jim Dixon humor.
+
+See the [Elke Link](../adv-topics/elkelink.md) page for more details.
 
 ### endchar=
 This setting allows the end character used by some control functions to be changed. By default this is a `#`. The `endchar` value must not be the same as the [`funcchar`](#funcchar) default (`*`) or its overridden value.
@@ -575,6 +589,8 @@ lnkactenable = 0                   ; Set to 1 to enable the link activity timer.
 
 The default is `0` (disabled).
 
+See the [Link Activity Timer](../adv-topics/linkacttimer.md) page for more information.
+
 ### lnkacttime=
 Set the optional link activity timer (`lnkactenable` must be enabled for this to have any effect). The value is in seconds.
 
@@ -583,6 +599,8 @@ Sample:
 ```
 lnkacttime = 1800                  ; Link activity timer time in seconds.
 ```
+
+See the [Link Activity Timer](../adv-topics/linkacttimer.md) page for more information.
 
 ### lnkactmacro=
 Play the defined macro when the link activity timer expires.
@@ -593,6 +611,8 @@ Sample:
 lnkactmacro = *52                  ; Function to execute when link activity timer expires.
 ```
 
+See the [Link Activity Timer](../adv-topics/linkacttimer.md) page for more information.
+
 ### lnkacttimerwarn=
 Set this to the voice file to play when the link activity timer has 30 seconds remaining.
 
@@ -601,6 +621,8 @@ Sample:
 ```
 lnkacttimerwarn = 30seconds        ; Message to play when the link activity timer has 30 seconds left.
 ```
+
+See the [Link Activity Timer](../adv-topics/linkacttimer.md) page for more information.
 
 ### linkmongain=
 This option adjusts the audio level of monitored nodes when a signal from another node or the local receiver is received. If `linkmongain` is set to a negative number the monitored audio will decrease by the set amount in dB. If `linkmongain` set to a positive number monitored audio will increase by the set amount in dB. The value of `linkmongain` is in dB. The default value is 0dB.
