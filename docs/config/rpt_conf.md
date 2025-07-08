@@ -603,6 +603,8 @@ See the [Link Activity Timer](../adv-topics/linkacttimer.md) page for more detai
 
 The default is `0` (disabled).
 
+See the [Link Activity Timer](../adv-topics/linkacttimer.md) page for more information.
+
 ### lnkacttime=
 Set the optional link activity timer (`lnkactenable` must be enabled for this to have any effect). The value is in seconds.
 
