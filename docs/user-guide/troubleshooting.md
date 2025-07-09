@@ -1,8 +1,103 @@
 # Basic Troubleshooting Tips
 When asking for help on [AllStarLink Community](https://community.allstarlink.org) or in a [GitHub](https://github.com/AllStarLink) Issue here are some tips on how to ask for help and how to get common troubleshooting information that is often needed to understand your specific issues.
 
+## Connectivity Troubleshooting
+The following troubleshooting steps can be used to check if your node has successfully registered to the AllStarLink network:
+
+* Go to [https://www.allstarlink.org/nodelist](https://www.allstarlink.org/nodelist), put your node number in the Filter box and see if the system knows about your node. If it is registered, the background behind your node number should be green.
+
+* From the [Linux CLI](./passwords.md#linux-login) on your node, run `asl-node-lookup <node#>` with your node number, and see if the system returns a "SRV" record with a hostname and IAX port for your node, an "A" record showing your public IP address, and a "TXT" record, showing a valid and current registration record.
+
+* If your node has been setup to use the [External Node Directory File](../adv-topics/noderesolution.md#external-node-directory-file), then you can check that the file has been recently updated:
+
+```
+asl@wb6nil:~ $ tail /var/lib/asterisk/rpt_extnodes
+
+...
+;Generated 10904 records in 0.198 seconds.
+;Generated at 2025-07-06 21:43:59 UTC by f0537a4b8c66
+;SHA1=c91286ce0
+
+```
+
+* If your system/node is behind a firewall/router, make sure you have opened port `4569/UDP`, and directed it to the correct LAN IP address of your AllStarLink node
+
+* Make sure that the IAX port configured in your Server Settings of your [AllStarLink Portal](https://www.allstarlink.org/portal) account matches the port opened in your firewall 
+
+* Make sure that `bindport=4569` is set in [`iax.conf`](../config/iax_conf.md#bindport-and-bindaddr), it should be unless you've changed it (perhaps if you are running [Multiple Node on the Same Network](../adv-topics/multinodesnetwork.md))
+
+* If you are running [Multiple Nodes on the Same Network](../adv-topics/multinodesnetwork.md), pay particular attention to:
+    * Your firewall/NAT rules in the router on your LAN
+    * Your firewall rules in [Cockpit](../pi/cockpit-firewall.md), if applicable
+    * Your Server Settings (IAX Port) in the AllStarLink Portal
+    * Your `bindport=` setting in `iax.conf`
+
+* Check that the `NODE = xxxxx` setting in [`extensions.conf`](../config/extensions_conf.md#globals-stanza) has the correct node number
+
+* Check that the `[nodes]` section in [`rpt.conf`](../config/rpt_conf.md#nodes-stanza) is correct, ie. `63001 = radio@127.0.0.1:xxxx/63001,NONE`. The port, `:xxxx` is only needed if not the default port of `4569`
+
+* If you have a friend with an AllStarLink node, have them do a lookup from the [Asterisk CLI](./menu.md#asterisk-cli) and confirm that the IP address returned is your **public** IP address, and that the IAX port is what is expected: 
+
+```
+wb6nil*CLI> rpt lookup 2001
+Node: 63001     Data: radio@3.147.238.208:4569/2001,3.147.238.208
+```
+
+## Breaking the Keying Loop Between Two Simplex Nodes
+Back and forth keying (aka "Ping Ponging" or "Relay Racing") can occur when two simplex nodes are linked together. This is caused by COR or squelch noise glitches from certain types of radios. To fix,the COR must be ignored for a small amount of time after a simplex node releases PTT. To accommodate this, edit `usbradio.conf` and add the following statement in the `[usb]` stanza, or other port-specific stanza:
+
+```
+rxondelay=25
+```
+
+This will instruct the `usbradio` driver to ignore the COR line for a specified number of 20mSec intervals following the release of PTT.
+
+## Cannot Receive Connections From or Make Connections to Other AllStarLink Nodes
+
+Hint|Thing(s) to Try
+----|---------------
+Is Asterisk Running?|Type `asterisk -r` at the [`Linux CLI`](./menu.md#bash-shell), and see if you can access the [`Asterisk CLI`](./menu.md#asterisk-cli). If you can access the `Asterisk CLI`, then watch the console output while trying to connect and note what happens. If there is no output, proceed to the next thing to try. If there is output, note what errors or warnings you see on the console and ask a question about them on in the [AllStarLink Community](https://community.allstarlink.org). Please note that the error message: ***`WARNING[5765]: file.c:xxxx waitstream_core: Unexpected control subclass '13'`*** is an expected warning
+Network issues?|Try issuing a `ping` command from the [`Linux CLI`](./menu.md#bash-shell) to something on your local network. If that works, try pinging `www.allstarlink.org`. If you get an error that `www.allstarlink.org` can't be found, check your DNS server settings in `/etc/resolv.conf` to see if they are correct. If they are incorrect, correct them, save the file, and reboot
+Connectivity issues?|Check the [Connectivity Troubleshooting](#connectivity-troubleshooting) above
+
+## Cannot Receive Incoming Connections From Other AllStarLink Nodes
+
+Hint|Thing(s) to Try
+----|---------------
+Do you have the correct port forwarding settings configured in your firewall?|AllStarLink requires that UDP traffic on port `4569` be forwarded from the public (WAN) IP address to the private (LAN) IP address running your AllStarLink server. Please check the settings in your router using its instruction manual to make sure port `4569/UDP` is set up to be forwarded to the correct internal (private) IP address. 
+
+## VOTER/RTCM Choppy Audio
+The VOTER protocol is UDP which of course means packets can be dropped causing holes in the audio. Here are a couple of things to look for if the audio is choppy.
+
+### Network Problems
+The server (via `chan_voter`) sends a keep-alive packet to the VOTER/RTCM once per second. Likewise, the VOTER/RTCM sends a keep-alive packet to `chan_voter` once per second. Timeouts will occur if excessive packets are dropped.
+
+* Start the [`Asterisk CLI`](./menu.md#asterisk-cli) with verbosity set to `3` (`sudo asterisk -rvvv`) and watch for disconnect messages.  `-- Voter client nameOfClient disconnect (timeout)`. This means that `chan_voter` has missed 3 keep-alive packets in a row, or said another way, 3 seconds has passed since the last keep-alive was received.
+
+* If the `VOTER/RTCM` off-line failover message is heard over the air (perhaps quickly followed by the online message), the VOTER/RTCM has missed 6 keep-alive packets in a row. In other words, 6 seconds has passed since the last keep-alive was received.
+
+Either of these indicate a network problem that can ***not*** be compensated for with VOTER/RTCM or [`voter.conf`](../config/voter_conf.md) settings. The problem must be fixed using traditional network troubleshooting techniques, ie. `traceroute` and `ping`. Try running a `ping` with a count of 100 or more to ensure there is no packet loss.
+
+### Buffer Size
+[`Voter ping`](../voter/voter-buffers.md#voter-ping-usage) is useful for end-to-end network evaluation when ICMP ping is turned off and/or the VOTER/RTCM is behind a firewall and is not ICMP reachable. It can help with finding the correct VOTER/RTCM and [`voter.conf`](../config/voter_conf.md) buffer settings. See [Setting Voter Buffers](../voter/voter-buffers.md) and look at `oos` (out of sequence) and `packet loss`. Both should be zero. If not, adjusting the buffer size may reduce `oos` or `packet loss`.
+
+## URI: TX Audio Clipping Using Composite (Tone and Voice Combined) on Same Output
+Ensure the sum of the ***SUM*** of `txtone` and `txvoice` never exceeds 1000. If more gain is needed, split the tone and voice outputs. To split the outputs use the following configuration in `usbradio.conf`:
+
+```
+ ; voice on left channel
+ txmixa=voice
+ ; tone on right channel
+ txmixb=tone
+```
+
+## URI: `radio tune rxnoise` Fails
+Ensure you have enough audio output from the receiver. Check with a AC voltmeter or scope. You need to have at least 100mVpeak of audio for the `rxnoise` command to complete successfully.
+
+Some radios do not produce enough high frequency noise (above 3kHz) to drive the noise detection DSP. In this case switching to simple usb is recommended.
+
 ## Tips on Asking for Help
-Keep in mind that when asking for help, the pool of people likely able to help have no understanding of your personal setup, situation, skills, etc. In order to get good help, you need to ask a good question. Make sure when asking for help that you hit the following points:
+Keep in mind that when asking for help, the pool of people likely able to help have no understanding of your personal setup, situation, skills, etc. In order to get **good help**, you need to ask a **good question**. Make sure when asking for help to the [AllStarLink Community](https://community.allstarlink.org), that you hit the following points:
 
 #### Explain **Precisely** What is not Working Properly
 Requests for help such as "ASL doesn't work" or "my Pi crashes" or "I can't do X" without any further details or information is unable to be diagnosed and assisted.
@@ -54,8 +149,6 @@ Additionally, Asterisk no longer runs as the root user on Linux which means that
 In general, if people are asking questions about the details of your problem, they are likely trying to help and not nitpick. In general, if many people are having the problem, it is already known and [likely documented](../basics/incompatibles.md#known-issues).
 
 If it's not, then likely your issue is unique to your setup and providing the requested troubleshooting is needed to help you further.
-
-## Basic Troubleshooting
 
 ### Gathering Logs
 If you are asked to provide logs, there are two standard ways to provide logs, using [`Cockpit`](../pi/cockpit-basics.md) or using the `journalctl` tool from the 
