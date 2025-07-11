@@ -119,6 +119,7 @@ nav:
     - adv-topics/linkacttimer.md
     - adv-topics/litz.md
     - adv-topics/macros.md
+    - adv-topics/gpio.md
     - adv-topics/mdc1200.md
     - adv-topics/multinodesnetwork.md
     - adv-topics/nnx.md 
