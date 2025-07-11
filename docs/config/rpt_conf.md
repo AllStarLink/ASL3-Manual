@@ -427,7 +427,7 @@ status,2 = c|f|RPT_NUMLINKS      ; Say time of day when all links disconnect.
 
 The default is to have `events=` point to a stanza called `events`. However, you can have it point to another named stanza, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
 
-See [Event Management](https://wiki.allstarlink.org/wiki/Event_Management) for a more detailed look on how to configure events.
+See [Event Management Subsystem](../adv-topics/eventmgmt.md)) for a more detailed look on how to configure events.
 
 ### extnodefile=
 This option allows you to set the name of the external node lookup file. The default value is `/var/lib/asterisk/rpt_extnodes`. This file is used to look up node information when linking to other nodes.  It is also used to validate nodes that are connecting to your node.
