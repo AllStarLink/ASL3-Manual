@@ -120,7 +120,7 @@ Use `0` or `1` to set the specified output to `off` or `on`, or use a number gre
 
 
 ## Status and Channel Variables
-The status of the input pins configured are made available via channel variables (e.g. `RPT_URI_GPIO1`, `RPT_URI_GPIO4`, `RPT_PP12`, etc.) which can be used by the Event Management Subsystem.
+The status of the input pins configured are made available via channel variables (e.g. `RPT_URI_GPIO1`, `RPT_URI_GPIO4`, `RPT_PP12`, etc.) which can be used by the [Event Management Subsystem](./eventmgmt.md).
 
 To see the current state of the channel variables, use the `rpt show variables <node>` command:
 
