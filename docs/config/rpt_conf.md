@@ -126,16 +126,16 @@ COP|Description
 30|Recall Memory Setting in Attached Xcvr
 31|Channel Selector for Parallel Programmed Xcvr
 32|Touchtone pad test: command + Digit string + # to playback all digits pressed
-33|Local Telemetry Output Enable
-34|Local Telemetry Output Disable
-35|Local Telemetry Output on Demand
-36|Foreign Link Local Output Path Enable
-37|Foreign Link Local Output Path Disable
-38|Foreign Link Local Output Path Follows Local Telemetry
-39|Foreign Link Local Output Path on Demand
-42|Echolink announce node # only
-43|Echolink announce node Callsign only
-44|Echolink announce node # and Callsign
+33|Local Telemetry Output Enable (See [Telemetry Messages](../adv-topics/telemetry.md))
+34|Local Telemetry Output Disable (See [Telemetry Messages](../adv-topics/telemetry.md))
+35|Local Telemetry Output on Demand (See [Telemetry Messages](../adv-topics/telemetry.md))
+36|Foreign Link Local Output Path Enable (See [Telemetry Messages](../adv-topics/telemetry.md))
+37|Foreign Link Local Output Path Disable (See [Telemetry Messages](../adv-topics/telemetry.md))
+38|Foreign Link Local Output Path Follows Local Telemetry (See [Telemetry Messages](../adv-topics/telemetry.md))
+39|Foreign Link Local Output Path on Demand (See [Telemetry Messages](../adv-topics/telemetry.md))
+42|Echolink announce node number only (See [Telemetry Messages](../adv-topics/telemetry.md))
+43|Echolink announce node callsign only (See [Telemetry Messages](../adv-topics/telemetry.md))
+44|Echolink announce node number and callsign (See [Telemetry Messages](../adv-topics/telemetry.md))
 45|Link Activity timer enable
 46|Link Activity timer disable
 47|Reset "Link Config Changed" Flag
@@ -356,23 +356,30 @@ duplex = 0                          ; 0 = Half duplex with no telemetry tones or
 ### eannmode= 
 This option sets the Echolink node announcement type, when a node connects:
 
+* 0 = Do not announce EchoLink nodes at all
 * 1 = Say only node number (default)
 * 2 = Say phonetic call sign only on Echolink connects
 * 3 = Say phonetic call sign and node number on Echolink connects
+
+See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
 
 ### echolinkdefault=
 This option sets the Echolink telemetry option:
 
 * 0 = telemetry output off
 * 1 = telemetry output on
-* 2 = timed telemetry output on command execution and for a short time thereafter
-* 3 = follow local telemetry mode
+* 2 = timed telemetry output (after command execution and for two minutes thereafter)
+* 3 = follow local telemetry mode (default)
+
+See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
 
 ### echolinkdynamic=
-This option enables/disables the Echolink telemetry COP command.
+This option sets whether EchoLink telemetry can be enabled/disabled by users using a [COP](#cop-commands) command.
 
 * 0 = disallow users to change current Echolink telemetry setting with a COP command
 * 1 = allow users to change the setting with a COP command
+
+See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
 
 ### elke=
 This option, if set, defines this node as an ["Elke Link"](../adv-topics/elkelink.md), and sets the time before the node goes to "sleep".
@@ -483,6 +490,40 @@ functions = functions               ; pointer to functions stanza
 The default is to have `functions=` point to a stanza called `functions`, and have a common set of commands for all nodes. However, you can have it point to another named stanza, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
 
 See the [Functions Stanza](#functions-stanza) for more detail on defining functions.
+
+### guilinkdefault=
+This option sets how telemetry is handled for IAXRpt, SIP phone display, and VoIP clients.
+
+Sample:
+
+```
+guilinkdefault = 1 
+```
+
+The available options are:
+
+* 0 = telemetry output off
+* 1 = telemetry output on (default)
+* 2 = timed telemetry output (after command execution and for two minutes thereafter) 
+* 3 = follow local telemetry mode
+
+See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
+
+### guilinkdynamic=
+This option sets whether telemetry for IAXRpt, SIP phone display, and VoIP clients can be enabled/disabled by users using a [COP](#cop-commands) command.
+
+Sample:
+
+```
+guilinkdynamic = 1
+```
+
+The available options are:
+
+* 0 = disallow users to change gui telemetry setting with a COP command
+* 1 = Allow users to change the setting with a COP command
+
+See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
 
 ### hangtime=
 This option controls the length of the repeater (squelch tail) hang time. It is specified in milliseconds. 
@@ -861,7 +902,7 @@ The default is to have `phone_functions=` point to a stanza called `functions`, 
 See [Phone Functions Stanza](#phone-functions-stanza) for more information on the functions that can be configured.
 
 ### phonelinkdefault=
-This option sets whether telemetry is sent down phone links.
+This option sets how telemetry is handled for the [autopatch](../adv-topics/autopatch.md) and [Phone Portal](../user-guide/phoneportal.md) connections.
 
 Sample:
 
@@ -872,13 +913,14 @@ phonelinkdefault = 1
 The available options are:
 
 * 0 = telemetry output off
-* 1 = telemetry output on 
-* 2 = timed telemetry output on command execution and for a short time thereafter 
+* 1 = telemetry output on (default)
+* 2 = timed telemetry output (after command execution and for two minutes thereafter) 
 * 3 = follow local telemetry mode
-* Default is 1
+
+See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
 
 ### phonelinkdynamic=
-This option sets whether telemetry down phone links can be enabled/disabled by users using a [COP](#cop-commands) command.
+This option sets whether telemetry for [autopatch](../adv-topics/autopatch.md) and [Phone Portal](../user-guide/phoneportal.md) connections can be enabled/disabled by users using a [COP](#cop-commands) command.
 
 Sample:
 
@@ -890,7 +932,11 @@ The available options are:
 
 * 0 = disallow users to change phone telemetry setting with a COP command
 * 1 = Allow users to change the setting with a COP command
-* Default is 1
+
+!!! warning "Uses `guilinkdynamic`"
+    See [`app_rpt` Issue #717](https://github.com/AllStarLink/app_rpt/issues/717).
+
+See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
 
 ### politeid=
 This option specifies the number of milliseconds prior to the end of the ID cycle where the controller will attempt to play the ID in the tail when a user unkeys. If the controller does not get a chance to send the ID in the tail, the ID will be played over the top of the next user transmission. Optional, default is 30000mS.
@@ -1160,8 +1206,9 @@ The available options are:
 
 * 0 = telemetry output off
 * 1 = telemetry output on (default)
-* 2 = timed telemetry output on command execution and for a short time thereafter
-* Default is 1
+* 2 = timed telemetry output (after command execution and for two minutes thereafter)
+
+See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
 
 ### telemduckdb=
 This option allows adjustment of the telemetry level in dB when a local or voice transmission is in progress. Specify the level to lower the telemetry level in negative dB.
@@ -1184,8 +1231,9 @@ telemdynamic = 1
 The available options are:
 
 * 0 = disallow users to change the local telemetry setting with a COP command
-* 1 = Allow users to change the setting with a COP command
-* Default is 1
+* 1 = Allow users to change the setting with a COP command (default)
+
+See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
 
 ### telemnomdb=
 This option is used to fine tune the telemetry level, relative to standard node audio. The level is in dB. 
@@ -1195,6 +1243,24 @@ Sample:
 ```
 telemnomdb = -3                     ; decrease nominal telemetry by -3dB
 ```
+
+### tlbdefault=
+This option sets the TheLinkBox telemetry option:
+
+* 0 = telemetry output off
+* 1 = telemetry output on
+* 2 = timed telemetry output on command execution and for a short time thereafter
+* 3 = follow local telemetry mode (default)
+
+See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
+
+### tlbdynamic=
+This option sets whether TheLinkBox telemetry can be enabled/disabled by users using a [COP](#cop-commands) command.
+
+* 0 = disallow users to change current Echolink telemetry setting with a COP command
+* 1 = allow users to change the setting with a COP command
+
+See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
 
 ### tonemacro=
 This option allows you to override the stanza name used for the `tonemacro` stanza in `rpt.conf`. The tone macro stanza directs the node to use a particular stanza for CTCSS tone tiggered macros from users accessing the node. Macros are DTMF shortcuts, and are a special type of function. 
