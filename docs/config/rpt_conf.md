@@ -710,6 +710,24 @@ The default is to have `macro=` point to a stanza called `macro`, and have a com
 
 See the [Macro Stanza](#macro-stanza) for more detail on defining macros.
 
+### mdcmacro=
+This option allows you to override the stanza name used for the `[mdcmacro]` stanza in `rpt.conf`. The mdcmacro stanza directs the node to use a particular stanza for mdcmacros when [MDC-1200 signalling](../adv-topics/mdc1200.md) is received by the node. 
+
+Sample:
+
+```
+mdcmacro=mdcmacro                   ; use stanza named mdcmacro
+
+[mdcmacro]
+I1701=*81#                          ; announce the time with unit 1701 IDs
+```
+
+The default is to have `mdcmacro=` point to a stanza called `mdcmacro`, and have a common set of commands for all nodes. However, you can have it point to another named stanza, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
+
+See the [MDC Macro Stanza](#mdc-macro-stanza) for more detail on defining mdcmacros.
+
+**This option does not appear in the default `rpt.conf`.**
+
 ### morse=
 This option allows you to override the stanza name used for the `morse` stanza in `rpt.conf`. The morse stanza directs the node to use a particular stanza for morse code parameters for the node. Morse code parameters can be defined on a per-node basis.  
 
@@ -1384,6 +1402,20 @@ macro=macro                         ; use stanza named macros
 ```
 
 See the [Macro](../adv-topics/macros.md) page for more information on macros.
+
+## MDC Macro Stanza
+The `[mdcmacro]` stanza is a named stanza pointed to by the [`mdcmacro=`](#mdcmacro) option. Mdcmacros are actions to carry out when [MDC-1200 signalling](../adv-topics/mdc1200.md) is received. 
+
+Sample:
+
+```
+mdcmacro=mdcmacro                   ; use stanza named mdcmacro
+
+[mdcmacro]
+I1701=*81#                          ; announce the time with unit 1701 IDs
+```
+
+See the [MDC-1200 Signalling](../adv-topics/mdc1200.md) page for more information.
 
 ## Morse Stanza
 The `[morse]` stanza is a named stanza pointed to by the [`morse=](#morse) option.
