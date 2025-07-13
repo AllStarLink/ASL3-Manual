@@ -336,6 +336,39 @@ The default is to have `controlstates=` point to a stanza called `controlstates`
 
 The [Control States Stanza](#control-states-stanza) describes these mnemonics in detail.
 
+### dtmfkey=
+This setting allows you to change the access control for the local node to require a DTMF key sequence to "key-up" the node on every transmission. Similar to requiring CTCSS, users needs to send a DTMF sequence for the receiver to validate the transmission.
+
+Sample:
+
+```
+dtmfkey = 0                         ; set to 1 to require DTMF access. Default is 0 (normal access)
+```
+
+If set to `1`, there needs to be an associated [`[dtmfkeys]`](#dtmfkeys) stanza to set the valid DTMF sequence(s).
+
+!!! note "MDC-1200 Access"
+    This option can be used to make the node require MDC-1200 sigalling for access. See the [MDC-1200 Signalling](../adv-topics/mdc1200.md) page for more information.
+
+**This option does not appear in the default `rpt.conf`.**
+
+### dtmfkeys=
+The `dtmfkeys` option allows you to override the stanza name used for the `dtmfkeys` stanza in `rpt.conf`. This stanza is used to define the DTMF sequence that is required on every transmission to "key-up" the node. Each key/value pair consists of the DTMF sequence and the associated user callsign. The callsign is used for logging purposes.To use dtmfkeys, define an entry in your node stanza to point to a dedicated dtmfkeys stanza like this:
+
+Sample:
+
+```
+dtmfkeys = dtmfkeys                 ; pointer to dtmfkeys stanza
+```
+
+The default is to have `dtmfkeys=` point to a stanza called `dtmfkeys`, and have a common set of commands for all nodes. However, you can have it point to another named stanza, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
+
+See the [DTMFKeys Stanza](#dtmfkeys-stanza) for more detail on defining dtmfkeys.
+
+To use this option, [`dtmfkey=1`](#dtmfkey) needs to be set. 
+
+**This option does not appear in the default `rpt.conf`.**
+
 ### duplex=
 This setting sets the duplex mode for desired radio operation. Duplex mode 2 is the default if nonthing specified.
 
@@ -1278,6 +1311,23 @@ noice|No Incoming Connections Enable|49
 noicd|No Incoming Connections Disable|50
 slpen|Sleep Mode Enable|51
 slpds|Sleep Mode Disable|52
+
+## DTMFKeys Stanza
+The `[dtmfkeys]` stanza is a named stanza pointed to by the [`dtmfkeys=`](#dtmfkeys) option. The key/value pairs in this stanza define the DTMF sequence(s) and associated callsign(s) that are required to "key-up" the node. This stanza is typically named `[dtmfkeys]`. The name can be overridden, on a per-node basis, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
+
+Sample:
+
+```
+1234=WB6NIL
+4567=W1AW
+```
+
+In order to use the data in this stanza, [`dtmfkey=1`](#dtmfkey) must also be set.
+
+The above example will require either of the DTMF sequences `1234` or `4567` to be sent for **every** transmission, in order to "key-up" the node. Depending on which sequence is sent, the associated callsign will be logged by Asterisk.
+
+!!! note "MDC-1200 Access"
+    This option can be used to make the node require MDC-1200 sigalling for access. See the [MDC-1200 Signalling](../adv-topics/mdc1200.md) page for more information.
 
 ## Functions Stanza
 The `[functions]` stanza is a named stanza pointed to by the [`functions=`](#functions) option. Functions within this stanza are used to decode DTMF commands when accessing the node from its **receiver**. This stanza is typically named `[functions]`. The name can be overridden, on a per-node basis, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.  
