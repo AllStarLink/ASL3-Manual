@@ -710,6 +710,21 @@ The default is to have `macro=` point to a stanza called `macro`, and have a com
 
 See the [Macro Stanza](#macro-stanza) for more detail on defining macros.
 
+### mdclog=
+This option is used to enable a simple log for all local MDC-1200 Signalling received by the node. When set, each incoming MDC-1200 burst that is decoded will be logged into the log file with a timestamp.
+
+Sample:
+
+```
+mdclog = /tmp/mdclog                ; log MDC-1200 received data to /tmp/mdclog
+```
+
+The directory you use needs to be writable by Asterisk. See the [Permissions](../adv-topics/permissions.md) page for more information.
+
+See the [MDC-1200 Signalling](../adv-topics/mdc1200.md) page for more information on MDC-1200 support.
+
+**This option does not appear in the default `rpt.conf`.**
+
 ### morse=
 This option allows you to override the stanza name used for the `morse` stanza in `rpt.conf`. The morse stanza directs the node to use a particular stanza for morse code parameters for the node. Morse code parameters can be defined on a per-node basis.  
 
