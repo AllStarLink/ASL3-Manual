@@ -1242,6 +1242,35 @@ unlinkedct = ct2                    ; use courtesy tone 2
 
 See the [Courtesy Tones](../adv-topics/courtesytones.md) page for more information on defining telemetry tones.
 
+### votermargin=
+This option is used with the [Simple Voter](../adv-topics/simplevoter.md) feature to set the RSSI difference threshold to switch to another remote receiver.
+
+Sample:
+
+```
+votermargin = 10                      ; 10=default sets signal margin to vote a new winner
+```
+
+### votermode=
+This option is used with the [Simple Voter](../adv-topics/simplevoter.md) feature to set what type of voting to do.
+
+Sample:
+
+```
+votermode = 2                         ; 0 = no voting (default), 1 = voter one-shot, 2 = voter continuous
+```
+
+### votertype=
+This option is used with the [Simple Voter](../adv-topics/simplevoter.md) feature to set what type of site this node is.
+
+Sample:
+
+```
+votertype = 1                         ; 0 = no voting (default), 1 = voter repeater, 2 = voter receiver
+```
+
+The main/transmitter site would typically be a normal node, and have this option set to `1`. Remote receiver sites would have this option set to `2`.
+
 ### wait-times=
 This option allows you to override the stanza name used for the `wait-times` stanza in `rpt.conf`. Wait times are a specific group of timers for the node.
 
