@@ -51,7 +51,7 @@ votermode=2                         ; 0=default, no voting, 1=voter one-shot, 2=
 
 Observe in the above, remote receiver sites are `votertype=2`.
 
-Ensure your remote receiver sites have `statspost_program=` and `statspost_url` in [`rpt.conf`](../config/rpt_conf.md#statpost_url) commented out to prevent status posting to the AllStarLink network, and ensure the `register=` line is commented out in [`rpt_http_registrations.conf`](./httpreg.md). The remote receiver sites are receive-only, so there is no point in anyone having the ability to connect to them.
+Ensure your remote receiver sites have the `statspost_url` in [`rpt.conf`](../config/rpt_conf.md#statpost_url) commented out to prevent status posting to the AllStarLink network, and ensure the `register=` line is commented out in [`rpt_http_registrations.conf`](./httpreg.md). The remote receiver sites are receive-only, so there is no point in anyone having the ability to connect to them.
 
 After testing, change the `startup_macro` on your main/transmitter node to make a [permanent monitor](./permanentnode.md) connection to your remote receiver(s).
 
