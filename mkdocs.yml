@@ -21,6 +21,7 @@ theme:
     - navigation.indexes
     - navigation.sections
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.top
     - navigation.tracking
     - search.highlight
@@ -137,6 +138,7 @@ nav:
     - adv-topics/soundfiles.md
     - adv-topics/simplevoter.md
     - adv-topics/broadcastify.md
+    - adv-topics/telemetry.md
     - adv-topics/tlb.md
     - adv-topics/tonemacros.md
     - adv-topics/tonesignalling.md
