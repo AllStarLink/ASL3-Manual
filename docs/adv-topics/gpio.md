@@ -144,7 +144,7 @@ Variable listing for node 1999:
 If you want to have a DTMF function that turns GPIO 1 on, you would specify the following in the `[functions]` section of `rpt.conf`:
 
 ```
-1234 = cop,61,GPIO1=1 0             ; turn on GPIO 1
+1234 = cop,61,GPIO1=1               ; turn on GPIO 1
 ```
 
 A simple example command structure for using all 8 parallel port pins for output switches:
