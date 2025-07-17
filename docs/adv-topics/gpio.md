@@ -1,13 +1,11 @@
 # Manipulating GPIO
 There are 2 types of GPIO as they currently exist in the software. I/O's from a URI/sound fob or equivalent, and I/O's from a hardware driven Parallel Port.
 
-!!! warning "USB Parallel Not Supported"
+!!! warning "USB Parallel Ports Not Supported"
         USB converted parallel ports can not be bit-banged for control, and are therefore not supported.
 
 ## URIs/USB Sound Fobs (CM108, CM119)
-The GPIO (general-purpose I/O) pins on a URI (or similar USB device) may be individually used as either input or output pins. Currently the URI (because of the CM108-AH chip) only supports 2 usable GPIO pins (GPIO 1 and GPIO 4), plus one pin (labeled GPIO 2, but is actually the 'HOOK' signal on the CM-108AH chip) that may be used only for input. The old version of the URI and some other devices that use the original CM-108A chip, have full access to the GPIO 2 signal also.
-
-The upside to the CM-108AH is that if you are monitoring an external contact closure, the GPIO 2 (HOOK) input is internally pulled-up and de-bounced, so its perfect for such applications.
+The GPIO (general-purpose I/O) pins on a URI (or similar USB device using a C-Media chip) may be individually used as either input or output pins. Not all pins are available for control, some may be reserved for existing functions. Check the datasheet for your particular chip and/or the manufacturer's documentation for the radio interface, to see what pins may be available for GPIO.
 
 `chan_usbradio` and `chan_simpleusb` support configuration of the GPIO pins in the following manner (from within the section of `usbradio.conf` or `simpleusb.conf` that is for the desired device):
 
@@ -21,14 +19,14 @@ When you configure a GPIO pin, you can either designate it as `in` (input), `out
 ## Parallel Port
 Parallel port pins 2-9 can be used for outputs, and pins 10-13 and 15 can be used for inputs. Pins 18-25 are ground, and all other pins are to be treated as no connection.
 
-!!! note "Doug Hall RBI-1"
-    If you imagine you might use a Doug Hall RBI-1 interface, then use Parallel Port pins starting **after** `pp4` as the first three (`pp2`, `pp3`, and `pp4`) would be used for that device, and is unchangeable.
-
 !!! warning "Check Your Hardware"
     There are many different types of parallel ports, check your pins with a DVM and proceed carefully so that you don't damage your hardware. Outputs may switch between Vcc and GND, inputs may have internal pull-up resistors. It is quite likely that your input pins will have a pull-up to Vcc, will be active-low (ground to activate), and therefore require `ppinvert` to function correctly.
 
 !!! warning "Beware of Pin 4"
     Pin 4 (output) MAY go high when your computer boots, until Asterisk starts. Consider this if you are using this pin as an output, as it could lead to unanticipated results with your attached hardware.
+
+!!! note "Doug Hall RBI-1"
+    If you imagine you might use a Doug Hall RBI-1 interface, then use Parallel Port pins starting **after** `pp4` as the first three (`pp2`, `pp3`, and `pp4`) would be used for that device, and is unchangeable.
 
 ### Set `iobase=` in `rpt.conf`
 To find the I/O address of your parallel port, use `dmesg` to look at the boot log:
@@ -99,21 +97,21 @@ The GPIO and Parallel Port pins can be controlled directly using [`cop`](../conf
 Sample:
 
 ```
-rpt cmd 1999 cop 61,PP2=0 0         ; turn physical pin 2 off
-rpt cmd 1999 cop 61,PP2=1 0         ; turn physical pin 2 on
-rpt cmd 1999 cop 61,GPIO1=0 0       ; turn GPIO1 off
+rpt cmd 1999 cop 61,PP2=0           ; turn physical pin 2 off
+rpt cmd 1999 cop 61,PP2=1           ; turn physical pin 2 on
+rpt cmd 1999 cop 61,GPIO1=0         ; turn GPIO1 off
 ```
 
 !!! note "Syntax Note"
-    `PP` and `GPIO` must be in **CAPS**, and you need the extra digit (`0`) on the end to satisfy the command interpreter.
+    `PP` and `GPIO` must be in **CAPS**.
 
 Use `core set debug 4` to show commands being sent to the channel driver.
 
 Multiple pins can be controlled at the same time with a single command:
 
 ```
-rpt cmd 1999 cop 61,PP2=1,PP3=1,PP4=1 0 ; turn physical pins 2, 3, and 4 ON
-rpt cmd 1999 cop 61,PP2=0,PP3=0,PP4=0 0 ; turn physical pins 2, 3, and 4 OFF
+rpt cmd 1999 cop 61,PP2=1,PP3=1,PP4=1   ; turn physical pins 2, 3, and 4 ON
+rpt cmd 1999 cop 61,PP2=0,PP3=0,PP4=0   ; turn physical pins 2, 3, and 4 OFF
 ```
 
 Use `0` or `1` to set the specified output to `off` or `on`, or use a number greater than `1` (`N+1`) to specify how many milliseconds to invert its current state. For example, to pulse the pin for 500ms you would use the value `501` (currently, specified time only significant in increments of 50ms). Specifying a value of `N+1` to indicate `N` milliseconds was done so that in the future, support for granularity down to the millisecond level could be specified.
