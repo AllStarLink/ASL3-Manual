@@ -3,7 +3,7 @@ The Event Management Subsystem is a method by which a user can specify actions t
 
 This also includes the ability to **set** the condition of external devices, such as output pins on a URI (or similar USB devices), or a parallel port. See the [Manipulating GPIO](./gpio.md) page for more information on how to configure GPIO.
 
-The actions to be taken and the methods and steps required for doing so are specified in the [`rpt.conf`](../config/rpt_conf.md) file under the `[events]` stanza (or other named section, defined with the [`events=`](../config/rpt_conf.md#events) option).
+The actions to be taken and the methods and steps required for doing so are specified in the [`rpt.conf`](../config/rpt_conf.md) file under the `[events]` stanza (or other named sections, defined with the [`events=`](../config/rpt_conf.md#events) option).
 
 ## Event Variables
 This subsystem utilizes Asterisk channel variables (or global variables if you dare) to indicate the state of various signals and modes and are named as follows:
@@ -13,9 +13,9 @@ Variable Name|Decription
 RPT_RXKEYED|Set to `1` when the node's main (RF) receiver is receiving a valid signal
 RPT_TXKEYED|Set to `1` when the node's main (RF) transmitter is transmitting
 RPT_NUMLINKS|Count of links currently connected to the node
-RPT_LINKS|List of Node numbers currently linked to this node and their mode and receive keying status, as follows: `<NUMLINKS>,<MODE><NODEMUM>[,<MODE><NODEMUM>...]`. For example: `2,T2000,R2001` would indicate that there are two nodes linked currently, the first one is node `2000` in `T`ransceive mode, and the second one is node `2001` in `R`eceive-only (monitor) mode.
+RPT_LINKS|List of Node numbers currently linked to this node and their mode and receive keying status, as follows: `<NUMLINKS>,<MODE><NODEMUM>[,<MODE><NODEMUM>...]`. For example: `2,T2000,R2001` would indicate that there are two nodes linked currently, the first one is node `2000` in **T**ransceive mode, and the second one is node `2001` in **R**eceive-only (monitor) mode.
 RPT_NUMALINKS|Count of ***adjacent*** links currently connected to the node
-RPT_ALINKS|List of node numbers currently linked ***adjacent*** to this node, their mode, and receive keying status as follows: `<NUMALINKS>,<NODEMUM><MODE><RXKEYED>[,<NODEMUM><MODE><RXKEYED>...]`. For example: `2,2000TU,2001RK` would indicate that there are two *adjacent* nodes linked currently, the first one is node `2000` in `T`ransceive mode, and is not presently sending a keying signal (`U`) towards this node; the second one is node `2001` in `R`eceive-Only (monitor) mode, and is presently sending a keying signal (`K`) towards this node.
+RPT_ALINKS|List of node numbers currently linked ***adjacent*** to this node, their mode, and receive keying status as follows: `<NUMALINKS>,<NODEMUM><MODE><RXKEYED>[,<NODEMUM><MODE><RXKEYED>...]`. For example: `2,2000TU,2001RK` would indicate that there are two *adjacent* nodes linked currently, the first one is node `2000` in **T**ransceive mode, and is not presently sending a keying signal (**U**) towards this node; the second one is node `2001` in **R**eceive-Only (monitor) mode, and is presently sending a keying signal (**K**) towards this node.
  
 !!! note "Adjacent Nodes"
     Adjacent nodes are ones that are ***directly connected*** to this node. This differs from the `RPT_LINKS` in that the `RPT_LINKS` is a list of **all** nodes, whether connected directly, or connected through a node that is connected directly. The keying information is not given with the `RPT_LINKS` because in that context, it is meaningless.
@@ -39,25 +39,25 @@ Each line of the `[events]` stanza is specified as follows:
 
 `actions`:
 
-* If the `action` is `V` (for "setting variable"), then the `action-spec` is the variable being set.
+* If the `action` is `v` (for "setting variable"), then the `action-spec` is the variable being set.
 
-* If the `action` is `G` (for "setting global variable"), then the `action-spec` is the global variable being set.
+* If the `action` is `g` (for "setting global variable"), then the `action-spec` is the global variable being set.
 
-* If the `action` is `F` (for "function"), then the `action-spec` is a DTMF function to be executed (if the result is `1`).
+* If the `action` is `f` (for "function"), then the `action-spec` is a DTMF function to be executed (if the result is `1`).
 
-* If the `action` is `C` (for "rpt command"), then the `action-spec` is a raw `rpt command` to be executed (if the result is `1`).
+* If the `action` is `c` (for "rpt command"), then the `action-spec` is a raw `rpt command` to be executed (if the result is `1`).
 
-* If the `action` is `S` (for "shell command"), then the `action-spec` is a shell command to be executed (if the result is `1`).
+* If the `action` is `s` (for "shell command"), then the `action-spec` is a shell command to be executed (if the result is `1`).
  
 `types`:
 
-* If `type` is `E` (for "evaluate statement" (or perhaps "equals")), the `var-spec` is a full statement containing expressions, variables and operators per the expression evaluation built into Asterisk.
+* If `type` is `e` (for "evaluate statement" (or perhaps "equals")), the `var-spec` is a full statement containing expressions, variables and operators per the expression evaluation built into Asterisk.
 
-* If `type` is `T` (for "going True"), the `var-spec` is a single (already-defined) variable name, and the result will be `1` if the variable has just gone from `0` to `1`.
+* If `type` is `t` (for "going True"), the `var-spec` is a single (already-defined) variable name, and the result will be `1` if the variable has just gone from `0` to `1`.
 
-* If `type` is `F` (for "going False"), the `var-spec` is a single (already-defined) variable name, and the result will be `1` if the varible has just gone from `1` to `0`.
+* If `type` is `f` (for "going False"), the `var-spec` is a single (already-defined) variable name, and the result will be `1` if the varible has just gone from `1` to `0`.
 
-* If `type` is `N` (for "no change"), the `var-spec` is a single (already-defined) variable name, and the result will be `1` if the variable has not changed.
+* If `type` is `n` (for "no change"), the `var-spec` is a single (already-defined) variable name, and the result will be `1` if the variable has not changed.
 
 
 Examples:
@@ -100,7 +100,7 @@ ls -l /tmp > /tmp/example.txt = s|f|TEMPVAR
 If you wish to set channel variable(s) for a node from the Asterisk CLI, use the following command:
 
 ```
-*CLI> rpt setvar <nodenum> <name=value> [<name=value>...]
+*CLI> rpt set variable <nodenum> <name=value> [<name=value>...]
 ```
 
 For example, this would set the `MYVAR` variable to `1` for node `2000`:
@@ -112,7 +112,7 @@ For example, this would set the `MYVAR` variable to `1` for node `2000`:
 If you wish to display all the variables for a node, use the following command:
 
 ```
-*CLI> rpt showvars <nodenum>
+*CLI> rpt show variables <nodenum>
 ```
 
 Also, a channel variable for a node may be set from the Asterisk dialplan as follows:
