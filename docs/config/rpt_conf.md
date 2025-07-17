@@ -347,9 +347,6 @@ dtmfkey = 0                         ; set to 1 to require DTMF access. Default i
 
 If set to `1`, there needs to be an associated [`[dtmfkeys]`](#dtmfkeys) stanza to set the valid DTMF sequence(s).
 
-!!! note "MDC-1200 Access"
-    This option can be used to make the node require MDC-1200 sigalling for access. See the [MDC-1200 Signalling](../adv-topics/mdc1200.md) page for more information.
-
 **This option does not appear in the default `rpt.conf`.**
 
 ### dtmfkeys=
@@ -1325,9 +1322,6 @@ Sample:
 In order to use the data in this stanza, [`dtmfkey=1`](#dtmfkey) must also be set.
 
 The above example will require either of the DTMF sequences `1234` or `4567` to be sent for **every** transmission, in order to "key-up" the node. Depending on which sequence is sent, the associated callsign will be logged by Asterisk.
-
-!!! note "MDC-1200 Access"
-    This option can be used to make the node require MDC-1200 sigalling for access. See the [MDC-1200 Signalling](../adv-topics/mdc1200.md) page for more information.
 
 ## Functions Stanza
 The `[functions]` stanza is a named stanza pointed to by the [`functions=`](#functions) option. Functions within this stanza are used to decode DTMF commands when accessing the node from its **receiver**. This stanza is typically named `[functions]`. The name can be overridden, on a per-node basis, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.  
