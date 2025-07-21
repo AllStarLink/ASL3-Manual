@@ -121,8 +121,8 @@ COP|Description
 24|Flush all telemetry
 25|Query last node un-keyed
 26|Query all nodes keyed/unkeyed
-27|Reset DAQ minimum on a pin
-28|Reset DAQ maximum on a pin
+27|Reset DAQ minimum on a pin (See [DAQ Subsystem](../adv-topics/daq.md))
+28|Reset DAQ maximum on a pin (See [DAQ Subsystem](../adv-topics/daq.md))
 30|Recall Memory Setting in Attached Xcvr
 31|Channel Selector for Parallel Programmed Xcvr
 32|Touchtone pad test: command + Digit string + # to playback all digits pressed
@@ -136,10 +136,10 @@ COP|Description
 42|Echolink announce node number only (See [Telemetry Messages](../adv-topics/telemetry.md))
 43|Echolink announce node callsign only (See [Telemetry Messages](../adv-topics/telemetry.md))
 44|Echolink announce node number and callsign (See [Telemetry Messages](../adv-topics/telemetry.md))
-45|Link Activity timer enable
-46|Link Activity timer disable
-47|Reset "Link Config Changed" Flag
-48|Send Page Tone (Tone specs separated by parenthesis)
+45|Link Activity timer enable (See [Link Activity Timer](../adv-topics/linkacttimer.md))
+46|Link Activity timer disable (See [Link Activity Timer](../adv-topics/linkacttimer.md))
+47|Reset "Link Config Changed" Flag (See [Link Activity Timer](../adv-topics/linkacttimer.md))
+48|Send Tone Sequence (See [Tone Signalling](../adv-topics/tonesignalling.md))
 49|Disable incoming connections (control state noice)
 50|Enable incoming connections (control state noicd)
 51|Enable sleep mode
@@ -151,9 +151,9 @@ COP|Description
 57|Rx CTCSS Disable
 58|Tx CTCSS On Input only Enable
 59|Tx CTCSS On Input only Disable
-60|Send MDC-1200 Burst See the [MDC-1200](../adv-topics/mdc1200.md) page for more details.
-61|Send Message to USB to control GPIO pins (cop,61,GPIO1=0[,GPIO4=1]...)
-62|Send Message to USB to control GPIO pins, quietly (cop,62,GPIO1=0[,GPIO4=1]...)
+60|Send MDC-1200 Burst (See [MDC-1200](../adv-topics/mdc1200.md))
+61|Control GPIO/PP pins (See [Manipulating GPIO](../adv-topics/gpio.md)) 
+62|Control GPIO/PP pins, quietly (See [Manipulating GPIO](../adv-topics/gpio.md))
 63|Send pre-configred APRSTT notification (cop,63,CALL[,OVERLAYCHR])
 64|Send pre-configred APRSTT notification, quietly (cop,64,CALL[,OVERLAYCHR]) 
 65|Send POCSAG page (equipped channel types only)
@@ -891,12 +891,6 @@ Sample:
 
 ```
 outstreamcmd = /bin/sh,-c,/usr/bin/lame --preset cbr 16 -r -m m -s 8 --bitwidth 16 - - | /usr/bin/ezstream -qvc /etc/ezstream.xml
-```
-
-or
-
-```
-outstreamcmd = /usr/local/bin/nptee,broadcastify,otherstreamserver     ; Use the available nptee utility to stream to multiple servers at once
 ```
 
 See [Streaming a Node to Broadcastify](../adv-topics/broadcastify.md) for further information and details on how to configure audio streaming of the node.
