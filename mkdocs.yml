@@ -78,6 +78,7 @@ nav:
       - allmon3/install.md
       - allmon3/config.md
       - allmon3/usermgmt.md
+      - allmon3/https.md
   - Basic Operation:
     - user-guide/index.md
     - user-guide/menu.md
