@@ -172,6 +172,7 @@ nav:
   - Man Pages:
     - mans/index.md
     - mans/allmon3-passwd.md
+    - mans/asl-backup-menu.md
     - mans/asl-find-sound.md
     - mans/asl-node-lookup.md
     - mans/asl-play-arn.md
