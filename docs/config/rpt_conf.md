@@ -1645,7 +1645,7 @@ scheduler=schedule   ; name the stanza 'schedule'
 2 = 00 00 * * *   ; at midnight every day, execute macro 2.
 ```
 
-See [https://wiki.allstarlink.org/wiki/Scheduler_(ASL_System)](https://wiki.allstarlink.org/wiki/Scheduler_(ASL_System)) for more details.
+See the [Scheduled Events](../adv-topics/scheduler.md) page for more details.
 
 ## Telemetry Stanza
 This stanza is named by the [`telemetry=`] option. Telemetry entries can be shared across all nodes on the `Asterisk/app_rpt` server, or defined for each node. They can be a tone sequence, morse string, or a file as follows:

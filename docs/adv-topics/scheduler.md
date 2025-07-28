@@ -3,13 +3,20 @@ Not to be confused with `cron`, the system scheduler is owned and controlled by 
 
 To schedule anything, you should first declare what it is you want to do by making a [macro](./macros.md) for it in [`rpt.conf`](../config/rpt_conf.md).
 
+!!! note "Not Applicable to Remote Base Nodes"
+    If a node is defined as a ["remote base"](./remotebase.md), the scheduler is not available.
+
 The `app_rpt` system scheduler can *only* trigger macros. So, you first must create or pick a macro to run.
+
+!!! warning "Cannot Execute Macro 0"
+    Macro `0` is a reserved system macro (for the [`startupmacro`](../config/rpt_conf.md#startup_macro)). The Scheduler will not execute macro `0`.
 
 When the time/date statement is true, the selected macro will be run once only, until true again.
 
 You should create comments on each line to remember what it is for, in case you need to make adjustments later.
 
 ## Setting Up the System Scheduler
+Scheduler events are put in the [`[schedule]`](../config/rpt_conf.md#schedule-stanza) stanza in [`rpt.conf`](../config/rpt_conf.md). If there is no defined `[schedule]` stanza, the scheduler does nothing.
 
 Scheduler events are in the following format:
 
@@ -17,13 +24,26 @@ Scheduler events are in the following format:
 (macro number to run when true) = (MM) (HH) (DayOfMonth) (MonthOfYear) (DayOfWeek)
 ```
 
-The five time fields **must** each be separated by a single space.
+Note the following restrictions on defining the time:
 
-For day of week, Sun starts as 0 (zero) and add one for each later day, ending with Saturday as 6.
+* The five time fields **must** each be separated by a single space
 
-Any item that is all inclusive or "doesn't matter/every" can be set with a star `*` as a wildcard.
+* Minutes after the hour are `0-59`
 
-There **must** be 5 time/day entries, `*` included.
+* Hours since midnight are `0-23`
+
+* Day of month are `1-31`
+
+* Month of year is `1-12`
+
+* Day of week (days since Sunday) is `0-6` (Sunday starts as `0`, ending with Saturday as `6`)
+
+* Any item that is all inclusive or "doesn't matter/every" can be set with a star `*` as a wildcard
+
+* There **must** be 5 time/day entries, `*` included
+
+!!! warning "Not cron Format"
+    While similar to time entries with `cron`, this is **not** `cron` formatting. Only the basic definitions shown above are valid (ie. single entries, no ranges).
 
 Multiple scheduler entries are permitted, each on its own line.
 
@@ -71,6 +91,9 @@ rpt fun skdis
 ```
 
 ## System Cron
-As an alternative, you can also use the built-in `cron` utility to execute any system command or script on a schedule. Typically, you would would put them in the `root` cron schedule, which is commonly edited using `sudo crontab -e`. 
+As an alternative, you can also use the built-in `cron` utility to execute any system command or script on a schedule. Typically, you would would put them in the `asterisk` cron schedule, which is commonly edited using `sudo crontab -u asterisk -e`.
+
+!!! warning "File Permissions"
+    Be sure if you are using the system `cron`, that your scripts can be executed by the Asterisk user (and not only executable by `root`, or some other user). Quite often, failure to execute scripts is traced back to Asterisk not having the permission to execute. See the [Permissions](./permissions.md) page for more information.
 
 Cron formatting and options are beyond the scope of this document, but there are lots of examples available on the internet.
