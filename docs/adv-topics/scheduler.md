@@ -96,4 +96,4 @@ As an alternative, you can also use the built-in `cron` utility to execute any s
 !!! warning "File Permissions"
     Be sure if you are using the system `cron`, that your scripts can be executed by the Asterisk user (and not only executable by `root`, or some other user). Quite often, failure to execute scripts is traced back to Asterisk not having the permission to execute. See the [Permissions](./permissions.md) page for more information.
 
-Cron formatting and options are beyond the scope of this document, but there are lots of examples available on the internet.
+Cron formatting and options are beyond the scope of this document, but there are lots of examples available on the internet, or review the system manual pages (`man cron`, `man crontab`, `man 5 crontab`).
