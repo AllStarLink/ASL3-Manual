@@ -1,0 +1,76 @@
+# Scheduled Events
+Not to be confused with `cron`, the system scheduler is owned and controlled by `app_rpt`.
+
+To schedule anything, you should first declare what it is you want to do by making a [macro](./macros.md) for it in [`rpt.conf`](../config/rpt_conf.md).
+
+The `app_rpt` system scheduler can *only* trigger macros. So, you first must create or pick a macro to run.
+
+When the time/date statement is true, the selected macro will be run once only, until true again.
+
+You should create comments on each line to remember what it is for, in case you need to make adjustments later.
+
+## Setting Up the System Scheduler
+
+Scheduler events are in the following format:
+
+```
+(macro number to run when true) = (MM) (HH) (DayOfMonth) (MonthOfYear) (DayOfWeek)
+```
+
+The five time fields **must** each be separated by a single space.
+
+For day of week, Sun starts as 0 (zero) and add one for each later day, ending with Saturday as 6.
+
+Any item that is all inclusive or "doesn't matter/every" can be set with a star `*` as a wildcard.
+
+There **must** be 5 time/day entries, `*` included.
+
+Multiple scheduler entries are permitted, each on its own line.
+
+Examples:
+
+```
+1 = 00 06 * * *                     ; run macro 1 at the 6th hour of any day
+
+51 = 05 * * * *                     ; update wx forecast at 05min every hour every day
+
+91 = 40 3 * * *                     ; /tmp cleanup script every 12hrs 3:40a
+
+92 = 40 15 * * *                    ; /tmp cleanup script every 12hrs 15:40p
+
+93 = 59 23 * * *                    ; archive logs daily at 59th min of only the 23rd hour every day
+
+94 = 59 20 * * 5                    ; start net links at 8:59 on Friday
+
+99 = 00 18 25 12 *                  ; merry xmas announcement 6pm Dec 25
+```
+
+## Scheduler Control
+There are [`COP`](../config/rpt_conf.md#cop-commands) commands for turning the scheduler on and off that can be configured in [`rpt.conf`](../config/rpt_conf.md):
+
+```
+xxx = cop,15		                ; scheduler enable
+
+xxx = cop,16		                ; scheduler disable
+```
+
+There is also a setting in [`controlstates`](../config/rpt_conf.md#control-states-stanza) if you want to set this in a personality profile.
+
+```
+skena 
+
+skdis
+```
+
+Or via command line:
+
+```
+rpt fun skens
+
+rpt fun skdis
+```
+
+## System Cron
+As an alternative, you can also use the built-in `cron` utility to execute any system command or script on a schedule. Typically, you would would put them in the `root` cron schedule, which is commonly edited using `sudo crontab -e`. 
+
+Cron formatting and options are beyond the scope of this document, but there are lots of examples available on the internet.
