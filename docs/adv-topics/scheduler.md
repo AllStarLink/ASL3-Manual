@@ -1,12 +1,12 @@
 # Scheduled Events
-Not to be confused with `cron`, the system scheduler is owned and controlled by `app_rpt`.
+Not to be confused with `cron`, the `Asterisk/app_rpt` scheduler is owned and controlled by `app_rpt`.
 
 To schedule anything, you should first declare what it is you want to do by making a [macro](./macros.md) for it in [`rpt.conf`](../config/rpt_conf.md).
 
 !!! note "Not Applicable to Remote Base Nodes"
     If a node is defined as a ["remote base"](./remotebase.md), the scheduler is not available.
 
-The `app_rpt` system scheduler can *only* trigger macros. So, you first must create or pick a macro to run.
+The `Asterisk/app_rpt` scheduler can *only* trigger macros. So, you first must create or pick a macro to run.
 
 !!! warning "Cannot Execute Macro 0"
     Macro `0` is a reserved system macro (for the [`startupmacro`](../config/rpt_conf.md#startup_macro)). The Scheduler will not execute macro `0`.
@@ -42,7 +42,7 @@ Note the following restrictions on defining the time:
 
 * There **must** be 5 time/day entries, `*` included
 
-!!! warning "Not cron Format"
+!!! warning "Not `cron` Format"
     While similar to time entries with `cron`, this is **not** `cron` formatting. Only the basic definitions shown above are valid (ie. single entries, no ranges).
 
 Multiple scheduler entries are permitted, each on its own line.
@@ -91,7 +91,7 @@ rpt fun skdis
 ```
 
 ## System Cron
-As an alternative, you can also use the built-in `cron` utility to execute any system command or script on a schedule. Typically, you would would put them in the `asterisk` cron schedule, which is commonly edited using `sudo crontab -u asterisk -e`.
+As an alternative, you can also use the built-in `cron` utility to execute any system command or script on a schedule. You can put them in the `asterisk` cron schedule, which can be edited using `sudo crontab -u asterisk -e`. However, it is recommended to put your cron entries in `/etc/cron.d`, so that you don't have to remember which `crontab` you put your events into.
 
 !!! warning "File Permissions"
     Be sure if you are using the system `cron`, that your scripts can be executed by the Asterisk user (and not only executable by `root`, or some other user). Quite often, failure to execute scripts is traced back to Asterisk not having the permission to execute. See the [Permissions](./permissions.md) page for more information.
