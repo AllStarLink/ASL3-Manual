@@ -104,6 +104,7 @@ nav:
     - adv-topics/allowdenylists.md
     - adv-topics/aprs.md
     - adv-topics/tts.md 
+    - adv-topics/apprpt-dialplan.md
     - adv-topics/conftmpl.md
     - adv-topics/archivedir.md
     - adv-topics/autopatch.md
