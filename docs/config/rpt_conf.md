@@ -1474,7 +1474,7 @@ In a script:
 asterisk -rx "rpt cmd <nodenumber> cop 13"
 ```
 
-When you execute any of the above commands, Asterisk will play "SS" and then the control state number over the air.
+When you execute any of the above commands, Asterisk will play "SS" (for "System State") and then the control state number over the air.
 
 
 ## DTMFKeys Stanza
