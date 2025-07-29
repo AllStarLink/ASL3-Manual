@@ -52,7 +52,7 @@ Examples:
 ```
 1 = 0 6 * * *                       ; run macro 1 at the 6th hour of any day
 
-51 = 5 * * * *                      ; update wx forecast at 05min every hour every day
+51 = 5 * * * *                      ; update wx forecast at 5 minutes past every hour every day
 
 91 = 40 3 * * *                     ; /tmp cleanup script every 12hrs 3:40a
 
@@ -99,10 +99,10 @@ Method|Description|Advantages|Disadvantages
 ------|-----------|----------|-------------
 `sudo crontab -e`|Use `root`'s crontab|Can run any script|Can cause permission issues if commands in the script need to be further executed by Asterisk. Less safe from a security perspective, as it can easily cause unintended access to system files and commands
 `sudo crontab -u asterisk -e`|Use `asterisk`'s crontab|Safer than using `root`'s crontab, as permissions are restricted to the `asterisk` user|Need to remember to edit (`-u asterisk`) the correct crontab file
-`/etc/cron.d`|System `cron` folder|Can create "snippets" of cron entries, give them descriptive names, and run them as the `asterisk` user (they support the user field)|Pay attention to the user running the cron entry, and the associated permissions of the files it executes
+`/etc/cron.d`|System `cron` folder|Can split out cron entries for a given function vs. having many unrelated jobs all clumped together, give them descriptive names, and using the "user" field run them as any user (e.g. `asterisk` or `root`)|As when using `root`'s crontab, pay attention to the user associated with each cron entry and the associated permissions and privileges.
 
 !!! warning "File Permissions"
-    Be sure if you are using the system `cron`, that your scripts can be executed by the Asterisk user (and not only executable by `root`, or some other user). Quite often, failure to execute scripts is traced back to Asterisk not having the permission to execute. See the [Permissions](./permissions.md) page for more information.
+    Be sure if you are using the system `cron`, that your scripts can be executed by the user that `cron` is running the entry as. Quite often, failure to execute scripts is traced back to the calling user not having the permission to execute. See the [Permissions](./permissions.md) page for more information.
 
 Any of the above options for using the system `cron` are acceptable. You should decide what works best for you, and stick with that method. It can be difficult to troubleshoot if you end up putting cron entries in different places.
 
