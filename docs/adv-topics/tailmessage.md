@@ -1,20 +1,35 @@
-### tailmessagelist=
-This option allows a comma-separated list of audio files to be specified for the tail message function. The tail messages will *rotate* from one to the next until the end of the list is reached, at which point the first message in the list will be selected. If no absolute path name is specified, the directory `/usr/share/asterisk/sounds/en` will be searched for the sound file. The file extension should be omitted.
+# Tail Messages
+Tail messages are short voice files that are periodically played when a user un-keys (at the "tail" of their transmission). Tail messages can be "squashed" if a user keys up over them.
+There are two methods that can be configured to setup the playing of tail messages, as shown below.
+
+## Standard Tail Message Configuration
+
+### tailmessagelist
+Found in `rpt.conf`, this option allows a comma-separated list of audio files to be specified for the tail message function. The tail messages will *rotate* from one to the next until the end of the list is reached, at which point the first message in the list will be selected. If no absolute path name is specified, the directory `/usr/share/asterisk/sounds/en` will be searched for the sound file.  If `sounds_search_custom_dir = yes` in the `asterisk.conf` file, `/usr/share/asterisk/sounds/custom` will also be searched. 
+The file extension should be omitted.
 
 Sample:
 
 ```
-tailmessagelist = welcome,clubmeeting,wx ; rotate 3 tail messages
+tailmessagelist = welcome,clubmeeting,wx  ; rotate 3 tail messages
 ```
 
-Alternately, an extension `TAIL` can be added to the `extensions.conf` file under the default context `[telemetry]` or a the context defined in [telemtry](#telemetry)`  .  This allows full control of messages via the dialplan.
-NOTE: If the `TAIL` extension exists, values in [tailmessagelist](#tailmessagelist) are ignored.
+## Alternate Tail Message Configuration
 
-Sample #1 - perform same rotating message list
+An extension `TAIL` can be added to the `extensions.conf` file under the context `[telemetry]` or a the context defined in [telemetry](#telemetry) parameter found in `rpt.conf`.  This allows full control of messages via the dialplan.
+
+> [!NOTE]<br>
+>If the `TAIL` extension exists, [tailmessagelist](#tailmessagelist) can be commented out and values in [tailmessagelist](#tailmessagelist) are ignored.
+
+> [!NOTE]<br>
+>[globals] context and global variables are required to "remember" values across dialplan executions.
+
+
+Sample #1 - perform same rotating message list as "standard"
 ```
 [globals]
-TAILNUMFILES=2 ; set number of & separated files
-TAILFILES=tailmsg&tailmsg2 ; add & separated tail files to play.
+TAILNUMFILES=3                      ; set number of & separated files
+TAILFILES=welcome&clubmeeting&wx    ; add & separated tail files to play.
 TAILFILEINDEX=0
 
 [telemetry]
@@ -28,7 +43,7 @@ same => n, Hangup()
 Sample #2 - rotating message + weather and traffic
 ```
 [globals]
-TAILNUMFILES=3 ; set number of & separated files
+TAILNUMFILES=3                      ; set number of & separated files
 TAILFILES=tailmsg&tailmsg2&tailmsg3 ; add & separated tail files to play.
 TAILFILEINDEX=0
 
@@ -43,14 +58,15 @@ same => n,Set(GLOBAL(TAILFILEINDEX)=$[${TAILFILEINDEX} + 1])
 same => n, Hangup()
 ```
 
-Tail messages can be "squashed" if a user keys up over them.
+## Options Common to Both Tail Message Methods
 
-!!! note "File Extensions"
-    ID recording files must have extension gsm,ulaw,pcm, or wav. The extension is left off when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz mono.
+> [!NOTE]<br>
+>"File Extensions"<br>
+>ID recording files must have extension gsm,ulaw,pcm, or wav. The extension is left off when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz mono.
 
 See the [Sound Files](../adv-topics/soundfiles.md) page for more information.
 
-### tailmessagetime=
+### tailmessagetime
 This option sets the amount of time in milliseconds between tail messages. Tail Messages are played when a user unkeys on the node input at the point where the hang timer expires, and after the courtesy tone is sent.
 
 Sample:
@@ -61,7 +77,7 @@ tailmessagetime = 900000            ; 15 minutes between tail messages
 
 The maximum value is 200000000mS (55.5555 hours).
 
-### tailsquashedtime=
+### tailsquashedtime
 If a tail message is "squashed" by a user keying up over the top of it, a separate time value can be loaded to make the tail message be retried at a shorter time interval than the standard `tailmessagetime=` option. The `tailsquashedtime=` option takes a value in milliseconds.
 
 Sample:
@@ -70,7 +86,7 @@ Sample:
 tailsquashedtime = 300000           ; 5 minutes
 ```
 
-### telemetry=
+### telemetry
 This option allows you to override the stanza name used for the `telemetry` stanza in `rpt.conf`. Telemetry definitions define courtesy tone parameters, and tones sent when certain actions take place on the node.
 
 Sample:
