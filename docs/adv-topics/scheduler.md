@@ -50,9 +50,9 @@ Multiple scheduler entries are permitted, each on its own line.
 Examples:
 
 ```
-1 = 00 06 * * *                     ; run macro 1 at the 6th hour of any day
+1 = 0 6 * * *                       ; run macro 1 at the 6th hour of any day
 
-51 = 05 * * * *                     ; update wx forecast at 05min every hour every day
+51 = 5 * * * *                      ; update wx forecast at 05min every hour every day
 
 91 = 40 3 * * *                     ; /tmp cleanup script every 12hrs 3:40a
 
@@ -62,7 +62,7 @@ Examples:
 
 94 = 59 20 * * 5                    ; start net links at 8:59 on Friday
 
-99 = 00 18 25 12 *                  ; merry xmas announcement 6pm Dec 25
+99 = 0 18 25 12 *                   ; merry xmas announcement 6pm Dec 25
 ```
 
 ## Scheduler Control
@@ -91,9 +91,19 @@ rpt fun skdis
 ```
 
 ## System Cron
-As an alternative, you can also use the built-in `cron` utility to execute any system command or script on a schedule. You can put them in the `asterisk` cron schedule, which can be edited using `sudo crontab -u asterisk -e`. However, it is recommended to put your cron entries in `/etc/cron.d`, so that you don't have to remember which `crontab` you put your events into.
+As an alternative, you can also use the built-in `cron` utility to execute any system command or script on a schedule. 
+
+There are a number of different ways to use the built-in `cron`. Some of the options include:
+
+Method|Description|Advantages|Disadvantages
+------|-----------|----------|-------------
+`sudo crontab -e`|Use `root`'s crontab|Can run any script|Can cause permission issues if commands in the script need to be further executed by Asterisk. Less safe from a security perspective, as it can easily cause unintended access to system files and commands
+`sudo crontab -u asterisk -e`|Use `asterisk`'s crontab|Safer than using `root`'s crontab, as permissions are restricted to the `asterisk` user|Need to remember to edit (`-u asterisk`) the correct crontab file
+`/etc/cron.d`|System `cron` folder|Can create "snippets" of cron entries, give them descriptive names, and run them as the `asterisk` user (they support the user field)|Pay attention to the user running the cron entry, and the associated permissions of the files it executes
 
 !!! warning "File Permissions"
     Be sure if you are using the system `cron`, that your scripts can be executed by the Asterisk user (and not only executable by `root`, or some other user). Quite often, failure to execute scripts is traced back to Asterisk not having the permission to execute. See the [Permissions](./permissions.md) page for more information.
+
+Any of the above options for using the system `cron` are acceptable. You should decide what works best for you, and stick with that method. It can be difficult to troubleshoot if you end up putting cron entries in different places.
 
 Cron formatting and options are beyond the scope of this document, but there are lots of examples available on the internet, or review the system manual pages (`man cron`, `man crontab`, `man 5 crontab`).
