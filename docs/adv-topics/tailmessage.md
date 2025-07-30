@@ -5,7 +5,7 @@ There are two methods that can be configured to setup the playing of tail messag
 ## Standard Tail Message Configuration
 
 ### [tailmessagelist=](../config/rpt_conf.md#tailmessagelist)
-Found in [`rpt.conf`](../config/rpt_conf.md#tailmessagelist), this option allows a comma-separated list of audio files to be specified for the tail message function. The tail messages will *rotate* from one to the next until the end of the list is reached, at which point the first message in the list will be selected. If no absolute path name is specified, the directory `/usr/share/asterisk/sounds/en` will be searched for the sound file.  If `sounds_search_custom_dir = yes` in the `asterisk.conf` file, `/usr/share/asterisk/sounds/custom` will also be searched. 
+Found in [`rpt.conf`](../config/rpt_conf.md), this option allows a comma-separated list of audio files to be specified for the tail message function. The tail messages will *rotate* from one to the next until the end of the list is reached, at which point the first message in the list will be selected. If no absolute path name is specified, the directory `/usr/share/asterisk/sounds/en` will be searched for the sound file.  If `sounds_search_custom_dir = yes` in the `asterisk.conf` file, `/usr/share/asterisk/sounds/custom` will also be searched. 
 The file extension should be omitted.
 
 Sample:
@@ -67,10 +67,10 @@ exten => TAIL,1,Set(TAILFILES=/tmp/tailmsg,/tmp/tailmsg2) ; add , separated tail
 See the [Sound Files](../adv-topics/soundfiles.md) page for more information.
 
 ### [tailmessagetime=](../config/rpt_conf.md#tailmessagetime)
-Found in rpt.conf
+Found in [`rpt.conf`](../config/rpt_conf.md)
 
 ### [tailsquashedtime=](../config/rpt_conf.md#tailsquashedtime)
-Found in rpt.conf
+Found in [`rpt.conf`](../config/rpt_conf.md)
 
 ### [telemetry=](../config/rpt_conf.md#telemetry)
-Found in rpt.conf
+Found in [`rpt.conf`](../config/rpt_conf.md)
