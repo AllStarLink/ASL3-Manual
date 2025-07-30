@@ -18,11 +18,11 @@ tailmessagelist = welcome,clubmeeting,wx  ; rotate 3 tail messages
 
 An extension `TAIL` can be added to the `extensions.conf` file under the context `[telemetry]` or a the context defined in [telemetry](#telemetry) parameter found in `rpt.conf`.  This allows full control of messages via the dialplan.
 
-> [!NOTE]<br>
->If the `TAIL` extension exists, values in [tailmessagelist](#tailmessagelist) are ignored.
+!!! NOTE
+	If the `TAIL` extension exists, values in [tailmessagelist](#tailmessagelist) are ignored.
 
-> [!NOTE]<br>
->[globals] context and global variables are required to "remember" values across dialplan executions.
+!!! NOTE
+	[globals] context and global variables are required to "remember" values across dialplan executions.
 
 
 Sample #1 - perform same rotating message list as "standard"
@@ -60,9 +60,9 @@ exten => TAIL,1,Set(TAILFILES=/tmp/tailmsg,/tmp/tailmsg2) ; add , separated tail
 
 ## Options Common to Both Tail Message Methods
 
-> [!NOTE]<br>
->"File Extensions"<br>
->ID recording files must have extension .gsm, .ulaw, .pcm, or .wav. The extension is left off when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz mono.
+!!! note
+	"File Extensions"<br>
+	ID recording files must have extension .gsm, .ulaw, .pcm, or .wav. The extension is left off when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz mono.
 
 See the [Sound Files](../adv-topics/soundfiles.md) page for more information.
 
