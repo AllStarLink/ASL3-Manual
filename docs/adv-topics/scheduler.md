@@ -54,7 +54,7 @@ Examples:
 1 = 0 6 * * *                       ; run macro 1 at the 6th hour of any day
 51 = 5 * * * *                      ; update wx forecast at 5 minutes past every hour every day
 91 = 40 3 * * *                     ; /tmp cleanup script every day 3:40am
-92 = 40 15 * * *                    ; same cleanup script every day 3:40pm
+91 = 40 15 * * *                    ; same cleanup script every day 3:40pm
 93 = 59 23 * * *                    ; archive logs daily at 59th min of only the 23rd hour every day
 94 = 59 20 * * 5                    ; start net links at 8:59 on Friday
 99 = 0 18 25 12 *                   ; merry xmas announcement 6pm Dec 25
