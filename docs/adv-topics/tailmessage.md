@@ -19,7 +19,7 @@ tailmessagelist = welcome,clubmeeting,wx  ; rotate 3 tail messages
 An extension `TAIL` can be added to the `extensions.conf` file under the context `[telemetry]` or a the context defined in [telemetry](#telemetry) parameter found in `rpt.conf`.  This allows full control of messages via the dialplan.
 
 > [!NOTE]<br>
->If the `TAIL` extension exists, [tailmessagelist](#tailmessagelist) can be commented out and values in [tailmessagelist](#tailmessagelist) are ignored.
+>If the `TAIL` extension exists, values in [tailmessagelist](#tailmessagelist) are ignored.
 
 > [!NOTE]<br>
 >[globals] context and global variables are required to "remember" values across dialplan executions.
