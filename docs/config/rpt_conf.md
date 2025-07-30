@@ -325,16 +325,11 @@ This setting allows you to override the stanza name used for the [`[Control Stat
 
 ```
 controlstates = controlstates       ; points to control state stanza
-
-[controlstates]
-0 = rptena,lnkena,apena,totena,ufena,noicd  ; Normal operation                                  
-1 = rptena,lnkena,apdis,totdis,ufena,noice  ; Net and news operation                                             
-2 = rptena,lnkdis,apdis,totena,ufdis,noice  ; Repeater only operation
 ```
 
 The default is to have `controlstates=` point to a stanza called `controlstates`. However, you can have it point to another named stanza, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
 
-The [Control States Stanza](#control-states-stanza) describes these mnemonics in detail.
+The [Control States Stanza](#control-states-stanza) describes all the associated mnemonics and usage in detail.
 
 ### dtmfkey=
 This setting allows you to change the access control for the local node to require a DTMF key sequence to "key-up" the node on every transmission. Similar to requiring CTCSS, users needs to send a DTMF sequence for the receiver to validate the transmission.
@@ -1432,6 +1427,56 @@ noicd|No Incoming Connections Disable|50
 slpen|Sleep Mode Enable|51
 slpds|Sleep Mode Disable|52
 
+The above mneonics can be grouped together in the `[controlstates]` stanza, to define different modes of operation for the node.
+
+Sample:
+
+```
+[controlstates]
+0 = rptena,lnkena,apena,totena,ufena,noicd  ; Normal operation                                  
+1 = rptena,lnkena,apdis,totdis,ufena,noice  ; Net and news operation                                             
+2 = rptena,lnkdis,apdis,totena,ufdis,noice  ; Repeater only operation
+```
+
+Therefore, instead of issuing all the individual COP commands to change the repeater state, you can use `cop,14` to set the control state:
+
+From the Asterisk CLI (changing to control state 1):
+
+```
+asl*CLI> rpt cmd <nodenumber> cop 14 1
+```
+
+In a script:
+
+```
+asterisk -rx "rpt cmd <nodenumber> cop 14 1"
+```
+
+Or in a macro:
+
+```
+[macro]
+2 = cop,13                          ; macro 2 to query current control state
+3 = cop,14,1                        ; macro 3 to change to control state 1
+```
+
+You can also use `cop,13` to query the current control state that is selected:
+
+From the Asterisk CLI:
+
+```
+asl*CLI> rpt cmd <nodenumber> cop 13
+```
+
+In a script:
+
+```
+asterisk -rx "rpt cmd <nodenumber> cop 13"
+```
+
+When you execute any of the above commands, Asterisk will play "SS" (for "System State") and then the control state number over the air.
+
+
 ## DTMFKeys Stanza
 The `[dtmfkeys]` stanza is a named stanza pointed to by the [`dtmfkeys=`](#dtmfkeys) option. The key/value pairs in this stanza define the DTMF sequence(s) and associated callsign(s) that are required to "key-up" the node. This stanza is typically named `[dtmfkeys]`. The name can be overridden, on a per-node basis, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
 
@@ -1645,7 +1690,7 @@ scheduler=schedule   ; name the stanza 'schedule'
 2 = 00 00 * * *   ; at midnight every day, execute macro 2.
 ```
 
-See [https://wiki.allstarlink.org/wiki/Scheduler_(ASL_System)](https://wiki.allstarlink.org/wiki/Scheduler_(ASL_System)) for more details.
+See the [Scheduled Events](../adv-topics/scheduler.md) page for more details.
 
 ## Telemetry Stanza
 This stanza is named by the [`telemetry=`] option. Telemetry entries can be shared across all nodes on the `Asterisk/app_rpt` server, or defined for each node. They can be a tone sequence, morse string, or a file as follows:
