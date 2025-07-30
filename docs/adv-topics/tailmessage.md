@@ -86,7 +86,7 @@ Sample:
 tailsquashedtime = 300000           ; 5 minutes
 ```
 
-### telemetry
+### telemetry=
 This option allows you to override the stanza name used for the `telemetry` stanza in `rpt.conf`. Telemetry definitions define courtesy tone parameters, and tones sent when certain actions take place on the node.
 
 Sample:
