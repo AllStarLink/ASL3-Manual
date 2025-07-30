@@ -6,6 +6,7 @@ plugins:
   - search
   - glightbox
   - print-site
+  - include-markdown
 markdown_extensions:
   - admonition
   - attr_list
