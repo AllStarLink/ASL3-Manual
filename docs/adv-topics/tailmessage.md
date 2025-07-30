@@ -4,8 +4,8 @@ There are two methods that can be configured to setup the playing of tail messag
 
 ## Standard Tail Message Configuration
 
-### tailmessagelist=
-Found in `rpt.conf`, this option allows a comma-separated list of audio files to be specified for the tail message function. The tail messages will *rotate* from one to the next until the end of the list is reached, at which point the first message in the list will be selected. If no absolute path name is specified, the directory `/usr/share/asterisk/sounds/en` will be searched for the sound file.  If `sounds_search_custom_dir = yes` in the `asterisk.conf` file, `/usr/share/asterisk/sounds/custom` will also be searched. 
+### [tailmessagelist=](../config/rpt_conf.md#tailmessagelist)
+Found in [`rpt.conf`](../config/rpt_conf.md#tailmessagelist), this option allows a comma-separated list of audio files to be specified for the tail message function. The tail messages will *rotate* from one to the next until the end of the list is reached, at which point the first message in the list will be selected. If no absolute path name is specified, the directory `/usr/share/asterisk/sounds/en` will be searched for the sound file.  If `sounds_search_custom_dir = yes` in the `asterisk.conf` file, `/usr/share/asterisk/sounds/custom` will also be searched. 
 The file extension should be omitted.
 
 Sample:
@@ -66,34 +66,11 @@ exten => TAIL,1,Set(TAILFILES=/tmp/tailmsg,/tmp/tailmsg2) ; add , separated tail
 
 See the [Sound Files](../adv-topics/soundfiles.md) page for more information.
 
-### tailmessagetime=
-This option sets the amount of time in milliseconds between tail messages. Tail Messages are played when a user unkeys on the node input at the point where the hang timer expires, and after the courtesy tone is sent.
+### [tailmessagetime=](../config/rpt_conf.md#tailmessagetime)
+Found in rpt.conf
 
-Sample:
+### [tailsquashedtime=](../config/rpt_conf.md#tailsquashedtime)
+Found in rpt.conf
 
-```
-tailmessagetime = 900000            ; 15 minutes between tail messages
-```
-
-The maximum value is 200000000mS (55.5555 hours).
-
-### tailsquashedtime=
-If a tail message is "squashed" by a user keying up over the top of it, a separate time value can be loaded to make the tail message be retried at a shorter time interval than the standard `tailmessagetime=` option. The `tailsquashedtime=` option takes a value in milliseconds.
-
-Sample:
-
-```
-tailsquashedtime = 300000           ; 5 minutes
-```
-
-### telemetry=
-This option allows you to override the stanza name used for the `telemetry` stanza in `rpt.conf`. Telemetry definitions define courtesy tone parameters, and tones sent when certain actions take place on the node.
-
-Sample:
-
-```
-telemetry = telemetry               ; name telemetry to 'telemetry'
-
-[telemetry]
-...
-```
+### [telemetry=](../config/rpt_conf.md#telemetry)
+Found in rpt.conf
