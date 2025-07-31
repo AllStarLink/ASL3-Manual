@@ -9,7 +9,7 @@
 usage: 
 
 ```
-        allmon3-passwd [-h|--help] [--delete] [--debug] [--file FILE] [--password PASSWORD] [--version] <user>
+        /usr/bin/allmon3-passwd [-h|--help] [--delete] [--debug] [--file FILE] [--password PASSWORD] [--version] <user>
 ```
 
 Positional arguments:
