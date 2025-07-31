@@ -3,13 +3,11 @@ Allmon3 supports a robust multi-user configuration that  permits per-node granul
 
 Usernames and passwords are stored in `/etc/allmon3/users`.
 
-The default-configured username and password combination is`allmon3 / password`.
-
-<span style="color:red; size=1.2em">**You *must* change this before exposing a host to the Internet**</span>
-
+!!! note "Default Password"
+    During installation, a **random** password is generated for the `allmon3` user. That password can be found in `/etc/allmon3/random-password.txt`. You will likely want to change it using the [`allmon3-passwd`](../mans/allmon3-passwd.md) utility.
 
 ## User Database
-Allmon3's user database is managed by `allmon3-passwd`. Adding a new user or editing an existing user is the same command. If the user does not exist, it will be added. If the user does exist, the password will be updated. 
+Allmon3's user database is managed by [`allmon3-passwd`](../mans/allmon3-passwd.md). Adding a new user or editing an existing user is the same command. If the user does not exist, it will be added. If the user does exist, the password will be updated. 
 
 To add or edit a user's password: 
 
@@ -27,7 +25,9 @@ Deleting a user is simply adding the `--delete` flag to the command:
 $ allmon3-passwd --delete allmon3
 ```
 
-After changing a user's password, the Allmon3 daemon must be reloaded with `systemctl reload allmon3`.
+After changing a user's password, the Allmon3 daemon must be reloaded with `sudo systemctl reload allmon3`.
+
+See the [`allmon3-passwd`](../mans/allmon3-passwd.md) manual page for more available options.
 
 ## Per-Node Restrictions for Users
 Allmon3 implements a lightweight access control system to restrict commands from certain users to certain nodes. Restrictions are configured in `/etc/allmon3/user-restrictions`. Given that the average use case is all users have similar access, the access control is implemented in a named-restrictions model for least configuration complexity.
