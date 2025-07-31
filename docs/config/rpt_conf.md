@@ -591,7 +591,7 @@ idrecording = myid                  ; voice ID, plays /usr/local/share/asterisk/
 ```
 
 !!! note "File Extensions"
-    ID recording files must have extension gsm, ulaw, pcm, or wav. The extension is **left off** when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz mono. 
+    Audio files must have extension gsm, ulaw, pcm, or wav. The extension is **left off** when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All audio files should be sampled at 8KHz mono. 
 
 See [Sound Files](../adv-topics/soundfiles.md) for more information.
 
@@ -611,7 +611,7 @@ idrecording = shortid               ; voice ID, plays /usr/local/share/asterisk/
 ```
 
 !!! note "File Extensions"
-    ID recording files must have extension gsm, ulaw, pcm, or wav. The extension is **left off** when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz mono.
+    Audio files must have extension gsm, ulaw, pcm, or wav. The extension is **left off** when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All audio files should be sampled at 8KHz mono.
 
 See [Sound Files](../adv-topics/soundfiles.md) for more information.
 
@@ -1212,7 +1212,7 @@ tailmessagelist = welcome,clubmeeting,wx ; rotate 3 tail messages
 Tail messages can be "squashed" if a user keys up over them.
 
 !!! note "File Extensions"
-    ID recording files must have extension .gsm, .ulaw, .pcm, or .wav. The extension is left off when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz mono.
+    Audio files must have extension .gsm, .ulaw, .pcm, or .wav. The extension is left off when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All audio files should be sampled at 8KHz mono.
 
 See the [Sound Files](../adv-topics/soundfiles.md) page for more information.
 <!-- stop:tailmessagelist -->
