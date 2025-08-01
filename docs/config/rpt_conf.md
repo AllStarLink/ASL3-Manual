@@ -7,7 +7,7 @@ See also [config file templating](../adv-topics/conftmpl.md/#asterisk-templates)
 DTMF commands are placed in any one of **three** *named stanzas*. These stanzas control access to DTMF commands that a user can issue from various 
 control points.
 
-* The [Fuctions](#functions-stanza) Stanza - to decode DTMF from the node's local receiver.
+* The [Functions](#functions-stanza) Stanza - to decode DTMF from the node's local receiver.
 * The [Link Functions](#link-functions-stanza) Stanza - to decode DTMF from linked nodes.
 * The [Phone Functions](#phone-functions-stanza) Stanza - to decode DTMF from telephone connects.
  
@@ -58,7 +58,7 @@ ilink|Description|Node Number Required
 -----|-----------|--------------------
 1|Disconnect specified link|Yes
 2|Connect specified link -- monitor only|Yes
-3|Connect specified link -- tranceive|Yes
+3|Connect specified link -- transceive|Yes
 4|Enter command mode on specified link|Yes
 5|System status|No
 6|Disconnect all links|No
@@ -68,7 +68,7 @@ ilink|Description|Node Number Required
 10|Disconnect all RANGER links (except permalinks)|No
 11|Disconnect a previously permanently connected link|Yes
 12|Permanently connect specified link -- monitor only|Yes
-13|Permanently connect specified link -- tranceive|Yes
+13|Permanently connect specified link -- transceive|Yes
 15|Full system status (all nodes)|No
 16|Reconnect links disconnected with "disconnect all links"|No
 17|MDC test (for diag purposes)|No
@@ -154,8 +154,8 @@ COP|Description
 60|Send MDC-1200 Burst (See [MDC-1200](../adv-topics/mdc1200.md))
 61|Control GPIO/PP pins (See [Manipulating GPIO](../adv-topics/gpio.md)) 
 62|Control GPIO/PP pins, quietly (See [Manipulating GPIO](../adv-topics/gpio.md))
-63|Send pre-configred APRSTT notification (cop,63,CALL[,OVERLAYCHR])
-64|Send pre-configred APRSTT notification, quietly (cop,64,CALL[,OVERLAYCHR]) 
+63|Send pre-configured APRSTT notification (cop,63,CALL[,OVERLAYCHR])
+64|Send pre-configured APRSTT notification, quietly (cop,64,CALL[,OVERLAYCHR]) 
 65|Send POCSAG page (equipped channel types only)
 
 ## General Stanza
@@ -362,7 +362,7 @@ To use this option, [`dtmfkey=1`](#dtmfkey) needs to be set.
 **This option does not appear in the default `rpt.conf`.**
 
 ### duplex=
-This setting sets the duplex mode for desired radio operation. Duplex mode 2 is the default if nonthing specified.
+This setting sets the duplex mode for desired radio operation. Duplex mode 2 is the default if nothing specified.
 
 Duplex|Mode Description
 ------|----------------
@@ -423,7 +423,7 @@ See the [Elke Link](../adv-topics/elkelink.md) page for more details.
 This setting allows the end character used by some control functions to be changed. By default this is a `#`. The `endchar` value must not be the same as the [`funcchar`](#funcchar) default (`*`) or its overridden value.
 
 ### erxgain=
-This option adjusts the Echolink receive gain in +/- dbV. It is used to balance Echolink recieve audio levels on an `app_rpt` node. 
+This option adjusts the Echolink receive gain in +/- dbV. It is used to balance Echolink receive audio levels on an `app_rpt` node. 
 
 Sample:
 
@@ -482,7 +482,7 @@ extnodefile=/var/lib/asterisk/rpt_extnodes,/var/lib/asterisk/myrpt_extnodes
 
 If a custom `extnodefile=` is used, it must have the section header `[extnodes]` or a custom header as described in [extnodes](#extnodes).
 
-Also see [Node Resolutuion](../adv-topics/noderesolution.md) for information on how to configure node lookups. 
+Also see [Node Resolution](../adv-topics/noderesolution.md) for information on how to configure node lookups. 
 
 **This option does not appear in the default `rpt.conf`.**
 
@@ -586,7 +586,7 @@ idrecording = myid                  ; voice ID, plays /usr/local/share/asterisk/
 ```
 
 !!! note "File Extensions"
-    ID recording files must have extension gsm, ulaw, pcm, or wav. The extension is **left off** when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz mono. 
+    Audio files must have extension gsm, ulaw, pcm, or wav. The extension is **left off** when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All audio files should be sampled at 8KHz mono. 
 
 See [Sound Files](../adv-topics/soundfiles.md) for more information.
 
@@ -606,7 +606,7 @@ idrecording = shortid               ; voice ID, plays /usr/local/share/asterisk/
 ```
 
 !!! note "File Extensions"
-    ID recording files must have extension gsm, ulaw, pcm, or wav. The extension is **left off** when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz mono.
+    Audio files must have extension gsm, ulaw, pcm, or wav. The extension is **left off** when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All audio files should be sampled at 8KHz mono.
 
 See [Sound Files](../adv-topics/soundfiles.md) for more information.
 
@@ -1192,9 +1192,10 @@ Sample:
 ;statpost_url = http://stats.allstarlink.org/uhandler ; status updates
 ```
 
-The `statspost_url=` option can be implemented in the `[node-main](!)` stanza to apply to all nodes on the server, or in the per-node stanza for limiting statistics posting to an individual nodes. See [config file templating](../adv-topics/conftmpl.md/#asterisk-templates) for more information.
+The `statpost_url=` option can be implemented in the `[node-main](!)` stanza to apply to all nodes on the server, or in the per-node stanza for limiting statistics posting to an individual nodes. See [config file templating](../adv-topics/conftmpl.md/#asterisk-templates) for more information.
 
 ### tailmessagelist=
+<!-- start:tailmessagelist -->
 This option allows a comma-separated list of audio files to be specified for the tail message function. The tail messages will *rotate* from one to the next until the end of the list is reached, at which point the first message in the list will be selected. If no absolute path name is specified, the directory `/usr/share/asterisk/sounds/en` will be searched for the sound file. The file extension should be omitted.
 
 Sample:
@@ -1206,11 +1207,13 @@ tailmessagelist = welcome,clubmeeting,wx ; rotate 3 tail messages
 Tail messages can be "squashed" if a user keys up over them.
 
 !!! note "File Extensions"
-    ID recording files must have extension gsm,ulaw,pcm, or wav. The extension is left off when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz mono.
+    Audio files must have extension .gsm, .ulaw, .pcm, or .wav. The extension is left off when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All audio files should be sampled at 8KHz mono.
 
 See the [Sound Files](../adv-topics/soundfiles.md) page for more information.
+<!-- stop:tailmessagelist -->
 
 ### tailmessagetime=
+<!-- start:tailmessagetime -->
 This option sets the amount of time in milliseconds between tail messages. Tail Messages are played when a user unkeys on the node input at the point where the hang timer expires, and after the courtesy tone is sent.
 
 Sample:
@@ -1221,7 +1224,9 @@ tailmessagetime = 900000            ; 15 minutes between tail messages
 
 The maximum value is 200000000mS (55.5555 hours).
 
+<!-- stop:tailmessagetime -->
 ### tailsquashedtime=
+<!-- start:tailsquashedtime -->
 If a tail message is "squashed" by a user keying up over the top of it, a separate time value can be loaded to make the tail message be retried at a shorter time interval than the standard `tailmessagetime=` option. The `tailsquashedtime=` option takes a value in milliseconds.
 
 Sample:
@@ -1230,7 +1235,9 @@ Sample:
 tailsquashedtime = 300000           ; 5 minutes
 ```
 
+<!-- stop:tailsquashedtime -->
 ### telemetry=
+<!-- start:telemetry -->
 This option allows you to override the stanza name used for the `telemetry` stanza in `rpt.conf`. Telemetry definitions define courtesy tone parameters, and tones sent when certain actions take place on the node.
 
 Sample:
@@ -1246,6 +1253,7 @@ The default is to have `telemetry=` point to a stanza called `telemetry`, and ha
 
 See the [Telemetry Stanza](#telemetry-stanza) for more information on the options that can be configured.
 
+<!-- stop:telemetry -->
 ### telemdefault=
 This option sets whether telemetry is turned on or off by default.
 
