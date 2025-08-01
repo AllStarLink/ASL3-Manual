@@ -4,10 +4,10 @@
 `asl-node-lookup` - Display AllStarLink node information
 
 ## SYNOPSIS
-usage: 
+Usage: 
 
 ```
-        /usr/bin/asl-node-lookup [--help] [--verbose] [--ns <name-server>] <node#>
+/usr/bin/asl-node-lookup [--help] [--verbose] [--ns <name-server>] <node#>
 ```
 
 Required arguments:

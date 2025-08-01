@@ -4,10 +4,10 @@
 `asl-play-arn` - Play Amateur Radio Newsline
 
 ## SYNOPSIS
-usage: 
+Usage: 
 
 ```
-        /usr/bin/asl-play-arn [-h] --node <node> [ --when <when> ] [ --debug ]
+/usr/bin/asl-play-arn [-h] --node <node> [ --when <when> ] [ --debug ]
 ```
 
 Required arguments:

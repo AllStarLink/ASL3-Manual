@@ -4,10 +4,10 @@
 `asl-say` - Cause Asterisk to speak
 
 ## SYNOPSIS
-usage: 
+Usage: 
 
 ```
-        /usr/bin/asl-say -n <node> -w ( time | time24 | ip4 | ip6 )
+/usr/bin/asl-say -n <node> -w ( time | time24 | ip4 | ip6 )
 ```
 
 Required arguments:

@@ -4,10 +4,10 @@
 `asl-setup-dkms-mok` - Configure the Machine Owner Key (MOK) for signing kernel packages, notably dahdi for ASL.
 
 ## SYNOPSIS
-usage: 
+Usage: 
 
 ```
-        /usr/bin/asl-setup-dkms-mok
+/usr/bin/asl-setup-dkms-mok
 ```
 
 ## DESCRIPTION

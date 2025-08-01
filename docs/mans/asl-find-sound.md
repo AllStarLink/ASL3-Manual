@@ -4,9 +4,10 @@
 `asl-find-sound` - Display `app_rpt`-compatible sound devices
 
 ## SYNOPSIS
-usage: 
+Usage:
+
 ```
-        `/usr/bin/asl-find-sound`
+`/usr/bin/asl-find-sound`
 ```
 
 ## DESCRIPTION
