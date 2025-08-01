@@ -62,7 +62,7 @@ Edit `/etc/asterisk/res_usbradio.conf` with your favorite editor. You will see t
 ```
 
 !!! note "AIOC Emulation"
-    The All-In-One-Cable (AIOC) uses a VID:PID of 1209:7388. You can re-program the AIOC with a VID:PID that emulates the C-Media CM-108 chip, or you can just enable the actual VID:PID by un-commenting the above line in `res_usbradio.conf` (and restarting Asterisk).
+    The All-In-One-Cable (AIOC) uses a default VID:PID of 1209:7388. You can re-program the AIOC with a VID:PID that emulates the C-Media CM-108 chip, or you can just enable the actual VID:PID by un-commenting the above line in `res_usbradio.conf` (and restarting Asterisk).
 
 If your audio interface has a non-supported (but C-Media compatible) chipset then replace `;usb_devices = 1209:7388` line with `usb_devices = vvvv:dddd` (`vvvv:dddd` are the vendor and product IDs). Save your changes and restart Asterisk. The added VID:PID will now be available to the `chan_simpleusb` and `chan_usbradio` channel drivers.
 
