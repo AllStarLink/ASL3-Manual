@@ -59,7 +59,7 @@ It is not unusual for it to take up to 20 mins to get a GPS lock LED (ie. using 
 If you are having odd loss of lock issues (or can't get/maintain lock), consider you may have interference to your GPS antenna from strong RF nearby. A note from Jesse Lloyd:
 
 ```
-I also had crazy problems with poor signal on my GPS when I set it up sitting in a window, and once installed at site I had the GPS antenna maybe 6 ft from the VHF antenna, and after some troubleshooting found it was getting swamped with RF and loosing lock. 
+I also had crazy problems with poor signal on my GPS when I set it up sitting in a window, and once installed at site I had the GPS antenna maybe 6 ft from the VHF antenna, and after some troubleshooting found it was getting swamped with RF and losing lock. 
 
 I found the debug setting of 32 useful in the RTCM, you can see a hex output of the GPS status.  
 ```

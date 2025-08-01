@@ -1,6 +1,7 @@
 accountcode
 Allstar
 allstarlink
+Allmon3
 althangtime
 apdis
 apena
@@ -61,6 +62,7 @@ functionclass
 functionmethod
 guilinkdynamic
 hangtime
+Helpdesk
 holdofftelem
 idamplitude
 idfrequency
@@ -86,6 +88,7 @@ lnkena
 mdclog
 mdcmacro
 mdcmacros
+mkdocs
 multiport
 myextnodes
 myid
@@ -130,6 +133,7 @@ skdis
 skena
 sleeptime
 SLIN
+slin
 slpds
 slpen
 statpost
