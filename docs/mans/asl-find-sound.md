@@ -7,13 +7,13 @@
 Usage:
 
 ```
-`/usr/bin/asl-find-sound`
+/usr/bin/asl-find-sound
 ```
 
 ## DESCRIPTION
 asl-find-sound - Display `app_rpt`-compatible sound devices
 
-The `asl-find-sound` utility will find compatible sound devices, and display their relevant device identificatino, that can be used in the `devstr=` in `simpleusb.conf` or `usbradio.conf`.
+The `asl-find-sound` utility will find compatible sound devices, and display their relevant device identification, that can be used in the `devstr=` in `simpleusb.conf` or `usbradio.conf`.
 
 Sample:
 
