@@ -10,7 +10,7 @@ Setting up USB audio interfaces is much easier with ASL3.
 The [`asl-menu`](../user-guide/index.md) and Asterisk CLI USB config commands handle these changes.
 
 !!! warning "`devstr=` Auto-assignment"
-    Upon initial installation, the `devstr=` option to assign a USB audio device in `simpleusb.conf` and `usbradio.conf` will be blank. The channel driver, when finding no specific device assignment, will automatically assign an available audio device. When a user runs `simpleusb-tune-menu` or `radio-tune-menu`, the "Write (Save) Current Parameter Values" option includes the currently assigned device in the settings saved to the `.conf` file. If this is not desired, you will need to update the configuration files manually to change the `devstr=` to the desired audio device. If you remove the assigned interface from `devstr=`, it will be re-populated when you run `simpleusb-tune-menu` or `radio-tune-menu`.
+    Upon initial installation, the `devstr=` option to assign a USB audio device in `simpleusb.conf` and `usbradio.conf` will be blank. The channel driver, when finding no specific device assignment, will automatically assign an available audio device. When a user runs `simpleusb-tune-menu` or `radio-tune-menu`, the "Write (Save) Current Parameter Values" option includes the currently assigned device in the settings saved to the `.conf` file. If this is not desired, you will need to update the configuration files manually to change the `devstr=` to the desired audio device. If you remove an assigned interface from `devstr=` the behavior will, again, be to assign an available audio device.
 
 
 ## USB Interface IC Support
