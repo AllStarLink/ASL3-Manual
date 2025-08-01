@@ -303,7 +303,7 @@ rxchannel = SimpleUSB/1998
 See the [`rxchannel=`](../config/rpt_conf.md#rxchannel) option for available channel drivers.
 
 ### split2m=
-This option defines the offset in kHz to use for 2m [memory chanels](#remote-base-memory-stanza). The default if not defined is 600 (kHz).
+This option defines the offset in kHz to use for 2m [memory channels](#remote-base-memory-stanza). The default if not defined is 600 (kHz).
 
 ### split70cm=
 This option defines the offset in kHz to use to 70cm [memory channels](#remote-base-memory-stanza). The default if not defined is 5000 (kHz), aka 5MHz.

@@ -304,7 +304,7 @@ GPS-DEBUG: TSIP: ok 1, 9 - 14: 00 00 00 00 00 00 - everything is good in the 'ho
 
 GPS-DEBUG: TSIP: ok 0, 9 - 14: 00 00 00 18 08 06 - not happy, Not Tracking Satellites, Not Disciplining Oscillator (0x18 --> 0b000000011000), No Usable Sats, Inactive
 
-GPS-DEBUG: TSIP: ok 0, 9 - 14: 00 00 00 08 08 05 - not happy, Not Tracking Satellites, No Useable Sats, Compensating OXCO (holdover)
+GPS-DEBUG: TSIP: ok 0, 9 - 14: 00 00 00 08 08 05 - not happy, Not Tracking Satellites, No Usable Sats, Compensating OXCO (holdover)
 
 GPS-DEBUG: TSIP: ok 0, 9 - 14: 00 00 00 00 00 05 - not happy, Compensating OXCO (holdover)
 
