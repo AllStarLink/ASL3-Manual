@@ -52,7 +52,7 @@ This will set the password for the `allmon3` user to `foobar` directly.
 
 
 !!! note "Default Password"
-    The default password for the `allmon3` user has been removed. On new installations, a **random** password for the `allmon3` user will be generated. It can be found in `/etc/allmon3/random-password.txt`. You will probably want to change it to something else, using the `allmon3-passwd` utility.
+    During previous installations, an `allmon3` user may have been created with a default password. If that user still exists on your node, and the password was not changed, that user will be modified and a **random** password will be generated for the `allmon3` user when you upgrade the Allmon3 package. That random password can be found in `/etc/allmon3/random-password.txt`. You will likely want to change it using the [`allmon3-passwd`](../mans/allmon3-passwd.md) utility, or delete the `allmon3` user entirely, and provision your own.
 
 The `/etc/allmon3/users` file is readable to see that the Argon2 hash has changed for the user.
 

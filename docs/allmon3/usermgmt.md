@@ -3,8 +3,10 @@ Allmon3 supports a robust multi-user configuration that  permits per-node granul
 
 Usernames and passwords are stored in `/etc/allmon3/users`.
 
+Upon installation, **no** default user is created in `/etc/allmon3/users`. **You will need to create a user, as specified below, in order to log in and use the Allmon3 user features.**
+
 !!! note "Default Password"
-    During installation, a **random** password is generated for the `allmon3` user. That password can be found in `/etc/allmon3/random-password.txt`. You will likely want to change it using the [`allmon3-passwd`](../mans/allmon3-passwd.md) utility.
+    During previous installations, an `allmon3` user may have been created with a default password. If that user still exists on your node, and the password was not changed, that user will be modified and a **random** password will be generated for the `allmon3` user when you upgrade the Allmon3 package. That random password can be found in `/etc/allmon3/random-password.txt`. You will likely want to change it using the [`allmon3-passwd`](../mans/allmon3-passwd.md) utility, or delete the `allmon3` user entirely, and provision your own.
 
 ## User Database
 Allmon3's user database is managed by [`allmon3-passwd`](../mans/allmon3-passwd.md). Adding a new user or editing an existing user is the same command. If the user does not exist, it will be added. If the user does exist, the password will be updated. 
