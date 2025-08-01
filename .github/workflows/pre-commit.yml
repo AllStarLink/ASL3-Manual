@@ -20,6 +20,6 @@ jobs:
         with:
           check_filenames: true
           ignore_words_file: ./.codespellignore
-          exclude_file: ./docs/voter/assets/rtcm_manual.pdf
+          skip: ./docs/voter/assets/rtcm_manual.pdf
           # When using this Action in other repos, the --skip option below can be removed
           # and the .codespellignore file can be used to ignore files or words.          
