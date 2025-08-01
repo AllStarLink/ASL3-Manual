@@ -26,7 +26,7 @@ Sample #1 - perform same rotating message list as "standard"
 TAILFILEINDEX=0
 
 [telemetry]
-exten => TAIL,1,Set(TAILFILES=/tmp/tailmsg,/tmp/tailmsg2) ; add , separated tail files to play
+exten => TAIL,1,Set(TAILFILES=custom/yourtailmsg,/tmp/yourothertailmsg) ; add , separated tail files to play
 	same => n,Set(index=$[${GLOBAL(TAILFILEINDEX)} % ${FIELDQTY(TAILFILES,\,)} + 1])
 	same => n,Set(file=${CUT(TAILFILES,\,,${index})})
 	same => n,Playback(${file})
@@ -41,14 +41,14 @@ TAILFILEINDEX=0
 
 [telemetry]
 ; Say message file
-exten => TAIL,1,Set(TAILFILES=/tmp/tailmsg,/tmp/tailmsg2) ; add , separated tail files to play
+exten => TAIL,1,Set(TAILFILES=custom/yourtailmsg,/tmp/yourothertailmsg) ; add , separated tail files to play
 	same => n,Set(index=$[${GLOBAL(TAILFILEINDEX)} % ${FIELDQTY(TAILFILES,\,)} + 1])
 	same => n,Set(file=${CUT(TAILFILES,\,,${index})})
 	same => n,Playback(${file})
  	;after playing the tail message, play a weather announcement
-  	same => n,Playback(weather_file)
+  	same => n,Playback(/tmp/current-weather)
   	;after playing the weather announcement, play a traffic announcement
-  	same => n,Playback(traffic_file)
+  	same => n,Playback(/tmp/current-traffic)
 	same => n,Set(GLOBAL(TAILFILEINDEX)=$[${TAILFILEINDEX} + 1]) 
   	same => n,Hangup()
 ```
