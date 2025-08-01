@@ -5,11 +5,10 @@
 `allmon3-passwd` - Manage the `Allmon3` password file
 
 # SYNOPSIS
-
-usage: 
+Usage: 
 
 ```
-        /usr/bin/allmon3-passwd [-h|--help] [--delete] [--debug] [--file FILE] [--password PASSWORD] [--version] <user>
+/usr/bin/allmon3-passwd [-h|--help] [--delete] [--debug] [--file FILE] [--password PASSWORD] [--version] <user>
 ```
 
 Positional arguments:
