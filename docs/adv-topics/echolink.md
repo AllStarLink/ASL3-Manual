@@ -1,10 +1,14 @@
-# Echolink Configuration
-In addition to connecting to the AllStarLink network, ASL3 also has the capability to register as a node on the [EchoLink](https://echolink.org) network. Review the information on their page to find out how to get started with creating a node on their network.
+# EchoLink Configuration
+In addition to connecting to the AllStarLink network, ASL3 also has the capability to register as a node on the [EchoLink](https://echolink.org) network. Review the information on their pages to find out how to get started with creating a node on their network.
 
 ## Connecting to EchoLink
-From an `Asterisk/app_rpt` node, EchoLink connections look just like AllStarLink connections, except the EchoLink node numbers have been prefixed with a `3` and padded out to 7 digits with leading zeroes. For instance, if you want to connect to EchoLink node `1234` on your AllStarLink system you would dial `*3` followed by `3001234`. If you have a 6 digit EchoLink node number link `123456`, you would dial `*3` followed by `3123456`. As you can see, we have reserved AllStarLink node numbers with a leading 3 for the EchoLink number space.
+From an `Asterisk/app_rpt` node, EchoLink connections look just like AllStarLink connections.
 
-For users originating from an EchoLink node using EchoLink supplied software, nothing changes for them, they just dial the 4 or 6 digit EchoLink node number assigned to your AllStarLink system and they get connected!
+All EchoLink node numbers are padded to 6 digits and then prefixed with a `3`. For example, EchoLink node `1234` would be `3001234` (`3` + `001234`), `EchoLink` node `12345` would be `3012345` (`3` + `012345`), and EchoLink node `123456` would be `3123456` (`3` + `123456`). As you can see, we have reserved AllStarLink node numbers with a leading `3` for the EchoLink number space.
+
+To connect to EchoLink node `9999` you would dial `*3` followed by `30099999`.
+
+For users originating from an EchoLink node using EchoLink supplied software, nothing changes for them, they just dial the 4-6 digit EchoLink node number assigned to your AllStarLink system and they get connected!
 
 ## Configuring AllStarLink for EchoLink
 There are some steps required in order to configure your AllStarLink node to connect to the EchoLink network. Please ensure you have followed all the steps below.
@@ -25,17 +29,16 @@ load  = chan_echolink.so            ; Echolink Channel Driver enabled
 Once you have enabled the module, you will need to restart Asterisk with `sudo systemctl restart asterisk`. You may want to do this after you finish editing the rest of the configuration files, to avoid un-necessary errors while your configuration is incomplete.
 
 ### Router and Firewall Configuration
-If you are behind a NAT router, please make sure the ports for EchoLink are correctly forwarded to your AllStarLink node. The required ports are:
+If you are behind a NAT router, please make sure the inbound ports for EchoLink are correctly forwarded to your AllStarLink node. The required ports are:
 
 ```
 5198/UDP                            ; rtp audio port
 5199/UDP                            ; rtcp (control) data port
-5200/TCP                            ; directory server port
 ```
 
 Additionally, if you are running a firewall on your node, be sure to allow those same ports. If you are using the [ASL3 Appliance](../install/pi-appliance/index.md), you will need to add these ports to the [Cockpit Firewall](../pi/cockpit-firewall.md). 
 
-Current documentation on what ports need to be forwarded can be found at [https://echolink.org/firewall-friendly.htm](https://echolink.org/firewall-friendly.htm).
+Current documentation on what ports need to be forwarded, and troubleshooting information can be found at [https://echolink.org/firewall_solutions.htm](https://echolink.org/firewall_solutions.htm) and [https://echolink.org/firewall-friendly.htm](https://echolink.org/firewall-friendly.htm).
 
 ### Configure echolink.conf
 To activate the EchoLink channel driver, all that's required is a properly formatted configuration file. A base configuration file has been included with ASL3, and is located at `/etc/asterisk/echolink.conf`.
@@ -68,9 +71,9 @@ Use the relevant settings from EchoLink, and your station configuration to confi
 There are other settings in `echolink.conf` that you can adjust as necessary. See the [`echolink.conf`](../config/echolink_conf.md) page for more information.
 
 ### Completing Setup
-Once you have configured your [`echolink.conf`](../config/echolink_conf.md), don't forget to restart Asterisk with `sudo systemctl restart Asterisk` to effect the changes. Within a few minutes, the node should show up on [https://echolink.org/logins.jsp](https://echolink.org/logins.jsp).
+Once you have configured your [`echolink.conf`](../config/echolink_conf.md), don't forget to restart Asterisk with `sudo systemctl restart asterisk.service` to effect the changes. Within a few minutes, the node should show up on [https://echolink.org/logins.jsp](https://echolink.org/logins.jsp).
 
-## Aditional rpt.conf Configuration Options
+## Additional rpt.conf Configuration Options
 There are additional configuration options in [`rpt.conf`](../config/rpt_conf.md) that customize how your EchoLink node interacts with your AllStarLink node. These options are:
 
 * [`eannmode=`](../config/rpt_conf.md#eannmode)
@@ -84,7 +87,7 @@ See those options for more information on what they adjust.
 ## Connectivity Issues
 When debugging EchoLink connectivity issues with your AllStarLink node, remember the following:
 
-* Never run the EchoLink application from your mobile device (cell phone/tablet/etc.) using the ***same network*** as your AllStarLink node. This will lead to problems with one or the other not being able to connect to/register/use the EchoLink servers or other EchoLink nodes. This also applies to running the Windows application on the ***same network*** as your AllStarLink node.
+* Never run another EchoLink application (cell phone/tablet/Windows/Mac/etc.) using the ***same network*** as your AllStarLink node. This will lead to problems with one or the other not being able to connect to/register/use the EchoLink servers or other EchoLink nodes.
 
 * If using the EchoLink application on your mobile device (cell phone/tablet/etc.), make sure that the EchoLink application is **not set to run/is not running in the background**. Having the application running in the background can cause problems with your AllStarLink node not being able to connect to/register/use the EchoLink servers or other EchoLink nodes.
 
