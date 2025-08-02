@@ -177,6 +177,8 @@ nav:
     - mans/asl-play-arn.md
     - mans/asl-say.md
     - mans/asl-setup-dkms-mok.md
+    - mans/sa818.md
+    - mans/sa818-menu.md
   - Config Files:
     - config/index.md
     - config/config-structure.md
