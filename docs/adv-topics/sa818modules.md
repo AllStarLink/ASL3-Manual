@@ -3,7 +3,7 @@ SA818 RF modules are inexpensive RF transceiver modules, often used to build a p
 
 Setting up an SA818 RF module is much easier on ASL3.
 
-Two new commands were added to ASL3 Pi Appliance systems to program the module. We believe that most will prefer using `sa818-menu`, a visual interface to the RF module settings. For those who prefer a command line interface, we have also included `sa818`.
+Two new commands were added to ASL3 Pi Appliance systems to program the module. We believe that most will prefer using [`sa818-menu`](../mans/sa818-menu.md), a visual interface to the RF module settings. For those who prefer a command line interface, we have also included [`sa818`](../mans/sa818.md).
 
 ## sa818-menu
 To program your SA818 with the menu utility, use the following command from the Linux CLI:
@@ -14,7 +14,8 @@ sudo sa818-menu
 
 Here, you will be able to view the last saved (or default) settings.
 
-**NOTE:** The "last saved" settings are those saved by the `sa818-menu` command on your system. There is no way to "read" settings from the SA818 RF module.
+!!! note "Saved Settings"
+    The "last saved" settings are those saved by the [`sa818-menu`](../mans/sa818-menu.md) command on your system. There is no way to "read" settings from the SA818 RF module.
 
 The settings include :
 
@@ -37,9 +38,9 @@ If you change the sub-audible tone setting to CTCSS or DCS you will be presented
 
 The RF module will be programmed when you exit the menu.
 
-**NOTE:** If you make changes that you do not wish to have stored, then use the ESC key to exit the menu.
+!!! note "Cancel Changes"
+    If you make changes that you do not wish to have stored, then use the ESC key to exit the menu.
 
 ## sa818
-
-To program your SA818 using the command line you can execute the `sa818` command. For command usage information, use `sa818 --help`.
+To program your SA818 using the command line you can execute the [`sa818`](../mans/sa818.md) command. For command usage information, see the [`sa818`](../mans/sa818.md) manual page.
 
