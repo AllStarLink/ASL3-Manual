@@ -114,6 +114,7 @@ nav:
     - adv-topics/daq.md
     - adv-topics/dns-servers.md
     - adv-topics/dtmffunctions.md
+    - adv-topics/echolink.md
     - adv-topics/elkelink.md
     - adv-topics/eurorptr.md
     - adv-topics/eventmgmt.md
@@ -184,6 +185,7 @@ nav:
   - Config Files:
     - config/index.md
     - config/config-structure.md
+    - config/echolink_conf.md
     - config/extensions_conf.md
     - config/iax_conf.md
     - config/rpt_conf.md
