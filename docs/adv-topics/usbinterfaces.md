@@ -27,7 +27,7 @@ Nearly all USB Interface products that are used with ASL nodes use C-Media CM108
 The CM119 provides an additional 4 GPIO lines (GPIOs 5-8) versus the CM108. The original CM108 and CM119 ICs were replaced in the early 2010's with the CM108AH and CM119A. These ICs are still used in many USB Radio Interfaces (URIs). Newer versions of the CM1xx ICs, the CM108B and CM119B, are now available and have some minor differences in gain settings and other specifications, but are fully compatible with the earlier IC versions and with ASL.
 
 ### Supported C-Media Chips
-ASL3 natively supports C-Media chips with the vendor identifer **(VID)** `0x0d8c` with the following list of product identifiers **(PID)** .
+ASL3 natively supports C-Media chips with the vendor identifier **(VID)** `0x0d8c` with the following list of product identifiers **(PID)** .
 
 | Chip     | Product Identifier (PID)|
 |----------|-------------------------|
@@ -74,7 +74,7 @@ If your audio interface has a non-supported (but C-Media compatible) chipset the
 ## Setting Audio Levels
 When setting up a new node, or if any changes have been made such as use of a different radio, microphone, other audio hardware, or gain settings, checking and setting audio levels is **very important**. 
 
-If you have a radio attached to your node, you are **stongly encouraged** to tune your audio settings (and this your transmit deviation) using a communications service monitor. Failure to do so can easily result in you modulating distorted audio, as well as potentially causing adjacent channel interference due to excessive deviation or splatter. 
+If you have a radio attached to your node, you are **strongly encouraged** to tune your audio settings (and this your transmit deviation) using a communications service monitor. Failure to do so can easily result in you modulating distorted audio, as well as potentially causing adjacent channel interference due to excessive deviation or splatter. 
 
 Radio equipment such as HTs or mobile radios, and many electronics products such as VOIP phones often restrict end-user audio adjustment capabilities to ensure consistent audio levels. AllStarLink nodes and USB interfaces however, generally allow greater flexibility and thus extra attention is required to be sure your audio interface gains are properly matched to the external audio input and output levels. Failure to calibrate your audio levels could mean your node is much quieter or louder than it should be when linked to other nodes, which could be disruptive to other users and systems. It can also mean that the signal from your RF transmitter may cause interference with other radio systems, which carries serious consequences from spectrum regulators.
 

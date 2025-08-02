@@ -120,7 +120,7 @@ protocol=udp    ;udp,tcp,tls,ws,wss,flow
 bind=0.0.0.0:5060
 ```
 
-**NOTE:** After the bind port address (0.0.0.0) is the incoming port number (5060). This UDP port must NOT be blocked by your network firewall. If you are using a Pi Applicance, you will likely need to add the port to the built-in [firewall](../pi/cockpit-firewall.md).
+**NOTE:** After the bind port address (0.0.0.0) is the incoming port number (5060). This UDP port must NOT be blocked by your network firewall. If you are using a Pi Appliance, you will likely need to add the port to the built-in [firewall](../pi/cockpit-firewall.md).
 
 Scroll down to the section titled **Endpoint Configured For Use With A Sip Phone**. For each extension, you will need to enter three sections. Here is an example for extension **1001**:
 

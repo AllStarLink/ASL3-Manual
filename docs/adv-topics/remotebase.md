@@ -303,7 +303,7 @@ rxchannel = SimpleUSB/1998
 See the [`rxchannel=`](../config/rpt_conf.md#rxchannel) option for available channel drivers.
 
 ### split2m=
-This option defines the offset in kHz to use for 2m [memory chanels](#remote-base-memory-stanza). The default if not defined is 600 (kHz).
+This option defines the offset in kHz to use for 2m [memory channels](#remote-base-memory-stanza). The default if not defined is 600 (kHz).
 
 ### split70cm=
 This option defines the offset in kHz to use to 70cm [memory channels](#remote-base-memory-stanza). The default if not defined is 5000 (kHz), aka 5MHz.
@@ -513,7 +513,7 @@ memory=memory1998                   ; 'system stored' radio presets, not require
 ; Not Required but noted:
 
 [memory1998]                        ;Stored presets for radio, 
-                                    ;Format: (recall# xx) = (Freq 6 digits and decimal) (TX PL Tone )  ( CTCSS Tone )  (ofset + - S ) ( power l m h )
+                                    ;Format: (recall# xx) = (Freq 6 digits and decimal) (TX PL Tone )  ( CTCSS Tone )  (offset + - S ) ( power l m h )
 init=224.660,100.0,-l               ;initial freq/mode on start-up/boot - choose something safe in case of error. Not required. Can be remarked out.
 00=224.560,100.0,-l
 01=224.460,114.8,-l

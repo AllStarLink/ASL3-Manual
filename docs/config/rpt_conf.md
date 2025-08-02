@@ -7,7 +7,7 @@ See also [config file templating](../adv-topics/conftmpl.md/#asterisk-templates)
 DTMF commands are placed in any one of **three** *named stanzas*. These stanzas control access to DTMF commands that a user can issue from various 
 control points.
 
-* The [Fuctions](#functions-stanza) Stanza - to decode DTMF from the node's local receiver.
+* The [Functions](#functions-stanza) Stanza - to decode DTMF from the node's local receiver.
 * The [Link Functions](#link-functions-stanza) Stanza - to decode DTMF from linked nodes.
 * The [Phone Functions](#phone-functions-stanza) Stanza - to decode DTMF from telephone connects.
  
@@ -423,7 +423,7 @@ See the [Elke Link](../adv-topics/elkelink.md) page for more details.
 This setting allows the end character used by some control functions to be changed. By default this is a `#`. The `endchar` value must not be the same as the [`funcchar`](#funcchar) default (`*`) or its overridden value.
 
 ### erxgain=
-This option adjusts the Echolink receive gain in +/- dbV. It is used to balance Echolink recieve audio levels on an `app_rpt` node. 
+This option adjusts the Echolink receive gain in +/- dbV. It is used to balance Echolink receive audio levels on an `app_rpt` node. 
 
 Sample:
 
@@ -1074,7 +1074,7 @@ rxburstfreq = 1000
 **This option does not appear in the default `rpt.conf`.**
 
 ### rxburstthreshold=
-Fot RX Toneburst mode, this option specifies the minimum signal to noise ratio in dB that qualifies a valid tone.
+For RX Toneburst mode, this option specifies the minimum signal to noise ratio in dB that qualifies a valid tone.
 
 Sample:
 

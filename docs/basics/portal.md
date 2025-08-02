@@ -14,7 +14,7 @@ Carefully read all the information on the page that opens, then click **"Begin R
 
 Fill out the registration form and submit it with your valid information for verification.
 
-You will then receive an email from the *AllStar Helpdesk* (helpdesk@allstarlink.org if you need to add it to your spam filters) with a link to confirm your email address. **Be sure to click the link in the email to validate your address, or your account request will not proceeed.**
+You will then receive an email from the *AllStar Helpdesk* (helpdesk@allstarlink.org if you need to add it to your spam filters) with a link to confirm your email address. **Be sure to click the link in the email to validate your address, or your account request will not proceed.**
 
 You should then receive another email from from the *AllStar Helpdesk* within 24 hours, notifying you that your account has been validated (at which point you will be able to log into the Portal).
 

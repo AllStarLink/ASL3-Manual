@@ -8,7 +8,7 @@ The actions to be taken and the methods and steps required for doing so are spec
 ## Event Variables
 This subsystem utilizes Asterisk channel variables (or global variables if you dare) to indicate the state of various signals and modes and are named as follows:
 
-Variable Name|Decription
+Variable Name|Description
 -------------|----------
 RPT_RXKEYED|Set to `1` when the node's main (RF) receiver is receiving a valid signal
 RPT_TXKEYED|Set to `1` when the node's main (RF) transmitter is transmitting
@@ -22,7 +22,7 @@ RPT_ALINKS|List of node numbers currently linked ***adjacent*** to this node, th
 
 There may also be other variables included from external devices/sources, such as the URI (or similar USB devices), or a parallel port that will appear if so configured (within the configuration for that particular device), such as:
 
-Variable Name|Decription
+Variable Name|Description
 -------------|----------
 RPT_URI_GPIO1|This would be the GPIO 1 pin, if configured as an input.
 RPT_URI_GPIO4|This would be the GPIO 4 pin, if configured as an input.
@@ -55,7 +55,7 @@ Each line of the `[events]` stanza is specified as follows:
 
 * If `type` is `t` (for "going True"), the `var-spec` is a single (already-defined) variable name, and the result will be `1` if the variable has just gone from `0` to `1`.
 
-* If `type` is `f` (for "going False"), the `var-spec` is a single (already-defined) variable name, and the result will be `1` if the varible has just gone from `1` to `0`.
+* If `type` is `f` (for "going False"), the `var-spec` is a single (already-defined) variable name, and the result will be `1` if the variable has just gone from `1` to `0`.
 
 * If `type` is `n` (for "no change"), the `var-spec` is a single (already-defined) variable name, and the result will be `1` if the variable has not changed.
 

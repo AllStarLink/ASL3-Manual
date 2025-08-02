@@ -29,7 +29,7 @@ You need to modify [`rpt.conf`](../config/rpt_conf.md) to add another `autopatch
 The command above will take any digits after `*62` and send them to [`extensions.conf`](../config/extensions_conf.md) in the `[pass2script]` context. Additionally, it disables the courtesy tone, "hangs up" when your script ends, sets the inter-digit dial time to 10 seconds, and does all this quietly (no [`patchup` or `patchdn`](./courtesytones.md) telemetry).
 
 ## Configuring `extensions.conf`
-In our dialplan, we need to create the context `pass2script`. This is done in [`extentions.conf`](../config/extensions_conf.md).
+In our dialplan, we need to create the context `pass2script`. This is done in [`extensions.conf`](../config/extensions_conf.md).
 
 Example:
 
