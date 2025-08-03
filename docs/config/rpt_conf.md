@@ -423,7 +423,7 @@ See the [Elke Link](../adv-topics/elkelink.md) page for more details.
 This setting allows the end character used by some control functions to be changed. By default this is a `#`. The `endchar` value must not be the same as the [`funcchar`](#funcchar) default (`*`) or its overridden value.
 
 ### erxgain=
-This option adjusts the EchoLink receive gain in +/- dbV. It is used to balance EchoLink recieve audio levels on an `app_rpt` node. 
+This option adjusts the EchoLink receive gain in +/- dbV. It is used to balance EchoLink receive audio levels on an `app_rpt` node. 
 
 Sample:
 
