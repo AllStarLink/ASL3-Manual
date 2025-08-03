@@ -133,9 +133,9 @@ COP|Description
 37|Foreign Link Local Output Path Disable (See [Telemetry Messages](../adv-topics/telemetry.md))
 38|Foreign Link Local Output Path Follows Local Telemetry (See [Telemetry Messages](../adv-topics/telemetry.md))
 39|Foreign Link Local Output Path on Demand (See [Telemetry Messages](../adv-topics/telemetry.md))
-42|Echolink announce node number only (See [Telemetry Messages](../adv-topics/telemetry.md))
-43|Echolink announce node callsign only (See [Telemetry Messages](../adv-topics/telemetry.md))
-44|Echolink announce node number and callsign (See [Telemetry Messages](../adv-topics/telemetry.md))
+42|EchoLink announce node number only (See [Telemetry Messages](../adv-topics/telemetry.md))
+43|EchoLink announce node callsign only (See [Telemetry Messages](../adv-topics/telemetry.md))
+44|EchoLink announce node number and callsign (See [Telemetry Messages](../adv-topics/telemetry.md))
 45|Link Activity timer enable (See [Link Activity Timer](../adv-topics/linkacttimer.md))
 46|Link Activity timer disable (See [Link Activity Timer](../adv-topics/linkacttimer.md))
 47|Reset "Link Config Changed" Flag (See [Link Activity Timer](../adv-topics/linkacttimer.md))
@@ -379,17 +379,17 @@ duplex = 0                          ; 0 = Half duplex with no telemetry tones or
 ```
 
 ### eannmode= 
-This option sets the Echolink node announcement type, when a node connects:
+This option sets the EchoLink node announcement type, when a node connects:
 
 * 0 = Do not announce EchoLink nodes at all
 * 1 = Say only node number (default)
-* 2 = Say phonetic call sign only on Echolink connects
-* 3 = Say phonetic call sign and node number on Echolink connects
+* 2 = Say phonetic call sign only on EchoLink connects
+* 3 = Say phonetic call sign and node number on EchoLink connects
 
 See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
 
 ### echolinkdefault=
-This option sets the Echolink telemetry option:
+This option sets the EchoLink telemetry option:
 
 * 0 = telemetry output off
 * 1 = telemetry output on
@@ -401,7 +401,7 @@ See the [Telemetry Messages](../adv-topics/telemetry.md) page for more informati
 ### echolinkdynamic=
 This option sets whether EchoLink telemetry can be enabled/disabled by users using a [COP](#cop-commands) command.
 
-* 0 = disallow users to change current Echolink telemetry setting with a COP command
+* 0 = disallow users to change current EchoLink telemetry setting with a COP command
 * 1 = allow users to change the setting with a COP command
 
 See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
@@ -423,7 +423,7 @@ See the [Elke Link](../adv-topics/elkelink.md) page for more details.
 This setting allows the end character used by some control functions to be changed. By default this is a `#`. The `endchar` value must not be the same as the [`funcchar`](#funcchar) default (`*`) or its overridden value.
 
 ### erxgain=
-This option adjusts the Echolink receive gain in +/- dbV. It is used to balance Echolink receive audio levels on an `app_rpt` node. 
+This option adjusts the EchoLink receive gain in +/- dbV. It is used to balance EchoLink receive audio levels on an `app_rpt` node. 
 
 Sample:
 
@@ -431,18 +431,14 @@ Sample:
 erxgain = -3
 ```
 
-See the Echolink How-to for more information.
-
 ### etxgain=
-This option adjusts the Echolink transmit gain in +/- dbV. It is used to balance Echolink transmit audio on an `app_rpt` node. 
+This option adjusts the EchoLink transmit gain in +/- dbV. It is used to balance EchoLink transmit audio on an `app_rpt` node. 
 
 Sample:
 
 ```
 etxgain = 3
 ```
-
-See the Echolink How-to for more information.
 
 ### events=
 This option allows you to override the name used for the `[events]` stanza in `rpt.conf`. You can create events to specify that actions be taken when certain events occur such as transitions in receive and transmit keying, the presence and modes of links, and external inputs such as GPIO pins on the URI (or similar USB devices).
@@ -1310,7 +1306,7 @@ See the [Telemetry Messages](../adv-topics/telemetry.md) page for more informati
 ### tlbdynamic=
 This option sets whether TheLinkBox telemetry can be enabled/disabled by users using a [COP](#cop-commands) command.
 
-* 0 = disallow users to change current Echolink telemetry setting with a COP command
+* 0 = disallow users to change current EchoLink telemetry setting with a COP command
 * 1 = allow users to change the setting with a COP command
 
 See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
