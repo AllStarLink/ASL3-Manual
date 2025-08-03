@@ -6,7 +6,7 @@ From an `Asterisk/app_rpt` node, EchoLink connections look just like AllStarLink
 
 All EchoLink node numbers are padded to 6 digits and then prefixed with a `3`. For example, EchoLink node `1234` would be `3001234` (`3` + `001234`), `EchoLink` node `12345` would be `3012345` (`3` + `012345`), and EchoLink node `123456` would be `3123456` (`3` + `123456`). As you can see, we have reserved AllStarLink node numbers with a leading `3` for the EchoLink number space.
 
-To connect to EchoLink node `9999` you would dial `*3` followed by `30099999`.
+To connect to EchoLink node `9999` you would dial `*3` followed by `3009999`.
 
 For users originating from an EchoLink node using EchoLink supplied software, nothing changes for them, they just dial the 4-6 digit EchoLink node number assigned to your AllStarLink system and they get connected!
 
