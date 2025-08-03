@@ -1,11 +1,11 @@
 # Incompatibilities, Changes, and Known Issues
 
-## Incompatibilities and Changes Fom Legacy Versions
+## Incompatibilities and Changes From Legacy Versions
 With the upgrade to Asterisk 20, and all the associated code changes that had to go along with it, ASL3 has certain incompatible with older versions of the AllStarLink system. There are also some changes in how certain things function.
 
 ### VOTER/RTCM Default Port
 Modern installations of Asterisk runs as the unprivileged `asterisk` user rather than as `root`. Linux typically prohibits non-root users from listening on a TCP
-port below `1024`. The default port for VOTERs/RTCMs was preiously port `667`. This has been changed to port `1667` to allow Asterisk to access the port, and connect to VOTERs/RTCMs.
+port below `1024`. The default port for VOTERs/RTCMs was previously port `667`. This has been changed to port `1667` to allow Asterisk to access the port, and connect to VOTERs/RTCMs.
 
 If the VOTER/RTCM port cannot be easily changed, then the following configuration change can be made to the underlying operating system:
 

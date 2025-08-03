@@ -106,6 +106,7 @@ nav:
     - adv-topics/tts.md 
     - adv-topics/conftmpl.md
     - adv-topics/archivedir.md
+    - adv-topics/audiofilters.md
     - adv-topics/autopatch.md
     - adv-topics/audio-level.md
     - adv-topics/courtesytones.md
@@ -130,6 +131,7 @@ nav:
     - adv-topics/noderesolution.md
     - adv-topics/other-software.md
     - adv-topics/parrotmode.md
+    - adv-topics/dtmftoscript.md
     - adv-topics/permanentnode.md
     - adv-topics/parrotmode.md
     - adv-topics/permissions.md
@@ -138,6 +140,7 @@ nav:
     - adv-topics/rxtoneburst.md
     - adv-topics/sa818modules.md
     - adv-topics/sip-phone.md
+    - adv-topics/scheduler.md
     - adv-topics/sleepmode.md
     - adv-topics/soundfiles.md
     - adv-topics/simplevoter.md
@@ -173,6 +176,7 @@ nav:
   - Man Pages:
     - mans/index.md
     - mans/allmon3-passwd.md
+    - mans/asl-backup-menu.md
     - mans/asl-find-sound.md
     - mans/asl-node-lookup.md
     - mans/asl-play-arn.md

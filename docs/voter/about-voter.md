@@ -30,7 +30,7 @@ The first challenge is to obtain and convey ultra-accurate time information alon
 
 GPS is the simplest and most cost-effective solution to obtain ultra-accurate time information. For little money, a Garmin GPS LVC18 module (there are many others, too) may be purchased. It provides an accurate 1 pulse-per-second signal that can be used to synchronize a timing device.
 
-A "host" type computer running Linux (or UNIX, etc.) **is not** appropriate to be used as such a device, since it has absolutely **no way** of processing external inputs (or anything else, for that matter) in a *consistent* and *predictable* time. For applications that need to be accurate to hundreds of milliseconds, its fine, but for this purpose, where timing down to ***individual 125 microsecond*** audio samples is necessary, it just wont do.
+A "host" type computer running Linux (or UNIX, etc.) **is not** appropriate to be used as such a device, since it has absolutely **no way** of processing external inputs (or anything else, for that matter) in a *consistent* and *predictable* time. For applications that need to be accurate to hundreds of milliseconds, its fine, but for this purpose, where timing down to ***individual 125 microsecond*** audio samples is necessary, it just won't do.
 
 The only reasonable solution is to design hardware to accomplish this. Since hardware design is necessary, I figured that I might as well design a stand-alone board that does all the necessary functions to interface a receiver and a GPS device to an Ethernet with Internet connectivity. Certainly, a peripheral device that attaches to a "host" type computer would also be a reasonable solution, but for the same or less cost, it seems reasonable to eliminate the need for a "host" computer at receiver sites all together.
 
@@ -217,10 +217,10 @@ The serial console of the VOTER gives access to a menu allowing setting of the a
 ### VOTER Hardware Setup and Installation
 For more information on the VOTER Hardware connections, see the [VOTER Hardware](./voter-hardware.md) page. For the RTCM, see the [user manual](./assets/rtcm_manual.pdf) and/or the [RTCM Hardware](./rtcm-hardware.md) pages.
 
-Appropriate connections need to be made between the receiver's discriminator, and optionally its tone decode output, and/or the transmitter and its external (auxilliary) audio input (or microphone input, attenuated), and PTT signals. 
+Appropriate connections need to be made between the receiver's discriminator, and optionally its tone decode output, and/or the transmitter and its external (auxiliary) audio input (or microphone input, attenuated), and PTT signals. 
 
 !!! warning "Transmit Audio Connections"
-    In most applications, transmit audio must be routed through the external (auxilliary) audio input so that it gets pre-emphasized, limited, and splatter filtered. **DO NOT** directly connect to a modulator input, data input, or other direct transmitter connection (UNLESS you are generating CTCSS with the VOTER, see below). 
+    In most applications, transmit audio must be routed through the external (auxiliary) audio input so that it gets pre-emphasized, limited, and splatter filtered. **DO NOT** directly connect to a modulator input, data input, or other direct transmitter connection (UNLESS you are generating CTCSS with the VOTER, see below). 
 
 **Discriminator audio is required** to do noise (RSSI) and squelch analysis on the incoming audio, prior to the actual voice audio (baseband) being de-emphasized and sent to the host (unless it is specifically overridden, then it is a custom application). As such, the audio sent from the host to the transmitter(s) needs to be pre-emphasized before being sent over the air. 
 

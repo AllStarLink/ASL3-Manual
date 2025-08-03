@@ -197,7 +197,7 @@ The `[radio]` stanza does a few different things:
 
 * If a special number of 00 is dialed, say the node's IP address over the radio (using the `[my-ip]` stanza)
 
-The `[check_route]` stanza is the core of the autopatch dialplan. It is used to filter out numbers you do not want to allow to be dialed. This includes things like toll-free numbers, X11 numbers, 976/809/900 (toll) numbers, and the invalid 555 prefix. All of the filtered numbers get sent to the `[invalidnum]` stanza, which plays a mesage and hangs up.
+The `[check_route]` stanza is the core of the autopatch dialplan. It is used to filter out numbers you do not want to allow to be dialed. This includes things like toll-free numbers, X11 numbers, 976/809/900 (toll) numbers, and the invalid 555 prefix. All of the filtered numbers get sent to the `[invalidnum]` stanza, which plays a message and hangs up.
 
 If the call passes `[check_route]`, it gets sent to the `[pstn-out]` stanza. You will note that there are two options for `[pstn-out]`. The default is to play a message and hang up. By swapping which one is active (moving the comments around), you can send the call to the `[allstar-autopatch]` stanza in `iax.conf`. You can also configure your own VoIP provider, and send the call there (preferred).
 
