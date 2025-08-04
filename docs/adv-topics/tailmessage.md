@@ -11,7 +11,7 @@ Found in [`rpt.conf`](../config/rpt_conf.md)
 
 ## Alternate Tail Message Configuration
 
-An extension `TAIL` can be added to the `extensions.conf` file under the context `[telemetry]` or a the context defined in [telemetry](#telemetry) parameter found in `rpt.conf`.  This allows full control of messages via the dialplan.
+An extension `TAIL` can be added to the `extensions.conf` file under the context `[telemetry]` or the context defined in [telemetry](#telemetry) parameter found in `rpt.conf`.  This allows full control of messages via the dialplan.
 
 !!! NOTE
 	If the `TAIL` extension exists, values in [tailmessagelist](#tailmessagelist) are ignored.
