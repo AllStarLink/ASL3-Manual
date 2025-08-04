@@ -5,8 +5,7 @@ The standard time message extension follows:
 [telemetry]
 
 ; Say the local time of day
-exten => TIME,1,NoOp(Announce time with 'o'clock')
- same => n,ExecIfTime(0:00-11:59,*,*,*?Playback(rpt/goodmorning))
+exten => TIME,1, ExecIfTime(0:00-11:59,*,*,*?Playback(rpt/goodmorning))
  same => n,ExecIfTime(12:00-17:59,*,*,*?Playback(rpt/goodafternoon))
  same => n,ExecIfTime(18:00-23:59,*,*,*?Playback(rpt/goodevening))
  same => n,Playback(rpt/thetimeis)
@@ -20,8 +19,7 @@ A version that eliminates the "o'clock" wording:
 [telemetry]
 
 ; Say the time of day local
-exten => TIME,1,NoOp(Announce time without 'o'clock')
- same => n,ExecIfTime(0:00-11:59,*,*,*?Playback(rpt/goodmorning))
+exten => TIME,1,ExecIfTime(0:00-11:59,*,*,*?Playback(rpt/goodmorning))
  same => n,ExecIfTime(12:00-17:59,*,*,*?Playback(rpt/goodafternoon))
  same => n,ExecIfTime(18:00-23:59,*,*,*?Playback(rpt/goodevening))
  same => n,Playback(rpt/thetimeis)
