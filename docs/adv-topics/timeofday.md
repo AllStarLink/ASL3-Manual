@@ -4,7 +4,7 @@ The standard time message extension follows:
 ```
 [telemetry]
 
-; Say the local time of day
+; Say the time of day
 exten => TIME,1, ExecIfTime(0:00-11:59,*,*,*?Playback(rpt/goodmorning))
  same => n,ExecIfTime(12:00-17:59,*,*,*?Playback(rpt/goodafternoon))
  same => n,ExecIfTime(18:00-23:59,*,*,*?Playback(rpt/goodevening))
@@ -18,7 +18,7 @@ A version that eliminates the "o'clock" wording:
 ```
 [telemetry]
 
-; Say the time of day local
+; Say the time of day
 exten => TIME,1,ExecIfTime(0:00-11:59,*,*,*?Playback(rpt/goodmorning))
  same => n,ExecIfTime(12:00-17:59,*,*,*?Playback(rpt/goodafternoon))
  same => n,ExecIfTime(18:00-23:59,*,*,*?Playback(rpt/goodevening))
