@@ -34,12 +34,12 @@ Sample:
 Status|Description
 ------|-----------
 1|Force ID (global)
-[2|Give Time of Day (global)] (../adv-topics/timeofday.md)
+2|[Give Time of Day (global)](../adv-topics/timeofday.md)
 3|Give software Version (global)
 4|Give GPS location info
 5|Speak the last (dtmf) user 
 11|Force ID (local only)
-[12|Give Time of Day (local only)] (../adv-topics/timeofday.md)
+12|[Give Time of Day (local only)](../adv-topics/timeofday.md)
 
 ### Link Commands
 Commands using the `link` function class affect connecting to, disconnecting from, monitoring (RX only) other nodes, and providing linking status. 
