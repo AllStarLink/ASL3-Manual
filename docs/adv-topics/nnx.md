@@ -20,12 +20,12 @@ Once the node user has reconfigured their node computer (if previously registere
 ## Requirements
 Use of NNX node numbers is totally optional, but strongly recommended. The prior node request process still exists. Existing and new users may continue to request new node numbers per current policy.
 
-Users who opt to expand an existing node number will need to make configuration changes to their existing node (if configured). That is (using the example numbers above) all references to node 63001 will need to change to 630010. Fortunately, the [`asl-menu`](../user-guide/index.md) "Node Settings" menu allows you to change a node number, updating rpt.conf, rpt_http_registrations.conf, simpleusb.conf, usbradio.conf, voter.conf, extensions.conf, and allmon3.ini (if using [Allmon3](../allmon3/config.md)). Reconfiguring all occurrences of the existing node number is critical. Such an oversight may confuse users and put an extra support load on system admins, at least initially.
+Users who opt to expand an existing node number will need to make configuration changes to their existing node (if configured). That is (using the example numbers above) all references to node 63001 will need to change to 630010. Fortunately, the [`asl-menu`](../user-guide/index.md) "Node Settings" menu allows you to change a node number, updating rpt.conf, rpt\_http\_registrations.conf, simpleusb.conf, usbradio.conf, voter.conf, extensions.conf, and allmon3.ini (if using [Allmon3](../allmon3/config.md)). Reconfiguring all occurrences of the existing node number is critical. Any oversights may confuse users and put an extra support load on system admins, at least initially.
 
 !!! note "New Node Setup"
     If you are registering for a node number for the first time, it would be wise to extend your node number before you configure your new node for the first time. That way, you can have your xxxxx0 number ready to deploy, without having to reconfigure it after the fact. It also sets you up to easily deploy additional nodes, as your extended node numbers will already be available.
 
-Adding NNX nodes xxxxx1 thru xxxxx9 is the same process as adding any additional node.  
+Adding NNX nodes xxxxx1 thru xxxxx9 is the same process as adding any additional node.
 
 ## NNX on the AllStarLink Portal
 Node Number Extension implementation on the AllStarLink Portal is shown below.
