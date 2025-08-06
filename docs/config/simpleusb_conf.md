@@ -331,7 +331,7 @@ This setting determines the level of the receive audio from the radio receiver t
     This level is critical to set properly, as it determines the level at which you send audio into the AllStarLink network. When set properly, all nodes sound about the same when users connect (or on a hub). If this level is set incorrectly, your node will either sound too quiet or too loud, relative to other nodes. 
 
 ### txmixaset=
-This setting determines the audio level being sent out of the left ("A") channel of the USB radio interface. Use `simpleusb-tune-menu` to send a test tone. Adjust this paramater until rated system deviation of the attached transmitter is obtained on a service monitor. The default is 500.
+This setting determines the audio level being sent out of the left ("A") channel of the USB radio interface. Use `simpleusb-tune-menu` to send a test tone. Adjust this parameter until rated system deviation of the attached transmitter is obtained on a service monitor. The default is 500.
 
 ### txmixbset=
 This setting determines the audio level being sent out of the right ("B") channel of the USB radio interface. Use `simpleusb-tune-menu` to send a test tone. Adjust this parameter until rated system deviation of the attached transmitter is obtained on a service monitor. The default is 500.
