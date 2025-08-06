@@ -57,6 +57,28 @@ Check the following locations to see if your issue has already been reported:
 * [asl3-menu Issues](https://github.com/AllStarLink/asl3-menu/issues)
 * [Allmon3 Issues](https://github.com/AllStarLink/Allmon3/issues)
 
+### Issues with connections to "new" NNX Nodes
+
+There can be some confusion when first extending a node number (NNX).  Specifically, if you have/had a node that recently registered with the AllStarLink network and you expand the node number with the [Node Number Extensions (NNX)](../adv-topics/nnx.md) then some nodes may not be able to connect with your extended nodes.  Here's what happens :
+
+- You start off with a node, e.g. 63001
+    - This node registers with the AllStarLink network
+    - The ASL servers add registration info for your node (63001).  This includes updating the DNS records and node directory file (`/var/lib/asterisk/rpt_extnodes`) used by other nodes to establish connections to your node.
+
+- You extend and reconfigure your node, e.g. 63001 becomes 630010
+    - Your extended node registers with the AllStarLink network
+    - The ASL servers add registration info for your new extended node (630010).  This includes adding new DNS records and updating the node directory file.  Unfortunately, the older DNS records are not immediately removed.
+
+- Another node attempts to use a DTMF sequence to connect with your new node number.  As they enter DTMF digits their node will attempt to connect to a remote node based on the digits received.  For example, if they are trying to connect with your node, 630010, the following can happen :
+    - They have pressed the first 4 digits of the node number, 6300, their node issues a query, no match is found in the registry, and the node keeps listening
+    - They pressed the 5th digit of the node number, now 63001, their node issues a query, finds a DNS match for the pre-NNX node 63001, stops listening, and attempts to connects to the node.
+    - Everyone involved is confused about why the connection did not succeed!
+
+What happened?  Simply put, the older pre-NNX DNS records blocked the full 6-digit query and connection attempt from succeeding.  If the old records had been removed then the remote node would have kept listening for the last important digit, queried and matched the NNX node, and would have been able to successfully connect with your node.
+
+At this time, we have a once daily process that cleans out the older records.  But, you have to wait for the cleanup to happen.  We are working on changes to more quickly update the DNS records.
+
+
 ### resize2fs_once "Error"
 There are intermittent cases of errors on the screen or in  the system logs about a failure of a service named `resize2fs_once.service` after the final first boot upon installation. The error may report that it "Failed to start" or "timed out". If the `/` partition has been properly resized, which has been the case in every known 
 occurrence of the error, then there is no action to take and the issue will not appear on subsequent reboots.
