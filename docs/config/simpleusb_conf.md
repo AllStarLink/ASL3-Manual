@@ -1,5 +1,5 @@
 # simpleusb.conf
-`simpleusb.conf` (`/etc/asterisk/simpleusb.conf`) is used to configure simpleUSB channel driver, `chan_simpleusb`, for use with interfacing a radio interface module (often a C-Media compatible sound card) to `Asterisk/app_rpt`.
+`simpleusb.conf` (`/etc/asterisk/simpleusb.conf`) is used to configure SimpleUSB channel driver, `chan_simpleusb`, for use with interfacing a radio interface module (often a C-Media compatible sound card) to `Asterisk/app_rpt`.
 
 This file uses [`config file templating`](../adv-topics/conftmpl.md#asterisk-templates) to allow configuration for multiple devices. The main/default configuration is contained in the `[node-main](!)` stanza. Each device is then configured further in a device-specific stanza (ie. `[1999](node-main)`) to override any of the default settings, as required.
 
@@ -11,13 +11,17 @@ rxchannel = SimpleUSB/1999
 
 The `1999` should match your node number and the corresponding device stanza defined in `simpleusb.conf` that holds all the definitions for your radio interface device.
 
-If you are going to use this channel driver, you **MUST** enable it in `modules.conf`. Both the `chan_simpleusb.so` and `res_usbradio.so` modules are required for proper operation. Check and confirm that they have been changed from `noload` to `load`:
+To use the SimpleUSB channel driver, both the  `chan_simpleusb.so` and `res_usbradio.so` modules (in `/etc/asterisk/modules.conf`) **MUST** be loaded. Using the [`asl-menu`](../user-guide/menu.md) to configure your nodes ensures that the needed channel drivers will be loaded. Check and confirm that they have been changed from `noload` to `load`:
+
+Change from:
 
 ```
-; change:
 noload => chan_simpleusb.so         ; CM1xx USB Cards with Radio Interface Channel Driver (No DSP)
 noload => res_usbradio.so           ; Required for both simpleusb and usbradio
-; to:
+```
+
+Change to:
+```
 load => chan_simpleusb.so           ; CM1xx USB Cards with Radio Interface Channel Driver (No DSP)
 load => res_usbradio.so             ; Required for both simpleusb and usbradio
 ```
@@ -117,7 +121,7 @@ The valid options are:
 * `pp`: use a defined parallel port pin (active high)
 * `ppinvert`: use a defined parallel port pin (active low)
 
-!!! warning "Disable if not Used"
+!!! warning "Disable External CTCSS, if not Used"
     If you are not using external CTCSS logic from your radio, be sure to set `ctcssfrom = no`. Otherwise, the channel driver will be waiting for a valid CTCSS signal before allowing audio to be received from RF by the node. Having `carrierfrom=` and `ctcssfrom=` both set create "AND" squelch logic.
 
 Sample:
@@ -145,11 +149,7 @@ duplex3 = 0                         ; disable duplex3 mode
 ```
 
 ### eeprom=
-This option determines if an external EEPROM is present and attached to the USB radio interface in order to save audio configuration values. The default is `1`. Unless you know your USB radio interface has an EEPROM, **this should be set to `0`**. The settings saved in the EEPROM on the radio interface include:
-
-* `rxmixerset`
-* `txmixaset`
-* `txmixbset`
+This option determines if an external EEPROM is present and attached to the USB radio interface in order to save audio configuration values. The default is `1`. Unless you know your USB radio interface has an EEPROM, **this should be set to `0`**. The settings saved in the EEPROM on the radio interface include: `rxmixerset`, `txmixaset`, and `txmixbset`.
 
 Sample:
 
