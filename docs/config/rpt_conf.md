@@ -1337,14 +1337,25 @@ This option defines the time out timer interval for the node. The value is in mi
 Sample:
 
 ```
-totime = 180000                     ; repeater timeout 3 minutes 
+totime = 180000                     ; transmit time-out time (in ms) (optional, default to 180000 ms (3 minutes), maximum 9999999 ms (166 minutes))
 ```
-The default value is 180000(mS), or 3 minutes. 
+The default value is 180000(mS), or 3 minutes.  Maximum of 9999999ms (166 minutes) 
 
 !!! warning "Active Hub Advisory" 
     This setting can cause issues when linked to active hub nodes that may have long transmissions. If the local node transmitter appears to "drop out" when connected to nodes/hubs with long winded operators or broadcasts, review this setting, and increase as necessary.
 
 Related: [COP Commands 7 and 8](#cop-commands) and [`controlstates`](#controlstates), and [Control States Stanza](#control-states-stanza).
+
+### toresettime=
+This option defines the time out reset timer interval for the node. The value is in milliseconds. If the node transmitter has reached `totime`, the transmitter will be unkeyed until the receiver activity resets for `toresettime`.  This allows for preventing picket fencing and short receiver drops from resetting the time out. 
+
+Sample:
+
+```
+toresettime = 1000                  ; transmit time-out reset time (in ms) (optional, default to 1000ms (1 second), maximum 1000 ms (1 seconds))
+```
+The default value is 1000(mS), or 1 second. 
+
 
 ### unlinkedct=
 This option selects the courtesy tone to be used when the system has no remote nodes connected and is operating as a standalone repeater.
