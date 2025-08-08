@@ -28,28 +28,12 @@ Parallel port pins 2-9 can be used for outputs, and pins 10-13 and 15 can be use
 !!! note "Doug Hall RBI-1"
     If you imagine you might use a Doug Hall RBI-1 interface, then use Parallel Port pins starting **after** `pp4` as the first three (`pp2`, `pp3`, and `pp4`) would be used for that device, and is unchangeable.
 
-### Set `iobase=` in `rpt.conf`
-To find the I/O address of your parallel port, use `dmesg` to look at the boot log:
+### Port Configuration
+There are a few places that the parallel port can be configured. The defaults are to use base address `0x378` (LPT1) and device `/dev/parport0`. These settings can be overridden.
 
-```
-wb6nil@asl3:~$ sudo dmesg | grep par
+If you are using the [Remote Base](./remotebase.md) features, then you can override the base address with the [`iobase=`](../config/rpt_conf.md#iobase) option in [`rpt.conf`](../config/rpt_conf.md).
 
-[   12.914994] parport0: PC-style at 0x378 (0x778), irq 7 [PCSPP,TRISTATE,EPP]
-```
-
-For the above `paraport0`, the I/O address is `0x378`.
-
-The `iobase=` must be set in the node definition in `rpt.conf` to the I/O address of the port. Standard ports are `0x378`, `0x278` and `0x3bc` for LPT1, LPT2, and LPT3 respectively.
-
-Sample:
-
-```
-[1999](node-main)
-idrecording = |iWB6NIL
-duplex = 2
-rxchannel = SimpleUSB/1999
-iobase=0x378                        ; set I/O address to 0x378 for LPT1
-```
+If you are using the parallel port for general purpose I/O, or for COR/PTT, then you can override the base address and device in `simpleusb.conf` or `usbradio.conf` depending on which channel driver you are using.  
 
 ### Enable Pins
 The pins you want to use (input or output) need to be defined in `simpleusb.conf` or `usbradio.conf`, depending on which channel driver you are using.

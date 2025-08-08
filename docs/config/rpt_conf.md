@@ -648,6 +648,25 @@ inxlat = #456,#457,0123456789ABCD   ; string xlat from radio port to sys
 
 In the above example, on inbound DTMF, translate `#456` as `funcchar` (normally `*`), `#457` as `endchar` (normally `#`), and pass all other digits listed in `passchars` normally.
 
+### iobase=
+This option sets the base address for the of your parallel port, when using the [Remote Base](../adv-topics/remotebase.md) features. The default is `0x378`. To find the I/O address of your parallel port, use `dmesg` to look at the boot log:
+
+```
+wb6nil@asl3:~$ sudo dmesg | grep par
+
+[   12.914994] parport0: PC-style at 0x378 (0x778), irq 7 [PCSPP,TRISTATE,EPP]
+```
+
+For the above `parport0`, the I/O address is `0x378`.
+
+Typical port addresses are `0x378`, `0x278` and `0x3bc` for LPT1, LPT2, and LPT3 respectively.
+
+Sample:
+
+```
+iobase=0x378                        ; set I/O address to 0x378 for LPT1
+```
+
 ### link_functions=
 This option allows you to override the stanza name used for the `link_functions` stanza in `rpt.conf`. The `link_functions=` setting directs the node to use a particular function stanza for functions dialed by users accessing the node **via a link from another node**. 
 
