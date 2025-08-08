@@ -29,12 +29,12 @@ load => res_usbradio.so             ; Required for both simpleusb and usbradio
 Restart Asterisk (`sudo systemctl restart asterisk.service`) if changes are made to this file.
 
 ## `[general]` Stanza
-The `[general]` stanza in `simpleusb.conf` controls the main/global features for the channel driver. Presently, the only options configured in the `[general]` stanza are for the Jitter Buffer (if used).
+The `[general]` stanza in `simpleusb.conf` controls the main/global features for the channel driver. Presently, the only options configured in the `[general]` stanza are for the Jitter Buffer (if used), and configuring the parallel port (if available/used).
 
 ### Jitterbuffer Configuration
 The SimpleUSB channel driver supports the use of an Asterisk Jitterbuffer. These options are typically **not required**, and left commented out. These options add a Jitterbuffer to the *read* side of the channel. This de-jitters the audio stream before it reaches the Asterisk core. This is a write only function.
 
-### jbenable=
+#### jbenable=
 This option enables the use of a jitterbuffer on the receiving side of a SimpleUSB channel. Defaults to `no`. An enabled jitterbuffer will be used only if the sending side can create and the receiving side can not accept jitter. The SimpleUSB channel can't accept jitter, thus an enabled jitterbuffer on the receive SimpleUSB side will always be used if the sending side can create jitter.
 
 Sample:
@@ -43,7 +43,7 @@ Sample:
 jbenable = yes                      ; enable the jitterbuffer
 ```
 
-### jbimpl=
+#### jbimpl=
 This option determines the jitterbuffer implementation used on the receiving side of a SimpleUSB channel. Two implementations are currently available, `fixed` (with a size always equal to `jbmaxsize`) and `adaptive` (with a variable size, actually the new jb of IAX2). Defaults to `fixed`.
 
 Sample:
@@ -52,7 +52,7 @@ Sample:
 jbimpl = fixed                      ; use the fixed jitterbuffer implementation
 ```
 
-### jbmaxsize=
+#### jbmaxsize=
 This option configures the maximum size of the jitterbuffer, in milliseconds. Defaults to `200`(ms).
 
 Sample:
@@ -61,7 +61,7 @@ Sample:
 jbmaxsize = 200                     ; maximum length of the jitterbuffer in milliseconds.
 ```
 
-### jblog=
+#### jblog=
 This option configures whether jitterbuffer frames are logged to `/tmp`. Defaults to `no`.
 
 Sample:
@@ -70,7 +70,7 @@ Sample:
 jblog = yes                         ; enables jitterbuffer frame logging to /tmp
 ```
 
-### jbresyncthreshold=
+#### jbresyncthreshold=
 This option configures the length in milliseconds over which a timestamp difference will result in resyncing the jitterbuffer. Defaults to `1000`(ms). Useful to improve the quality of the voice, with big jumps in/broken timestamps.
 
 Sample:
@@ -78,6 +78,31 @@ Sample:
 ```
 jbresyncthreshold = 1000            ; resynchronize if timestamps are over 1000ms
 ```
+
+### Parallel Port Configuration
+In order to use hardware parallel port pins for general purpose input/output (GPIO), at least one parallel port pin definition ([`pp`](#pp)) must be defined. When using the parallel port, the base address and parallel port device can optionally be defined. See the [Manipulating GPIO](../adv-topics/gpio.md) page for more information on how to control parallel port pins.
+
+#### pbase=
+This option sets the base I/O address of the hardware parallel port. The default is `0x378`.
+
+Sample:
+
+```
+pbase = 0x378                       ; use the default base address of the first hardware parallel port
+```
+
+**This option is not included in the default `usbradio.conf`**
+
+#### pport=
+This option sets the parallel port device name. The default is `/dev/parport0`.
+
+Sample:
+
+```
+pport =  /dev/parport0             ; use the default device name
+```
+
+**This option is not included in the default `usbradio.conf`**
 
 ## `[node-main](!)` Stanza
 The `[node-main](!)` stanza is the template for all the radio interface devices. It contains all the default values that will be used, if no matching option is specified in the device-specific stanza to override it.
@@ -237,7 +262,7 @@ plfilter = yes                      ; enable the CTCSS (PL) filtering of receive
 ```
 
 ### pp=
-This option configures pins on a hardware parallel port to be used as inputs and/or outputs. When setting `chan_simpleusb` to use a parallel port for I/O, you must set a definition for the port address ([`iobase=`](../adv-topics/gpio.md#set-iobase-in-rptconf)) in [`rpt.conf`](./rpt_conf.md). Parallel port pins can be used for general purpose inputs and outputs, or they can be used for any of the COR/CTCSS/PTT signals. For general purpose, pins can be defined as an input (`in`), an output normally low (`out0`), or an output normally high (`out1`).
+This option configures pins on a hardware parallel port to be used as inputs and/or outputs. Parallel port pins can be used for general purpose inputs and outputs, or they can be used for any of the COR/CTCSS/PTT signals. For general purpose, pins can be defined as an input (`in`), an output normally low (`out0`), or an output normally high (`out1`).
 
 Sample:
 
@@ -288,7 +313,7 @@ rxboost = no                        ; do not boost the audio level by 20dB
     C-Media CM119B devices always have `rxboost=yes`. This setting has no effect with USB radio interfaces using that chip.
 
 ### rxondelay=
-This option determines the number of 20ms audio frames to delay after the hardware COR goes active, before the signal is considered valid and COR is asserted to `app_rpt`. If `txoffdelay` is also set (non-zero), then the transmitter has to be off for `txoffdelay` **AND** COR has to be active for `rxondelay` before COR is asserted to `app_rpt`. The default is `0`. Leave this setting at `0` or commented out for normal "repeater" or other full duplex nodes.
+This option determines the time in milliseconds to delay after the hardware COR goes active, before the signal is considered valid and COR is asserted to `app_rpt`. If `txoffdelay` is also set (non-zero), then the transmitter has to be off for `txoffdelay` **AND** COR has to be active for `rxondelay` before COR is asserted to `app_rpt`. The default is `0`, maximum is 60000 (60000ms = 60s). Leave this setting at `0` or commented out for normal "repeater" or other full duplex nodes.
 
 Sample:
 
@@ -297,7 +322,7 @@ rxondelay = 0                       ; assert COR to app_rpt as soon as the hardw
 ```
 
 ### txoffdelay=
-This option determines the number of 20ms audio frames the transmitter has to be un-keyed before a hardware COR signal is considered valid, and COR is asserted to `app_rpt`. If `rxondelay` is also set (non-zero), then the transmitter has to be off for `txoffdelay` **AND** COR has to be active for `rxondelay` before COR is asserted to `app_rpt`. The default is `0`. Leave this setting at `0` or commented out for normal "repeater" or other full duplex nodes.
+This option determines the time in milliseconds the transmitter has to be un-keyed before a hardware COR signal is considered valid, and COR is asserted to `app_rpt`. If `rxondelay` is also set (non-zero), then the transmitter has to be off for `txoffdelay` **AND** COR has to be active for `rxondelay` before COR is asserted to `app_rpt`. The default is `0`, maximum is 60000 (60000ms = 60s). Leave this setting at `0` or commented out for normal "repeater" or other full duplex nodes.
 
 Sample:
 
