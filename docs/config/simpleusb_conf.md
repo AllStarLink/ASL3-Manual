@@ -91,7 +91,7 @@ Sample:
 pbase = 0x378                       ; use the default base address of the first hardware parallel port
 ```
 
-**This option is not included in the default `usbradio.conf`**
+**This option is not included in the default `simpleusb.conf`**
 
 #### pport=
 This option sets the parallel port device name. The default is `/dev/parport0`.
@@ -102,7 +102,7 @@ Sample:
 pport =  /dev/parport0             ; use the default device name
 ```
 
-**This option is not included in the default `usbradio.conf`**
+**This option is not included in the default `simpleusb.conf`**
 
 ## `[node-main](!)` Stanza
 The `[node-main](!)` stanza is the template for all the radio interface devices. It contains all the default values that will be used, if no matching option is specified in the device-specific stanza to override it.
