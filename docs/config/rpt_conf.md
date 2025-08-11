@@ -1352,9 +1352,9 @@ This option defines the time out reset timer interval for the node. The value is
 Sample:
 
 ```
-toresettime = 1000                  ; transmit time-out reset time (in ms) (optional, default to 1000ms (1 second), maximum 1000 ms (1 seconds))
+toresettime = 0                  ; transmit time-out reset time (in ms) (optional, default to 0ms (0 second), maximum 1000 ms (1 seconds)) - disabled
 ```
-The default value is 1000(mS), or 1 second. 
+The default value is 0(mS), or  0 second - disabled. 
 
 
 ### unlinkedct=
