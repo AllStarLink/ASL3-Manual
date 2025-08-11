@@ -191,5 +191,6 @@ nav:
     - config/extensions_conf.md
     - config/iax_conf.md
     - config/rpt_conf.md
+    - config/simpleusb_conf.md
     - config/tlb_conf.md
     - config/voter_conf.md
