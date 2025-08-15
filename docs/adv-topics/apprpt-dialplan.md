@@ -13,26 +13,67 @@ The `${EXTEN}` variable is expected to be a node number that is passed into the 
 
 The `option` values that `app_rpt` supports, and their purpose are as follows:
 
-`option` value|Description
---------------|-----------
-none|Same as `X`
-`X`|Normal endpoint mode WITHOUT security check. Only specify this if you have checked security already (like with an IAX2 user/password or some other validation)
-`Rannounce-string[|timeout[|timeout-destination]]`|Reverse Autopatch. Caller is put on hold, and announcement (as specified by the 'announce-string') is played on radio system. Users of radio system can access autopatch, dial specified code, and pick up call. Announce-string is a `:` separated list of names of	recordings/sound files, *or* `PARKED` to substitute code for un-parking, *or* `NODE` to substitute the node number (see the `[allstar-sys]` context in the default [`extensions.conf`](../config/extensions_conf.md))
-`P,[CALLERID STRING]`|Phone Control mode. This allows a regular phone user to have full control and audio access to the radio system. For the user to have DTMF control, the [`[phone_functions]`](../config/rpt_conf.md#phone-functions-stanza) context must be defined for the node in [`rpt.conf`](../config/rpt_conf.md). `[CALLERID STRING]` is a string or variable that is passed to `app_rpt`, often used to display information about the calling party in the Allmon3 dashboard. An additional function ([`cop,6`](../config/rpt_conf.md#cop-commands)) must also be enabled so that PTT control is available
-`D,[CALLERID STRING]`|Dumb Phone Control mode. This allows a regular phone user to have full control and audio access to the radio system. In this mode, the PTT is activated for the entire length of the call. For the user to have DTMF control (not generally recommended in this mode), the `[dphone_functions]` context must be defined for the node in [`rpt.conf`](../config/rpt_conf.md). Otherwise, no DTMF control will be available to the phone user.
-`S`|Simplex Dumb Phone Control mode. This allows a regular phone user audio-only access to the radio system. In this mode, the transmitter is toggled on and off when the phone user presses the [`funcchar`](../config/rpt_conf.md#funcchar) (`*`) key on the telephone set. In addition, the transmitter will turn off if the [`endchar`](../config/rpt_conf.md#endchar) (`#`) key is pressed. When a user first calls in, the transmitter will be off, and the user can listen for radio traffic. When the user wants to transmit, they press the `*` key, start talking, then press the `*` key again or the `#` key to turn the transmitter off. No other functions can be executed by the user on the phone when this mode is selected. Note: If your	radio system is full-duplex, we recommend using either `P` or `D` modes as they provide more flexibility.
-`V`|Set Asterisk channel variable for specified node (e.g. `Rpt(2000,V,foo=bar)`)
-`Mxx`|Memory Channel Steer.  Where `xx` is the memory channel number. This appears broken, follow [Issue 737](https://github.com/AllStarLink/app_rpt/issues/737)
-`F`|Forward call. No documentation available. Treated as an authenticated call (like `X`)
-`q`|Query channel variables? No documentation available
-`o`|Unknown, something to do with `channel_revert`? May revert to the last channel after using `Mxx`? No documentation available
-`*x`|Load a macro number (`x`) to execute. Appears to be related to option `Z`. No documentation available
-`Z`|Execute macro loaded with `*x` option. Does not appear to be implemented. No documentation available. This appears broken, follow [Issue 736](https://github.com/AllStarLink/app_rpt/issues/736)
+|<div style="width:300px">`option` value</div>|Description|<div style="width:250px">Example</div>|
+|---------------------------------------------|-----------|-------|
+none or `X`|Normal endpoint mode WITHOUT any security checks. Only specify this if the security of the incoming call has already been checked (like with an IAX2 user/password or some other validation)|`exten => ${NODE},1,rpt(${EXTEN},X)`
+`D[m|v],[CALLERID STRING]`|Dumb Phone Control mode. This allows a regular phone user to have full control and audio access to the radio system. In this mode, the PTT is activated for the entire length of the call. For the user to have DTMF control (not generally recommended in this mode), the `[dphone_functions]` context must be defined for the node in [`rpt.conf`](../config/rpt_conf.md). Otherwise, no DTMF control will be available to the phone user|`exten => _4.,n,Rpt(${EXTEN:1},D,${CALLERID(name)}-P)`
+`P[m|v],[CALLERID STRING]`|Phone Control mode. This allows a regular phone user to have full control and audio access to the radio system. For the user to have DTMF control, the [`[phone_functions]`](../config/rpt_conf.md#phone-functions-stanza) context must be defined for the node in [`rpt.conf`](../config/rpt_conf.md). `[CALLERID STRING]` is a string or variable that is passed to `app_rpt`, often used to display information about the calling party in the Allmon3 dashboard. An additional function ([`cop,6`](../config/rpt_conf.md#cop-commands)) must also be enabled so that PTT control is available|`same => n,rpt(${NODE},P,${CALLSIGN}-P)`
+`R[m|v]announce-string[,timeout[,timeout-destination]]`|Reverse Autopatch. Caller is put on hold, and announcement (as specified by the `announce-string`) is played on radio system. Users of the radio system can access autopatch, dial a specified code, and pick up the call. Announce-string is a `:` separated list of names of recordings/sound files, *or* `PARKED` to substitute code for un-parking, *or* `NODE` to substitute the node number (see the `[allstar-sys]` context in the default [`extensions.conf`](../config/extensions_conf.md))|`exten => _1.,1,Rpt(${EXTEN:1},Rrpt/node:NODE:rpt/in-call:digits/0:PARKED,120)`
+`V,[variable]=[value]`|Set an Asterisk channel variable for the specified node|`exten => ${NODE},1,rpt(${NODE},V,foo=bar)`
 
 !!! note "VOX Mode"
-    Options `P`, `D`, `R`, and `S` all technically accept the `v` sub-option for VOX mode (ie. `Pv`). This only seems to really make sense for the `P`, `R`, and `S` options, as the `D` option should have the transmitter keyed all the time regardless.
+    Options `D`, `P`, and `R` all technically accept the `v` sub-option for VOX mode (ie. `Pv`). This only seems to really make sense for the `P` and `R` options, as the `D` option should have the transmitter keyed all the time regardless.
 
 !!! note "Monitor Mode"
-    Options `P`, `D`, `R`, and `S` all accept the `m` sub-option for "monitor" mode. In this mode, no transmit or functions are allowed (monitoring only).
+    Options `D`, `P`, and `R` all accept the `m` sub-option for "monitor" mode (ie. `Pm`). In this mode, no transmit or functions are allowed (monitoring only).
+
+The options below are present in the source code, but their usage is not well documented/understood. If you have further insight to how these options work, please file a [GitHub Issue](https://github.com/AllStarLink/ASL3-Manual/issues).
+
+|<div style="width:350px">`option` value</div>|Description|
+--------------|-----------
+`F`|Forward call? Treated as an authenticated call (like `X`)
+`Mxx`|Memory Channel Steer.  Where `xx` is the memory channel number. This appears broken, follow [Issue 737](https://github.com/AllStarLink/app_rpt/issues/737)
+`o`|Something to do with `channel_revert`? May revert to the last channel after using `Mxx`?
+`q`|Query channel variables?
+`*x`|Load a macro number (`x`) to execute. Appears to be related to option `Z`
+`Z`|Execute macro loaded with `*x` option. Does not appear to be implemented. This appears broken, follow [Issue 736](https://github.com/AllStarLink/app_rpt/issues/736)
 
 You can see how some of these options are implemented by reviewing the default [`[allstar-sys]`](../config/extensions_conf.md#allstar-sys-stanza) context in [`extensions.conf`](../config/extensions_conf.md):
+
+```
+[allstar-sys]
+exten => _1.,1,Rpt(${EXTEN:1},Rrpt/node:NODE:rpt/in-call:digits/0:PARKED,120)
+exten => _1.,n,Hangup
+
+exten => _2.,1,Ringing
+exten => _2.,n,Wait(3)
+exten => _2.,n,Answer
+exten => _2.,n,Playback(rpt/node)
+exten => _2.,n,Saydigits(${EXTEN:1})
+exten => _2.,n,Rpt(${EXTEN:1},P,${CALLERID(name)}-P)
+exten => _2.,n,Hangup
+
+exten => _3.,1,Ringing
+exten => _3.,n,Wait(3)
+exten => _3.,n,Answer
+exten => _3.,n,Playback(rpt/node)
+exten => _3.,n,Saydigits(${EXTEN:1})
+exten => _3.,n,Rpt(${EXTEN:1},Pv,${CALLERID(name)}-P)
+exten => _3.,n,Hangup
+
+exten => _4.,1,Ringing
+exten => _4.,n,Wait(3)
+exten => _4.,n,Answer
+exten => _4.,n,Playback(rpt/node)
+exten => _4.,n,Saydigits(${EXTEN:1})
+exten => _4.,n,Rpt(${EXTEN:1},D,${CALLERID(name)}-P)
+exten => _4.,n,Hangup
+
+exten => _5.,1,Ringing
+exten => _5.,n,Wait(3)
+exten => _5.,n,Answer
+exten => _5.,n,Playback(rpt/node)
+exten => _5.,n,Saydigits(${EXTEN:1})
+exten => _5.,n,Rpt(${EXTEN:1},Dv,${CALLERID(name)}-P)
+exten => _5.,n,Hangup
+```
