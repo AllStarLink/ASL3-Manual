@@ -28,12 +28,22 @@ Parallel port pins 2-9 can be used for outputs, and pins 10-13 and 15 can be use
 !!! note "Doug Hall RBI-1"
     If you imagine you might use a Doug Hall RBI-1 interface, then use Parallel Port pins starting **after** `pp4` as the first three (`pp2`, `pp3`, and `pp4`) would be used for that device, and is unchangeable.
 
-### Port Configuration
-There are a few places that the parallel port can be configured. The defaults are to use base address `0x378` (LPT1) and device `/dev/parport0`. These settings can be overridden.
+### Port Address
+To find the I/O address of your parallel port, use `dmesg` to look at the boot log:
 
-If you are using the [Remote Base](./remotebase.md) features, then you can override the base address with the [`iobase=`](../config/rpt_conf.md#iobase) option in [`rpt.conf`](../config/rpt_conf.md).
+```
+wb6nil@asl3:~$ sudo dmesg | grep par
 
-If you are using the parallel port for general purpose I/O, or for COR/PTT, then you can override the base address and device in `simpleusb.conf` or `usbradio.conf` depending on which channel driver you are using.  
+[   12.914994] parport0: PC-style at 0x378 (0x778), irq 7 [PCSPP,TRISTATE,EPP]
+```
+
+For the above `parport0`, the I/O address is `0x378`.
+
+By default, `chan_simpleusb` and `chan_usbradio` will use `/dev/parport0` and base address `0x378`. If you need to change them, see the `pport` and `pbase` settings in the `[general]` stanza of `simpleusb.conf` or `usbradio.conf`.
+
+If you are also using the [Remote Base](./remotebase.md) features, then you may need to change the base address with the [`iobase=`](../config/rpt_conf.md#iobase) option in [`rpt.conf`](../config/rpt_conf.md).
+
+Standard ports are `0x378`, `0x278` and `0x3bc` for LPT1, LPT2, and LPT3 respectively.
 
 ### Enable Pins
 The pins you want to use (input or output) need to be defined in `simpleusb.conf` or `usbradio.conf`, depending on which channel driver you are using.
@@ -81,21 +91,18 @@ The GPIO and Parallel Port pins can be controlled directly using [`cop`](../conf
 Sample:
 
 ```
-rpt cmd 1999 cop 61,PP2=0           ; turn physical pin 2 off
-rpt cmd 1999 cop 61,PP2=1           ; turn physical pin 2 on
-rpt cmd 1999 cop 61,GPIO1=0         ; turn GPIO1 off
+rpt cmd 1999 cop 61,pp2=0           ; turn physical pin 2 off
+rpt cmd 1999 cop 61,pp2=1           ; turn physical pin 2 on
+rpt cmd 1999 cop 61,gpio1=0         ; turn GPIO1 off
 ```
-
-!!! note "Syntax Note"
-    `PP` and `GPIO` must be in **CAPS**.
 
 Use `core set debug 4` to show commands being sent to the channel driver.
 
 Multiple pins can be controlled at the same time with a single command:
 
 ```
-rpt cmd 1999 cop 61,PP2=1,PP3=1,PP4=1   ; turn physical pins 2, 3, and 4 ON
-rpt cmd 1999 cop 61,PP2=0,PP3=0,PP4=0   ; turn physical pins 2, 3, and 4 OFF
+rpt cmd 1999 cop 61,pp2=1,pp3=1,pp4=1   ; turn physical pins 2, 3, and 4 ON
+rpt cmd 1999 cop 61,pp2=0,pp3=0,pp4=0   ; turn physical pins 2, 3, and 4 OFF
 ```
 
 Use `0` or `1` to set the specified output to `off` or `on`, or use a number greater than `1` (`N+1`) to specify how many milliseconds to invert its current state. For example, to pulse the pin for 500ms you would use the value `501` (currently, specified time only significant in increments of 50ms). Specifying a value of `N+1` to indicate `N` milliseconds was done so that in the future, support for granularity down to the millisecond level could be specified.
@@ -128,28 +135,28 @@ Variable listing for node 1999:
 If you want to have a DTMF function that turns GPIO 1 on, you would specify the following in the `[functions]` section of `rpt.conf`:
 
 ```
-1234 = cop,61,GPIO1=1               ; turn on GPIO 1
+1234 = cop,61,gpio1=1               ; turn on GPIO 1
 ```
 
 A simple example command structure for using all 8 parallel port pins for output switches:
 
 ```
-98920=cop,61,PP2=0                  ; pport pin 2 off
-98921=cop,61,PP2=1                  ; pport pin 2 on 
-98930=cop,61,PP3=0                  ; pport pin 3 off
-98931=cop,61,PP3=1                  ; pport pin 3 on 
-98940=cop,61,PP4=0                  ; pport pin 4 off
-98941=cop,61,PP4=1                  ; pport pin 4 on
-98950=cop,61,PP5=0                  ; pport pin 5 off
-98951=cop,61,PP5=1                  ; pport pin 5 on
-98960=cop,61,PP6=0                  ; pport pin 6 off
-98961=cop,61,PP6=1                  ; pport pin 6 on
-98970=cop,61,PP7=0                  ; pport pin 7 off
-98971=cop,61,PP7=1                  ; pport pin 7 on
-98980=cop,61,PP8=0                  ; pport pin 8 off
-98981=cop,61,PP8=1                  ; pport pin 8 on
-98990=cop,61,PP9=0                  ; pport pin 9 off
-98991=cop,61,PP9=1                  ; pport pin 9 on
+98920=cop,61,pp2=0                  ; pport pin 2 off
+98921=cop,61,pp2=1                  ; pport pin 2 on 
+98930=cop,61,pp3=0                  ; pport pin 3 off
+98931=cop,61,pp3=1                  ; pport pin 3 on 
+98940=cop,61,pp4=0                  ; pport pin 4 off
+98941=cop,61,pp4=1                  ; pport pin 4 on
+98950=cop,61,pp5=0                  ; pport pin 5 off
+98951=cop,61,pp5=1                  ; pport pin 5 on
+98960=cop,61,pp6=0                  ; pport pin 6 off
+98961=cop,61,pp6=1                  ; pport pin 6 on
+98970=cop,61,pp7=0                  ; pport pin 7 off
+98971=cop,61,pp7=1                  ; pport pin 7 on
+98980=cop,61,pp8=0                  ; pport pin 8 off
+98981=cop,61,pp8=1                  ; pport pin 8 on
+98990=cop,61,pp9=0                  ; pport pin 9 off
+98991=cop,61,pp9=1                  ; pport pin 9 on
 ```
 
 Using an easier to remember structure as you think of it as - 989 (for pp switch cmd) + 2-9 (pp pin#) + 1/0 (on/off).
