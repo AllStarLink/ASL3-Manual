@@ -1,5 +1,5 @@
 # ASL Text-to-Speech
-ASL provides the `asl-tts` command. This is a text to speech speaker for ASL3. It uses the [piper](https://github.com/rhasspy/piper) open source TTS system that is not dependant on cloud providers and has opensource voice models for dozens of languages.
+ASL provides the `asl-tts` command. This is a text to speech speaker for ASL3. It uses the [piper](https://github.com/rhasspy/piper) open source TTS system that is not dependent on cloud providers and has opensource voice models for dozens of languages.
 
 If the `asl-tts` command doesn't exist on your system, you will need to install the `asl3-tts` package:
 

@@ -24,7 +24,7 @@ The `Node Settings` menu allows you update key node settings including :
 * Node Callsign/ID
 * Radio interface (e.g. USB sound device, HUB node)
 * Duplex type (e.g. full duplex, half duplex, telemetry)
-* USB Interface tuning
+* [USB Interface tuning](../adv-topics/usbinterfaces.md)
 * Enable/disable status posting (to [http://stats.allstarlink.org](http://stats.allstarlink.org))
 
 The `Node Settings` menu also allows you to add (or remove) additional nodes.

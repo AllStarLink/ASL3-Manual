@@ -7,7 +7,7 @@ See also [config file templating](../adv-topics/conftmpl.md/#asterisk-templates)
 DTMF commands are placed in any one of **three** *named stanzas*. These stanzas control access to DTMF commands that a user can issue from various 
 control points.
 
-* The [Fuctions](#functions-stanza) Stanza - to decode DTMF from the node's local receiver.
+* The [Functions](#functions-stanza) Stanza - to decode DTMF from the node's local receiver.
 * The [Link Functions](#link-functions-stanza) Stanza - to decode DTMF from linked nodes.
 * The [Phone Functions](#phone-functions-stanza) Stanza - to decode DTMF from telephone connects.
  
@@ -133,9 +133,9 @@ COP|Description
 37|Foreign Link Local Output Path Disable (See [Telemetry Messages](../adv-topics/telemetry.md))
 38|Foreign Link Local Output Path Follows Local Telemetry (See [Telemetry Messages](../adv-topics/telemetry.md))
 39|Foreign Link Local Output Path on Demand (See [Telemetry Messages](../adv-topics/telemetry.md))
-42|Echolink announce node number only (See [Telemetry Messages](../adv-topics/telemetry.md))
-43|Echolink announce node callsign only (See [Telemetry Messages](../adv-topics/telemetry.md))
-44|Echolink announce node number and callsign (See [Telemetry Messages](../adv-topics/telemetry.md))
+42|EchoLink announce node number only (See [Telemetry Messages](../adv-topics/telemetry.md))
+43|EchoLink announce node callsign only (See [Telemetry Messages](../adv-topics/telemetry.md))
+44|EchoLink announce node number and callsign (See [Telemetry Messages](../adv-topics/telemetry.md))
 45|Link Activity timer enable (See [Link Activity Timer](../adv-topics/linkacttimer.md))
 46|Link Activity timer disable (See [Link Activity Timer](../adv-topics/linkacttimer.md))
 47|Reset "Link Config Changed" Flag (See [Link Activity Timer](../adv-topics/linkacttimer.md))
@@ -325,16 +325,11 @@ This setting allows you to override the stanza name used for the [`[Control Stat
 
 ```
 controlstates = controlstates       ; points to control state stanza
-
-[controlstates]
-0 = rptena,lnkena,apena,totena,ufena,noicd  ; Normal operation                                  
-1 = rptena,lnkena,apdis,totdis,ufena,noice  ; Net and news operation                                             
-2 = rptena,lnkdis,apdis,totena,ufdis,noice  ; Repeater only operation
 ```
 
 The default is to have `controlstates=` point to a stanza called `controlstates`. However, you can have it point to another named stanza, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
 
-The [Control States Stanza](#control-states-stanza) describes these mnemonics in detail.
+The [Control States Stanza](#control-states-stanza) describes all the associated mnemonics and usage in detail.
 
 ### dtmfkey=
 This setting allows you to change the access control for the local node to require a DTMF key sequence to "key-up" the node on every transmission. Similar to requiring CTCSS, users needs to send a DTMF sequence for the receiver to validate the transmission.
@@ -384,17 +379,17 @@ duplex = 0                          ; 0 = Half duplex with no telemetry tones or
 ```
 
 ### eannmode= 
-This option sets the Echolink node announcement type, when a node connects:
+This option sets the EchoLink node announcement type, when a node connects:
 
 * 0 = Do not announce EchoLink nodes at all
 * 1 = Say only node number (default)
-* 2 = Say phonetic call sign only on Echolink connects
-* 3 = Say phonetic call sign and node number on Echolink connects
+* 2 = Say phonetic call sign only on EchoLink connects
+* 3 = Say phonetic call sign and node number on EchoLink connects
 
 See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
 
 ### echolinkdefault=
-This option sets the Echolink telemetry option:
+This option sets the EchoLink telemetry option:
 
 * 0 = telemetry output off
 * 1 = telemetry output on
@@ -406,7 +401,7 @@ See the [Telemetry Messages](../adv-topics/telemetry.md) page for more informati
 ### echolinkdynamic=
 This option sets whether EchoLink telemetry can be enabled/disabled by users using a [COP](#cop-commands) command.
 
-* 0 = disallow users to change current Echolink telemetry setting with a COP command
+* 0 = disallow users to change current EchoLink telemetry setting with a COP command
 * 1 = allow users to change the setting with a COP command
 
 See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
@@ -428,7 +423,7 @@ See the [Elke Link](../adv-topics/elkelink.md) page for more details.
 This setting allows the end character used by some control functions to be changed. By default this is a `#`. The `endchar` value must not be the same as the [`funcchar`](#funcchar) default (`*`) or its overridden value.
 
 ### erxgain=
-This option adjusts the Echolink receive gain in +/- dbV. It is used to balance Echolink recieve audio levels on an `app_rpt` node. 
+This option adjusts the EchoLink receive gain in +/- dbV. It is used to balance EchoLink receive audio levels on an `app_rpt` node. 
 
 Sample:
 
@@ -436,18 +431,14 @@ Sample:
 erxgain = -3
 ```
 
-See the Echolink How-to for more information.
-
 ### etxgain=
-This option adjusts the Echolink transmit gain in +/- dbV. It is used to balance Echolink transmit audio on an `app_rpt` node. 
+This option adjusts the EchoLink transmit gain in +/- dbV. It is used to balance EchoLink transmit audio on an `app_rpt` node. 
 
 Sample:
 
 ```
 etxgain = 3
 ```
-
-See the Echolink How-to for more information.
 
 ### events=
 This option allows you to override the name used for the `[events]` stanza in `rpt.conf`. You can create events to specify that actions be taken when certain events occur such as transitions in receive and transmit keying, the presence and modes of links, and external inputs such as GPIO pins on the URI (or similar USB devices).
@@ -647,6 +638,25 @@ inxlat = #456,#457,0123456789ABCD   ; string xlat from radio port to sys
 ```
 
 In the above example, on inbound DTMF, translate `#456` as `funcchar` (normally `*`), `#457` as `endchar` (normally `#`), and pass all other digits listed in `passchars` normally.
+
+### iobase=
+This option sets the base address for the of your parallel port, when using the [Remote Base](../adv-topics/remotebase.md) features. The default is `0x378`. To find the I/O address of your parallel port, use `dmesg` to look at the boot log:
+
+```
+wb6nil@asl3:~$ sudo dmesg | grep par
+
+[   12.914994] parport0: PC-style at 0x378 (0x778), irq 7 [PCSPP,TRISTATE,EPP]
+```
+
+For the above `parport0`, the I/O address is `0x378`.
+
+Typical port addresses are `0x378`, `0x278` and `0x3bc` for LPT1, LPT2, and LPT3 respectively.
+
+Sample:
+
+```
+iobase=0x378                        ; set I/O address to 0x378 for LPT1
+```
 
 ### link_functions=
 This option allows you to override the stanza name used for the `link_functions` stanza in `rpt.conf`. The `link_functions=` setting directs the node to use a particular function stanza for functions dialed by users accessing the node **via a link from another node**. 
@@ -1079,7 +1089,7 @@ rxburstfreq = 1000
 **This option does not appear in the default `rpt.conf`.**
 
 ### rxburstthreshold=
-Fot RX Toneburst mode, this option specifies the minimum signal to noise ratio in dB that qualifies a valid tone.
+For RX Toneburst mode, this option specifies the minimum signal to noise ratio in dB that qualifies a valid tone.
 
 Sample:
 
@@ -1315,7 +1325,7 @@ See the [Telemetry Messages](../adv-topics/telemetry.md) page for more informati
 ### tlbdynamic=
 This option sets whether TheLinkBox telemetry can be enabled/disabled by users using a [COP](#cop-commands) command.
 
-* 0 = disallow users to change current Echolink telemetry setting with a COP command
+* 0 = disallow users to change current EchoLink telemetry setting with a COP command
 * 1 = allow users to change the setting with a COP command
 
 See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
@@ -1431,6 +1441,56 @@ noice|No Incoming Connections Enable|49
 noicd|No Incoming Connections Disable|50
 slpen|Sleep Mode Enable|51
 slpds|Sleep Mode Disable|52
+
+The above mneonics can be grouped together in the `[controlstates]` stanza, to define different modes of operation for the node.
+
+Sample:
+
+```
+[controlstates]
+0 = rptena,lnkena,apena,totena,ufena,noicd  ; Normal operation                                  
+1 = rptena,lnkena,apdis,totdis,ufena,noice  ; Net and news operation                                             
+2 = rptena,lnkdis,apdis,totena,ufdis,noice  ; Repeater only operation
+```
+
+Therefore, instead of issuing all the individual COP commands to change the repeater state, you can use `cop,14` to set the control state:
+
+From the Asterisk CLI (changing to control state 1):
+
+```
+asl*CLI> rpt cmd <nodenumber> cop 14 1
+```
+
+In a script:
+
+```
+asterisk -rx "rpt cmd <nodenumber> cop 14 1"
+```
+
+Or in a macro:
+
+```
+[macro]
+2 = cop,13                          ; macro 2 to query current control state
+3 = cop,14,1                        ; macro 3 to change to control state 1
+```
+
+You can also use `cop,13` to query the current control state that is selected:
+
+From the Asterisk CLI:
+
+```
+asl*CLI> rpt cmd <nodenumber> cop 13
+```
+
+In a script:
+
+```
+asterisk -rx "rpt cmd <nodenumber> cop 13"
+```
+
+When you execute any of the above commands, Asterisk will play "SS" (for "System State") and then the control state number over the air.
+
 
 ## DTMFKeys Stanza
 The `[dtmfkeys]` stanza is a named stanza pointed to by the [`dtmfkeys=`](#dtmfkeys) option. The key/value pairs in this stanza define the DTMF sequence(s) and associated callsign(s) that are required to "key-up" the node. This stanza is typically named `[dtmfkeys]`. The name can be overridden, on a per-node basis, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
@@ -1645,7 +1705,7 @@ scheduler=schedule   ; name the stanza 'schedule'
 2 = 00 00 * * *   ; at midnight every day, execute macro 2.
 ```
 
-See [https://wiki.allstarlink.org/wiki/Scheduler_(ASL_System)](https://wiki.allstarlink.org/wiki/Scheduler_(ASL_System)) for more details.
+See the [Scheduled Events](../adv-topics/scheduler.md) page for more details.
 
 ## Telemetry Stanza
 This stanza is named by the [`telemetry=`] option. Telemetry entries can be shared across all nodes on the `Asterisk/app_rpt` server, or defined for each node. They can be a tone sequence, morse string, or a file as follows:

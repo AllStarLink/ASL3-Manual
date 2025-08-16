@@ -205,13 +205,13 @@ Remote = secret2		        ; satellite receiver site only
 The example above defines an instance named `1999`, and has two clients defined, which are named `Main` and `Remote`.
 
 ## Client Definition
-A `client` is a particular VOTER/RTCM hardware device that is located somewhere, connected to Etherent and a radio, and is feeding receive audio to (and optionally receiving transmit audio from) the Asterisk host and the configured channel in `rpt.conf` through `app_rpt`. Each `client` in an instance is defined using the format:
+A `client` is a particular VOTER/RTCM hardware device that is located somewhere, connected to Ethernet and a radio, and is feeding receive audio to (and optionally receiving transmit audio from) the Asterisk host and the configured channel in `rpt.conf` through `app_rpt`. Each `client` in an instance is defined using the format:
 
 ```
 DISPLAY_NAME = secret[,options]
 ```
 
-The `DISPLAY_NAME` can be any alpha-numeric, non-breaking string, up to 50 characters in length. You probably want to keep it short, since you may need to type it on the Asterisk Console for debugging. You can use "_" in the name. This is the name that will be displayed on the Allmon/Supermon screens when looking at voting clients, and the **client name** in the Asterisk console.
+The `DISPLAY_NAME` can be any alphanumeric, non-breaking string, up to 50 characters in length. You probably want to keep it short, since you may need to type it on the Asterisk Console for debugging. You can use "_" in the name. This is the name that will be displayed on the Allmon/Supermon screens when looking at voting clients, and the **client name** in the Asterisk console.
  
 The `secret` is a **unique** value for *each client* that **must** match the `Client Password` that is programmed into a particular VOTER/RTCM hardware device. This is how `chan_voter` determines which hardware client to associate with which client definition in the `voter.conf` file. The password may be up to 50 characters in length.
 

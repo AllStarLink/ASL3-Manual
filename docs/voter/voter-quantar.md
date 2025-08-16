@@ -49,7 +49,7 @@ Codeplug Version		14
 The firmware in the Exciter is not automatically upgraded. You will need to do that by burning a 27C512 EPROM, popping the cover off the exciter, and swapping the chip out. You **DO** want to do this, as there are a number of fixes in later firmware (apparently), especially if you plan on running P25 mixed mode at some point later.
 
 ### VOTER/RTCM Firmware
-The Quantar is special in that the "discriminator" audio isn't really conventional analog discriminator audio as you would normally find in any other radio. The true discriminator audio is filtered through a 6kHz LPF filter, digitized, and then moved around the backplane buss to different cards.
+The Quantar is special in that the "discriminator" audio isn't really conventional analog discriminator audio as you would normally find in any other radio. The true discriminator audio is filtered through a 6kHz LPF filter, digitized, and then moved around the backplane bus to different cards.
 
 The VOTER/RTCM traditionally uses high frequency (above the passband) discriminator audio to do it's RSSI calculations. Since the audio response is limited to <6kHz on the Quantar, this presents a challenge. To combat this, additional code was added to the VOTER/RTCM firmware called the "DSP/BEW" option. Read about it more on the [VOTER Audio](./voter-audio.md#dspbew-firmware-version) page.
 

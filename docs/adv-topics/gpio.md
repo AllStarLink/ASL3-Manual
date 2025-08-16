@@ -41,6 +41,8 @@ For the above `parport0`, the I/O address is `0x378`.
 
 By default, `chan_simpleusb` and `chan_usbradio` will use `/dev/parport0` and base address `0x378`. If you need to change them, see the `pport` and `pbase` settings in the `[general]` stanza of `simpleusb.conf` or `usbradio.conf`.
 
+If you are also using the [Remote Base](./remotebase.md) features, then you may need to change the base address with the [`iobase=`](../config/rpt_conf.md#iobase) option in [`rpt.conf`](../config/rpt_conf.md).
+
 Standard ports are `0x378`, `0x278` and `0x3bc` for LPT1, LPT2, and LPT3 respectively.
 
 ### Enable Pins

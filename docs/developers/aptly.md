@@ -4,41 +4,43 @@ AllStarLink's primary installation method is through the use of Debian packages 
 ## Repository Structure
 The repository is located at `https://repo.allstarlink.org/public` and is managed using [Aptly](https://www.aptly.info/). The Aptly structure is a multi-local-repo system that is coalesced into a single public repository with multiple components per distribution.
 
-There are three main local repositories:
+There are three main local repositories for each distribution
 
-* **asl3-prod** - Packages for production-quality use
+* **asl3-${DISTRIBUTION}-prod** - Packages for production-quality use
 
-* **asl3-beta** - Packages that are ready for general testing and are expected to be promoted to asl3-prod
+* **asl3-${DISTRIBUTION}-beta** - Packages that are ready for general testing and are expected to be promoted to asl3-prod
 
-* **asl3-devel** - Development quality packages that are for development testing only. While these packages are available to the general user, use of this component in extremely
+* **asl3-${DISTRIBUTION}-devel** - Development quality packages that are for development testing only. While these packages are available to the general user, use of this component in extremely
 discouraged without a developer's guidance
 
-Each repository contains one or more distributions. Currently the only distribution supported is `bookworm` for Debian 12.
+Each repository contains the files for one distribution which will be named in `${DISTRIBUTION}`
+as patterned above. Currently the supported distributions are `bookworm` for Debian 12 and
+`trixie` for Debian 13. For Debian 12, for example, there are three repos named `asl3-bookworm-prod`,
+`asl3-bookworm-beta`, and `asl3-bookworm-devel`.
 
 Each repository has a default component name that, when published together, form the basis of the labeling scheme of promotion of packages from devel -> beta -> prod. The component mapping is:
 
-* asl3-prod = main
-* asl3-beta = beta
-* asl3-devel = devel
+* asl3-${DISTRIBUTION}-prod = main
+* asl3-${DISTRIBUTION}-beta = beta
+* asl3-${DISTRIBUTION}-devel = devel
 
-All local repositories are merged and published into a single public-facing repository. This is usable by one of the following `.list` configurations in` /etc/apt/sources.list.d`:
+All local repositories are merged and published into a single public-facing repository. This is usable by one of the following `.list` configurations in` /etc/apt/sources.list.d`. An example `allstarlink.list` for Debian 12 would look like:
 
 ```
 # Primary AllStarLink Repo for Production Packages
 deb [signed-by=/etc/apt/keyrings/allstarlink.gpg] https://repo.allstarlink.org/public bookworm main
 
 # Include Beta Component for Testing
-deb [signed-by=/etc/apt/keyrings/allstarlink.gpg]  https://repo.allstarlink.org/public bookworm main beta
+#deb [signed-by=/etc/apt/keyrings/allstarlink.gpg]  https://repo.allstarlink.org/public bookworm main beta
 
 # Include Beta and Devel component for Development
-deb [signed-by=/etc/apt/keyrings/allstarlink.gpg]  https://repo.allstarlink.org/public bookworm main beta devel
+#deb [signed-by=/etc/apt/keyrings/allstarlink.gpg]  https://repo.allstarlink.org/public bookworm main beta devel
 ```
 
 All packages in the repository are signed by GPG and the key is provided with repository installation `.deb` file.
 
 ## Aptly + GitHub Runner Integrations
-ASL3-related GitHub repositories are integrated with the Aptly repository and running the "Make and Publish Pkgs" Action from each project will result in .deb files being compiled and stored in Aptly. Currently, it's possible to build files directly into the `devel` and `beta` components but not `prod`. Moving packages into `prod` currently
-requires administrator intervention. This will be changed at some future date.
+ASL3-related GitHub repositories are integrated with the Aptly repository and running the "Make and Publish Pkgs" Action from each project will result in .deb files being compiled and stored in Aptly. It's possible to build files directly into the `devel` and `beta` components but not `prod`. Moving packages into `prod` requires administrator intervention.
 
 ## Aptly CLI
 It is possible to run Aptly commands from the shell on `repo.allstarlink.org` in addition to using the web-based API.
@@ -61,10 +63,10 @@ Adding a file to the local repo is straight-forward:
 aptly repo add REPO FILE-or-DIR
 ```
 
-For example, to add the latest Allmon3 to the production repository:
+For example, to add the latest Allmon3 to the production repository for Debian 12:
 
 ```
-$ aptly repo add asl3-prod allmon3_1.2.1-2_all.deb
+$ aptly repo add asl3-bookworm-prod allmon3_1.2.1-2_all.deb
 Loading packages...
 [+] allmon3_1.2.1-2_all added
 ```
@@ -89,7 +91,7 @@ Signing file 'Release' with gpg, please enter your passphrase when prompted:
 Clearsigning file 'Release' with gpg, please enter your passphrase when prompted:
 Cleaning up prefix "." components beta, devel, main...
 
-Publish for local repo ./bookworm [all, amd64, arm64, armhf] publishes {beta: [asl3-beta]}, {devel: [asl3-devel]}, {main: [asl3-prod]} has been successfully updated.
+Publish for local repo ./bookworm [all, amd64, arm64, armhf] publishes {beta: [asl3-bookworm-beta]}, {devel: [asl3-bookworm-devel]}, {main: [asl3-bookworm-prod]} has been successfully updated.
 ```
 
 ### Searching for Packages
@@ -99,7 +101,7 @@ Listing and searching for packages inside of a local repo is done with the `aptl
 A simple `aptly repo search REPO` will show all packages. For example:
 
 ```
-$ aptly repo search asl3-prod
+$ aptly repo search asl3-bookworm-prod
 allmon3_1.2.1-2_all
 asl-apt-repos_1.3-1.deb12_all
 asl3_3.0.0-1.deb_all
@@ -109,14 +111,14 @@ asl3_3.0.0-1.deb_all
 #### Search by name
 
 ```
-$ aptly repo search asl3-prod 'Name (asl3)'
+$ aptly repo search asl3-bookworm-prod 'Name (asl3)'
 asl3_3.0.0-1.deb_all
 ```
 
 #### Search by name glob + version
 
 ```
-$ aptly repo search asl3-prod 'Name (~ asl3-asterisk*), Version (2:20.7.0+asl3-1.0-5.deb12)'
+$ aptly repo search asl3-bookworm-prod 'Name (~ asl3-asterisk*), Version (2:20.7.0+asl3-1.0-5.deb12)'
 asl3-asterisk_2:20.7.0+asl3-1.0-5.deb12_amd64
 asl3-asterisk-config_2:20.7.0+asl3-1.0-5.deb12_all
 asl3-asterisk-dbgsym_2:20.7.0+asl3-1.0-5.deb12_amd64
@@ -131,7 +133,7 @@ asl3-asterisk-tests-dbgsym_2:20.7.0+asl3-1.0-5.deb12_amd64
 #### Search by name glob + version range
 
 ```
-$ aptly repo search asl3-prod 'Name (~ asl3-asterisk*), Version (>= 1.0)'
+$ aptly repo search asl3-bookworm-prod 'Name (~ asl3-asterisk*), Version (>= 1.0)'
 asl3-asterisk_2:20.7.0+asl3-1.0-5.deb12_amd64
 asl3-asterisk-config_2:20.7.0+asl3-1.0-5.deb12_all
 asl3-asterisk-dbgsym_2:20.7.0+asl3-1.0-5.deb12_amd64
@@ -149,7 +151,7 @@ Using the hypothetical example of promoting asl3-asterisk packages from beta to 
 1. Test package selection using `aptly repo search`
 
     ```
-    $ $ aptly repo search asl3-beta 'Name (~ asl3-asterisk*), Version (2:20.7.0+asl3-1.0-5.deb12)'
+    $ $ aptly repo search asl3-bookworm-beta 'Name (~ asl3-asterisk*), Version (2:20.7.0+asl3-1.0-5.deb12)'
     asl3-asterisk_2:20.7.0+asl3-1.0-5.deb12_amd64
     asl3-asterisk_2:20.7.0+asl3-1.0-5.deb12_arm64
     asl3-asterisk-config_2:20.7.0+asl3-1.0-5.deb12_all
@@ -170,7 +172,7 @@ Using the hypothetical example of promoting asl3-asterisk packages from beta to 
 2. Move the packages into the production repository using `aptly repo move`
 
     ```
-    $ aptly repo move asl3-beta asl3-prod 'Name (~ asl3-asterisk*), Version (2:20.7.0+asl3-1.0-5.deb12)'
+    $ aptly repo move asl3-bookworm-beta asl3-bookworm-prod 'Name (~ asl3-asterisk*), Version (2:20.7.0+asl3-1.0-5.deb12)'
     Loading packages...
     [o] asl3-asterisk-dbgsym_2:20.7.0+asl3-1.0-5.deb12_arm64 moved
     [o] asl3-asterisk-doc_2:20.7.0+asl3-1.0-5.deb12_all moved
@@ -200,7 +202,7 @@ Using the hypothetical example of promoting asl3-asterisk packages from beta to 
     Clearsigning file 'Release' with gpg, please enter your passphrase when prompted:
     Cleaning up prefix "." components beta, devel, main...
 
-    Publish for local repo ./bookworm [all, amd64, arm64, armhf] publishes {beta: [asl3-beta]}, {devel: [asl3-devel]}, {main: [asl3-prod]} has been successfully updated.
+    Publish for local repo ./bookworm [all, amd64, arm64, armhf] publishes {beta: [asl3-bookworm-beta]}, {devel: [asl3-bookworm-devel]}, {main: [asl3-bookworm-prod]} has been successfully updated.
     ```
 
 ## Note on 'all' Architecture Packages
@@ -209,12 +211,12 @@ The architecture `all` denotes that the package contains no binary compiled code
 To delete an extra set of `all` packages that may have ended up in the repository:
 
 ```
-$ aptly repo search asl3-beta 'Name (~ asl3-asterisk*), Version (2:20.7.0+asl3-1.0-5.deb12), Architecture (all)'
+$ aptly repo search asl3-bookworm-beta 'Name (~ asl3-asterisk*), Version (2:20.7.0+asl3-1.0-5.deb12), Architecture (all)'
 asl3-asterisk-config_2:20.7.0+asl3-1.0-5.deb12_all
 asl3-asterisk-dev_2:20.7.0+asl3-1.0-5.deb12_all
 asl3-asterisk-doc_2:20.7.0+asl3-1.0-5.deb12_all
 
-$ aptly repo remove asl3-beta 'Name (~ asl3-asterisk*), Version (2:20.7.0+asl3-1.0-5.deb12), Architecture (all)'
+$ aptly repo remove asl3-bookworm-beta 'Name (~ asl3-asterisk*), Version (2:20.7.0+asl3-1.0-5.deb12), Architecture (all)'
 Loading packages...
 [-] asl3-asterisk-config_2:20.7.0+asl3-1.0-5.deb12_all removed
 [-] asl3-asterisk-doc_2:20.7.0+asl3-1.0-5.deb12_all removed

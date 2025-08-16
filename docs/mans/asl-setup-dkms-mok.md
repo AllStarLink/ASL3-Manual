@@ -4,7 +4,11 @@
 `asl-setup-dkms-mok` - Configure the Machine Owner Key (MOK) for signing kernel packages, notably dahdi for ASL.
 
 ## SYNOPSIS
-usage: `asl-setup-dkms-mok`
+Usage: 
+
+```
+/usr/bin/asl-setup-dkms-mok
+```
 
 ## DESCRIPTION
 This script is a walkthrough script for generating a UEFI Machine Owner Key (MOK). A MOK is needed on systems with UEFI SecureBoot to properly authenticate the DAHDI-related kernel modules which are rebuilt on kernel upgrades with DKMS. See the AllStarLink manual for more information or https://wiki.debian.org/SecureBoot.

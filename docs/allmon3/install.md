@@ -3,7 +3,7 @@
 ## Supported Platforms
 Allmon3 is only supported on:
 
-* Debian 12 Bookworm (including Raspoberry Pi OS 12)
+* Debian 12 Bookworm (including Raspberry Pi OS 12)
 * Debian 11 Bullseye (including Raspberry Pi OS 11)
 
 Allmon3 is installed by default on the Raspberry Pi Image, no installation actions are required, you can proceed directly to [configuration](./config.md).

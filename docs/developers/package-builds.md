@@ -77,7 +77,7 @@ The following steps build the Debian packages:
 
     * *Platform Architecture* - Choose `amd64` or `arm64` as appropriate
 
-    * *Debian Release Version* - Choose the Debian release version to build. Note that currently the releases in GitHub do not support multiple Debian releases in the same GitHub release. This is a ToDo item (#17)
+    * *Debian Release Version* - Choose the Debian release version to build.
 
     * *Github Release Tag* - This is tag release created above in Create a GitHub Release
 
