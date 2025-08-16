@@ -144,7 +144,7 @@ There are several options that can be passed to the autopatchup command class. T
 | Option | Description |
 |------------------|-------------|
 | context | Override the context specified for the autopatch in `rpt.conf` |
-| dialtime | The maximum time to wait between DTMF digits when a telephone number is being dialed. The patch will automatically disconnect if this time is exceeded. The value is specified in milliseconds. |
+| dialtime | The maximum time to wait for DTMF digits to be received when a telephone number is being dialed. The patch will automatically disconnect/abort if this time is exceeded. The value is specified in milliseconds. |
 | farenddisconnect | When set to 1, the patch will automatically disconnect when the called party hangs up. The default is to send a circuit busy tone until the radio user brings the patch down. |
 | noct | When set to 1, the courtesy tone during an autopatch call will be disabled. The default is to send the courtesy tone whenever the radio user un-keys. |
 | quiet | When set to 1, do not send dial tone or voice responses, just try to connect the call. |
