@@ -109,6 +109,7 @@ nav:
     - adv-topics/audiofilters.md
     - adv-topics/autopatch.md
     - adv-topics/audio-level.md
+    - adv-topics/apprpt-dialplan.md
     - adv-topics/courtesytones.md
     - adv-topics/condiscpgm.md
     - adv-topics/daq.md
