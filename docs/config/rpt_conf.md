@@ -1346,16 +1346,28 @@ The default value is 180000 ms (3 minutes).  Maximum of 9999999ms (166 minutes)
 
 Related: [COP Commands 7 and 8](#cop-commands) and [`controlstates`](#controlstates), and [Control States Stanza](#control-states-stanza).
 
-### toresettime=
-This option defines the time out reset timer interval for the node. The value is in milliseconds. If the node transmitter has reached `totime`, the transmitter will be unkeyed until the receiver activity resets for `toresettime`.  This allows for preventing picket fencing and short receiver drops from resetting the time out. 
+### time_out_reset_unkey_interval=
+This option defines the time out unkey interval for the node. The value is in milliseconds. If the node transmitter has reached `totime`, the transmitter will be disabled until the receiver activity unkeys for `time_out_reset_unkey_interval`.  This prevents picket fencing and short receiver drops from resetting the time out timer. 
 
 Sample:
 
 ```
-toresettime = 0                  ; transmit time-out reset time (in ms) (optional, default to 0ms (0 seconds), maximum 10000ms (10 seconds))
+time_out_reset_unkey_interval = 0                  ; transmit time-out unkey reset time (in ms) (optional, default to 0ms (0 seconds), maximum 10000ms (10 seconds))
 ```
 The default value is 0ms (0 seconds) - disabled. 
 
+### time_out_reset_kerchunk_interval=
+Sets the interval required for a local user to reset the time out timer caused by traffic on a link.  Sets the number of milliseconds that the user must key before unkeying on the local receiver in order to reset the time out condition. This value defaults to 250 milliseconds. If this value is set to 0, the kerchunk time out reset feature will be disabled.
+
+!!! note  "`time_out_reset_unkey_interval` required"
+    This only is active if `time_out_reset_unkey_interval` is defined and set to a nonzero value. If `time_out_reset_unkey_interval` is not defined, then the traditional way of resetting the time out timer will be used.
+
+Sample:
+
+```
+time_out_reset_kerchunk_interval = 250                  ; transmit time-out keyup minimum time (in ms) (optional, default to 250ms.
+```
+The default value is 250ms. 
 
 ### unlinkedct=
 This option selects the courtesy tone to be used when the system has no remote nodes connected and is operating as a standalone repeater.
