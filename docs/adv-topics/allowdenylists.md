@@ -36,6 +36,6 @@ To see what nodes are in the access lists:
 ### Removing nodes from the access lists
 To remove a node from the access lists, or delete the lists entirely:
 
-* Remove an allowed node at the Asterisk CLI `> database del allowlist/[your-node] [node]`
-* Remove the "allowlist" for your node with CLI `> database del allowlist/[your-node]`
-* Remove the "allowlist" for all of your nodes with CLI `> database del allowlist`
+* Remove a single allowed node at the Asterisk CLI `> database del allowlist/[your-node] [node]`
+* Remove the "allowlist" for one of your nodes with CLI `> database deltree allowlist/[your-node]`
+* Remove the "allowlist" for ALL of your nodes with CLI `> database deltree allowlist`
