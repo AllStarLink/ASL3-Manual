@@ -555,7 +555,7 @@ Sample:
 hangtime = 1000                     ; set hang time for 1 second
 ```
 
-The default is 5000(ms), or 5sec.
+The default is 5000ms (5sec).
 
 ### holdofftelem=
 This option forces all telemetry to be held off until a local user on the receiver or a remote user over a link unkeys. There is one exception to this behavior, and that is when an ID needs to be sent and there is activity coming from a linked node.
@@ -607,7 +607,7 @@ idrecording = shortid               ; voice ID, plays /usr/local/share/asterisk/
 See [Sound Files](../adv-topics/soundfiles.md) for more information.
 
 ### idtime=
-This option sets the ID interval time, in mS. It is optional.
+This option sets the ID interval time, in ms. It is optional.
 
 Sample:
 
@@ -615,7 +615,7 @@ Sample:
 idtime = 540000                     ; id interval time (in ms) (optional)
 ```
 
-The default is 5 minutes (300000mS).
+The default is 300000ms (5 minutes).
 
 ### inxlat=
 The input translate option allows complete remapping of the [`funcchar`](#funcchar) and [`endchar`](#endchar) digits to different digits or digit sequences.
@@ -767,12 +767,12 @@ litzcmd = *6911                     ; dial 911 on the autopatch when LiTZ is act
 ```
 
 ### litztime=
-This option defines how long `litzchar` needs to be sent for, to be considered valid. If `litzchar` is received for this minimum period, `litzcmd` will be executed when the user unkeys. The default is 3000mS (3 seconds).
+This option defines how long `litzchar` needs to be sent for, to be considered valid. If `litzchar` is received for this minimum period, `litzcmd` will be executed when the user unkeys. The default is 3000ms (3 seconds).
 
 Sample:
 
 ```
-litztime = 3000                     ; default 3000mS (3 seconds)
+litztime = 3000                     ; default 3000ms (3 seconds)
 ```
 
 ### macro=
@@ -946,12 +946,12 @@ The available options are:
 See [Parrot Mode](../adv-topics/parrotmode.md) for more information on what this mode does, and how it works.
 
 ### parrottime=
-This option sets the amount of time in mS to delay before playing back the audio buffer.
+This option sets the amount of time in ms to delay before playing back the audio buffer.
 
 Sample:
 
 ```
-parrottime = 1000                   ; Wait 1s (1000mS) before playback
+parrottime = 1000                   ; Wait 1000ms (1 second) before playback
 ```
 
 This timer is related to [Parrot Mode](../adv-topics/parrotmode.md).
@@ -1007,7 +1007,7 @@ The available options are:
 See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
 
 ### politeid=
-This option specifies the number of milliseconds prior to the end of the ID cycle where the controller will attempt to play the ID in the tail when a user unkeys. If the controller does not get a chance to send the ID in the tail, the ID will be played over the top of the next user transmission. Optional, default is 30000mS.
+This option specifies the number of milliseconds prior to the end of the ID cycle where the controller will attempt to play the ID in the tail when a user unkeys. If the controller does not get a chance to send the ID in the tail, the ID will be played over the top of the next user transmission. Optional, default is 30000ms (30 seconds).
 
 Sample:
 
@@ -1234,7 +1234,7 @@ Sample:
 tailmessagetime = 900000            ; 15 minutes between tail messages
 ```
 
-The maximum value is 200000000mS (55.5555 hours).
+The maximum value is 200000000ms (55.5555 hours).
 
 ### tailsquashedtime=
 If a tail message is "squashed" by a user keying up over the top of it, a separate time value can be loaded to make the tail message be retried at a shorter time interval than the standard `tailmessagetime=` option. The `tailsquashedtime=` option takes a value in milliseconds.
@@ -1356,14 +1356,37 @@ This option defines the time out timer interval for the node. The value is in mi
 Sample:
 
 ```
-totime = 180000                     ; repeater timeout 3 minutes 
+totime = 180000                     ; transmit time-out time (in ms) (optional, default to 180000 ms (3 minutes), maximum 9999999 ms (166 minutes))
 ```
-The default value is 180000(mS), or 3 minutes. 
+The default value is 180000 ms (3 minutes).  Maximum of 9999999ms (166 minutes) 
 
 !!! warning "Active Hub Advisory" 
     This setting can cause issues when linked to active hub nodes that may have long transmissions. If the local node transmitter appears to "drop out" when connected to nodes/hubs with long winded operators or broadcasts, review this setting, and increase as necessary.
 
 Related: [COP Commands 7 and 8](#cop-commands) and [`controlstates`](#controlstates), and [Control States Stanza](#control-states-stanza).
+
+### time_out_reset_unkey_interval=
+This option defines the time out unkey interval for the node. The value is in milliseconds. If the node transmitter has reached `totime`, the transmitter will be disabled until the receiver activity unkeys for `time_out_reset_unkey_interval`.  This prevents picket fencing and short receiver drops from resetting the time out timer. 
+
+Sample:
+
+```
+time_out_reset_unkey_interval = 0                  ; transmit time-out unkey reset time (in ms) (optional, default to 0ms (0 seconds), maximum 10000ms (10 seconds))
+```
+The default value is 0ms (0 seconds) - disabled. 
+
+### time_out_reset_kerchunk_interval=
+Sets the interval required for a local user to reset the time out timer caused by traffic on a link.  Sets the number of milliseconds that the user must key before unkeying on the local receiver in order to reset the time out condition. This value defaults to 250 milliseconds. If this value is set to 0, the kerchunk time out reset feature will be disabled.
+
+!!! note  "`time_out_reset_unkey_interval` required"
+    This only is active if `time_out_reset_unkey_interval` is defined and set to a nonzero value. If `time_out_reset_unkey_interval` is not defined, then the traditional way of resetting the time out timer will be used.
+
+Sample:
+
+```
+time_out_reset_kerchunk_interval = 250                  ; transmit time-out keyup minimum time (in ms) (optional, default to 250ms.
+```
+The default value is 250ms. 
 
 ### unlinkedct=
 This option selects the courtesy tone to be used when the system has no remote nodes connected and is operating as a standalone repeater.
