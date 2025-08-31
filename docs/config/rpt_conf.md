@@ -4,13 +4,13 @@ rpt.conf (`/etc/asterisk/rpt.conf`) is where the majority of user-facing feature
 See also [config file templating](../adv-topics/conftmpl.md/#asterisk-templates).
 
 ## DTMF Commands
-DTMF commands are placed in any one of **three** *named stanzas*. These stanzas control access to DTMF commands that a user can issue from various 
+DTMF commands are placed in any one of **three** *named stanzas*. These stanzas control access to DTMF commands that a user can issue from various
 control points.
 
 * The [Functions](#functions-stanza) Stanza - to decode DTMF from the node's local receiver.
 * The [Link Functions](#link-functions-stanza) Stanza - to decode DTMF from linked nodes.
 * The [Phone Functions](#phone-functions-stanza) Stanza - to decode DTMF from telephone connects.
- 
+
 A DTMF `key=value` pair has the following format:
 
 `dtmfcommand=functionclass,[functionmethod],[parameters]`
@@ -37,12 +37,12 @@ Status|Description
 2|Give Time of Day (global)
 3|Give software Version (global)
 4|Give GPS location info
-5|Speak the last (dtmf) user 
+5|Speak the last (dtmf) user
 11|Force ID (local only)
 12|Give Time of Day (local only)
 
 ### Link Commands
-Commands using the `link` function class affect connecting to, disconnecting from, monitoring (RX only) other nodes, and providing linking status. 
+Commands using the `link` function class affect connecting to, disconnecting from, monitoring (RX only) other nodes, and providing linking status.
 
 Sample:
 
@@ -65,7 +65,7 @@ ilink|Description|Node Number Required
 7|Last Node to Key Up|No
 8|Connect specified link -- local monitor only|Yes
 9|Send Text Message (9,&lt;destnodeno or 0 (for all)\>,Message Text, etc.)|No
-10|Disconnect all RANGER links (except permalinks)|No
+10|unused|No
 11|Disconnect a previously permanently connected link|Yes
 12|Permanently connect specified link -- monitor only|Yes
 13|Permanently connect specified link -- tranceive|Yes
@@ -77,7 +77,7 @@ ilink|Description|Node Number Required
 The commands to permanently connect a link will have `app_rpt` try to maintain those connections across network disruptions.
 
 ### COP Commands
-Commands using the `cop` (Control OPerator) function class are privileged commands. Node admins may provide some of these to their user community based on personal preference. 
+Commands using the `cop` (Control OPerator) function class are privileged commands. Node admins may provide some of these to their user community based on personal preference.
 
 Sample:
 
@@ -90,7 +90,7 @@ Some COP commands can take multiple parameters. For example this COP 48 would se
 Sample:
 
 ```
-900 = cop,48,#,3,#,6,0,7 
+900 = cop,48,#,3,#,6,0,7
 ```
 
 COP|Description
@@ -152,10 +152,10 @@ COP|Description
 58|Tx CTCSS On Input only Enable
 59|Tx CTCSS On Input only Disable
 60|Send MDC-1200 Burst (See [MDC-1200](../adv-topics/mdc1200.md))
-61|Control GPIO/PP pins (See [Manipulating GPIO](../adv-topics/gpio.md)) 
+61|Control GPIO/PP pins (See [Manipulating GPIO](../adv-topics/gpio.md))
 62|Control GPIO/PP pins, quietly (See [Manipulating GPIO](../adv-topics/gpio.md))
 63|Send pre-configred APRSTT notification (cop,63,CALL[,OVERLAYCHR])
-64|Send pre-configred APRSTT notification, quietly (cop,64,CALL[,OVERLAYCHR]) 
+64|Send pre-configred APRSTT notification, quietly (cop,64,CALL[,OVERLAYCHR])
 65|Send POCSAG page (equipped channel types only)
 
 ## General Stanza
@@ -186,7 +186,7 @@ node_lookup_method = both           ; method used to lookup nodes
 See [Node Resolution](../adv-topics/noderesolution.md) for how this new node lookup method is handled.
 
 ## Node Number Stanza
-The node number stanza is a critical stanza in `rpt.conf`. 
+The node number stanza is a critical stanza in `rpt.conf`.
 
 ```
 [1999]                              ; Replace with your assigned or private node number
@@ -206,7 +206,7 @@ accountcode=RADIO                   ; set the accountcode variable to RADIO
 ```
 
 ### althangtime=
-This setting controls the length of the repeater hang time when the alternate hang timer is selected with a control operator function. It is specified in milliseconds. 
+This setting controls the length of the repeater hang time when the alternate hang timer is selected with a control operator function. It is specified in milliseconds.
 
 Sample:
 
@@ -357,7 +357,7 @@ The default is to have `dtmfkeys=` point to a stanza called `dtmfkeys`, and have
 
 See the [DTMFKeys Stanza](#dtmfkeys-stanza) for more detail on defining dtmfkeys.
 
-To use this option, [`dtmfkey=1`](#dtmfkey) needs to be set. 
+To use this option, [`dtmfkey=1`](#dtmfkey) needs to be set.
 
 **This option does not appear in the default `rpt.conf`.**
 
@@ -366,11 +366,11 @@ This setting sets the duplex mode for desired radio operation. Duplex mode 2 is 
 
 Duplex|Mode Description
 ------|----------------
-0|Half duplex with no telemetry tones or hang time. Special Case: Full duplex if linktolink is set to yes. This mode is preferred when interfacing with an external multiport repeater controller. Comment out idrecording and idtalkover to suppress IDs. 
-1|Half duplex with telemetry tones and hang time. Does not repeat audio. This mode is preferred when interfacing a simplex node. 
-2|Full Duplex with telemetry tones and hang time. This mode is preferred when interfacing a repeater.  
-3|Full Duplex with telemetry tones and hang time, but no repeated audio. 
-4|Full Duplex with telemetry tones and hang time. Repeated audio only when the autopatch is down. 
+0|Half duplex with no telemetry tones or hang time. Special Case: Full duplex if linktolink is set to yes. This mode is preferred when interfacing with an external multiport repeater controller. Comment out idrecording and idtalkover to suppress IDs.
+1|Half duplex with telemetry tones and hang time. Does not repeat audio. This mode is preferred when interfacing a simplex node.
+2|Full Duplex with telemetry tones and hang time. This mode is preferred when interfacing a repeater.
+3|Full Duplex with telemetry tones and hang time, but no repeated audio.
+4|Full Duplex with telemetry tones and hang time. Repeated audio only when the autopatch is down.
 
 Sample:
 
@@ -378,7 +378,7 @@ Sample:
 duplex = 0                          ; 0 = Half duplex with no telemetry tones or hang time.
 ```
 
-### eannmode= 
+### eannmode=
 This option sets the EchoLink node announcement type, when a node connects:
 
 * 0 = Do not announce EchoLink nodes at all
@@ -423,7 +423,7 @@ See the [Elke Link](../adv-topics/elkelink.md) page for more details.
 This setting allows the end character used by some control functions to be changed. By default this is a `#`. The `endchar` value must not be the same as the [`funcchar`](#funcchar) default (`*`) or its overridden value.
 
 ### erxgain=
-This option adjusts the EchoLink receive gain in +/- dbV. It is used to balance EchoLink receive audio levels on an `app_rpt` node. 
+This option adjusts the EchoLink receive gain in +/- dbV. It is used to balance EchoLink receive audio levels on an `app_rpt` node.
 
 Sample:
 
@@ -432,7 +432,7 @@ erxgain = -3
 ```
 
 ### etxgain=
-This option adjusts the EchoLink transmit gain in +/- dbV. It is used to balance EchoLink transmit audio on an `app_rpt` node. 
+This option adjusts the EchoLink transmit gain in +/- dbV. It is used to balance EchoLink transmit audio on an `app_rpt` node.
 
 Sample:
 
@@ -478,12 +478,12 @@ extnodefile=/var/lib/asterisk/rpt_extnodes,/var/lib/asterisk/myrpt_extnodes
 
 If a custom `extnodefile=` is used, it must have the section header `[extnodes]` or a custom header as described in [extnodes](#extnodes).
 
-Also see [Node Resolutuion](../adv-topics/noderesolution.md) for information on how to configure node lookups. 
+Also see [Node Resolutuion](../adv-topics/noderesolution.md) for information on how to configure node lookups.
 
 **This option does not appear in the default `rpt.conf`.**
 
 ### extnodes=
-This option allows you to set the section name used for `[extnodes]` in the `rpt_extnodes` file.  The default value is `extnodes`. This translates to `[extnodes]` section header. 
+This option allows you to set the section name used for `[extnodes]` in the `rpt_extnodes` file.  The default value is `extnodes`. This translates to `[extnodes]` section header.
 
 Sample:
 
@@ -518,14 +518,14 @@ This option sets how telemetry is handled for IAXRpt, SIP phone display, and VoI
 Sample:
 
 ```
-guilinkdefault = 1 
+guilinkdefault = 1
 ```
 
 The available options are:
 
 * 0 = telemetry output off
 * 1 = telemetry output on (default)
-* 2 = timed telemetry output (after command execution and for two minutes thereafter) 
+* 2 = timed telemetry output (after command execution and for two minutes thereafter)
 * 3 = follow local telemetry mode
 
 See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
@@ -547,7 +547,7 @@ The available options are:
 See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
 
 ### hangtime=
-This option controls the length of the repeater (squelch tail) hang time. It is specified in milliseconds. 
+This option controls the length of the repeater (squelch tail) hang time. It is specified in milliseconds.
 
 Sample:
 
@@ -582,7 +582,7 @@ idrecording = myid                  ; voice ID, plays /usr/local/share/asterisk/
 ```
 
 !!! note "File Extensions"
-    ID recording files must have extension gsm, ulaw, pcm, or wav. The extension is **left off** when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz mono. 
+    ID recording files must have extension gsm, ulaw, pcm, or wav. The extension is **left off** when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All ID recording files should be sampled at 8KHz mono.
 
 See [Sound Files](../adv-topics/soundfiles.md) for more information.
 
@@ -659,7 +659,7 @@ iobase=0x378                        ; set I/O address to 0x378 for LPT1
 ```
 
 ### link_functions=
-This option allows you to override the stanza name used for the `link_functions` stanza in `rpt.conf`. The `link_functions=` setting directs the node to use a particular function stanza for functions dialed by users accessing the node **via a link from another node**. 
+This option allows you to override the stanza name used for the `link_functions` stanza in `rpt.conf`. The `link_functions=` setting directs the node to use a particular function stanza for functions dialed by users accessing the node **via a link from another node**.
 
 Sample:
 
@@ -672,7 +672,7 @@ The default is to have `link_functions=` point to a stanza called `functions`, a
 See the [Functions Stanza](#functions-stanza) for more detail on defining functions.
 
 ### lnkactenable=
-Set this option to enable the link activity timer. 
+Set this option to enable the link activity timer.
 
 
 Sample:
@@ -727,7 +727,7 @@ linkmongain = -20                   ; reduce link volume 20dB
 ```
 
 ### linktolink=
-When operating in [duplex mode 0](#duplex), this forces the radio interface to operate in full duplex mode, but keeps all the other "duplex mode 0" semantics. 
+When operating in [duplex mode 0](#duplex), this forces the radio interface to operate in full duplex mode, but keeps all the other "duplex mode 0" semantics.
 
 This is used when a radio interface is connected to a multiport analog repeater controller. The `linktolink=` option can take two values: `yes`/`1` or `no`/`0`.
 
@@ -776,7 +776,7 @@ litztime = 3000                     ; default 3000mS (3 seconds)
 ```
 
 ### macro=
-This option allows you to override the stanza name used for the `[macro]` stanza in `rpt.conf`. The macro stanza directs the node to use a particular stanza for macros dialed by users accessing the node. Macros are DTMF shortcuts, and are a special type of function. 
+This option allows you to override the stanza name used for the `[macro]` stanza in `rpt.conf`. The macro stanza directs the node to use a particular stanza for macros dialed by users accessing the node. Macros are DTMF shortcuts, and are a special type of function.
 
 Sample:
 
@@ -805,7 +805,7 @@ See the [MDC-1200 Signalling](../adv-topics/mdc1200.md) page for more informatio
 **This option does not appear in the default `rpt.conf`.**
 
 ### mdcmacro=
-This option allows you to override the stanza name used for the `[mdcmacro]` stanza in `rpt.conf`. The mdcmacro stanza directs the node to use a particular stanza for mdcmacros when [MDC-1200 signalling](../adv-topics/mdc1200.md) is received by the node. 
+This option allows you to override the stanza name used for the `[mdcmacro]` stanza in `rpt.conf`. The mdcmacro stanza directs the node to use a particular stanza for mdcmacros when [MDC-1200 signalling](../adv-topics/mdc1200.md) is received by the node.
 
 Sample:
 
@@ -826,7 +826,7 @@ See the [MDC-1200 Signalling](../adv-topics/mdc1200.md) page for more informatio
 **This option does not appear in the default `rpt.conf`.**
 
 ### morse=
-This option allows you to override the stanza name used for the `morse` stanza in `rpt.conf`. The morse stanza directs the node to use a particular stanza for morse code parameters for the node. Morse code parameters can be defined on a per-node basis.  
+This option allows you to override the stanza name used for the `morse` stanza in `rpt.conf`. The morse stanza directs the node to use a particular stanza for morse code parameters for the node. Morse code parameters can be defined on a per-node basis.
 
 Sample:
 
@@ -849,7 +849,7 @@ See the [Morse Stanza](#morse-stanza) for more detail on defining morse paramete
 ### nodenames=
 This option lets you override the default location to look for custom nodename files to play back when a node connects/disconnects.
 
-The default location is a relative path of `rpt/nodenames`. The absolute path will typically then be `/usr/share/asterisk/sounds/en/rpt/nodenames`. 
+The default location is a relative path of `rpt/nodenames`. The absolute path will typically then be `/usr/share/asterisk/sounds/en/rpt/nodenames`.
 
 Sample:
 
@@ -882,7 +882,7 @@ Set this option to send `unlinkedct` instead, if another local node is connected
 Sample:
 
 ```
-nolocallinkct = 0                   ; default is 0, set to 1 to enable 
+nolocallinkct = 0                   ; default is 0, set to 1 to enable
 ```
 
 ### nounkeyct=
@@ -926,7 +926,7 @@ outxlat = *7,*0,0123456789ABCD      ; string xlat from sys to radio port
 
 In the above example, on outbound DTMF, `*7` generates a `funcchar` (normally `*`), `*0` generates an `endchar` (normally `#`), and pass all other digits listed in `passchars` normally.
 
-!!! warning "Documentation Missing" 
+!!! warning "Documentation Missing"
     This option is not well documented in the code, your mileage may vary.
 
 ### parrot=
@@ -975,14 +975,14 @@ This option sets how telemetry is handled for the [autopatch](../adv-topics/auto
 Sample:
 
 ```
-phonelinkdefault = 1 
+phonelinkdefault = 1
 ```
 
 The available options are:
 
 * 0 = telemetry output off
 * 1 = telemetry output on (default)
-* 2 = timed telemetry output (after command execution and for two minutes thereafter) 
+* 2 = timed telemetry output (after command execution and for two minutes thereafter)
 * 3 = follow local telemetry mode
 
 See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
@@ -1113,15 +1113,15 @@ rxbursttime= 250
 **This option does not appear in the default `rpt.conf`.**
 
 ### rxchannel=
-This setting selects the type of radio interface used by the node. There must be **one** (and only one) `rxchannel` per node definition stanza. The selections for `rxchannel` are: 
+This setting selects the type of radio interface used by the node. There must be **one** (and only one) `rxchannel` per node definition stanza. The selections for `rxchannel` are:
 
 Value|Description
 -----|-----------
-dahdi/pseudo|No radio, used for hubs 
-SimpleUSB/1999|SimpleUSB Channel Driver (limited DSP), specify associated node number found in simpleusb.conf  
-Radio/1999|Usbradio Channel Driver (full DSP), specify associated node number found in usbradio.conf  
-voter/1990|VOTER (RTCM) Channel Driver, specify associated node number found in voter.conf    
-USRP/127.0.0.1:34001:32001|GNU Radio interface USRP 
+dahdi/pseudo|No radio, used for hubs
+SimpleUSB/1999|SimpleUSB Channel Driver (limited DSP), specify associated node number found in simpleusb.conf
+Radio/1999|Usbradio Channel Driver (full DSP), specify associated node number found in usbradio.conf
+voter/1990|VOTER (RTCM) Channel Driver, specify associated node number found in voter.conf
+USRP/127.0.0.1:34001:32001|GNU Radio interface USRP
 tlb/tlb0|TheLinkBox Channel Driver, pointing to the specified (tlb0) channel context in tlb.conf
 
 Sample:
@@ -1165,7 +1165,7 @@ The default is to have `scheduler=` point to a stanza called `schedule`, and hav
 See the [Schedule Stanza](#schedule-stanza) for more information on the scheduler.
 
 ### sleeptime=
-This option sets the inactivity period in *seconds* of no signal on the node's receiver before the system goes to sleep. 
+This option sets the inactivity period in *seconds* of no signal on the node's receiver before the system goes to sleep.
 
 Sample:
 
@@ -1184,7 +1184,7 @@ Sample:
 startup_macro = *31000 *31001 *31002 ; connect to nodes 1000, 1001 and 1002 at startup
 ```
 
-One string of one or multiple commands, executed in order. 
+One string of one or multiple commands, executed in order.
 
 !!! note "No Termination Character"
     This string of commands does NOT terminate with a `#` like a normal macro. You can call any number of regular macros with it.
@@ -1267,7 +1267,7 @@ This option sets whether telemetry is turned on or off by default.
 Sample:
 
 ```
-telemdefault = 1 
+telemdefault = 1
 ```
 
 The available options are:
@@ -1304,7 +1304,7 @@ The available options are:
 See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
 
 ### telemnomdb=
-This option is used to fine tune the telemetry level, relative to standard node audio. The level is in dB. 
+This option is used to fine tune the telemetry level, relative to standard node audio. The level is in dB.
 
 Sample:
 
@@ -1331,7 +1331,7 @@ This option sets whether TheLinkBox telemetry can be enabled/disabled by users u
 See the [Telemetry Messages](../adv-topics/telemetry.md) page for more information on telemetry.
 
 ### tonemacro=
-This option allows you to override the stanza name used for the `tonemacro` stanza in `rpt.conf`. The tone macro stanza directs the node to use a particular stanza for CTCSS tone tiggered macros from users accessing the node. Macros are DTMF shortcuts, and are a special type of function. 
+This option allows you to override the stanza name used for the `tonemacro` stanza in `rpt.conf`. The tone macro stanza directs the node to use a particular stanza for CTCSS tone tiggered macros from users accessing the node. Macros are DTMF shortcuts, and are a special type of function.
 
 Sample:
 
@@ -1351,16 +1351,16 @@ See the [Tone Macros](../adv-topics/tonemacros.md) page on how to utilize tone m
 **This option does not appear in the default `rpt.conf`.**
 
 ### totime=
-This option defines the time out timer interval for the node. The value is in milliseconds. If the node transmitter remains keyed beyond the `totime` timer length, the transmitter will be unkeyed until the receiver activity resets. 
+This option defines the time out timer interval for the node. The value is in milliseconds. If the node transmitter remains keyed beyond the `totime` timer length, the transmitter will be unkeyed until the receiver activity resets.
 
 Sample:
 
 ```
-totime = 180000                     ; repeater timeout 3 minutes 
+totime = 180000                     ; repeater timeout 3 minutes
 ```
-The default value is 180000(mS), or 3 minutes. 
+The default value is 180000(mS), or 3 minutes.
 
-!!! warning "Active Hub Advisory" 
+!!! warning "Active Hub Advisory"
     This setting can cause issues when linked to active hub nodes that may have long transmissions. If the local node transmitter appears to "drop out" when connected to nodes/hubs with long winded operators or broadcasts, review this setting, and increase as necessary.
 
 Related: [COP Commands 7 and 8](#cop-commands) and [`controlstates`](#controlstates), and [Control States Stanza](#control-states-stanza).
@@ -1448,8 +1448,8 @@ Sample:
 
 ```
 [controlstates]
-0 = rptena,lnkena,apena,totena,ufena,noicd  ; Normal operation                                  
-1 = rptena,lnkena,apdis,totdis,ufena,noice  ; Net and news operation                                             
+0 = rptena,lnkena,apena,totena,ufena,noicd  ; Normal operation
+1 = rptena,lnkena,apdis,totdis,ufena,noice  ; Net and news operation
 2 = rptena,lnkdis,apdis,totena,ufdis,noice  ; Repeater only operation
 ```
 
@@ -1507,7 +1507,7 @@ In order to use the data in this stanza, [`dtmfkey=1`](#dtmfkey) must also be se
 The above example will require either of the DTMF sequences `1234` or `4567` to be sent for **every** transmission, in order to "key-up" the node. Depending on which sequence is sent, the associated callsign will be logged by Asterisk.
 
 ## Functions Stanza
-The `[functions]` stanza is a named stanza pointed to by the [`functions=`](#functions) option. Functions within this stanza are used to decode DTMF commands when accessing the node from its **receiver**. This stanza is typically named `[functions]`. The name can be overridden, on a per-node basis, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.  
+The `[functions]` stanza is a named stanza pointed to by the [`functions=`](#functions) option. Functions within this stanza are used to decode DTMF commands when accessing the node from its **receiver**. This stanza is typically named `[functions]`. The name can be overridden, on a per-node basis, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
 
 Sample:
 
@@ -1545,7 +1545,7 @@ Method|Description
 2|Give Time of Day (global)
 3|Give software Version (global)
 4|Give GPS location info
-5|Speak the last (dtmf) user 
+5|Speak the last (dtmf) user
 11|Force ID (local only)
 12|Give Time of Day (local only)
 
@@ -1569,7 +1569,7 @@ In the above example:
 * `*6` followed by a phone number brings up the autopatch with the `function options` specified. Note that there is no `function method` defined, but there are `function options` present.
 
 ## Link Functions Stanza
-The `[my_link_functions]` stanza, if defined (see below), is a named stanza pointed to by the [`link_functions`](#link_functions) option. Functions within this stanza are used decode DTMF commands when accessing the node **via a link from another node**. 
+The `[my_link_functions]` stanza, if defined (see below), is a named stanza pointed to by the [`link_functions`](#link_functions) option. Functions within this stanza are used decode DTMF commands when accessing the node **via a link from another node**.
 
 The traditional usage is to point the `link_functions=` option to the same stanza as named by [`functions=`](#functions), thereby having functions from a linked node and from the local node be the same.
 
@@ -1577,7 +1577,7 @@ Sample:
 
 ```
 functions = functions               ; name the functions stanza functions
-link_functions = functions          ; use the same stanza 
+link_functions = functions          ; use the same stanza
 
 [functions]
 ...
@@ -1599,7 +1599,7 @@ link_functions = my_link_functions  ; use a different stanza
 See [DTMF Commands](#dtmf-commands) for the list of functions available.
 
 ## Macro Stanza
-The `[macro]` stanza is a named stanza pointed to by the [`macro=`](#macro) option. Macros are DTMF shortcuts. 
+The `[macro]` stanza is a named stanza pointed to by the [`macro=`](#macro) option. Macros are DTMF shortcuts.
 
 Sample:
 
@@ -1613,7 +1613,7 @@ macro=macro                         ; use stanza named macros
 See the [Macro](../adv-topics/macros.md) page for more information on macros.
 
 ## MDC Macro Stanza
-The `[mdcmacro]` stanza is a named stanza pointed to by the [`mdcmacro=`](#mdcmacro) option. Mdcmacros are actions to carry out when [MDC-1200 signalling](../adv-topics/mdc1200.md) is received. 
+The `[mdcmacro]` stanza is a named stanza pointed to by the [`mdcmacro=`](#mdcmacro) option. Mdcmacros are actions to carry out when [MDC-1200 signalling](../adv-topics/mdc1200.md) is received.
 
 Sample:
 
@@ -1642,7 +1642,7 @@ idamplitude = 768                   ; morse ID Amplitude (relative level)
 Note that `frequency` and `amplitude` would set the parameters for telemetry messages, whereas `idfrequency` and `idamplitude` would set the parameters specifically for identification (and they do not need to be the same).
 
 ## Nodes Stanza
-The `[nodes]` stanza is a list of nodes, their IP addresses, port and `NONE` or `NO` for non-remote base (normal) nodes. The nodes stanza is used to identify which node is mapped to which Internet call and to determine the destination to send the call to. 
+The `[nodes]` stanza is a list of nodes, their IP addresses, port and `NONE` or `NO` for non-remote base (normal) nodes. The nodes stanza is used to identify which node is mapped to which Internet call and to determine the destination to send the call to.
 
 If you are using automatic update for AllStarLink (public) nodes, no AllStarLink nodes should be defined here. Only place a definition for your local nodes (on your local LAN behind the same NAT router), private (off of AllStarLink) nodes, and remote base nodes here.
 
@@ -1650,7 +1650,7 @@ Sample:
 
 ```
 [nodes]
-1000 = radio@127.0.0.1/1000,NONE               ; private hub on this server 
+1000 = radio@127.0.0.1/1000,NONE               ; private hub on this server
 1001 = radio@host.domain.com/1001,NONE         ; private node on another server
 2501 = radio@127.0.0.1/2501,NONE               ; public node on this server
 2502 = radio@127.0.0.1/2502,NONE               ; another public node on this server
@@ -1663,15 +1663,15 @@ For remote base nodes, replace the `NONE` with `Y` or `YES`. Once designated as 
 The `[nodes]` stanza performs a function similar to an OS hosts file. When looking up node information, `app_rpt` looks in the `[nodes]` stanza first then searches (what could be called the Allstar DNS) the `/var/lib/asterisk/rpt_extnodes` file.
 
 ## Phone Functions Stanza
-The `[my_phone_functions]` stanza is a named stanza pointed to by the [`phone_functions=`](#phone-functions-stanza) option. Functions within this stanza are used decode DTMF commands when **accessing the node from a telephone**. 
+The `[my_phone_functions]` stanza is a named stanza pointed to by the [`phone_functions=`](#phone-functions-stanza) option. Functions within this stanza are used decode DTMF commands when **accessing the node from a telephone**.
 
-The traditional usage is to point `phone_functions=` to the same stanza as named by [`functions=`](#functions), thereby having functions from a phone and from the local node be the same. 
+The traditional usage is to point `phone_functions=` to the same stanza as named by [`functions=`](#functions), thereby having functions from a phone and from the local node be the same.
 
 Sample:
 
 ```
 functions = functions               ; name the functions stanza functions
-phone_functions = functions         ; use the same stanza 
+phone_functions = functions         ; use the same stanza
 
 [functions]
 ...
@@ -1700,8 +1700,8 @@ Sample:
 ```
 scheduler=schedule   ; name the stanza 'schedule'
 
-[schedule]                                                                      
-;dtmf_function =  m h dom mon dow  ; ala cron, star is implied                                                  
+[schedule]
+;dtmf_function =  m h dom mon dow  ; ala cron, star is implied
 2 = 00 00 * * *   ; at midnight every day, execute macro 2.
 ```
 
@@ -1724,8 +1724,8 @@ Sample:
 ```
 [telemetry]
 ct1=|t(350,0,100,2048)(500,0,100,2048)(660,0,100,2048)
-ct2=|t(660,880,150,2048)  
-ct3=|t(440,0,150,4096) 
+ct2=|t(660,880,150,2048)
+ct3=|t(440,0,150,4096)
 ct4=|t(550,0,150,2048)
 ct4=|t(2475,0,250,768)
 ct5=|t(660,0,150,2048)
@@ -1735,8 +1735,8 @@ ct8=|t(700,1100,150,2048)
 ct9=filename-without-extension
 
 ;remotetx=|t(1633,0,50,3000)(0,0,80,0)(1209,0,50,3000)
-remotetx=|t(880,0,150,2048) 
-remotemon=|t(1209,0,50,2048) 
+remotetx=|t(880,0,150,2048)
+remotemon=|t(1209,0,50,2048)
 cmdmode=|t(900,903,200,2048)
 functcomplete=|t(1000,0,100,2048)(0,0,100,0)(1000,0,100,2048)
 patchup=rpt/callproceeding
@@ -1778,7 +1778,7 @@ Sample:
 ```
 wait-times = wait-times             ; name the stanza wait-times
 
-[wait-times]                                                                                                 
+[wait-times]
 telemwait = 600                     ; time to wait before sending most
 idwait = 600                        ; time to wait before starting ID
 unkeywait = 800                     ; time to wait after unkey before sending CT's and link telemetry
