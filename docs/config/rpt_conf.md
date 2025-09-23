@@ -1350,6 +1350,17 @@ See the [Tone Macros](../adv-topics/tonemacros.md) page on how to utilize tone m
 
 **This option does not appear in the default `rpt.conf`.**
 
+### tonemacro_every_key=
+This option allows you to execute the tone macro every time the repeater is keyed with a given tone.  When disabled, the tone macro is only executed each time a different tone is received.  Multiple keyups with the same tone will not execute the tonemacro.
+
+Sample:
+
+```
+tonemacro_every_key = true         ;  execute tonemacro for each repeater keyup with matching tone
+```
+The default is `false`
+**This option does not appear in the default `rpt.conf`.**
+
 ### totime=
 This option defines the time out timer interval for the node. The value is in milliseconds. If the node transmitter remains keyed beyond the `totime` timer length, the transmitter will be unkeyed until the receiver activity resets.
 
