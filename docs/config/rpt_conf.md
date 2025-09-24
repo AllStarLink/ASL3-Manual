@@ -1339,7 +1339,8 @@ Sample:
 tonemacro = tonemacro               ; use stanza named tonemacro
 
 [tonemacro]
-100.0 = *81#                        ; play the time if a 100.0Hz CTCSS tone is received
+100.0 = *81#                        ; play the time if a 100.0Hz CTCSS tone is received one time
+94.8 = R*81#                        ; play the time if a 94.8Hz CTCSS tone is received every time
 ```
 
 The default is to have `tonemacro=` point to a stanza called `tonemacro`, and have a common set of commands for all nodes. However, you can have it point to another named stanza, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
@@ -1348,17 +1349,6 @@ See the [Tonemacro Stanza](#tonemacro-stanza) for more detail on defining tone m
 
 See the [Tone Macros](../adv-topics/tonemacros.md) page on how to utilize tone macros.
 
-**This option does not appear in the default `rpt.conf`.**
-
-### tonemacro_every_key=
-This option allows you to execute the tone macro every time the repeater is keyed with a given tone.  When disabled, the tone macro is only executed each time a different tone is received.  Multiple keyups with the same tone will not execute the tonemacro.
-
-Sample:
-
-```
-tonemacro_every_key = true         ;  execute tonemacro for each repeater keyup with matching tone
-```
-The default is `false`
 **This option does not appear in the default `rpt.conf`.**
 
 ### totime=
