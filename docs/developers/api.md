@@ -64,6 +64,7 @@ their links:
 | - | - | - |
 | https://stats.allstarlink.org/api/stats/ | 1 request / minute / IP  | All reporting nodes. |
 | https://stats.allstarlink.org/api/stats/${NODE} | 30 requests / minute / IP total | Stats on an individual reporting node. Rate limited from a single IP regardless of the node(s) requested in any combination. |
+| https://stats.allstarlink.org/api/stats/mapData | 1 request / minute / IP | |
 
 These return JSON that is self-describing.
 
