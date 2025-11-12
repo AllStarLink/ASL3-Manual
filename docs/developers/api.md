@@ -105,4 +105,5 @@ on [The ASL Community](https://community.allstarlink.org).
       }
 ```
 
-All other HTTP methods or malformed JSON will be ignored.
+!!! danger
+    All other HTTP methods or malformed JSON will be ignored.
