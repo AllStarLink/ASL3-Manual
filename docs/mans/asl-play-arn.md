@@ -4,7 +4,7 @@
 `asl-play-arn` - Play Amateur Radio Newsline
 
 ## SYNOPSIS
-Usage: 
+Usage:
 
 ```
 /usr/bin/asl-play-arn [-h] --node <node> [ --when <when> ] [ --debug ]
@@ -26,10 +26,10 @@ Optional arguments:
 Basic use is either immediately from the command line:
 
 ```
-allstar-play-arn --node 1999
+asl-play-arn --node 1999
 ```
 
-Depending on the processing speed of the device and Internet connectivity, the start of playback may take a significant time. If the desire is for precision on the start time, use the `--when` command and execute `allstar-play-arn` a few minutes before the desired start time.
+Depending on the processing speed of the device and Internet connectivity, the start of playback may take a significant time. If the desire is for precision on the start time, use the `--when` command and execute `asl-play-arn` a few minutes before the desired start time.
 
 The script is silent except on errors like all good Unix utilities. Some useful troubleshooting may be done with the `--debug` option if an error is not revealing.
 

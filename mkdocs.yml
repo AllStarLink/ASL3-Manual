@@ -72,7 +72,7 @@ nav:
       - install/debian/index.md
       - install/debian/install.md
       - install/debian/deb-appliance.md
-      - install/debian/docker.md  
+      - install/debian/docker.md
     - <span style="color:hsl(86.28, 71.6%, 33.14%)">Allmon3</span>:
       - allmon3/index.md
       - allmon3/install.md
@@ -103,12 +103,13 @@ nav:
     - adv-topics/index.md
     - adv-topics/allowdenylists.md
     - adv-topics/aprs.md
-    - adv-topics/tts.md 
+    - adv-topics/tts.md
     - adv-topics/conftmpl.md
     - adv-topics/archivedir.md
     - adv-topics/audiofilters.md
     - adv-topics/autopatch.md
     - adv-topics/audio-level.md
+    - adv-topics/apprpt-dialplan.md
     - adv-topics/courtesytones.md
     - adv-topics/condiscpgm.md
     - adv-topics/daq.md
@@ -127,7 +128,7 @@ nav:
     - adv-topics/gpio.md
     - adv-topics/mdc1200.md
     - adv-topics/multinodesnetwork.md
-    - adv-topics/nnx.md 
+    - adv-topics/nnx.md
     - adv-topics/noderesolution.md
     - adv-topics/other-software.md
     - adv-topics/parrotmode.md
@@ -173,6 +174,7 @@ nav:
     - developers/source-install.md
     - developers/aptly.md
     - developers/versioning.md
+    - developers/api.md
   - Man Pages:
     - mans/index.md
     - mans/allmon3-passwd.md
@@ -191,5 +193,6 @@ nav:
     - config/extensions_conf.md
     - config/iax_conf.md
     - config/rpt_conf.md
+    - config/simpleusb_conf.md
     - config/tlb_conf.md
     - config/voter_conf.md
