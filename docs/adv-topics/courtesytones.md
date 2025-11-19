@@ -1,5 +1,5 @@
 # Courtesy Tones
-This is how to use and define courtesy tones for ASL3. The telemetry tones to **use** are defined for each node in the [`[node]`](../config/rpt_conf.md#node-number-stanza) stanza. The telemetry **definitions** common to all nodes are in the [`[telemetry]`](../config/rpt_conf.md#telemetry-stanza) stanza. 
+This is how to use and define courtesy tones for ASL3. The telemetry tones to **use** are defined for each node in the [`[node]`](../config/rpt_conf.md#node-number-stanza) stanza. The telemetry **definitions** common to all nodes are in the [`[telemetry]`](../config/rpt_conf.md#telemetry-stanza) stanza.
 
 Also see [config file templating](./conftmpl.md) for more information on where to put node-specific options.
 
@@ -16,8 +16,8 @@ Key|Value|Description
 Example `[node]` stanza:
 
 ```
-[1234]                              ; Your node number 
-telemetry = telemetry               ; Points to the telemetry stanza 
+[1234]                              ; Your node number
+telemetry = telemetry               ; Points to the telemetry stanza
 unlinkedct = ct2                    ; Send a this courtesy tone when the user un-keys if the node is not connected to any other nodes. (optional, default is none)
 remotect = ct3                      ; remote linked courtesy tone (indicates a remote is in the list of links)
 linkunkeyct = ct8                   ; sent when a transmission received over the link un-keys
@@ -31,7 +31,7 @@ For clarity, the different types of telemetry methods supported are:
 
 Telemetry Method|Telemetry Description
 ----------------|---------------------
-`|i`|Morse ID 
+`|i`|Morse ID
 `|m`|Morse message
 `|t`|Tone sequence
 `<none>`|If the telemetry string does not start with a `|`, then the string is a path to a sound file
@@ -59,7 +59,7 @@ A tone group is a set of 4 comma separated integers formatted as follows:
 
 * `frequency1` and `frequency2` must be a number between `0` and `3000`. These specify the tone frequency in Hz
 
-* `duration` is the tone on time in Milliseconds 
+* `duration` is the tone on time in Milliseconds
 
 * `amplitude` is the relative volume level of the tone or tones. This can be from `0` to `8192`
 
@@ -76,13 +76,12 @@ Example `[telemetry]` Stanza
  [telemetry]
  ct1=|t(350,0,100,2048)(500,0,100,2048)(660,0,100,2048)
  ct2=|t(660,880,150,2048)
- ct3=|t(440,0,150,4096)       
- ct4=|t(550,0,150,2048)       
+ ct3=|t(440,0,150,4096)
+ ct4=|t(550,0,150,2048)
  ct5=|t(660,0,150,2048)
  ct6=|t(880,0,150,2048)
  ct7=|t(660,440,150,2048)
  ct8=|t(700,1100,150,2048)
- ranger=|t(1800,0,60,3072)(0,0,50,0)(1800,0,60,3072)(0,0,50,0)(1800,0,60,3072)(0,0,50,0)(1800,0,60,3072)(0,0,50,0)(1800,0,60,3072)(0,0,50,0)(1800,0,60,3072)(0,0,150,0)    
  remotetx=|t(1633,0,50,3000)(0,0,80,0)(1209,0,50,3000)
  remotemon=|t(1209,0,50,2048)
  cmdmode=|t(900,903,200,2048)

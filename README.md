@@ -40,7 +40,7 @@ mkdocs serve
 
 Now the files may be edited. If you aren't sure what editor to use
 then consider using VSCode. It supports very nice syntax highlighting
-for Markdown. It also has plugins to help with managing a Git respository
+for Markdown. It also has plugins to help with managing a Git repository
 if you are unfamiliar with that.
 
 Browse http://127.0.0.1:8000 to see the existing documentation set.
@@ -170,7 +170,7 @@ This procedure will configure a WSL2 environment on your local machine to run Li
 - You will also want to make sure your local repo is updated and in synch with Github using `git pull origin main`.
 
 ### Windows 10/11
-- Download and install the lastest stable version of Python3 (currently Python 3.13) with the Windows installer - [Downloads](https://www.python.org/downloads/)
+- Download and install the latest stable version of Python3 (currently Python 3.13) with the Windows installer - [Downloads](https://www.python.org/downloads/)
 - Download and install the latest version of Git with the Windows standalone installer - [Downloads](https://git-scm.com/downloads/win)
 - If you are not familiar with working with SSH keys, install the GitHub cli tool:
     ```psexec

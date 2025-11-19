@@ -73,7 +73,7 @@ nav:
       - install/debian/index.md
       - install/debian/install.md
       - install/debian/deb-appliance.md
-      - install/debian/docker.md  
+      - install/debian/docker.md
     - <span style="color:hsl(86.28, 71.6%, 33.14%)">Allmon3</span>:
       - allmon3/index.md
       - allmon3/install.md
@@ -104,16 +104,19 @@ nav:
     - adv-topics/index.md
     - adv-topics/allowdenylists.md
     - adv-topics/aprs.md
-    - adv-topics/tts.md 
+    - adv-topics/tts.md
     - adv-topics/conftmpl.md
     - adv-topics/archivedir.md
+    - adv-topics/audiofilters.md
     - adv-topics/autopatch.md
     - adv-topics/audio-level.md
+    - adv-topics/apprpt-dialplan.md
     - adv-topics/courtesytones.md
     - adv-topics/condiscpgm.md
     - adv-topics/daq.md
     - adv-topics/dns-servers.md
     - adv-topics/dtmffunctions.md
+    - adv-topics/echolink.md
     - adv-topics/elkelink.md
     - adv-topics/eurorptr.md
     - adv-topics/eventmgmt.md
@@ -126,10 +129,11 @@ nav:
     - adv-topics/gpio.md
     - adv-topics/mdc1200.md
     - adv-topics/multinodesnetwork.md
-    - adv-topics/nnx.md 
+    - adv-topics/nnx.md
     - adv-topics/noderesolution.md
     - adv-topics/other-software.md
     - adv-topics/parrotmode.md
+    - adv-topics/dtmftoscript.md
     - adv-topics/permanentnode.md
     - adv-topics/parrotmode.md
     - adv-topics/permissions.md
@@ -138,12 +142,14 @@ nav:
     - adv-topics/rxtoneburst.md
     - adv-topics/sa818modules.md
     - adv-topics/sip-phone.md
+    - adv-topics/scheduler.md
     - adv-topics/sleepmode.md
     - adv-topics/soundfiles.md
     - adv-topics/simplevoter.md
     - adv-topics/broadcastify.md
     - adv-topics/telemetry.md
     - adv-topics/tailmessage.md
+    - adv-topics/timeofday.md
     - adv-topics/tlb.md
     - adv-topics/tonemacros.md
     - adv-topics/tonesignalling.md
@@ -171,19 +177,25 @@ nav:
     - developers/source-install.md
     - developers/aptly.md
     - developers/versioning.md
+    - developers/api.md
   - Man Pages:
     - mans/index.md
     - mans/allmon3-passwd.md
+    - mans/asl-backup-menu.md
     - mans/asl-find-sound.md
     - mans/asl-node-lookup.md
     - mans/asl-play-arn.md
     - mans/asl-say.md
     - mans/asl-setup-dkms-mok.md
+    - mans/sa818.md
+    - mans/sa818-menu.md
   - Config Files:
     - config/index.md
     - config/config-structure.md
+    - config/echolink_conf.md
     - config/extensions_conf.md
     - config/iax_conf.md
     - config/rpt_conf.md
+    - config/simpleusb_conf.md
     - config/tlb_conf.md
     - config/voter_conf.md
