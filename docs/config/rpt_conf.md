@@ -1357,17 +1357,17 @@ time_out_reset_unkey_interval = 0                  ; transmit time-out unkey res
 The default value is 0ms (0 seconds) - disabled. 
 
 ### time_out_reset_kerchunk_interval=
-Sets the interval required for a local user to reset the time out timer caused by traffic on a link.  Sets the number of milliseconds that the user must key before unkeying on the local receiver in order to reset the time out condition. This value defaults to 250 milliseconds. If this value is set to 0, the kerchunk time out reset feature will be disabled.
-
-!!! note  "`time_out_reset_unkey_interval` required"
-    This only is active if `time_out_reset_unkey_interval` is defined and set to a nonzero value. If `time_out_reset_unkey_interval` is not defined, then the traditional way of resetting the time out timer will be used.
+Sets the interval required for a local user to reset the time out timer caused by traffic on a link.  The value is in milliseconds and represents the time that the user must kerchunk (short key followed by an unkey) the local receiver in order to reset the time out condition.
+This value defaults to 250ms.  If this value is set to 0, the kerchunk will have no delay to activate.
 
 Sample:
 
 ```
-time_out_reset_kerchunk_interval = 250                  ; transmit time-out keyup minimum time (in ms) (optional, default to 250ms.
+time_out_reset_kerchunk_interval = 250                  ; transmit time-out keyup minimum time (in ms) optional, default to 250ms.
 ```
-The default value is 250ms. 
+
+!!! note  "`time_out_reset_unkey_interval` required"
+    The use of a kerchunk to reset a timeout is only available if the `time_out_reset_unkey_interval` is set to a nonzero value. If `time_out_reset_unkey_interval` is zero (or not defined in rpt.conf) then the traditional way of resetting the time out timer will be used. The traditional way is no delay on local unkey/key to reset a timeout.
 
 ### unlinkedct=
 This option selects the courtesy tone to be used when the system has no remote nodes connected and is operating as a standalone repeater.
