@@ -1339,7 +1339,8 @@ Sample:
 tonemacro = tonemacro               ; use stanza named tonemacro
 
 [tonemacro]
-100.0 = *81#                        ; play the time if a 100.0Hz CTCSS tone is received
+100.0 = *81#                        ; play the time if a 100.0Hz CTCSS tone is received one time
+94.8 = R*81#                        ; play the time if a 94.8Hz CTCSS tone is received every time
 ```
 
 The default is to have `tonemacro=` point to a stanza called `tonemacro`, and have a common set of commands for all nodes. However, you can have it point to another named stanza, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
