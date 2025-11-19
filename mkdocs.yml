@@ -5,8 +5,8 @@ site_author: AllStarLink Team
 plugins:
   - search
   - glightbox
-  - print-site
   - include-markdown
+  - print-site
 markdown_extensions:
   - admonition
   - attr_list
