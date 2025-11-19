@@ -6,6 +6,7 @@ plugins:
   - search
   - glightbox
   - print-site
+  - include-markdown
 markdown_extensions:
   - admonition
   - attr_list
@@ -147,6 +148,7 @@ nav:
     - adv-topics/simplevoter.md
     - adv-topics/broadcastify.md
     - adv-topics/telemetry.md
+    - adv-topics/tailmessage.md
     - adv-topics/timeofday.md
     - adv-topics/tlb.md
     - adv-topics/tonemacros.md
