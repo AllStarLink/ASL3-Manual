@@ -1266,7 +1266,7 @@ telemetry = telemetry               ; name telemetry to 'telemetry'
 
 The default is to have `telemetry=` point to a stanza called `telemetry`, and have a common set of commands for all nodes. However, you can have it point to another named stanza, see [Settings to Name Other Stanzas](./config-structure.md#settings-to-name-other-stanzas) for more information.
 
-See the [Telemetry Stanza](#telemetry-stanza) for more information on the options that can be configured.
+See the [Telemetry Stanza](../config/rpt_conf.md#telemetry-stanza) for more information on the options that can be configured.
 
 <!-- stop:telemetry -->
 ### telemdefault=

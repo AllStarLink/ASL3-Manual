@@ -1,6 +1,8 @@
 # Time of Day
-When the time of day message (`status 12` or `status 2`) is activated the node will report the local time.  This message can be customized by adding the extension `TIME` to [extensions.conf](../config/extensions_conf.md) under the context `[telemetry]` or the context defined in [telemetry](#telemetry) parameter found in `rpt.conf`.
+When the time of day message (`status 12` or `status 2`) is activated the node will report the local time.  This message can be customized by adding the extension `TIME` to [extensions.conf](../config/extensions_conf.md) under the context `[telemetry]` or the context named by the [ `telemetry=` ](../config/rpt_conf.md#telemetry) parameter found in `rpt.conf`.
+
 The standard time message extension follows:
+
 ```
 [telemetry]
 
