@@ -1,11 +1,9 @@
-# Debian 12 Install
+# Debian Install
 These instructions are for installing ASL3 on general purpose operating systems manually. For installation on Raspberry Pis, consider using the [ASL3 Appliance](../pi-appliance/index.md).
 
 !!! note "Architecture Support"
     Currently, the project does not support armv7l/armhf platforms because all known uses of AllStarLink is on hardware which supports the Bookworm arm64 distribution such as Raspberry Pi 3, 4, 5, and Zero 2 W. If you have a platform that can use armv7l/armhf 32-bit packages only please file an issue at [ASL3 on GitHub](https://github.com/AllStarLink/ASL3/issues).
 
-!!! note "Previous Issues with Cloud Kernels"
-    As of DAHDI Linux 3.4.0-5, as released from AllStarLink, no longer has conflicts with the Debian "cloud" kernels and is fully supported.
 
 ## System Requirements
 The following are the system requirements for an ASL3 system:
@@ -15,14 +13,15 @@ The following are the system requirements for an ASL3 system:
 | **CPU/Platform** | 1 CPU, 64-bit, x86_64 (amd64) or ArmV8 (arm64) | 2 - 4 CPUs depending on the number of hardware devices connected to the system |
 | **Memory** | 512M | 2 G |
 | **Storage** | 8G (for OS + software) | - |
+| **Debian Version** | Debian 13 Tixie<br>Debian 12 Bookworm | Debian 13 Trixie |
 
 !!! note "UEFI / SecureBoot"
     For x86_64/amd64 platforms, it is recommended to disable SecureBoot if you do not need that feature. While it is a good security feature, given that AllStarLink v3 requires building a kernel module, it adds likely-undesired complexity for most ASL users. If you need or want to use UEFI/SecureBoot see [the advanced topic document](../../adv-topics/uefi-secureboot.md).
-  
-## Debian 12 OS Install
-You’re going to start off by installing a new Debian 12 OS on your PC computer or virtual machine. There are instructions all over the internet that detail how to install Debian 12. Briefly you:
 
- * Download and boot the Debian 12 netinstall.iso
+## Debian OS Install
+You’re going to start off by installing a new Debian OS on your PC computer or virtual machine. There are instructions all over the internet that detail how to install Debian 12. Briefly you:
+
+ * Download and boot the Debian  netinstall.iso for Trixie or Bookworm
  * Take most of the defaults
  * Do not install a `Debian desktop environment`
  * Do install `web server` (if you plan to use Allmon3 or other web management packages)
@@ -34,6 +33,15 @@ You’re going to start off by installing a new Debian 12 OS on your PC computer
 ## AllStarLink Package Repo Install
 Once your Debian system is up and running, install the ASL package repositories:
 
+**Debian 13 Bookworm**
+```
+cd /tmp
+wget https://repo.allstarlink.org/public/asl-apt-repos.deb13_all.deb
+sudo dpkg -i asl-apt-repos.deb13_all.deb
+sudo apt update
+```
+
+**Debian 12 Bookworm**
 ```
 cd /tmp
 wget https://repo.allstarlink.org/public/asl-apt-repos.deb12_all.deb
@@ -42,6 +50,11 @@ sudo apt update
 ```
 
 ## ASL3 Packages Install
+
+!!! tip "AllStarLink Appliance"
+    If the desired state of the install is the appliance format substitute
+    the next step with one outlined in [`Debian Appliance`](deb-appliance.md)
+
 Now the packages may be installed and updated directly from the AllStarLink package repository:
 
 ```
@@ -61,6 +74,6 @@ The following packages are also available and may be installed separately:
 Install with `sudo apt install asl3-update-nodelist`.
 
 ## Node Configuration
-The next step is to configure the node settings. It is recommended to use the [`asl3-menu`](../../user-guide/index.md) command to manage the configuration for common use cases. See [ASL3 Menu](../../user-guide/index.md) for details. YouTuber Freddie Mac has a nice [ASL3 RPi installation and configuration video](https://youtu.be/aeuj-yI8qrU). See the part where the [`asl3-menu`](../../user-guide/index.md) is shown. 
+The next step is to configure the node settings. It is recommended to use the [`asl3-menu`](../../user-guide/index.md) command to manage the configuration for common use cases. See [ASL3 Menu](../../user-guide/index.md) for details. YouTuber Freddie Mac has a nice [ASL3 RPi installation and configuration video](https://youtu.be/aeuj-yI8qrU). See the part where the [`asl3-menu`](../../user-guide/index.md) is shown.
 
-Proceed from here with the **Node Settings** option in order to configure your node number and choose/configure your audio interface. 
+Proceed from here with the **Node Settings** option in order to configure your node number and choose/configure your audio interface.
