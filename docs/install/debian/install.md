@@ -13,15 +13,15 @@ The following are the system requirements for an ASL3 system:
 | **CPU/Platform** | 1 CPU, 64-bit, x86_64 (amd64) or ArmV8 (arm64) | 2 - 4 CPUs depending on the number of hardware devices connected to the system |
 | **Memory** | 512M | 2 G |
 | **Storage** | 8G (for OS + software) | - |
-| **Debian Version** | Debian 13 Tixie<br>Debian 12 Bookworm | Debian 13 Trixie |
+| **Debian Version** | Debian 13 Trixie<br>Debian 12 Bookworm | Debian 13 Trixie |
 
 !!! note "UEFI / SecureBoot"
     For x86_64/amd64 platforms, it is recommended to disable SecureBoot if you do not need that feature. While it is a good security feature, given that AllStarLink v3 requires building a kernel module, it adds likely-undesired complexity for most ASL users. If you need or want to use UEFI/SecureBoot see [the advanced topic document](../../adv-topics/uefi-secureboot.md).
 
 ## Debian OS Install
-You’re going to start off by installing a new Debian OS on your PC computer or virtual machine. There are instructions all over the internet that detail how to install Debian 12. Briefly you:
+You’re going to start off by installing a new Debian OS on your PC computer or virtual machine. There are instructions all over the internet that detail how to install Debian. Briefly you:
 
- * Download and boot the Debian  netinstall.iso for Trixie or Bookworm
+ * Download and boot the Debian netinstall.iso for Trixie or Bookworm
  * Take most of the defaults
  * Do not install a `Debian desktop environment`
  * Do install `web server` (if you plan to use Allmon3 or other web management packages)
@@ -33,7 +33,7 @@ You’re going to start off by installing a new Debian OS on your PC computer or
 ## AllStarLink Package Repo Install
 Once your Debian system is up and running, install the ASL package repositories:
 
-**Debian 13 Bookworm**
+**Debian 13 Trixie**
 ```
 cd /tmp
 wget https://repo.allstarlink.org/public/asl-apt-repos.deb13_all.deb
