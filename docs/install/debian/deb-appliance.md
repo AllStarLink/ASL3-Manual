@@ -1,7 +1,7 @@
 # Debian Appliance
 
 !!! info "Debian 13 Only"
-    An ASL Appliance can be added to a *Debian 13 installations only*.
+    An ASL Appliance can only be added to Debian 13 installations.
 
 If you install the following packages, you’ll have everything you need to use the “appliance” configuration.
 
@@ -19,16 +19,12 @@ use the "PC" flavor of the appliance:
 sudo apt install asl3-appliance-pc
 ```
 
-Systems that are Raspberry-pi platforms where certain additional features may be desired, notably mDNS and specific Pi hardware
-features can use:
-
+Systems that are based on the Raspberry Pi platform are strongly encouraged to start with
+the ASL3 Appliance (Raspberry Pi) image that includes the asl3-appliance-pi package.
+Those who need to create their own Pi images (something ASL does not support), can use:
 ```bash
 sudo apt install asl3-appliance-pi
 ```
-
-However it is **strongly** suggested to start any Pi build with
-the ASL Appliance image. The asl3-appliance-pi package is **not**
-supported on other Pi OS installs.
 
 Use one of the above in the [Debian Appliance](install.md) directions
 in place of the _ASL3 Package Install_ step.
