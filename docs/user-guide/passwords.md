@@ -34,7 +34,7 @@ You may have heard about the Linux "root" account. The root account is also call
 ### How do I setup a Linux login?
 
 * For those using the Raspberry Pi Imager, you will use the "OS Customization" to setup a new login account. Here, you will specify your login `user` and `password` (or provide an SSH public key for password-less access)
-* For those installing generic Debian OS, you should be prompted to setup an initial account during the OS installation. This is where you will specify your login `user` and `password`. Note, we recommend NOT configuring a `root` account during Debian 12 installation (skip it), so that the first user account you create will be able to issue root commands using `sudo`
+* For those installing generic Debian OS, you should be prompted to setup an initial account during the OS installation. This is where you will specify your login `user` and `password`. Note, we recommend NOT configuring a `root` account during Debian installation (skip it), so that the first user account you create will be able to issue root commands using `sudo`
 * Some Virtual Machines (VM's) will have you use a pre-configured image with a default `user` and `password`.  Check the documentation associated with the image, or your VM host/provider for details
 
 **NOTE:** There is NO DEFAULT USER included in the ASL3 Raspberry Pi Appliance image.

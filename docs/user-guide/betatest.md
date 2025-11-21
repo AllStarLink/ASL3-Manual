@@ -58,10 +58,10 @@ sudo asl-repo-switch -r
 sudo apt update
 sudo apt install -y --reinstall asl3 asl3-asterisk asl3-asterisk-config \
   asl3-asterisk-modules asl3-menu asl3-update-nodelist \
-  asl3-pi-appliance allmon3
+  asl3-appliance-pi allmon3
 ```
 
-For Debian 12 general installations:
+For Debian 12 or 13 general installations:
 
 ```
 sudo asl-repo-switch -r

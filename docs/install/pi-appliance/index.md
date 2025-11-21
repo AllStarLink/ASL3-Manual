@@ -5,8 +5,8 @@ The Pi would be the [Server](../../basics/gettingstarted.md#what-is-a-server) on
 
 The ASL3 Appliance (Raspberry Pi) image includes the following to make a complete AllStarLink system:
 
-* Debian 12 operating system
-* Asterisk 20 LTS + `app_rpt`
+* Debian 12 or 13 operating system
+* Asterisk 22 LTS + `app_rpt`
 * `asl-*` commands
 * ASL3 Menu ([`asl-menu`](../../user-guide/index.md))
 * Allmon3

@@ -5,14 +5,14 @@ Use of a [normal installation](install.md) is recommended.
 
 !!! warning "Host / Container Kernel Compatibility"
     As app_rpt.so requires the DAHDI kernel modules, the container must be
-    hosted on a Debian 12 system. The container must be able to compile the
+    hosted on a Debian 12 or Debian 13 system. The container must be able to compile the
     kernel module (using DKMS) for the exact kernel version provided to
     the container from the Host OS. Currently, the container must be
     recomposed after a reboot into a new kernel.
 
 !!! note "Advanced Concept"
     Use of Asterisk/app_rpt within a Docker container is not a trivial
-    undertaking. The Docker structure is provided due to requests from the 
+    undertaking. The Docker structure is provided due to requests from the
     community but it is not the recommended way to install and use
     AllStarLink as it requires more configuration, not less, than
     a traditional installation.
@@ -20,14 +20,14 @@ Use of a [normal installation](install.md) is recommended.
 !!! note "Limited Support"
     Installation of Asterisk/app_rpt in a container is not a primary
     platform for AllStarLink v3. Updates, fixes, and support will
-    occur on as "as available" basis. Users of the container are 
+    occur on as "as available" basis. Users of the container are
     requested to help the project.
 
 ## Git Repository
 Create the directory `/docker` (or use whatever is preferred), `cd` to it,
 and check out the Git repository containing the Docker configuration.
 All commands on the rest of this page assume they are being run from
-the directory containing the root of the Git repository. 
+the directory containing the root of the Git repository.
 
 For this manual page, the path used is `/docker/ASL3-Docker`.
 

@@ -2,7 +2,7 @@
 All of the software components that make up ASL3 are provided by software packages (Debian `.deb` files) from an centralized Apt repository. This makes upgrades quick and painless for users.
 
 ## Standard Debian Upgrades
-Whether ASL3 is installed on a standard Debian 12 installation or you are using the Pi Appliance image, updates follow the standard Debian format:
+Whether ASL3 is installed on a standard Debian installation or you are using the Pi Appliance image, updates follow the standard Debian format:
 
 ```
 sudo apt update

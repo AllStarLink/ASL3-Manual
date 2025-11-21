@@ -2,12 +2,12 @@
 
 By default, Allmon3 is installed without HTTPS support. Hence, when you browse to your Allmon3 dashboard, you get a warning about the webpage being "insecure".
 
-Adding HTTPS support is relatively painless, using a certificate from [LetsEncrypt](https://letsencrypt.org/). 
+Adding HTTPS support is relatively painless, using a certificate from [LetsEncrypt](https://letsencrypt.org/).
 
 ## Pre-requisites
 There are pre-requisites to deploying a LetsEncrypt certificate successfully. The following process assumes the following:
 
-* you have Allmon3 running on a stock Debian 12 installation, with Apache as the webserver
+* you have Allmon3 running on a supported Debian installation, with Apache as the webserver
 
 * there are no other "virtual hosts" running on the webserver (there shouldn't be with a stock ASL3 installation)
 
@@ -33,7 +33,7 @@ sudo apt install certbot python3-certbot-apache
 This will ensure that your system is up to date, then install `certbot` and the helper plugin for interacting with the Apache webserver.
 
 ## Request Certificate
-Now, we will request and install a certificate for the webserver from LetsEncrypt. With the stock ASL3/Allmon3 installation, `certbot` and its associated plugin will automatically request a certificate, then modify your Apache webserver configuration files accordingly to support encryption. 
+Now, we will request and install a certificate for the webserver from LetsEncrypt. With the stock ASL3/Allmon3 installation, `certbot` and its associated plugin will automatically request a certificate, then modify your Apache webserver configuration files accordingly to support encryption.
 
 Run the following command to secure your webserver:
 
