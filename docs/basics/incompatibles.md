@@ -7,17 +7,12 @@ With the upgrade to Asterisk 20, and all the associated code changes that had to
 Modern installations of Asterisk runs as the unprivileged `asterisk` user rather than as `root`. Linux typically prohibits non-root users from listening on a TCP
 port below `1024`. The default port for VOTERs/RTCMs was previously port `667`. This has been changed to port `1667` to allow Asterisk to access the port, and connect to VOTERs/RTCMs.
 
-If the VOTER/RTCM port cannot be easily changed, then the following configuration change can be made to the underlying operating system:
-
-```
-echo net.ipv4.ip_unprivileged_port_start=667 > /etc/sysctl.d/aslport667.conf
-sysctl -p
-systemctl restart asterisk
-```
+If the VOTER/RTCM port cannot be easily changed, make sure you are using the Debian packaging
+provided by AllStarLink which uses systemd to start asterisk with permissions to listen on `667`.
 
 If running the AllStarLink Pi Appliance (or another system with a firewall), inbound to port `667/UDP` must be permitted. For directions on how to do this with the Pi Appliance see [Managing the Firewall](../pi/cockpit-firewall.md). **Don't forget to also allow this port through any firewall that may part of your internet connection.**
 
-**NOTE:** While this workaround is available, its use is strongly discouraged, as it defeats a security measure in Linux. If at all possible, please try and update any of your VOTERs/RTCMs to use port `1667`. 
+**NOTE:** While this workaround is available, its use is strongly discouraged, as it defeats a security measure in Linux. If at all possible, please try and update any of your VOTERs/RTCMs to use port `1667`.
 
 ### Pi Serial Port(s) Available by Default
 On the ASL3 Pi Appliance, the system comes pre-configured for `/dev/serial0` (formerly `/dev/ttyAMA0`) accessibility.
@@ -25,7 +20,7 @@ On the ASL3 Pi Appliance, the system comes pre-configured for `/dev/serial0` (fo
 That means that Bluetooth and the default serial console are disabled. Any directions requiring editing of `config.txt` or `cmdline.txt` are unnecessary with the ASL3 appliance.
 
 ### Pi `/dev` Entry Changes
-As ASL3 is based on Debian 12, users with Raspberry Pi devices must note that the serial port on the Pi expansion header is now `/dev/serial0` rather than the historical `/dev/ttyAMA0`. If you are following directions for Pi serial port operations, such as programming an SA818/DRA818-based radio hat or a SHARI node, use `/dev/serial0` in place of the `/dev/ttyAMA0` reference.
+As ASL3 is based on Debian 12 and 13, users with Raspberry Pi devices must note that the serial port on the Pi expansion header is now `/dev/serial0` rather than the historical `/dev/ttyAMA0`. If you are following directions for Pi serial port operations, such as programming an SA818/DRA818-based radio hat or a SHARI node, use `/dev/serial0` in place of the `/dev/ttyAMA0` reference.
 
 ### USB `udev`
 A `udev` rule is needed to allow Asterisk running as non-root access to the USB system. ASL3 systems installed from `.debs` using `apt install`, or Raspberry Pi images will already have this rule in place, so no additional action is required. This is documented for advanced users and developers.
@@ -80,7 +75,7 @@ At this time, we have a once daily process that cleans out the older records.  B
 
 
 ### resize2fs_once "Error"
-There are intermittent cases of errors on the screen or in  the system logs about a failure of a service named `resize2fs_once.service` after the final first boot upon installation. The error may report that it "Failed to start" or "timed out". If the `/` partition has been properly resized, which has been the case in every known 
+There are intermittent cases of errors on the screen or in  the system logs about a failure of a service named `resize2fs_once.service` after the final first boot upon installation. The error may report that it "Failed to start" or "timed out". If the `/` partition has been properly resized, which has been the case in every known
 occurrence of the error, then there is no action to take and the issue will not appear on subsequent reboots.
 
 A properly resized `/` should be a bit smaller than the full size of the SD card or USB drive used with the device.
