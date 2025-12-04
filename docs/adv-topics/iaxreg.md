@@ -14,7 +14,7 @@ The following are the ***only*** reasons to use IAX-based registration with ASL3
 ## Using IAX Registration Instead of HTTP Registration
 To change from HTTP to IAX registration, do the following **as root** (i.e. use `sudo -s`):
 
-1. Edit `/etc/asterisk/modules.conf` and change the line for `res_rpt_http_registrations.so` from "load" to "noload":
+1. Edit `/etc/asterisk/modules.conf` and change the line for `res_rpt_http_registrations.so` from "require" (or "load") to "noload":
 
     ```
     noload => res_rpt_http_registrations.so
