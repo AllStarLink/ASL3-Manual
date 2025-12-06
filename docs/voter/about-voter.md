@@ -324,61 +324,9 @@ See the [VOTER Simulcasting](./voter-simulcasting.md) page for further informati
 ### General-Purpose/Mixed Mode Configurations
 The primary use of the VOTER/RTCM is to implement multi-site receiver voting repeater systems. That leads itself then to also adding simulcast transmitters (if you already have the sites for receivers).
 
-However, this is not the only use case.
-
-The VOTER/RTCM also works very well as a repeater interface to a stand-alone repeater. In fact, in a few key areas, it is a superior choice for interfacing a repeater to AllStarLink:
-
-* Hardened hardware (no SD card to corrupt with power failures)
-* No operating system crashes
-* No USB configuration issues
-* No USB audio level configurations to get corrupted
-* Supports CTCSS transmit tone generation
-* Easily transits NAT networks with minimal network configuration
-
-Remember, the VOTER/RTCM is basically a custom Radio over IP (RoIP) adapter. It was just designed from the ground up by a very smart amateur radio operator.
-
-When used in "General-purpose"/"Mixed Mode" (for a stand-alone repeater), you do **not** require a GPS for timing. Although, there is nothing stopping you from using one. Setting the PPS Polarity setting to `2` (ignore) will force the VOTER/RTCM in to "General-purpose" mode. 
-
-As the name "Mixed Mode" implies, you could have a "General-purpose" client that is mixed with voting clients, and `chan_voter` will "mix" the audio from non-voting clients with the voted audio.  
-
-A simple [`voter.conf`](../config/voter_conf.md) for Mixed Mode would look like this:
-
-```
-[general]
-port = 1667
-password = BLAH
-
-[1999]
-Site1 = pswrd1,master,transmit
-Site2 = pswrd2,transmit
-```
-
-#### Mixed Client Error
-"I am getting this error in Asterisk":
-
-```
-WARNING[2368]: chan_voter.c:4511 voter_reader: Voter client master timing source mobile1 attempting to authenticate as mix client!!
-```
-
-A mixed client error means the [`voter.conf`](../config/voter_conf.md) file is expecting a VOTER/RTCM to try and connect with a GPS IP packet (ie. has `master` in it's definition in [`voter.conf`](../config/voter_conf.md)), but the VOTER/RTCM isn't sending a GPS IP packet. So it is a mismatch between [`voter.conf`](../config/voter_conf.md) and the PPS setting in the VOTER/RTCM. 
-
-If you want to use a mix client (non-voted), make sure that receiver's configuration line in [`voter.conf`](../config/voter_conf.md) **does not** have the `master` option set.
-
-#### Mix Clients with Voted Client Issues
-Situation...
-"I have a private node with 6 voted receivers using RTCMs. I'd like to add a 7th RTCM to this node that is always mixed in rather than voted. I'm able to make this RTCM work as a 7th voted receiver with no problem. Everything I've read seems to indicate that if I change GPS PPS polarity to "none" this will achieve my desired results, however I am unable to get audio out of my transmit RTCM from this 7th site. It does change color to cyan in Allmon indicating it is non voted input but I do not get any indication or audio when that units COR goes active."
-
-"Setting `voter debug level 3` in Asterisk and I'm seeing the following message repeatedly scrolling by in a blur when the mix client detects COR (COR is active). Sequence numbers are continually incrementing by 1. I'm running software version 1.47 on all my clients:"
-
-```
-mix client (Mulaw) my_client index:0 their seq:629 our seq:629
-mix client my_client outa bounds, resetting!!
-```
-
-If you have a similar situation to the above... check your `buflen` in [`voter.conf`](../config/voter_conf.md). Make sure it is at >=160 and see if that fixes it. You may also want to review [buffer tuning](./voter-buffers.md).
+However, this is not the only use case. The VOTER/RTCM also works very well as a repeater interface to a stand-alone repeater. In fact, in a few key areas, it is a superior choice for interfacing a repeater to AllStarLink. See the [Mix Mode (General Purpose)](./voter-mixmode.md) page for more details.
 
 ## Summary
 This technology/project is a great asset to the two-way radio community in general, particularly Amateur Radio and other pubic-service related radio services, allowing inexpensive, general, and open access to what previously would have been impossible or otherwise unattainable. 
 
 Systems of this type can greatly improve ability to provide efficient and reliable communications, not to mention promoting usage of frequencies and modes that otherwise may have been underutilized or ignored.
-

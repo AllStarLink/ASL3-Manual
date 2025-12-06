@@ -39,7 +39,8 @@ port = 1667			        ; specifies the UDP port to use for incoming connections (
 buflen = 480			    ; specifies the receive buffer length in milliseconds.
 				            ; This parameter should be set to the maximum expected network latency,
 				            ; plus a little padding (100 milliseconds of padding is a good amount).
-				            ; The default is 480 milliseconds, the minimum is 320 milliseconds.
+							; The default is 480 milliseconds, the default is 320 milliseconds if not specified, 
+							; the minimum is 40 milliseconds for voting clients, or 160 milliseconds for mix mode clients.
 				            ; Buffer length may be specified on a per-stanza and per-client basis, see below.
 
 password = secret_password	; password common to all clients (Main Menu Item 6 - Host Password, on RTCM/VOTER)
@@ -90,6 +91,16 @@ NORTH = password_1,transmit	; transmit/receive site
 SOUTH = Password_2,transmit	; transmit/receive site
 EAST = password_3,nodeemp	; receive-only site, bypass de-emphasis filter in RTCM
 WEST = Password_4,transmit,noplfilter	; transmit/receive site, bypass CTCSS filter in RTCM
+
+[1997]						; special application using mix-mode (aka general purpose) nodes in a "mixminus" configuration
+Site01 = secret1,transmit,nodeemp,noplfilter
+Site02 = secret2,transmit,nodeemp,noplfilter
+Site03 = secret3,transmit,nodeemp,noplfilter
+Site04 = secret4,transmit,nodeemp,noplfilter
+Site05 = secret5,transmit,nodeemp,noplfilter
+buflen = 250
+mixminus = y
+plfilter = n
 ```
 
 Of course, the above denotes all the possible options that you can define in `voter.conf`. A typical "bare minimum" to get on the air would be more along the lines of:
@@ -100,7 +111,8 @@ port = 1667			        ; specifies the UDP port to use for incoming connections
 buflen = 480			    ; specifies the receive buffer length in milliseconds.
 				            ; This parameter should be set to the maximum expected network latency,
 				            ; plus a little padding (100 milliseconds of padding is a good amount).
-				            ; The default is 480 milliseconds, the minimum is 320 milliseconds.
+				            ; The default is 480 milliseconds, the default is 320 milliseconds if not specified, 
+							; the minimum is 40 milliseconds for voting clients, or 160 milliseconds for mix mode clients.
 				            ; Buffer length may be specified on a per-stanza and per-client basis, see below.
 
 password = secret_password	; password common to all clients (Main Menu Item 6 - Host Password, on RTCM/VOTER)
@@ -127,7 +139,8 @@ port = 1667			        ; specifies the UDP port to use for incoming connections
 buflen = 480			    ; specifies the receive buffer length in milliseconds.
 				            ; This parameter should be set to the maximum expected network latency,
 				            ; plus a little padding (100 milliseconds of padding is a good amount).
-				            ; The default is 480 milliseconds, the minimum is 320 milliseconds.
+							; The default is 480 milliseconds, the default is 320 milliseconds if not specified, 
+							; the minimum is 40 milliseconds for voting clients, or 160 milliseconds for mix mode clients.
 				            ; Buffer length may be specified on a per-stanza and per-client basis, see below.
 
 password = secret_password	; password common to all clients (Main Menu Item 6 - Host Password, on RTCM/VOTER)
@@ -140,10 +153,30 @@ utos = y			        ; Turn on IP TOS for Ubiquiti (ToS is enable by default on th
 ### bindaddr
 Typically, `bindaddr` is not specified (it defaults to "INADDR_ANY"). It is supported, however, should you need to bind your VOTER clients to a specific IP interface on the server.
 
+### buflen
+Each client has a pair of circular buffers, one for mulaw audio data, and one for RSSI value. The default allocated buffer length for all clients is determined by the `buflen` parameter in the `[general]` stanza. It is specified in `voter.conf` in milliseconds, but is represented in the channel driver as a number of samples (actual buffer length =
+buflen * 8).
+
+The `buflen` defined in the `[general]` stanza is used for all clients, **unless** there is an alternate `buflen` directive under an instance.
+
+`buflen` is selected so that there is enough time (delay) for any straggling packets to arrive before it is time to present the data to the Asterisk channel.
+
+The default in `voter.conf` is set to `480` (milliseconds), which is overly generous for most applications, and should be tuned in accordance with the [Buffer Tuning](../voter/voter-buffers.md) procedure.
+
+If the `buflen` parameter is omitted, the default in the channel driver will set it to `320`. 
+
+The minimum `buflen` for voting clients is `40`.
+
+The minimum `buflen` for mix mode (aka general purpose) clients is `160`.
+
+!!! warning "Out of Bounds"
+	Setting `buflen` lower than `160` for mix mode clients will prevent them from connecting to the channel driver, and will result in "out of bounds" warnings on the Asterisk console. This minimum will be enforced in a future channel driver update.
+
 ### port
 The `port` directive specifies the listening UDP port that `chan_voter` is listening on for incoming connections from clients. When clients power on, they attempt to contact the `VOTER Server Address` at the `VOTER Server Port`, defined in their on-board configuration settings. See the Menu Structure and Definitions page for further explanation of those configuration settings. This is the **incoming** port you may need to let through your firewall.
 
-**NOTE:** In ASL2, the default port used was `667/UDP`, and is now `1667/UDP`. See [VOTER/RTCM Default Port](../basics/incompatibles.md#voterrtcm-default-port) for more details on this change.
+!!! note "Default Port Change"
+	In ASL2, the default port used was `667/UDP`, and is now `1667/UDP`. See [VOTER/RTCM Default Port](../basics/incompatibles.md#voterrtcm-default-port) for more details on this change.
 
 If running the AllStarLink Pi Appliance (or another system with a firewall), inbound to port `1667/UDP` must be permitted. For directions on how to do this with the Pi Appliance see [Managing the Firewall](../pi/cockpit-firewall.md). **Don't forget to also allow this port through any firewall that may part of your internet connection.**
 
@@ -155,7 +188,8 @@ Short for "Ubiquity Type of Service". When set, it will mark outbound packets (f
 
 It is used in traffic shaping. If your network is that congested that you need to shape traffic... you might have bigger issues. However, it doesn't hurt to flag the traffic when transiting the Internet to remote sites.
 
-**NOTE:** As of VOTER/RTCM firmware >v2.00, the clients will automatically mark their outbound traffic (to the host) with the same flag. That can now be **disabled** by setting the appropriate `Debug Option`. Older versions of firmware (<2.00) did not flag the traffic by default, and required it to be **enabled** with the `Debug Option`.
+!!! note "Default utos Change"
+	As of VOTER/RTCM firmware >v2.00, the clients will automatically mark their outbound traffic (to the host) with the same flag. That can now be **disabled** by setting the appropriate `Debug Option`. Older versions of firmware (<2.00) did not flag the traffic by default, and required it to be **enabled** with the `Debug Option`.
 
 ### sanity
 This directive is only used for debugging.
@@ -242,7 +276,7 @@ By default, audio is sent between the client and the host in G.711 Mulaw (aka ul
 `noplfilter` tells this client not to pass the receive audio through the on-board hardware CTCSS filter. Normally, audio is filtered to remove any CTCSS tones on the VOTER/RTCM hardware client before being sent to the host. This option manually switches the hardware CTCSS filter **OUT** on the client.
 
 ### buflen=value
-`buflen=value` sets a specific receiver buffer length value for this client. This option is used in special applications only.
+`buflen=value` sets a specific receiver buffer length value for this client. This option is used in special applications only. When this option is not specified, each client defaults to the `buflen` value defined in the `[global]` stanza.
 
 ### gpsid=value
 `gpsid[=value]` specifies a gps identity to associate with the specified client (as referred in the `/etc/asterisk/gps.conf` file). It is also used as the filename to create "GPS Work and Data Files" associated to the client. If no value is specified, default filenames are used. If a `value` is specified, it appends the supplied `value` to the filename with a "_".
@@ -265,7 +299,8 @@ txtoctype = phase		; Transmit tone control type: none,phase,notone
 				; notone - encode CTCSS and stop sending tone before unkeying TX (AKA "chicken burst")
 
 ;gtxgain = 3.0			; adjust the audio gain to all transmitters (in db voltage gain)
-;hostdeemp = 1			; force the use of the DSP FIR Integrator providing de-emphasis at 8000 samples/sec. Used with Duplex Mode 3 setting in RTCM/VOTER
+;hostdeemp = y			; force the use of the DSP FIR Integrator providing de-emphasis at 8000 samples/sec. Used with Duplex Mode 3 setting in RTCM/VOTER
+;mixminus = y			; send transmit audio to all clients EXCEPT the one receiving, used in special applications
 
 thresholds = 255,110=5		;
 ; linger=6			; linger default is 6 if no other value specified
@@ -274,6 +309,11 @@ thresholds = 255,110=5		;
 ; isprimary = y			; used in redundant server applications only. must be set on the primary server only
 ; primary = 10.20.20.1:667,mypaswd	; used in redundant server applications only. must be ONLY set on the secondary server to point to the primary
 ```
+
+### mixminus
+Enabling this feature causes transmit audio to be sent to all clients, **EXCEPT** the one that is receiving. In addition, DTMF will passthrough and be sent to all transmitters (which is different than all other channel drivers). This mode is **ONLY** supported on mix mode (aka general purpose) configurations. See [Mixminus Mode](../voter/voter-mixmode.md) for further information.
+
+If this options is not specified, it will default to disabled.
 
 ### plfilter
 Enabling this option uses the internal software DSP IIR 6-pole high-pass filter that has a 300Hz corner and 0.5dB ripple on the host. Note that all VOTER/RTCM clients already employ a hardware CTCSS filter that is enabled by default. So, if you are going to use this option, you probably want to use the `noplfilter` in the client options.
@@ -317,13 +357,14 @@ This option is used with the `Duplex Mode 3` setting in the RTCM/VOTER.
 
 This option forces receive audio from all clients to be sent through the host's DSP FIR Integrator providing de-emphasis at 8000 samples/sec. (normally, de-emphasis is done on the VOTER/RTCM hardware client before being sent to the host). This option is used in special applications only.
 
-**NOTE:** The de-emphasis only takes place between the receiver (received audio) and the channel driver in Asterisk. Recall that Duplex Mode 3 does "in-cabinet repeat", so the receiver audio is sent to the transmitter without any processing (ie de-emphasis).
+!!! note "Audio Processing"
+	The de-emphasis only takes place between the receiver (received audio) and the channel driver in Asterisk. Recall that Duplex Mode 3 does "in-cabinet repeat", so the receiver audio is sent to the transmitter without any processing (ie de-emphasis).
 
 ### thresholds/linger
 The `thresholds` and `linger` options determine how the voting algorithm works. You can find a thorough explanation on how to set these parameters on [this page](../voter/about-voter.md).
 
 ### isprimary/primary
-These options configure hosts configured in redundant host applications. You can find a thorough explanation of how this works in the ***FIXME*** Redundant Proxy Mode explanation.
+These options configure hosts configured in redundant host applications. You can find a thorough explanation of how this works on the [Redundant Proxy Mode](../voter/voter-proxy.md) page.
 
 Suffice to say, on the "primary" server, you would use the `isprimary` option (set to `y`). On the "secondary" (backup) server, you would use the `primary` option to point to the `IP address` of the primary server. **NOTE:** that the primary option also needs the `port` and the `host password` of the primary server, in order for it to properly authenticate.
 
