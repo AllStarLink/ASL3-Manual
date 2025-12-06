@@ -157,17 +157,19 @@ Typically, `bindaddr` is not specified (it defaults to "INADDR_ANY"). It is supp
 Each client has a pair of circular buffers, one for mulaw audio data, and one for RSSI value. The default allocated buffer length for all clients is determined by the `buflen` parameter in the `[general]` stanza. It is specified in `voter.conf` in milliseconds, but is represented in the channel driver as a number of samples (actual buffer length =
 buflen * 8).
 
-The `buflen` defined in the `[general]` stanza is used for all clients, **unless** there is an alternate `buflen` directive under an instance.
+The `buflen` defined in the `[general]` stanza is used for all clients, **unless** there is an alternate `buflen` directive under an instance (which then applies to all clients defined under that instance).
 
 `buflen` is selected so that there is enough time (delay) for any straggling packets to arrive before it is time to present the data to the Asterisk channel.
 
 The default in `voter.conf` is set to `480` (milliseconds), which is overly generous for most applications, and should be tuned in accordance with the [Buffer Tuning](../voter/voter-buffers.md) procedure.
 
-If the `buflen` parameter is omitted, the default in the channel driver will set it to `480`. 
+If the `buflen` parameter is omitted, the channel driver will set it to `480` by default. 
 
 The minimum `buflen` for voting clients is `40`.
 
 The minimum `buflen` for mix mode (aka general purpose) clients is `160`.
+
+The `buflen` parameter only has 40ms granularity. It can only effectively be set in increments of `40`, ie. `40, 80, 120, 160, etc.`. Intermediate values will get rounded down to the closest 40ms increment (ie `150` would round down to `120` internally).
 
 !!! warning "Out of Bounds"
 	Setting `buflen` lower than `160` for mix mode clients will prevent them from connecting to the channel driver, and will result in "out of bounds" warnings on the Asterisk console. This minimum will be enforced in a future channel driver update.
