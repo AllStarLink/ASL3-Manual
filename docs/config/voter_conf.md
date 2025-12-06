@@ -39,7 +39,7 @@ port = 1667			        ; specifies the UDP port to use for incoming connections (
 buflen = 480			    ; specifies the receive buffer length in milliseconds.
 				            ; This parameter should be set to the maximum expected network latency,
 				            ; plus a little padding (100 milliseconds of padding is a good amount).
-							; The default is 480 milliseconds, the default is 320 milliseconds if not specified, 
+							; The default is 480 milliseconds, if nothing is specified, 
 							; the minimum is 40 milliseconds for voting clients, or 160 milliseconds for mix mode clients.
 				            ; Buffer length may be specified on a per-stanza and per-client basis, see below.
 
@@ -111,7 +111,7 @@ port = 1667			        ; specifies the UDP port to use for incoming connections
 buflen = 480			    ; specifies the receive buffer length in milliseconds.
 				            ; This parameter should be set to the maximum expected network latency,
 				            ; plus a little padding (100 milliseconds of padding is a good amount).
-				            ; The default is 480 milliseconds, the default is 320 milliseconds if not specified, 
+				            ; The default is 480 milliseconds, if nothing is specified, 
 							; the minimum is 40 milliseconds for voting clients, or 160 milliseconds for mix mode clients.
 				            ; Buffer length may be specified on a per-stanza and per-client basis, see below.
 
@@ -139,7 +139,7 @@ port = 1667			        ; specifies the UDP port to use for incoming connections
 buflen = 480			    ; specifies the receive buffer length in milliseconds.
 				            ; This parameter should be set to the maximum expected network latency,
 				            ; plus a little padding (100 milliseconds of padding is a good amount).
-							; The default is 480 milliseconds, the default is 320 milliseconds if not specified, 
+							; The default is 480 milliseconds, if nothing is specified, 
 							; the minimum is 40 milliseconds for voting clients, or 160 milliseconds for mix mode clients.
 				            ; Buffer length may be specified on a per-stanza and per-client basis, see below.
 
@@ -163,7 +163,7 @@ The `buflen` defined in the `[general]` stanza is used for all clients, **unless
 
 The default in `voter.conf` is set to `480` (milliseconds), which is overly generous for most applications, and should be tuned in accordance with the [Buffer Tuning](../voter/voter-buffers.md) procedure.
 
-If the `buflen` parameter is omitted, the default in the channel driver will set it to `320`. 
+If the `buflen` parameter is omitted, the default in the channel driver will set it to `480`. 
 
 The minimum `buflen` for voting clients is `40`.
 
