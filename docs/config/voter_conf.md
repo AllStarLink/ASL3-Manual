@@ -190,7 +190,7 @@ Short for "Ubiquity Type of Service". When set, it will mark outbound packets (f
 
 It is used in traffic shaping. If your network is that congested that you need to shape traffic... you might have bigger issues. However, it doesn't hurt to flag the traffic when transiting the Internet to remote sites.
 
-!!! note "Default utos Change"
+!!! note "Default `utos` Change"
 	As of VOTER/RTCM firmware >v2.00, the clients will automatically mark their outbound traffic (to the host) with the same flag. That can now be **disabled** by setting the appropriate `Debug Option`. Older versions of firmware (<2.00) did not flag the traffic by default, and required it to be **enabled** with the `Debug Option`.
 
 ### sanity

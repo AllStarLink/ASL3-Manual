@@ -24,7 +24,7 @@ This buffer is the `buflen` parameter in [`voter.conf`](../config/voter_conf.md)
 
 This buffer is a **common** buffer for *all* clients. It determines how much audio to buffer **from** the clients **to** Asterisk. It must be larger than the longest *network* delay from the *worst* client, plus padding (40-100mS is a good start), to ensure that audio will arrive at the host from all clients to be voted on.
 
-This buffer has a value (length) of **milliseconds**. The default is 480 milliseconds, and that is what the value will be set to, if it is not specified in [`voter.conf`](../config/voter_conf.md). That should cover *all* worse-case scenarios... and is going to typically be **way** to big. **You should tune this!**
+This buffer has a value (length) of **milliseconds**. The default is 480 milliseconds, and that is what the value will be set to, if it is not specified in [`voter.conf`](../config/voter_conf.md). That should cover *all* worst-case scenarios... and is going to typically be **way** to big. **You should tune this!**
 
 ## Setting Voter Buffers
 In order to properly set the buffers, you need to quantify the latency between your host (master) site, and all the clients. That is why it is desirable to keep as much of the network between the host and the clients in your control as possible, so that you can control the latency. If you have your buffers tuned "on the edge", and the latency between some of your clients increases unexpectedly, that is going to impact your system performance.
