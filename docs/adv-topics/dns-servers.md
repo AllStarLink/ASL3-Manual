@@ -63,19 +63,17 @@ dig TXT <nodenumber>.nodes.allstarlink.org
 will return:
 
 ```
-"NN=50000" "RT=2019-02-28 18:41:29" "RB=0" "IP=44.98.248.144" "PIP=" "PT=4569" "RH=register-west"
+"NN=50000" "IP=44.98.248.144" "PT=4569"
 ```
 
 Where:
 
-* NN is the node number
-* RT is the last update registration time
-* RB is 1 for node is not a remote base, RB is 0 if it is a remote base
-* IP is the IP address of the node
-* PIP is the proxy IP of the node if set
-* PT is the IAX port
-* RH is the registration server the node last registered to.
+* `NN` is the node number
+* `IP` is the IP address of the node
+* `PT` is the IAX port
 
+Note: earlier (pre Dec 2025) versions of the TXT record also included values for `RT` (last update registration time), `RB` (remote base), `PIP` (proxy IP), and `RH` (registration server).
+ 
 ## `asl-node-lookup`
 
 On ASL3 systems, the [`asl-node-lookup`](../mans/asl-node-lookup.md) command can also be used to query the DNS servers for information about a node.
