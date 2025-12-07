@@ -172,6 +172,8 @@ nav:
     - voter/voter-audio.md
     - voter/voter-buffers.md
     - voter/voter-simulcasting.md
+    - voter/voter-mixmode.md
+    - voter/voter-proxy.md
     - voter/voter-audioanalysis.md
     - voter/voter-quantar.md
   - Developer Guide:
