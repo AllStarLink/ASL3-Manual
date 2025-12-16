@@ -4,6 +4,11 @@ through a point-of-presence (POP) for amateur radio operators.
 Connectivity is provided over VPN tunnels using the Wireguard
 protocol and system.
 
+## Create a 44Net Connect Account
+To sign up for 44Net Connect, create an account in the
+[44Net Portal](https://connect.44net.cloud/account/login)
+and get your callsign verified.
+
 ## Obtaining a 44Net Connect Tunnel
 Follow the **Requesting Tunnels** in the
 [44Net Connect User Guide](https://connect.44net.cloud/help/). Be sure
@@ -13,7 +18,12 @@ process.
 ## Install & Configure Wireguard
 The following commands must all be run as root (`sudo -s`) or using `sudo`.
 
-1. Install the Wireguard tools with `apt install -u wireguard resolvconf`
+1. Install the Wireguard tools with the following commands:
+
+    ```
+    apt update
+    apt install -y wireguard resolvconf
+    ```
 
 2. Create/edit a file named `/etc/wireguard/wg0.conf`
 
@@ -21,7 +31,7 @@ The following commands must all be run as root (`sudo -s`) or using `sudo`.
 portal into the file.
 
 4. Replace the string "`REPLACE_WITH_YOUR_PRIVATE_KEY`" with the
-privacy key displayed in the portal.
+privacy key that was displayed in the portal when you created your tunnel.
 
 5. Save the file.
 
@@ -48,7 +58,7 @@ through the VPN tunnel. The returned text should start
 with an IP address beginning with `44.`:
 
     ```
-    #  wget -4q -O- https://www.allstarlink.org/myip.php
+    # wget -4q -O- https://www.allstarlink.org/myip.php
     44.27.134.30
     ```
 
@@ -56,7 +66,7 @@ with an IP address beginning with `44.`:
 is perceived as being from that same IP address:
 
     ```
-    node460181*CLI> rpt show registrations
+    node63001*CLI> rpt show registrations
     Host                  Username    Perceived              Refresh  State
     52.44.147.201:443     63001       44.27.134.30:4567          179  Registered
     1 HTTP registration.
