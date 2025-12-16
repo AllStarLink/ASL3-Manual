@@ -106,6 +106,7 @@ nav:
       - pi/cockpit-firewall.md
   - Advanced Topics:
     - adv-topics/index.md
+    - adv-topics/44net-connect.md
     - adv-topics/allowdenylists.md
     - adv-topics/aprs.md
     - adv-topics/tts.md
