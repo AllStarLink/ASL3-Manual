@@ -36,12 +36,13 @@ These directions are specific for Windows, but in general should work the same f
 
     ![Step 4](img/step-4-device.png){width="400"}
 
-- Choose the `AllStarLink` operating system and click on **NEXT**
+- Choose the **AllStarLink** operating system and click on **NEXT**
 
     ![Step 5](img/step-5-os.png){width="400"}
 
 - Connect the SD card or the SD card in a USB adapter to the computer.
-You should see the media associated with the SD card named something such as "Mass Storage Device USB Device - 16.0 GB".
+You should see the media associated with the SD card named something such as
+"USB DISK 3.0 Media" (or "Mass Storage Device USB Device") and the size should reflect that of the SD card.
 Click on that entry and then **NEXT**
 
     ![Step 6](img/step-6-storage.png){width="400"}
@@ -62,10 +63,12 @@ Once entered, click on **NEXT**
 It is recommended to set the username to `asl` if you have no strong feeling about the
 username.
 Choose a good password and record the password somewhere safe.
-**NOTE: There is NO DEFAULT USER for the image.  Failure to set an account will require a re-image of the SD card with the proper settings**
 Once entered, click on **NEXT**
 
     ![Step 9](img/step-9-username.png){width="400"}
+
+!!! warning "NO DEFAULT USER"
+    There is NO default username and password included in the image. Failure to set an account will require a re-image of the SD card with the proper settings.
 
 - For "Choose Wi-Fi", if the device will be connected to Wi-Fi, enter the name of the wireless network in **SSID** and the password for that network in **Password**.
 Once entered (or if you will not be using Wi-Fi), click on **NEXT**
@@ -85,7 +88,7 @@ When you click on **NEXT** the application will write the image to the SD card.
 
 - Depending on the speed of the computer and the type of SD card, one will have time for a beverage of their choice. When the write is complete, eject the card, remove the card from computer and insert it into the Pi. If using a USB adapter for the SD card, remove the SD card from the adapter and insert the card into the Pi. The Pi *will not* use the SD card in the USB adapter
 
-- Power on the Pi. Wait approximately 2 to 5 minutes for the Pi to boot and perform the various first boot tasks. Depending on the type of a Pi board used, this process could be lengthy. If there is a screen connected to the Pi, it will be noted that Pi will reboot several times. This is normal and expected
+- Power on the Pi. The Pi will soon start to boot and perform a set of one-time setup actions. These actions include establishing the initial configuration, updating any pre-installed packages, and may include one or more reboots. While you may be able to `ping` the device within the first few minutes, or log in via SSH or Cockpit, you should still plan to wait 20–30 minutes and avoid making any configuration changes until the first-boot setup has completed.
 
 - (Optional) Network connectivity may be tested using the command to ping the hostname set in Step 10. For example, if the hostname set was `node63001` then do `ping -4 node63001.local` from a command prompt or PowerShell window. When you get a response, the host is connected to the network
 
@@ -139,13 +142,12 @@ To start the asterisk console from the Terminal window enter `sudo asterisk -rv`
 One should also apply any latest updates and reboot the device as described in [Cockpit Updates](../../pi/cockpit-updates.md).
 
 ## Allmon3 Default Login
-The default-configured username and password combination is `allmon3 / password`.
+Allmon3 does not include a pre-configured username and password combination.
 
-**You *must* delete this and add a new one:**
+**To use Allmon3, you *must* add a login:**
 
 * Launch Web Admin Portal (aka `Cockpit`) by going to `https://node63001.local:9090`
 * Open the Terminal
-* Type `sudo allmon3-passwd --delete allmon3` to remove the default login
 * Type `sudo allmon3-passwd <new user login>` to set the new user login. Type the new password when prompted.
 * Type `sudo systemctl restart allmon3` to load the new login.
 
