@@ -2,6 +2,8 @@
 
 !!! danger "Raspberry Pi Imager"
     **You must use the Raspberry Pi Imager,** even if you prefer another imager, and carefully follow the instructions below. Failure to do so will result in a system that won't boot or that you will not be able to login to.
+    
+    Note: these instructions assume that you are using the **Raspberry Pi Imager, version 2.0.0 (or later)**
 
 You will install an image on a microSD card and go. This is the simplest install. For most nodes, the menus will walk you through the setup. 
 
