@@ -1,7 +1,7 @@
 # ASL3 Appliance Installation
 
 !!! danger "Raspberry Pi Imager"
-    **You must use the Raspberry Pi Imager,** even if you prefer another imager, and carefully follow the instructions below. Failure to do so will result in a system that won't boot or that you will not be able to login to.
+    **You must use the Raspberry Pi Imager,** even if you prefer another imager, and carefully follow the instructions below. Failure to do so will result in a system that won't boot or that will not allow logins.
     
     Note: these instructions assume that you are using the **Raspberry Pi Imager, version 2.0.0 (or later)**
 
