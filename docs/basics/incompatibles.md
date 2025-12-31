@@ -37,7 +37,7 @@ in GitHub for this issue.** Specific questions about custom
 tunnels or advanced VPN configuration may be asked under the
 "third-party apps" topic.
 
-Future improvements to ASL change change the node-authentication process
+Future improvements to ASL changing the node-authentication process
 will address this issue and is on the long-term engineering roadmap along
 with IPv6 support.
 
