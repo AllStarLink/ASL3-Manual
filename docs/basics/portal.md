@@ -199,7 +199,7 @@ From the **Portal** menu, click **Node Settings**.
 
 ![Step 1 Server Settings](img/4_node_settings.png){width="400"}
 
-You can find your node's current password by hovering your mouse over the **Password** field.
+You can find your node's current password by clicking on the **Show** button
 
 ![Step 2 Node List](../adv-topics/img/6_NNX_New_Nodes.png){width="400"}
 
