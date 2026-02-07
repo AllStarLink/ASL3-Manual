@@ -6,14 +6,26 @@ This is where you will apply for a [node number](./gettingstarted.md#what-is-a-n
 ## Create an Account
 The first step in getting an AllStarLink node number assigned is to create an account at [www.allstarlink.org](https://www.allstarlink.org). Head over there, and click the **"Login/Sign Up"** link at the top of the page. In the box that opens, click **"Sign Up"** at the bottom of the box.
 
-![Step 1 Sign Up](img/1_sign_up.png){width="400"}
+![Step 1 Sign Up](img/1_sign_up.png){width="600"}
 
 Carefully read all the information on the page that opens, then click **"Begin Registration"** to get started.
 
-![Step 2 Begin Reg](img/2_begin_reg.png){width="400"}
+![Step 2 Begin Reg](img/2_begin_reg.png){width="600"}
 
 Fill out the registration form and submit it with your valid information for verification.
 
+![Step 3 Account Info](img/2.1_account_info.png){width="600"}
+
+After submitting your license and account information you must upload a copy of your license.
+
+![Step 4 Account Info](img/2.2_license_upload.png){width="600"}
+
+The system will accept standard image types (JPG, PNG, WEBP, GIF) and PDFs. Once the file
+has been selected click on **Upload 1 file**
+
+![Step 5 Account Info](img/2.3_license_upload.png){width="600"}
+
+## Confirm your Accounts
 You will then receive an email from the *AllStar Helpdesk* (helpdesk@allstarlink.org if you need to add it to your spam filters) with a link to confirm your email address. **Be sure to click the link in the email to validate your address, or your account request will not proceed.**
 
 You should then receive another email from from the *AllStar Helpdesk* within 24 hours, notifying you that your account has been validated (at which point you will be able to log into the Portal).
@@ -27,31 +39,31 @@ Enter your credentials in the login box, and click **Login**.
 
 When you have successfully logged in, the **Login/Sign Up** link at the top of the page will change to your **CALLSIGN**. You will also note a new **Portal** link has appeared to the left of your callsign.
 
-![Step 3 Login](img/3_portal.png){width="400"}
+![Step 6 Login](img/3_portal.png){width="400"}
 
 From the **Portal** menu, click **Server Settings**.
 
-![Step 4 Server Settings](img/4_node_settings.png){width="400"}
+![Step 7 Server Settings](img/4_node_settings.png){width="400"}
 
 Since this is the first time you've logged in and you don't currently have any nodes assigned to you, click the **Proceed with Server Setup** button to continue.
 
-![Step 5a Add Server](img/5a_add_server.png){width="400"}
+![Step 7a Add Server](img/5a_add_server.png){width="400"}
 
 If you inadvertently clicked the **Node Settings** link, it will still ask you to **Add a Server**.
 
-![Step 5 Add Server](img/5_add_server.png){width="400"}
+![Step 8 Add Server](img/5_add_server.png){width="400"}
 
 Fill in all the information about where your server will be located, be sure to have the latitude and longitude (or click on the map), then click **Submit**.
 
-![Step 6 Server Form](img/6_test_server.png){width="400"}
+![Step 9 Server Form](img/6_test_server.png){width="400"}
 
 Now you will have a new server created to associate your node number to.
 
-![Step 7 Server Complete](img/7_server_complete.png){width="400"}
+![Step 10 Server Complete](img/7_server_complete.png){width="400"}
 
 Go back up to the top menu bar, and under the **Portal** menu select **Node Settings**.
 
-![Step 8 Node Settings](img/4_node_settings.png){width="400"}
+![Step 11 Node Settings](img/4_node_settings.png){width="400"}
 
 Now, you can click **Continue** to proceed to the **Request/Extend/Remove** page.
 
@@ -103,7 +115,7 @@ There was originally a "Web Transceiver" Java application that this was used wit
 
 See the [External Applications](../user-guide/externalapps.md) page for further details on how this operates.
 
-### Show Function List 
+### Show Function List
 The default setting of `no` here is fine. There was originally a "Web Transceiver" Java application that this was used with, but that has since been deprecated.
 
 ### Allow Reverse Autopatch Access?
