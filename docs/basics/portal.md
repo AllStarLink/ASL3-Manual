@@ -4,7 +4,7 @@ The [AllStarLink Portal](https://www.allstarlink.org/portal) is where you manage
 This is where you will apply for a [node number](./gettingstarted.md#what-is-a-node-number) to connect to the AllStarLink network, configure options on how network features interact with your node, and set how your node is described to other nodes and the public facing status pages.
 
 ## Create an Account
-The first step in getting an AllStarLink node number assigned is to create an account at [www.allstarlink.org](https://www.allstarlink.org). Head over there, and click the **"Login/Sign Up"** link at the top of the page. In the box that opens, click **"Sign Up"** at the bottom of the box.
+The first step in getting an AllStarLink node number assigned is to create an account at [allstarlink.org](https://allstarlink.org). Head over there, and click the **"Login/Sign Up"** link at the top of the page. In the box that opens, click **"Sign Up"** at the bottom of the box.
 
 ![Step 1 Sign Up](img/1_sign_up.png){width="600"}
 
@@ -16,19 +16,20 @@ Fill out the registration form and submit it with your valid information for ver
 
 ![Step 3 Account Info](img/2.1_account_info.png){width="600"}
 
-After submitting your license and account information you must upload a copy of your license.
+After providing your contact and account information you must upload a copy of your license.
 
 ![Step 4 Account Info](img/2.2_license_upload.png){width="600"}
 
-The system will accept standard image types (JPG, PNG, WEBP, GIF) and PDFs. Once the file
-has been selected click on **Upload 1 file**
+The system will accept standard image types (JPG, PNG, WEBP, GIF) and PDFs. You
+may also use the camera on your device to take a live picture of a document.
+Once the file has been selected click on **Upload 1 file**.
 
 ![Step 5 Account Info](img/2.3_license_upload.png){width="600"}
 
 ## Confirm your Accounts
-You will then receive an email from the *AllStar Helpdesk* (helpdesk@allstarlink.org if you need to add it to your spam filters) with a link to confirm your email address. **Be sure to click the link in the email to validate your address, or your account request will not proceed.**
+You will then receive an email from the *AllStarLink Helpdesk* (helpdesk@allstarlink.org if you need to add it to your spam filters) with a link to confirm your email address. **Be sure to click the link in the email to validate your address, or your account request will not proceed.**
 
-You should then receive another email from from the *AllStar Helpdesk* within 24 hours, notifying you that your account has been validated (at which point you will be able to log into the Portal).
+You should then receive another email from from the *AllStarLink Helpdesk* within 24 hours, notifying you that your account has been validated (at which point you will be able to log into the Portal).
 
 ## Request a Node Number
 Once you have a validated account for the Portal, you can now proceed with requesting a node number.
@@ -53,7 +54,7 @@ If you inadvertently clicked the **Node Settings** link, it will still ask you t
 
 ![Step 8 Add Server](img/5_add_server.png){width="400"}
 
-Fill in all the information about where your server will be located, be sure to have the latitude and longitude (or click on the map), then click **Submit**.
+Fill in all the information about where your server will be located, be sure to set the latitude and longitude (or click on the map), then click **Submit**.
 
 ![Step 9 Server Form](img/6_test_server.png){width="400"}
 
@@ -200,8 +201,6 @@ From the **Portal** menu, click **Node Settings**.
 ![Step 1 Server Settings](img/4_node_settings.png){width="400"}
 
 You can find your node's current password by clicking on the **Show** button
-
-![Step 2 Node List](../adv-topics/img/6_NNX_New_Nodes.png){width="400"}
 
 To change your node's password, click on the **Node Number** that you want to modify.
 
