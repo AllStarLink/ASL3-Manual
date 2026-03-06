@@ -73,3 +73,42 @@ is perceived as being from that same IP address:
     ```
 
 4. Your node should now operate on the 44Net Connect service.
+
+## Protecting a 44Net Connection
+!!! danger "VPN Security Warning"
+    Do not skip these steps. If you do, there will be no
+    firewall or network protection for your node from
+    the whole Internet.
+
+### Linking Only Profile
+If you only need to support linking over VPN and are
+using another access method or a local LAN to manage the
+system, enter the following commands:
+
+```bash
+sudo firewall-cmd --permanent --new-zone=44NetConnect
+sudo firewall-cmd --permanent --zone=44NetConnect --add-service=iax2
+sudo firewall-cmd --permanent --zone=44NetConnect --add-service=echolink
+sudo firewall-cmd --permanent --zone=44NetConnect --add-interface=wg0
+sudo firewall-cmd --reload
+```
+
+This will only permit IAX2 (normal AllStarLink connections)
+and Echolink connections to the node.
+
+### Full Node Profile
+If you need to manage your node through the VPN IP address
+using SSH or Cockpit, the enter the following commands:
+
+```bash
+sudo firewall-cmd --zone=allstarlink --add-interface=wg0 --permanent
+sudo firewall-cmd --reload
+```
+
+Please note that this will expose the webserver (ports 80 and 443),
+Cockpit (port 9090), SSH (port 22), and the Asterisk AMI Interface
+(port 5038) to the Internet. Other restrictions such as AMI's
+`bindaddr` in `manager.conf` will always be applied. However ensure
+that all passwords and secrets (including AMI bind passwords)
+used in this configuration are strong - at least 16 characters
+long and a mix of letters and numbers.
