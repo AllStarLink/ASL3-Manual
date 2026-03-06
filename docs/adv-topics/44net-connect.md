@@ -97,6 +97,14 @@ This will only permit IAX2 (normal AllStarLink connections)
 and Echolink connections to the node.
 
 ### Full Node Profile
+!!! danger "VPN Security Warning"
+    This will expose SSH (port 22), webservers (ports 80, 443),
+    Cockpot (port 9090), and the Asterisk AMI (port 5038)
+    to the Internet. Ensure that all passwords and secrets
+    (including AMI bind passwords)
+    used in this configuration are strong - at least 16 characters
+    long and a mix of letters and numbers.
+
 If you need to manage your node through the VPN IP address
 using SSH or Cockpit, the enter the following commands:
 
@@ -105,10 +113,5 @@ sudo firewall-cmd --zone=allstarlink --add-interface=wg0 --permanent
 sudo firewall-cmd --reload
 ```
 
-Please note that this will expose the webserver (ports 80 and 443),
-Cockpit (port 9090), SSH (port 22), and the Asterisk AMI Interface
-(port 5038) to the Internet. Other restrictions such as AMI's
-`bindaddr` in `manager.conf` will always be applied. However ensure
-that all passwords and secrets (including AMI bind passwords)
-used in this configuration are strong - at least 16 characters
-long and a mix of letters and numbers.
+ Other restrictions such as AMI's
+`bindaddr` in `manager.conf` will always be applied. However
