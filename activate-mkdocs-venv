@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ -d ~/.mkdocs ]; then
+  . ~/.mkdocs/bin/activate
+else
+  echo "It appears you are activating mkdocs virtual environment for the first time."
+  echo "The mkdocs venv will now be set up for you, and then activated. Please report any error(s)."
+  python3 -m venv ~/.mkdocs
+  . ~/.mkdocs/bin/activate
+  pip install -r ./requirements.txt
+fi
+

@@ -161,11 +161,10 @@ This procedure will configure a WSL2 environment on your local machine to run Li
 - Switch back to the main branch with `git checkout main`. You can confirm you're on the main branch with `git status`.
 - Now, you can create a new branch for another update, and follow the same process.
 - To get out of the Python `venv`, use the `deactivate` command.
-- Each time you start up a new WSL session to work on the manual, you'll need to run these commands:
+- Each time you start up a session to work on the manual, you'll need to run these commands:
     ```
     cd ASL3-Manual
-    python3 -m venv ~/.mkdocs
-    . ~/.mkdocs/bin/activate
+    . ./activate-mkdocs-venv
     ```
 - You will also want to make sure your local repo is updated and in synch with Github using `git pull origin main`.
 
