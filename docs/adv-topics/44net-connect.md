@@ -99,7 +99,7 @@ and Echolink connections to the node.
 ### Full Node Profile
 !!! danger "VPN Security Warning"
     This will expose SSH (port 22), webservers (ports 80, 443),
-    Cockpot (port 9090), and the Asterisk AMI (port 5038)
+    Cockpit (port 9090), and the Asterisk AMI (port 5038)
     to the Internet. Ensure that all passwords and secrets
     (including AMI bind passwords)
     used in this configuration are strong - at least 16 characters
@@ -114,4 +114,4 @@ sudo firewall-cmd --reload
 ```
 
  Other restrictions such as AMI's
-`bindaddr` in `manager.conf` will always be applied. However
+`bindaddr` in `manager.conf` will always be applied.
