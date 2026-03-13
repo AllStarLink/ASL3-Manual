@@ -17,3 +17,4 @@ The following commands and tools are the primary AllStarLink ecosystem. Each ent
 | `asl-tts` | Text-to-speech engine for AllStarLink | [Text to Speech](../adv-topics/tts.md) | asl3-tts |
 | `sa818` | CLI tool for configuration SA818/DRA818-based radio modules. Use `sa818-menu in most cases. | [SA818 Page](../adv-topics/sa818modules.md) | asl3 |
 | `sa818-menu` | Menu for configuring SA818/DRA818-based radio modules | [SA818 Page](../adv-topics/sa818modules.md) | asl3 |
+| `simpleusb-tune-menu` | Utility to help test, adjust, and configure devices using the SimpleUSB Radio interface | Menu Use and [manpage](../mans/simpleusb-tune-menu.md) | asl3 |
