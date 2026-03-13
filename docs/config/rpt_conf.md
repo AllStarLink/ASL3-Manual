@@ -737,6 +737,18 @@ Sample:
 linktolink = no                     ; set to yes to enable. Default is no.
 ```
 
+### linkpost_time=
+This option sets the time between IAX2 link list (type L) message transmissions.
+
+Default Value: 30 seconds
+
+Range: 10-40 sec.
+
+Sample:
+```
+;linkpost_time=40
+```
+
 ### linkunkeyct=
 This option selects the courtesy tone to send when a connected remote node unkeys. The default is no courtesy tone when a remote node unkeys.
 
@@ -1196,6 +1208,18 @@ Sample:
 
 ```
 ;statpost_program=/usr/bin/wget,-q,--timeout=15,--tries=1,--output-document=/dev/null
+```
+
+### statpost_time=
+This option sets the time between status updates to [https://stats.allstarlink.org](https://stats.allstarlink.org)
+
+Default Value: 60 seconds
+
+Range: 30-600 sec.
+
+Sample:
+```
+;statpost_time=120
 ```
 
 ### statpost_url=
