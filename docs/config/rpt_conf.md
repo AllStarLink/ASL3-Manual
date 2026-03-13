@@ -726,17 +726,6 @@ Sample:
 linkmongain = -20                   ; reduce link volume 20dB
 ```
 
-### linktolink=
-When operating in [duplex mode 0](#duplex), this forces the radio interface to operate in full duplex mode, but keeps all the other "duplex mode 0" semantics.
-
-This is used when a radio interface is connected to a multiport analog repeater controller. The `linktolink=` option can take two values: `yes`/`1` or `no`/`0`.
-
-Sample:
-
-```
-linktolink = no                     ; set to yes to enable. Default is no.
-```
-
 ### linkpost_time=
 This option sets the time between IAX2 link list (type L) message transmissions.
 
@@ -747,6 +736,17 @@ Range: 10-40 sec.
 Sample:
 ```
 ;linkpost_time=40
+```
+
+### linktolink=
+When operating in [duplex mode 0](#duplex), this forces the radio interface to operate in full duplex mode, but keeps all the other "duplex mode 0" semantics.
+
+This is used when a radio interface is connected to a multiport analog repeater controller. The `linktolink=` option can take two values: `yes`/`1` or `no`/`0`.
+
+Sample:
+
+```
+linktolink = no                     ; set to yes to enable. Default is no.
 ```
 
 ### linkunkeyct=
