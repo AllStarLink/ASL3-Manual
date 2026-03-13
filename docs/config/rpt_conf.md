@@ -727,7 +727,7 @@ linkmongain = -20                   ; reduce link volume 20dB
 ```
 
 ### linkpost_time=
-This option sets the time between IAX2 link list (type L) message transmissions.
+This option sets the time between link list (type L) frame transmissions.
 
 Default Value: 30 seconds
 
