@@ -731,7 +731,7 @@ This option sets the time between IAX2 link list (type L) message transmissions.
 
 Default Value: 30 seconds
 
-Range: 10-40 sec.
+Range: 10-40 seconds
 
 Sample:
 ```
@@ -1215,7 +1215,7 @@ This option sets the time between status updates to [https://stats.allstarlink.o
 
 Default Value: 60 seconds
 
-Range: 30-600 sec.
+Range: 30-600 seconds
 
 Sample:
 ```
