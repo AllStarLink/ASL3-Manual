@@ -727,7 +727,7 @@ linkmongain = -20                   ; reduce link volume 20dB
 ```
 
 ### linkpost_time=
-This option sets the time between link list (type L) frame transmissions.
+This option sets the time between link list (type L) frame transmissions. These frames are sent periodically to connected nodes. They contain a list of all nodes the ASL3 instance is aware of, and are used for connection statistics. Normally, this setting is left at the default value.
 
 Default Value: 30 seconds
 
