@@ -31,8 +31,29 @@ The Networking system tool in the web console permits viewing the status of the 
 
 6. Changes take place immediately. Be cautious when changing IP addressing because you may accidentally remove your ability to access to the console.
 
-## Changing WiFi Settings
-Unfortunately, `Cockpit` does not have an interface for managing WiFi networks with in it. Currently WiFi network changes must be made from the web console Terminal screen.
+## Changing WiFi Settings via Cockpit
+Use *Tools -> WiFi Manager* to manage WiFi networks.
+All of these commands require [Administrative Access](/pi/cockpit-basics/#administrative-access).
+
+### Existing Configured Networks
+The section **Configured WiFi Networks** shows the currently-configured WiFi
+networks that can be used when in range. The WiFi network configured during the
+Pi imaging process will always be called `preconfigured`.
+
+### Scanning for Available WiFi Networks
+To see what's "in the air" around the node, click the **Scan for WiFi Networks**
+button. After a few moments, visible WiFi networks will be displayed.
+
+### Configure a WiFi Network
+To add a new WiFi network, under the **Configure a WiFi Network** section
+simply enter the new *Network Name* and *Network Password* then
+click **Save Network**.
+
+### Delete a WiFi NEtwork
+To delete a WiFi network, copy the *Connection ID* from **Configured Wifi Networks**
+at the top of the page into the *Connection ID* box. Then click **Delete Network**.
+
+## Changing WiFi Settings via the Terminal
 
 ### Listing Existing WiFi Networks
 List the existing WiFi network(s) with `nmcli device wifi list`:
@@ -46,7 +67,7 @@ List the existing WiFi network(s) with `nmcli device wifi list`:
 
 3. At the prompt enter the command:
 
-    ```  
+    ```
     nmcli device wifi connect MYNETWORK password MYPASSWORD
     ```
 
@@ -69,5 +90,5 @@ List the existing WiFi network(s) with `nmcli device wifi list`:
 password. This will break the appliance's networking.
 
 ___
-**NOTE:** Some content copied from 
+**NOTE:** Some content copied from
 [__Managing systems using the RHEL9 web console__](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/index) which is released under the Creative Commons Attribution–Share Alike 3.0 Unported license ("CC-BY-SA")
