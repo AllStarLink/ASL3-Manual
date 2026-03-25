@@ -61,7 +61,7 @@ Now the packages may be installed and updated directly from the AllStarLink pack
 sudo apt install asl3
 ```
 
-This will install the complete ASL3 system including all of the Asterisk `app_rpt`-enabled packages (`asl3-asterisk`, `asl3-asterisk-config`, `asl3-asterisk-doc`, `asl3-asterisk-modules`), the Dahdi kernel module (`dahdi-dkms`, `dahdi-linux`, `dahdi-source`), the needed development tools to keep the kernel module updated, and the [`asl3-menu`](../../user-guide/index.md).
+This will install the complete ASL3 system including all of the Asterisk `app_rpt`-enabled packages (`asl3-asterisk`, `asl3-asterisk-config`, `asl3-asterisk-doc`, `asl3-asterisk-modules`), the Dahdi kernel module (`dahdi-dkms`, `dahdi-linux`, `dahdi-source`), the needed development tools to keep the kernel module updated, and the [`asl3-menu`](../../user-guide/index.md) package.
 
 It's important to note that the new packaging format will allow for easy, automated updates of kernels through the standard `apt upgrade` process. There is no longer any reason to hold back kernel upgrades with the ASL3 packaging.
 
@@ -74,6 +74,6 @@ The following packages are also available and may be installed separately:
 Install with `sudo apt install asl3-update-nodelist`.
 
 ## Node Configuration
-The next step is to configure the node settings. It is recommended to use the [`asl3-menu`](../../user-guide/index.md) command to manage the configuration for common use cases. See [ASL3 Menu](../../user-guide/index.md) for details. YouTuber Freddie Mac has a nice [ASL3 RPi installation and configuration video](https://youtu.be/aeuj-yI8qrU). See the part where the [`asl3-menu`](../../user-guide/index.md) is shown.
+The next step is to configure the node settings. It is recommended to use the [`asl-menu`](../../user-guide/index.md) command to manage the configuration for common use cases. See [ASL3 Menu](../../user-guide/index.md) for details. YouTuber Freddie Mac has a nice [ASL3 RPi installation and configuration video](https://youtu.be/aeuj-yI8qrU). See the part where the [`asl-menu`](../../user-guide/index.md) is shown.
 
 Proceed from here with the **Node Settings** option in order to configure your node number and choose/configure your audio interface.
