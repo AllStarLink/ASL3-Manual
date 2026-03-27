@@ -726,6 +726,18 @@ Sample:
 linkmongain = -20                   ; reduce link volume 20dB
 ```
 
+### linkpost_time=
+This option sets the time between link list (type L) frame transmissions. These frames are sent periodically to connected nodes. They contain a list of all nodes the ASL3 instance is aware of, and are used for connection statistics. Normally, this setting is left at the default value.
+
+Default Value: 30 seconds
+
+Range: 10-40 seconds
+
+Sample:
+```
+linkpost_time = 40
+```
+
 ### linktolink=
 When operating in [duplex mode 0](#duplex), this forces the radio interface to operate in full duplex mode, but keeps all the other "duplex mode 0" semantics.
 
@@ -1189,13 +1201,16 @@ One string of one or multiple commands, executed in order.
 !!! note "No Termination Character"
     This string of commands does NOT terminate with a `#` like a normal macro. You can call any number of regular macros with it.
 
-### statpost_program=
-This option sets the commands to run on the server to process usage statistics of the node. **This option is generally no longer required, but is included for documentation purposes.**
+### statpost_time=
+This option sets the time between status updates to [https://stats.allstarlink.org](https://stats.allstarlink.org)
+
+Default Value: 60 seconds
+
+Range: 30-600 seconds
 
 Sample:
-
 ```
-;statpost_program=/usr/bin/wget,-q,--timeout=15,--tries=1,--output-document=/dev/null
+statpost_time = 120
 ```
 
 ### statpost_url=
@@ -1204,7 +1219,7 @@ Uncomment this option to enable status and statistics reporting of your node to 
 Sample:
 
 ```
-;statpost_url = http://stats.allstarlink.org/uhandler ; status updates
+statpost_url = http://stats.allstarlink.org/uhandler ; status updates
 ```
 
 The `statpost_url=` option can be implemented in the `[node-main](!)` stanza to apply to all nodes on the server, or in the per-node stanza for limiting statistics posting to an individual nodes. See [config file templating](../adv-topics/conftmpl.md/#asterisk-templates) for more information.
