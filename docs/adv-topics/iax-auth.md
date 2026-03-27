@@ -36,7 +36,7 @@ requirecalltoken = no            ; Required for iaxRpt to connect, because it is
     Pay attention to the allowed codecs (defined by the `allow =` directives). Clients (IAXRpt in particular) may need to be configured to use a codec you support. If, for example, you delete `gsm` from your allowed codecs list (because it sounds like garbage), client connections may fail if they are trying to negotiate to use that codec.
 
 
-Then, in `/etc/asterisk/custom/iax/iaxrpt-users.conf`, each user can be configured accoding tot he following pattern:
+Then, in `/etc/asterisk/custom/iax/iaxrpt-users.conf`, each user can be configured according to the following pattern:
 
 ```ini
 ;[N0CALL]](iaxrpt)                   ; pull in the config from the [iaxrpt] section in

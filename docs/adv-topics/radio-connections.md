@@ -89,7 +89,7 @@ With the radio facing you in normal operating positing, volume knob on top left,
 
 #### Quantar
 
-The Quantar can be tricky to interface as it's extremely programmable and you will need a wireline card for I/O connections.  By default the I/O will not work unless the "wildcard" table is programed.  This wildcard table is Boolean logic of interrupt states in the radio, is extremely flexible and frustrating to debug.  It's a base station in it's own class.
+The Quantar can be tricky to interface as it's extremely programmable and you will need a wireline card for I/O connections.  By default the I/O will not work unless the "wildcard" table is programmed.  This wildcard table is Boolean logic of interrupt states in the radio, is extremely flexible and frustrating to debug.  It's a base station in it's own class.
 
 * [Quantar/RTCM Interface Cable](../assets/pdfs/QUANTAR-RTCM_INTERFACE_CABLE.pdf) - Note you will want to use DSP/BEW Firmware on the RTCM if using the RTCM do squelch.
 * [Another Quantar/RTCM Interface Cable](../assets/pdfs/RTCM_2_Quantar.pdf)
