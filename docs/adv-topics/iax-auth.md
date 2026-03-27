@@ -1,9 +1,9 @@
 # IAX Direct Authentication
-IAX Direct Authentication is the most flexible and reliable way to connect to an ASL node without using the full ASL Registration infrastructure. This document is to aid in node operators creating IAX direct connections.
+IAX Direct Authentication is the most flexible and reliable way to connect to an ASL node without using the full ASL Registration infrastructure. This describes how to configure IAX direct authentication for node operators who wish to allow direct IAX connections.
 
 ## Configuring IAX
 !!! warning
-    If upgrading from an ASL1, ASL2, HamVOIP, or DIAL legacy configuration you cannot simply copy/paste the old configuration into ASL3.
+    If you are upgrading from an ASL1, ASL2, HamVOIP, or DIAL legacy configuration you cannot simply copy/paste the old configuration into ASL3.
 
 The default `/etc/asterisk/iax.conf` installed with your ASL3 installation should contain the following context *template*:
 
@@ -30,7 +30,7 @@ requirecalltoken = no            ; Required for iaxRpt to connect, because it is
 
 !!! warning "Call Tokens"
     IAX2 now requires [IAX2 Call Tokens](https://docs.asterisk.org/Configuration/Channel-Drivers/Inter-Asterisk-eXchange-protocol-version-2-IAX2/IAX2-Security/), which some client software may not support, causing their calls to be rejected. You may need to add `requirecalltoken = no` to the affected context in `iax.conf` to resolve this.
-    Most common client applications working with ASL do not support calltokens, unfortunately.
+    Unfortunately, most of the commonly used applications that work with ASL do not support call tokens.
 
 !!! warning "Codec Selection"
     Pay attention to the allowed codecs (defined by the `allow =` directives). Clients (IAXRpt in particular) may need to be configured to use a codec you support. If, for example, you delete `gsm` from your allowed codecs list (because it sounds like garbage), client connections may fail if they are trying to negotiate to use that codec.
@@ -49,8 +49,6 @@ Obviously, replace N0CALL with the appropriate callign and "Some_Secret_Password
 
 !!! tip "Reload IAX for New Users"
     After adding a new user, execute `iax2 reload` from the Asterisk console to reload the configuration information.
-
-
 
 ## Configuring Extensions
 !!! warning
