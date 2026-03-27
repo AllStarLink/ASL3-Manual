@@ -127,6 +127,7 @@ nav:
     - adv-topics/eventmgmt.md
     - adv-topics/hotspot_hd.md
     - adv-topics/httpreg.md
+    - adv-topics/iax-auth.md
     - adv-topics/iax-proxy.md
     - adv-topics/iaxreg.md
     - adv-topics/linkacttimer.md

@@ -6,7 +6,7 @@ Since ASL3 is built on top of the Asterisk PBX software, if you want to make cha
 We will cover the basics here in how the information in the default ASL3 `extensions.conf` relates to node operations.
 
 ## `[general]` Stanza
-The `[general]` stanza is used to set global options that apply to all extensions in the file. The options specified in the `[general]` section can be overridden by individual extension sections, but if not overridden, will be used as the default for all extensions. 
+The `[general]` stanza is used to set global options that apply to all extensions in the file. The options specified in the `[general]` section can be overridden by individual extension sections, but if not overridden, will be used as the default for all extensions.
 
 You should see the following in your ASL3 default `extensions.conf`:
 
@@ -183,7 +183,7 @@ exten => s,1,Wait(1)
 	same => n,Hangup
 ```
 
-All of these stanzas work together. First and foremost, the main stanza for the autopatch is `[radio]`. This is defined in [`rpt.conf`](../config/rpt_conf.md#context) using the [`context`](./rpt_conf.md#context) directive. Note that the [`autopatchup`](../adv-topics/autopatch.md#autopatch-options) function allows this context to be overwritten using an option. 
+All of these stanzas work together. First and foremost, the main stanza for the autopatch is `[radio]`. This is defined in [`rpt.conf`](../config/rpt_conf.md#context) using the [`context`](./rpt_conf.md#context) directive. Note that the [`autopatchup`](../adv-topics/autopatch.md#autopatch-options) function allows this context to be overwritten using an option.
 
 The `[radio]` stanza does a few different things:
 
@@ -247,7 +247,7 @@ exten => _5.,n,Hangup
 The option used when calling the Telephone Portal (Node Access or Reverse Autopatch) determines which extension gets used for processing in `[allstar-sys]`. Reverse Autopatch processes calls through extension 1 (which parks the call until someone on the radio side picks up the parked call). The Node Access method processes calls through extension 2 (function codes for keying PTT) or 3 (VOX for PTT).
 
 ## `[allstar-public]` Stanza
-The `[allstar-public]` stanza is called from the `[allstar-public]` stanza in `iax.conf`. The `[allstar-public]` stanza is used by connections that use the AllStarLink ["Web Transceiver"](../user-guide/externalapps.md#web-transceiver) method of connection. The original Web Transceiver application has been deprecated, however, there are other [External Apps](../user-guide/externalapps.md) that still utilize this method to connect to AllStarLink Nodes.
+The `[allstar-public]` stanza is called from the `[allstar-public]` stanza in `iax.conf`. The `[allstar-public]` stanza is used by connections that use the AllStarLink ["Web Transceiver"](../developers/api.md#webtransceiver) method of connection. The original Web Transceiver application has been deprecated, however, there are other [External Apps](../user-guide/externalapps.md) that still utilize this method to connect to AllStarLink Nodes.
 
 You should see the following in your ASL3 default `extensions.conf`:
 
