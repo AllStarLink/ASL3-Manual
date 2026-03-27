@@ -39,10 +39,10 @@ requirecalltoken = no            ; Required for iaxRpt to connect, because it is
 Then, in `/etc/asterisk/custom/iax/iaxrpt-users.conf`, each user can be configured according to the following pattern:
 
 ```ini
-;[N0CALL]](iaxrpt)                   ; pull in the config from the [iaxrpt] section in
-;user = N0CALL                      ; iax.conf and then add this user's specific information
-;secret = Some_Secret_Password_Here ; (user, secret, and callerid). n0call is the USERNAME in
-;callerid = "N0CALL" <0>            ; the iaxRPT client account configuration.
+[N0CALL]](iaxrpt)                   ; pull in the config from the [iaxrpt] section in
+user = N0CALL                      ; iax.conf and then add this user's specific information
+secret = Some_Secret_Password_Here ; (user, secret, and callerid). n0call is the USERNAME in
+callerid = "N0CALL" <0>            ; the iaxRPT client account configuration.
 ```
 
 Obviously, replace N0CALL with the appropriate callign and "Some_Secret_Password_Here" with a reasonably strong password.
@@ -66,7 +66,11 @@ The default `/etc/asterisk/extensions.conf` installed with your ASL3 installatio
 ; Because incoming connections are validated in iax.conf,
 ; and we don't know where the user will be coming from in advance,
 ; the X option is required.
-exten => ${NODE},1,rpt(${EXTEN}|X)       ; NODE is the Name field in iaxrpt
+exten => _XXXX!,1,Set(NODENUM=${CALLERID(num)})
+	same => n,NoOp(Connect from node ${NODENUM} to node ${EXTEN} using ${CHANNEL(channeltype)})
+	same => n,ExecIf($[!${RPT_NODE(${EXTEN},exists)}]?Hangup) ; disconnect if requested node is not on this server
+	same => n,Rpt(${EXTEN},X)
+	same => n,Hangup
 ```
 
 !!! tip "Restart Asterisk"
