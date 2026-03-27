@@ -33,7 +33,7 @@ The Networking system tool in the web console permits viewing the status of the 
 
 ## Changing WiFi Settings via Cockpit
 Use *Tools -> WiFi Manager* to manage WiFi networks.
-All of these commands require [Administrative Access](/pi/cockpit-basics/#administrative-access).
+All of these commands require [Administrative Access](cockpit-basics.md#administrative-access).
 
 ### Existing Configured Networks
 The section **Configured WiFi Networks** shows the currently-configured WiFi

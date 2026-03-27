@@ -17,7 +17,7 @@ As such, you will currently see the following in your ASL3 default `iax.conf`:
 ; !!! IAX registration will be discontinued at some point !!!
 ; Setup rpt_http_registartions.conf instead.
 ; remove the leading ";"
-;register => 1999:12345@register.allstarlink.org    ; This must be changed to your node number, password 
+;register => 1999:12345@register.allstarlink.org    ; This must be changed to your node number, password
 ;register => 1998:12345@register.allstarlink.org
 ```
 
@@ -26,7 +26,7 @@ While node registration will still work (for now) using this method, please don'
 ### `bindport=` and `bindaddr=`
 The `bindport` and `bindaddr` directives determine where Asterisk is listening for incoming IAX2 connections.
 
-By default, UDP port `4569` is used. 
+By default, UDP port `4569` is used.
 
 You should see the following in your ASL3 default `iax.conf`:
 
@@ -39,7 +39,7 @@ bindport = 4569                 ; bindport and bindaddr may be specified
 ;  (e.g. bindaddr=192.168.0.1:4569)
 
 ; bindaddr = 192.168.0.1        ; more than once to bind to multiple
-                                ; addresses, but the first will be the 
+                                ; addresses, but the first will be the
                                 ; default
 ```
 
@@ -50,7 +50,7 @@ In most cases, the default `bindport = 4569` will work fine. However, if you are
 
     If you are using the [ASL3 Appliance](../install/pi-appliance/index.md) and you are using a non-standard port, don't forget to update the firewall rules in the [Cockpit Firewall](../pi/cockpit-firewall.md).
 
-Unless you have a specific reason to do so, leave `bindaddr` commented out. It is not required in the majority of use cases. 
+Unless you have a specific reason to do so, leave `bindaddr` commented out. It is not required in the majority of use cases.
 
 ### Outbound Codecs
 Also in the `[general]` stanza is the configuration of **OUTBOUND** codecs to be used when making outbound connections to other nodes.
@@ -58,7 +58,7 @@ Also in the `[general]` stanza is the configuration of **OUTBOUND** codecs to be
 You should see the following in your ASL3 default `iax.conf`:
 
 ```
-disallow = all                      ; The permitted codecs for outgoing connections 
+disallow = all                      ; The permitted codecs for outgoing connections
 ;allow = ulaw                       ; Audio Quality     Bandwidth
 ;allow = adpcm                      ; best              87 kbps
 ;allow = gsm                        ; good              55 kbps
@@ -82,25 +82,25 @@ There are some other directives included in the `[general]` stanza of the defaul
 
 ```
 jitterbuffer = yes
-forcejitterbuffer = yes                                                           
-dropcount = 2                                                                     
-maxjitterbuffer = 4000                                                            
-maxjitterinterps = 10                                                             
-resyncthreshold = 1000                                                            
-maxexcessbuffer = 80                                                              
-minexcessbuffer = 10                                                              
-jittershrinkrate = 1                                                              
-tos = 0x1E                                                                  
-autokill = yes                                                                    
-delayreject = yes                                                                 
-; iaxthreadcount = 30                                                              
-; iaxmaxthreadcount = 150  
+forcejitterbuffer = yes
+dropcount = 2
+maxjitterbuffer = 4000
+maxjitterinterps = 10
+resyncthreshold = 1000
+maxexcessbuffer = 80
+minexcessbuffer = 10
+jittershrinkrate = 1
+tos = 0x1E
+autokill = yes
+delayreject = yes
+; iaxthreadcount = 30
+; iaxmaxthreadcount = 150
 ```
 
 Unless you have a specific reason to change them (and you know why you are changing them), just leave them alone. You can break your node.
 
 ## `[radio]` Stanza
-The `[radio]` stanza is where the majority of all incoming IAX2 connections to the node will terminate, in particular, connections from other nodes. 
+The `[radio]` stanza is where the majority of all incoming IAX2 connections to the node will terminate, in particular, connections from other nodes.
 
 You should see the following in your ASL3 default `iax.conf`:
 
@@ -128,7 +128,7 @@ Incoming calls with the username of `radio` will reach this stanza, and then aft
 The `type = user` directive tells this installation of Asterisk that the incoming connection (the "peer") is to be treated as a client connecting to us (the host). So, with `codecpriority = host`, *we* get to choose the supported codecs and their priority we prefer to connect with.
 
 ## `[iaxrpt]` Stanza
-The `[iaxrpt]` stanza is often used to handle connections from the [IAXRpt](../user-guide/externalapps.md#iaxrpt-pc-client) software client (or other [External Apps](../user-guide/externalapps.md)). 
+The `[iaxrpt]` stanza is often used to handle connections from the [IAXRpt](../user-guide/externalapps.md#iaxrpt-pc-client) software client (or other [External Apps](../user-guide/externalapps.md)).
 
 You should see the following in your ASL3 default `iax.conf`:
 
@@ -139,10 +139,10 @@ context = iaxrpt                 ; Context to jump to in extensions.conf
 auth = md5
 secret = Your_Secret_Pasword_Here
 host = dynamic
-disallow = all                    
+disallow = all
 allow = ulaw
 allow = adpcm
-allow = gsm                       
+allow = gsm
 transfer = no
 ```
 
@@ -183,7 +183,7 @@ The big difference between the `[iaxrt]` and `[iaxclient]` stanzas is the `type`
 Also note that connections processed by this stanza are forwarded to the `[iax-client]` stanza in `extensions.conf`, per the `context = iax-client` directive.
 
 ## `[allstar-sys]` Stanza
-The `[allstar-sys]` stanza is used by connections from the [AllStarLink Telephone Portal](../user-guide/phoneportal.md). 
+The `[allstar-sys]` stanza is used by connections from the [AllStarLink Telephone Portal](../user-guide/phoneportal.md).
 
 You should see the following in your ASL3 default `iax.conf`:
 
@@ -206,7 +206,7 @@ Also note that these connections are validated by a public/private key arrangeme
 Connections processed by this stanza are forwarded to the `[allstar-sys]` stanza in `extensions.conf`, per the `context = allstar-sys` directive.
 
 ## `[allstar-public]` Stanza
-The `[allstar-public]` stanza is used by connections that use the AllStarLink ["Web Transceiver"](../user-guide/externalapps.md#web-transceiver) method of connection. The original Web Transceiver application has been deprecated, however, there are other [External Apps](../user-guide/externalapps.md) that still utilize this method to connect to AllStarLink Nodes.
+The `[allstar-public]` stanza is used by connections that use the AllStarLink ["Web Transceiver"](../developers/api.md#webtransceiver) method of connection. The original Web Transceiver application has been deprecated, however, there are other [External Apps](../user-guide/externalapps.md) that still utilize this method to connect to AllStarLink Nodes.
 
 You should see the following in your ASL3 default `iax.conf`:
 

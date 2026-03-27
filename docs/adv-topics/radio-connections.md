@@ -67,7 +67,7 @@ See the [/voter] page for the primary entry point to the detailed information ab
 #### CDM
 CDMs make great nodes. This eBay reseller has very nice cables. Use to connect to URI or RTCM.
 
-[CDM Cable from Kurt Meltzer KC4NX](/assets/pdfs/CDM_Cable.pdf) - Cable 83 has only one output to use for either COS or CTCSS. Use another cable if you need both COS and CTCSS.
+[CDM Cable from Kurt Meltzer KC4NX](../assets/pdfs/CDM_Cable.pdf) - Cable 83 has only one output to use for either COS or CTCSS. Use another cable if you need both COS and CTCSS.
 
 #### Maxtrac / Radius / GM300
 The venerable Maxtrac is a radio that was very well built, apparently has very stable reference LO, and can take a beating. When aligned properly, and sufficient *vectored* cooling is made, this radio will last for a very long, time even under several hours with of transmitting per day.
@@ -91,15 +91,15 @@ With the radio facing you in normal operating positing, volume knob on top left,
 
 The Quantar can be tricky to interface as it's extremely programmable and you will need a wireline card for I/O connections.  By default the I/O will not work unless the "wildcard" table is programed.  This wildcard table is Boolean logic of interrupt states in the radio, is extremely flexible and frustrating to debug.  It's a base station in it's own class.
 
-* [Quantar/RTCM Interface Cable](/assets/pdfs/QUANTAR-RTCM INTERFACE CABLE.pdf) - Note you will want to use DSP/BEW Firmware on the RTCM if using the RTCM do squelch.
-* [Another Quantar/RTCM Interface Cable](/assets/pdfs/RTCM_2_Quantar.pdf)
-* [Astro-TAC/RTCM Interface Cable](/assets/pdfs/RTCM_to_Astro-TAC_Cable.pdf)
+* [Quantar/RTCM Interface Cable](../assets/pdfs/QUANTAR-RTCM_INTERFACE_CABLE.pdf) - Note you will want to use DSP/BEW Firmware on the RTCM if using the RTCM do squelch.
+* [Another Quantar/RTCM Interface Cable](../assets/pdfs/RTCM_2_Quantar.pdf)
+* [Astro-TAC/RTCM Interface Cable](../assets/pdfs/RTCM_to_Astro-TAC_Cable.pdf)
 * [Interfacing to a Quantar with P25NX](http://wiki.w9cr.net/index.php/Allstar_and_P25_on_Quantar) - Interfacing the Quantar using simple USB into AllStarLink and P25NX linking at the same time.  This is driven by programming on the Quantar Wildcard tables.
 
-* [Quantar/URI Cable](/assets/pdfs/Quantar_URI_Interface.jpg)
-* [Quantar MRTI/URI Cable](/assets/pdfs/QuantarMRTI2URI.jpg)
+* [Quantar/URI Cable](../assets/pdfs/Quantar_URI_Interface.jpg)
+* [Quantar MRTI/URI Cable](../assets/pdfs/QuantarMRTI2URI.jpg)
 
-Also see the dedicated [Quantar Voter](/voter/voter-quantar) page for detailed information.
+Also see the dedicated [Quantar Voter](../voter/voter-quantar.md) page for detailed information.
 
 #### Syntor X
 The Motorola Syntor X with an Xcat installed makes a great frequency agile remote base. For more information see
@@ -125,7 +125,7 @@ See [http://www.masterscommunications.com/products/radio-adapter/txt/tkr.txt](ht
 Both models sport a mini-DIN 6 pin connector on the rear panel. These can easily be hooked into a URI of your choice, such as a [DRA-50](http://www.masterscommunications.com/products/radio-adapter/dra/dra50.html) and an
 [appropriate cable](http://www.masterscommunications.com/products/cables/drac-12.html). This is a nearly plug & play solution for this radio.
 
-[Yaesu 7900/8900 Data Port Diagram](/assets/pdfs/Yaesu79008900DataPort.jpg)
+[Yaesu 7900/8900 Data Port Diagram](../assets/pdfs/Yaesu79008900DataPort.jpg)
 
 ### Baofeng
 
@@ -139,20 +139,20 @@ Both models sport a mini-DIN 6 pin connector on the rear panel. These can easily
 ## Repeater Controller
 
 ### RTCMs
-[An example of using RTCMs to replace 420 links](/assets/pdfs/RTCMwithController.pdf)
+[An example of using RTCMs to replace 420 links](../assets/pdfs/RTCMwithController.pdf)
 
 ### Spectra Engineering
 * [MX800 Base station](http://wiki.w9cr.net/index.php/MX800#W9CR_alignment_procedure_and_setup_with_AllStarLink) - Complete setup guide for the MX800 Base station which includes fallback to the built in controller and an audio delay module.
 
 ### Vertex
-* [VRX-5000 / RTCM Interface Cable](/assets/pdfs/RTCM_2_VRX-5000.pdf)
+* [VRX-5000 / RTCM Interface Cable](../assets/pdfs/RTCM_2_VRX-5000.pdf)
 
 ## GPS
-* [Trimble RTCM Interface Cable](/assets/pdfs/RTCM_2_Trimble.pdf)
-* [Trimble to Two RTCMs and Lady Heather Cable](/assets/pdfs/RTCM_321_Cable.graffle.pdf)
-* [BG7TBL GPS / RTCM Cable](/assets/pdfs/RTCM_to_BG7TBL_Cable.pdf)
+* [Trimble RTCM Interface Cable](../assets/pdfs/RTCM_2_Trimble.pdf)
+* [Trimble to Two RTCMs and Lady Heather Cable](../assets/pdfs/RTCM_321_Cable.graffle.pdf)
+* [BG7TBL GPS / RTCM Cable](../assets/pdfs/RTCM_to_BG7TBL_Cable.pdf)
 
 ## Quad Radio PCI card
-* [Yaesu FT-897 HF Radio(pdf)](/assets/pdfs/Ft897_quadpci_schematic.pdf)
-* [Icom IC-706 HF Radio(pdf)](/assets/pdfs/Ic706_quadpci_schematic.pdf)
-* [Kenwood TMG-707 Dual Band FM mobile Radio(pdf)](/assets/pdfs/Tmg707_quadpci_schematic.pdf)
+* [Yaesu FT-897 HF Radio(pdf)](../assets/pdfs/Ft897_quadpci_schematic.pdf)
+* [Icom IC-706 HF Radio(pdf)](../assets/pdfs/Ic706_quadpci_schematic.pdf)
+* [Kenwood TMG-707 Dual Band FM mobile Radio(pdf)](../assets/pdfs/Tmg707_quadpci_schematic.pdf)
