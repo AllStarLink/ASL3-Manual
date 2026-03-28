@@ -34,6 +34,8 @@ These directions are specific for Windows, but in general should work the same f
 
     ![Step 3](img/step-3-app-options-3.png){width="400"}
 
+**NOTE:** If you need to install a version of the AllStarLink Appliance image other than the "latest" you can enter the specific `.rpi-imager-manifest` URL from [repo.allstarlink.org](https://repo.allstarlink.org/images/pi).
+
 - Choose the type of Raspberry Pi hardware on which AllStarLink 3 Appliance is being installed and click on **NEXT**
 
     ![Step 4](img/step-4-device.png){width="400"}
