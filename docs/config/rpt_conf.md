@@ -1176,15 +1176,16 @@ sleeptime = 300   ; go to sleep after 5 mins of no activity
 See [Sleep Mode](../adv-topics/sleepmode.md) for more information on what this timer does, and how it works.
 
 ### startup_macro=
-The `startup_macro` is executed once on system startup. Each node can have **one** startup macro defined in its node stanza.
+The `startup_macro` is executed once on system startup. Each node can have **one** startup macro composed of one or more commands,
+as defined in its node stanza. Each command is separated by a space and are executed in order. It may be useful to introduce delays
+before executing the startup commands or in-between commands. Each `p` command produces a roughly 500 millisecond delay.
 
 Sample:
 
 ```
-startup_macro = *31000 *31001 *31002 ; connect to nodes 1000, 1001 and 1002 at startup
+; connect to nodes 1000, 1001, pause 5 seconds, and then connect to node 1002
+startup_macro = *31000 *31001 pppppppppp *31002
 ```
-
-One string of one or multiple commands, executed in order.
 
 !!! note "No Termination Character"
     This string of commands does NOT terminate with a `#` like a normal macro. You can call any number of regular macros with it.
