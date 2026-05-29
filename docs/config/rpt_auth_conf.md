@@ -1,7 +1,7 @@
 # rpt_auth.conf
 rpt_auth.conf is the per-user TOTP authentication secrets file for [TOTP DTMF Authentication](../adv-topics/totp-auth.md). It maps 4-digit user IDs to their TOTP secrets and the privileged command stanzas they are granted access to upon login.
 
-The file location is configured per-node in `rpt.conf` via the [`auth_users`](../adv-topics/totp-auth.md#rptconf--node-level-keys) key. A common path is `/etc/asterisk/rpt_auth.conf`.
+The file location is configured per-node in `rpt.conf` via the [`auth_users`](../adv-topics/totp-auth.md#configuration) key. A common path is `/etc/asterisk/rpt_auth.conf`.
 
 ## File Permissions
 
