@@ -158,6 +158,25 @@ COP|Description
 64|Send pre-configured APRSTT notification, quietly (cop,64,CALL[,OVERLAYCHR]) 
 65|Send POCSAG page (equipped channel types only)
 
+### Auth Commands
+Commands using the `auth` function class provide [TOTP DTMF Authentication](../adv-topics/totp-auth.md) — per-user, one-time-password access control for privileged DTMF commands.
+
+Sample:
+
+```
+A1 = auth,a   ; Login (expects 4-digit user ID + 6-digit OTP)
+A2 = auth,s   ; Status query
+A3 = auth,l   ; Logout
+```
+
+auth|Description
+----|----------
+a|Login. Collects exactly 10 additional digits (4-digit user ID + 6-digit TOTP code) and authenticates.
+s|Status. Plays a courtesy tone indicating whether a session is active.
+l|Logout. Clears the active authentication session on this node.
+
+The auth function requires additional configuration. See [TOTP DTMF Authentication](../adv-topics/totp-auth.md) for full setup instructions and the [`rpt_auth.conf`](rpt_auth_conf.md) reference for the user/secret file format.
+
 ## General Stanza
 ASL3 introduces a new stanza in `rpt.conf`, the `[general]` stanza.
 
@@ -273,6 +292,62 @@ archiveaudio = yes                  ; enable/disable audio recordings (default =
 ```
 
 See the [Audio and Activity Logging](../adv-topics/archivedir.md) page for additional details on this feature.
+
+### auth_users=
+Path to the [rpt_auth.conf](rpt_auth_conf.md) user/secret file for [TOTP DTMF Authentication](../adv-topics/totp-auth.md). If not set or the file is unreadable, the auth feature is disabled.
+
+Sample:
+
+```
+auth_users = /etc/asterisk/rpt_auth.conf
+```
+
+### auth_timeout=
+Sliding session timeout in seconds for authenticated users. Each successful privileged command refreshes the timer. Default: `300`. Range: 30–86400.
+
+Sample:
+
+```
+auth_timeout = 300
+```
+
+### auth_lockout_threshold=
+Number of consecutive failed login attempts before a user ID is locked out. Set to `0` to disable lockout. Default: `5`. Range: 0–1000.
+
+Sample:
+
+```
+auth_lockout_threshold = 5
+```
+
+### auth_lockout_duration=
+Duration in seconds that a locked-out user must wait before attempting login again. Default: `60`. Range: 0–86400.
+
+Sample:
+
+```
+auth_lockout_duration = 60
+```
+
+### auth_otp_step=
+TOTP time step in seconds. Must match the period configured in the user's authenticator app (typically 30). Default: `30`. Range: 10–120.
+
+Sample:
+
+```
+auth_otp_step = 30
+```
+
+### auth_otp_window=
+Number of time steps to accept on each side of the current step, controlling clock-skew tolerance. With the default values (`step=30`, `window=1`), codes from ±30 seconds are accepted. Default: `1`. Range: 0–3.
+
+Sample:
+
+```
+auth_otp_window = 1
+```
+
+See [TOTP DTMF Authentication](../adv-topics/totp-auth.md) for full setup instructions.
 
 ### beaconing=
 This option, when set to `1` will send the repeater ID at the [`idtime`](#idtime) interval, regardless of whether there was repeater activity or not. This feature appears to be required in the UK, but is probably illegal in the US.
