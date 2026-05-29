@@ -130,7 +130,7 @@ In the authenticator app, choose "manual entry" and enter:
 - Digits: 6
 - Algorithm: SHA-1
 
-**Option B — QR code (recommended):**
+**Option B — QR code:**
 
 ```bash
 # Install qrencode if needed: sudo apt install qrencode
