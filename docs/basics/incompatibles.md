@@ -41,6 +41,17 @@ Future improvements to ASL changing the node-authentication process
 will address this issue and is on the long-term engineering roadmap along
 with IPv6 support.
 
+### Raspberry Pi 4B Limitations
+The Raspberry Pi 4B platform is functionally restricted
+to a single USB audio adapter due to limitations of the VL805 USB
+Controller chip. A Raspberry Pi 4 with only one audio device will
+work just fine. Multiple USB audio adapters connected to the USB
+ports however will trigger a well-known race condition
+in the VL805 chip. The result is that only the "most recently active" audio
+device will handle audio properly when any two are simultaneously active.
+This is not a bug in app_rpt and cannot be worked around. A Raspberry
+Pi 5 does not have this issue nor does the older Pi 3B+ devices.
+
 ### resize2fs_once "Error"
 There are intermittent cases of errors on the screen or in  the system logs about a failure of a service named `resize2fs_once.service` after the final first boot upon installation. The error may report that it "Failed to start" or "timed out". If the `/` partition has been properly resized, which has been the case in every known
 occurrence of the error, then there is no action to take and the issue will not appear on subsequent reboots.
