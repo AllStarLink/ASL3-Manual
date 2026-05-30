@@ -43,8 +43,8 @@ with IPv6 support.
 
 ### Raspberry Pi 4B Limitations
 The Raspberry Pi 4B platform is limited to a single USB audio adapter due
-to limitations on the VL805 USB Controller chip. A Raspberry Pi 4 with a
-only one audio device  will work just fine. Multiple USB audio adapters
+to limitations on the VL805 USB Controller chip. A Raspberry Pi 4 with
+only one audio device will work just fine. Multiple USB audio adapters
 connected to the USB ports however will trigger a well-known race condition
 in the VL805 chip. The result is only the "most recently active" audio
 device will handle audio properly when any two are simultaneously active.
