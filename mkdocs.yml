@@ -78,9 +78,6 @@ nav:
       - install/debian/deb-appliance.md
       - install/debian/docker.md
       - install/debian/os-upgrades.md
-    - <span style="color:hsl(86.28, 71.6%, 33.14%)">ASL3 on Cloud VPS</span>:
-      - install/vps/index.md
-      - install/vps/ec2.md
     - <span style="color:hsl(86.28, 71.6%, 33.14%)">Allmon3</span>:
       - allmon3/index.md
       - allmon3/install.md
