@@ -10,7 +10,7 @@ The file location is configured per-node in `rpt.conf` via the [`auth_users`](..
 
     ```bash
     sudo chown root:asterisk /etc/asterisk/rpt_auth.conf
-    sudo chmod 0640         /etc/asterisk/rpt_auth.conf
+    sudo chmod 0640          /etc/asterisk/rpt_auth.conf
     ```
 
 ## Format
