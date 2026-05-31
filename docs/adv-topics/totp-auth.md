@@ -1,5 +1,5 @@
-# TOTP DTMF Authentication
-TOTP DTMF Authentication allows node administrators to gate privileged DTMF commands behind a one-time password. Authorized operators authenticate over the air using a 4-digit user ID and a 6-digit code from a standard authenticator app (Google Authenticator, Authy, FreeOTP, 1Password, etc.) before gaining access to additional commands.
+# Time Based One Time Password Authentication
+TOTP Authentication allows node administrators to gate privileged DTMF commands behind a one-time password. Authorized operators authenticate over the air using a 4-digit user ID and a 6-digit code from a standard authenticator app (Google Authenticator, Authy, FreeOTP, 1Password, etc.) before gaining access to additional commands.
 
 ## How It Works
 By default, every DTMF function in `rpt.conf` is accessible to anyone who can key the radio. This feature adds an **additional, privileged command set** that becomes available only after a user authenticates.
