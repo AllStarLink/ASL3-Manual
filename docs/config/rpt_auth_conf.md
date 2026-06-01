@@ -33,14 +33,14 @@ Field|Description
 
 ```ini
 [users]
-; User 1234 — admin, granted [functions-admin]
-1234 = JBSWY3DPEHPK3PXPABCDEFGHIJKLMNOP, functions-admin
+; User 1234 — admin, granted totp-admin
+1234 = JBSWY3DPEHPK3PXPABCDEFGHIJKLMNOP, totp-admin
 
-; User 5678 — control op, granted [functions-controlop]
-5678 = KRSXG5BAMFRGGZDFMZTWQ2LK, functions-controlop
+; User 5678 — control op, granted totp-operator
+5678 = KRSXG5BAMFRGGZDFMZTWQ2LK, granted totp-operator
 
-; User 9999 — read-only diagnostics, granted [functions-diag]
-9999 = NB2HI4DTHIXS653XO4XHSZLOOQ, functions-diag
+; User 9999 — read-only diagnostics, granted totp-diag
+9999 = NB2HI4DTHIXS653XO4XHSZLO, totp-diag
 ```
 
 ## Notes
