@@ -9,7 +9,7 @@ The file location is configured per-node in `rpt.conf` via the [`auth_users`](..
     This file contains shared TOTP secrets equivalent to passwords. Restrict permissions strictly:
 
     ```bash
-    sudo chown root:asterisk /etc/asterisk/rpt_auth.conf
+    sudo chown asterisk:asterisk /etc/asterisk/rpt_auth.conf
     sudo chmod 0640          /etc/asterisk/rpt_auth.conf
     ```
 
