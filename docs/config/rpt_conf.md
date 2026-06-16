@@ -1413,6 +1413,29 @@ time_out_reset_kerchunk_interval = 250                  ; transmit time-out keyu
 !!! note  "`time_out_reset_unkey_interval` required"
     The use of a kerchunk to reset a timeout is only available if the `time_out_reset_unkey_interval` is set to a nonzero value. If `time_out_reset_unkey_interval` is zero (or not defined in rpt.conf) then the traditional way of resetting the time out timer will be used. The traditional way is no delay on local unkey/key to reset a timeout.
 
+### keyupdelay_inactivity=
+Sets the inactivity timer after which the `keyupdelay` timer becomes active.  The value is in seconds and defaults to 0s (disabled).
+The `keyupdelay_inactivity`timer resets after a valid keyup and prevents the keyupdelay from functioning until activity has not been detected for the configured value.
+
+Sample:
+```
+keyupdelay_inactivity = 0           ; (optional) local keyup inactivity time in seconds before keyupdelay applies.
+```
+
+### keyupdelay=
+Sets the keyup delay time.  Keyup delay prevents short keyups (less than the configured value) from keyingup the repeater output.  This value is in milliseconds and defaults to 0ms (disabled).
+
+Sample:
+```
+keyupdelay = 0                      ; (optional) time in milliseconds to delay keyup after a local RX 
+;                                   ; key event. Applies only after the node has been inactive for keyupdelay_inactivity time.
+```
+!!!note "`keyupdelay_inactivity` required"
+    The `keyupdelay` is only available if `keyupdelay_inactivity` is configured to a non 0 value.
+     
+!!!note "Truncated Audio"
+    Durring the keyupdelay, audio is not repeated and will be truncated.
+
 ### unlinkedct=
 This option selects the courtesy tone to be used when the system has no remote nodes connected and is operating as a standalone repeater.
 
