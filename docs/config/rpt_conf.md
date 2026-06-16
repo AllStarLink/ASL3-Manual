@@ -1434,7 +1434,7 @@ keyupdelay = 0                      ; (optional) time in milliseconds to delay k
     The `keyupdelay` is only available if `keyupdelay_inactivity` is configured to a non 0 value.
      
 !!!note "Truncated Audio"
-    Durring the keyupdelay, audio is not repeated and will be truncated.
+    During the keyupdelay, audio is not repeated and will be truncated.
 
 ### unlinkedct=
 This option selects the courtesy tone to be used when the system has no remote nodes connected and is operating as a standalone repeater.
