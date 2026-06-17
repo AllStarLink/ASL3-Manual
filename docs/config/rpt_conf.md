@@ -1413,28 +1413,37 @@ time_out_reset_kerchunk_interval = 250                  ; transmit time-out keyu
 !!! note  "`time_out_reset_unkey_interval` required"
     The use of a kerchunk to reset a timeout is only available if the `time_out_reset_unkey_interval` is set to a nonzero value. If `time_out_reset_unkey_interval` is zero (or not defined in rpt.conf) then the traditional way of resetting the time out timer will be used. The traditional way is no delay on local unkey/key to reset a timeout.
 
-### keyupdelay_inactivity=
-Sets the inactivity timer after which the `keyupdelay` timer becomes active.  The value is in seconds and defaults to 0s (disabled).
-The `keyupdelay_inactivity`timer resets after a valid keyup and prevents the keyupdelay from functioning until activity has not been detected for the configured value.
+### first_keyup_inactivity_time=
+Sets the inactivity timer after which the `first_keyup_min_time` timer becomes active.  The value is in seconds and defaults to 0s (disabled).
+The `first_keyup_inactivity_time`timer resets after a valid keyup and prevents the `first_keyup_min_time` from functioning until activity has not been detected for the configured value.
 
 Sample:
 ```
-keyupdelay_inactivity = 0           ; (optional) local keyup inactivity time in seconds before keyupdelay applies.
+;first_keyup_min_time = 200         ; after a period of inactivity, the "first keyup"
+                                    ; time (in ms) that a local RX key event must be
+                                    ; present before the TX will be keyed. This setting
+                                    ; can be used to suppress short noise bursts or
+                                    ; quick keying (kerchunk'ing).
+                                    ; Optional, range 0..1000, default 0.
 ```
 
-### keyupdelay=
+### first_keyup_min_time=
 Sets the keyup delay time.  Keyup delay prevents short keyups (less than the configured value) from keyingup the repeater output.  This value is in milliseconds and defaults to 0ms (disabled).
 
 Sample:
 ```
-keyupdelay = 0                      ; (optional) time in milliseconds to delay keyup after a local RX 
-;                                   ; key event. Applies only after the node has been inactive for keyupdelay_inactivity time.
+;first_keyup_inactivity_time = 180  ; the time (in seconds) with no local RX activity
+                                    ; before the longer "first keyup" event is needed
+                                    ; for TX keying.  Longer intervals would allow
+                                    ; quick conversations, shorter intervals would
+                                    ; force key-wait-talk behavior.
+                                    ; Optional, default 0.
 ```
-!!!note "`keyupdelay_inactivity` required"
-    The `keyupdelay` is only available if `keyupdelay_inactivity` is configured to a non 0 value.
+!!!note "`first_keyup_inactivity_time` required"
+    The `first_keyup_min_time` is only available if `first_keyup_inactivity_time` is configured to a non 0 value.
      
 !!!note "Truncated Audio"
-    During the keyupdelay, audio is not repeated and will be truncated.
+    During the `first_keyup_min_time`, audio is not repeated and will be truncated.
 
 ### unlinkedct=
 This option selects the courtesy tone to be used when the system has no remote nodes connected and is operating as a standalone repeater.
