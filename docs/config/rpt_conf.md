@@ -40,6 +40,8 @@ Status|Description
 5|Speak the last (dtmf) user
 11|Force ID (local only)
 12|[Give Time of Day (local only)](../adv-topics/timeofday.md)
+13|[System status report (local only version of ILINK, 5)](#ilink5)
+14|[Full System status report (local only version of ILINK, 15)](#ilink15) 
 
 ### Link Commands
 Commands using the `link` function class affect connecting to, disconnecting from, monitoring (RX only) other nodes, and providing linking status.
@@ -60,7 +62,7 @@ ilink|Description|Node Number Required
 2|Connect specified link -- monitor only|Yes
 3|Connect specified link -- transceive|Yes
 4|Enter command mode on specified link|Yes
-5|System status|No
+<a id="ilink5"></a>5|System status|No
 6|Disconnect all links|No
 7|Last Node to Key Up|No
 8|Connect specified link -- local monitor only|Yes
@@ -69,7 +71,7 @@ ilink|Description|Node Number Required
 11|Disconnect a previously permanently connected link|Yes
 12|Permanently connect specified link -- monitor only|Yes
 13|Permanently connect specified link -- transceive|Yes
-15|Full system status (all nodes)|No
+<a id="ilink15"></a>15|Full system status (all nodes)|No
 16|Reconnect links disconnected with "disconnect all links"|No
 17|MDC test (for diag purposes)|No
 18|Permanently Connect specified link -- local monitor only|Yes
