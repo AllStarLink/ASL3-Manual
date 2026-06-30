@@ -40,8 +40,8 @@ Status|Description
 5|Speak the last (dtmf) user
 11|Force ID (local only)
 12|[Give Time of Day (local only)](../adv-topics/timeofday.md)
-13|[System status report (local only version of ILINK, 5)](#ilink5)
-14|[Full System status report (local only version of ILINK, 15)](#ilink15) 
+13|[System status report (local only version of ilink, 5)](#ilink5)
+14|[Full System status report (local only version of ilink, 15)](#ilink15) 
 
 ### Link Commands
 Commands using the `link` function class affect connecting to, disconnecting from, monitoring (RX only) other nodes, and providing linking status.
