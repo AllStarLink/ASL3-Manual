@@ -35,19 +35,19 @@ Use these instructions if the node is an [ASL3 Appliance](../install/pi-applianc
 
 ASL3 Appliance systems include `firewalld` and custom AllStarLink firewall service definitions. The safest approach is to create a dedicated `44NetConnect` zone for the VPN interface and add only the services you need.
 
-Do not assign the VPN interface that carries the public 44Net address to the appliance's default `allstarlink` zone unless you intentionally want the default appliance firewall policy on that address. See the advanced note at the end of this section for details.
+Do not assign the VPN interface that carries the public 44Net address to the appliance's default `allstarlink` zone unless you intentionally want the default appliance firewall policy on that address. The warning at the end of this section explains why.
 
-??? info "Default appliance service definitions and ports"
-    The ASL3 Appliance packages install a few custom `firewalld` service definitions for common AllStarLink services. The latest source for these definitions is in the [asl3-pi-appliance firewalld services directory](https://github.com/AllStarLink/asl3-pi-appliance/tree/main/src/firewalld/services).
+#### Default Appliance Service Definitions and Ports { #default-appliance-service-definitions-and-ports }
+The ASL3 Appliance packages install a few custom `firewalld` service definitions for common AllStarLink services. The latest source for these definitions is in the [asl3-pi-appliance firewalld services directory](https://github.com/AllStarLink/asl3-pi-appliance/tree/main/src/firewalld/services).
 
-    | Service Name | Purpose | Default Ports Opened |
-    | ------------ | ------- | ----- |
-    | `iax2` | AllStarLink IAX2 | UDP `4560-4580` |
-    | `echolink` | EchoLink | UDP `5198-5199` |
-    | `rtcm` | VOTER/RTCM | UDP `1667` |
-    | `astmgr` | Asterisk Manager Interface (AMI) | TCP `5038` |
+| Service Name | Purpose | Default Ports Opened |
+| ------------ | ------- | ----- |
+| `iax2` | AllStarLink IAX2 | UDP `4560-4580` |
+| `echolink` | EchoLink | UDP `5198-5199` |
+| `rtcm` | VOTER/RTCM | UDP `1667` |
+| `astmgr` | Asterisk Manager Interface (AMI) | TCP `5038` |
 
-    These service definitions open the default ports used by the ASL3 Appliance. If you manually changed a service to listen on a different port, add that exact port and protocol to the `44NetConnect` zone instead of assuming the default service definition will match your configuration.
+These service definitions open the default ports used by the ASL3 Appliance. If you manually changed a service to listen on a different port, add that exact port and protocol to the `44NetConnect` zone instead of assuming the default service definition will match your configuration.
 
 #### Create the 44NetConnect Zone { #create-the-44netconnect-zone }
 Run these commands before enabling the VPN tunnel. The VPN interface does not need to be connected yet.
@@ -71,7 +71,7 @@ Add `iax2` if you want to accept inbound IAX2 AllStarLink connections from the p
 sudo firewall-cmd --permanent --zone=44NetConnect --add-service=iax2
 ```
 
-??? note "Non-standard IAX2 ports"
+!!! note "Non-standard IAX2 ports"
     The default appliance `iax2` service opens UDP `4560-4580`, which includes the default IAX2 port `4569`.
 
     If your IAX2 port is outside UDP `4560-4580`, add that UDP port to the same firewall zone and make sure the IAX2 port in `/etc/asterisk/iax.conf` matches the IAX Port setting in the AllStarLink Portal.
@@ -83,48 +83,47 @@ sudo firewall-cmd --permanent --zone=44NetConnect --add-service=iax2
     ```
 
 #### Optional Additional Services { #appliance-optional-additional-services }
-??? info "Optional: EchoLink, VOTER, and more"
-    If all you need is inbound IAX2, leave this section closed and continue to **Finish and Reload**. Add only the optional services you intentionally want reachable through the 44Net address.
+If all you need is inbound IAX2, continue to [Finish and Reload](#finish-and-reload). Add only the services you want reachable through the 44Net address.
 
-    **EchoLink**
+**EchoLink**
 
-    Add `echolink` if you want to accept incoming EchoLink connections from the public Internet.
+Add `echolink` if you want to accept incoming EchoLink connections from the public Internet.
 
-    ```bash
-    sudo firewall-cmd --permanent --zone=44NetConnect --add-service=echolink
-    ```
+```bash
+sudo firewall-cmd --permanent --zone=44NetConnect --add-service=echolink
+```
 
-    **VOTER/RTCM**
+**VOTER/RTCM**
 
-    Add `rtcm` if you want to accept incoming VOTER/RTCM connections from the public Internet on the default UDP port `1667`.
+Add `rtcm` if you want to accept incoming VOTER/RTCM connections from the public Internet on the default UDP port `1667`.
 
-    ```bash
-    sudo firewall-cmd --permanent --zone=44NetConnect --add-service=rtcm
-    ```
+```bash
+sudo firewall-cmd --permanent --zone=44NetConnect --add-service=rtcm
+```
 
-    If your VOTER/RTCM configuration uses a different UDP port, add that port instead. For example, if your VOTER/RTCM port is UDP `1668`:
+If your VOTER/RTCM configuration uses a different UDP port, add that port instead. For example, if your VOTER/RTCM port is UDP `1668`:
 
-    ```bash
-    sudo firewall-cmd --permanent --zone=44NetConnect --add-port=1668/udp
-    ```
+```bash
+sudo firewall-cmd --permanent --zone=44NetConnect --add-port=1668/udp
+```
 
-    **Web dashboards and management tools**
+**Web dashboards and management tools**
 
-    Dashboard and management tools should normally stay private. Use [Tailscale](https://tailscale.com/) or a similar private remote access service, a self-hosted WireGuard VPN such as [PiVPN](https://www.pivpn.io/), or a protected tunnel or reverse proxy such as [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
+Dashboard and management tools should normally stay private. Use [Tailscale](https://tailscale.com/) or a similar private remote access service, a self-hosted WireGuard VPN such as [PiVPN](https://www.pivpn.io/), or a protected tunnel or reverse proxy such as [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
 
-    Directly exposing a dashboard, web server, Cockpit, SSH, AMI, or another management service can create an entry point into the node and any private network connected to it. This page intentionally does not provide firewall commands for exposing those services directly to the public Internet.
+Directly exposing a dashboard, web server, Cockpit, SSH, AMI, or another management service can create an entry point into the node and any private network connected to it. This page intentionally does not provide firewall commands for exposing those services directly to the public Internet.
 
-    If you choose to expose one anyway, you need to understand the service configuration, use strong authentication, and open only the exact service you intend to expose. AMI is especially risky because it can control and inspect Asterisk; do not expose it unless you understand the risk and have secured and restricted `/etc/asterisk/manager.conf`.
+If you choose to expose one anyway, you need to understand the service configuration, use strong authentication, and open only the exact service you intend to expose. AMI is especially risky because it can control and inspect Asterisk; do not expose it unless you understand the risk and have secured and restricted `/etc/asterisk/manager.conf`.
 
-    **Other custom services**
+**Other custom services**
 
-    If you need to expose another service on the 44Net address, prefer adding only the exact port and protocol needed:
+If you need to expose another service on the 44Net address, prefer adding only the exact port and protocol needed:
 
-    ```bash
-    sudo firewall-cmd --permanent --zone=44NetConnect --add-port=12345/udp
-    ```
+```bash
+sudo firewall-cmd --permanent --zone=44NetConnect --add-port=12345/udp
+```
 
-    If you prefer a reusable named service, create a local `firewalld` service definition and add that service to the `44NetConnect` zone.
+If you prefer a reusable named service, create a local `firewalld` service definition and add that service to the `44NetConnect` zone.
 
 #### Finish and Reload { #finish-and-reload }
 After adding the service(s) you want to your firewall configuration, attach the VPN interface (`wg0`) to the `44NetConnect` zone and reload `firewalld`.
@@ -136,7 +135,7 @@ sudo firewall-cmd --reload
 
 All other inbound services remain blocked on the VPN interface.
 
-??? danger "Do not use the default `allstarlink` zone on the VPN interface"
+!!! danger "Do not use the default `allstarlink` zone on the VPN interface"
     On an ASL3 Appliance system, the [default `allstarlink` zone](https://github.com/AllStarLink/asl3-pi-appliance/blob/main/src/firewalld/zones/allstarlink.xml) includes services for normal node operation and local administration: SSH, HTTP, HTTPS, Cockpit, IAX2, EchoLink, VOTER/RTCM, mDNS, and DHCPv6 client handling. The zone also enables forwarding behavior. Assigning the VPN interface to this zone can make those services reachable or active on the public 44Net address.
 
     This is a last-resort option for users who have reviewed the active zone contents and intentionally want the default appliance firewall policy on 44Net. This page intentionally does not provide the command. If you cannot determine how to assign an interface to a `firewalld` zone after reviewing the active zone contents, do not use this approach.
@@ -177,46 +176,45 @@ Most users only need inbound IAX2:
 sudo firewall-cmd --permanent --zone=44NetConnect --add-port=4569/udp
 ```
 
-??? note "Non-standard IAX2 port"
+!!! note "Non-standard IAX2 port"
     If your IAX2 port is not UDP `4569`, replace `4569/udp` with your configured IAX2 port.
 
 #### Optional Additional Services { #non-appliance-optional-additional-services }
-??? info "Optional: EchoLink, VOTER, and more"
-    If all you need is inbound IAX2, leave this section closed and continue to **Finish and Reload**. Add only the optional services you intentionally want reachable through the 44Net address.
+If all you need is inbound IAX2, continue to [Finish and Reload](#non-appliance-finish-and-reload). Add only the services you want reachable through the 44Net address.
 
-    **EchoLink**
+**EchoLink**
 
-    Add the EchoLink ports if you want to accept incoming EchoLink connections from the public Internet.
+Add the EchoLink ports if you want to accept incoming EchoLink connections from the public Internet.
 
-    ```bash
-    sudo firewall-cmd --permanent --zone=44NetConnect --add-port=5198-5199/udp
-    ```
+```bash
+sudo firewall-cmd --permanent --zone=44NetConnect --add-port=5198-5199/udp
+```
 
-    **VOTER/RTCM**
+**VOTER/RTCM**
 
-    Add the VOTER/RTCM port if you want to accept incoming VOTER/RTCM connections from the public Internet on the default UDP port `1667`.
+Add the VOTER/RTCM port if you want to accept incoming VOTER/RTCM connections from the public Internet on the default UDP port `1667`.
 
-    ```bash
-    sudo firewall-cmd --permanent --zone=44NetConnect --add-port=1667/udp
-    ```
+```bash
+sudo firewall-cmd --permanent --zone=44NetConnect --add-port=1667/udp
+```
 
-    If your VOTER/RTCM port is not UDP `1667`, replace `1667/udp` with your configured VOTER/RTCM port.
+If your VOTER/RTCM port is not UDP `1667`, replace `1667/udp` with your configured VOTER/RTCM port.
 
-    **Web dashboards and management tools**
+**Web dashboards and management tools**
 
-    Dashboard and management tools should normally stay private. Use [Tailscale](https://tailscale.com/) or a similar private remote access service, a self-hosted WireGuard VPN such as [PiVPN](https://www.pivpn.io/), or a protected tunnel or reverse proxy such as [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
+Dashboard and management tools should normally stay private. Use [Tailscale](https://tailscale.com/) or a similar private remote access service, a self-hosted WireGuard VPN such as [PiVPN](https://www.pivpn.io/), or a protected tunnel or reverse proxy such as [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
 
-    Directly exposing a dashboard, web server, Cockpit, SSH, AMI, or another management service can create an entry point into the node and any private network connected to it. This page intentionally does not provide firewall commands for exposing those services directly to the public Internet.
+Directly exposing a dashboard, web server, Cockpit, SSH, AMI, or another management service can create an entry point into the node and any private network connected to it. This page intentionally does not provide firewall commands for exposing those services directly to the public Internet.
 
-    If you choose to expose one anyway, you need to understand the service configuration, use strong authentication, and open only the exact service you intend to expose. AMI is especially risky because it can control and inspect Asterisk; do not expose it unless you understand the risk and have secured and restricted `/etc/asterisk/manager.conf`.
+If you choose to expose one anyway, you need to understand the service configuration, use strong authentication, and open only the exact service you intend to expose. AMI is especially risky because it can control and inspect Asterisk; do not expose it unless you understand the risk and have secured and restricted `/etc/asterisk/manager.conf`.
 
-    **Other custom services**
+**Other custom services**
 
-    If you need to expose another service on the 44Net address, prefer adding only the exact port and protocol needed:
+If you need to expose another service on the 44Net address, prefer adding only the exact port and protocol needed:
 
-    ```bash
-    sudo firewall-cmd --permanent --zone=44NetConnect --add-port=12345/udp
-    ```
+```bash
+sudo firewall-cmd --permanent --zone=44NetConnect --add-port=12345/udp
+```
 
 #### Finish and Reload { #non-appliance-finish-and-reload }
 After adding the port(s) you need, attach the VPN interface (`wg0`) to the zone and reload `firewalld`:
@@ -228,8 +226,8 @@ sudo firewall-cmd --reload
 
 Do not expose SSH, Cockpit, HTTP, HTTPS, AMI, or other management ports on the 44Net address unless you have intentionally planned for public remote administration.
 
-??? info "Other firewall tools"
-    If you use a different Linux distribution or a different firewall tool, create equivalent rules for the VPN interface or assigned 44Net address. If you are not comfortable creating equivalent firewall rules for your system, use the ASL3 Appliance installation path or get firewall help before enabling the tunnel.
+#### Other Firewall Tools { #other-firewall-tools }
+If you use a different Linux distribution or a different firewall tool, create equivalent rules for the VPN interface or assigned 44Net address. If you are not comfortable creating equivalent firewall rules for your system, use the ASL3 Appliance installation path or get firewall help before enabling the tunnel.
 
 Next: [Create and start the tunnel](#create-and-start-the-tunnel).
 
@@ -276,30 +274,30 @@ Copy the private key when the tunnel is created. You will need it when creating 
     sudo chmod 600 /etc/wireguard/wg0.conf
     ```
 
-??? info "Why this is a full-tunnel VPN"
-    The 44Net Connect configuration normally includes `AllowedIPs = 0.0.0.0/0`. That setting sends all IPv4 traffic through the VPN tunnel and is why the firewall must be configured before the tunnel is started.
+#### Why This Is a Full-Tunnel VPN { #why-this-is-a-full-tunnel-vpn }
+The 44Net Connect configuration normally includes `AllowedIPs = 0.0.0.0/0`. That setting sends all IPv4 traffic through the VPN tunnel and is why the firewall must be configured before the tunnel is started.
 
-??? info "Optional: route only AllStarLink server traffic through the VPN"
-    Most users should keep the default full-tunnel configuration. It is simpler, and it avoids return-routing problems for inbound connections to the node's public 44Net address.
+#### Optional: Route Only AllStarLink Server Traffic Through the VPN { #optional-route-only-allstarlink-server-traffic-through-the-vpn }
+Most users should keep the default full-tunnel configuration. It is simpler, and it avoids return-routing problems for inbound connections to the node's public 44Net address.
 
-    Advanced users may prefer a split-route setup where normal Internet traffic continues to use the local network and only selected outbound AllStarLink server traffic uses the VPN tunnel. This is an advanced routing design, not just a simple `AllowedIPs` change. Do not put hostnames in `AllowedIPs`; WireGuard only accepts IP addresses and networks.
+Advanced users may prefer a split-route setup where normal Internet traffic continues to use the local network and only selected outbound AllStarLink server traffic uses the VPN tunnel. This is an advanced routing design, not just a simple `AllowedIPs` change. Do not put hostnames in `AllowedIPs`; WireGuard only accepts IP addresses and networks.
 
-    The general pattern is:
+The general pattern is:
 
-    1. Keep `AllowedIPs = 0.0.0.0/0` so WireGuard will still accept traffic from the public Internet through the tunnel.
-    2. Add `Table = off` in the `[Interface]` section so WireGuard does not automatically install a default route through the VPN.
-    3. Add your own routes for the AllStarLink server IP addresses through the VPN interface.
-    4. If you still need inbound node-to-node connections through the 44Net address, also configure return routing so traffic sourced from the assigned `44.x.x.x` address goes back out through the VPN tunnel.
+1. Keep `AllowedIPs = 0.0.0.0/0` so WireGuard will still accept traffic from the public Internet through the tunnel.
+2. Add `Table = off` in the `[Interface]` section so WireGuard does not automatically install a default route through the VPN.
+3. Add your own routes for the AllStarLink server IP addresses through the VPN interface.
+4. If you still need inbound node-to-node connections through the 44Net address, also configure return routing so traffic sourced from the assigned `44.x.x.x` address goes back out through the VPN tunnel.
 
-    The current AllStarLink server hostnames are:
+The current AllStarLink server hostnames are:
 
-    - `aws-east1a-portal0.allstarlink.org`
-    - `aws-east1a-register0.allstarlink.org`
-    - `aws-east1a-register1.allstarlink.org`
-    - `aws-east1a-register2.allstarlink.org`
-    - `aws-east1a-stats0.allstarlink.org`
+- `aws-east1a-portal0.allstarlink.org`
+- `aws-east1a-register0.allstarlink.org`
+- `aws-east1a-register1.allstarlink.org`
+- `aws-east1a-register2.allstarlink.org`
+- `aws-east1a-stats0.allstarlink.org`
 
-    These names must be resolved to IPv4 addresses before routes can be added. Because DNS records can change, avoid hard-coding old IP addresses permanently unless you are prepared to update them. If this routing model is not familiar, use the default full-tunnel configuration.
+These names must be resolved to IPv4 addresses before routes can be added. Because DNS records can change, avoid hard-coding old IP addresses permanently unless you are prepared to update them. If this routing model is not familiar, use the default full-tunnel configuration.
 
 ### Enable the VPN Tunnel
 The following commands must be run as root or with `sudo`.
