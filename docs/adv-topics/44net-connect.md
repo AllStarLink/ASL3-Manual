@@ -1,11 +1,11 @@
 # 44Net Connect
 [44Net](https://wiki.ampr.org/wiki/Main_Page), also known as AMPRNet, is a block of globally routable IPv4 addresses allocated for amateur radio use.
 
-[44Net *Connect*](https://connect.44net.cloud/) gives an amateur radio operator a publicly routable IPv4 address in the 44Net space. That address is delivered to the operator's system through a VPN tunnel.
+[44Net Connect](https://connect.44net.cloud/) gives an amateur radio operator a publicly routable IPv4 address in the 44Net space. That address is delivered to the operator's system through a VPN tunnel.
 
-For AllStarLink, 44Net Connect is most useful when a node cannot receive inbound IAX2 because it is behind NAT, CGNAT, a restrictive router, or a network where port forwarding is not available. 44Net Connect can provide a public `44.x.x.x` address that other nodes can reach.
+For AllStarLink, 44Net Connect is most useful when a node cannot receive inbound IAX2 connections because it is behind NAT, CGNAT, a restrictive router, or a network where port forwarding is not available. 44Net Connect can provide a public `44.x.x.x` address that other nodes can reach.
 
-Most users only need 44Net Connect for inbound AllStarLink IAX2 connections. It can also make other services reachable from the Internet, such as EchoLink or VOTER/RTCM, but every exposed service adds risk. Start with IAX2 only and add other services only when you know you need them.
+Most users only need 44Net Connect for inbound AllStarLink IAX2 connections. It can also make other services reachable from the Internet, such as EchoLink, VOTER/RTCM, and web services such as Allmon3. However, every exposed service adds risk. It is recommmended to start with IAX2 and only add other services when you know you need them.
 
 ## 1. Understanding Security Risks { #understanding-security-risks }
 
@@ -18,7 +18,7 @@ Most users only need 44Net Connect for inbound AllStarLink IAX2 connections. It 
 
     A compromised public node can become an entry point into a private local network and other devices on that network.
 
-The default 44Net Connect configuration is a full-tunnel VPN, which means the VPN tunnel is used as the default route and outbound IPv4 traffic is routed through the VPN. Traffic sent from the Internet to the assigned public `44.x.x.x` address can also reach the node through the VPN tunnel unless the firewall blocks it.
+The default 44Net Connect configuration is a full-tunnel VPN. This means the VPN tunnel is used as the default route and outbound IPv4 traffic is routed through the VPN. Traffic sent from the Internet to the assigned public `44.x.x.x` address can also reach the node through the VPN tunnel unless the firewall blocks it.
 
 The safe setup method is:
 
