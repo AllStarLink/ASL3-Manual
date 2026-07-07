@@ -83,7 +83,7 @@ sudo firewall-cmd --permanent --zone=44NetConnect --add-service=iax2
     ```
 
 #### Optional Additional Services { #appliance-optional-additional-services }
-??? info "Optional: Echolink, VOTER, and more"
+??? info "Optional: EchoLink, VOTER, and more"
     If all you need is inbound IAX2, leave this section closed and continue to **Finish and Reload**. Add only the optional services you intentionally want reachable through the 44Net address.
 
     **EchoLink**
@@ -181,7 +181,7 @@ sudo firewall-cmd --permanent --zone=44NetConnect --add-port=4569/udp
     If your IAX2 port is not UDP `4569`, replace `4569/udp` with your configured IAX2 port.
 
 #### Optional Additional Services { #non-appliance-optional-additional-services }
-??? info "Optional: Echolink, VOTER, and more"
+??? info "Optional: EchoLink, VOTER, and more"
     If all you need is inbound IAX2, leave this section closed and continue to **Finish and Reload**. Add only the optional services you intentionally want reachable through the 44Net address.
 
     **EchoLink**
@@ -278,6 +278,28 @@ Copy the private key when the tunnel is created. You will need it when creating 
 
 ??? info "Why this is a full-tunnel VPN"
     The 44Net Connect configuration normally includes `AllowedIPs = 0.0.0.0/0`. That setting sends all IPv4 traffic through the VPN tunnel and is why the firewall must be configured before the tunnel is started.
+
+??? info "Optional: route only AllStarLink server traffic through the VPN"
+    Most users should keep the default full-tunnel configuration. It is simpler, and it avoids return-routing problems for inbound connections to the node's public 44Net address.
+
+    Advanced users may prefer a split-route setup where normal Internet traffic continues to use the local network and only selected outbound AllStarLink server traffic uses the VPN tunnel. This is an advanced routing design, not just a simple `AllowedIPs` change. Do not put hostnames in `AllowedIPs`; WireGuard only accepts IP addresses and networks.
+
+    The general pattern is:
+
+    1. Keep `AllowedIPs = 0.0.0.0/0` so WireGuard will still accept traffic from the public Internet through the tunnel.
+    2. Add `Table = off` in the `[Interface]` section so WireGuard does not automatically install a default route through the VPN.
+    3. Add your own routes for the AllStarLink server IP addresses through the VPN interface.
+    4. If you still need inbound node-to-node connections through the 44Net address, also configure return routing so traffic sourced from the assigned `44.x.x.x` address goes back out through the VPN tunnel.
+
+    The current AllStarLink server hostnames are:
+
+    - `aws-east1a-portal0.allstarlink.org`
+    - `aws-east1a-register0.allstarlink.org`
+    - `aws-east1a-register1.allstarlink.org`
+    - `aws-east1a-register2.allstarlink.org`
+    - `aws-east1a-stats0.allstarlink.org`
+
+    These names must be resolved to IPv4 addresses before routes can be added. Because DNS records can change, avoid hard-coding old IP addresses permanently unless you are prepared to update them. If this routing model is not familiar, use the default full-tunnel configuration.
 
 ### Enable the VPN Tunnel
 The following commands must be run as root or with `sudo`.
