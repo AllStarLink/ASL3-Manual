@@ -50,7 +50,7 @@ The ASL3 Appliance packages install a few custom `firewalld` service definitions
 These service definitions open the default ports used by the ASL3 Appliance. If you manually changed a service to listen on a different port, add that exact port and protocol to the `44NetConnect` zone instead of assuming the default service definition will match your configuration.
 
 #### Create the 44NetConnect Zone { #create-the-44netconnect-zone }
-Run these commands before enabling the VPN tunnel. The VPN interface does not need to be connected yet.
+Run these commands before enabling the VPN tunnel. The VPN interface does not need to exist yet.
 
 ```bash
 sudo firewall-cmd --permanent --new-zone=44NetConnect
@@ -126,7 +126,7 @@ sudo firewall-cmd --permanent --zone=44NetConnect --add-port=12345/udp
 If you prefer a reusable named service, create a local `firewalld` service definition and add that service to the `44NetConnect` zone.
 
 #### Finish and Reload { #finish-and-reload }
-After adding the service(s) you want to your firewall configuration, attach the VPN interface (`wg0`) to the `44NetConnect` zone and reload `firewalld`.
+After adding the service(s) you want to your firewall configuration, attach the VPN interface name (`wg0`) to the `44NetConnect` zone and reload `firewalld`. This permanent `firewalld` binding can be created before the `wg0` interface exists; `wg-quick@wg0` creates that interface when the tunnel starts.
 
 ```bash
 sudo firewall-cmd --permanent --zone=44NetConnect --add-interface=wg0
@@ -217,7 +217,7 @@ sudo firewall-cmd --permanent --zone=44NetConnect --add-port=12345/udp
 ```
 
 #### Finish and Reload { #non-appliance-finish-and-reload }
-After adding the port(s) you need, attach the VPN interface (`wg0`) to the zone and reload `firewalld`:
+After adding the port(s) you need, attach the VPN interface name (`wg0`) to the zone and reload `firewalld`. This permanent `firewalld` binding can be created before the `wg0` interface exists; `wg-quick@wg0` creates that interface when the tunnel starts.
 
 ```bash
 sudo firewall-cmd --permanent --zone=44NetConnect --add-interface=wg0
