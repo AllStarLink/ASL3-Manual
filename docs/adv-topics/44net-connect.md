@@ -18,7 +18,7 @@ Most users only need 44Net Connect for inbound AllStarLink IAX2 connections. It 
 
     A compromised public node can become an entry point into a private local network and other devices on that network.
 
-The default 44Net Connect configuration is a full-tunnel VPN. This means the VPN tunnel is used as the default route and outbound IPv4 traffic is routed through the VPN. Traffic sent from the Internet to the assigned public `44.x.x.x` address can also reach the node through the VPN tunnel unless the firewall blocks it.
+The default 44Net Connect configuration is a full-tunnel VPN. This means the VPN tunnel is used as the default route and outbound IPv4 traffic is routed through the VPN. Traffic sent from the Internet to the assigned public `44.x.x.x` address will also reach the node through the VPN tunnel unless the firewall blocks it.
 
 The safe setup method is:
 
