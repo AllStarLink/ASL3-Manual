@@ -5,7 +5,7 @@
 
 For AllStarLink, 44Net Connect is most useful when a node cannot receive inbound IAX2 connections because it is behind NAT, CGNAT, a restrictive router, or a network where port forwarding is not available. 44Net Connect can provide a public `44.x.x.x` address that other nodes can reach.
 
-Most users only need 44Net Connect for inbound AllStarLink IAX2 connections. It can also make other services reachable from the Internet, such as EchoLink, VOTER/RTCM, and web services such as Allmon3. However, every exposed service adds risk. It is recommended to start with IAX2 and only add other services when you know you need them.
+Most users only need 44Net Connect for inbound AllStarLink IAX2 connections. It can also make other services reachable from the Internet, such as EchoLink, VOTER/RTCM, and web services such as Allmon3. However, every exposed service adds risk. It is recommended to start with allowing just the IAX2 service and only add other services when you know you need them.
 
 ## 1. Understanding Security Risks { #understanding-security-risks }
 
@@ -87,7 +87,7 @@ If all you need is inbound IAX2, continue to [Finish and Reload](#finish-and-rel
 
 **EchoLink**
 
-Add `echolink` if you want to accept incoming EchoLink connections from the public Internet.
+Add `echolink` if you plan to use EchoLink.
 
 ```bash
 sudo firewall-cmd --permanent --zone=44NetConnect --add-service=echolink
@@ -95,7 +95,7 @@ sudo firewall-cmd --permanent --zone=44NetConnect --add-service=echolink
 
 **VOTER/RTCM**
 
-Add `rtcm` if you want to accept incoming VOTER/RTCM connections from the public Internet on the default UDP port `1667`.
+Add `rtcm` if you need to accept incoming VOTER/RTCM connections from the public Internet on the default UDP port `1667`.
 
 ```bash
 sudo firewall-cmd --permanent --zone=44NetConnect --add-service=rtcm
@@ -289,15 +289,14 @@ The general pattern is:
 3. Add your own routes for the AllStarLink server IP addresses through the VPN interface.
 4. If you still need inbound node-to-node connections through the 44Net address, also configure return routing so traffic sourced from the assigned `44.x.x.x` address goes back out through the VPN tunnel.
 
-The current AllStarLink server hostnames are:
+Get the current server IPs at the time you configure routes:
 
-- `aws-east1a-portal0.allstarlink.org`
-- `aws-east1a-register0.allstarlink.org`
-- `aws-east1a-register1.allstarlink.org`
-- `aws-east1a-register2.allstarlink.org`
-- `aws-east1a-stats0.allstarlink.org`
+```bash
+host register.allstarlink.org
+host stats.allstarlink.org
+```
 
-These names must be resolved to IPv4 addresses before routes can be added. Because DNS records can change, avoid hard-coding old IP addresses permanently unless you are prepared to update them. If this routing model is not familiar, use the default full-tunnel configuration.
+Use the returned IPv4 addresses when adding routes. Because DNS records can change, avoid hard-coding old IP addresses permanently unless you are prepared to update them. This process can be scripted and triggered on interface up/down events from within `wg0.conf`. If this routing model is not familiar, use the default full-tunnel configuration.
 
 ### Enable the VPN Tunnel
 The following commands must be run as root or with `sudo`.
