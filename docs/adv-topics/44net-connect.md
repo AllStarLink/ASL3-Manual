@@ -101,7 +101,7 @@ Add `rtcm` if you need to accept incoming VOTER/RTCM connections from the public
 sudo firewall-cmd --permanent --zone=44NetConnect --add-service=rtcm
 ```
 
-If your VOTER/RTCM configuration uses a different UDP port, add that port instead. For example, if your VOTER/RTCM port is UDP `1668`:
+If your VOTER/RTCM configuration uses a different UDP port, add that port instead. For example, if your VOTER/RTCM port is UDP `667`:
 
 ```bash
 sudo firewall-cmd --permanent --zone=44NetConnect --add-port=1668/udp
