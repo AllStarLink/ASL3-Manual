@@ -1,3 +1,19 @@
+.md-header {
+    color: white;
+}
+
+.md-tabs {
+    color: white;
+}
+
+.md-search__button {
+    color: white;
+}
+
+.md-search__button::after {
+    color: black;
+}
+
 [data-md-color-scheme="allstarlink"] {
     /* Primary color shades */
 

@@ -16,7 +16,7 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-copyright: Copyright &copy; 2025 AllStarLink Inc.
+copyright: Copyright &copy; 2024-2026 AllStarLink Inc.
 theme:
   name: material
   features:
