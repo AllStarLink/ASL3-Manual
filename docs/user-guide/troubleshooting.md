@@ -4,6 +4,10 @@ When asking for help on [AllStarLink Community](https://community.allstarlink.or
 ## Connectivity Troubleshooting
 The following troubleshooting steps can be used to check if your node has successfully registered to the AllStarLink network:
 
+* From your server console, run the `asl-node-auth-check` command which will do a
+comprehensive check of your node's configuration, reachability, and registration
+status.
+
 * Go to [https://www.allstarlink.org/nodelist](https://www.allstarlink.org/nodelist), put your node number in the Filter box and see if the system knows about your node. If it is registered, the background behind your node number should be green.
 
 * From the [Linux CLI](./passwords.md#linux-login) on your node, run `asl-node-lookup <node#>` with your node number, and see if the system returns a "SRV" record with a hostname and IAX port for your node, an "A" record showing your public IP address, and a "TXT" record, showing a valid and current registration record.
@@ -22,7 +26,7 @@ asl@wb6nil:~ $ tail /var/lib/asterisk/rpt_extnodes
 
 * If your system/node is behind a firewall/router, make sure you have opened port `4569/UDP`, and directed it to the correct LAN IP address of your AllStarLink node
 
-* Make sure that the IAX port configured in your Server Settings of your [AllStarLink Portal](https://www.allstarlink.org/portal) account matches the port opened in your firewall 
+* Make sure that the IAX port configured in your Server Settings of your [AllStarLink Portal](https://www.allstarlink.org/portal) account matches the port opened in your firewall
 
 * Make sure that `bindport=4569` is set in [`iax.conf`](../config/iax_conf.md#bindport-and-bindaddr), it should be unless you've changed it (perhaps if you are running [Multiple Node on the Same Network](../adv-topics/multinodesnetwork.md))
 
@@ -36,7 +40,7 @@ asl@wb6nil:~ $ tail /var/lib/asterisk/rpt_extnodes
 
 * Check that the `[nodes]` section in [`rpt.conf`](../config/rpt_conf.md#nodes-stanza) is correct, ie. `63001 = radio@127.0.0.1:xxxx/63001,NONE`. The port, `:xxxx` is only needed if not the default port of `4569`
 
-* If you have a friend with an AllStarLink node, have them do a lookup from the [Asterisk CLI](./menu.md#asterisk-cli) and confirm that the IP address returned is your **public** IP address, and that the IAX port is what is expected: 
+* If you have a friend with an AllStarLink node, have them do a lookup from the [Asterisk CLI](./menu.md#asterisk-cli) and confirm that the IP address returned is your **public** IP address, and that the IAX port is what is expected:
 
 ```
 wb6nil*CLI> rpt lookup 2001
@@ -64,7 +68,7 @@ Connectivity issues?|Check the [Connectivity Troubleshooting](#connectivity-trou
 
 Hint|Thing(s) to Try
 ----|---------------
-Do you have the correct port forwarding settings configured in your firewall?|AllStarLink requires that UDP traffic on port `4569` be forwarded from the public (WAN) IP address to the private (LAN) IP address running your AllStarLink server. Please check the settings in your router using its instruction manual to make sure port `4569/UDP` is set up to be forwarded to the correct internal (private) IP address. 
+Do you have the correct port forwarding settings configured in your firewall?|AllStarLink requires that UDP traffic on port `4569` be forwarded from the public (WAN) IP address to the private (LAN) IP address running your AllStarLink server. Please check the settings in your router using its instruction manual to make sure port `4569/UDP` is set up to be forwarded to the correct internal (private) IP address.
 
 ## VOTER/RTCM Choppy Audio
 The VOTER protocol is UDP which of course means packets can be dropped causing holes in the audio. Here are a couple of things to look for if the audio is choppy.
@@ -138,7 +142,7 @@ Items that may be requested include elements such as:
 #### AllStarLink Does Not Support Certain Other Projects/Tools
 Core AllStarLink does not support certain other projects/tools such as HamVOIP, Supermon/Supermon2, SkyWarnPlus, or AllScan. Some of the developers of these tools such as SkyWarnPlus and AllScan are active and answer questions on the Community, and others are not.
 
-If you are told, "that isn't supported but have you tried doing it in this supported way", consider giving it a try. 
+If you are told, "that isn't supported but have you tried doing it in this supported way", consider giving it a try.
 
 #### AllStarLink v3 Contains 14+ Years of Changes
 The release of AllStarLink v3 uses modern Asterisk 20 LTS. Legacy installs use Asterisk 1.4 which was end of life in 2012. Thus, there are literally 14+ years of changes of how Asterisk operates that `app_rpt` (the main engine behind ASL) had to conform to. Notably, the configuration syntax which changed gradually over time for users staying current with Asterisk, is an "all of a sudden" change in ASL3. One cannot paste old configurations into modern ASL3 and expect it to "just work".
@@ -151,7 +155,7 @@ In general, if people are asking questions about the details of your problem, th
 If it's not, then likely your issue is unique to your setup and providing the requested troubleshooting is needed to help you further.
 
 ### Gathering Logs
-If you are asked to provide logs, there are two standard ways to provide logs, using [`Cockpit`](../pi/cockpit-basics.md) or using the `journalctl` tool from the 
+If you are asked to provide logs, there are two standard ways to provide logs, using [`Cockpit`](../pi/cockpit-basics.md) or using the `journalctl` tool from the
 Linux CLI.
 
 #### Gathering Logs with Cockpit
@@ -210,6 +214,6 @@ live). Press Ctrl+c to exit
 * `less FILE` - Less is more than more... Less is an interactive scroller and searching interface. For example typing `/SOMETHING` will search for the string "SOMETHING" forward from where you are in the file and `?SOMETHING` will search backwards. Enter CTRL+c to exit
 
 * `grep SOMETHING FILE` - This is for basic searching within a file. For example, you can use `grep` to answer the question "what does the line with FOO in FILE say?". This command
-would be `grep FOO FILE`. Note that by default, your `grep` searches are case-sensitive, use the `-i` flag for case-insensitive searches, i.e. `grep -i FOO FILE` will find all instances of "foo", "FOO", "FoO", etc. 
+would be `grep FOO FILE`. Note that by default, your `grep` searches are case-sensitive, use the `-i` flag for case-insensitive searches, i.e. `grep -i FOO FILE` will find all instances of "foo", "FOO", "FoO", etc.
 
 When possible, please copy/paste log and search text instead of attaching screenshots into systems for troubleshooting. Text is far easier to deal with (can be quoted in replies), and will make your trouble show up in search engines to help "the next person".
