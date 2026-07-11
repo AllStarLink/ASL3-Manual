@@ -250,30 +250,5 @@ This procedure will configure a WSL2 environment on your local machine to run Li
 ## Publishing to GitHub.io
 This is for repo admins only.
 
-You need working copies of two repositories on your local system. The
-directory structure should look like this:
-```text
-ASL3-Manual/
-    mkdocs.yml
-    docs/
-allstarlink.github.io/
-```
-After making and verifying your updates locally you need to change
-directories to the `allstarlink.github.io` repository and call the
-`zensical gh-deploy` command from there:
-
-```bash
-cd ../allstarlink.github.io/
-git pull origin
-git reset --hard origin/main
-zensical gh-deploy --config-file ../ASL3-Manual/mkdocs.yml --remote-branch main
-```
-
-Note that you need to explicitly point to the `mkdocs.yml` configuration file as
-it is no longer in the current working directory. You also need to inform the
-deploy script to commit to the `main` branch. You may override the default
-with the [remote_branch] configuration setting. If you forget to change
-directories before running the deploy script, it will commit to the `master`
-branch of your project, which you probably don't want.
-
-The live site will be at (https://allstarlink.github.io)
+From the root of the ASL3-Manual run `publish-site.sh` (Linux, MacOS) or
+`publish-site.ps1` (Windows) as appropriate for your platform.
