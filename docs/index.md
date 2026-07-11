@@ -28,7 +28,7 @@ Click the Next button on the bottom of the page to Get Started!
 Modern AllStarLink has been redesigned to run on the current Asterisk Long Term Support (LTS) version, track the latest supported Debian Linux operating system, and modern hardware or virtual machines.
 
 Moving to the modern platform from ASL1, ASL2, or HamVOIP moves the whole platform light years
-foward from Asterisk 1.4 to Asterisk 22. This brings over 15 years of Asterisk bug fixes, security improvements, and enhancements. It brings with it the latest Asterisk applications, channel drivers and additional functionality.
+forward from Asterisk 1.4 to Asterisk 22. This brings over 15 years of Asterisk bug fixes, security improvements, and enhancements. It brings with it the latest Asterisk applications, channel drivers and additional functionality.
 
 This update required `app_rpt` (the Asterisk application that is AllStar) and it's various modules to be heavily modified. Many memory leaks have been addressed, modules load or refresh more reliably and many bugs have been squashed. This all adds up to improved stability and uptime.
 
