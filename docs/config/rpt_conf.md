@@ -1,7 +1,7 @@
 # rpt.conf
 rpt.conf (`/etc/asterisk/rpt.conf`) is where the majority of user-facing features, such as the node's CW and voice ID, DTMF commands and timers are set. There is a lot of capability here which can be difficult to grasp. Fortunately the default `rpt.conf` is well commented and will work fine for most node admins.
 
-See also [config file templating](../adv-topics/conftmpl.md/#asterisk-templates).
+See also [config file templating](../adv-topics/conftmpl.md#asterisk-templates).
 
 ## DTMF Commands
 DTMF commands are placed in any one of **three** *named stanzas*. These stanzas control access to DTMF commands that a user can issue from various
@@ -155,7 +155,7 @@ COP|Description
 61|Control GPIO/PP pins (See [Manipulating GPIO](../adv-topics/gpio.md))
 62|Control GPIO/PP pins, quietly (See [Manipulating GPIO](../adv-topics/gpio.md))
 63|Send pre-configured APRSTT notification (cop,63,CALL[,OVERLAYCHR])
-64|Send pre-configured APRSTT notification, quietly (cop,64,CALL[,OVERLAYCHR]) 
+64|Send pre-configured APRSTT notification, quietly (cop,64,CALL[,OVERLAYCHR])
 65|Send POCSAG page (equipped channel types only)
 
 ## General Stanza
@@ -234,7 +234,7 @@ Sample:
 archivedir = /var/spool/asterisk/monitor ; top-level recording directory
 ```
 
-The [`archivedir=`](#archivedir) and related options can be implemented in the `[node-main](!)` stanza to apply to all nodes on the server, or in the per-node stanza for recording individual nodes. See [config file templating](../adv-topics/conftmpl.md/#asterisk-templates) for more information.
+The [`archivedir=`](#archivedir) and related options can be implemented in the `[node-main](!)` stanza to apply to all nodes on the server, or in the per-node stanza for recording individual nodes. See [config file templating](../adv-topics/conftmpl.md#asterisk-templates) for more information.
 
 !!! warning "Disk and CPU Usage"
   Enabling this function can adversely impact the CPU utilization on the device, and consume large amounts of the available storage. You would be wise to implement a script or look at a utility such as `logrotate` to periodically flush old recordings and logs.
@@ -478,7 +478,7 @@ extnodefile=/var/lib/asterisk/rpt_extnodes,/var/lib/asterisk/myrpt_extnodes
 
 If a custom `extnodefile=` is used, it must have the section header `[extnodes]` or a custom header as described in [extnodes](#extnodes).
 
-Also see [Node Resolution](../adv-topics/noderesolution.md) for information on how to configure node lookups. 
+Also see [Node Resolution](../adv-topics/noderesolution.md) for information on how to configure node lookups.
 
 **This option does not appear in the default `rpt.conf`.**
 
@@ -582,7 +582,7 @@ idrecording = myid                  ; voice ID, plays /usr/local/share/asterisk/
 ```
 
 !!! note "File Extensions"
-    Audio files must have extension gsm, ulaw, pcm, or wav. The extension is **left off** when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All audio files should be sampled at 8KHz mono. 
+    Audio files must have extension gsm, ulaw, pcm, or wav. The extension is **left off** when it is defined as the example shows above. File extensions are used by Asterisk to determine how to decode the file. All audio files should be sampled at 8KHz mono.
 
 See [Sound Files](../adv-topics/soundfiles.md) for more information.
 
@@ -1223,7 +1223,7 @@ Sample:
 statpost_url = http://stats.allstarlink.org/uhandler ; status updates
 ```
 
-The `statpost_url=` option can be implemented in the `[node-main](!)` stanza to apply to all nodes on the server, or in the per-node stanza for limiting statistics posting to an individual nodes. See [config file templating](../adv-topics/conftmpl.md/#asterisk-templates) for more information.
+The `statpost_url=` option can be implemented in the `[node-main](!)` stanza to apply to all nodes on the server, or in the per-node stanza for limiting statistics posting to an individual nodes. See [config file templating](../adv-topics/conftmpl.md#asterisk-templates) for more information.
 
 ### tailmessagelist=
 <!-- start:tailmessagelist -->
@@ -1383,7 +1383,7 @@ Sample:
 ```
 totime = 180000                     ; transmit time-out time (in ms) (optional, default to 180000 ms (3 minutes), maximum 9999999 ms (166 minutes))
 ```
-The default value is 180000 ms (3 minutes).  Maximum of 9999999ms (166 minutes) 
+The default value is 180000 ms (3 minutes).  Maximum of 9999999ms (166 minutes)
 
 !!! warning "Active Hub Advisory"
     This setting can cause issues when linked to active hub nodes that may have long transmissions. If the local node transmitter appears to "drop out" when connected to nodes/hubs with long winded operators or broadcasts, review this setting, and increase as necessary.
@@ -1391,14 +1391,14 @@ The default value is 180000 ms (3 minutes).  Maximum of 9999999ms (166 minutes)
 Related: [COP Commands 7 and 8](#cop-commands) and [`controlstates`](#controlstates), and [Control States Stanza](#control-states-stanza).
 
 ### time_out_reset_unkey_interval=
-This option defines the time out unkey interval for the node. The value is in milliseconds. If the node transmitter has reached `totime`, the transmitter will be disabled until the receiver activity unkeys for `time_out_reset_unkey_interval`.  This prevents picket fencing and short receiver drops from resetting the time out timer. 
+This option defines the time out unkey interval for the node. The value is in milliseconds. If the node transmitter has reached `totime`, the transmitter will be disabled until the receiver activity unkeys for `time_out_reset_unkey_interval`.  This prevents picket fencing and short receiver drops from resetting the time out timer.
 
 Sample:
 
 ```
 time_out_reset_unkey_interval = 0                  ; transmit time-out unkey reset time (in ms) (optional, default to 0ms (0 seconds), maximum 10000ms (10 seconds))
 ```
-The default value is 0ms (0 seconds) - disabled. 
+The default value is 0ms (0 seconds) - disabled.
 
 ### time_out_reset_kerchunk_interval=
 Sets the interval required for a local user to reset the time out timer caused by traffic on a link.  The value is in milliseconds and represents the time that the user must kerchunk (short key followed by an unkey) the local receiver in order to reset the time out condition.

@@ -3,7 +3,7 @@
 
 There is support in `rpt.conf` that interfaces with a Digital Acquisition device (DAQ).
 
-It appears that the DAQ subsystem was probably written to interface to the [Starting Point Systems uChameleon(v1) DAQ](http://www.starting-point-systems.com/products.html). It appears that they still sell the [Version 2](http://www.starting-point-systems.com/specs.html), but the Version 1 has been discontinued, and they have no links to the documentation for it. 
+It appears that the DAQ subsystem was probably written to interface to the [Starting Point Systems uChameleon(v1) DAQ](http://www.starting-point-systems.com/products.html). It appears that they still sell the [Version 2](http://www.starting-point-systems.com/specs.html), but the Version 1 has been discontinued, and they have no links to the documentation for it.
 
 The user manual for the uChameleon2 has been [archived here](https://wiki.allstarlink.org/images/2/21/MuChameleon2_Users_Manual.pdf), in case the manufacturer's website disappears.
 
@@ -15,7 +15,7 @@ A function call to this system would appear to use the following syntax:
 dtmfcommand=meter,device,channel,meter-face,[filter]
 ```
 
-This is similar to the way you would invoke a [`cop`](../config/rpt_conf.md/#cop-commands) or [`ilink`](../config/rpt_conf.md/#link-commands) command.
+This is similar to the way you would invoke a [`cop`](../config/rpt_conf.md#cop-commands) or [`ilink`](../config/rpt_conf.md#link-commands) command.
 
 Sample:
 
@@ -163,6 +163,6 @@ door = daq-cham-1,9,1,2017,*7,-
 
 The above should be self-explanatory. You would need to configure a DAQ device in the [`[daq-list]`](#daq-list-stanza) stanza.
 
-In the above example, a door alarm (just a friendly label, not used for anything else) on `daq-cham-1` pin `9` would execute macro `*7` on node `2017` on a high to low transition of the pin. It would ignore the first occurrence of this alarm, but if it persists the next time the alarm system is polled, it would execute (no idea how often that is). 
+In the above example, a door alarm (just a friendly label, not used for anything else) on `daq-cham-1` pin `9` would execute macro `*7` on node `2017` on a high to low transition of the pin. It would ignore the first occurrence of this alarm, but if it persists the next time the alarm system is polled, it would execute (no idea how often that is).
 
 **This stanza may not normally appear in `rpt.conf` by default.**

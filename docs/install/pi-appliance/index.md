@@ -25,5 +25,5 @@ The following are the system requirements for the ASL3 Appliance
 The ASL3 Appliance been tested on Raspberry Pi 3, 4, 5, and Zero 2W.
 
 !!! warning "Warning on Pi 4 Devices"
-    Please see the [Known Issues](../../basics/incompatibles.md/#known-issues) with
+    Please see the [Known Issues](../../basics/incompatibles.md#known-issues) with
     the Raspberry Pi 4B hardware.
