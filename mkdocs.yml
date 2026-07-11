@@ -69,16 +69,16 @@ nav:
   - Installation:
     - install/index.md
     - install/whats-new.md
-    - <span style="color:hsl(86.28, 71.6%, 33.14%)">ASL3 Appliance (Raspberry Pi)</span>:
+    - <span>ASL3 Appliance (Raspberry Pi)</span>:
       - install/pi-appliance/index.md
       - install/pi-appliance/pi-detailed.md
-    - <span style="color:hsl(86.28, 71.6%, 33.14%)">ASL3 on Debian</span>:
+    - <span>ASL3 on Debian</span>:
       - install/debian/index.md
       - install/debian/install.md
       - install/debian/deb-appliance.md
       - install/debian/docker.md
       - install/debian/os-upgrades.md
-    - <span style="color:hsl(86.28, 71.6%, 33.14%)">Allmon3</span>:
+    - <span>Allmon3</span>:
       - allmon3/index.md
       - allmon3/install.md
       - allmon3/config.md
@@ -95,7 +95,7 @@ nav:
     - user-guide/phoneportal.md
     - user-guide/externalapps.md
     - user-guide/betatest.md
-    - <span style="color:hsl(86.28, 71.6%, 33.14%)">Pi Appliance Specifics (Cockpit)</span>:
+    - <span>Pi Appliance Specifics (Cockpit)</span>:
       - pi/index.md
       - pi/cockpit-get-started.md
       - pi/cockpit-basics.md

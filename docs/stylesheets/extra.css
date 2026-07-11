@@ -58,4 +58,9 @@
         line-height: 1.5em;
         margin: 0 0 0.3em 0;
     }
+
+    .md-nav__link--active > .md-ellipsis {
+        color: white;
+        text-decoration-color: white;
+    }
 }
