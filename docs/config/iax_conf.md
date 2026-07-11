@@ -3,7 +3,7 @@ iax.conf (`/etc/asterisk/iax.conf`) is where the primary authentication of conne
 
 When IAX2 protocol connection requests are made, Asterisk figures out what context applies based on the incoming request. Asterisk then forwards the processing to the relative context in `extensions.conf` if the call/connection is allowed to proceed for further processing.
 
-See also [config file templating](../adv-topics/conftmpl.md/#asterisk-templates).
+See also [config file templating](../adv-topics/conftmpl.md#asterisk-templates).
 
 ## `[general]` Stanza
 The `[general]` stanza in `iax.conf` controls the main/global features of how IAX2 connections are handled.

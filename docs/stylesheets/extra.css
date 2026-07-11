@@ -1,25 +1,44 @@
 [data-md-color-scheme="allstarlink"] {
     /* Primary color shades */
-
     --md-primary-fg-color:               hsl(86.28, 71.6%, 33.14%);
     --md-primary-fg-color--light:        hsl(86.28, 71.6%, 33.14%);
     --md-primary-fg-color--dark:         hsl(86.28, 71.6%, 33.14%);
-    /**
-    --md-primary-bg-color:               hsla(0, 0%, 100%, 1);
-    --md-primary-bg-color--light:        hsla(0, 0%, 100%, 0.7);
-    **/
 
     /* Accent color shades */
     --md-accent-fg-color:                hsl(86.28, 71.6%, 33.14%);
     --md-accent-fg-color--transparent:   hsl(86.28, 71.6%, 33.14%);
-    /**
-    --md-accent-bg-color:                hsla(0, 0%, 100%, 1);
-    --md-accent-bg-color--light:         hsla(0, 0%, 100%, 0.7);
-    **/
+
+    --md-text-font-family: var(--md-text-font, _),
+        -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
+
+    --md-code-font-family: var(--md-code-font, _),
+        SFMono-Regular,
+        Consolas,
+        "Roboto Mono",
+        Menlo, monospace;
 
     /* The navbar header */
     .md-header {
         background: linear-gradient(#73B51F, #5c9118);
+        color: white;
+    }
+
+    .md-tabs {
+        color: white;
+    }
+    .md-tabs__item--active{
+        border-bottom-color: black;
+        border-bottom-width: 2px;
+    }
+
+    .md-search__button {
+        color: white;
+    }
+
+    .md-search__button::after {
+        color: black;
     }
 
     /* Link Colors */
