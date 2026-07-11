@@ -82,8 +82,14 @@ py install 3.14
 ```
 
 #### Git and GitHub
+- Open a PowerShell terminal
 - Install the latest version of Git with `winget install Git.Git`
 - Install the GitHub cli tool `winget install GitHub.cli`
+
+```psexec
+winget install Git.Git
+winget install GitHub.cli
+```
 
 #### VSCode
 If you don't already have a preferred text/code editor, install VSCode from the Windows Store - [Store Link](https://apps.microsoft.com/store/detail/XP9KHM4BK9FZ7Q?ocid=pdpshare)

@@ -6,16 +6,16 @@ default:
 site:
 	rm -rf site/
 	( . bin/activate && \
-		mkdocs build )
+		zensical build )
 
 venv:
 	python3 -m venv .
 	( . bin/activate && \
-		pip3 install mkdocs wheel mkdocs-print-site-plugin )
+		pip3 install zensical wheel )
 
 delvenv:
 	rm -rf bin/ include/ lib/ pyvenv.cfg
 	rm -f lib64
 	@echo
 	@echo "You will need to logout and log back in"
-	
+
