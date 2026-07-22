@@ -5,7 +5,7 @@ The Pi would be the [Server](../../basics/gettingstarted.md#what-is-a-server) on
 
 The ASL3 Appliance (Raspberry Pi) image includes the following to make a complete AllStarLink system:
 
-* Debian 12 or 13 operating system
+* Debian 13 (Trixie) operating system
 * Asterisk 22 LTS + `app_rpt`
 * `asl-*` commands
 * ASL3 Menu ([`asl-menu`](../../user-guide/index.md))
@@ -18,12 +18,12 @@ The following are the system requirements for the ASL3 Appliance
 
 | | Required | Recommended
 |------|-----------|-------------|
-| **Hardware** | Arm v8 64-bit CPU <br> Raspberry Pi 3, 4, 5, Zero 2 W, 400 | Raspberry Pi 4B or 5B |
+| **Hardware** | ARM v8 64-bit CPU <br> Raspberry Pi 3, 4, 5, Zero 2 W, 400 | Raspberry Pi 4B or 5 |
 | **Memory** | Minimum 512M | 4G |
-| **Storage** | Minimum 4G or larger | 8GB Class 10 |s
+| **Storage** | Minimum 4G or larger | 8GB Class 10 |
 
 The ASL3 Appliance been tested on Raspberry Pi 3, 4, 5, and Zero 2W.
 
-!!! warning "Warning on Pi 4 Devices"
+!!! warning "Warning on Raspberry Pi 4 Devices"
     Please see the [Known Issues](../../basics/incompatibles.md#known-issues) with
     the Raspberry Pi 4B hardware.
