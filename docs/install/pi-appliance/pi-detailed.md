@@ -1,14 +1,16 @@
 # ASL3 Appliance Installation
 
 !!! danger "Raspberry Pi Imager"
-    **You must use the Raspberry Pi Imager,** even if you prefer another imager, and carefully follow the instructions below. Failure to do so will result in a system that won't boot or that will not allow logins.
+    Even if you prefer another imager, **you must use the Raspberry Pi Imager,** and carefully follow the instructions below. Failure to do so will result in a system that won't boot or that will not allow logins.
     
     Note: these instructions assume that you are using the **Raspberry Pi Imager, version 2.0.0 (or later)**
 
-You will install an image on a microSD card and go. This is the simplest install. For most nodes, the menus will walk you through the setup. 
+You will install an image to a microSD card and boot from the card. This is the simplest install. For most nodes, the menus will walk you through the setup. 
 
 !!! note "SD Card Size"
-    A minimum SD card size of 4G is required and it is recommended to use at least an 8G SD card.
+    A minimum SD card size of 4G is required but it is recommended that you use at least an 8G SD card.
+
+Note: Some Raspberry Pi models allow you to boot from a USB drive. On these models you have the option of writing the image to a USB [Flash] drive instead of a microSD card. 
 
 ## Step-by-Step Pi Appliance Setup
 These directions are specific for Windows, but in general should work the same for the same tool set on macOS and Linux. For each screenshot below, click on the image for a larger version.
@@ -126,7 +128,13 @@ to the top of this manual
 
 The Terminal window is a complete interface to AllStarLink, Asterisk, and more. No SSH client is required although use of SSH directly is fully supported.
 
-## Quick Config via ASL-Menu
+## Configuration pre-requisites
+
+Before configuring you should review the prerequisites.
+
+{% include-markdown "../index.md" start="<!-- start:prerequisites -->" end="<!-- stop:prerequisites -->" %}
+
+## Quick Configuration via ASL-Menu
 The node may now be configured. New users or those wanting a quick start experience should use the [`asl-menu`](../../user-guide/index.md) utility with `sudo asl-menu`.
 
 ![Web ASL Menu 1](img/term-asl-menu-1.png)
