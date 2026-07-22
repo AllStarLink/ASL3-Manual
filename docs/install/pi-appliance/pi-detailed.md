@@ -8,9 +8,9 @@
 You will install an image to a microSD card and boot from the card. This is the simplest install. For most nodes, the menus will walk you through the setup. 
 
 !!! note "SD Card Size"
-    A minimum SD card size of 4G is required but it is recommended that you use at least an 8G SD card.
+    A minimum SD card size of 8G is required.
 
-Note: Some Raspberry Pi models allow you to boot from a USB drive. On these models you have the option of writing the image to a USB [Flash] drive instead of a microSD card. 
+Note: Some Raspberry Pi models allow you to boot from a USB [Flash] or NVME drive. On these models you have the option of writing the image to a USB [Flash] or NVME drive instead of a microSD card. 
 
 ## Step-by-Step Pi Appliance Setup
 These directions are specific for Windows, but in general should work the same for the same tool set on macOS and Linux. For each screenshot below, click on the image for a larger version.
