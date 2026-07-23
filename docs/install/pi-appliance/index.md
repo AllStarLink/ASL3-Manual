@@ -18,9 +18,9 @@ The following are the system requirements for the ASL3 Appliance
 
 | | Required | Recommended
 |------|-----------|-------------|
-| **Hardware** | ARM v8 64-bit CPU <br> Raspberry Pi 3, 4, 5, Zero 2 W, 400 | Raspberry Pi 4B or 5 |
+| **Hardware** | ARM v8 64-bit CPU <br> Raspberry Pi 3, 4, 5, Zero 2 W, 400 | Raspberry Pi 4B or 5B |
 | **Memory** | Minimum 512M | 4G |
-| **Storage** | Minimum 4G or larger | 8GB Class 10 |
+| **Storage** | Minimum 8G or larger | 8GB Class 10 |
 
 The ASL3 Appliance been tested on Raspberry Pi 3, 4, 5, and Zero 2W.
 
