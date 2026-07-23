@@ -8,7 +8,7 @@ Before you get started with installing the ASL3 software there are a few prerequ
 
 <!-- start:prerequisites -->
 
-- Do you have an AllStarLink node number assigned? If not, please refer to the [Getting Started](../basics/index.md) section to find out how to request a node number to connect to the AllStarLink network.
+- Do you need a node number to connect to the AllStarLink network?  Please refer to the [Getting Started](../basics/index.md) section to find out how to request a node number.
 
 - Will your node be connected to one (or more) radios or RF modules (e.g. SA818)?
 
