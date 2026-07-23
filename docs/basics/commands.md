@@ -1,22 +1,22 @@
 # New Commands
-ASL3 is overall very similar to older versions (ASL2). However, due to the upgrade to Asterisk 20 (and newer), there are things that have changed. In addition, some new commands are now available.
+ASL3 is overall very similar to older versions (ASL2). However, due to the upgrade to Asterisk 20+, there are things that have changed. In addition, some new commands are now available.
 
-New and different commands to interact with ASL3 are documented here. Older ASL2 commands are still documented on the [AllStarLink Wiki](https://wiki.allstarlink.org), and may still be applicable (with some modifications) to ASL3. The Wiki documentation will remain as a reference, until all the documentation can be updated for ASL3, and added to this manual. 
+New and different commands to interact with ASL3 are documented here.
 
 All these commands are available when using the Asterisk Command Line Interface (CLI), also known as the Asterisk Console. This can be accessed through the [`Cockpit`](../pi/cockpit-get-started.md) Terminal, from [`asl-menu`](../user-guide/index.md), or directly from the Linux terminal with `asterisk -rvvv` or `sudo asterisk -rvvv`, depending on your system configuration. 
 
 ## `app_rpt` commands
 These commands interact with the `app_rpt` application itself:
 
+* `rpt show version` shows the current version of the `app_rpt` module specifically
+
+* `rpt show registrations` shows HTTP registrations. For nodes configured with the old IAX registration system the equivalent command would be `iax2 show registry`.
+
+* `rpt lookup <node>` can be used to lookup the IP address and IAX port of a node. Depending on how your node has been configured (in `rpt.conf`) the lookup will use the AllStarLink DNS servers to resolve the node information or the external `rpt_extnodes` file.
+
 * `rpt show channels <node>` shows the channel driver information associated with the node
 
 * `rpt show variables <node>` (replaces `rpt showvars`) shows the current value of all the `app_rpt` variables for the node
-
-* `rpt show version` shows the current version of the `app_rpt` module specifically
-
-* `rpt show registrations` is the new command to show HTTP registrations. ASL3 uses a new HTTP registration system. The old IAX registration system and `iax2 show registry` command still exist, but HTTP registration should be used in its place.
-
-* `rpt lookup <node>` can be used to lookup the IP address of a node. In addition to the new registration system, ASL3 now implements a DNS lookup of node information.	By default, ASL3 will first query the AllStarLink DNS servers to resolve node information. It will fall back to the external `rpt_extnodes` file, if the node cannot be resolved by DNS.
 
 For example, `rpt lookup 2000` will show the IP of node 2000. If you have the `bind9-host` package installed on your system, the equivalent Linux CLI command to query the IP would be `host 2000.nodes.allstarlink.org`.
 
@@ -33,13 +33,13 @@ node_lookup_method = both   ;method used to lookup nodes
 ```
 
 ## chan_simpleusb commands
-The command `susb show settings` is used to interact with the `SimpleUSB` channel driver, and will show the current node's settings. This replaces `susb tune`. The module must be loaded for this command to work.
+The `susb show settings` command is used to interact with the `SimpleUSB` channel driver, and will show the current node's settings. This replaces `susb tune`. The module must be loaded for this command to work.
 
 ## chan_usbradio commands
-The command `radio show settings` is used to interact with the `USBRadio` channel driver, and will show the current node's settings. This replaces `radio tune`. The module must be loaded for this command to work.
+The `radio show settings` command is used to interact with the `USBRadio` channel driver, and will show the current node's settings. This replaces `radio tune`. The module must be loaded for this command to work.
 
 ## SimpleUSB and USBRadio Tune Menus
-The `simpleusb-tune-menu` and `radio-tune-menu` utility programs have been updated with new options. These are accessed from the Linux CLI (not the Asterisk CLI). The new options allow you change the operation of the respective channel driver, in realtime, without having to manually edit the `simpleusb.conf` or `usbradio.conf` files.
+The `simpleusb-tune-menu` and `radio-tune-menu` utility programs have been updated with new options. These commands are accessed from the Linux CLI (not the Asterisk CLI). The new options allow you change the operation of the respective channel driver, in realtime, without having to manually edit the `simpleusb.conf` or `usbradio.conf` files.
 
 In addition to the updating settings, you can now view the live status of the COS, CTCSS inputs and PTT output. This allows you to easily view and change their settings.
 

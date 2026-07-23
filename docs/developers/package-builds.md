@@ -31,9 +31,9 @@ The values are defined as follows:
 A file generated from this repo using the versioning format above will be named, for example `asl3-asterisk-20.8.1+asl3-3.0.0-1`. Note that the *epoch* does not appear in the filename by Debian convention.
 
 ## Determining Asterisk Version
-Currently, this is structured to be built against Asterisk 20 Long Term Servicing (LTS). Do not use any version of Asterisk that is not the latest version of Asterisk 20 LTS.
+Currently, this is structured to be built against Asterisk 20+ Long Term Support (LTS). Do not use any version of Asterisk that is not the latest version of Asterisk 20+ LTS.
 
-The version is listed at [Download Asterisk](https://www.asterisk.org/downloads/). The version of Asterisk entered in the Actions launcher will cause the proper version of Asterisk 20 LTS to be downloaded and folded into the builder.
+The version is listed at [Download Asterisk](https://www.asterisk.org/downloads/). The version of Asterisk entered in the Actions launcher will cause the proper version of Asterisk 20+ LTS to be downloaded and folded into the builder.
 
 ## Locking In and Determining the app\_rpt Version
 When a build of `.deb` files is initiated, the `app_rpt` repo must be tagged prior to initiating the build process. The tag version should be in the format `MAJOR.MINOR.PATCH` as found in `app_rpt.h`.
