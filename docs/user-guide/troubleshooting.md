@@ -145,7 +145,7 @@ Core AllStarLink does not support certain other projects/tools such as HamVOIP, 
 If you are told, "that isn't supported but have you tried doing it in this supported way", consider giving it a try.
 
 #### AllStarLink v3 Contains 14+ Years of Changes
-The release of AllStarLink v3 uses modern Asterisk 20 LTS. Legacy installs use Asterisk 1.4 which was end of life in 2012. Thus, there are literally 14+ years of changes of how Asterisk operates that `app_rpt` (the main engine behind ASL) had to conform to. Notably, the configuration syntax which changed gradually over time for users staying current with Asterisk, is an "all of a sudden" change in ASL3. One cannot paste old configurations into modern ASL3 and expect it to "just work".
+The release of AllStarLink v3 uses modern Asterisk 20+ LTS. Legacy installs use Asterisk 1.4 which was end of life in 2012. Thus, there are literally 14+ years of changes of how Asterisk operates that `app_rpt` (the main engine behind ASL) had to conform to. Notably, the configuration syntax which changed gradually over time for users staying current with Asterisk, is an "all of a sudden" change in ASL3. One cannot paste old configurations into modern ASL3 and expect it to "just work".
 
 Additionally, Asterisk no longer runs as the root user on Linux which means that its ability to do things to the system such as make OS changes is purposefully restricted. ASL3 and Asterisk are very security conscious as many of our users run ASL3 systems on the open Internet.
 

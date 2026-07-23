@@ -66,7 +66,7 @@ In this example, `/` is a 31G partition on a 32G SD card.
 
 
 ## Incompatibilities and Changes From Legacy Versions
-With the upgrade to Asterisk 20 and beyond, and all the associated code changes that had to go along with it, ASL3 has certain incompatible with older versions of the AllStarLink system. There are also some changes in how certain things function.
+With the upgrade to Asterisk 20+, and all the associated code changes that had to go along with it, ASL3 has certain incompatible with older versions of the AllStarLink system. There are also some changes in how certain things function.
 
 ### VOTER/RTCM Default Port
 Modern installations of Asterisk runs as the unprivileged `asterisk` user rather than as `root`. Linux typically prohibits non-root users from listening on a TCP

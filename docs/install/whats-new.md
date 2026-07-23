@@ -3,7 +3,7 @@ Ready to get on with installation? We thought so, but first consider that ASL3 i
 
 **NOTE:** If you have installed an earlier version of ASL, you need to know that ASL3 has many changes and that there's a bit of a learning curve. For those who have used ASL2 or other versions of AllStar you should be aware of a few important details:
 
-* At the risk of repeating ourselves, ASL3 now runs on Asterisk 20!  We are no longer stuck in the past. We're so proud!!!
+* At the risk of repeating ourselves, ASL3 now runs on Asterisk 20+!  We are no longer stuck in the past. We're so proud!!!
 * There is no update or migration path from ASL2 to ASL3
 * Many of the ASL3 configuration files are different
 	* The configuration files now support templates
