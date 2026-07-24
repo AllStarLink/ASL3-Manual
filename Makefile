@@ -3,6 +3,9 @@ default:
 	@echo "Setup Python VENV - make venv"
 	@echo "Destroy Python VENV - make delvenv"
 
+clean:
+	rm -rf site/
+
 site:
 	rm -rf site/
 	( . bin/activate && \

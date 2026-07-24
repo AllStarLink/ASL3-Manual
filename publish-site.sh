@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# deploy-site.sh — Builds the ASL3-Manual site with zensical and pushes the
+# publish-site.sh — Builds the ASL3-Manual site with zensical and pushes the
 # compiled output to the allstarlink.github.io repository (replacement for
 # 'mkdocs gh-deploy').
 #
@@ -11,15 +11,15 @@
 #   4. Commits with a reference back to the source commit and pushes
 #
 # Usage:
-#   ./deploy-site.sh                 # build and deploy
-#   ./deploy-site.sh --dry-run       # build and commit locally, skip the push
-#   ./deploy-site.sh -r URL -b BRANCH -o DIR
+#   ./publish-site.sh                 # build and deploy
+#   ./publish-site.sh --dry-run       # build and commit locally, skip the push
+#   ./publish-site.sh -r URL -b BRANCH -o DIR
 #
 set -euo pipefail
 
 # --- Defaults ----------------------------------------------------------------
 
-SITE_REPO='git@github.com:AllStarLink/allstarlink.github.io.git'
+SITE_REPO='https://github.com/AllStarLink/allstarlink.github.io.git'
 SITE_BRANCH='main'
 BUILD_DIR=''            # auto-detected from zensical.toml if empty
 DRY_RUN=0
