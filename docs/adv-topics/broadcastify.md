@@ -82,6 +82,25 @@ and why you're changing them. Save the file. An example might look like:
 Log output can be found by reviewing `journalctl -xu asl-broadcastify@NODE` -
 e.g. `journalctl -xu asl-broadcastify@63001`.
 
+Multiple services can be run simultaneously on the same system by simply
+using multiple node numbers for the configuration and the systemd commands.
+Each unit is managed independently:
+
+```bash
+/etc/asterisk/broadcastify/63001.conf
+/etc/asterisk/broadcastify/40608.conf
+
+systemctl enable asl-broadcastify@63001
+systemctl enable asl-broadcastify@40608
+
+systemctl start asl-broadcastify@63001
+systemctl start asl-broadcastify@40608
+
+
+systemctl stop asl-broadcastify@63001
+systemctl stop asl-broadcastify@40608
+```
+
 ### Configure Asterisk
 
 * Edit `/etc/asterisk/rpt.conf` using your favorite editor - e.g., `nano /etc/asterisk/rpt.conf`.

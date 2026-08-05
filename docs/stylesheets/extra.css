@@ -60,7 +60,7 @@
     }
 
     .md-nav__link--active > .md-ellipsis {
-        color: white;
-        text-decoration-color: white;
+        color: black;
+        text-decoration-color: black;
     }
 }
