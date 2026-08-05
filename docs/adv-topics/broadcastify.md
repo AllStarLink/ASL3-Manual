@@ -11,7 +11,7 @@ After you have your account and feed credentials, you a ready to setup AllStarLi
 The "modern method" of streaming to Broadcastify uses a helper application
 `/usr/libexec/asl3/rpt_audio_writer` to take the audio out of Asterisk/app_rpt
 via the `outstreamcmd` directive and write it to a FIFO pipe. The asl-broadcastify
-service then picks up the audio from the pipe and streams it to Braodcastify
+service then picks up the audio from the pipe and streams it to Broadcastify
 via ffmpeg. This method allows independent restarting of the asl-broadcastify
 service in the case of a hiccup with Broadcastify that doesn't require restarting
 all of Asterisk.
@@ -105,7 +105,7 @@ systemctl stop asl-broadcastify@40608
 
 * Edit `/etc/asterisk/rpt.conf` using your favorite editor - e.g., `nano /etc/asterisk/rpt.conf`.
 
-* Within the configuration for the node you want to stream configure `outstreacmd` to be
+* Within the configuration for the node you want to stream configure `outstreamcmd` to be
 the string `/usr/libexec/asl3/rpt_audio_writer,/var/lib/asterisk/NODE.fifo` replacing
 "NODE" with your node number. For the node 63001, an example would look like:
 
