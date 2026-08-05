@@ -16,9 +16,9 @@ via ffmpeg. This method allows independent restarting of the asl-broadcastify
 service in the case of a hiccup with Broadcastify that doesn't require restarting
 all of Asterisk.
 
-### Configure asl-broadcastify Config
+### Configure `asl-broadcastify` Config
 The asl-broadcastify service is a "templated" multi-instance systemd service.
-This means that each stream started and stopped independently. For example,
+This means that each stream is started and stopped independently. For example,
 if node 63001 is configured to stream, the service would interact with
 `asl-broadcastify@63001` - for example `systemctl start asl-broadcastify@63001`.
 This allows independent management of each stream.
@@ -35,7 +35,7 @@ In each command, replace "63001" with your node number.
 * Edit the file with your favorite editor - e.g., `nano 63001.conf`
 
 * Within the file, edit `FIFO` to replace "NODE" with your node number. Then
-set the various variable that start with `ICECAST_` to match your feed information
+set the various variables that start with `ICECAST_` to match your feed information
 from within Broadcastify. The information is found inside the "Feed Technical Details"
 screen on Broadcastify. Then set the `STREAM_` variables in the "Stream Metadata" section.
 Do not change the items at the end of the file unless you know what you're doing
@@ -59,7 +59,7 @@ and why you're changing them. Save the file. An example might look like:
 	ICECAST_USER=source
 	ICECAST_PASSWORD=i8o9092j
 
-	# Stream metadata - This can be whatever you want within quotes
+	# Stream metadata - This can be wha tever you want within quotes
 	STREAM_NAME="WB6NIL 147.390 MHz"
 	STREAM_DESCRIPTION="Nets and live feeds from the WB6NIL repeater"
 	STREAM_URL="allstarlink.org"
