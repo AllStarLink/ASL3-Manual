@@ -59,7 +59,7 @@ and why you're changing them. Save the file. An example might look like:
 	ICECAST_USER=source
 	ICECAST_PASSWORD=i8o9092j
 
-	# Stream metadata - This can be wahtever you want within quotes
+	# Stream metadata - This can be whatever you want within quotes
 	STREAM_NAME="WB6NIL 147.390 MHz"
 	STREAM_DESCRIPTION="Nets and live feeds from the WB6NIL repeater"
 	STREAM_URL="allstarlink.org"
