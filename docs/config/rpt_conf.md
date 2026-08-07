@@ -1413,6 +1413,38 @@ time_out_reset_kerchunk_interval = 250                  ; transmit time-out keyu
 !!! note  "`time_out_reset_unkey_interval` required"
     The use of a kerchunk to reset a timeout is only available if the `time_out_reset_unkey_interval` is set to a nonzero value. If `time_out_reset_unkey_interval` is zero (or not defined in rpt.conf) then the traditional way of resetting the time out timer will be used. The traditional way is no delay on local unkey/key to reset a timeout.
 
+### first_keyup_inactivity_time=
+Sets the inactivity timer after which the `first_keyup_min_time` timer becomes active.  The value is in seconds and defaults to 0s (disabled).
+The `first_keyup_inactivity_time` timer resets after a valid keyup and prevents the `first_keyup_min_time` from functioning until activity has not been detected for the configured value.
+
+Sample:
+```
+;first_keyup_inactivity_time = 180  ; the time (in seconds) with no local RX activity
+                                    ; before the longer "first keyup" event is needed
+                                    ; for TX keying.  Longer intervals would allow
+                                    ; quick conversations, shorter intervals would
+                                    ; force key-wait-talk behavior.
+                                    ; Optional, default 0.
+```
+
+### first_keyup_min_time=
+Sets the keyup delay time.  Keyup delay prevents short keyups (less than the configured value) from keyingup the repeater output.  This value is in milliseconds and defaults to 0ms (disabled).
+
+Sample:
+```
+;first_keyup_min_time = 200         ; after a period of inactivity, the "first keyup"
+                                    ; time (in ms) that a local RX key event must be
+                                    ; present before the TX will be keyed. This setting
+                                    ; can be used to suppress short noise bursts or
+                                    ; quick keying (kerchunk'ing).
+                                    ; Optional, range 0..1000, default 0.
+```
+!!!note "`first_keyup_inactivity_time` required"
+    The `first_keyup_min_time` is only available if `first_keyup_inactivity_time` is configured to a non 0 value.
+     
+!!!note "Truncated Audio"
+    During the `first_keyup_min_time`, audio is not repeated and will be truncated.
+
 ### unlinkedct=
 This option selects the courtesy tone to be used when the system has no remote nodes connected and is operating as a standalone repeater.
 
