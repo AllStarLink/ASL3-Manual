@@ -66,6 +66,7 @@ nav:
     - basics/standardcommands.md
     - basics/commands.md
     - basics/incompatibles.md
+    - basics/glossary.md
   - Installation:
     - install/index.md
     - install/whats-new.md
