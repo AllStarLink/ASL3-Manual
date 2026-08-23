@@ -5,13 +5,16 @@ site_author: AllStarLink Team
 plugins:
   - search
   - glightbox
-  - include-markdown
   - print-site
 markdown_extensions:
   - admonition
   - attr_list
   - md_in_html
   - pymdownx.details
+  - pymdownx.snippets:
+      base_path:
+        - docs
+      check_paths: true
   - pymdownx.superfences
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji

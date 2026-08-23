@@ -6,9 +6,9 @@ In this section of the manual, you will find instructions on how to create an AS
 
 Before you get started with installing the ASL3 software there are a few prerequisites.
 
-<!-- start:prerequisites -->
+<!-- -8<- [start:prerequisites] -->
 
-- Do you need a node number to connect to the AllStarLink network?  Please refer to the [Getting Started](../basics/index.md) section to find out how to request a node number.
+- Do you need a node number to connect to the AllStarLink network?  Please refer to the [Getting Started](/basics/) section to find out how to request a node number.
 
 - Will your node be connected to one (or more) radios or RF modules (e.g. SA818)?
 
@@ -29,9 +29,8 @@ Before you get started with installing the ASL3 software there are a few prerequ
  
     This information should be available from the audo interface vendor/supplier.
 
-<!-- stop:prerequisites -->
+<!-- -8<- [end:prerequisites] -->
 
 When you are ready, use the Table of Contents on the left to jump to the type of installation you are wishing to perform, but be sure to check out the rest of the topics in this section for other important information.
 
 Once you've got your new ASL3 installed, be sure to check out the [Basic Operation](../user-guide/index.md) section (see the link at the top of the page).
-

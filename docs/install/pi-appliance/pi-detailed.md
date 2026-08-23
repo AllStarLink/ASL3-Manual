@@ -132,7 +132,7 @@ The Terminal window is a complete interface to AllStarLink, Asterisk, and more. 
 
 Before configuring you should review the prerequisites.
 
-{% include-markdown "../index.md" start="<!-- start:prerequisites -->" end="<!-- stop:prerequisites -->" %}
+--8<-- "install/index.md:prerequisites"
 
 ## Quick Configuration via ASL-Menu
 The node may now be configured. New users or those wanting a quick start experience should use the [`asl-menu`](../../user-guide/index.md) utility with `sudo asl-menu`.

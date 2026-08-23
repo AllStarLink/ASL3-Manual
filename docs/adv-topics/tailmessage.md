@@ -6,7 +6,7 @@ There are two methods that can be configured to setup the playing of tail messag
 
 ### [tailmessagelist=](../config/rpt_conf.md#tailmessagelist)
 Found in [`rpt.conf`](../config/rpt_conf.md)
-{% include-markdown "../config/rpt_conf.md" start="<!-- start:tailmessagelist -->" end="<!-- stop:tailmessagelist -->" %}
+--8<-- "config/rpt_conf.md:tailmessagelist"
 
 
 ## Alternate Tail Message Configuration
@@ -63,13 +63,12 @@ See the [Sound Files](../adv-topics/soundfiles.md) page for more information.
 
 ### [tailmessagetime=](../config/rpt_conf.md#tailmessagetime)
 Found in [`rpt.conf`](../config/rpt_conf.md)
-{% include-markdown "../config/rpt_conf.md" start="<!-- start:tailmessagetime -->" end="<!-- stop:tailmessagetime -->" %}
+--8<-- "config/rpt_conf.md:tailmessagetime"
 
 ### [tailsquashedtime=](../config/rpt_conf.md#tailsquashedtime)
 Found in [`rpt.conf`](../config/rpt_conf.md)
-{% include-markdown "../config/rpt_conf.md" start="<!-- start:tailsquashedtime -->" end="<!-- stop:tailsquashedtime -->" %}
+--8<-- "config/rpt_conf.md:tailsquashedtime"
 
 ### [telemetry=](../config/rpt_conf.md#telemetry)
 Found in [`rpt.conf`](../config/rpt_conf.md)
-{% include-markdown "../config/rpt_conf.md" start="<!-- start:telemetry -->" end="<!-- stop:telemetry -->" %}
-
+--8<-- "config/rpt_conf.md:telemetry"
