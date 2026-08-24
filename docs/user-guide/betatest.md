@@ -17,8 +17,7 @@ If you cannot adhere to the above four conditions, you should not use the beta c
 ## Enabling Beta Channel Software
 Enabling beta channel software is done with the `asl-repo-switch` command as `root`. Set the channel to "beta" using `asl-repo-switch -l beta`. For example:
 
-```
-bash
+```bash
 # asl-repo-switch -l beta
 Setting level beta... DONE
 Run 'apt update' to refresh the package repo cache.
@@ -29,8 +28,7 @@ Disabling beta channel software is done with the `asl-repo-switch` command as `r
 
 For example:
 
-```
-bash
+```bash
 # asl-repo-switch -l main
 Setting level main... DONE
 Run 'apt update' to refresh the package repo cache.
