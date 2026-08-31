@@ -14,7 +14,7 @@ Allmon3's user database is managed by [`allmon3-passwd`](../mans/allmon3-passwd.
 To add or edit a user's password: 
 
 ```
-$ allmon3-passwd allmon3
+$ sudo allmon3-passwd allmon3
 Enter the password for allmon3: password
 Confirm the password for allmon3: password
 ```
@@ -24,7 +24,7 @@ That's all there is to it. The `/etc/allmon3/users` file is readable to see that
 Deleting a user is simply adding the `--delete` flag to the command:
 
 ```
-$ allmon3-passwd --delete allmon3
+$ sudo allmon3-passwd --delete allmon3
 ```
 
 After changing a user's password, the Allmon3 daemon must be reloaded with `sudo systemctl reload allmon3`.

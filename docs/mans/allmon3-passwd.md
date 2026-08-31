@@ -36,7 +36,7 @@ Allmon3's user database is managed by `allmon3-passwd`. Adding a new user or edi
 To add or edit a user's password:
 
 ```
-allmon3-passwd allmon3
+sudo allmon3-passwd allmon3
  Enter the password for allmon3: password
  Confirm the password for allmon3: password
 ```
@@ -44,7 +44,7 @@ allmon3-passwd allmon3
 To specify the password for a user directly from the command line:
 
 ```
-allmon3-passwd --password foobar allmon3
+sudo allmon3-passwd --password foobar allmon3
 ```
 
 This will set the password for the `allmon3` user to `foobar` directly.
@@ -58,7 +58,7 @@ The `/etc/allmon3/users` file is readable to see that the Argon2 hash has change
 To delete a user, add the `--delete` flag to the command:
 
 ```
-allmon3-passwd --delete allmon3
+sudo allmon3-passwd --delete allmon3
 ```
 
 # BUGS
