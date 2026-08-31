@@ -14,7 +14,7 @@ External applications used a few different ways to authenticate and connect to a
 | *ASL Portal / "Web Transceiver"* | The original Web Transceiver (WT) was an in-browser Java applet that one could use from the AllStarLink website to call nodes directly. That feature itself has been removed as browser no longer support the old Java Applet concept for important security reasons. However, the authentication technology still exists, and is leveraged for other applications.   |
 
 !!! note
-    Not all nodes permit Web Transevier mode. Some nodes, particularly some larger networks, have WebTranseiver disabled. This is gracefully by unselecting WT support in the node configuration on the portal or more aggressively by removing the configuration. If you cannot connect to a node with a WebTransceiver-based app most likely it does not support connections with WT mode.
+    Not all nodes permit Web Transceiver mode. Some nodes, particularly some larger networks, have WebTransceiver disabled. This is gracefully by unselecting WT support in the node configuration on the portal or more aggressively by removing the configuration. If you cannot connect to a node with a WebTransceiver-based app most likely it does not support connections with WT mode.
 
 ## Application Configuration Examples
 
