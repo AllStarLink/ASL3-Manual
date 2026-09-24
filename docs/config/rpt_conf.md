@@ -760,6 +760,17 @@ linkunkeyct = ct8                   ; use courtesy tone 8
 
 See the [Courtesy Tones](../adv-topics/courtesytones.md) page for more information on defining telemetry tones.
 
+### linkunkeyct_<node\>=
+This option selects the courtesy tone to be used when a remote node has unkeyed and matches a `linkunkeyct_<node>`.
+
+Sample:
+
+```
+linkunkeyct_4321 = ct8                    ; use courtesy tone 8 when node 4321 unkeys
+```
+
+See the [Courtesy Tones](../adv-topics/courtesytones.md) page for more information on defining telemetry tones.
+
 ### litzchar=
 This option sets the DTMF character used to initiate the Long Tone Zero (LiTZ) feature. LiTZ is an optional feature that users can initiate to indicate they require immediate assistance. When the LiTZ DTMF character is sent for longer than the LiTZ time, the LiTZ command will be triggered. This could dial 911 on the autopatch, play a message, connect to another node, etc.
 
