@@ -873,6 +873,17 @@ When a node connects/disconnects, Asterisk will look in this directory for a fil
 
 See the [Sound Files](../adv-topics/soundfiles.md) page for more information on sound file locations.
 
+### node_<node\>=
+This option selects the courtesy tone to be used when a remote node has unkeyed and matches a `node_<node>`.
+
+Sample:
+
+```
+node_4321 = ct8                    ; use courtesy tone 8 when node 4321 unkeys
+```
+
+See the [Courtesy Tones](../adv-topics/courtesytones.md) page for more information on defining telemetry tones.
+
 ### nodes=
 This option allows you to override the section name used for the '[nodes]' stanza in `rpt.conf`. The default value is `nodes`. The `[nodes]` stanza operates like a "hosts" file in an OS, and is the first place `app_rpt` looks to resolve how to reach a particular node.
 
