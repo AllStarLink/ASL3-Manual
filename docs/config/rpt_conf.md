@@ -882,6 +882,8 @@ Sample:
 node_4321 = ct8                    ; use courtesy tone 8 when node 4321 unkeys
 ```
 
+!!! note "`linunkeyct` must be defined for this to have any effect."
+
 See the [Courtesy Tones](../adv-topics/courtesytones.md) page for more information on defining telemetry tones.
 
 ### nodes=
