@@ -760,6 +760,19 @@ linkunkeyct = ct8                   ; use courtesy tone 8
 
 See the [Courtesy Tones](../adv-topics/courtesytones.md) page for more information on defining telemetry tones.
 
+### linkunkeyct_<node\>=
+This option selects the courtesy tone to be used when a remote node has unkeyed and matches a `linkunkeyct_<node>`.
+
+Sample:
+
+```
+linkunkeyct_4321 = ct8                    ; use courtesy tone 8 when node 4321 unkeys
+```
+
+!!! note "`linunkeyct` must be defined for this to have any effect."
+
+See the [Courtesy Tones](../adv-topics/courtesytones.md) page for more information on defining telemetry tones.
+
 ### litzchar=
 This option sets the DTMF character used to initiate the Long Tone Zero (LiTZ) feature. LiTZ is an optional feature that users can initiate to indicate they require immediate assistance. When the LiTZ DTMF character is sent for longer than the LiTZ time, the LiTZ command will be triggered. This could dial 911 on the autopatch, play a message, connect to another node, etc.
 
@@ -872,19 +885,6 @@ nodenames = /var/lib/asterisk/sounds/custom/nodenames  ; point to alternate node
 When a node connects/disconnects, Asterisk will look in this directory for a filename that matches the calling node number (ie. 63001.gsm). If it finds such a file, it will play it as the connect/disconnect message.
 
 See the [Sound Files](../adv-topics/soundfiles.md) page for more information on sound file locations.
-
-### node_<node\>=
-This option selects the courtesy tone to be used when a remote node has unkeyed and matches a `node_<node>`.
-
-Sample:
-
-```
-node_4321 = ct8                    ; use courtesy tone 8 when node 4321 unkeys
-```
-
-!!! note "`linunkeyct` must be defined for this to have any effect."
-
-See the [Courtesy Tones](../adv-topics/courtesytones.md) page for more information on defining telemetry tones.
 
 ### nodes=
 This option allows you to override the section name used for the '[nodes]' stanza in `rpt.conf`. The default value is `nodes`. The `[nodes]` stanza operates like a "hosts" file in an OS, and is the first place `app_rpt` looks to resolve how to reach a particular node.
