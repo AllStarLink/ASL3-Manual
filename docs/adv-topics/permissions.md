@@ -97,7 +97,7 @@ These privileges can be used inside `/etc/asterisk/rpt.conf` within the `[functi
 9002 = cmd,/etc/asterisk/scripts/asterisk-stop
 9003 = cmd,/etc/asterisk/scripts/allmon3-restart
 9004 = cmd,/etc/asterisk/scripts/allmon3-stop
-9005 = cmd,/usr/sbin/shutdown
+9005 = cmd,/usr/sbin/poweroff
 9006 = cmd,/usr/sbin/reboot
 ```
 
