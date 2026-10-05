@@ -19,8 +19,6 @@ This glossary defines terms, acronyms, and named tools that are specific to AllS
 
 **Adjacent Node** — A node directly connected to a given node, as opposed to one reachable only indirectly through another node.
 
-**ADPCM (Adaptive Differential Pulse Code Modulation)** — A compact audio encoding that `chan_voter` and VOTER/RTCM clients can use instead of the default u-law encoding.
-
 **AIOC (All-In-One-Cable)** — A low-cost USB radio interface device that can be recognized natively or reprogrammed to emulate a C-Media CM108 chip.
 
 **Allmon3** — AllStarLink's current web-based dashboard for monitoring and controlling nodes, communicating with Asterisk over the Asterisk Manager Interface (AMI).
@@ -131,7 +129,7 @@ This glossary defines terms, acronyms, and named tools that are specific to AllS
 
 **CM108/CM119** — C-Media USB audio chipsets commonly used in radio-to-computer USB sound fob (URI) interfaces, providing usable GPIO pins for PTT/COR/CTCSS signaling.
 
-**CODEC (COder/DECoder)** — The audio compression format (e.g. u-law, ADPCM, GSM, slin) negotiated for audio streams between two channels, nodes, etc.
+**CODEC (COder/DECoder)** — The audio compression format (e.g. u-law, GSM, G.722, slin) negotiated for audio streams between two channels, nodes, etc.
 
 **Command Mode** — A DTMF operating mode where subsequent digits are sent directly to a specified remote node, bypassing local command decoding, until `#` is pressed.
 
