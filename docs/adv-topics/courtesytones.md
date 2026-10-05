@@ -9,18 +9,21 @@ The `[node]` stanza keys below define what un-key events you want to send courte
 Key|Value|Description
 ---|-----|-----------
 `linkunkeyct`|telemetry stanza key|Courtesy tone sent when a networked user un-keys. The default for this is no courtesy tone
+`linkunkeyct_<node>`|telemetry stanza key|Send this courtesy tone when the matching node un-keys.  If there is no match, `linkunkeyct` is used.  If `linkunkeyct` is not defined, then no courtesy tone will be sent when a networked user un-keys. 
 `nolocallinkct`|1 or 0|Send `unlinkedct` instead of `linkedct` if another local node is connected to this node (hosted on the same server)
 `remotect`|telemetry stanza key|This courtesy tone will be sent in addition to any other courtesy tone when a remote base is connected to the node. The default is to send telemetry stanza key `ct3`
-`unlinkedct`|telemetry stanza key|Send a this courtesy tone when the user un-keys if the node is not connected to any other nodes
+`unlinkedct`|telemetry stanza key|Send this courtesy tone when the user un-keys if the node is not connected to any other nodes
 
 Example `[node]` stanza:
 
 ```
 [1234]                              ; Your node number
 telemetry = telemetry               ; Points to the telemetry stanza
-unlinkedct = ct2                    ; Send a this courtesy tone when the user un-keys if the node is not connected to any other nodes. (optional, default is none)
+unlinkedct = ct2                    ; Send a this courtesy tone when the user un-keys if the node is not connected to any other nodes. 
+(optional, default is none)
 remotect = ct3                      ; remote linked courtesy tone (indicates a remote is in the list of links)
-linkunkeyct = ct8                   ; sent when a transmission received over the link un-keys
+linkunkeyct_4321 = ct8                     ; Send this courtesy tone if node 4321 has unkeyed. linkunkeyct must be defined for this to work.
+linkunkeyct = ct8                   ; sent when a transmission received over the link un-keys and does not match node_<node>
 ;nolocallinkct = 0                  ; Send unlinkedct instead if another local node is connected to this node (hosted on the same server).
 ```
 
