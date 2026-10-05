@@ -324,7 +324,7 @@ VOTER/RTCM uses for audio synchronization in receiver voting and simulcast appli
 
 **Splatter Filter** — Transmitter audio processing (limiting and filtering) that prevents adjacent-channel interference normally provided by the radio transmitter.
 
-**Squelch** — The receiver circuit that mutes a radio's audio output until a valid on-channel signal of sufficient signal strength is received. May require a valid CTCSS/DPL tone/code, if configured.
+**Squelch** — The receiver circuit that mutes a radio's audio output until a valid on-channel signal of sufficient signal strength is received. May require a valid CTCSS/DCS/DPL/PL tone/code, if configured.
 
 **SRV Record** — A DNS record type returned by AllStarLink's node-lookup service that gives a node's IAX2 port.
 
