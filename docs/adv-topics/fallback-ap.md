@@ -1,15 +1,19 @@
 # Fallback Access Point
 
-The ASL3 appliance images (asl3-appliance-pc and asl3-appliance-pi) include a **fallback access point** (AP) system. If the node has a WiFi adapter but no usable network connection, the node turns its WiFi adapter into a temporary access point. You can join that network from a phone or laptop and reach the [Cockpit web console](../pi/cockpit-basics.md) to configure WiFi or other network settings. When the node gets its network connection back, it shuts the AP down and goes back to normal operation.
+The ASL3 appliance images (`asl3-appliance-pc`, `asl3-appliance-pi`, and `asl3-appliance-uno-q`) include a **fallback access point** (AP) system. If the node has a WiFi adapter but no usable network connection, the node turns its WiFi adapter into a temporary access point. You can join that network from a phone or laptop and reach the [Cockpit web console](../pi/cockpit-basics.md) to configure WiFi or other network settings. When the node gets its network connection back, it shuts the AP down and goes back to normal operation.
 
 The main use is first-time setup when the credentials provided to the imager were incorrect or moving a node to a new location where its saved WiFi network isn't available. Without the fallback AP, a node with no Ethernet connection and no known WiFi network can't be reached at all.
 
-The fallback AP is enabled by default on new or upgraded installs of asl3-appliance-pc and asl3-appliance-pi starting with version 2.2.2-1.
+The fallback AP is enabled by default on new or upgraded installs of
+`asl3-appliance-pc`, `asl3-appliance-pi`, and `asl3-appliance-uno-q`
+starting with version 2.2.2-1.
 
-!!! warning Mobile Nodes
-    Users of nodes that are frequently mobile and away from active Wifi for periods
-    of time will want to disable this feature to avoid node reboots. See
-    below.
+!!! note "Mobile Nodes"
+    A node that is often away from its saved WiFi networks will bring the AP up
+    whenever it has no connection. While the AP is up and nothing is connected to
+    it, the node checks every 5 minutes for a saved WiFi network and rejoins it
+    when one is in range. To keep the AP from coming up at all, disable it (see
+    [Disabling, Enabling, and Troubleshooting](#disabling-enabling-and-troubleshooting)).
 
 ## Using the Fallback AP
 
@@ -42,14 +46,14 @@ If your device does not autoconnect, browse to `https://192.168.187.65`.
 
 Configured a normal IP connection or setup a WiFi configuration in Cockpit. For WiFi
 configuration, see [Changing WiFi Settings via Cockpit](../pi/cockpit-network.md#changing-wifi-settings-via-cockpit).
-Once configured, reboot the system.
+Once configured, disconnect your device from the AP, or reboot the node.
 
-!!! note "Reboot is Required"
-    Saving a new WiFi network while connected to the AP doesn't take the node out of AP mode by itself. The radio is busy being the AP, so the node can't join the new network, and connectivity never comes back. After saving the new WiFi network, reboot the node. It then joins the new network, and the AP doesn't start. Plugging in Ethernet also restores connectivity, and the watchdog stops the AP on its next run.
+!!! note "Leaving the AP"
+    The node can't join the new WiFi network while its radio is busy being the AP, and it won't take the AP down while a device is connected to it. Phones and laptops usually rejoin a network they remember, so forget the `AllStarLink_` network on your device. The node looks for its saved WiFi networks every 5 minutes, so within 5 minutes of your device leaving, it takes the AP down and tries them. If none of them is in range, the AP comes back after about 15 seconds; if one is in range but doesn't connect, after a minute. Rebooting the node joins the new network right away. Plugging in Ethernet also restores connectivity, and the watchdog stops the AP on its next run, within five minutes.
 
 ## Disabling, Enabling, and Troubleshooting
 
-The fallback AP is controlled by the `fallback-ap.timer` systemd timer, which is enabled by default.
+The fallback AP is controlled by the `fallback-ap.timer` systemd timer, which is enabled by default. It also starts and stops `fallback-ap-scan.timer`, which looks for saved WiFi networks while the AP is up, so there is only one timer to manage.
 
 Check whether it is enabled:
 
@@ -57,17 +61,18 @@ Check whether it is enabled:
 systemctl is-enabled fallback-ap.timer
 ```
 
-Disable it. If the AP is up at the time, also stop it and remove the profile:
+Package upgrades enable the timer again, so to turn the fallback AP off, mask the timer. If the AP is up at the time, also stop it and remove the profile:
 
 ```
-sudo systemctl disable --now fallback-ap.timer
+sudo systemctl mask --now fallback-ap.timer
 sudo nmcli connection down asl-fallback-ap
 sudo nmcli connection delete asl-fallback-ap
 ```
 
-Enable it again:
+Turn it back on:
 
 ```
+sudo systemctl unmask fallback-ap.timer
 sudo systemctl enable --now fallback-ap.timer
 ```
 
@@ -77,12 +82,24 @@ To see what the watchdog has been doing, check the service's log:
 journalctl -u fallback-ap.service
 ```
 
-Each run logs the connectivity state it found, and any action it took, such as creating the profile, turning off autoconnect on other profiles, or starting or stopping the AP.
+Each run logs the connectivity state it found, and any action it took, such as creating the profile or starting or stopping the AP.
+
+The search for saved WiFi networks while the AP is up has its own log:
+
+```
+journalctl -u fallback-ap-scan.service
+```
 
 To force a check right away instead of waiting for the timer:
 
 ```
 sudo systemctl start fallback-ap.service
+```
+
+To force a search for saved WiFi networks right away (it only does something if the AP is up and nothing is connected to it):
+
+```
+sudo systemctl start fallback-ap-scan.service
 ```
 
 ## Theory of Operations for System Administrators
@@ -91,7 +108,7 @@ Most users will not care about this information, but it is provided for complete
 
 ### Watchdog and Timers
 
-The fallback AP is a small watchdog script run by a systemd timer, `fallback-ap.timer`. The timer first runs the watchdog two minutes after boot, and then once a minute after that. The watchdog doesn't stay running between checks; each run checks the network state, makes any needed change, and exits.
+The fallback AP is a small watchdog script run by a systemd timer, `fallback-ap.timer`. The timer first runs the watchdog two minutes after boot, and then every five minutes after that, counted from the start of the previous run. If the timer is started later than two minutes after boot, for example when it's turned back on or the package is upgraded, it runs the watchdog right away. The watchdog doesn't stay running between checks; each run checks the network state, makes any needed change, and exits.
 
 Each time it runs, the watchdog:
 
@@ -112,8 +129,15 @@ Because the decision is based on overall connectivity and not on WiFi alone, a n
 
 A WiFi adapter can either join a network as a client or act as an access point, but not both at once. To start the AP, the watchdog disconnects the wireless interface and starts the AP profile.
 
-!!! note "Getting Off the AP"
-    Saving a new WiFi network while connected to the AP doesn't take the node out of AP mode by itself. The radio is busy being the AP, so the node can't join the new network, and connectivity never comes back. After saving the new WiFi network, reboot the node. It then joins the new network, and the AP doesn't start. Plugging in Ethernet also restores connectivity, and the watchdog stops the AP on its next run.
+While the radio is the AP, the node can't see whether a saved WiFi network is back in range. A second timer, `fallback-ap-scan.timer`, handles this. It runs 5 minutes after boot and every 5 minutes after that, on its own schedule rather than from when a device leaves the AP. Like `fallback-ap.timer`, it runs right away if it's started later than that, for example when the fallback AP is turned back on. Each time, if the AP is up, no device is connected to it (checked with `iw dev <interface> station dump`), and at least one saved WiFi network is set to connect automatically, it:
+
+1. Takes the AP down so NetworkManager can scan and connect to a saved network.
+2. Waits up to 60 seconds for the interface to connect and for connectivity to come back. If after 15 seconds none of the saved networks shows up in the scan and the interface isn't connecting, it stops waiting. A saved hidden network never shows up by name, so if one is saved it always waits the full 60 seconds.
+3. Brings the AP back up if no network connected.
+
+So when no saved network is in range, the AP is gone for about 15 seconds every 5 minutes.
+
+If a device is connected to the AP, or the node can't tell, the AP is left alone. While a search is running, the watchdog waits for it to finish, so it can't bring the AP back in the middle of one.
 
 ### Addressing, DHCP, and DNS
 
@@ -142,9 +166,11 @@ The landing page links to Cockpit instead of showing Cockpit in the sign-in wind
 
 ### Firewall
 
-The AP profile is assigned to the `allstarlink` firewalld zone. Without that, NetworkManager would put the shared connection in its own `nm-shared` zone, which allows only DHCP, DNS, and SSH, and blocks Cockpit and the web server. The watchdog sets the zone on the profile every time it runs, which also fixes AP profiles created by older versions.
+The AP profile is assigned to the `allstarlink` `firewalld` zone. Without that, NetworkManager would put the shared connection in its own `nm-shared` zone, which allows only DHCP, DNS, and SSH, and blocks Cockpit and the web server. The watchdog sets the zone on the profile every time it runs, which also fixes AP profiles created by older versions.
 
 The `allstarlink` zone has two extra rules for the AP. One accepts DHCP requests. The other accepts DNS requests, but only from the AP subnet `192.168.187.64/29`, so the node doesn't answer DNS queries from other networks.
+
+The package installs the zone in `/usr/lib/firewalld/zones/`. If the node has its own copy in `/etc/firewalld/zones/`, for example because a port was opened in Cockpit, firewalld uses that copy instead, and package upgrades add both AP rules to it.
 
 ## Connecting to the Fallback AP
 
@@ -160,10 +186,10 @@ The `allstarlink` zone has two extra rules for the AP. One accepts DHCP requests
 
 6. Configure the network. For WiFi, see [Changing WiFi Settings via Cockpit](../pi/cockpit-network.md#changing-wifi-settings-via-cockpit).
 
-7. Reboot the node so it joins the new network (see the note in [Sharing the Radio with Client WiFi](#sharing-the-radio-with-client-wifi)).
+7. Disconnect your device from the AP and forget the `AllStarLink_` network, so the device doesn't rejoin it. Within 5 minutes the node takes the AP down and joins the new network, usually within a few seconds. To join it right away, reboot the node instead (see [Sharing the Radio with Client WiFi](#sharing-the-radio-with-client-wifi)).
 
 !!! note "Shared Passphrase"
-    Every appliance uses the same AP passphrase. Anyone in range of a node that is in fallback mode can join the AP and reach the Cockpit login page, but still needs a valid login to get any further. If that's a concern for a node deployed somewhere you don't control, disable the fallback AP (see below).
+    Every appliance uses the same AP passphrase. Anyone in range of a node that is in fallback mode can join the AP and reach the Cockpit login page, but still needs a valid login to get any further. If that's a concern for a node deployed somewhere you don't control, disable the fallback AP (see [Disabling, Enabling, and Troubleshooting](#disabling-enabling-and-troubleshooting)).
 
 ## Default Settings
 
@@ -174,3 +200,7 @@ The `allstarlink` zone has two extra rules for the AP. One accepts DHCP requests
 | Node address | `192.168.187.65` |
 | Band and channel | 2.4GHz, channel 11 |
 | NetworkManager profile | `asl-fallback-ap` |
+| Connectivity check | 2 minutes after boot, then every 5 minutes |
+| Search for saved WiFi while the AP is idle | 5 minutes after boot, then every 5 minutes; waits up to 60 seconds, or 15 seconds when no saved network is in range |
+
+The SSID prefix, passphrase, band, channel, and how long the search waits (`AP_SCAN_TIMEOUT`) are set in `/etc/default/fallback-ap`. The timer intervals are set in the `fallback-ap.timer` and `fallback-ap-scan.timer` units; change them with `sudo systemctl edit`.
