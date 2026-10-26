@@ -110,13 +110,7 @@ Because the decision is based on overall connectivity and not on WiFi alone, a n
 
 ### Sharing the Radio with Client WiFi
 
-A WiFi adapter can either join a network as a client or act as an access point, but not both at once. To start the AP, the watchdog:
-
-1. Finds every other NetworkManager profile on the same wireless interface that has autoconnect turned on (your saved WiFi networks)
-2. Turns off autoconnect on those profiles, and writes their names to `/run/fallback-ap-watchdog/suppressed-connections.json`
-3. Disconnects the wireless interface and starts the AP profile
-
-When connectivity comes back, the watchdog stops the AP and turns autoconnect back on for every profile it listed in that file. This keeps NetworkManager from switching the radio back to client mode while someone is connected to the AP.
+A WiFi adapter can either join a network as a client or act as an access point, but not both at once. To start the AP, the watchdog disconnects the wireless interface and starts the AP profile.
 
 !!! note "Getting Off the AP"
     Saving a new WiFi network while connected to the AP doesn't take the node out of AP mode by itself. The radio is busy being the AP, so the node can't join the new network, and connectivity never comes back. After saving the new WiFi network, reboot the node. It then joins the new network, and the AP doesn't start. Plugging in Ethernet also restores connectivity, and the watchdog stops the AP on its next run.
