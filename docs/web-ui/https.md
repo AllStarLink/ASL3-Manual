@@ -17,7 +17,7 @@ The first section shows the current state:
 Let's Encrypt checks that each name reaches this server, so before you start:
 
 * The names must be in public DNS, pointing to this server.
-* Port 80 must be open to the internet (forwarded on your router, if the server is behind one).
+* ***Port 80 must be open to the internet*** (forwarded on your router, if the server is behind one).
 
 Then fill in the form:
 

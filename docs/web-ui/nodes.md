@@ -60,7 +60,7 @@ The **Radio interface** tab chooses the Asterisk channel driver for the node:
 
 * **SimpleUSB**: a CM1xx USB sound card without DSP (URIx, RA-40 and similar).
 * **USBRadio**: the same sound cards with DSP.
-* **RTCM**: a Radio Thin Client or VOTER boards. See [VOTER/RTCM](../voter/index.md).
+* **RTCM**: a Radio Thin Client Module or VOTER boards. See [VOTER/RTCM](../voter/index.md).
 * **No radio interface**: a hub node.
 * **USRP**: a USRP connection to other software.
 
