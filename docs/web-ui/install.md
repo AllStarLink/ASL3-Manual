@@ -2,24 +2,29 @@
 The ASL Web UI runs on AllStarLink 3 on Debian 13 (trixie), including the ASL3 Appliance. It is served by the node's web server (Apache or nginx) at `https://<your-node>/asl-web-ui/`.
 
 ## Installing
-The ASL Web UI is currently in the AllStarLink `devel` package repository. Switch to that repository, then install the package:
+The ASL Web UI comes installed with the ASL3 Appliance packages (asl3-appliance) starting
+with version 2.3 and no further installation is necessary.
+
+For systems not running the ASL Appliance packages, the package is installed as follows:
 
 ```bash
-sudo asl-repo-switch -l devel
 sudo apt update
 sudo apt install -y asl-web-ui
 ```
 
-See [Beta Testing](../user-guide/betatest.md) for how `asl-repo-switch` works and how to switch back.
-
 ## Allowing an Account to Log In
-You log in to the ASL Web UI with a Linux account on the node, the same one you use for SSH or Cockpit. The account must be a member of the `asl-web-ui` group:
+
+You log in to the ASL Web UI with a Linux account on the node, the same one you use for SSH or Cockpit. The account must be a member of the `asl-web-ui` group.
+
+!!! node "ASL Appliance is Pre-Configured"
+    The ASL Appliance package is preconfigured to add all local users to the
+    `asl-web-ui` group and this is unnecessary on those platforms.
 
 ```bash
 sudo usermod -aG asl-web-ui <username>
 ```
 
-Replace `<username>` with the account name. The `root` account can't log in. Logins go through PAM, so one-time codes set up for SSH (see [TOTP Authentication](../adv-topics/totp-auth.md)) work here as well.
+Replace `<username>` with the account name. The `root` account can't log in.
 
 Removing an account from the group takes effect on its next request.
 
