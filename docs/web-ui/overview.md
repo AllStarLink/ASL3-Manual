@@ -1,7 +1,7 @@
 # Overview
 The **Overview** page opens after you log in. It summarizes the health of the node server.
 
-![Overview](img/webui-overview.png)
+![Overview](img/webui-overview-registered.png)
 
 ## Health
 **Health** lists anything that needs attention:

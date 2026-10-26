@@ -1,7 +1,7 @@
 # Nodes
 The **Nodes** page lists the AllStarLink nodes on the server, with each one's call sign, radio interface, duplex mode and registration state.
 
-![Nodes](img/webui-nodes.png)
+![Nodes](img/webui-nodes-registered.png)
 
 Click a node number to open its page. The menu (⋮) at the end of each row has **Open** and **Remove node…**:
 

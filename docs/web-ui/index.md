@@ -1,7 +1,7 @@
 # ASL Web UI
 The ASL Web UI (package `asl-web-ui`) manages an AllStarLink 3 node server from a web browser. It looks and works like the [Cockpit](../pi/index.md) web console and covers nearly everything the text-based [ASL3 Menu](../user-guide/menu.md) does: setting up nodes, tuning radio interfaces, managing Asterisk and Allmon3, backups, diagnostics and more.
 
-![ASL Web UI Overview](img/webui-overview.png)
+![ASL Web UI Overview](img/webui-overview-registered.png)
 
 !!! warning "Under Development"
     The ASL Web UI is under active development and is currently available only from the AllStarLink `devel` package repository. Don't run it on a node you can't easily fix or rebuild if something goes wrong.

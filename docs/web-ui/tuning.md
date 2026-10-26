@@ -3,12 +3,14 @@ The **Tuning** tab of a [node's page](nodes.md) sets the audio levels and signal
 
 Open **Nodes**, click the node number, then the **Tuning** tab.
 
-![Tuning Tab](img/webui-node-tuning-nodevice.png)
+![Tuning Tab](img/webui-node-tuning.png)
 
 !!! warning "Changes Take Effect Immediately"
     Each setting reaches the radio interface as soon as you apply it. It isn't part of **Review and save**. Click **Save settings** to write the settings to the configuration file, so that they survive an Asterisk restart.
 
 If the USB sound card isn't plugged in or isn't assigned to the node, a warning says so. The live meters and the test tone need the sound card. The other settings can still be changed.
+
+![Tuning Without a Sound Card](img/webui-node-tuning-nodevice.png)
 
 ## Live Activity
 **Live activity** shows what the interface hears and does, as the driver sees it right now. Turn on **Show live activity** while you set the levels, then turn it off again. Nothing in this section changes a setting, but while it is on, nobody else can tune this node.

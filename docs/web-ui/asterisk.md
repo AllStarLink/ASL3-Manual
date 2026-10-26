@@ -2,7 +2,7 @@
 The **Asterisk** page manages the Asterisk service, which runs `app_rpt` and all of your nodes. It has three tabs: **Status**, **Settings** and **Console**.
 
 ## Status
-![Asterisk Status](img/webui-asterisk-status.png)
+![Asterisk Status](img/webui-asterisk-status-registered.png)
 
 **Service** shows whether Asterisk is running, when it started, its version and the systemd service name.
 
