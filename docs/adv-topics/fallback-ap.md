@@ -1,14 +1,97 @@
 # Fallback Access Point
 
-The ASL3 appliance images (Raspberry Pi, PC, and Arduino UNO Q) include a **fallback access point** (AP) system. If the node has a WiFi adapter but no usable network connection, the node turns its WiFi adapter into a temporary access point. You can join that network from a phone or laptop and reach the [Cockpit web console](../pi/cockpit-basics.md) to configure WiFi or other network settings. When the node gets its network connection back, it shuts the AP down and goes back to normal operation.
+The ASL3 appliance images (asl3-appliance-pc and asl3-appliance-pi) include a **fallback access point** (AP) system. If the node has a WiFi adapter but no usable network connection, the node turns its WiFi adapter into a temporary access point. You can join that network from a phone or laptop and reach the [Cockpit web console](../pi/cockpit-basics.md) to configure WiFi or other network settings. When the node gets its network connection back, it shuts the AP down and goes back to normal operation.
 
-The main use is first-time setup, or moving a node to a new location where its saved WiFi network isn't available. Without the fallback AP, a node with no Ethernet connection and no known WiFi network can't be reached at all.
+The main use is first-time setup when the credentials provided to the imager were incorrect or moving a node to a new location where its saved WiFi network isn't available. Without the fallback AP, a node with no Ethernet connection and no known WiFi network can't be reached at all.
 
-The fallback AP is enabled by default on new appliance installs.
+The fallback AP is enabled by default on new or upgraded installs of asl3-appliance-pc and asl3-appliance-pi starting with version 2.2.2-1.
 
-## How It Works
+!!! warning Mobile Nodes
+    Users of nodes that are frequently mobile and away from active Wifi for periods
+    of time will want to disable this feature to avoid node reboots. See
+    below.
 
-The fallback AP is a small watchdog script (`/usr/libexec/asl3/fallback-ap-watchdog.py`) run by a systemd timer, `fallback-ap.timer`. The timer first runs the watchdog two minutes after boot, and then once a minute after that. The watchdog doesn't stay running between checks; each run checks the network state, makes any needed change, and exits.
+## Using the Fallback AP
+
+Two minutes after boot, and every five minutes thereafter,
+the fallback-ap system will look at the state of the networking on
+the system. The following is, in general, the decision process:
+
+1. If the system has active networking, wired or wireless, no action is taken.
+
+2. If the system has no active networking, the system is searched for
+a wireless interface. If no wireless interface is found, no action is taken.
+
+3. If one or more wireless interfaces are found, then the alphabetically-first
+interface is chosen to host the fallback AP.
+
+4. A network with an SSID of `AllStarLink_{MAC}` is created where `{MAC}` is
+the Ethernet address of the wireless adapter. It will be named something like
+`AllStarLink_DCA632AB322E`. A small IPv4 network is created.
+
+Once the network is created, the Node may be connected to with a laptop or phone
+to configure the networking. Have your device connect to the `AllStarLink_{MAC}`
+network and use the password "AllStarLink".
+
+In most cases, upon connect, the node will trigger the device to open its
+browser and connect to Cockpit. Not all devices implement this consistently.
+If your device does not autoconnect, browse to `https://192.168.187.65`.
+
+!!! note "Certificate Warning"
+    You browser will show a security warning before it opens the page. This is expected, and it's safe to accept the warning on the fallback AP.
+
+Configured a normal IP connection or setup a WiFi configuration in Cockpit. For WiFi
+configuration, see [Changing WiFi Settings via Cockpit](../pi/cockpit-network.md#changing-wifi-settings-via-cockpit).
+Once configured, reboot the system.
+
+!!! note "Reboot is Required"
+    Saving a new WiFi network while connected to the AP doesn't take the node out of AP mode by itself. The radio is busy being the AP, so the node can't join the new network, and connectivity never comes back. After saving the new WiFi network, reboot the node. It then joins the new network, and the AP doesn't start. Plugging in Ethernet also restores connectivity, and the watchdog stops the AP on its next run.
+
+## Disabling, Enabling, and Troubleshooting
+
+The fallback AP is controlled by the `fallback-ap.timer` systemd timer, which is enabled by default.
+
+Check whether it is enabled:
+
+```
+systemctl is-enabled fallback-ap.timer
+```
+
+Disable it. If the AP is up at the time, also stop it and remove the profile:
+
+```
+sudo systemctl disable --now fallback-ap.timer
+sudo nmcli connection down asl-fallback-ap
+sudo nmcli connection delete asl-fallback-ap
+```
+
+Enable it again:
+
+```
+sudo systemctl enable --now fallback-ap.timer
+```
+
+To see what the watchdog has been doing, check the service's log:
+
+```
+journalctl -u fallback-ap.service
+```
+
+Each run logs the connectivity state it found, and any action it took, such as creating the profile, turning off autoconnect on other profiles, or starting or stopping the AP.
+
+To force a check right away instead of waiting for the timer:
+
+```
+sudo systemctl start fallback-ap.service
+```
+
+## Theory of Operations for System Administrators
+
+Most users will not care about this information, but it is provided for completeness.
+
+### Watchdog and Timers
+
+The fallback AP is a small watchdog script run by a systemd timer, `fallback-ap.timer`. The timer first runs the watchdog two minutes after boot, and then once a minute after that. The watchdog doesn't stay running between checks; each run checks the network state, makes any needed change, and exits.
 
 Each time it runs, the watchdog:
 
@@ -62,8 +145,6 @@ The node's Apache web server is set up so that any request from the `192.168.187
 
 The landing page links to Cockpit instead of showing Cockpit in the sign-in window. Showing Cockpit through Apache's reverse proxy was tried, but Cockpit's login and session handling didn't work reliably that way.
 
-!!! note "Certificate Warning"
-    Cockpit uses a self-signed certificate, so your browser shows a security warning before it opens the page. This is expected, and it's safe to accept the warning on the fallback AP.
 
 ### Firewall
 
@@ -99,41 +180,3 @@ The `allstarlink` zone has two extra rules for the AP. One accepts DHCP requests
 | Node address | `192.168.187.65` |
 | Band and channel | 2.4GHz, channel 11 |
 | NetworkManager profile | `asl-fallback-ap` |
-
-## Disabling, Enabling, and Troubleshooting
-
-The fallback AP is controlled by the `fallback-ap.timer` systemd timer, which is enabled by default.
-
-Check whether it is enabled:
-
-```
-systemctl is-enabled fallback-ap.timer
-```
-
-Disable it. If the AP is up at the time, also stop it and remove the profile:
-
-```
-sudo systemctl disable --now fallback-ap.timer
-sudo nmcli connection down asl-fallback-ap
-sudo nmcli connection delete asl-fallback-ap
-```
-
-Enable it again:
-
-```
-sudo systemctl enable --now fallback-ap.timer
-```
-
-To see what the watchdog has been doing, check the service's log:
-
-```
-journalctl -u fallback-ap.service
-```
-
-Each run logs the connectivity state it found, and any action it took, such as creating the profile, turning off autoconnect on other profiles, or starting or stopping the AP.
-
-To force a check right away instead of waiting for the timer:
-
-```
-sudo systemctl start fallback-ap.service
-```
