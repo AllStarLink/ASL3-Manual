@@ -42,7 +42,7 @@ Many changes take effect only when Asterisk restarts. When files have changed si
 
 ![Restart Banner](img/webui-restart-banner.png)
 
-!!! note "Restarting Asterisk Takes Your Node Off the Air"
+!!! warning "Restarting Asterisk Takes Your Node Off the Air"
     Restarting Asterisk disconnects every connection to every node on the server. If a restart would fail because `rpt.conf` has errors, the banner says so and offers to open the file instead.
 
 Some actions, such as restarting or stopping Asterisk, rebooting, restoring a backup and removing a node, ask for your password again if you last entered it more than ten minutes ago.

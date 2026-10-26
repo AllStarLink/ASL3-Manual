@@ -33,7 +33,7 @@ Management (SSH, Cockpit, these web pages and AMI) is never opened on the 44Net 
 
 Setup has four steps:
 
-1. **Firewall**: creates the firewalld zone `44NetConnect` for the tunnel and chooses what other nodes may reach through it: **IAX2** (AllStarLink calls, on the node's IAX port) and, optionally, **EchoLink** (UDP ports 5198–5199). If the zone no longer matches the node's settings, for example after changing the IAX port, the page warns you.
+1. **Firewall**: creates the `firewalld` zone `44NetConnect` for the tunnel and chooses what other nodes may reach through it: **IAX2** (AllStarLink calls, on the node's IAX port) and, optionally, **EchoLink** (UDP ports 5198–5199). If the zone no longer matches the node's settings, for example after changing the IAX port, the page warns you.
 2. **Tunnel configuration**: paste the **WireGuard configuration** from the 44Net portal. The **Private key** is kept only on the server; it is never included in backups. Then choose the **Routing**:
     * **Full tunnel (recommended)**: all of the server's internet traffic goes through the tunnel.
     * **AllStarLink traffic only (advanced)**: only traffic to the AllStarLink servers goes through the tunnel. The routes are kept up to date automatically.

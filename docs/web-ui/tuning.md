@@ -1,7 +1,7 @@
 # Tuning a Radio Interface
 The **Tuning** tab of a [node's page](nodes.md) sets the audio levels and signaling of a SimpleUSB or USBRadio interface. It replaces the text tune menus (`simpleusb-tune-menu` and `radio-tune-menu`) with sliders, switches and live meters. See [Audio Level Adjustment](../adv-topics/audio-level.md) for the background on setting levels.
 
-Open **Nodes**, click the node number, then the **Tuning** tab.
+Open **Nodes**, click the **node number**, then the **Tuning** tab.
 
 ![Tuning Tab](img/webui-node-tuning.png)
 
@@ -15,7 +15,7 @@ If the USB sound card isn't plugged in or isn't assigned to the node, a warning 
 ## Live Activity
 **Live activity** shows what the interface hears and does, as the driver sees it right now. Turn on **Show live activity** while you set the levels, then turn it off again. Nothing in this section changes a setting, but while it is on, nobody else can tune this node.
 
-* **Receive level** shows how loud the receiver audio is while a signal is being received. The markers show the 3 kHz and 5 kHz deviation points.
+* **Receive level** shows how loud the receiver audio is while a signal is being received. The markers show the 3 kHz and 5 kHz deviation points. Adjust the Receive Level Slider until the bar graph matches what you are sending in to the receiver with your service monitor (1kHz @ 3kHz deviation).
 * **COS in** and **CTCSS in** light when the radio's carrier detect (squelch open) and tone detect inputs are active.
 * **Receiving** lights when the node accepts the signal, based on the COS and CTCSS settings below.
 * **PTT out** lights when the node keys the transmitter.
@@ -29,6 +29,11 @@ A lamp reads "not used" when the interface is set to ignore that input. **PTT ou
 * **Transmit level, channel A** and **channel B** set the audio level to the radio on each of the sound card's output channels (0–999).
 
 Drag the slider or type a value, then click **Apply**.
+
+!!! warning "Set Receive Level First!"
+    Be sure to set the receive level first, to match the deviation being sent by your service monitor. Once that is set, adjust the transmit level.
+
+This order is particularly important for full duplex repeater service, as the receive signal is split and sent to both the AllStarLink network, and the attached transmitter. A proper receive level ensures that other nodes on the AllStarLink network hear your audio at a consistent level with other nodes.
 
 ## Settings
 These match the settings of the text tune menu. For SimpleUSB:

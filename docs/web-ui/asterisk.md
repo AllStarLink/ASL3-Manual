@@ -9,7 +9,7 @@ The **Asterisk** page manages the Asterisk service, which runs `app_rpt` and all
 * **Restart** stops and starts Asterisk, for example to load configuration changes.
 * **Stop** stops Asterisk. Your nodes are off the air until you start it again with **Start**.
 
-!!! note "Restarting Asterisk Takes Your Nodes Off the Air"
+!!! warning "Restarting Asterisk Takes Your Nodes Off the Air"
     Restarting or stopping Asterisk drops every connection to every node on the server, and runs each node's startup macro when it starts again. If `rpt.conf` has errors that would keep the nodes from starting, the ASL Web UI warns you and offers to open the file instead.
 
 **Registrations** lists each node's registration with AllStarLink:

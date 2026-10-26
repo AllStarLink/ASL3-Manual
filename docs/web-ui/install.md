@@ -20,6 +20,9 @@ You log in to the ASL Web UI with a Linux account on the node, the same one you 
     The ASL Appliance package is preconfigured to add all local users to the
     `asl-web-ui` group and this is unnecessary on those platforms.
 
+
+If you need to add a user manually to the asl-web-ui group, you will need to do so from the Linux CLI using the following command:
+
 ```bash
 sudo usermod -aG asl-web-ui <username>
 ```
