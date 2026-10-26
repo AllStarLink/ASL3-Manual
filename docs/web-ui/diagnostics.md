@@ -15,7 +15,11 @@ Click **Run the check**. It takes about 30 seconds:
 
 ![Running the Check](img/webui-diagnostics-running.png)
 
-The result stays on the page, with the time it was made, until you click **Check again**. Each problem is listed with an explanation of what to change. **Full output** shows everything `asl-node-auth-check` printed.
+The result stays on the page, with the time it was made, until you click **Check again**. It is grouped into the configuration, the public address and each node:
+
+![Connectivity Check Result](img/webui-diagnostics-check.png)
+
+Green marks are fine, blue ones are information, and red ones are problems to look at, with an explanation where there is one. In this example the node is registered and other nodes can connect in. The two problems are about the IAX port: AllStarLink sees the node on port 4567, but `iax.conf` doesn't set `bindport`, so the check can't tell which port Asterisk listens on. That is fine as long as the router forwards one to the other, and the last line confirms that incoming connections work. The line about an "invalid or unrelated registration" is a VoIP-provider registration in `iax.conf` that has nothing to do with AllStarLink. **Full output** shows everything `asl-node-auth-check` printed.
 
 The [Overview](overview.md) page also shows the result of the last check.
 

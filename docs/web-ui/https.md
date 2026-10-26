@@ -1,15 +1,15 @@
 # HTTPS
 The **HTTPS** page gets a free certificate from [Let's Encrypt](https://letsencrypt.org/) for the server's web pages: the ASL Web UI, Allmon3 and, if it is installed, Cockpit. With a Let's Encrypt certificate, browsers no longer show security warnings. See [Allmon3 HTTPS](../allmon3/https.md) for the background.
 
-This page manages Apache. If the server uses nginx instead, the page says so; get a certificate with `sudo apt install python3-certbot-nginx` and `sudo certbot --nginx`.
+![HTTPS](img/webui-https.png)
 
-![HTTPS Without Apache](img/webui-https-local.png)
+This page manages Apache. If the server uses nginx instead, the page says so; get a certificate with `sudo apt install python3-certbot-nginx` and `sudo certbot --nginx`.
 
 ## Now
 The first section shows the current state:
 
 * **HTTPS (port 443)**: whether Apache serves HTTPS. If it doesn't, a link enables it with Apache's self-signed certificate.
-* **Certificate**: the certificate browsers are given now, and whether it is the Let's Encrypt one.
+* **Certificate**: the certificate browsers are given now, and whether it is the Let's Encrypt one. A new ASL3 Appliance has a **Self-signed** certificate for its `.local` name.
 * **Cockpit (port 9090)**: whether Cockpit uses the same certificate.
 * **certbot**: whether the Let's Encrypt client is installed, and its renewal timer. **Install python3-certbot-apache** installs it.
 
@@ -27,7 +27,7 @@ Then fill in the form:
 * **Send HTTP visitors to HTTPS**: redirects `http://` addresses to `https://`.
 * **I agree to the Let's Encrypt subscriber agreement**: required.
 
-Click the button to get the certificate. Certificates last 90 days and renew automatically.
+Click **Get the certificate**. Certificates last 90 days and renew automatically.
 
 ## Managing the Certificate
 Once the server has a Let's Encrypt certificate, this section shows it and whether browsers trust it.
