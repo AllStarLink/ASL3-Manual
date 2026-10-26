@@ -129,6 +129,7 @@ nav:
     - adv-topics/elkelink.md
     - adv-topics/eurorptr.md
     - adv-topics/eventmgmt.md
+    - adv-topics/fallback-ap.md
     - adv-topics/hotspot_hd.md
     - adv-topics/httpreg.md
     - adv-topics/iax-auth.md
