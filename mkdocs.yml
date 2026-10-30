@@ -108,6 +108,21 @@ nav:
       - pi/cockpit-updates.md
       - pi/cockpit-services.md
       - pi/cockpit-firewall.md
+  - ASL Web UI:
+    - web-ui/index.md
+    - web-ui/install.md
+    - web-ui/first-setup.md
+    - web-ui/overview.md
+    - web-ui/nodes.md
+    - web-ui/tuning.md
+    - web-ui/asterisk.md
+    - web-ui/allmon3.md
+    - web-ui/hardware.md
+    - web-ui/diagnostics.md
+    - web-ui/backups.md
+    - web-ui/https.md
+    - web-ui/network.md
+    - web-ui/config-edit.md
   - Advanced Topics:
     - adv-topics/index.md
     - adv-topics/44net-connect.md
