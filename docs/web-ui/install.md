@@ -3,7 +3,7 @@ The ASL Web UI runs on AllStarLink 3 on Debian 13 (trixie), including the ASL3 A
 
 ## Installing
 The ASL Web UI comes installed with the ASL3 Appliance packages (asl3-appliance) starting
-with version 2.3 and no further installation is necessary.
+with version 3.0.0 and no further installation is necessary.
 
 For systems not running the ASL Appliance packages, the package is installed as follows:
 
