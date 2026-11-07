@@ -5,7 +5,7 @@ by AllStarLink users and applications.
 
 ## Node Lookup Information
 
-This information is needed for app_rpt and other clients
+This information is needed for app\_rpt and other clients
 to connect to all the nodes in the AllStarLink mesh network.
 
 The **preferred** way to do lookups of node connection information
