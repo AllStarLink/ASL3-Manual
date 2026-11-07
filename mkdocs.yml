@@ -127,6 +127,7 @@ nav:
     - adv-topics/index.md
     - adv-topics/44net-connect.md
     - adv-topics/allowdenylists.md
+    - adv-topics/appauth.md
     - adv-topics/aprs.md
     - adv-topics/tts.md
     - adv-topics/conftmpl.md
