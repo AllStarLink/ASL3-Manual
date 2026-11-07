@@ -36,7 +36,7 @@ That's all that's needed in almost all cases.
 If you have a highly customized `/etc/asterisk/extensions.conf`, the update changes the `[allstar-public]` context in `/etc/asterisk/extensions.conf` so that your node checks app logins using the new AppAuth method. Your node will continue to accept connections from older apps during the transition period. To check whether your node is ready, run:
 
 ```bash
-grep appauth /etc/asterisk/extensions.conf
+sudo grep appauth /etc/asterisk/extensions.conf
 ```
 
 If the command prints a line containing `api.allstarlink.org/v1/appauth/validate`, your node is ready and there is nothing else to do.
