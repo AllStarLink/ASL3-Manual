@@ -4,6 +4,7 @@ The following APIs and datasets are available for consumption
 by AllStarLink users and applications.
 
 ## Node Lookup Information
+
 This information is needed for app_rpt and other clients
 to connect to all the nodes in the AllStarLink mesh network.
 
@@ -69,18 +70,34 @@ their links:
 These return JSON that is self-describing.
 
 ## Authentication APIs
+
 There are node registration APIs available for applications.
 
+### AppAuth
+
+AllStarLink AppAuth is the supported, modern way to connect a node-less application to a AllStarLinkNode. The system, including all implementation details, is documented at [ASL002 - App Authentication](https://github.com/AllStarLink/Standards/blob/main/ASL002-App_Authentication.md).
+
 ### WebTransceiver
+
+!!! warning
+    This system is deprecated and scheduled for removal on 2027-12-07
+
 The original Web Transceiver (WT) was a browser-based Java applet that one could use from the AllStarLink website to call nodes directly. That feature itself has been long gone since browsers no longer support Java Applets. However, the background technology still exists and has been leveraged for other applications.
 
-Using this method, clients are issued a token by [allstarlink.org](https://www.allstarlink.org/) either "faking" a login on using the `/api/v2/auth-wt-legacy` API endpoint. Clients provide the ASL portal username and password and receive back a token. The client then places an unauthenticated IAX call to a node which is handled by the `[allstar-public]` context. Within that context is a mechanism for verifying that the token for the incoming CallerID (the callsign) is valid. If it is, it lets the call through and connects the application to the node. If it can’t validate, then it hangs up.
+This method is deprecated and will be removed according to the following schedule:
 
-If you are a node owner, and you wish to allow these applications to connect to your node via the Web Transceiver method, you need to ensure that WT is enabled in your `Node Settings` in the Web Portal. See [Editing Node Parameters](../basics/portal.md#editing-node-parameters) for more information on how to find this setting.
-You should also confirm that you have an `[allstar-public]` context in `extensions.conf`, and that it isn't commented out (it should be there and active, unless you've previously made changes).
+| Date | What Happens |
+| - | - |
+| **December 5, 2026** | The one-year transition period begins. |
+| **June 3, 2027** | Apps still using the old WebTransceiver login stop working. |
+| **December 6, 2027** | Nodes that have not been updated can no longer accept connections from apps. |
 
 
 ### Simple Node Auth
+
+!!! warning
+    This system is deprecated and scheduled for removal on 2027-12-07
+
 This API is for authenticating infrastructure clients such as node audio
 test sites using the Node number and node password. This API is not "open"
 in that arrangement to use them must be made with the AllStarLink
@@ -92,6 +109,7 @@ on [The ASL Community](https://community.allstarlink.org).
 **HTTP Method:** POST
 
 **Input:**
+
 ```json
     {
         'api':'API_PASSWORD ,       <--- provided by ASL Infra Admins
@@ -102,6 +120,7 @@ on [The ASL Community](https://community.allstarlink.org).
 ```
 
 **Output:**
+
 ```json
       {
            'status' : "OK" | "ERR"
@@ -110,6 +129,3 @@ on [The ASL Community](https://community.allstarlink.org).
            'msg' : 'MESSAGE'       <--- If status = Error, has the error, otherwise blank
       }
 ```
-
-!!! danger
-    All other HTTP methods or malformed JSON will be ignored.

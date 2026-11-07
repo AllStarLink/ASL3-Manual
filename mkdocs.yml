@@ -70,6 +70,7 @@ nav:
     - basics/commands.md
     - basics/incompatibles.md
     - basics/glossary.md
+    - basics/appauth.md
   - Installation:
     - install/index.md
     - install/whats-new.md
