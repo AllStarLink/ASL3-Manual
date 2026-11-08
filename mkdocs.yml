@@ -25,7 +25,6 @@ theme:
   features:
     - content.code.copy
     - navigation.footer
-    - navigation.indexes
     - navigation.sections
     - navigation.tabs
     - navigation.tabs.sticky
@@ -63,52 +62,32 @@ extra:
 nav:
   - Home: index.md
   - Getting Started:
-    - basics/index.md
-    - basics/gettingstarted.md
-    - basics/portal.md
-    - basics/standardcommands.md
-    - basics/commands.md
-    - basics/incompatibles.md
-    - basics/glossary.md
-  - Installation:
-    - install/index.md
-    - install/whats-new.md
-    - <span>ASL3 Appliance (Raspberry Pi)</span>:
-      - install/pi-appliance/index.md
-      - install/pi-appliance/pi-detailed.md
-    - <span>ASL3 on Debian</span>:
-      - install/debian/index.md
-      - install/debian/install.md
-      - install/debian/deb-appliance.md
-      - install/debian/docker.md
-      - install/debian/os-upgrades.md
-    - <span>Allmon3</span>:
-      - allmon3/index.md
-      - allmon3/install.md
-      - allmon3/config.md
-      - allmon3/usermgmt.md
-      - allmon3/https.md
-  - Basic Operation:
-    - user-guide/index.md
-    - user-guide/menu.md
-    - user-guide/asl-cmds-tools.md
-    - user-guide/passwords.md
-    - user-guide/updates.md
-    - user-guide/support.md
-    - user-guide/troubleshooting.md
-    - user-guide/phoneportal.md
-    - user-guide/externalapps.md
-    - user-guide/betatest.md
-    - <span>Pi Appliance Specifics (Cockpit)</span>:
-      - pi/index.md
-      - pi/cockpit-get-started.md
-      - pi/cockpit-basics.md
-      - pi/cockpit-console.md
-      - pi/cockpit-network.md
-      - pi/cockpit-updates.md
-      - pi/cockpit-services.md
-      - pi/cockpit-firewall.md
-  - ASL Web UI:
+    - <span>Introduction</span>:
+      - basics/index.md
+      - basics/portal.md
+      - basics/standardcommands.md
+      - basics/glossary.md
+    - <span>Installation</span>:
+        - install/index.md
+        - <span>ASL3 Appliance (Raspberry Pi)</span>:
+          - install/pi-appliance/index.md
+          - install/pi-appliance/pi-detailed.md
+        - <span>ASL3 on Debian</span>:
+          - install/debian/index.md
+          - install/debian/install.md
+          - install/debian/deb-appliance.md
+          - install/debian/docker.md
+          - install/debian/os-upgrades.md
+        - <span>Allmon3</span>:
+          - allmon3/index.md
+          - allmon3/install.md
+          - allmon3/config.md
+          - allmon3/usermgmt.md
+          - allmon3/https.md
+    - <span>New &amp; Different</span>:
+        - install/whats-new.md
+        - basics/incompatibles.md
+  - Setup &amp; Use:
     - web-ui/index.md
     - web-ui/install.md
     - web-ui/first-setup.md
@@ -123,7 +102,29 @@ nav:
     - web-ui/https.md
     - web-ui/network.md
     - web-ui/config-edit.md
-  - Advanced Topics:
+    - <span>System Administration</span>:
+      - pi/index.md
+      - pi/cockpit-get-started.md
+      - pi/cockpit-basics.md
+      - pi/cockpit-console.md
+      - pi/cockpit-network.md
+      - pi/cockpit-updates.md
+      - pi/cockpit-services.md
+      - pi/cockpit-firewall.md
+    - <span>CLI-Based Administration</span>:
+      - user-guide/menu.md
+      - user-guide/asl-cmds-tools.md
+      - user-guide/updates.md
+    - <span>Getting Help</span>:
+      - user-guide/support.md
+      - user-guide/passwords.md
+      - user-guide/troubleshooting.md
+      - user-guide/phoneportal.md
+    - <span>Third-Party Applications</span>:
+      - user-guide/externalapps.md
+    - <span>Contributing</span>:
+      - user-guide/betatest.md
+  - Feature Guides:
     - adv-topics/index.md
     - adv-topics/44net-connect.md
     - adv-topics/allowdenylists.md
@@ -184,52 +185,55 @@ nav:
     - adv-topics/totp-auth.md
     - adv-topics/uefi-secureboot.md
     - adv-topics/usbinterfaces.md
-  - VOTER/RTCM:
-    - voter/index.md
-    - voter/about-voter.md
-    - voter/voter-protocol.md
-    - voter/voter-chan_voter.md
-    - voter/rtcm-hardware.md
-    - voter/voter-hardware.md
-    - voter/voter-firmware.md
-    - voter/voter-gps.md
-    - voter/voter-menus.md
-    - voter/voter-audio.md
-    - voter/voter-buffers.md
-    - voter/voter-simulcasting.md
-    - voter/voter-mixmode.md
-    - voter/voter-proxy.md
-    - voter/voter-audioanalysis.md
-    - voter/voter-quantar.md
-  - Developer Guide:
-    - developers/index.md
-    - developers/package-builds.md
-    - developers/source-code.md
+    - <span>VOTER/RTCM</span>:
+      - voter/index.md
+      - voter/about-voter.md
+      - voter/voter-protocol.md
+      - voter/voter-chan_voter.md
+      - voter/rtcm-hardware.md
+      - voter/voter-hardware.md
+      - voter/voter-firmware.md
+      - voter/voter-gps.md
+      - voter/voter-menus.md
+      - voter/voter-audio.md
+      - voter/voter-buffers.md
+      - voter/voter-simulcasting.md
+      - voter/voter-mixmode.md
+      - voter/voter-proxy.md
+      - voter/voter-audioanalysis.md
+      - voter/voter-quantar.md
+    - Man Pages:
+        - mans/index.md
+        - mans/allmon3-passwd.md
+        - mans/asl-backup-menu.md
+        - mans/asl-find-sound.md
+        - mans/asl-node-lookup.md
+        - mans/asl-play-arn.md
+        - mans/asl-say.md
+        - mans/asl-setup-dkms-mok.md
+        - mans/sa818.md
+        - mans/sa818-menu.md
+        - mans/simpleusb-tune-menu.md
+    - Config Files:
+      - config/index.md
+      - config/config-structure.md
+      - config/echolink_conf.md
+      - config/extensions_conf.md
+      - config/iax_conf.md
+      - config/rpt_conf.md
+      - config/rpt_auth_conf.md
+      - config/simpleusb_conf.md
+      - config/tlb_conf.md
+      - config/voter_conf.md
+  - Developer Guides:
     - developers/source-install.md
-    - developers/aptly.md
-    - developers/versioning.md
     - developers/api.md
     - developers/iaxtext.md
-  - Man Pages:
-    - mans/index.md
-    - mans/allmon3-passwd.md
-    - mans/asl-backup-menu.md
-    - mans/asl-find-sound.md
-    - mans/asl-node-lookup.md
-    - mans/asl-play-arn.md
-    - mans/asl-say.md
-    - mans/asl-setup-dkms-mok.md
-    - mans/sa818.md
-    - mans/sa818-menu.md
-    - mans/simpleusb-tune-menu.md
-  - Config Files:
-    - config/index.md
-    - config/config-structure.md
-    - config/echolink_conf.md
-    - config/extensions_conf.md
-    - config/iax_conf.md
-    - config/rpt_conf.md
-    - config/rpt_auth_conf.md
-    - config/simpleusb_conf.md
-    - config/tlb_conf.md
-    - config/voter_conf.md
+    - For ASL Developers:
+      - developers/index.md
+      - developers/package-builds.md
+      - developers/source-code.md
+      - developers/aptly.md
+      - developers/versioning.md
+
+

@@ -1,14 +1,14 @@
 # ASL3 Appliance (Raspberry Pi)
 The ASL3 "Appliance" is based around the Raspberry Pi platform. It is envisioned as a compact standalone platform that can be used to quickly deploy a node.
 
-The Pi would be the [Server](../../basics/gettingstarted.md#what-is-a-server) on which you would deploy your [Node(s)](../../basics/gettingstarted.md#what-is-a-node).
+The Pi would be the [Server](../../basics/index.md#server) on which you would deploy your [Node(s)](../../basics/index.md#node).
 
 The ASL3 Appliance (Raspberry Pi) image includes the following to make a complete AllStarLink system:
 
 * Debian 13 (Trixie) operating system
 * Asterisk 22 LTS + `app_rpt`
 * `asl-*` commands
-* ASL3 Menu ([`asl-menu`](../../user-guide/index.md))
+* ASL3 Menu ([`asl-menu`](../../user-guide/menu.md))
 * Allmon3
 * Web-based administration (`Cockpit`)
 * A nice landing page

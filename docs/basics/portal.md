@@ -1,7 +1,7 @@
 # AllStarLink Portal
 The [AllStarLink Portal](https://www.allstarlink.org/portal) is where you manage the administration for all the servers and nodes you create to link to the network.
 
-This is where you will apply for a [node number](./gettingstarted.md#what-is-a-node-number) to connect to the AllStarLink network, configure options on how network features interact with your node, and set how your node is described to other nodes and the public facing status pages.
+This is where you will apply for a [node number](./index.md#node-number) to connect to the AllStarLink network, configure options on how network features interact with your node, and set how your node is described to other nodes and the public facing status pages.
 
 ## Create an Account
 The first step in getting an AllStarLink node number assigned is to create an account at [allstarlink.org](https://allstarlink.org). Head over there, and click the **"Login/Sign Up"** link at the top of the page. In the box that opens, click **"Sign Up"** at the bottom of the box.

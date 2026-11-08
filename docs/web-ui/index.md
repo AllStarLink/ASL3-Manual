@@ -1,12 +1,10 @@
-# ASL Web UI
+# AllStarLink WebUI
 The ASL Web UI (package `asl-web-ui`) manages an AllStarLink 3 node server from a web browser. It looks and works like the [Cockpit](../pi/index.md) web console and covers nearly everything the text-based [ASL3 Menu](../user-guide/menu.md) does: setting up nodes, tuning radio interfaces, managing Asterisk and Allmon3, backups, diagnostics and more.
 
 ![ASL Web UI Overview](img/webui-overview-registered.png)
 
-!!! warning "Under Development"
-    The ASL Web UI is under active development and is currently available only from the AllStarLink `devel` package repository. Don't run it on a node you can't easily fix or rebuild if something goes wrong.
-
 ## What the ASL Web UI Does
+
 * **Node configuration**: set up a new node, add more nodes, and change the call sign, duplex, password, radio interface and other common settings. SimpleUSB, USBRadio, hub (pseudo), USRP and Voter/RTCM nodes are supported, along with "customizations" for common commercial node hardware.
 * **Radio interface tuning**: adjust receive and transmit levels for SimpleUSB and USBRadio interfaces with live meters, in place of the text tune menus.
 * **Access control**: allow or block other nodes from connecting to yours.
@@ -22,6 +20,7 @@ The ASL Web UI (package `asl-web-ui`) manages an AllStarLink 3 node server from 
 The ASL Web UI works on the same files as the ASL3 Menu tools (`asl-menu`, `node-setup`, `asl-backup-menu`) and copes with files that were edited by hand, so you can switch between it, the menus and a text editor as you like.
 
 ## Finding Your Way Around
+
 Every page shares the same layout:
 
 * **The top bar** shows the server's host name and the account you are logged in with. Click the account name to log out.
@@ -32,6 +31,7 @@ Every page shares the same layout:
 * **The page itself** is on the right. Many pages have tabs across the top.
 
 ## How Changes Are Made
+
 The ASL Web UI never writes a configuration file without showing you exactly what will change. When you save, a **Review** window shows the lines removed (red) and added (green) in each file:
 
 ![Reviewing a Change](img/webui-node-review.png)
@@ -47,7 +47,8 @@ Many changes take effect only when Asterisk restarts. When files have changed si
 
 Some actions, such as restarting or stopping Asterisk, rebooting, restoring a backup and removing a node, ask for your password again if you last entered it more than ten minutes ago.
 
-## Sections of This Guide
+## Major Components of WebUI
+
 * [Installing and Logging In](install.md)
 * [Setting Up Your First Node](first-setup.md)
 * [Overview](overview.md)

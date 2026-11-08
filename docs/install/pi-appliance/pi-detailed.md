@@ -104,7 +104,7 @@ When you click on **NEXT** the application will write the image to the SD card.
 
     ![Step 20](img/step-20.png){width="400"}
 
-- The AllStarLink Launchpad will appear. Clicking on **Web Admin Portal** will take one to the web-based administration portal that includes a web-based SSH client for using [`asl-menu`](../../user-guide/index.md) and other commands. Clicking on **Node Links** will take one to the Allmon3 interface. Clicking on **ASL Manual** will take one
+- The AllStarLink Launchpad will appear. Clicking on **Web Admin Portal** will take one to the web-based administration portal that includes a web-based SSH client for using [`asl-menu`](../../user-guide/menu.md) and other commands. Clicking on **Node Links** will take one to the Allmon3 interface. Clicking on **ASL Manual** will take one
 to the top of this manual
 
     ![Step 21](img/step-21.png)
@@ -135,7 +135,7 @@ Before configuring you should review the prerequisites.
 --8<-- "install/index.md:prerequisites"
 
 ## Quick Configuration via ASL-Menu
-The node may now be configured. New users or those wanting a quick start experience should use the [`asl-menu`](../../user-guide/index.md) utility with `sudo asl-menu`.
+The node may now be configured. New users or those wanting a quick start experience should use the [`asl-menu`](../../user-guide/menu.md) utility with `sudo asl-menu`.
 
 ![Web ASL Menu 1](img/term-asl-menu-1.png)
 
@@ -169,4 +169,4 @@ Details on updating the login(s) and other Allmon3 settings can be found in the 
 When finished with the admin system, click on **Session** in the upper right and then choose **Logout**.
 
 ## Node Configuration
-If you haven't already, the next step is to configure your node settings. YouTuber Freddie Mac has a nice ASL3 installation and configuration video. See [https://youtu.be/aeuj-yI8qrU](https://youtu.be/aeuj-yI8qrU). Also see [ASL3 Menu](../../user-guide/index.md) for details.
+If you haven't already, the next step is to configure your node settings. YouTuber Freddie Mac has a nice ASL3 installation and configuration video. See [https://youtu.be/aeuj-yI8qrU](https://youtu.be/aeuj-yI8qrU). Also see [ASL3 Menu](../../user-guide/menu.md) for details.

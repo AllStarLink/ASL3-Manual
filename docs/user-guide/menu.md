@@ -1,16 +1,10 @@
-# Accessing ASL3 Menu
-Your system may have been setup to automatically start the ASL3 menu as soon as you have logged in. If not, you can access the ASL3 menu by executing the following command from the Linux shell :
+# CLI Menu
 
+You can access the ASL3 menu by executing the following command from the Linux shell via SSH or using the Cockpit Terminal:
+
+```bash
+sudo asl-menu
 ```
-asl-menu
-```
-
-!!! note "May Require sudo"
-    If you are not logged in as the "root" user you will need to use:
-
-    ```
-    sudo asl-menu
-    ```
 
 When the ASL3 menu is running you will be presented with options to configure a node, access the Asterisk CLI, backup (or restore) your ASL settings, access the Linux CLI, perform some basic diagnostics, and perform some common system actions.
 
@@ -56,7 +50,7 @@ The Asterisk CLI should be invoked with at least a verbosity level of `1`, other
 
 #### Debug Level
 
-"Debug" messages are additional logging messages that developers specifically add to modules, to aid in troubleshooting. Debug messages are distinct from normal (verbosity) messages, and must be enabled separately. 
+"Debug" messages are additional logging messages that developers specifically add to modules, to aid in troubleshooting. Debug messages are distinct from normal (verbosity) messages, and must be enabled separately.
 
 You can see the current debug level once you are in the Asterisk CLI by using the `core show settings` command. It will default to level `0`, unless specifically changed.
 
