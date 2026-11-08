@@ -53,14 +53,13 @@ If you want to create your own node to connect to the AllStarLink network, the r
 
 2. Build/install a [Server](#server) with the desired hardware.
 
-3. Use the [ASL WebUI](../web-ui/first-setup) or ASL Menu to configure your [Node](#node) on it. S
+3. Use the [WebUI](../web-ui/first-setup) or [Menu](../user-guide/menu.md) to configure your [Node](#node) on it.
 
-The [ASL3 Menu](../user-guide/menu.md) program will help you configure your node, and should take care of configuring [HTTP Registration](../adv-topics/httpreg.md) for you.
+4. Once you have your node up and running, go check the [AllStarLink Nodelist](https://www.allstarlink.org/nodelist) and put your node number in the Filter box in the upper right of the screen. If your node number shows up with a green dot, it has successfully registered with the AllStarLink Network.
 
-Once you have your node up and running, go check the [AllStarLink Nodelist](https://www.allstarlink.org/nodelist) and put your node number in the Filter box in the upper right of the screen. If your node number shows up with a green background, it has successfully registered with the AllStarLink Network.
+5. After your node has successfully registered, you will be able to connect to other nodes on the AllStarLink Network. If you have enabled network access to your server (e.g. port forwarding) then other nodes should be able to connect to your node.
 
-After your node has successfully registered, you will be able to connect to other nodes on the AllStarLink Network. If you have enabled network access to your server (e.g. port forwarding) then other nodes should be able to connect to your node.
+!!! tip Be Patient
+    When you first power on your node, it may take up to 30 minutes for your node's status to propagate through the whole network (many nodes still use an older registration update system that does scheduled updates to their local node list).
 
-When you first power on your node, it may take up to 30 minutes for your node's status to propagate through the whole network (many nodes still use an older registration update system that does scheduled updates to their local node list).
-
-It is recommended that you leave your node powered on and connected to the network, so that you registration stays active.
+    It is recommended that you leave your node powered on and connected to the network, so that you registration stays active.
