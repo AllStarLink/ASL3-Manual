@@ -50,7 +50,7 @@ Those who need to create their own Pi images (something ASL does not support), c
 sudo apt install asl3-appliance-pi
 ```
 
-Systems that are based on the Ardiuno Uno Q must use the Arduino-provided Debian
+Systems that are based on the Arduino Uno Q must use the Arduino-provided Debian
 image and then install the asl3-appliance-uni-q package.
 
 ```bash
