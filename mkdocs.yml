@@ -237,7 +237,7 @@ nav:
       - config/simpleusb_conf.md
       - config/tlb_conf.md
       - config/voter_conf.md
-  - Developer Guides:
+  - Developers:
     - developers/source-install.md
     - developers/api.md
     - developers/iaxtext.md
