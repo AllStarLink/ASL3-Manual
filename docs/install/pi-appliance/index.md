@@ -1,4 +1,5 @@
 # ASL3 Appliance (Raspberry Pi)
+
 The ASL3 "Appliance" is based around the Raspberry Pi platform. It is envisioned as a compact standalone platform that can be used to quickly deploy a node.
 
 The Pi would be the [Server](../../basics/index.md#server) on which you would deploy your [Node(s)](../../basics/index.md#node).
@@ -14,6 +15,7 @@ The ASL3 Appliance (Raspberry Pi) image includes the following to make a complet
 * A nice landing page
 
 ## ASL3 Appliance Requirements
+
 The following are the system requirements for the ASL3 Appliance
 
 | | Required | Recommended
