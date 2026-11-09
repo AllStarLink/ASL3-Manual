@@ -10,7 +10,7 @@ AllStarLink/app_rpt has some unique terminology that is essential to understand 
 
 A foundational concept in AllStarLink is the *Node Number*. A *Node Number* is a unique number that is assigned to every node on the network and is analogous to a telephone number. Like you do with a telephone, when you "dial" a node number, that will connect to a specific node on the network, linking those nodes together. You can link many nodes together simultaneously, creating a network of nodes that all participate in conversation together.
 
-Node numbers are between four and six digits long. Currently, AllStarLink issues public node numbers are issued randomly between 41000 and 69999.
+Node numbers are between four and six digits long. Currently, AllStarLink public node numbers are randomly assigned between 41000 and 69999.
 
 Similar to a "private IP address" or "non-routable IP address" (RFC1918 for networking enthusiasts), there is also the concept of *private node numbers*. These are in a reserved block of 1000-1999. These numbers cannot be used on the public AllStarLink network but can be used within private networks and later connect out to AllStarLink.
 

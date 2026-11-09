@@ -124,97 +124,109 @@ nav:
       - user-guide/externalapps.md
     - <span>Contributing</span>:
       - user-guide/betatest.md
-  - Feature Guides:
-    - adv-topics/index.md
-    - adv-topics/44net-connect.md
-    - adv-topics/allowdenylists.md
-    - adv-topics/appauth.md
-    - adv-topics/aprs.md
-    - adv-topics/tts.md
-    - adv-topics/conftmpl.md
-    - adv-topics/archivedir.md
-    - adv-topics/audiofilters.md
-    - adv-topics/autopatch.md
-    - adv-topics/audio-level.md
-    - adv-topics/apprpt-dialplan.md
-    - adv-topics/courtesytones.md
-    - adv-topics/condiscpgm.md
-    - adv-topics/daq.md
-    - adv-topics/dns-servers.md
-    - adv-topics/dtmffunctions.md
-    - adv-topics/echolink.md
-    - adv-topics/elkelink.md
-    - adv-topics/eurorptr.md
-    - adv-topics/eventmgmt.md
-    - adv-topics/fallback-ap.md
-    - adv-topics/hotspot_hd.md
-    - adv-topics/httpreg.md
-    - adv-topics/iax-auth.md
-    - adv-topics/iax-proxy.md
-    - adv-topics/iaxreg.md
-    - adv-topics/linkacttimer.md
-    - adv-topics/litz.md
-    - adv-topics/macros.md
-    - adv-topics/gpio.md
-    - adv-topics/mdc1200.md
-    - adv-topics/multinodesnetwork.md
-    - adv-topics/nnx.md
-    - adv-topics/noderesolution.md
-    - adv-topics/other-software.md
-    - adv-topics/parrotmode.md
-    - adv-topics/dtmftoscript.md
-    - adv-topics/permanentnode.md
-    - adv-topics/permissions.md
-    - adv-topics/privatenodes.md
-    - adv-topics/radio-connections.md
-    - adv-topics/remotebase.md
-    - adv-topics/rxtoneburst.md
-    - adv-topics/sa818modules.md
-    - adv-topics/sip-phone.md
-    - adv-topics/scheduler.md
-    - adv-topics/sleepmode.md
-    - adv-topics/soundfiles.md
-    - adv-topics/simplevoter.md
-    - adv-topics/broadcastify.md
-    - adv-topics/telemetry.md
-    - adv-topics/tailmessage.md
-    - adv-topics/timeofday.md
-    - adv-topics/tlb.md
-    - adv-topics/tonemacros.md
-    - adv-topics/tonesignalling.md
-    - adv-topics/totp-auth.md
-    - adv-topics/uefi-secureboot.md
-    - adv-topics/usbinterfaces.md
+  - How-To:
+    - <span>Connect &amp; Integrate</span>:
+      - adv-topics/44net-connect.md
+      - adv-topics/aprs.md
+      - adv-topics/autopatch.md
+      - adv-topics/echolink.md
+      - adv-topics/iax-auth.md
+      - adv-topics/iax-proxy.md
+      - adv-topics/iaxreg.md
+      - adv-topics/multinodesnetwork.md
+      - adv-topics/nnx.md
+      - adv-topics/noderesolution.md
+      - adv-topics/other-software.md
+      - adv-topics/permanentnode.md
+      - adv-topics/privatenodes.md
+      - adv-topics/remotebase.md
+      - adv-topics/sip-phone.md
+      - adv-topics/broadcastify.md
+      - adv-topics/tlb.md
+    - <span>Radio &amp; Audio</span>:
+      - adv-topics/archivedir.md
+      - adv-topics/audio-level.md
+      - adv-topics/courtesytones.md
+      - adv-topics/elkelink.md
+      - adv-topics/eurorptr.md
+      - adv-topics/gpio.md
+      - adv-topics/hotspot_hd.md
+      - adv-topics/mdc1200.md
+      - adv-topics/parrotmode.md
+      - adv-topics/rxtoneburst.md
+      - adv-topics/sa818modules.md
+      - adv-topics/sleepmode.md
+      - adv-topics/simplevoter.md
+      - adv-topics/tailmessage.md
+      - adv-topics/timeofday.md
+      - adv-topics/tonemacros.md
+      - adv-topics/usbinterfaces.md
+    - <span>Automate &amp; Customize</span>:
+      - adv-topics/tts.md
+      - adv-topics/condiscpgm.md
+      - adv-topics/linkacttimer.md
+      - adv-topics/litz.md
+      - adv-topics/macros.md
+      - adv-topics/dtmftoscript.md
+      - adv-topics/scheduler.md
+    - <span>Operate &amp; Secure</span>:
+      - adv-topics/allowdenylists.md
+      - adv-topics/appauth.md
+      - adv-topics/fallback-ap.md
+      - adv-topics/totp-auth.md
+      - adv-topics/uefi-secureboot.md
     - <span>VOTER/RTCM</span>:
-      - voter/index.md
-      - voter/about-voter.md
-      - voter/voter-protocol.md
-      - voter/voter-chan_voter.md
-      - voter/rtcm-hardware.md
-      - voter/voter-hardware.md
       - voter/voter-firmware.md
       - voter/voter-gps.md
-      - voter/voter-menus.md
       - voter/voter-audio.md
       - voter/voter-buffers.md
       - voter/voter-simulcasting.md
       - voter/voter-mixmode.md
       - voter/voter-proxy.md
-      - voter/voter-audioanalysis.md
       - voter/voter-quantar.md
-    - Man Pages:
-        - mans/index.md
-        - mans/allmon3-passwd.md
-        - mans/asl-backup-menu.md
-        - mans/asl-find-sound.md
-        - mans/asl-node-lookup.md
-        - mans/asl-play-arn.md
-        - mans/asl-say.md
-        - mans/asl-setup-dkms-mok.md
-        - mans/sa818.md
-        - mans/sa818-menu.md
-        - mans/simpleusb-tune-menu.md
-    - Config Files:
+  - How It Works:
+    - <span>Core Behavior</span>:
+      - adv-topics/conftmpl.md
+      - adv-topics/dtmffunctions.md
+      - adv-topics/permissions.md
+      - adv-topics/telemetry.md
+    - <span>Networking</span>:
+      - adv-topics/dns-servers.md
+      - adv-topics/httpreg.md
+    - <span>Radio &amp; Audio</span>:
+      - adv-topics/audiofilters.md
+    - <span>VOTER/RTCM</span>:
+      - voter/index.md
+      - voter/about-voter.md
+      - voter/voter-audioanalysis.md
+  - Reference:
+    - <span>Feature Reference</span>:
+      - adv-topics/apprpt-dialplan.md
+      - adv-topics/daq.md
+      - adv-topics/eventmgmt.md
+      - adv-topics/soundfiles.md
+      - adv-topics/tonesignalling.md
+    - <span>Hardware &amp; Interfaces</span>:
+      - adv-topics/radio-connections.md
+    - <span>VOTER/RTCM</span>:
+      - voter/voter-protocol.md
+      - voter/voter-chan_voter.md
+      - voter/rtcm-hardware.md
+      - voter/voter-hardware.md
+      - voter/voter-menus.md
+    - <span>Command Reference</span>:
+      - mans/index.md
+      - mans/allmon3-passwd.md
+      - mans/asl-backup-menu.md
+      - mans/asl-find-sound.md
+      - mans/asl-node-lookup.md
+      - mans/asl-play-arn.md
+      - mans/asl-say.md
+      - mans/asl-setup-dkms-mok.md
+      - mans/sa818.md
+      - mans/sa818-menu.md
+      - mans/simpleusb-tune-menu.md
+    - <span>Configuration Reference</span>:
       - config/index.md
       - config/config-structure.md
       - config/echolink_conf.md
