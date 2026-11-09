@@ -13,13 +13,7 @@ AllStarLink is a network of Amateur Radio repeaters, remote base stations and ho
 
 AllStarLink’s version 3 (ASL3) is the newest generation of AllStarLink repeater and hot spot software. The app\_rpt module, the workhorse of AllStarLink tracks the current release of Asterisk LTS for stability and logevity. The system also always tracks Debian Linux operating system and will remain current on any platform supported by the "stable" and "oldstable" - currently Debian 13 Trixie and Debian 12 Bookworm respectively.
 
-
-In gne
-
-* Any x86_64/amd64 hardware device
-* Any emulated x86_64/amd64 virtual machine
-* Any arm64-based device such as Raspberry Pi
-* Debian 12 or 13
+In general, AllStarLink will run on any x86_64/amd64 hardware device, any emulated x86_64/amd64 or arm64/aarch64 virtual machine, and supportable arm64-based devices such as Raspberry Pi and Arduino UNO Q.
 
 ## Manual Navigation
 

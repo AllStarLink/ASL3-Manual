@@ -7,24 +7,25 @@ features are available with the appliance packages.
 !!! info "Debian 13 Only"
     An ASL Appliance can only be added to Debian 13 installations.
 
-## Appliance Options :
+## Appliance Options
 
 The following appliance options are available :
 
-| Feature | ASL3-Appliance | ASL3-Appliance-Pi | ASL3-Appliance-PC |
-|---------|----------------|-------------------|-------------------|
-| ASL Appliance Web Page | :material-check-bold: | :material-check-bold: | :material-check-bold: |
-| Web Server Management | :material-check-bold: | :material-check-bold: | :material-check-bold: |
-| Allmon3 Auto-Configuration | :material-check-bold: | :material-check-bold: | :material-check-bold: |
-| Cockpit | :material-check-bold: | :material-check-bold: | :material-check-bold: |
-| Firewall Configuration | :material-check-bold: | :material-check-bold: | :material-check-bold: |
-| mDNS Broadcasts (`.local` DNS names) | | :material-check-bold: | :material-check-bold: |
-| Swapfile Management | | :material-check-bold: | :material-check-bold: |
-| Pi `/dev/serial0` Management | | :material-check-bold: | |
-| Wi-Fi Configuration Preloaded | | :material-check-bold: | |
-| Logs and temp files are ephemeral to reduce writes to<br>media when used on an ASL3 Appliance Pi image | | :material-check-bold: | |
+| Feature | ASL3-Appliance | ASL3-Appliance-Pi | ASL3-Appliance-PC | ASL3-Appliance-<br>Uno-Q |
+|---------|----------------|-------------------|-------------------|-------------------|
+| ASL Appliance Web Page | :material-check-bold: | :material-check-bold: | :material-check-bold: | :material-check-bold: |
+| Web Server Management | :material-check-bold: | :material-check-bold: | :material-check-bold: | :material-check-bold: |
+| Allmon3 Auto-Configuration | :material-check-bold: | :material-check-bold: | :material-check-bold: | :material-check-bold: |
+| Cockpit | :material-check-bold: | :material-check-bold: | :material-check-bold: | :material-check-bold: |
+| Firewall Configuration | :material-check-bold: | :material-check-bold: | :material-check-bold: | :material-check-bold: |
+| mDNS Broadcasts (`.local` DNS names) | | :material-check-bold: | :material-check-bold: | :material-check-bold: |
+| Swapfile Management | | :material-check-bold: | :material-check-bold: | :material-check-bold: |
+| Pi `/dev/serial0` Management | | :material-check-bold: | | |
+| Wi-Fi Configuration Preloaded | | :material-check-bold: | | |
+| Logs and temp files are ephemeral to reduce writes to<br>media when used on an ASL3 Appliance Pi image | | :material-check-bold: | | :material-check-bold: |
+| Manage LED Display | | | | :material-check-bold: |
 
-## Appliance Installation :
+## Appliance Installation
 
 Any Debian 13 installation can be turned into an appliance. The following
 will work for any platform, including virtual machines and VPS installs.
@@ -47,6 +48,13 @@ Those who need to create their own Pi images (something ASL does not support), c
 
 ```bash
 sudo apt install asl3-appliance-pi
+```
+
+Systems that are based on the Ardiuno Uno Q must use the Arduino-provided Debian
+image and then install the asl3-appliance-uni-q package.
+
+```bash
+sudo apt install asl3-appliance-pi-uno-q
 ```
 
 Use one of the above in the [Debian Appliance](install.md) directions

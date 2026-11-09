@@ -2,15 +2,16 @@
 
 !!! danger "Raspberry Pi Imager"
     Even if you prefer another imager, **you must use the Raspberry Pi Imager,** and carefully follow the instructions below. Failure to do so will result in a system that won't boot or that will not allow logins.
-    
-    Note: these instructions assume that you are using the **Raspberry Pi Imager, version 2.0.0 (or later)**
 
-You will install an image to a microSD card and boot from the card. This is the simplest install. For most nodes, the menus will walk you through the setup. 
+!!! note
+    these instructions assume that you are using the **Raspberry Pi Imager, version 2.0.0 (or later)**
+
+You will install an image to a microSD card and boot from the card. This is the simplest install. For most nodes, the menus will walk you through the setup.
 
 !!! note "SD Card Size"
     A minimum SD card size of 8G is required.
 
-Note: Some Raspberry Pi models allow you to boot from a USB [Flash] or NVME drive. On these models you have the option of writing the image to a USB [Flash] or NVME drive instead of a microSD card. 
+Note: Some Raspberry Pi models allow you to boot from a USB [Flash] or NVME drive. On these models you have the option of writing the image to a USB [Flash] or NVME drive instead of a microSD card.
 
 ## Step-by-Step Pi Appliance Setup
 These directions are specific for Windows, but in general should work the same for the same tool set on macOS and Linux. For each screenshot below, click on the image for a larger version.
@@ -143,7 +144,7 @@ The menu will appear:
 
 ![Web ASL Menu 2](img/term-asl-menu-2.png)
 
-Proceed from here with the **Node Settings** option in order to configure your node number and choose/configure your audio interface. 
+Proceed from here with the **Node Settings** option in order to configure your node number and choose/configure your audio interface.
 
 ## Asterisk Console
 To start the asterisk console from the Terminal window enter `sudo asterisk -rv`.
