@@ -7,7 +7,7 @@ Setting up USB audio interfaces is much easier with ASL3.
  * A new [`asl-find-sound`](../mans/asl-find-sound.md) utility can be used to help identify the compatible device strings for attached interfaces
  * We now support the ability to specify vendor and product identifiers (VID and PID) for non-natively supported audio interface chips
 
-The [`asl-menu`](../user-guide/index.md) and Asterisk CLI USB config commands handle these changes.
+The [`asl-menu`](../user-guide/menu.md) and Asterisk CLI USB config commands handle these changes.
 
 !!! warning "`devstr=` Auto-assignment"
     Upon initial installation, the `devstr=` option to assign a USB audio device in `simpleusb.conf` and `usbradio.conf` will be blank. The channel driver, when finding no specific device assignment, will automatically assign an available audio device. When a user runs `simpleusb-tune-menu` or `radio-tune-menu`, the "Write (Save) Current Parameter Values" option includes the currently assigned device in the settings saved to the `.conf` file. If this is not desired, you will need to update the configuration files manually to change the `devstr=` to the desired audio device. If you remove an assigned interface from `devstr=` the behavior will, again, be to assign an available audio device.
@@ -78,7 +78,7 @@ If you have a radio attached to your node, you are **strongly encouraged** to tu
 
 Radio equipment such as HTs or mobile radios, and many electronics products such as VOIP phones often restrict end-user audio adjustment capabilities to ensure consistent audio levels. AllStarLink nodes and USB interfaces however, generally allow greater flexibility and thus extra attention is required to be sure your audio interface gains are properly matched to the external audio input and output levels. Failure to calibrate your audio levels could mean your node is much quieter or louder than it should be when linked to other nodes, which could be disruptive to other users and systems. It can also mean that the signal from your RF transmitter may cause interference with other radio systems, which carries serious consequences from spectrum regulators.
 
-Many nodes use the `SimpleUSB` channel driver (`chan_simpleusb`). Nodes that require more advanced features such as DSP squelch detection, CTCSS tone encode/decode, or additional audio filtering options may use the `USBRadio` channel driver (`chan_usbradio`). These channel drivers both have tune utilities for setting audio levels and other functions. Once a node has been configured in the [`asl-menu`](../user-guide/index.md) **Node Settings**, you will end up in the appropriate tune application. The following options should then be used to check and optimize audio level settings:
+Many nodes use the `SimpleUSB` channel driver (`chan_simpleusb`). Nodes that require more advanced features such as DSP squelch detection, CTCSS tone encode/decode, or additional audio filtering options may use the `USBRadio` channel driver (`chan_usbradio`). These channel drivers both have tune utilities for setting audio levels and other functions. Once a node has been configured in the [`asl-menu`](../user-guide/menu.md) **Node Settings**, you will end up in the appropriate tune application. The following options should then be used to check and optimize audio level settings:
 
 !!! warning "Disconnect from Other Nodes" 
     Be sure you are not connected to any other nodes when doing any of the following tests and adjustments.
@@ -91,7 +91,7 @@ Many nodes use the `SimpleUSB` channel driver (`chan_simpleusb`). Nodes that req
 * `Print Current Parameter Values` shows the current audio level settings.
 * `Write (Save) Current Parameter Values` saves any changed settings to disk. Be sure to execute this option before exiting the menu if you have changed any settings and want those to be the new defaults.
  
-The tune utilities can also be run from the command line without needing to use [`asl-menu`](../user-guide/index.md). For SimpleUSB run `sudo /usr/sbin/simpleusb-tune-menu` or for USBRadio run `sudo /usr/sbin/radio-tune-menu`.
+The tune utilities can also be run from the command line without needing to use [`asl-menu`](../user-guide/menu.md). For SimpleUSB run `sudo /usr/sbin/simpleusb-tune-menu` or for USBRadio run `sudo /usr/sbin/radio-tune-menu`.
 
 ## EEPROM Operation
 The SimpleUSB and USBRadio channel drivers allow users to store configuration information in an EEPROM IC attached to the C-Media CM1xx USB Interface IC. The CM119A can have manufacturer information in the same area that stores the user configuration. The CM119B does not have manufacturer data in the area that stores user configuration. The manufacturer data cannot be overwritten. The user configuration data has been moved higher in memory to prevent overwriting the manufacturer data. If you use the EEPROM to store configuration data, you'll need to save it to the EEPROM after upgrading. Use `susb tune save` or `radio tune save` in the Asterisk CLI.

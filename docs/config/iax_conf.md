@@ -21,7 +21,7 @@ As such, you will currently see the following in your ASL3 default `iax.conf`:
 ;register => 1998:12345@register.allstarlink.org
 ```
 
-While node registration will still work (for now) using this method, please don't use it. It is not required. Your registration should be processed by an entry in `rpt_http_registrations.conf`, which in most cases the [`asl-menu`](../user-guide/index.md) utility will take care of configuring for you.
+While node registration will still work (for now) using this method, please don't use it. It is not required. Your registration should be processed by an entry in `rpt_http_registrations.conf`, which in most cases the [`asl-menu`](../user-guide/menu.md) utility will take care of configuring for you.
 
 ### `bindport=` and `bindaddr=`
 The `bindport` and `bindaddr` directives determine where Asterisk is listening for incoming IAX2 connections.

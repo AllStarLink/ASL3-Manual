@@ -33,4 +33,4 @@ Before you get started with installing the ASL3 software there are a few prerequ
 
 When you are ready, use the Table of Contents on the left to jump to the type of installation you are wishing to perform, but be sure to check out the rest of the topics in this section for other important information.
 
-Once you've got your new ASL3 installed, be sure to check out the [Basic Operation](../user-guide/index.md) section (see the link at the top of the page).
+Once you've got your new ASL3 installed, be sure to check out the [Basic Operation](../user-guide/menu.md) section (see the link at the top of the page).

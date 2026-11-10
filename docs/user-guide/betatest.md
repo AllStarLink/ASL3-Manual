@@ -1,4 +1,5 @@
 # Beta Testing
+
 Beta testing is the final phase of software testing before releasing a product to the general public. During this stage, a group of users representing the target audience
 validates the product. They explore its features, uncover bugs, and provide feedback.
 
@@ -15,29 +16,43 @@ AllStarLink releases software packages to a beta channel on a periodic basis to 
 If you cannot adhere to the above four conditions, you should not use the beta channel software.
 
 ## Enabling Beta Channel Software
+
 Enabling beta channel software is done with the `asl-repo-switch` command as `root`. Set the channel to "beta" using `asl-repo-switch -l beta`. For example:
 
 ```bash
-# asl-repo-switch -l beta
+sudo asl-repo-switch -l beta
+```
+
+You will see:
+
+```txt
 Setting level beta... DONE
 Run 'apt update' to refresh the package repo cache.
 ```
 
 ## Disabling Beta Channel Software
+
 Disabling beta channel software is done with the `asl-repo-switch` command as `root`. Set the channel to "main" using `asl-repo-switch -l main`.
 
 For example:
 
 ```bash
-# asl-repo-switch -l main
+sudo asl-repo-switch -l main
+```
+
+You will see:
+
+```txt
+
 Setting level main... DONE
 Run 'apt update' to refresh the package repo cache.
 ```
 
 ## Installing Updates Using Beta Channel
+
 The most common case to use the beta channel for software packages is to test a proposed fix to a problem you are having. In those cases, the following commands should be run **one at a time** from a terminal/console as `root` (using `sudo` or `sudo -s`):
 
-```
+```bash
 sudo asl-repo-switch -l beta
 sudo apt update
 sudo apt upgrade -y
@@ -51,27 +66,21 @@ To reset your packages for ASL3 back to the production-release main versions:
 
 For Pi Appliances:
 
-```
+```bash
 sudo asl-repo-switch -r
 sudo apt update
 sudo apt install -y --reinstall asl3 asl3-asterisk asl3-asterisk-config \
   asl3-asterisk-modules asl3-menu asl3-update-nodelist \
-  asl3-appliance-pi allmon3
+  asl3-appliance-pi allmon3 asl-web-ui
 ```
 
 For Debian 12 or 13 general installations:
 
-```
+```bash
 sudo asl-repo-switch -r
 sudo apt update
 sudo apt install -y --reinstall asl3 asl3-asterisk asl3-asterisk-config \
   asl3-asterisk-modules asl3-menu asl3-update-nodelist
-```
-
-For DAHDI Kernel packages after doing the above, as necessary:
-
-```
-sudo apt install -y --reinstall dahdi-linux dahdi-dkms
 ```
 
 !!! note "Issues Rolling Back"
