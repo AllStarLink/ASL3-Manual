@@ -1,9 +1,16 @@
 # 44Net Connect
+
+
+
 [44Net](https://wiki.ampr.org/wiki/Main_Page), also known as AMPRNet, is a block of globally routable IPv4 addresses allocated for amateur radio use.
 
 [44Net Connect](https://connect.44net.cloud/) gives an amateur radio operator a publicly routable IPv4 address in the 44Net space. That address is delivered to the operator's system through a VPN tunnel.
 
 For AllStarLink, 44Net Connect is most useful when a node cannot receive inbound IAX2 connections because it is behind NAT, CGNAT, a restrictive router, or a network where port forwarding is not available. 44Net Connect can provide a public `44.x.x.x` address that other nodes can reach.
+
+!!! warning Advanced Users Only
+    These directions are only for advanced users who have specific needs in a VPN tunnel. Regular users
+    should use ASL WebUI's [44Net Connect configuration tool](../web-ui/network.md#44net-connect).
 
 Most users only need 44Net Connect for inbound AllStarLink IAX2 connections. It can also make other services reachable from the Internet, such as EchoLink, VOTER/RTCM, and web services such as Allmon3. However, every exposed service adds risk. It is recommended to start with allowing just the IAX2 service and only add other services when you know you need them.
 
