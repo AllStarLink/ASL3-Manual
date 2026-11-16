@@ -54,7 +54,7 @@ Systems that are based on the Arduino Uno Q must use the Arduino-provided Debian
 image and then install the asl3-appliance-uno-q package.
 
 ```bash
-sudo apt install asl3-appliance-pi-uno-q
+sudo apt install asl3-appliance-uno-q
 ```
 
 Use one of the above in the [Debian Appliance](install.md) directions
