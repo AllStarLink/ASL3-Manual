@@ -32,7 +32,7 @@ If you want reliable simulcast with an acceptable level of overlap warble, you M
 
 Otherwise, the inherent internal clock jitter of the VOTER/RTCM will cause CTCSS warble, etc. in areas where your transmitters overlap. The 1 PPS feed that you normally feed the VOTER/RTCM is acceptable for voting, but naturally, a typical crystal-driven clock will slightly drift in between the pulses every second due to inherent jitter, etc., and that isn't good for situations like simulcast which demand sample-accurate performance.
 
-Here are some comments from Joe, KC2IRV, on the subject. He has also created his own wiki, specific to simulcast issues, you can find it at: [http://rtcmsimulcast.wikifoundry.com/](http://rtcmsimulcast.wikifoundry.com/). 
+Here are some comments from Joe, KC2IRV, on the subject. He has also created his own wiki, specific to simulcast issues, you can find it at: [https://allstarsimulcast.com/](https://allstarsimulcast.com/). 
 
 > I felt I needed to let those on this mailing list know my findings with simulcasting with the RTCM units since I have received a great deal of help and information from people on this list.
 >
