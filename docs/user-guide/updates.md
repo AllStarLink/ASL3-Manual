@@ -1,8 +1,11 @@
 # Updating ASL3
 All of the software components that make up ASL3 are provided by software packages (Debian `.deb` files) from an centralized Apt repository. This makes upgrades quick and painless for users.
 
+!!! note "ASL3 Appliance"
+    On the ASL3 Appliance, the easiest way to install updates is the **Software Updates** page of the web console. See [Software Updates](../pi/cockpit-updates.md). This page covers updating from the command line, which works on every install, the appliance included.
+
 ## Standard Debian Upgrades
-Whether ASL3 is installed on a standard Debian installation or you are using the Pi Appliance image, updates follow the standard Debian format:
+Updates from the command line follow the standard Debian format, on a standard Debian installation and on the Pi Appliance image alike:
 
 ```
 sudo apt update
