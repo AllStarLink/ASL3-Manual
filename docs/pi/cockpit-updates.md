@@ -2,6 +2,8 @@
 The Software updates tool in the web console is how to install package updates to the AlLStarLink Pi appliance. This includes updating AllStarLink software and its associated
 items.
 
+To update from the command line instead, and for what to answer when an update asks about a configuration file, see [Updating ASL3](../user-guide/updates.md).
+
 # Checking For and Installing Updates
 1. Log in to the web console with administrator privileges. For details, see [Cockpit Basics](cockpit-basics.md)
 
